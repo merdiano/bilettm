@@ -13,10 +13,10 @@
     @include('ManageOrganiser.Partials.TopNav')
 @stop
 
-@section('head')
-    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&key='.env("GOOGLE_MAPS_GEOCODING_KEY")) !!}
-    {!! HTML::script('vendor/geocomplete/jquery.geocomplete.min.js')!!}
-@stop
+{{--@section('head')--}}
+    {{--{!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&key='.config("services.google_places.key")) !!}--}}
+    {{--{!! HTML::script('vendor/geocomplete/jquery.geocomplete.min.js')!!}--}}
+{{--@stop--}}
 
 @section('menu')
     @include('ManageOrganiser.Partials.Sidebar')

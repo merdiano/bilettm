@@ -16,8 +16,8 @@ class PublicController extends Controller
             $categories->children($parent_id);
         else
             $categories->main();
-
-        return $categories->get();
+        return response()->json(['categories' => $categories->get()]);
+//        return $categories->get();
     }
 
     public function getEvents($cat_id = null, Request $request){

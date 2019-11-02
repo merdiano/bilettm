@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="form-group more-options">
+                <div class="form-group">
                     {!! Form::label('description', trans("ManageEvent.ticket_description"), array('class'=>'control-label')) !!}
                     {!!  Form::text('description', null,
                                 array(
@@ -59,7 +59,7 @@
                                 ))  !!}
                 </div>
 
-                <div class="row more-options">
+                <div class="row">
 
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="row more-options">
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('min_per_person', trans("ManageEvent.minimum_tickets_per_order"), array('class'=>' control-label')) !!}
@@ -108,8 +108,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row more-options">
-                    <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <div class="custom-checkbox">
                                 {!! Form::checkbox('is_hidden', null, null, ['id' => 'is_hidden']) !!}
@@ -118,10 +118,14 @@
 
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('section_id',trans("ManageEvent.select_section"),array('class'=>' control-label required')) !!}
+                            {!! Form::select('section_id',sections_list($event->venue_id),$ticket->section_id,['class'=>'form-control']) !!}
+                        </div>
+                    </div>
                 </div>
-                <a href="javascript:void(0);" class="show-more-options">
-                    @lang("ManageEvent.more_options")
-                </a>
+
             </div> <!-- /end modal body-->
             <div class="modal-footer">
                 {!! Form::button(trans("basic.cancel"), ['class'=>"btn modal-close btn-danger",'data-dismiss'=>'modal']) !!}

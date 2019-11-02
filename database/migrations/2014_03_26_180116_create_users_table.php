@@ -194,19 +194,7 @@ class CreateUsersTable extends Migration
             $t->unsignedInteger('organiser_id');
             $t->foreign('organiser_id')->references('id')->on('organisers');
 
-            $t->string('venue_name');
-            $t->string('venue_name_full')->nullable();
-            $t->string('location_address', 355)->nullable();
-            $t->string('location_address_line_1', 355);
-            $t->string('location_address_line_2', 355);
-            $t->string('location_country')->nullable();
-            $t->string('location_country_code')->nullable();
-            $t->string('location_state');
-            $t->string('location_post_code');
-            $t->string('location_street_number')->nullable();
-            $t->string('location_lat')->nullable();
-            $t->string('location_long')->nullable();
-            $t->string('location_google_place_id')->nullable();
+
 
             $t->unsignedInteger('ask_for_all_attendees_info')->default(0);
 

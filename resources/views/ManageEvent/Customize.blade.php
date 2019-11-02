@@ -28,8 +28,8 @@
 @stop
 
 @section('head')
-    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&key='.env("GOOGLE_MAPS_GEOCODING_KEY")) !!}
-    {!! HTML::script('vendor/geocomplete/jquery.geocomplete.min.js') !!}
+    {{--{!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&key='.config("services.google_places.key")) !!}--}}
+    {{--{!! HTML::script('vendor/geocomplete/jquery.geocomplete.min.js') !!}--}}
     <script>
         $(function () {
 
@@ -66,34 +66,34 @@
                 $('#referralUrl input').val(referralUrl);
             });
 
-            /* Background selector */
-            $('.bgImage').on('click', function (e) {
-                $('.bgImage').removeClass('selected');
-                $(this).addClass('selected');
-                $('input[name=bg_image_path_custom]').val($(this).data('src'));
+            {{--/* Background selector */--}}
+            {{--$('.bgImage').on('click', function (e) {--}}
+                {{--$('.bgImage').removeClass('selected');--}}
+                {{--$(this).addClass('selected');--}}
+                {{--$('input[name=bg_image_path_custom]').val($(this).data('src'));--}}
 
-                var replaced = replaceUrlParam('{{route('showEventPagePreview', ['event_id'=>$event->id])}}', 'bg_img_preview', $('input[name=bg_image_path_custom]').val());
-                document.getElementById('previewIframe').src = replaced;
-                e.preventDefault();
-            });
+                {{--var replaced = replaceUrlParam('{{route('showEventPagePreview', ['event_id'=>$event->id])}}', 'bg_img_preview', $('input[name=bg_image_path_custom]').val());--}}
+                {{--document.getElementById('previewIframe').src = replaced;--}}
+                {{--e.preventDefault();--}}
+            {{--});--}}
 
-            /* Background color */
-            $('input[name=bg_color]').on('change', function (e) {
-                var replaced = replaceUrlParam('{{route('showEventPagePreview', ['event_id'=>$event->id])}}', 'bg_color_preview', $('input[name=bg_color]').val().substring(1));
-                document.getElementById('previewIframe').src = replaced;
-                e.preventDefault();
-            });
+            {{--/* Background color */--}}
+            {{--$('input[name=bg_color]').on('change', function (e) {--}}
+                {{--var replaced = replaceUrlParam('{{route('showEventPagePreview', ['event_id'=>$event->id])}}', 'bg_color_preview', $('input[name=bg_color]').val().substring(1));--}}
+                {{--document.getElementById('previewIframe').src = replaced;--}}
+                {{--e.preventDefault();--}}
+            {{--});--}}
 
-            $('#bgOptions .panel').on('shown.bs.collapse', function (e) {
-                var type = $(e.currentTarget).data('type');
-                console.log(type);
-                $('input[name=bg_type]').val(type);
-            });
+            {{--$('#bgOptions .panel').on('shown.bs.collapse', function (e) {--}}
+                {{--var type = $(e.currentTarget).data('type');--}}
+                {{--console.log(type);--}}
+                {{--$('input[name=bg_type]').val(type);--}}
+            {{--});--}}
 
-            $('input[name=bg_image_path], input[name=bg_color]').on('change', function () {
-                //showMessage('Uploading...');
-                //$('.customizeForm').submit();
-            });
+            {{--$('input[name=bg_image_path], input[name=bg_color]').on('change', function () {--}}
+                {{--//showMessage('Uploading...');--}}
+                {{--//$('.customizeForm').submit();--}}
+            {{--});--}}
 
             /* Color picker */
             $('.colorpicker').minicolors();
@@ -152,7 +152,7 @@
         $(function () {
 
             var hash = document.location.hash;
-            var prefix = "tab_";
+            // var prefix = "tab_";
             if (hash) {
                 $('.nav-tabs a[href=' + hash + ']').tab('show');
             }

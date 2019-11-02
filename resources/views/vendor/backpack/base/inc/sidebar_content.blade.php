@@ -26,3 +26,5 @@
 
 <li><a href='{{ backpack_url('subscriber') }}'><i class='fa fa-tag'></i> <span>Subscribers</span></a></li>
 <li><a href='{{ backpack_url('event_request') }}'><i class='fa fa-tag'></i> <span>Event Requests</span></a></li>
+<li><a href='{{ backpack_url('venue') }}'><i class='fa fa-tag'></i> <span>Venues</span></a></li>
+<li><a href='{{ backpack_url('section') }}'><i class='fa fa-tag'></i> <span>Sectionss</span></a></li>

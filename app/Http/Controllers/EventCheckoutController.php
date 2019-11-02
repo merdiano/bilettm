@@ -15,6 +15,7 @@ use App\Models\OrderItem;
 use App\Models\QuestionAnswer;
 use App\Models\ReservedTickets;
 use App\Models\Ticket;
+use App\Models\Venue;
 use App\Payment\CardPayment;
 use App\Services\Order as OrderService;
 use Carbon\Carbon;
@@ -54,6 +55,34 @@ class EventCheckoutController extends Controller
         $this->gateway = $gateway;
     }
 
+    public function postValidateDate(Request $request, $event_id){
+
+        $this->validate($request,['ticket_date'=>'required|date']);
+//        $validator = Validator::make($request->all(),['ticket_date'=>'required|date']);
+//        if($validator->fails()){
+//            return response()->json([
+//                'status'  => 'error',
+//                'message' => 'Please choose date',
+//            ]);
+//        }
+        $event = Event::with('venue')->findOrFail($event_id);
+        $tickets = Ticket::with('section')
+            ->where('event_id',$event_id)
+            ->where('ticket_date',$request->get('ticket_date'))
+            ->where('is_hidden', false)
+//            ->where('is_paused', false)
+//            ->whereDate('start_sale_date','=<',Carbon::now())
+            ->orderBy('sort_order','asc')
+            ->get();
+        if($tickets->count()>0){
+            return view('Bilettm.ViewEvent.SeatsPage',compact('event','tickets'));
+        }
+        else{
+            //todo flash message
+            session()->flash('error','There is no tickets available');
+            return redirect()->back();
+        }
+    }
     /**
      * Validate a ticket request. If successful reserve the tickets and redirect to checkout
      *
@@ -63,20 +92,18 @@ class EventCheckoutController extends Controller
      */
     public function postValidateTickets(Request $request, $event_id)
     {
-        /*
-         * Order expires after X min
-         */
-        $order_expires_time = Carbon::now()->addMinutes(config('attendize.checkout_timeout_after'));
-
-        $event = Event::findOrFail($event_id);
-
         if (!$request->has('tickets')) {
             return response()->json([
                 'status'  => 'error',
                 'message' => 'No tickets selected',
             ]);
         }
+        /*
+         * Order expires after X min
+         */
+        $order_expires_time = Carbon::now()->addMinutes(config('attendize.checkout_timeout_after'));
 
+        $event = Event::findOrFail($event_id);
         $ticket_ids = $request->get('tickets');
 
         /*
@@ -315,28 +342,6 @@ class EventCheckoutController extends Controller
         $order->rules = $order->rules + $validation_rules;
         $order->messages = $order->messages + $validation_messages;
 
-//        if ($request->has('is_business') && $request->get('is_business')) {
-//            // Dynamic validation on the new business fields, only gets validated if business selected
-//            $businessRules = [
-//                'business_name' => 'required',
-//                'business_tax_number' => 'required',
-//                'business_address_line1' => 'required',
-//                'business_address_city' => 'required',
-//                'business_address_code' => 'required',
-//            ];
-//
-//            $businessMessages = [
-//                'business_name.required' => 'Please enter a valid business name',
-//                'business_tax_number.required' => 'Please enter a valid business tax number',
-//                'business_address_line1.required' => 'Please enter a valid street address',
-//                'business_address_city.required' => 'Please enter a valid city',
-//                'business_address_code.required' => 'Please enter a valid code',
-//            ];
-//
-//            $order->rules = $order->rules + $businessRules;
-//            $order->messages = $order->messages + $businessMessages;
-//        }
-
         if (!$order->validate($request->all())) {
             return response()->json([
                 'status'   => 'error',
@@ -360,23 +365,6 @@ class EventCheckoutController extends Controller
         try {
             //more transaction data being put in here.
             $transaction_data = [];
-//            if (config('attendize.enable_dummy_payment_gateway') == TRUE) {
-//                $formData = config('attendize.fake_card_data');
-//                $transaction_data = [
-//                    'card' => $formData
-//                ];
-//
-//                $gateway = Omnipay::create('Dummy');
-//                $gateway->initialize();
-//
-//            } else {
-////                $gateway = Omnipay::create($ticket_order['payment_gateway']->name);
-////                $gateway->initialize($ticket_order['account_payment_gateway']->config + [
-////                        'testMode' => config('attendize.enable_test_payments'),
-////                    ]);
-//                $gateway = Omnipay::create('Dummy');
-//                $gateway->initialize();
-//            }
             $orderService = new OrderService($ticket_order['order_total'], $ticket_order['total_booking_fee'], $event);
             $orderService->calculateFinalCosts();
             $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
@@ -397,59 +385,9 @@ class EventCheckoutController extends Controller
 
             ];
 
-            //TODO: class with an interface that builds the transaction data.
-//            switch ($ticket_order['payment_gateway']->id) {
-//                case config('attendize.payment_gateway_dummy'):
-//                    $token = uniqid();
-//                    $transaction_data += [
-//                        'token'         => $token,
-//                        'receipt_email' => $request->get('order_email'),
-//                        'card' => $formData
-//                    ];
-//                    break;
-//                case config('attendize.payment_gateway_paypal'):
-//
-//                    $transaction_data += [
-//                        'cancelUrl' => route('showEventCheckoutPaymentReturn', [
-//                            'event_id'             => $event_id,
-//                            'is_payment_cancelled' => 1
-//                        ]),
-//                        'returnUrl' => route('showEventCheckoutPaymentReturn', [
-//                            'event_id'              => $event_id,
-//                            'is_payment_successful' => 1
-//                        ]),
-//                        'brandName' => isset($ticket_order['account_payment_gateway']->config['brandingName'])
-//                            ? $ticket_order['account_payment_gateway']->config['brandingName']
-//                            : $event->organiser->name
-//                    ];
-//                    break;
-//                case config('attendize.payment_gateway_stripe'):
-//                    $token = $request->get('stripeToken');
-//                    $transaction_data += [
-//                        'token'         => $token,
-//                        'receipt_email' => $request->get('order_email'),
-//                    ];
-//                    break;
-//                default:
-//                    Log::error('No payment gateway configured.');
-//                    return response()->json([
-//                        'status'  => 'error',
-//                        'message' => 'No payment gateway configured.'
-//                    ]);
-//                    break;
-//            }
-
             $response = $this->gateway->registerPayment($transaction_data);
 
             //todo start resolving payment here /////////////////////////////////////////////////////
-//            if ($response->isSuccessful()) {
-//
-//                session()->push('ticket_order_' . $event_id . '.transaction_id',
-//                    $response->getTransactionReference());
-//
-//                return $this->completeOrder($event_id);
-//
-//            } elseif ($response->isRedirect()) {
             if($response->isSuccessfull()){
                 /*
                  * As we're going off-site for payment we need to store some data in a session so it's available
@@ -493,7 +431,6 @@ class EventCheckoutController extends Controller
         }
 
     }
-
 
     /**
      * Attempt to complete a user's payment when they return from

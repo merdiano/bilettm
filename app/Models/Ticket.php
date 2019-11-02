@@ -22,6 +22,7 @@ class Ticket extends MyBaseModel
         $format = config('attendize.default_datetime_format');
         return [
             'title'              => 'required',
+            'section_id'         => 'required',
             'price'              => 'required|numeric|min:0',
             'description'        => '',
             'ticket_date'        => 'required|date_format:"'.$format.'"',
@@ -39,6 +40,7 @@ class Ticket extends MyBaseModel
     public $messages = [
         'price.numeric'              => 'The price must be a valid number (e.g 12.50)',
         'title.required'             => 'You must at least give a title for your ticket. (e.g Early Bird)',
+        'section_id.required'        => 'You must select section',
         'quantity_available.integer' => 'Please ensure the quantity available is a number.',
     ];
     protected $perPage = 10;
@@ -53,6 +55,9 @@ class Ticket extends MyBaseModel
         return $this->belongsTo(\App\Models\Event::class);
     }
 
+    public function section(){
+        return $this->belongsTo(Section::class);
+    }
     /**
      * The order associated with the ticket.
      *

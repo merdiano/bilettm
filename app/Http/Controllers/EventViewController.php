@@ -27,15 +27,18 @@ class EventViewController extends Controller
      */
     public function showEventHome(Request $request, $event_id, $slug = '', $preview = false)
     {
-        $event = Event::findOrFail($event_id);
+        $event = Event::with('venue')->findOrFail($event_id);
 
         if (!Utils::userOwns($event) && !$event->is_live) {
             return view('Public.ViewEvent.EventNotLivePage');
         }
 
-        $tickets = $event->tickets()->where('is_hidden', false)
+        $tickets = $event->tickets()->select('id','ticket_date')
+            ->where('is_hidden', false)
             ->whereDate('ticket_date','>=',Carbon::now(config('app.timezone')))
-            ->orderBy('sort_order', 'asc')->get();
+            ->orderBy('ticket_date', 'asc')
+            ->groupBy('ticket_date')
+            ->distinct()->get();
 
         $ticket_dates = array();
 
@@ -43,7 +46,7 @@ class EventViewController extends Controller
             $date = $ticket->ticket_date->format('d M');
             $ticket_dates[$date][] = $ticket;
         }
-
+//        dd($ticket_dates);
         $data = [
             'event' => $event,
             'ticket_dates' =>$ticket_dates,

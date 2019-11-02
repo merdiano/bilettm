@@ -124,6 +124,16 @@ class Install extends Command
  /_/    \_\__|\__\___|_| |_|\__,_|_/___\___|
         ");
 
-        $this->comment('Success! You can now run Attendize');
+
+
+// $a = "                    _
+//                          | |  
+//    /\  /\   ___ _ __   __| | __ _ _ __
+//   /  \/  \ / _ \ '_ \ / _` |/ _' | '_ \
+//  / /\  /\ \  __/ | '-| (_| | (_| | | | |
+// /_/  \/  \_\___|_|    \__,_|\__,_|_| |_|
+//    
+// ";
+ $this->comment('Success! You can now run Attendize');
     }
 }

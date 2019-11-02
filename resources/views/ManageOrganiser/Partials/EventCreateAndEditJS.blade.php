@@ -3,17 +3,17 @@
 {!!HTML::style('assets/vendor/icon-awesome/css/font-awesome.min.css')!!}
 <script>
     $(function() {
-        try {
-            $(".geocomplete").geocomplete({
-                    details: "form.gf",
-                    types: ["geocode", "establishment"]
-                }).bind("geocode:result", function(event, result) {
-                    console.log(result);
-            }, 1000);
-
-        } catch (e) {
-            console.log(e);
-        }
+        // try {
+        //     $(".geocomplete").geocomplete({
+        //             details: "form.gf",
+        //             types: ["geocode", "establishment"]
+        //         }).bind("geocode:result", function(event, result) {
+        //             console.log(result);
+        //     }, 1000);
+        //
+        // } catch (e) {
+        //     console.log(e);
+        // }
 
         $('.editable').each(function() {
             var simplemde = new SimpleMDE({

@@ -29,11 +29,13 @@
                                     <b>{{$event->organiser->name}}</b> @lang("Public_ViewEvent.presents")
                                     @lang("Public_ViewEvent.at")
                                     <span property="location" typeof="Place">
-                                        <b property="name">{{$event->venue_name}}</b>
-                                        <meta property="address" content="{{ urldecode($event->venue_name) }}">
+                                        <b property="name">{{$event->venue->venue_name}}</b>
+                                        <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">
                                     </span>
                             </div>
-                            @include('Bilettm.ViewEvent.Partials.TicketSchedule')
+                            <div class="col-6 p-0">
+                            @include('Bilettm.ViewEvent.Partials.Schedule')
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,8 +63,4 @@
             </div>
         </div>
     </section>
-@endsection
-@section('after_scripts')
-    @include("Shared.Partials.LangScript")
-    {!!HTML::script(config('attendize.cdn_url_static_assets').'/assets/javascript/frontend.js')!!}
 @endsection

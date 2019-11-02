@@ -12,6 +12,7 @@
 @section('page_title')
     <i class="ico-ticket mr5"></i>
     @lang("Ticket.event_tickets")
+    <a class="pull-right btn btn-primary" href="{{asset('user_content/'.$event->venue->seats_image)}}" target="_blank">Event venue Seats</a>
 @stop
 
 @section('head')
@@ -58,20 +59,7 @@
                         class='loadModal btn btn-success' type="button"><i class="ico-ticket"></i> @lang("Ticket.create_ticket")
                 </button>
             </div>
-            @if(false)
-                <div class="btn-group btn-group-responsive ">
-                    <button data-modal-id='TicketQuestions'
-                            data-href="{{route('showTicketQuestions', array('event_id'=>$event->id))}}" type="button"
-                            class="loadModal btn btn-success">
-                        <i class="ico-question"></i> @lang("Ticket.questions")
-                    </button>
-                </div>
-                <div class="btn-group btn-group-responsive">
-                    <button type="button" class="btn btn-success">
-                        <i class="ico-tags"></i> @lang("Ticket.coupon_codes")
-                    </button>
-                </div>
-            @endif
+
         </div>
         <!--/ Toolbar -->
     </div>

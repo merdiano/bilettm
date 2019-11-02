@@ -25,6 +25,11 @@ Breadcrumbs::for('event',function($trail, $event){
     $trail->push($event->title,$event->event_url);
 });
 
+Breadcrumbs::for('seats',function ($trail,$event){
+    $trail->parent('event',$event);
+    $trail->push('Pokupka');
+});
+
 Breadcrumbs::for('search',function($trail){
     $trail->parent('home');
     $trail->push('Результат поиска');

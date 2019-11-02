@@ -16,12 +16,12 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!! Form::label('title', trans("Event.event_title"), array('class'=>'control-label required')) !!}
-                            {!!  Form::text('title', Input::old('title'),array('class'=>'form-control','placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name]) ))  !!}
+                            {!! Form::text('title', Input::old('title'),array('class'=>'form-control','placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name]) ))  !!}
                         </div>
 
                         <div class="form-group custom-theme">
                             {!! Form::label('description', trans("Event.event_description"), array('class'=>'control-label required')) !!}
-                            {!!  Form::textarea('description', Input::old('description'),
+                            {!! Form::textarea('description', Input::old('description'),
                                         array(
                                         'class'=>'form-control  editable',
                                         'rows' => 5
@@ -78,90 +78,92 @@
 
                         </div>
                         <div class="form-group address-automatic">
-                            {!! Form::label('name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}
-                            {!!  Form::text('venue_name_full', Input::old('venue_name_full'),
-                                        array(
-                                        'class'=>'form-control geocomplete location_field',
-                                        'placeholder'=>trans("Event.venue_name_placeholder")
-                                        ))  !!}
+                            {!! Form::label('venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}
+                            {!! Form::select('venue_id',venues_list(), Input::old('venue_id'), ['class' => 'form-control','id'=>'venue_name']) !!}
 
-                                    <!--These are populated with the Google places info-->
-                            <div>
-                                {!! Form::hidden('formatted_address', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('street_number', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('country', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('country_short', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('place_id', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('name', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('location', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('postal_code', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('route', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('lat', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('lng', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('administrative_area_level_1', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('sublocality', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('locality', '', ['class' => 'location_field']) !!}
-                            </div>
-                            <!-- /These are populated with the Google places info-->
+                            {{--{!!  Form::text('venue_name_full', Input::old('venue_name_full'),--}}
+                                        {{--array(--}}
+                                        {{--'class'=>'form-control geocomplete location_field',--}}
+                                        {{--'placeholder'=>trans("Event.venue_name_placeholder")--}}
+                                        {{--))  !!}--}}
+
+                            {{--<!--These are populated with the Google places info-->--}}
+                            {{--<div>--}}
+                                {{--{!! Form::hidden('formatted_address', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('street_number', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('country', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('country_short', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('place_id', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('name', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('location', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('postal_code', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('route', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('lat', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('lng', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('administrative_area_level_1', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('sublocality', '', ['class' => 'location_field']) !!}--}}
+                                {{--{!! Form::hidden('locality', '', ['class' => 'location_field']) !!}--}}
+                            {{--</div>--}}
+                            {{--<!-- /These are populated with the Google places info-->--}}
                         </div>
 
-                        <div class="address-manual" style="display:none;">
-                            <h5>
-                                @lang("Event.address_details")
-                            </h5>
+                        {{--<div class="address-manual" style="display:none;">--}}
+                            {{--<h5>--}}
+                                {{--@lang("Event.address_details")--}}
+                            {{--</h5>--}}
 
-                            <div class="form-group">
-                                {!! Form::label('location_venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}
-                                {!!  Form::text('location_venue_name', Input::old('location_venue_name'), [
-                                        'class'=>'form-control location_field',
-                                        'placeholder'=>trans("Event.venue_name_placeholder")
-                                        ])  !!}
-                            </div>
-                            <div class="form-group">
-                                {!! Form::label('location_address_line_1', trans("Event.address_line_1"), array('class'=>'control-label')) !!}
-                                {!!  Form::text('location_address_line_1', Input::old('location_address_line_1'), [
-                                        'class'=>'form-control location_field',
-                                        'placeholder'=>trans("Event.address_line_1_placeholder")
-                                        ])  !!}
-                            </div>
-                            <div class="form-group">
-                                {!! Form::label('location_address_line_2', trans("Event.address_line_2"), array('class'=>'control-label')) !!}
-                                {!!  Form::text('location_address_line_2', Input::old('location_address_line_2'), [
-                                        'class'=>'form-control location_field',
-                                        'placeholder'=>trans("Event.address_line_2_placeholder")
-                                        ])  !!}
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('location_venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}--}}
+                                {{--{!!  Form::text('location_venue_name', Input::old('location_venue_name'), [--}}
+                                        {{--'class'=>'form-control location_field',--}}
+                                        {{--'placeholder'=>trans("Event.venue_name_placeholder")--}}
+                                        {{--])  !!}--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('location_address_line_1', trans("Event.address_line_1"), array('class'=>'control-label')) !!}--}}
+                                {{--{!!  Form::text('location_address_line_1', Input::old('location_address_line_1'), [--}}
+                                        {{--'class'=>'form-control location_field',--}}
+                                        {{--'placeholder'=>trans("Event.address_line_1_placeholder")--}}
+                                        {{--])  !!}--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('location_address_line_2', trans("Event.address_line_2"), array('class'=>'control-label')) !!}--}}
+                                {{--{!!  Form::text('location_address_line_2', Input::old('location_address_line_2'), [--}}
+                                        {{--'class'=>'form-control location_field',--}}
+                                        {{--'placeholder'=>trans("Event.address_line_2_placeholder")--}}
+                                        {{--])  !!}--}}
+                            {{--</div>--}}
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {!! Form::label('location_state', trans("Event.city"), array('class'=>'control-label')) !!}
-                                        {!!  Form::text('location_state', Input::old('location_state'), [
-                                                'class'=>'form-control location_field',
-                                                'placeholder'=>trans("Event.city_placeholder")
-                                                ])  !!}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {!! Form::label('location_post_code', trans("Event.post_code"), array('class'=>'control-label')) !!}
-                                        {!!  Form::text('location_post_code', Input::old('location_post_code'), [
-                                                'class'=>'form-control location_field',
-                                                'placeholder'=>trans("Event.post_code_placeholder")
-                                                ])  !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            {{--<div class="row">--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--{!! Form::label('location_state', trans("Event.city"), array('class'=>'control-label')) !!}--}}
+                                        {{--{!!  Form::text('location_state', Input::old('location_state'), [--}}
+                                                {{--'class'=>'form-control location_field',--}}
+                                                {{--'placeholder'=>trans("Event.city_placeholder")--}}
+                                                {{--])  !!}--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--{!! Form::label('location_post_code', trans("Event.post_code"), array('class'=>'control-label')) !!}--}}
+                                        {{--{!!  Form::text('location_post_code', Input::old('location_post_code'), [--}}
+                                                {{--'class'=>'form-control location_field',--}}
+                                                {{--'placeholder'=>trans("Event.post_code_placeholder")--}}
+                                                {{--])  !!}--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                        <span>
-                            <a data-clear-field=".location_field"
-                               data-toggle-class=".address-automatic, .address-manual"
-                               data-show-less-text="@lang("Event.or(manual/existing_venue)") <b>@lang("Event.enter_existing")</b>" href="javascript:void(0);"
-                               class="in-form-link show-more-options clear_location">
-                            @lang("Event.or(manual/existing_venue)") <b>@lang("Event.enter_manual")</b>
-                            </a>
-                        </span>
+                        {{--<span>--}}
+                            {{--<a data-clear-field=".location_field"--}}
+                               {{--data-toggle-class=".address-automatic, .address-manual"--}}
+                               {{--data-show-less-text="@lang("Event.or(manual/existing_venue)") <b>@lang("Event.enter_existing")</b>" href="javascript:void(0);"--}}
+                               {{--class="in-form-link show-more-options clear_location">--}}
+                            {{--@lang("Event.or(manual/existing_venue)") <b>@lang("Event.enter_manual")</b>--}}
+                            {{--</a>--}}
+                        {{--</span>--}}
 
                         @if($organiser_id)
                             {!! Form::hidden('organiser_id', $organiser_id) !!}

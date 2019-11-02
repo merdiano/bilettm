@@ -40,5 +40,8 @@ return [
 
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET')
-    ]
+    ],
+    'google_places' => [
+        'key' => env('GOOGLE_MAPS_GEOCODING_KEY')
+    ],
 ];

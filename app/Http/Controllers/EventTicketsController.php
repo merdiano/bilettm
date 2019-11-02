@@ -37,7 +37,7 @@ class EventTicketsController extends MyBaseController
         }
 
         // Find event or return 404 error.
-        $event = Event::scope()->findOrFail($event_id);
+        $event = Event::with('venue')->scope()->findOrFail($event_id);
 
         // Get tickets for event.
         $tickets = empty($q) === false
@@ -107,6 +107,7 @@ class EventTicketsController extends MyBaseController
         $ticket->description = strip_tags($request->get('description'));
         $ticket->is_hidden = $request->get('is_hidden') ? 1 : 0;
         $ticket->account_id = auth()->user()->account_id;
+        $ticket->section_id = $request->get('section_id');
         $ticket->save();
 
         // Attach the access codes to the ticket if it's hidden and the code ids have come from the front
@@ -243,7 +244,7 @@ class EventTicketsController extends MyBaseController
         $ticket->min_per_person = $request->get('min_per_person');
         $ticket->max_per_person = $request->get('max_per_person');
         $ticket->is_hidden = $request->get('is_hidden') ? 1 : 0;
-
+        $ticket->section_id = $request->get('section_id');
         $ticket->save();
 
         // Attach the access codes to the ticket if it's hidden and the code ids have come from the front

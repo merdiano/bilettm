@@ -18,4 +18,6 @@ Route::group([
     CRUD::resource('tag', 'TagCrudController');
     CRUD::resource('subscriber', 'SubscriberCrudController');
     CRUD::resource('event_request', 'EventRequestCrudController');
+    CRUD::resource('venue', 'VenueCrudController');
+    CRUD::resource('section', 'SectionCrudController');
 }); // this should be the absolute last line of this file

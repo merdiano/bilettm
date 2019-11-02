@@ -25,8 +25,9 @@ class Event extends MyBaseModel
         return [
                 'title'               => 'required',
                 'description'         => 'required',
-                'location_venue_name' => 'required_without:venue_name_full',
-                'venue_name_full'     => 'required_without:location_venue_name',
+                'venue_id'            => 'required',
+//                'location_venue_name' => 'required_without:venue_name_full',
+//                'venue_name_full'     => 'required_without:location_venue_name',
                 'start_date'          => 'required|date_format:"'.$format.'"',
                 'end_date'            => 'required|date_format:"'.$format.'"',
                 'organiser_name'      => 'required_without:organiser_id',
@@ -197,6 +198,9 @@ class Event extends MyBaseModel
         return $this->belongsToMany(\App\Models\Tag::class);
     }
 
+    public function venue(){
+        return $this->belongsTo(Venue::class);
+    }
     /**
      * Category associated with the event
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -490,8 +494,5 @@ ICSTemplate;
                     ->orderBy('created_at','desc')
                     ->limit(1);
             }] );
-
-
     }
-
 }

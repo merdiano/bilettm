@@ -28,6 +28,17 @@ if(!function_exists('main_categories')){
     }
 }
 
+if(!function_exists('venues_list')){
+    function venues_list(){
+        return \App\Models\Venue::where('active',1)->pluck('venue_name','id');
+    }
+}
+if(!function_exists('sections_list')){
+    function sections_list($venue_id){
+        return \App\Models\Section::where('venue_id',$venue_id)->pluck('section_no','id');
+    }
+}
+
 if(!function_exists('category_menu')){
     /**
      *  make menu from categories

@@ -2,7 +2,7 @@
 {{-- show error using sidebar layout if looged in AND on an admin page; otherwise use a blank page --}}
 
 @php
-  $title = 'Error '.$error_number;
+  $title = 'Error '.$error_number??999;
 @endphp
 
 @section('after_styles')
