@@ -44,7 +44,7 @@
                             @include('Bilettm.ViewEvent.Partials.Seats')
                         </div>
                         <div class="checked-seats" style="padding: 30px 0; text-align: center">
-                            <h5 style="text-align: center; font-weight: bold;">You Have Selected <span>4</span> Standard Seats</h5>
+                            <h5 style="text-align: center; font-weight: bold;">You Have Selected <span>4</span> Seats</h5>
                             <h5 style="text-align: center;">Your Seats:</h5>
                             <form action="{{route('postValidateTickets',['event_id'=>$event->id])}}" method="post">
                             @csrf
