@@ -78,11 +78,16 @@ class Ticket extends MyBaseModel
         return $this->belongsToMany(\App\Models\Question::class);
     }
 
-    /**
-     * TODO:implement the reserved method.
-     */
     public function reserved()
     {
+        return $this->hasMany(ReservedTickets::class)
+            ->where('expires','>',Carbon::now())
+            ->orderBy('seat_no','asc');
+    }
+
+    public function booked(){
+        return $this->hasMany(Attendee::class)
+            ->orderBy('seat_no','asc');
     }
 
     /**

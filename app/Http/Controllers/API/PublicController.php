@@ -36,7 +36,7 @@ class PublicController extends Controller
             }
         }
         if(!empty($date)){
-            $e_query->whereDate('start_date','>=',Carbon::parse($date));
+            $e_query->where('start_date','>=',Carbon::parse($date));
         }
 
         return $e_query->select('id','title','start_date')

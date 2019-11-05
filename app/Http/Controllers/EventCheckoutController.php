@@ -66,22 +66,20 @@ class EventCheckoutController extends Controller
 //            ]);
 //        }
         $event = Event::with('venue')->findOrFail($event_id);
-        $tickets = Ticket::with('section')
+        $tickets = Ticket::with(['section','reserved:seat_no,ticket_id','booked:id,seat_no,ticket_id'])
             ->where('event_id',$event_id)
             ->where('ticket_date',$request->get('ticket_date'))
             ->where('is_hidden', false)
-//            ->where('is_paused', false)
-//            ->whereDate('start_sale_date','=<',Carbon::now())
             ->orderBy('sort_order','asc')
             ->get();
-        if($tickets->count()>0){
-            return view('Bilettm.ViewEvent.SeatsPage',compact('event','tickets'));
-        }
-        else{
+        //dd($tickets->first()->booked->pluck('seat_no')->toJson());
+        if($tickets->count()==0){
             //todo flash message
             session()->flash('error','There is no tickets available');
             return redirect()->back();
         }
+
+        return view('Bilettm.ViewEvent.SeatsPage',compact('event','tickets'));
     }
     /**
      * Validate a ticket request. If successful reserve the tickets and redirect to checkout
@@ -90,12 +88,183 @@ class EventCheckoutController extends Controller
      * @param $event_id
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function postValidateTickets(Request $request, $event_id)
-    {
-        if (!$request->has('tickets')) {
+    public function postValidateSeats(Request $request, $event_id){
+        if (!$request->has('seats')) {
             return response()->json([
                 'status'  => 'error',
-                'message' => 'No tickets selected',
+                'message' => 'No seats selected',
+            ]);
+        }
+
+        /*
+         * Order expires after X min
+         */
+        $order_expires_time = Carbon::now()->addMinutes(config('attendize.checkout_timeout_after'));
+
+        $event = Event::findOrFail($event_id);
+        $seats = $request->get('seats');
+
+        /*
+         * Remove any tickets the user has reserved
+         */
+        ReservedTickets::where('session_id', '=', session()->getId())->delete();
+
+        /*
+         * Go though the selected tickets and check if they're available
+         * , tot up the price and reserve them to prevent over selling.
+         */
+        $quantity_available_validation_rules = [];
+        $order_total = 0;
+        $booking_fee = 0;
+        $organiser_booking_fee = 0;
+        $total_ticket_quantity = 0;
+        $reserved = [];
+        $tickets = [];
+        $validation_rules = [];
+        $validation_messages = [];
+        foreach ($seats as $ticket_id=>$ticket_seats){
+            $seats_count = count($ticket_seats);
+            if($seats_count<1)
+                continue;
+
+            $seat_nos = array_values($ticket_seats);
+            $reserved_tickets = ReservedTickets::where('ticket_id',$ticket_id)
+                ->where('expires','>',Carbon::now())
+                ->whereIn('seat_no',$seat_nos)
+                ->pluck('seat_no');
+
+            $booked_tickets = Attendee::where('ticket_id',$ticket_id)
+                ->where('event_id',$event_id)
+                ->whereIn('seat_no',$seat_nos)
+                ->pluck('seat_no');
+
+            if(count($reserved_tickets)>0 || count($booked_tickets)>0)
+                return response()->json([
+                    'status'   => 'error',
+                    'messages' => 'Some of selected seats are already reserved',//todo show which are reserved
+                ]);
+
+            $ticket = Ticket::findOrFail($ticket_id);
+            $max_per_person = min($ticket->quantity_remaining, $ticket->max_per_person);
+            /*
+             * Validation max min ticket count
+             */
+            if($seats_count < $ticket->min_per_person){
+                $message = 'You must select at least ' . $ticket->min_per_person . ' tickets.';
+            }elseif ($seats_count > $max_per_person){
+                $message = 'The maximum number of tickets you can register is ' . $ticket->quantity_remaining;
+            }
+
+            if (isset($message)) {
+                return response()->json([
+                    'status'   => 'error',
+                    'messages' => $message,
+                ]);
+            }
+
+            $total_ticket_quantity += $seats_count;
+            $order_total += ($seats_count * $ticket->price);
+            $booking_fee += ($seats_count * $ticket->booking_fee);
+            $organiser_booking_fee += ($seats_count * $ticket->organiser_booking_fee);
+            $tickets[] = [
+                'ticket'                => $ticket,
+                'qty'                   => $seats_count,
+                'seats'                 => $ticket_seats,
+                'price'                 => ($seats_count * $ticket->price),
+                'booking_fee'           => ($seats_count * $ticket->booking_fee),
+                'organiser_booking_fee' => ($seats_count * $ticket->organiser_booking_fee),
+                'full_price'            => $ticket->price + $ticket->total_booking_fee,
+            ];
+
+
+            foreach ($ticket_seats as $seat_no){
+                $reservedTickets = new ReservedTickets();
+                $reservedTickets->ticket_id = $ticket_id;
+                $reservedTickets->event_id = $event_id;
+                $reservedTickets->quantity_reserved = 1;
+                $reservedTickets->expires = $order_expires_time;
+                $reservedTickets->session_id = session()->getId();
+                $reservedTickets->seat_no = $seat_no;
+                $reserved[] = $reservedTickets->attributesToArray();
+                /*
+                 * Create our validation rules here
+                 */
+                $validation_rules['ticket_holder_first_name.' . $seat_no . '.' . $ticket_id] = ['required'];
+                $validation_rules['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id] = ['required'];
+                $validation_rules['ticket_holder_email.' . $seat_no . '.' . $ticket_id] = ['required', 'email'];
+
+                $validation_messages['ticket_holder_first_name.' . $seat_no . '.' . $ticket_id . '.required'] = 'Ticket holder ' . $seat_no . '\'s first name is required';
+                $validation_messages['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id . '.required'] = 'Ticket holder ' . $seat_no . '\'s last name is required';
+                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.required'] = 'Ticket holder ' . $seat_no . '\'s email is required';
+                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.email'] = 'Ticket holder ' . $seat_no . '\'s email appears to be invalid';
+                /*
+                 * Validation rules for custom questions
+                 */
+                foreach ($ticket->questions as $question) {
+                    if ($question->is_required && $question->is_enabled) {
+                        $validation_rules['ticket_holder_questions.' . $ticket_id . '.' . $seat_no . '.' . $question->id] = ['required'];
+                        $validation_messages['ticket_holder_questions.' . $ticket_id . '.' . $seat_no . '.' . $question->id . '.required'] = "This question is required";
+                    }
+                }
+            }
+        }
+        ReservedTickets::insert($reserved);
+
+        if (empty($tickets)) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'No tickets selected.',
+            ]);
+        }
+        /*
+         * The 'ticket_order_{event_id}' session stores everything we need to complete the transaction.
+         */
+        session()->put('ticket_order_' . $event->id, [
+            'validation_rules'        => $validation_rules,
+            'validation_messages'     => $validation_messages,
+            'event_id'                => $event->id,
+            'tickets'                 => $tickets,
+            'total_ticket_quantity'   => $total_ticket_quantity,
+            'order_started'           => time(),
+            'expires'                 => $order_expires_time,
+//            'reserved_tickets_id'     => $reservedTickets->id,
+            'order_total'             => $order_total,
+            'booking_fee'             => $booking_fee,
+            'organiser_booking_fee'   => $organiser_booking_fee,
+            'total_booking_fee'       => $booking_fee + $organiser_booking_fee,
+            'order_requires_payment'  => (ceil($order_total) == 0) ? false : true,
+            'account_id'              => $event->account->id,
+            'affiliate_referral'      => Cookie::get('affiliate_' . $event_id),
+//            'account_payment_gateway' => $activeAccountPaymentGateway,
+//            'payment_gateway'         => $paymentGateway
+        ]);
+
+        /*
+         * If we're this far assume everything is OK and redirect them
+         * to the the checkout page.
+         */
+        if ($request->ajax()) {
+            return response()->json([
+                'status'      => 'success',
+                'redirectUrl' => route('showEventCheckout', [
+                        'event_id'    => $event_id,
+                        'is_embedded' => $this->is_embedded,
+                    ]) . '#order_form',
+            ]);
+        }
+
+        /*
+         * todo Maybe display something prettier than this?
+         */
+        exit('Please enable Javascript in your browser.');
+    }
+
+    public function postValidateTickets(Request $request, $event_id)
+    {
+        if (!$request->has('seats')) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'No seats selected',
             ]);
         }
         /*
@@ -291,7 +460,7 @@ class EventCheckoutController extends Controller
 
         $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
 
-        $event = Event::findorFail($order_session['event_id']);
+        $event = Event::with('venue')->findorFail($order_session['event_id']);
 
         $orderService = new OrderService($order_session['order_total'], $order_session['total_booking_fee'], $event);
         $orderService->calculateFinalCosts();
@@ -520,19 +689,6 @@ class EventCheckoutController extends Controller
             $order->event_id = $ticket_order['event_id'];
             $order->is_payment_received = isset($request_data['pay_offline']) ? 0 : 1;
 
-            // Business details is selected, we need to save the business details
-//            if (isset($request_data['is_business']) && (bool)$request_data['is_business']) {
-//                $order->is_business = $request_data['is_business'];
-//                $order->business_name = sanitise($request_data['business_name']);
-//                $order->business_tax_number = sanitise($request_data['business_tax_number']);
-//                $order->business_address_line_one = sanitise($request_data['business_address_line1']);
-//                $order->business_address_line_two  = sanitise($request_data['business_address_line2']);
-//                $order->business_address_state_province  = sanitise($request_data['business_address_state']);
-//                $order->business_address_city = sanitise($request_data['business_address_city']);
-//                $order->business_address_code = sanitise($request_data['business_address_code']);
-//
-//            }
-
             // Calculating grand total including tax
             $orderService = new OrderService($ticket_order['order_total'], $ticket_order['total_booking_fee'], $event);
             $orderService->calculateFinalCosts();
@@ -603,7 +759,7 @@ class EventCheckoutController extends Controller
                 /*
                  * Create the attendees
                  */
-                for ($i = 0; $i < $attendee_details['qty']; $i++) {
+                foreach ($attendee_details['seats'] as $i) {
 
                     $attendee = new Attendee();
                     $attendee->first_name = strip_tags($request_data["ticket_holder_first_name"][$i][$attendee_details['ticket']['id']]);
@@ -614,6 +770,7 @@ class EventCheckoutController extends Controller
                     $attendee->ticket_id = $attendee_details['ticket']['id'];
                     $attendee->account_id = $event->account->id;
                     $attendee->reference_index = $attendee_increment;
+                    $attendee->seat_no = $i;
                     $attendee->save();
 
 

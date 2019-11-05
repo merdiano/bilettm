@@ -27,7 +27,7 @@
                 </span>
                 @lang("Public_ViewEvent.at")
                 <span property="location" typeof="Place">
-                    <b property="name">{{$event->venue_name}}</b>
+                    <b property="name">{{$event->venue->venue_name}}</b>
                     <meta property="address" content="{{ urldecode($event->venue_name) }}">
                 </span>
             </div>

@@ -168,7 +168,7 @@ Route::group(
 
         Route::post('{event_id}/checkout/', [
             'as'   => 'postValidateTickets',
-            'uses' => 'EventCheckoutController@postValidateTickets',
+            'uses' => 'EventCheckoutController@postValidateSeats',
         ]);
 
         Route::post('{event_id}/checkout/validate', [

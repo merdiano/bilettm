@@ -21,7 +21,7 @@
             </ul>
         </div>
         <h4 class="time-small-title">Время проведения</h4>
-        <div class="time-box-wraper col-md-6">
+        <div class="time-box-wraper col-md-6" style="padding-left: 5px">
 
             <div class="tab-content" id="myTabContent">
                 {!! Form::open(['url' => route('postValidateDate', ['event_id' => $event->id])]) !!}
@@ -49,6 +49,11 @@
 @endif
 @push('after_scripts')
     <script>
+
+        $(document).ready(function(){
+            $(".nav-pills.details-page .tablinks:first-child").click();
+        });
+
         function openContent(evt, cityName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -59,8 +64,17 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
+            tablinks[0].className += " active";
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
         }
+
+        $(document).ready(function () {
+            $(".time-box-wrap input[type=radio]").css('display', 'none');
+            $(".time-box-wrap input[type=radio]:checked").css('background-image', '');
+            $("input.btn-danger").css('background-color', '#d43d34');
+            $("input.btn-danger").css('margin-top', '20px');
+        });
+
     </script>
 @endpush

@@ -14,8 +14,11 @@ class AddSeatToAttendeesTable extends Migration
     public function up()
     {
         Schema::table('attendees', function (Blueprint $table) {
-            $table->string('row')->nullable();
-            $table->string('no')->nullable();
+            $table->string('seat_no')->nullable();
+        });
+
+        Schema::table('reserved_tickets',function (Blueprint $table){
+            $table->string('seat_no')->nullable();
         });
     }
 
@@ -27,8 +30,10 @@ class AddSeatToAttendeesTable extends Migration
     public function down()
     {
         Schema::table('attendees', function (Blueprint $table) {
-            $table->dropColumn('row');
-            $table->dropColumn('no');
+            $table->dropColumn('seat_no');
+        });
+        Schema::table('reserved_tickets',function (Blueprint $table){
+            $table->dropColumn('seat_no');
         });
     }
 }

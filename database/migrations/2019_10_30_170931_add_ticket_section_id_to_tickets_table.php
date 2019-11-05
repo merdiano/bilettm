@@ -27,7 +27,8 @@ class AddTicketSectionIdToTicketsTable extends Migration
     public function down()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            //
+            $table->dropForeign('section_id');
+            $table->dropColumn('section_id');
         });
     }
 }

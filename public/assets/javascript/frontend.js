@@ -4800,7 +4800,7 @@ function processFormErrors($form, errors)
         var $input = $(selector, $form);
 
         if ($input.prop('type') === 'file') {
-            $('#input-' + $input.prop('name')).append('<div class="help-block error">' + error + '</div>')
+            $('#input-' + $input.prop('name')).append('<div class="help-block text-danger">' + error + '</div>')
                 .parent()
                 .addClass('has-error');
         } else {
@@ -4808,7 +4808,7 @@ function processFormErrors($form, errors)
                 $input = $input.parent();
             }
 
-            $input.after('<div class="help-block error">' + error + '</div>')
+            $input.after('<div class="help-block text-danger">' + error + '</div>')
                 .parent()
                 .addClass('has-error');
         }

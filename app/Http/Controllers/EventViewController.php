@@ -33,12 +33,14 @@ class EventViewController extends Controller
             return view('Public.ViewEvent.EventNotLivePage');
         }
 
+        $now =Carbon::now(config('app.timezone'));
         $tickets = $event->tickets()->select('id','ticket_date')
             ->where('is_hidden', false)
-            ->whereDate('ticket_date','>=',Carbon::now(config('app.timezone')))
+            ->where('ticket_date','>=',$now)
             ->orderBy('ticket_date', 'asc')
             ->groupBy('ticket_date')
-            ->distinct()->get();
+            ->distinct()
+            ->get();
 
         $ticket_dates = array();
 
@@ -46,14 +48,14 @@ class EventViewController extends Controller
             $date = $ticket->ticket_date->format('d M');
             $ticket_dates[$date][] = $ticket;
         }
-//        dd($ticket_dates);
+
         $data = [
             'event' => $event,
             'ticket_dates' =>$ticket_dates,
 //            'tickets' => $tickets,//$event->tickets()->orderBy('sort_order', 'asc')->get(),
             'is_embedded' => 0,
         ];
-//        dd($ticket_dates);
+
         /*
          * Don't record stats if we're previewing the event page from the backend or if we own the event.
          */

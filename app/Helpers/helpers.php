@@ -73,3 +73,10 @@ if(!function_exists('organisers')){
             return \Illuminate\Support\Facades\Auth::user()->account->organisers;
     }
 }
+if(!function_exists('zanitlananlar')){
+    function zanitlananlar($ticket){
+        $reserved = $ticket->reserved->pluck('seat_no')->crossJoin(['reserved']);
+        $booked = $ticket->booked->pluck('booked','seat_no')->dump();
+
+    }
+}

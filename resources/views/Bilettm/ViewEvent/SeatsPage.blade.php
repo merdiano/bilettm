@@ -20,11 +20,11 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <div class="d-flex justify-content-center mt-5 mb-4">
-                            <span class="mx-3" style="font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> Available</span>
-                            <span class="mx-3" style="font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> Booked</span>
-                            <span class="mx-3" style="font-size: 18px"><i class="fa fa-circle" style="color: #b6b6b6; font-size: 13px"></i> Reserved</span>
-                            <span class="mx-3" style="font-size: 18px"><i class="fa fa-circle" style="color: #ff4159; font-size: 13px"></i> Your Selection</span>
+                        <div class="d-flex justify-content-center mt-5 mb-4" style="width: 70%; margin: auto">
+                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> Available</span>
+                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> Booked</span>
+                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #b6b6b6; font-size: 13px"></i> Reserved</span>
+                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #ff4159; font-size: 13px"></i> Your Selection</span>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%" height="137.997" viewBox="0 0 1120 137.997">
                             <defs>
@@ -40,23 +40,60 @@
                                 </g>
                             </g>
                         </svg>
+                        <form id="seats-form" class="ajax" action="{{route('postValidateTickets',['event_id'=>$event->id])}}" method="post">
+                            @csrf
                         <div class="tab-content" id="choose_seats_content">
-                            @include('Bilettm.ViewEvent.Partials.Seats')
+                            @foreach($tickets as $ticket)
+                                <div id="home_{{$ticket->id}}" class="tab-pane fade active show in " role="tabpanel">
+                                    <div class="row justify-content-center">
+                                        <img onload="disable_rb('{{$ticket->id}}',{{$ticket->reserved->pluck('seat_no')->toJson()}},{{$ticket->booked->pluck('seat_no')->toJson()}})"
+                                             class="img-responsive" alt="{{$event->venue->venue_name}} - {{$ticket->section->section_no}}"
+                                             src="{{asset('user_content/'.$ticket->section->section_image)}}" >
+                                    </div>
+                                    <div class="standard-box" style="position: relative; padding: 20px 0">
+                                        <h5 style="font-weight: bold; font-size: 24px; margin-bottom: 20px; text-align: center">{{$ticket->title }} {{$ticket->description}} {{$ticket->section->section_no}}</h5>
+                                        <table style="text-align: center; margin: auto" >
+                                            <tbody id="{{$ticket->id}}">
+                                            @foreach($ticket->section->seats as $row)
+                                                <tr>
+                                                    <td>{{$row['row']}}</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    @for($i = $row['start_no'];$i<=$row['end_no'];$i++)
+                                                        <td>
+                                                            <input type="checkbox" class="seat_check"
+                                                                   id="seat{{$ticket->id.'-'.$row['row'].'-'.$i}}"
+                                                                   name="seats[{{$ticket->id}}][]"
+                                                                   value="{{$row['row'].'-'.$i}}"
+                                                                   data-num="{{$ticket->price}}">
+                                                            <label for="seat{{$ticket->id.'-'.$row['row'].$i}}">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25">
+                                                                    <path id="Rectangle_3" data-name="Rectangle 3" d="M8,0H18a8,8,0,0,1,8,8V25a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V8A8,8,0,0,1,8,0Z"></path>
+                                                                </svg>
+                                                                <span style="position:relative;right: 55%">{{$i}}</span>
+                                                            </label>
+                                                        </td>
+                                                    @endfor
+                                                    <td></td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody></table>
+                                        <!--<div class="seats-top-overlay" style="width: 70%"></div>-->
+                                    </div>
+                                </div>
+                                <script>
+                                    {{--var disable_list ={{zanitlananlar($ticket)}}--}}
+                                </script>
+                            @endforeach
                         </div>
                         <div class="checked-seats" style="padding: 30px 0; text-align: center">
-                            <h5 style="text-align: center; font-weight: bold;">You Have Selected <span>4</span> Seats</h5>
-                            <h5 style="text-align: center;">Your Seats:</h5>
-                            <form action="{{route('postValidateTickets',['event_id'=>$event->id])}}" method="post">
-                            @csrf
+                            <h5 class="text-center font-weight-bold">You Have Selected <span id="total_seats">0</span> seats. Total cost <span id="total_cost">0</span> man.</h5>
+                            <h5 class="text-center">Your Seats:</h5>
                                 <div class="your-selected-seats" style="text-align: center; margin-bottom: 50px">
-                                    <span>G-12</span>
-                                    <span>G-13</span>
-                                    <span>G-14</span>
-                                    <span>G-15</span>
                                 </div>
-                            <a id="confirm-seats">Confirm seats</a>
-                            </form>
+                            {!!Form::submit('Confirm seats', ['id' => 'confirm-seats'])!!}
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -65,6 +102,45 @@
     </section>
 @endsection
 @section('after_scripts')
+    <script>
+        $(':checkbox').change(function() {
+            if(this.checked) {
+                var ticket = "<span aria-label='"+this.id+"'>"+this.value+"</span>"
+               $('.your-selected-seats').append(ticket);
+            }
+            else{
+                $('.your-selected-seats').find("[aria-label='"+this.id+"']").remove();
+            }
+            var numberOfChecked = $('input:checkbox:checked').length;
+
+            var total_cost =0;
+            $('input:checkbox:checked').each(function(index, elem) {
+                total_cost += parseFloat($(elem).attr('data-num'));
+            });
+            $('#total_seats').html(numberOfChecked);
+            $('#total_cost').html(total_cost.toFixed(2));
+        });
+
+        $(document).ready(function () {
+
+            $("input[type=checkbox].input-booked").attr("disabled", true);
+            $("input[type=checkbox].input-reserved").attr("disabled", true);
+
+        });
+
+        function disable_rb(table_id, reserved,booked) {
+            //alert(reserved[0]);
+            if(booked.length>0){
+                //alert('alert')
+                for(booked)
+                $('tbody#'+table_id+':input[type=checkbox]').find();
+            }
+            if(reserved.left>0){
+
+            }
+        }
+
+    </script>
     @include("Shared.Partials.LangScript")
     {!!HTML::script(config('attendize.cdn_url_static_assets').'/assets/javascript/frontend.js')!!}
 @endsection

@@ -112,7 +112,7 @@ class Event extends MyBaseModel
     public function starting_ticket(){
         return $this->tickets()
             ->select('id','ticket_date','event_id','price')
-            ->whereDate('ticket_date','>=',Carbon::now(\config('app.timezone')))
+            ->where('ticket_date','>=',Carbon::now(\config('app.timezone')))
             ->orderBy('ticket_date')
             ->orderBy('price')
             ->limit(2); // limit 1 returns null ???
@@ -483,10 +483,10 @@ ICSTemplate;
     public function scopeOnLive($query, $start_date = null, $end_date = null){
         //if date is null carbon creates now date instance
         if(isset($start_date) && isset($end_date))
-            $query->whereDate('start_date','<',$end_date)
-                ->whereDate('end_date','>',$start_date);
+            $query->where('start_date','<',$end_date)
+                ->where('end_date','>',$start_date);
         else
-            $query->whereDate('end_date','>',Carbon::now(config('app.timezone')));
+            $query->where('end_date','>',Carbon::now(config('app.timezone')));
 
         return $query->where('is_live',1)
             ->withCount(['images as image_url' => function($q){
