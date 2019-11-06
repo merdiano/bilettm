@@ -157,15 +157,15 @@
                                                 <span class="pauseTicketSales label label-info"
                                                       data-id="{{$ticket->id}}"
                                                       data-route="{{route('postPauseTicket', ['event_id'=>$event->id])}}">
-                                    <i class="ico-play4"></i> @lang("Ticket.resume")
-                                </span>
+                                                    <i class="ico-play4"></i> @lang("Ticket.resume")
+                                                </span>
                                             @else
                                                 @lang("Ticket.on_sale") &nbsp;
                                                 <span class="pauseTicketSales label label-info"
                                                       data-id="{{$ticket->id}}"
                                                       data-route="{{route('postPauseTicket', ['event_id'=>$event->id])}}">
-                                    <i class="ico-pause"></i> @lang("Ticket.pause")
-                                </span>
+                                                        <i class="ico-pause"></i> @lang("Ticket.pause")
+                                                </span>
                                             @endif
                                         @else
                                             {{\App\Models\TicketStatus::find($ticket->sale_status)->name}}

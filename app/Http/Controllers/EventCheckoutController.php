@@ -66,7 +66,7 @@ class EventCheckoutController extends Controller
 //            ]);
 //        }
         $event = Event::with('venue')->findOrFail($event_id);
-        $tickets = Ticket::with(['section','reserved:seat_no,ticket_id','booked:id,seat_no,ticket_id'])
+        $tickets = Ticket::with(['section','reserved:seat_no,ticket_id','booked:seat_no,ticket_id'])
             ->where('event_id',$event_id)
             ->where('ticket_date',$request->get('ticket_date'))
             ->where('is_hidden', false)

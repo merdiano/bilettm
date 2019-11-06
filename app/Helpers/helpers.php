@@ -75,8 +75,15 @@ if(!function_exists('organisers')){
 }
 if(!function_exists('zanitlananlar')){
     function zanitlananlar($ticket){
-        $reserved = $ticket->reserved->pluck('seat_no')->crossJoin(['reserved']);
-        $booked = $ticket->booked->pluck('booked','seat_no')->dump();
+        $reserved = $ticket->reserved->pluck('seat_no')
+            ->transform(function ($item,$key){
+               return [$item => 'reserved'];
+            });
 
+        $booked = $ticket->booked->pluck('seat_no')
+            ->transform(function ($item,$key){
+                return [$item =>'booked'];
+            });
+        return $booked->union($reserved)->toJson();
     }
 }

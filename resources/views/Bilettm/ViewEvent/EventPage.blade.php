@@ -4,7 +4,9 @@
     <meta property="og:title" content="{{{$event->title}}}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{$event->event_url}}?utm_source=fb" />
-    <meta property="og:image" content="{{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}" />
+    @if($event->images->count())
+        <meta property="og:image" content="{{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}" />
+    @endif
     <meta property="og:description" content="{{Str::words(strip_tags(Markdown::parse($event->description))), 20}}" />
     <meta property="og:site_name" content="Billetm.com" />
 @endsection

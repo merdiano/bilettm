@@ -45,45 +45,60 @@
                         <div class="tab-content" id="choose_seats_content">
                             @foreach($tickets as $ticket)
                                 <div id="home_{{$ticket->id}}" class="tab-pane fade active show in " role="tabpanel">
+                                    <meta property="priceCurrency"
+                                          content="TMT">
+                                    <meta property="price"
+                                          content="{{ number_format($ticket->price, 2, '.', '') }}">
                                     <div class="row justify-content-center">
-                                        <img onload="disable_rb('{{$ticket->id}}',{{$ticket->reserved->pluck('seat_no')->toJson()}},{{$ticket->booked->pluck('seat_no')->toJson()}})"
-                                             class="img-responsive" alt="{{$event->venue->venue_name}} - {{$ticket->section->section_no}}"
+                                        <img class="img-responsive" alt="{{$event->venue->venue_name}} - {{$ticket->section->section_no}}"
                                              src="{{asset('user_content/'.$ticket->section->section_image)}}" >
                                     </div>
-                                    <div class="standard-box" style="position: relative; padding: 20px 0">
-                                        <h5 style="font-weight: bold; font-size: 24px; margin-bottom: 20px; text-align: center">{{$ticket->title }} {{$ticket->description}} {{$ticket->section->section_no}}</h5>
-                                        <table style="text-align: center; margin: auto" >
-                                            <tbody id="{{$ticket->id}}">
-                                            @foreach($ticket->section->seats as $row)
-                                                <tr>
-                                                    <td>{{$row['row']}}</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    @for($i = $row['start_no'];$i<=$row['end_no'];$i++)
-                                                        <td>
-                                                            <input type="checkbox" class="seat_check"
-                                                                   id="seat{{$ticket->id.'-'.$row['row'].'-'.$i}}"
-                                                                   name="seats[{{$ticket->id}}][]"
-                                                                   value="{{$row['row'].'-'.$i}}"
-                                                                   data-num="{{$ticket->price}}">
-                                                            <label for="seat{{$ticket->id.'-'.$row['row'].$i}}">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25">
-                                                                    <path id="Rectangle_3" data-name="Rectangle 3" d="M8,0H18a8,8,0,0,1,8,8V25a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V8A8,8,0,0,1,8,0Z"></path>
-                                                                </svg>
-                                                                <span style="position:relative;right: 55%">{{$i}}</span>
-                                                            </label>
-                                                        </td>
-                                                    @endfor
-                                                    <td></td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody></table>
-                                        <!--<div class="seats-top-overlay" style="width: 70%"></div>-->
-                                    </div>
+                                    @if($ticket->is_paused)
+                                        <h1 class="text-danger">@lang("Public_ViewEvent.currently_not_on_sale")</h1>
+                                    @else
+                                        @if($ticket->sale_status === config('attendize.ticket_status_sold_out'))
+                                            <span class="text-danger" property="availability"content="http://schema.org/SoldOut">
+                                                @lang("Public_ViewEvent.sold_out")
+                                            </span>
+                                        @elseif($ticket->sale_status === config('attendize.ticket_status_after_sale_date'))
+                                            <span class="text-danger">@lang("Public_ViewEvent.sales_have_ended")</span>
+                                        @else
+                                            <meta property="availability" content="http://schema.org/InStock">
+                                            <div class="standard-box" style="position: relative; padding: 20px 0">
+                                                <h5 style="font-weight: bold; font-size: 24px; margin-bottom: 20px; text-align: center">{{$ticket->title }}  {{$ticket->section->section_no}} {{$ticket->section->description}}</h5>
+                                                <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
+                                                       data-content='{!! zanitlananlar($ticket)!!}'>
+                                                    <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">
+                                                    @foreach($ticket->section->seats as $row)
+                                                        <tr>
+                                                            <td>{{$row['row']}}</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            @for($i = $row['start_no'];$i<=$row['end_no'];$i++)
+                                                                <td>
+                                                                    <input type="checkbox" class="seat_check"
+                                                                           id="seat{{$ticket->id.'-'.$row['row'].'-'.$i}}"
+                                                                           name="seats[{{$ticket->id}}][]"
+                                                                           value="{{$row['row'].'-'.$i}}">
+                                                                    <label for="seat{{$ticket->id.'-'.$row['row'].'-'.$i}}">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25">
+                                                                            <path id="Rectangle_3" data-name="Rectangle 3" d="M8,0H18a8,8,0,0,1,8,8V25a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V8A8,8,0,0,1,8,0Z"></path>
+                                                                        </svg>
+                                                                        <span style="position:relative;right: 55%">{{$i}}</span>
+                                                                    </label>
+                                                                </td>
+                                                            @endfor
+                                                            <td></td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody></table>
+                                                <!--<div class="seats-top-overlay" style="width: 70%"></div>-->
+                                            </div>
+
+                                        @endif
+                                    @endif
+
                                 </div>
-                                <script>
-                                    {{--var disable_list ={{zanitlananlar($ticket)}}--}}
-                                </script>
                             @endforeach
                         </div>
                         <div class="checked-seats" style="padding: 30px 0; text-align: center">
@@ -104,39 +119,53 @@
 @section('after_scripts')
     <script>
         $(':checkbox').change(function() {
+            var table = $(this).closest('tbody');
+            var max_seats = table.data('max');
+            var checkedCount = table.find('input:checkbox:checked').length;
+
+            if(checkedCount>max_seats){
+                $(this).prop("checked",false)
+                showMessage("You have excidid maximum ticket count: "+max_seats)
+                return;
+            }
+
             if(this.checked) {
                 var ticket = "<span aria-label='"+this.id+"'>"+this.value+"</span>"
                $('.your-selected-seats').append(ticket);
+
             }
             else{
                 $('.your-selected-seats').find("[aria-label='"+this.id+"']").remove();
             }
-            var numberOfChecked = $('input:checkbox:checked').length;
 
-            var total_cost =0;
+            var total_cost = 0;
+            var numberOfChecked = $('input:checkbox:checked').length;
             $('input:checkbox:checked').each(function(index, elem) {
-                total_cost += parseFloat($(elem).attr('data-num'));
+                total_cost += parseFloat($(elem).closest('tbody').data('num'));
+
             });
             $('#total_seats').html(numberOfChecked);
             $('#total_cost').html(total_cost.toFixed(2));
         });
 
         $(document).ready(function () {
-
-            $("input[type=checkbox].input-booked").attr("disabled", true);
-            $("input[type=checkbox].input-reserved").attr("disabled", true);
-
+            $('table').each(function (index,table) {
+                disable_rb(table);
+            });
         });
-
-        function disable_rb(table_id, reserved,booked) {
+        function disable_rb(table) {
             //alert(reserved[0]);
-            if(booked.length>0){
-                //alert('alert')
-                for(booked)
-                $('tbody#'+table_id+':input[type=checkbox]').find();
-            }
-            if(reserved.left>0){
+            var disable_list = $(table).data('content');
+            // console.warn(JSON.parse(disable_list));
+            var table_id = $(table).data('id');
+            for(var i=0; i<disable_list.length; i++){
 
+                var objkey = Object.keys(disable_list[i]);
+                // console.warn(objkey);
+                var obValue = Object.values(disable_list[i])
+                 // console.log($('#seat'+table_id+'-'+objkey).val());
+                $('#seat'+table_id+'-'+objkey).addClass('input-'+obValue);
+                $('#seat'+table_id+'-'+objkey).attr("disabled", true);
             }
         }
 
