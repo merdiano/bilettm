@@ -5,19 +5,19 @@
 
 return array (
   //============================== New strings to translate ==============================//
-  'scan_another_ticket' => 'Scan Another Ticket',
-  'scanning' => 'Scanning',
+  'scan_another_ticket' => 'Başga petegi skanlamak',
+  'scanning' => 'Skanlamak',
   //==================================== Translations ====================================//
-  'attendees' => 'Attendees',
-  'check_in' => 'Check in: :event',
+  'attendees' => 'Gatnaşyjylar',
+  'check_in' => 'Girmek: :event',
   'email' => 'Email',
-  'email_address' => 'Email Address',
-  'event_attendees' => 'Event Attendees',
-  'first_name' => 'First Name',
-  'last_name' => 'Last Name',
-  'name' => 'Name',
-  'ticket' => 'Ticket',
-  'reference' => 'Reference',
-  'search_attendees' => 'Search Attendees...',
-  'send_invitation_n_ticket_to_attendee' => 'Send invitation & ticket to attendee.',
+  'email_address' => 'Email belgisi',
+  'event_attendees' => 'Çärä gatnaşyjylar',
+  'first_name' => 'Ady',
+  'last_name' => 'Familiýasy',
+  'name' => 'Ady',
+  'ticket' => 'Petek',
+  'reference' => 'Bellikler',
+  'search_attendees' => 'Gatnaşyjylary gözlemek...',
+  'send_invitation_n_ticket_to_attendee' => 'Gatnaşyja çakylyk we petek ibermek.',
 );

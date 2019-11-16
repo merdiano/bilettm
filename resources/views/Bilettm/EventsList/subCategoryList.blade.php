@@ -57,7 +57,7 @@
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
             icons: {
-                rightIcon: 'Дата <i class="fa fa-caret-down"></i>'
+                rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
             }
         });
     </script>

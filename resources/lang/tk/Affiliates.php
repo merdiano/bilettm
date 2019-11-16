@@ -5,12 +5,12 @@
 
 return array (
   //============================== New strings to translate ==============================//
-  'affiliate_name' => 'Affiliate Name',
-  'affiliate_tracking' => 'Affiliate Tracking',
-  'affiliate_tracking_text' => 'Keeping track of who is generating sales for your event is extremely easy. Simply create a referral link using the box below and share the link with your affiliates / event promoters.',
-  'last_referral' => 'Last Referral',
-  'no_affiliate_referrals_yet' => 'No Affiliate Referrals Yet',
-  'sales_volume_generated' => 'Sales Volume Generated',
-  'ticket_sales_generated' => 'Ticket Sales Generated',
-  'visits_generated' => 'Visits Generated',
+  'affiliate_name' => 'Hyzmatdaşyň ady',
+  'affiliate_tracking' => 'Hyzmatdaşlary Yzarlamak',
+  'affiliate_tracking_text' => 'Siziň çäräňize petek generirleýän adamlary yzarlamak has-da aňsat. Ýönekey ssylka generirläp ony hyzmatdaşyňyz bilen paýlaşyň',
+  'last_referral' => 'Soňky referal',
+  'no_affiliate_referrals_yet' => 'Hiç hili hyzmatdaş ýok',
+  'sales_volume_generated' => 'Satuwyň göwrümi',
+  'ticket_sales_generated' => 'Generirlenen satuw petekleri',
+  'visits_generated' => 'Generirlenen petekler',
 );

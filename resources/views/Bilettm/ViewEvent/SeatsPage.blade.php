@@ -50,7 +50,7 @@
                                     <meta property="price"
                                           content="{{ number_format($ticket->price, 2, '.', '') }}">
                                     <div class="row justify-content-center">
-                                        <img class="img-responsive" alt="{{$event->venue->venue_name}} - {{$ticket->section->section_no}}"
+                                        <img style="max-width: 60%;" class="img-responsive" alt="{{$event->venue->venue_name}} - {{$ticket->section->section_no}}"
                                              src="{{asset('user_content/'.$ticket->section->section_image)}}" >
                                     </div>
                                     @if($ticket->is_paused)

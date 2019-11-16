@@ -18,11 +18,11 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Slider;
 use Carbon\Carbon;
+use App;
 
 class PublicController extends Controller
 {
     public function showHomePage(){
-
         $cinema = Category::where('view_type','cinema')
             ->categoryLiveEvents(21)
             ->first();
@@ -139,5 +139,12 @@ class PublicController extends Controller
             'status'   => 'success',
             'message' => 'Subscription successfully',
         ]);
+    }
+
+    //locale
+    public function setLocale($locale){
+        App::setLocale($locale);
+
+        return redirect()->back();
     }
 }

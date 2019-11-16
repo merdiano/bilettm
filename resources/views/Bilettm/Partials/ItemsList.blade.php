@@ -7,13 +7,13 @@
             <div class="row">
                 <ul style="padding-left: 30px">
                     <li>
-                        <a href="">Главная</a>
+                        <a href="">{{__('ClientSide.home')}}</a>
                     </li>
                     <li>
                         <i class="fa fa-caret-right"></i>
                     </li>
                     <li class="page-name">
-                        <a href="">Билеты на кинотеатры</a>
+                        <a href="">{{__("ClientSide.for_cinema")}}</a>
                     </li>
                 </ul>
             </div>
@@ -27,24 +27,24 @@
                 <div class="col-md-4 col-lg-4 col-4">
 
                     <select id='vybor_select' >
-                        <option class="cat_op" >На этой недели</option>
-                        <option class="cat_op">Исполнители</option>
-                        <option class="cat_op">Мероприятие</option>
-                        <option class="cat_op">Концерты</option>
+                        <option class="cat_op" >{{__('ClientSide.week')}}</option>
+                        <option class="cat_op">{{__('ClientSide.composers')}}</option>
+                        <option class="cat_op">{{__('ClientSide.events')}}</option>
+                        <option class="cat_op">{{__('ClientSide.concerts')}}</option>
                     </select>
                 </div>
                 <div class="col-md-8 col-lg-8 col-8">
                     <div id='cat_buts'>
-                        <button class="active_cat_but cat_but">Альтернатива</button>
-                        <button class="cat_but">Барды</button>
-                        <button class="cat_but">Джаз & блюз</button>
-                        <button class="cat_but">Другие</button>
-                        <button class="cat_but">Кино</button>
-                        <button class="cat_but">Классическая музыка</button>
-                        <button class="cat_but">Музыкальный спектакль</button>
-                        <button class="cat_but">Мюзикл</button>
-                        <button class="cat_but">Опера и Балет</button>
-                        <button class="cat_but">Оперетта</button>
+                        <button class="active_cat_but cat_but">{{__('ClientSide.alternatives')}}</button>
+                        <button class="cat_but">{{__('ClientSide.bards')}}</button>
+                        <button class="cat_but">{{__('ClientSide.jazz')}}</button>
+                        <button class="cat_but">{{__('ClientSide.others')}}</button>
+                        <button class="cat_but">{{__('ClientSide.movies')}}</button>
+                        <button class="cat_but">{{__('ClientSide.classic')}}</button>
+                        <button class="cat_but">{{__('ClientSide.music')}}</button>
+                        <button class="cat_but">{{__('ClientSide.musical')}}</button>
+                        <button class="cat_but">{{__('ClientSide.ballet')}}</button>
+                        <button class="cat_but">{{__('ClientSide.operetta')}}</button>
                         <button class="cat_but">Поп и Эстрада</button>
                         <button class="cat_but">РЕЙВ</button>
                         <button class="cat_but">Рок</button>

@@ -3,7 +3,7 @@
     <div class="tab-header d-flex justify-content-between col-12">
         <h2 class="font-weight-bold">{{$theatre->title}}</h2>
         <div style="height: 5px; position: absolute; bottom: 10px; width: 100px; background-color: rgba(211,61,51,1)"></div>
-        <a class="teatr-show-more m-0" href="{{$theatre->url}}">Посмотреть все</a>
+        <a class="teatr-show-more m-0" href="{{$theatre->url}}">{{__('ClientSide.view')}}</a>
     </div>
     <div class="tab-ozi col-12 pt-4">
         <div class="kinoteator-tab1-wrapper">

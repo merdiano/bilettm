@@ -69,9 +69,9 @@
                         <li class="dropdown pull-right">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/images/icons/globe.svg')}}">&nbsp;Русский <i class="fa fa-caret-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="">Русский</a></li>
-                                <li><a href="">Туркменский</a></li>
-                                <li><a href="">English</a></li>
+                                <li><a href="/setLocale/ru">Русский</a></li>
+                                <li><a href="/setLocale/tk">Туркменский</a></li>
+                                <li><a href="/setLocale/en">English</a></li>
                             </ul>
                         </li>
                         <div class="clearfix"></div>

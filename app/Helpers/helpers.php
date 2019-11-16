@@ -84,6 +84,6 @@ if(!function_exists('zanitlananlar')){
             ->transform(function ($item,$key){
                 return [$item =>'booked'];
             });
-        return $booked->union($reserved)->toJson();
+        return $booked->merge($reserved)->toJson();
     }
 }

@@ -3,7 +3,7 @@
     <div class="tab-header d-flex justify-content-between col-12">
         <h2 class="">{{$musical->title}}</h2>
         <div style="height: 5px; margin-left: 5px; position: absolute; bottom: 0px; width: 100px; background-color: #ffffff"></div>
-        <a class="" href="{{$musical->url}}">Посмотреть все</a>
+        <a class="" href="{{$musical->url}}">{{__('ClientSide.view')}}</a>
     </div>
     <div class="tab-ozi col-12">
        <!-- End Nav tabs -->

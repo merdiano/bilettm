@@ -1,5 +1,7 @@
 <?php
 
+
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -18,6 +20,11 @@ Route::group(
     Route::get('install', [
         'as'   => 'showInstaller',
         'uses' => 'InstallerController@showInstaller',
+    ]);
+
+    Route::get('/setLocale/{locale}',[
+        'as'  => 'setLocale',
+        'uses' => 'PublicController@setLocale',
     ]);
 
     Route::post('install', [
