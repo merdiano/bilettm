@@ -33,10 +33,6 @@ class CreateVenuesTable extends Migration
             $t->json('address')->nullable();
         });
 
-        Schema::table('events', function (Blueprint $table) {
-            $table->integer('venue_id')->nullable();
-            $table->foreign('venue_id')->references('id')->on('venues');
-        });
     }
 
     /**
@@ -46,10 +42,6 @@ class CreateVenuesTable extends Migration
      */
     public function down()
     {
-        Schema::table('events', function (Blueprint $table){
-            $table->dropForeign('venue_id');
-            $table->dropColumn('venue_id');
-        });
 
         Schema::dropIfExists('venues');
     }
