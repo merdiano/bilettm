@@ -14,7 +14,7 @@ class AddVenueToEventsTable extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->integer('venue_id')->nullable();
+            $table->unsignedInteger('venue_id')->nullable();
             $table->foreign('venue_id')->references('id')->on('venues');
         });
     }
