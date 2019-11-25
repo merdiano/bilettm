@@ -59,13 +59,13 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
         $entity = new $className();
 
         if (Auth::check()) {
+
             if (!$ignore_user_id) {
                 $entity->user_id = Auth::user()->id;
             }
-            if(Auth::user()->is_admin){
-                $organiser_id = request('organiser_id');
-                if(!empty($organiser_id))
-                    $entity->account_id = Organiser::findOrFail($organiser_id)->account_id;
+            $organiser_id = request('organiser_id');
+            if(Auth::user()->is_admin && isset($organiser_id)){
+                $entity->account_id = Organiser::findOrFail($organiser_id)->account_id;
 
             }
             else
