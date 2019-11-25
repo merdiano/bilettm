@@ -99,7 +99,7 @@ class Install extends Command
                 $user_data['is_parent'] = 1;
                 $user_data['is_admin'] = 1;
                 $user_data['is_registered'] = 1;
-                $user = User::create($user_data);
+                User::create($user_data);
 
                 DB::commit();
                 $this->info('Admin User Successfully Created');
@@ -127,12 +127,12 @@ class Install extends Command
 
 
 // $a = "                    _
-//                          | |  
+//                          | |
 //    /\  /\   ___ _ __   __| | __ _ _ __
 //   /  \/  \ / _ \ '_ \ / _` |/ _' | '_ \
 //  / /\  /\ \  __/ | '-| (_| | (_| | | | |
 // /_/  \/  \_\___|_|    \__,_|\__,_|_| |_|
-//    
+//
 // ";
  $this->comment('Success! You can now run Attendize');
     }

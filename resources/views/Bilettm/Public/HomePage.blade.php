@@ -23,7 +23,7 @@
     </div>
 </section>
 
-@if($theatre->count()>0)
+@if(isset($theatre))
     @include('Bilettm.Partials.HomeTheatre')
 @endif
 <section id="second-add-wrapper" style="margin: 100px 0;">
@@ -97,19 +97,10 @@
             });
             // home page teatrda ulanan sliderim un script
             // initialization of carousel
-
-
-
-
-
-
-
             $('#date-click').click(function () {
                 $('#date-click-content').toggleClass('show-content');
             });
         });
-
-
     </script>
 
 @endsection
