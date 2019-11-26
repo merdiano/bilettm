@@ -1,16 +1,16 @@
 <?php
 
-
+/*
+ * Include our API routes file
+ */
+include_once('api_routes.php');
 
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function() {
-    /*
-     * Include our API routes file
-     */
-    include_once('api_routes.php');
+
 
     /*
      * -------------------------
