@@ -17,10 +17,11 @@ class PublicController extends Controller
             $categories->children($parent_id);
         else
             $categories->main();
-        return response()->json(['categories' => $categories->get()]);
+        return response()->json($categories->get());
 //        return $categories->get();
     }
-        public function showCategoryEvents($cat_id){
+
+    public function showCategoryEvents($cat_id){
 
         $category = Category::select('id','title_tk','title_ru','view_type','events_limit','parent_id')
             ->findOrFail($cat_id);
