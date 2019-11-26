@@ -233,44 +233,7 @@ class EventController extends MyBaseController
         $event->sub_category_id = $request->get('sub_category_id');
         $event->google_tag_manager_code = $request->get('google_tag_manager_code');
 
-        /*
-         * If the google place ID is the same as before then don't update the venue
-         */
-        if (($request->get('place_id') !== $event->location_google_place_id) || $event->location_google_place_id == '') {
-            $is_auto_address = (trim($request->get('place_id')) !== '');
-
-            if ($is_auto_address) { /* Google auto filled */
-                $event->venue_name = $request->get('name');
-                $event->venue_name_full = $request->get('venue_name_full');
-                $event->location_lat = $request->get('lat');
-                $event->location_long = $request->get('lng');
-                $event->location_address = $request->get('formatted_address');
-                $event->location_country = $request->get('country');
-                $event->location_country_code = $request->get('country_short');
-                $event->location_state = $request->get('administrative_area_level_1');
-                $event->location_address_line_1 = $request->get('route');
-                $event->location_address_line_2 = $request->get('locality');
-                $event->location_post_code = $request->get('postal_code');
-                $event->location_street_number = $request->get('street_number');
-                $event->location_google_place_id = $request->get('place_id');
-                $event->location_is_manual = 0;
-            } else { /* Manually entered */
-                $event->venue_name = $request->get('location_venue_name');
-                $event->location_address_line_1 = $request->get('location_address_line_1');
-                $event->location_address_line_2 = $request->get('location_address_line_2');
-                $event->location_state = $request->get('location_state');
-                $event->location_post_code = $request->get('location_post_code');
-                $event->location_is_manual = 1;
-                $event->location_google_place_id = '';
-                $event->venue_name_full = '';
-                $event->location_lat = '';
-                $event->location_long = '';
-                $event->location_address = '';
-                $event->location_country = '';
-                $event->location_country_code = '';
-                $event->location_street_number = '';
-            }
-        }
+        $event->venue_id = $request->get('venue_id');
 
         $event->end_date = $request->get('end_date');
         $event->event_image_position = $request->get('event_image_position');
