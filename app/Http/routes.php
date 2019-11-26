@@ -1,16 +1,22 @@
 <?php
 
-/*
- * Include our API routes file
- */
-include_once('api_routes.php');
+
 
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function() {
+    /*
+     * Include our API routes file
+     */
+    Route::group(['prefix' => 'api'], function () {
 
+        Route::get('category/{parent_id?}','API\PublicController@getCategories');
+        Route::get('events/{cat_id?}','API\PublicController@getEvents');
+
+
+    });
 
     /*
      * -------------------------
@@ -22,10 +28,6 @@ Route::group(
         'uses' => 'InstallerController@showInstaller',
     ]);
 
-    Route::get('/setLocale/{locale}',[
-        'as'  => 'setLocale',
-        'uses' => 'PublicController@setLocale',
-    ]);
 
     Route::post('install', [
         'as'   => 'postInstaller',
