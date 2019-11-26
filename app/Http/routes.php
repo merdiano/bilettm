@@ -13,8 +13,9 @@ Route::group(
     Route::group(['prefix' => 'api'], function () {
 
         Route::get('category/{parent_id?}','API\PublicController@getCategories');
-        Route::get('events/{cat_id?}','API\PublicController@getEvents');
-
+        Route::get('cat_events/{cat_id}','API\PublicController@showCategoryEvents');
+        Route::get('sub_cat_events/{cat_id}','API\PublicController@showSubCategoryEvents');
+        Route::get('event/{id}','API\PublicController@getEvent');
 
     });
 
