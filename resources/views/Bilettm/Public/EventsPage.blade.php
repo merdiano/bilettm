@@ -8,7 +8,7 @@
                     <div class="tab-header d-flex justify-content-between col-12">
                         <h2  class="font-weight-bold">{{$cat->title}}</h2>
                         <div style="height: 5px; position: absolute; bottom: 0px; width: 100px; background-color: rgba(211,61,51,1)"></div>
-                        <a class="red_button" href="{{$cat->url}}">Весь репертуар</a>
+                        <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>
                     </div>
                     <div class="tab-ozi col-12" style="margin-top: 10px">
 

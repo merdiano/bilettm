@@ -45,18 +45,18 @@
                         <button class="cat_but">{{__('ClientSide.musical')}}</button>
                         <button class="cat_but">{{__('ClientSide.ballet')}}</button>
                         <button class="cat_but">{{__('ClientSide.operetta')}}</button>
-                        <button class="cat_but">Поп и Эстрада</button>
-                        <button class="cat_but">РЕЙВ</button>
-                        <button class="cat_but">Рок</button>
-                        <button class="cat_but">Романсы</button>
-                        <button class="cat_but">Музыкальный спектакль</button>
-                        <button class="cat_but">Мюзикл</button>
-                        <button class="cat_but">Опера и Балет</button>
-                        <button class="cat_but">Оперетта</button>
-                        <button class="cat_but">Поп и Эстрада</button>
-                        <button class="cat_but">РЕЙВ</button>
-                        <button class="cat_but">Рок</button>
-                        <button class="cat_but">Романсы</button>
+                        <button class="cat_but">{{__('ClientSide.pop')}}</button>
+                        <button class="cat_but">{{__('ClientSide.rave')}}</button>
+                        <button class="cat_but">{{__('ClientSide.rock')}}</button>
+                        <button class="cat_but">{{__('ClientSide.romance')}}</button>
+                        <button class="cat_but">{{__('ClientSide.music')}}</button>
+                        <button class="cat_but">{{__('ClientSide.musical')}}</button>
+                        <button class="cat_but">{{__('ClientSide.ballet')}}</button>
+                        <button class="cat_but">{{__('ClientSide.operetta')}}</button>
+                        <button class="cat_but">{{__('ClientSide.pop')}}</button>
+                        <button class="cat_but">{{__('ClientSide.rave')}}</button>
+                        <button class="cat_but">{{__('ClientSide.rock')}}</button>
+                        <button class="cat_but">{{__('ClientSide.romance')}}</button>
                     </div>
                 </div>
 
@@ -75,17 +75,17 @@
                     <div class="film_op">
                         <div class="date">
                             <div class="day">
-                                <h4>13 сентября</h4>
-                                <h6>19:00, пятница</h6>
+                                <h4>{{__('ClientSide.onDate')}}</h4>
+                                <h6>{{__('ClientSide.onTime')}}</h6>
                             </div>
                         </div>
-                        <h2 class="film_name"><a href="#">"Человек-паук Вдали от дома"</a></h2>
+                        <h2 class="film_name"><a href="#">{{__("ClientSide.title")}}</a></h2>
                         <span>В кино с 4 июля</span>
                         <p class="op_text">
-                            Питер Паркер вместе с друзьями отправляется на летние каникулы в Европу. Однако отдохнуть приятелям вряд ли удастся — Питеру придется согласиться помочь Нику Фьюри раскрыть тайну существ, вызывающих стихийные бедствия и разрушения по всему континенту.
+                            {{__('ClientSide.description')}}
                         </p>
                         <div class="buy_and_salary">
-                            <a class="buy_button" href="#">Купить</a> <span>250 tmt</span>
+                            <a class="buy_button" href="#">{{__('ClientSide.buy_ticket')}}</a> <span>250 TMT</span>
                         </div>
                     </div>
                 </div>
@@ -115,17 +115,17 @@
                     <div class="film_op">
                         <div class="date">
                             <div class="day">
-                                <h4>13 сентября</h4>
-                                <h6>19:00, пятница</h6>
+                                <h4>{{__('ClientSide.onDate')}}</h4>
+                                <h6>{{__('ClientSide.onTime')}}</h6>
                             </div>
                         </div>
-                        <h2 class="film_name"><a href="#">"Человек-паук Вдали от дома"</a></h2>
+                        <h2 class="film_name"><a href="#">{{__("ClientSide.title")}}</a></h2>
                         <span>В кино с 4 июля</span>
                         <p class="op_text">
-                            Питер Паркер вместе с друзьями отправляется на летние каникулы в Европу. Однако отдохнуть приятелям вряд ли удастся — Питеру придется согласиться помочь Нику Фьюри раскрыть тайну существ, вызывающих стихийные бедствия и разрушения по всему континенту.
+                            {{__("ClientSide.description")}}
                         </p>
                         <div class="buy_and_salary">
-                            <a class="buy_button" href="#">Купить</a> <span>250 tmt</span>
+                            <a class="buy_button" href="#">{{__("ClientSide.buy_ticket")}}</a> <span>250 TMT</span>
                         </div>
                     </div>
                 </div>
@@ -141,17 +141,17 @@
                     <div class="film_op">
                         <div class="date">
                             <div class="day">
-                                <h4>13 сентября</h4>
-                                <h6>19:00, пятница</h6>
+                                <h4>{{__("ClientSide.onDate")}}</h4>
+                                <h6>{{__("ClientSide.onTime")}}</h6>
                             </div>
                         </div>
-                        <h2 class="film_name"><a href="#">"Человек-паук Вдали от дома"</a></h2>
+                        <h2 class="film_name"><a href="#">{{__("ClientSide.title")}}</a></h2>
                         <span>В кино с 4 июля</span>
                         <p class="op_text">
-                            Питер Паркер вместе с друзьями отправляется на летние каникулы в Европу. Однако отдохнуть приятелям вряд ли удастся — Питеру придется согласиться помочь Нику Фьюри раскрыть тайну существ, вызывающих стихийные бедствия и разрушения по всему континенту.
+                            {{__("ClientSide.description")}}
                         </p>
                         <div class="buy_and_salary">
-                            <a class="buy_button" href="#">Купить</a> <span>250 tmt</span>
+                            <a class="buy_button" href="#">{{__("ClientSide.buy_ticket")}}</a> <span>250 TMT</span>
                         </div>
                     </div>
                 </div>
@@ -167,17 +167,17 @@
                     <div class="film_op">
                         <div class="date">
                             <div class="day">
-                                <h4>13 сентября</h4>
-                                <h6>19:00, пятница</h6>
+                                <h4>{{__("ClientSide.onDate")}}</h4>
+                                <h6>{{__("ClientSide.onTime")}}</h6>
                             </div>
                         </div>
-                        <h2 class="film_name"><a href="#">"Человек-паук Вдали от дома"</a></h2>
+                        <h2 class="film_name"><a href="#">{{__("ClientSide.title")}}</a></h2>
                         <span>В кино с 4 июля</span>
                         <p class="op_text">
-                            Питер Паркер вместе с друзьями отправляется на летние каникулы в Европу. Однако отдохнуть приятелям вряд ли удастся — Питеру придется согласиться помочь Нику Фьюри раскрыть тайну существ, вызывающих стихийные бедствия и разрушения по всему континенту.
+                            {{__("ClientSide.description")}}
                         </p>
                         <div class="buy_and_salary">
-                            <a class="buy_button" href="#">Купить</a> <span>250 tmt</span>
+                            <a class="buy_button" href="#">{{__("ClientSide.buy_ticket")}}</a> <span>250 TMT</span>
                         </div>
                     </div>
                 </div>
@@ -193,17 +193,17 @@
                     <div class="film_op">
                         <div class="date">
                             <div class="day">
-                                <h4>13 сентября</h4>
-                                <h6>19:00, пятница</h6>
+                                <h4>{{__("ClientSide.onDate")}}</h4>
+                                <h6>{{__("ClientSide.onTime")}}</h6>
                             </div>
                         </div>
-                        <h2 class="film_name"><a href="#">"Человек-паук Вдали от дома"</a></h2>
+                        <h2 class="film_name"><a href="#">{{__("ClientSide.title")}}</a></h2>
                         <span>В кино с 4 июля</span>
                         <p class="op_text">
-                            Питер Паркер вместе с друзьями отправляется на летние каникулы в Европу. Однако отдохнуть приятелям вряд ли удастся — Питеру придется согласиться помочь Нику Фьюри раскрыть тайну существ, вызывающих стихийные бедствия и разрушения по всему континенту.
+                            {{__("ClientSide.description")}}
                         </p>
                         <div class="buy_and_salary">
-                            <a class="buy_button" href="#">Купить</a> <span>250 tmt</span>
+                            <a class="buy_button" href="#">{{__("ClientSide.buy_ticket")}}</a> <span>250 TMT</span>
                         </div>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
             <div class="row">
                 <div class="col-md-9 col-lg-9 col-sm-9 col-9">
                     <div class="pagination_blk">
-                        <span>Видно на странице - 5/48</span>
+                        <span>{{__("ClientSide.shown")}} - 5/48</span>
                         <div class="arrows_block">
                             <a  class='arrows' id='left_arrow' href="#"><img src="assets/assets/img/icons/left.png"></a><a class='arrows' id='right_arrow' href="#"><img src="assets/assets/img/icons/right.png"></a>
                         </div>

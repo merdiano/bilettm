@@ -15,7 +15,7 @@
             <!-- Logo -->
             <div class="navbar-brand bilettm" style="width: 30%; margin-right: 0">
                 <a href="/"><img src="{{asset('assets/images/logo/bilet-logo.svg')}}"></a>
-                <a data-toggle="modal" data-target="#exampleModalCenter" class="add-event" style="cursor: pointer">+ добавить событие</a>
+                <a data-toggle="modal" data-target="#exampleModalCenter" class="add-event" style="cursor: pointer">+ {{__("ClientSide.addEvent")}}</a>
             </div>
             <!-- End Logo -->
 
@@ -24,7 +24,7 @@
                 <div class="col-12 search-panel w-100">
                     <form action="{{route('search')}}" method="GET" id="main-header-search-form">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="q" placeholder="Мероприятия, исполнители, площадки">
+                            <input type="text" class="form-control" name="q" placeholder="{{__('ClientSide.placeholder')}}">
                             <a id="top-header-submit"><img src="{{asset('assets/images/icons/search.svg')}}"></a>
                         </div>
                     </form>
@@ -67,7 +67,7 @@
                         {{--<li><a href=""><img src="{{asset('assets/images/icons/user.svg')}}">&nbsp;Вход</a></li>--}}
                         {{--<li><a href=""><img src="{{asset('assets/images/icons/plus.svg')}}">&nbsp;Регистрация</a></li>--}}
                         <li class="dropdown pull-right">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/images/icons/globe.svg')}}">&nbsp;Language <i class="fa fa-caret-down"></i></a>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/images/icons/globe.svg')}}">&nbsp;Русский <i class="fa fa-caret-down"></i></a>
                             <ul class="dropdown-menu">
                                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                     <li>

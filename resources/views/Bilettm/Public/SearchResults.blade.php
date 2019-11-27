@@ -12,7 +12,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav u-nav-v1-1 g-mb-20" role="tablist" data-target="nav-1-1-default-hor-left" data-tabs-mobile-type="slide-up-down" data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-lightgray g-mb-20">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" role="tab">Результатов поиска: {{$events->count()}}/{{$events->total()}}</a>
+                            <a class="nav-link active" data-toggle="tab" role="tab">{{__("ClientSide.results")}}: {{$events->count()}}/{{$events->total()}}</a>
                         </li>
                     </ul>
                     <!-- End Nav tabs -->

@@ -5,7 +5,7 @@
         <div class="container">
             <a class="mobile_pt_30 mobile_pb0 collapsed d-flex justify-content-between g-color-main g-text-underline--none--hover g-brd-bottom g-brd-gray-light-v4 g-pa-15-0" href="#accordion-10-body-02" data-toggle="collapse" data-parent="#accordion-10" aria-expanded="false" aria-controls="accordion-10-body-02">
                 <span class="d-flex">
-                    <h1 class="mobile_header_tab" style="font-weight: 600;font-size: 35px;">Choose seats</h1>
+                    <h1 class="mobile_header_tab" style="font-weight: 600;font-size: 35px;">{{__('ClientSide.seats')}}</h1>
                 </span>
             </a>
             <div class="row">
@@ -16,15 +16,15 @@
                                 <li class="active" role="presentation" style="display: inline-block;">
                                     <a aria-expanded="true" data-toggle="tab" class="@if ($loop->first)active @endif show"
                                        role="tab" id="home_tab_{{$ticket->id}}" href="#home_{{$ticket->id}}" aria-selected="true">
-                                        {{$ticket->title}} - {{$ticket->price}} man.</a>
+                                        {{$ticket->title}} - {{$ticket->price}} TMT.</a>
                                 </li>
                             @endforeach
                         </ul>
                         <div class="d-flex justify-content-center mt-5 mb-4" style="width: 70%; margin: auto">
-                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> Available</span>
-                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> Booked</span>
-                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #b6b6b6; font-size: 13px"></i> Reserved</span>
-                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #ff4159; font-size: 13px"></i> Your Selection</span>
+                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> {{__('ClientSide.available')}}</span>
+                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> {{__('ClientSide.booked')}}</span>
+                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #b6b6b6; font-size: 13px"></i> {{__('ClientSide.reserved')}}</span>
+                            <span class="mx-3 text-center" style="font-size: 18px"><i class="fa fa-circle" style="color: #ff4159; font-size: 13px"></i> {{__('ClientSide.selection')}}</span>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%" height="137.997" viewBox="0 0 1120 137.997">
                             <defs>
@@ -102,8 +102,8 @@
                             @endforeach
                         </div>
                         <div class="checked-seats" style="padding: 30px 0; text-align: center">
-                            <h5 class="text-center font-weight-bold">You Have Selected <span id="total_seats">0</span> seats. Total cost <span id="total_cost">0</span> man.</h5>
-                            <h5 class="text-center">Your Seats:</h5>
+                            <h5 class="text-center font-weight-bold">{{__("ClientSide.selected")}} <span id="total_seats">0</span> {{__("ClientSide.seatsTotal")}} <span id="total_cost">0</span> man.</h5>
+                            <h5 class="text-center">{{__("ClientSide.yourSeats")}}:</h5>
                                 <div class="your-selected-seats" style="text-align: center; margin-bottom: 50px">
                                 </div>
                             {!!Form::submit('Confirm seats', ['id' => 'confirm-seats'])!!}
