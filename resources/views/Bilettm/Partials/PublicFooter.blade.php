@@ -5,18 +5,17 @@
         <div class="container g-pt-100">
             <div class="row justify-content-start g-mb-30 g-mb-0--md">
                 <div class="col-12 footer-header mb-5" style="padding: 0 20%;">
-                    <h2>Хотите всегда быть в курсе актуальных событий?</h2>
+                    <h2>{{__('ClientSide.want')}}</h2>
                     <form action="{{route('subscription')}}" method="POST" class="row ajax">
                         @csrf
                         <div class="col-9 form-group">
-                            <input type="email" class="form-control" name='email' placeholder="Введите ваш e-mail">
+                            <input type="email" class="form-control" name='email' placeholder="{{__("ClientSide.email")}}">
                         </div>
                         <div class="col-3 form-group">
-                            <input type="submit" class="form-control four-button-type" value="Подписаться">
+                            <input type="submit" class="form-control four-button-type" value="{{__("ClientSide.subscribe")}}">
                         </div>
                     </form>
-                    <h6>Подпишитесь на рассылку и получайте на почту персональную подборку
-                        событий вашего города</h6>
+                    <h6>{{__("ClientSide.email_for")}}</h6>
                 </div>
                 <div class="col-3">
                     <a href="" style="width: 100%">
@@ -39,25 +38,25 @@
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="#">ЛИЧНЫЙ КАБИНЕТ</a></li>
-                        <li><a href="#">ЗНАКОМСТВО С BILETTM.COM</a></li>
-                        <li><a href="#">ВОПРОСЫ И ОТВЕТЫ</a></li>
-                        <li><a href="#">БИЛЕТНЫЕ ОФИСЫ</a></li>
+                        <li><a href="#">{{__('ClientSide.cabinet')}}</a></li>
+                        <li><a href="#">{{__('ClientSide.introduction')}}</a></li>
+                        <li><a href="#">{{__("ClientSide.questions")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.offices")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="#">РАССЫЛКА</a></li>
-                        <li><a href="#">КОЛЛЕКТИВНЫЕ ЗАКАЗЫ</a></li>
-                        <li><a href="#">ОРГАНИЗАТОРАМ</a></li>
-                        <li><a href="#">КОНЦЕРТНЫМ ПЛОЩАДКАМ</a></li>
+                        <li><a href="#">{{__("ClientSide.rassylka")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.collective")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.organizers")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.concert_halls")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="#">ПАРТНЁРАМ</a></li>
-                        <li><a href="#">ЛОГОТИП ДЛЯ АФИШ И СМИ</a></li>
-                        <li><a style="color: #ffffff; cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter">Добавить событие</a></li>
+                        <li><a href="#">{{__("ClientSide.partners")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.logo")}}</a></li>
+                        <li><a style="color: #ffffff; cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter">{{__("ClientSide.addEvent")}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -69,7 +68,7 @@
     <div class="container g-pt-30 g-pb-10 pt-4">
         <div class="row justify-content-between align-items-center" style="border-top: 1px solid #ffffff">
             <div class="col-12">
-                <p class="g-font-size-13 mb-0 text-center all-rights-reserved">&copy; 2019 Билетный сервис Billettm.com. Все права защищены.</p>
+                <p class="g-font-size-13 mb-0 text-center all-rights-reserved">&copy; 2019 {{__("ClientSide.ticket_service")}} Billettm.com. {{__("ClientSide.copyright")}}.</p>
             </div>
         </div>
     </div>
