@@ -67,7 +67,7 @@
                         {{--<li><a href=""><img src="{{asset('assets/images/icons/user.svg')}}">&nbsp;Вход</a></li>--}}
                         {{--<li><a href=""><img src="{{asset('assets/images/icons/plus.svg')}}">&nbsp;Регистрация</a></li>--}}
                         <li class="dropdown pull-right">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/images/icons/globe.svg')}}">&nbsp;Русский <i class="fa fa-caret-down"></i></a>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/images/icons/globe.svg')}}">&nbsp;{{LaravelLocalization::getCurrentLocaleName()}} <i class="fa fa-caret-down"></i></a>
                             <ul class="dropdown-menu">
                                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                     <li>
