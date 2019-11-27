@@ -1,41 +1,41 @@
 @extends('en.Emails.Layouts.Master')
 
 @section('message_content')
-Hello,<br><br>
+    Здравствуйте,<br><br>
 
-Your order for the event <b>{{$order->event->title}}</b> was successful.<br><br>
+    Ваш билет на мероприятие <b>{{$order->event->title}}</b> был успешен.<br><br>
 
-Your tickets are attached to this email. You can also view you order details and download your tickets at: {{route('showOrderDetails', ['order_reference' => $order->order_reference])}}
+    Ваши билеты прилагаются к этому письму. Вы также можете просмотреть информацию о заказе и скачать билеты по адресу: {{route('showOrderDetails', ['order_reference' => $order->order_reference])}}
 
 @if(!$order->is_payment_received)
 <br><br>
-<b>Please note: This order still requires payment. Instructions on how to make payment can be found on your order page: {{route('showOrderDetails', ['order_reference' => $order->order_reference])}}</b>
+<b>Обратите внимание: этот заказ все еще требует оплаты. Инструкции по оплате можно найти на странице вашего заказа.: {{route('showOrderDetails', ['order_reference' => $order->order_reference])}}</b>
 <br><br>
 @endif
-<h3>Order Details</h3>
-Order Reference: <b>{{$order->order_reference}}</b><br>
-Order Name: <b>{{$order->full_name}}</b><br>
-Order Date: <b>{{$order->created_at->toDayDateTimeString()}}</b><br>
-Order Email: <b>{{$order->email}}</b><br>
+<h3>Информация для заказа</h3>
+    Код заказа: <b>{{$order->order_reference}}</b><br>
+    Название заказа: <b>{{$order->full_name}}</b><br>
+    Дата заказа: <b>{{$order->created_at->toDayDateTimeString()}}</b><br>
+    Электронная почта заказа: <b>{{$order->email}}</b><br>
 <a href="{!! route('downloadCalendarIcs', ['event_id' => $order->event->id]) !!}">Add To Calendar</a>
-<h3>Order Items</h3>
+<h3>Элементы заказа</h3>
 <div style="padding:10px; background: #F9F9F9; border: 1px solid #f1f1f1;">
     <table style="width:100%; margin:10px;">
         <tr>
             <td>
-                <b>Ticket</b>
+                <b>Билет</b>
             </td>
             <td>
-                <b>Qty.</b>
+                <b>Количество.</b>
             </td>
             <td>
-                <b>Price</b>
+                <b>Цена</b>
             </td>
             <td>
-                <b>Fee</b>
+                <b>БЕСПЛАТНО</b>
             </td>
             <td>
-                <b>Total</b>
+                <b>Итог</b>
             </td>
         </tr>
         @foreach($order->orderItems as $order_item)
@@ -48,7 +48,7 @@ Order Email: <b>{{$order->email}}</b><br>
                                     </td>
                                     <td>
                                         @if((int)ceil($order_item->unit_price) == 0)
-                                        FREE
+                                            БЕСПЛАТНО
                                         @else
                                        {{money($order_item->unit_price, $order->event->currency)}}
                                         @endif
@@ -64,7 +64,7 @@ Order Email: <b>{{$order->email}}</b><br>
                                     </td>
                                     <td>
                                         @if((int)ceil($order_item->unit_price) == 0)
-                                        FREE
+                                            БЕСПЛАТНО
                                         @else
                                         {{money(($order_item->unit_price + $order_item->unit_booking_fee) * ($order_item->quantity), $order->event->currency)}}
                                         @endif
@@ -80,7 +80,7 @@ Order Email: <b>{{$order->email}}</b><br>
             <td>
             </td>
             <td>
-                <b>Sub Total</b>
+                <b>Промежуточный итог</b>
             </td>
             <td colspan="2">
                 {{$orderService->getOrderTotalWithBookingFee(true)}}
@@ -110,7 +110,7 @@ Order Email: <b>{{$order->email}}</b><br>
             <td>
             </td>
             <td>
-                <b>Total</b>
+                <b>Итог</b>
             </td>
             <td colspan="2">
                 {{$orderService->getGrandTotal(true)}}
@@ -121,5 +121,5 @@ Order Email: <b>{{$order->email}}</b><br>
     <br><br>
 </div>
 <br><br>
-Thank you
+Спасибо!
 @stop

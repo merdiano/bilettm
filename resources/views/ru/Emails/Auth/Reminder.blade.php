@@ -2,10 +2,10 @@
 
 @section('message_content')
     <div>
-        Hello,<br><br>
-        To reset your password, complete this form: {{ route('password.reset', ['token' => $token]) }}.
+        Здраствуйте,<br><br>
+        Чтобы сбросить ваш пароль, заполните данную форму: {{ route('password.reset', ['token' => $token]) }}.
         <br><br><br>
-        Thank you,<br>
-        Team Attendize
+        Спасибо,<br>
+        Команда Bilettm
     </div>
 @stop
