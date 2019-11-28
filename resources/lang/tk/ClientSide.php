@@ -3,8 +3,8 @@
 return [
 
     //cinema.blade.php + concert.blade.php + CinemaItem.blade.php + EventItem.blade.php
-    'share' => 'Paýlaşmak',
-    'buy_ticket' => 'Petek almak',
+    'share' => 'Paýlaş',
+    'buy_ticket' => 'Petek al',
     'views' => 'Görnüşleri',
     'prices_from' => 'Bahasy',
     'starting' => 'Kinoteatrlarda başlaýar',
@@ -13,7 +13,7 @@ return [
     'date' => 'Sene',
 
     //FilterMenu.blade.php
-    'select' => 'Sene saýlamak',
+    'select' => 'Sene saýla',
     'popular' => 'Meşhur',
     'new' => 'Täze',
     'filter' => 'Filtr',
@@ -23,7 +23,7 @@ return [
     'month' => 'Şu aýda',
 
     //HomeCinema.blade.php
-    'view' => 'Hemmisini görmek',
+    'view' => 'Ählisini görmek',
 
     //ItemList.blade.php
     'home' => 'Baş sahypa',
@@ -53,33 +53,33 @@ return [
 
     //PublicFooterBlade.php
     'want' => 'Hemişe soňky habarlary bilesiňiz gelýärmi?',
-    'subscribe' => 'Ýazylmak',
+    'subscribe' => 'Ýazyl',
     'email' => 'E-poçta belgiňizi giriziň',
     'email_for' => 'Täze habarlara ýazylyň we çäreler barada soňky habarlary alyp duruň!',
-    'cabinet' => 'Şahsy kabinet',
-    'introduction' => 'BILETTM.COM BILEN TANYŞLYK',
+    'cabinet' => 'ŞAHSY KABINET',
+    'introduction' => 'BILETTM.COM BILEN TANYŞ BOL!',
     'questions' => 'SORAGLAR WE JOGALAR',
     'offices' => 'PETEK OFISLARY',
     'rassylka' => 'PAÝLAMA',
-    'collective' => 'KÖPLEÝIN PETEK ALMAK',
+    'collective' => 'BIRNÄÇE PETEK ALMAK',
     'organizers' => 'ORGANIZATORLAR ÜÇIN',
     'concert_halls' => 'KONSERT ZALLARY',
     'partners' => 'PARTNERS',
     'logo' => 'MEDIA WE REKLAMA ÜÇIN LOGO',
-    'addEvent' => 'Waka goşmak',
+    'addEvent' => 'Çäre goş',
     'ticket_service' => 'Petek hyzmatlary',
     'copyright' => 'Ähli hukuklar goralan',
 
     //PublicHeader.blade.php
-    'placeholder' => 'Wakalar, artistlar, zallar',
+    'placeholder' => 'Çäreler, artistlar, zallar',
 
     //AddEventForm.blade.php
-    'send' => 'Ibermek',
+    'send' => 'Iber',
     'required' => 'Hökmany doldurylmaly',
     'name' => 'Ady',
     'phone' => 'Telefon',
     'venue' => 'Geçiriljek ýeri',
-    'place' => 'Konsert zaly Туркменистан',
+    'place' => 'Konsert zaly Türkmenistan',
     'message' => 'Habar',
     'text' => 'Gechirmek isleyan charaniz  barada maglumatlary doldyryp bize ugradyn! maglumatlarynyzy seljerip siz bilen habarlasharys',
 
@@ -90,7 +90,7 @@ return [
     'results' => 'Gözlegiň netijeleri',
 
     //SeatsPage.blade.php
-    'seats' => 'Ýer saýlamak',
+    'seats' => 'Ýer saýla',
     'available' => 'El ýeter',
     'booked' => 'Rezerwlenen',
     'reserved' => 'Rezerwlenen',
