@@ -2,20 +2,20 @@
 
 @section('message_content')
 
-<p>Hello</p>
+<p>Salam!</p>
 <p>
-    You have been added to an {{ config('attendize.app_name') }} account by {{$inviter->first_name.' '.$inviter->last_name}}.
+    Siz {{ config('attendize.app_name') }} şu akkaut bilen: {{$inviter->first_name.' '.$inviter->last_name}} goşuldyňyz.
 </p>
 
 <p>
-    You can log in using the following details.<br><br>
+    Siz aşakdaky maglumatlary ullanyp öz akkaundyňyza girip bilersiňiz.<br><br>
     
-    Username: <b>{{$user->email}}</b> <br>
-    Password: <b>{{$temp_password}}</b>
+    Ullanyjy belgiňiz: <b>{{$user->email}}</b> <br>
+    Açar sözi: <b>{{$temp_password}}</b>
 </p>
 
 <p>
-    You can change your temporary password once you have logged.
+    Siz öz açar söziňizi akkaunda gireniňizden soňra üýtgedip bilersiňiz.
 </p>
 
 <div style="padding: 5px; border: 1px solid #ccc;" >
@@ -23,10 +23,10 @@
 </div>
 <br><br>
 <p>
-    If you have any questions please reply to this email.
+    Eger-de siziň soraglaryňyz bar bolsa sizden şu poçta jogap bermegiňizi haýyş edýäris.
 </p>
 <p>
-    Thank you
+    Sag boluň!
 </p>
 
 @stop

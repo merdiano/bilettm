@@ -1,41 +1,41 @@
 @extends('en.Emails.Layouts.Master')
 
 @section('message_content')
-Hello,<br><br>
+Salam!<br><br>
 
-Your order for the event <b>{{$order->event->title}}</b> was successful.<br><br>
+Siziň <b>{{$order->event->title}}</b> çäresi üçin sargydyňyz üstünlikli ýerine ýetirildi.<br><br>
 
-Your tickets are attached to this email. You can also view you order details and download your tickets at: {{route('showOrderDetails', ['order_reference' => $order->order_reference])}}
+Siziň petekleriňiz şu poçta berkidilen. Siz şeýle hem petekleriňizi ýüklemek üçin we sargydyňyz barada maglumat görmek üçin şu link boýunça geçip bilersiňiz: {{route('showOrderDetails', ['order_reference' => $order->order_reference])}}
 
 @if(!$order->is_payment_received)
 <br><br>
-<b>Please note: This order still requires payment. Instructions on how to make payment can be found on your order page: {{route('showOrderDetails', ['order_reference' => $order->order_reference])}}</b>
+<b>Haýyş edýäris üns beriň: Bu sargyt henizem tölegiň ýerine ýetirilmegini talap edýär. Töleg amala aşyrylmagy barada siz şu sahypada maglumat tapyp bilersiňiz: {{route('showOrderDetails', ['order_reference' => $order->order_reference])}}</b>
 <br><br>
 @endif
-<h3>Order Details</h3>
-Order Reference: <b>{{$order->order_reference}}</b><br>
-Order Name: <b>{{$order->full_name}}</b><br>
-Order Date: <b>{{$order->created_at->toDayDateTimeString()}}</b><br>
-Order Email: <b>{{$order->email}}</b><br>
+<h3>Sargyt barada magumatlar</h3>
+Sargydyň belgisi: <b>{{$order->order_reference}}</b><br>
+Sargydyň ady: <b>{{$order->full_name}}</b><br>
+Sargydyň wagty: <b>{{$order->created_at->toDayDateTimeString()}}</b><br>
+Sargydyň poçtasy: <b>{{$order->email}}</b><br>
 <a href="{!! route('downloadCalendarIcs', ['event_id' => $order->event->id]) !!}">Add To Calendar</a>
-<h3>Order Items</h3>
+<h3>Sargydyň petekleri</h3>
 <div style="padding:10px; background: #F9F9F9; border: 1px solid #f1f1f1;">
     <table style="width:100%; margin:10px;">
         <tr>
             <td>
-                <b>Ticket</b>
+                <b>Petek</b>
             </td>
             <td>
-                <b>Qty.</b>
+                <b>Mukdary</b>
             </td>
             <td>
-                <b>Price</b>
+                <b>Bahasy</b>
             </td>
             <td>
-                <b>Fee</b>
+                <b>Salgyt</b>
             </td>
             <td>
-                <b>Total</b>
+                <b>Umumy</b>
             </td>
         </tr>
         @foreach($order->orderItems as $order_item)
@@ -48,7 +48,7 @@ Order Email: <b>{{$order->email}}</b><br>
                                     </td>
                                     <td>
                                         @if((int)ceil($order_item->unit_price) == 0)
-                                        FREE
+                                        MUGT
                                         @else
                                        {{money($order_item->unit_price, $order->event->currency)}}
                                         @endif
@@ -64,7 +64,7 @@ Order Email: <b>{{$order->email}}</b><br>
                                     </td>
                                     <td>
                                         @if((int)ceil($order_item->unit_price) == 0)
-                                        FREE
+                                            MUGT
                                         @else
                                         {{money(($order_item->unit_price + $order_item->unit_booking_fee) * ($order_item->quantity), $order->event->currency)}}
                                         @endif
@@ -80,7 +80,7 @@ Order Email: <b>{{$order->email}}</b><br>
             <td>
             </td>
             <td>
-                <b>Sub Total</b>
+                <b>Orta umumy</b>
             </td>
             <td colspan="2">
                 {{$orderService->getOrderTotalWithBookingFee(true)}}
@@ -110,7 +110,7 @@ Order Email: <b>{{$order->email}}</b><br>
             <td>
             </td>
             <td>
-                <b>Total</b>
+                <b>Umumy</b>
             </td>
             <td colspan="2">
                 {{$orderService->getGrandTotal(true)}}
@@ -121,5 +121,5 @@ Order Email: <b>{{$order->email}}</b><br>
     <br><br>
 </div>
 <br><br>
-Thank you
+Sag boluň!
 @stop

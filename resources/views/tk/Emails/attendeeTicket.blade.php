@@ -1,10 +1,10 @@
-Hi {{{$attendee->first_name}}},<br><br>
+Salam! {{{$attendee->first_name}}},<br><br>
 
-We've attached your tickets to this email.<br><br>
+Biz siziň petekleriňizi şu poçta birikdirdik.<br><br>
 
-You can view your order info and download your tickets at {{route('showOrderDetails', ['order_reference' => $attendee->order->order_reference])}} anytime.<br><br>
+Siz öz sargydyňyz barada maglumatlary ýa-da bilediňizi şu link {{route('showOrderDetails', ['order_reference' => $attendee->order->order_reference])}} boýunça her wagt alyp bilersiziňiz.<br><br>
 
-Your order reference is <b>{{$attendee->order->order_reference}}</b>.<br>
+Siziň sargydyňyzyň belgisi <b>{{$attendee->order->order_reference}}</b>.<br>
 
-Thank you<br>
+Sag boluň!<br>
 

@@ -2,14 +2,15 @@
 
 @section('message_content')
 
-<p>Hi there,</p>
-<p>You have received a message from <b>{{ (isset($sender_name) ? $sender_name : $event->organiser->name) }}</b> in relation to the event <b>{{ $event->title }}</b>.</p>
+<p>Salam!</p>
+<p>Siz <b>{{ (isset($sender_name) ? $sender_name : $event->organiser->name) }}</b> şu poçtany <b>{{ $event->title }}</b> çäre bilen baglanşykly hatyny aldyňyz.</p>
 <p style="padding: 10px; margin:10px; border: 1px solid #f3f3f3;">
     {{nl2br($message_content)}}
 </p>
 
 <p>
-    You can contact <b>{{ (isset($sender_name) ? $sender_name : $event->organiser->name) }}</b> directly at <a href='mailto:{{ (isset($sender_email) ? $sender_email : $event->organiser->email) }}'>{{ (isset($sender_email) ? $sender_email : $event->organiser->email) }}</a>, or by replying to this email.
+    Siz <b>{{ (isset($sender_name) ? $sender_name : $event->organiser->name) }}</b> bilen
+    gönümel şu linkde <a href='mailto:{{ (isset($sender_email) ? $sender_email : $event->organiser->email) }}'>{{ (isset($sender_email) ? $sender_email : $event->organiser->email) }}</a>, ýa-da şu poçta jogap berip habarlaşyp bilersiňiz.
 </p>
 @stop
 
