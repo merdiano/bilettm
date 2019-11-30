@@ -56,13 +56,26 @@
     <section id="location" class="container p0" style="margin-bottom: 50px">
         <div class="row">
             <div class="col-md-12">
-                <div class="google-maps content">
-                    <iframe frameborder="0" style="border:0; width: 100%; height: 200px"
-                            src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{$event->map_address}}&amp;aq=0&amp;oq={{$event->map_address}}&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq={{$event->map_address}}&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed">
 
-                    </iframe>
+                <div class="google-maps content" id="map" style="height: 250px">
+
                 </div>
             </div>
         </div>
     </section>
+@endsection
+
+@section('after_scripts')
+<script>
+    function initMap() {
+        var uluru = {lat: {{$event->venue->address['latlng']['lat']}}, lng: {{$event->venue->address['latlng']['lng']}}};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: uluru,
+            zoom: 15
+        });
+        var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_places.key')}}&callback=initMap"
+        async defer></script>
 @endsection

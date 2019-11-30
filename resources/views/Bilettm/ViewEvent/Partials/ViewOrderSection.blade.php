@@ -167,7 +167,7 @@
                             <td>
                             </td>
                             <td>
-                                <b>Total</b>
+                                <b>@lang("Public_ViewEvent.total")</b>
                             </td>
                             <td colspan="2">
                                 {{ $orderService->getGrandTotal(true) }}
