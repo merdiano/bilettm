@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 @endforeach
-                {!!Form::submit('{{__("ClientSide.buy_ticket")', ['class' => 'btn btn-lg btn-danger'])!!}
+                {!!Form::submit(trans('ClientSide.buy_ticket'), ['class' => 'btn btn-lg btn-danger'])!!}
                 {!! Form::close() !!}
             </div>
         </div>
