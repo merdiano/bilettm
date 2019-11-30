@@ -67,12 +67,13 @@
 
 @section('after_scripts')
 <script>
-    var map;
     function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: {{$event->venue->address['latlng']['lat']}}, lng: {{$event->venue->address['latlng']['lng']}}},
+        var uluru = {lat: {{$event->venue->address['latlng']['lat']}}, lng: {{$event->venue->address['latlng']['lng']}}};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: uluru,
             zoom: 15
         });
+        var marker = new google.maps.Marker({position: uluru, map: map});
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_places.key')}}&callback=initMap"
