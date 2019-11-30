@@ -71,7 +71,7 @@
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: {{$event->venue->address['latlng']['lat']}}, lng: {{$event->venue->address['latlng']['lng']}}},
-            zoom: 10
+            zoom: 15
         });
     }
 </script>
