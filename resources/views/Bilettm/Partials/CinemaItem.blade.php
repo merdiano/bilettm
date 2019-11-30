@@ -25,9 +25,7 @@
                 <div class="buy-btn-wrap">
                     <a href="{{$event->event_url}}" class="buy-btn">{{__("ClientSide.buy_ticket")}}</a>
                 </div>
-                @if(!empty($event->starting_ticket))
-                <span class="cost">{{__("ClientSide.prices_from")}}: {{$event->starting_ticket->first()->price ?? 'n/a'}} TMT</span>
-                @endif
+
             </div>
         </div>
     </div>
