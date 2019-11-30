@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <div class="google-maps content">
+                <div class="google-maps content" id="map">
 
                 </div>
             </div>
@@ -69,7 +69,7 @@
 <script>
     var map;
     function initMap() {
-        map = new google.maps.Map(document.getElementById('google-maps'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: {{$event->venue->address['latlng']['lat']}}, lng: {{$event->venue->address['latlng']['lng']}}},
             zoom: 8
         });
