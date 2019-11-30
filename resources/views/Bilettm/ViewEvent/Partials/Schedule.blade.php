@@ -50,9 +50,9 @@
 @push('after_scripts')
     <script>
 
-        // $(document).ready(function(){
-        //     $(".nav-pills.details-page .tablinks:first-child").click();
-        // });
+        $(document).ready(function(){
+            $(".nav-pills.details-page .tablinks:first-child").click();
+        });
 
         function openContent(evt, cityName) {
             var i, tabcontent, tablinks;
