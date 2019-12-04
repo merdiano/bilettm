@@ -118,16 +118,16 @@ class PublicController extends Controller
     public function postAddEvent(AddEventRequest $request){
 
         $addEvent = EventRequest::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'phone' => $request->get('phone'),
-            'detail' => $request->get('detail')
+            'name' => sanitise($request->get('name')),
+            'email' => sanitise($request->get('email')),
+            'phone' => sanitise($request->get('phone')),
+            'detail' => sanitise($request->get('detail'))
         ]);
         return view('Bilettm.Public.AddEventResult',compact('addEvent'));
     }
 
     public function subscribe(SubscribeRequest $request){
-        $email = $request->get('email');
+        $email = sanitise($request->get('email'));
         //todo validate email
         $subscribe = Subscriber::updateOrCreate(['email'=>$email,'active'=>1]);
 
@@ -139,12 +139,5 @@ class PublicController extends Controller
             'status'   => 'success',
             'message' => 'Subscription successfully',
         ]);
-    }
-
-    //locale
-    public function setLocale($locale){
-        App::setLocale($locale);
-
-        return redirect()->back();
     }
 }
