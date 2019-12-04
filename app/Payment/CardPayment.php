@@ -37,6 +37,19 @@ class CardPayment{
         return $response;
     }
 
+    public function registerCard($cardDetails){
+        $response = new CardRegistrationResponce;
+
+        try{
+            $request = $this->client->post('processform.do',['form_params' =>$cardDetails]);
+            $response->setResponseData($request->getBody());
+        }catch (\Exception $ex){
+            Log::error($ex);
+            $error = 'Sorry, there was an error processing your payment. Please try again.';
+            $response->setExceptionMessage($error);
+        }
+    }
+
     public function getPaymentStatus($orderId){
         $params['form_params'] = config('payment.card.params');
         $params['form_params']['orderId'] = $orderId;
