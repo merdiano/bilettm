@@ -17,7 +17,7 @@
             data-description="">
             <!-- Parallax Image -->
             <div class="divimage dzsparallaxer--target w-100"
-                 style="position:absolute; top: 0; background-position: center center; background-size: cover; background-image: url({{asset($slider->image)}}); transform: unset !important;"></div>
+                 style="position:absolute; top: 0; background-position: center center; background-size: cover; bottom: -100px; background-image: url({{asset($slider->image)}}); transform: unset !important;"></div>
             <!-- End Parallax Image -->
             <a href="" class="d-block container g-py-200 h-100"></a>
         </li>
