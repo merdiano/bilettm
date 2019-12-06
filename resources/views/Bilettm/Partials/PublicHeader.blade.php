@@ -1,12 +1,12 @@
 <header id="js-header" class="u-header u-header--static u-shadow-v19">
 <!-- Top Bar -->
-<div class="top-of-header">
-    <div class="container-fluid">
-        <div class="row">
-            <img src="{{asset('assets/images/advs/top_adv.png')}}" class="w-100">
-        </div>
-    </div>
-</div>
+{{--<div class="top-of-header">--}}
+{{--    <div class="container-fluid">--}}
+{{--        <div class="row">--}}
+{{--            <img src="{{asset('assets/images/advs/top_adv.png')}}" class="w-100">--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 <!-- End Top Bar -->
 
 <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10">
