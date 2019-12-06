@@ -1,7 +1,7 @@
 <section class="main-top-slider fadeOut owl-carousel owl-theme" id="main-top-slider">
     @foreach($sliders as $slider)
     <div class="item">
-        <li style="height: 600px" class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall"
+        <li style="padding-top: 31.25%" class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall"
             data-index="rs-2800"
             data-transition="slidingoverlayhorizontal"
             data-slotamount="default"
