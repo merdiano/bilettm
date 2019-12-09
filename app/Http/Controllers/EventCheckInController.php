@@ -149,7 +149,9 @@ class EventCheckInController extends MyBaseController
                 'attendees.reference_index',
                 'attendees.arrival_time',
                 'attendees.has_arrived',
+                'attendees.seat_no',
                 'tickets.title as ticket',
+                'tickets.ticket_date as date'
             ])->first();
 
         if (is_null($attendee)) {

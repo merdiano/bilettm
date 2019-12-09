@@ -94,7 +94,7 @@
                         <br>
                             @lang("Order.reference"): <b>@{{ attendee.order_reference + '-' + attendee.reference_index }}</b>
                         <br>
-                            @lang("Order.ticket"): <b>@{{ attendee.ticket.ticket_date }} @{{attendee.seat_no}}</b>
+                            @lang("Order.ticket"): <b>@{{ attendee.date }} @{{attendee.seat_no}}</b>
                         <a href="" class="ci btn btn-successfulQrRead">
                             <i class="ico-checkmark"></i>
                         </a>
