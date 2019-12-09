@@ -75,7 +75,9 @@ class EventCheckInController extends MyBaseController
                 'attendees.arrival_time',
                 'attendees.reference_index',
                 'attendees.has_arrived',
+                'attendees.seat_no',
                 'tickets.title as ticket',
+                'tickets.ticket_date as date',
                 'orders.order_reference',
                 'orders.is_payment_received'
             ])
