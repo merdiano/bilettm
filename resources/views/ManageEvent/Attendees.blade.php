@@ -31,11 +31,11 @@
         <div class="btn-group btn-group-responsive">
             <button data-modal-id="InviteAttendee" href="javascript:void(0);"  data-href="{{route('showInviteAttendee', ['event_id'=>$event->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-user-plus"></i> @lang("ManageEvent.invite_attendee")</button>
         </div>
-        
+
         <div class="btn-group btn-group-responsive">
             <button data-modal-id="ImportAttendees" href="javascript:void(0);"  data-href="{{route('showImportAttendee', ['event_id'=>$event->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-file"></i> @lang("ManageEvent.invite_attendees")</button>
         </div>
-        
+
         <div class="btn-group btn-group-responsive">
             <a class="btn btn-success" href="{{route('showPrintAttendees', ['event_id'=>$event->id])}}" target="_blank" ><i class="ico-print"></i> @lang("ManageEvent.print_attendee_list")</a>
         </div>
@@ -89,6 +89,12 @@
                                {!!Html::sortable_link(trans("ManageEvent.ticket"), $sort_by, 'ticket_id', $sort_order, ['q' => $q , 'page' => $attendees->currentPage()])!!}
                             </th>
                             <th>
+                               {!!Html::sortable_link(trans("ManageEvent.ticket_date"), $sort_by, 'ticket_date', $sort_order, ['q' => $q , 'page' => $attendees->currentPage()])!!}
+                            </th>
+                            <th>
+                               {!!Html::sortable_link(trans("ManageEvent.seat"), $sort_by, 'seat_no', $sort_order, ['q' => $q , 'page' => $attendees->currentPage()])!!}
+                            </th>
+                            <th>
                                {!!Html::sortable_link(trans("Order.order_ref"), $sort_by, 'order_reference', $sort_order, ['q' => $q , 'page' => $attendees->currentPage()])!!}
                             </th>
                             <th></th>
@@ -106,6 +112,10 @@
                             <td>
                                 {{{$attendee->ticket->title}}}
                             </td>
+                            <td>
+                                {{$attendee->ticket->ticket_date}}
+                            </td>
+                            <td>{{$attendee->seat_no}}</td>
                             <td>
                                 <a href="javascript:void(0);" data-modal-id="view-order-{{ $attendee->order->id }}" data-href="{{route('showManageOrder', ['order_id'=>$attendee->order->id])}}" title="View Order #{{$attendee->order->order_reference}}" class="loadModal">
                                     {{$attendee->order->order_reference}}
