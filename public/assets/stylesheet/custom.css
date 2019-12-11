@@ -1976,3 +1976,35 @@ choose_seats_content > div.tab-pane.fade{
   background-color: #d43d34;
   color: #ffffff;
 }
+#kinoteator {
+  margin-top: 50px;
+}
+
+#kinoteator-tab1 .owl-dots, .movie-items-group .owl-dots {
+  margin-top: 30px;
+}
+
+#kinoteator .tab-ozi {
+  margin-top: 30px;
+}
+
+#kinoteator-tab1 .owl-nav{
+  top: -85px;
+}
+
+#konserty .tab-ozi {
+  margin-top: 40px;
+}
+
+#konserty-tab1 .owl-nav {
+  top: -97px;
+}
+
+#konserty-tab1 .owl-dots {
+  margin-top: 30px;
+}
+
+#teator{
+  padding-top: 100px !important;
+  padding-bottom: 150px !important;
+}
