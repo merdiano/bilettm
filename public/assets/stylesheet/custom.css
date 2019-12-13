@@ -220,8 +220,6 @@ article.u-block-hover img {
   width: 100%;
   margin-bottom: 1px; }
 
-#teator {
-  margin-top: 50px; }
   #teator .tab-header h2 {
     font-size: 35px;
     font-weight: bold;
@@ -333,6 +331,32 @@ article.u-block-hover img {
   transition-property: opacity;
   transition-duration: .3s;
   width: 56px;
+  border: none !important; }
+#teator .owl-next{
+  background-color: #FFFFFF;
+  background-image: url(../images/icons/right.png);
+  background-size: 56px !important;
+  transition-property: opacity;
+  transition-duration: .3s;
+  width: 56px;
+  height: 56px;
+  border: none !important; }
+#teator .owl-next span, #teator .owl-prev span{
+  opacity: 0;
+}
+#teator .owl-nav{
+  position: absolute;
+  right: 290px;
+  top: 3px;
+}
+#teator .owl-prev{
+  background-color: #ffffff;
+  background-image: url(../images/icons/left.png);
+  background-size: 56px !important;
+  transition-property: opacity;
+  transition-duration: .3s;
+  width: 56px;
+  height: 56px;
   border: none !important; }
 #kinoteator-tab1 .owl-prev, .movie-items-group .owl-prev {
   background-image: url(../images/icons/left.png);
@@ -709,7 +733,7 @@ img.d2-img {
   padding: 0 !important; }
 
 #teator .tab-ozi {
-  padding: 0 30px 0 20px; }
+  padding: 0 10px 0 20px; }
   #teator .tab-ozi .nav.u-nav-v1-1 {
     padding-left: 0; }
 
@@ -1898,12 +1922,24 @@ input.reserved-seats ~ label svg {
   line-height: 30px;
 }
 
-.overlay-details-bottom-part a.share svg, .overlay-details-bottom-part a.like svg{
+.overlay-details-bottom-part a.share svg{
   width: 20px;
 }
 
-.big-cinema-item-col6 .overlay-details-bottom-part a.share svg, .big-cinema-item-col6 .overlay-details-bottom-part a.like svg{
+.big-cinema-item-col6 .overlay-details-bottom-part a.share svg{
   width: 40px;
+}
+
+.overlay-details-bottom-part a.share svg, .overlay-details-bottom-part a.like i{
+  font-size: 30px;
+  top: 4px;
+  position: relative;
+}
+
+.big-cinema-item-col6 .overlay-details-bottom-part a.share svg, .big-cinema-item-col6 .overlay-details-bottom-part a.like i{
+  font-size: 50px;
+  top: 9px;
+  position: relative;
 }
 
 .big-cinema-item-col6 .overlay-details .overlay-details-bottom-part span.cost{
@@ -1977,7 +2013,7 @@ choose_seats_content > div.tab-pane.fade{
   color: #ffffff;
 }
 #kinoteator {
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 #kinoteator-tab1 .owl-dots, .movie-items-group .owl-dots {
@@ -1985,11 +2021,11 @@ choose_seats_content > div.tab-pane.fade{
 }
 
 #kinoteator .tab-ozi {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 #kinoteator-tab1 .owl-nav{
-  top: -85px;
+  top: -96px;
 }
 
 #konserty .tab-ozi {
@@ -2004,7 +2040,6 @@ choose_seats_content > div.tab-pane.fade{
   margin-top: 30px;
 }
 
-#teator{
-  padding-top: 100px !important;
-  padding-bottom: 150px !important;
+#teator.container{
+  padding: 100px 7.2% !important;
 }
