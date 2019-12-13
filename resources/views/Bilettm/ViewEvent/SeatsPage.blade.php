@@ -16,7 +16,7 @@
                                 <li class="active" role="presentation" style="display: inline-block;">
                                     <a aria-expanded="true" data-toggle="tab" class="@if ($loop->first)active @endif show"
                                        role="tab" id="home_tab_{{$ticket->id}}" href="#home_{{$ticket->id}}" aria-selected="true">
-                                        {{$ticket->title}} - {{$ticket->price}} TMT.</a>
+                                        {{$ticket->title}} - {{$ticket->total_price}} TMT.</a>
                                 </li>
                             @endforeach
                         </ul>

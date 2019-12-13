@@ -1,14 +1,13 @@
-<h2 class="main-title" style="padding-left: 5px">Расписание</h2>
-<div class="main-title-bottom-line" style="margin-left: 5px"></div>
-@if($event->end_date->isPast())
+@if(count($ticket_dates) > 0)
+    <h2 class="main-title" style="padding-left: 5px">Расписание</h2>
+    <div class="main-title-bottom-line" style="margin-left: 5px"></div>
+    @if($event->end_date->isPast())
     <div class="alert alert-boring">
         <h4 class="date-small-title">
             @lang("Public_ViewEvent.event_already", ['started' => trans('Public_ViewEvent.event_already_ended')])
         </h4>
     </div>
-@else
-    @if(count($ticket_dates) > 0)
-
+    @else
         <h4 class="date-small-title">Дата проведения</h4>
         <div class="date-box-wrap">
             <ul class="nav nav-pills details-page">
