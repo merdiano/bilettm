@@ -1,7 +1,7 @@
 <div class="col-3">
     <article class="u-block-hover">
         <div class="g-bg-cover">
-            <img class="d-flex align-items-end" src="{{asset($event->image_url ?? '#')}}" style="border-radius: 5px">
+            <imgg class="d-flex align-items-end" style="display: block; border-radius: 5px; background-image: url({{asset($event->image_url ?? '#')}}); background-size: cover; background-position: center center; padding-top: 125.628140%"></imgg>
         </div>
         <div class="u-block-hover__additional--partially-slide-up h-100 text-center g-z-index-1 mt-auto" style="background-image: url({{asset('assets/images/bg/konserty-item.png')}})">
             <div class="overlay-details smalll">

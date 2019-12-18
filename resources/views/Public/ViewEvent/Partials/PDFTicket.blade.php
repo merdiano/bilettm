@@ -51,11 +51,11 @@
         </style>
 
     </head>
-    <body style="background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; padding-top: 20px">
+    <body style="background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif;">
         <div class="container">
             @foreach($attendees as $attendee)
                 @if(!$attendee->is_cancelled)
-            <div class="row">
+            <div class="row" style="margin: 20px 0">
                 <table border="1" style="width: 700px; margin: auto">
                     <tr>
                         <td rowspan="2" style="width: 25%; padding: 20px; vertical-align: top; position: relative">
@@ -67,7 +67,7 @@
                                     {!! DNS1D::getBarcodeSVG($attendee->private_reference_number, "C39+", 1, 50) !!}
                                 </div>
                             @endif
-                            <span style="position: absolute; display: block; bottom: 20px; width: calc(100% - 40px); background-color: #FF2C00; height: 30px"></span>
+                            <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: calc(100% - 40px); position: absolute; bottom: 20px;" />
                         </td>
                         <td style="width: 45%; padding: 20px; vertical-align: top">
                             <span class="text-muted">Номер билета</span>
@@ -92,60 +92,13 @@
                                 $grand_total += $tax_amt;
                             @endphp
 
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Стоимость билета:</span> <b>{{money($grand_total, $order->event->currency)}} @if ($attendee->ticket->total_booking_fee) (inc. {{money($attendee->ticket->total_booking_fee, $order->event->currency)}}</b></p>
-
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Стоимость билета:</span> <b>{{money($grand_total, $order->event->currency)}} @if ($attendee->ticket->total_booking_fee) (inc. {{money($attendee->ticket->total_booking_fee, $order->event->currency)}}@endif</b>
+                            </p>
                         </td>
                     </tr>
                 </table>
             </div>
 
-                    <div class="ticket">
-
-                        <div class='logo'>
-				<img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" />
-                            @if(isset($images) && count($images) > 0)
-                                @foreach($images as $img)
-                                    <BR><img src="data:image/png;base64, {{$img}}" />
-                                @endforeach
-                            @endif
-                        </div>
-                        <div class="layout_even">
-                        <div class="event_details">
-                                <h4>@lang("Ticket.event")</h4>
-                            {{$event->title}}
-                                <h4>@lang("Ticket.organiser")</h4>
-                            {{$event->organiser->name}}
-                                <h4>@lang("Ticket.venue")</h4>
-                            {{$event->venue_name}}
-                                <h4>@lang("Ticket.start_date_time")</h4>
-                                {{$event->startDateFormatted()}}
-                                <h4>@lang("Ticket.end_date_time")</h4>
-                                {{$event->endDateFormatted()}}
-                        </div>
-
-                        <div class="attendee_details">
-                                <h4>@lang("Ticket.name")</h4>
-                            {{$attendee->first_name.' '.$attendee->last_name}}
-                                <h4>@lang("Ticket.ticket_type")</h4>
-                            {{$attendee->ticket->title}}
-                                <h4>@lang("Ticket.order_ref")</h4>
-                            {{$order->order_reference}}
-                                <h4>@lang("Ticket.attendee_ref")</h4>
-                            {{$attendee->reference}}
-                                <h4>@lang("Ticket.price")</h4>
-								@php
-	                            	// Calculating grand total including tax
-					                $grand_total = $attendee->ticket->total_price;
-					                $tax_amt = ($grand_total * $event->organiser->tax_value) / 100;
-					                $grand_total += $tax_amt;
-	                            @endphp
-	                            {{money($grand_total, $order->event->currency)}} @if ($attendee->ticket->total_booking_fee) (inc. {{money($attendee->ticket->total_booking_fee, $order->event->currency)}} @lang("Public_ViewEvent.inc_fees")) @endif @if ($event->organiser->tax_name) (inc. {{money($tax_amt, $order->event->currency)}} {{$event->organiser->tax_name}})
-	                            <br><br>{{$event->organiser->tax_name}} ID: {{ $event->organiser->tax_id }}
-                                @endif
-                            </div>
-                        </div>
-
-                    </div>
                 @endif
             @endforeach
 
