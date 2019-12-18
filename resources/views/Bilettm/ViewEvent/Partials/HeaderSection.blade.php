@@ -13,25 +13,6 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h1 property="name">{{$event->title}}</h1>
-            <div class="event_venue">
-                <span property="startDate" content="{{ $event->start_date->toIso8601String() }}">
-                    {{ $event->startDateFormatted() }}
-                </span>
-                -
-                <span property="endDate" content="{{ $event->end_date->toIso8601String() }}">
-                     @if($event->start_date->diffInDays($event->end_date) == 0)
-                        {{ $event->end_date->format('H:i') }}
-                    @else
-                        {{ $event->endDateFormatted() }}
-                    @endif
-                </span>
-                @lang("Public_ViewEvent.at")
-                <span property="location" typeof="Place">
-                    <b property="name">{{$event->venue->venue_name}}</b>
-                    <meta property="address" content="{{ urldecode($event->venue_name) }}">
-                </span>
-            </div>
-
         </div>
     </div>
 </section>

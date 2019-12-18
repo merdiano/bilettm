@@ -53,16 +53,25 @@
     </head>
     <body style="background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; padding-top: 20px">
         <div class="container">
+            @foreach($attendees as $attendee)
+                @if(!$attendee->is_cancelled)
             <div class="row">
                 <table border="1" style="width: 700px; margin: auto">
                     <tr>
                         <td rowspan="2" style="width: 25%; padding: 20px; vertical-align: top; position: relative">
-                            <div style="background-color: #9dc1d3; width: 100%; padding-top: 100%"></div>
+                            <div class="barcode">
+                                {!! DNS2D::getBarcodeSVG($attendee->private_reference_number, "QRCODE", 6, 6) !!}
+                            </div>
+                            @if($event->is_1d_barcode_enabled)
+                                <div class="barcode_vertical">
+                                    {!! DNS1D::getBarcodeSVG($attendee->private_reference_number, "C39+", 1, 50) !!}
+                                </div>
+                            @endif
                             <span style="position: absolute; display: block; bottom: 20px; width: calc(100% - 40px); background-color: #FF2C00; height: 30px"></span>
                         </td>
                         <td style="width: 45%; padding: 20px; vertical-align: top">
                             <span class="text-muted">Номер билета</span>
-                            <h2 style="margin-top: 5px; margin-bottom: 0">XNMIG2711-1</h2>
+                            <h2 style="margin-top: 5px; margin-bottom: 0">{{$attendee->reference}}</h2>
                         </td>
                         <td rowspan="2" style="width: 30%; padding: 20px; vertical-align: top">
                             <p><b>Lorem ipsum dolor sit amet.</b> <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci facere hic id minus non omnis porro provident repellat sunt voluptatibus!</span></p>
@@ -70,20 +79,26 @@
                     </tr>
                     <tr>
                         <td style="padding: 20px; vertical-align: top">
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Мероприятие:</span> <b>Веном</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Организатор:</span> <b>"Berkarar" cinema</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Дата и время:</span> <b>25-12-2019, 20-16</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">ФИО:</span> <b>Кирпа Михаил</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Тип билета:</span> <b>Стандартный</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Место:</span> <b>8 ряд, 6 место</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Стоимость билета:</span> <b>60 манат</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Мероприятие:</span> <b>{{$event->title}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Организатор:</span> <b>{{$event->venue->venue_name}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Дата и время:</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y HH:ss')}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">ФИО:</span> <b>{{$attendee->first_name.' '.$attendee->last_name}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Тип билета:</span> <b>{{$attendee->ticket->title}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Место:</span> <b>{{$attendee->seat_no}}</b></p>
+                            @php
+                                // Calculating grand total including tax
+                                $grand_total = $attendee->ticket->total_price;
+                                $tax_amt = ($grand_total * $event->organiser->tax_value) / 100;
+                                $grand_total += $tax_amt;
+                            @endphp
+
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Стоимость билета:</span> <b>{{money($grand_total, $order->event->currency)}} @if ($attendee->ticket->total_booking_fee) (inc. {{money($attendee->ticket->total_booking_fee, $order->event->currency)}}</b></p>
 
                         </td>
                     </tr>
                 </table>
             </div>
-            @foreach($attendees as $attendee)
-                @if(!$attendee->is_cancelled)
+
                     <div class="ticket">
 
                         <div class='logo'>
@@ -122,21 +137,14 @@
 	                            	// Calculating grand total including tax
 					                $grand_total = $attendee->ticket->total_price;
 					                $tax_amt = ($grand_total * $event->organiser->tax_value) / 100;
-					                $grand_total = $tax_amt + $grand_total;
+					                $grand_total += $tax_amt;
 	                            @endphp
 	                            {{money($grand_total, $order->event->currency)}} @if ($attendee->ticket->total_booking_fee) (inc. {{money($attendee->ticket->total_booking_fee, $order->event->currency)}} @lang("Public_ViewEvent.inc_fees")) @endif @if ($event->organiser->tax_name) (inc. {{money($tax_amt, $order->event->currency)}} {{$event->organiser->tax_name}})
 	                            <br><br>{{$event->organiser->tax_name}} ID: {{ $event->organiser->tax_id }}
                                 @endif
                             </div>
                         </div>
-                        <div class="barcode">
-                            {!! DNS2D::getBarcodeSVG($attendee->private_reference_number, "QRCODE", 6, 6) !!}
-                        </div>
-                        @if($event->is_1d_barcode_enabled)
-                        <div class="barcode_vertical">
-                            {!! DNS1D::getBarcodeSVG($attendee->private_reference_number, "C39+", 1, 50) !!}
-                        </div>
-                        @endif
+
                     </div>
                 @endif
             @endforeach
