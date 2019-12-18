@@ -33,7 +33,7 @@ class EventViewController extends Controller
             return view('Public.ViewEvent.EventNotLivePage');
         }
 
-        $now =Carbon::now(config('app.timezone'));
+        $now = Carbon::now(config('app.timezone'));
         $tickets = $event->tickets()->select('id','ticket_date')
             ->where('is_hidden', false)
             ->where('ticket_date','>=',$now)

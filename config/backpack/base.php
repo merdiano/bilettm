@@ -19,13 +19,13 @@ return [
     'logo_mini' => '<b>B</b>tm',
 
     // Developer or company name. Shown in footer.
-    'developer_name' => 'Merdan Muhammedow',
+    'developer_name' => 'Digital TPS',
 
     // Developer website. Link in footer.
-    'developer_link' => 'http://tmchat.ru',
+    'developer_link' => 'http://tpsadvertising.com',
 
     // Show powered by Laravel Backpack in the footer?
-    'show_powered_by' => true,
+    'show_powered_by' => false,
 
     // The AdminLTE skin. Affects menu color and primary/secondary colors used throughout the application.
     'skin' => 'skin-purple',
@@ -57,7 +57,7 @@ return [
     | By default the registration is open only on localhost.
     */
 
-    'registration_open' => env('BACKPACK_REGISTRATION_OPEN', true),
+    'registration_open' => env('BACKPACK_REGISTRATION_OPEN', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -121,7 +121,7 @@ return [
     // Other options:
     // - placehold (generic image with his first letter)
     // - example_method_name (specify the method on the User model that returns the URL)
-    'avatar_type' => 'gravatar',
+    'avatar_type' => 'placehold',
 
     /*
     |--------------------------------------------------------------------------
