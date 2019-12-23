@@ -16,6 +16,9 @@
                             <div class="col-6 single-item-6">
                                 @include('Bilettm.Partials.CinemaItem',['event'=>$event])
                             </div>
+                                <div class="col-6 single-item-6">
+                                    @include('Bilettm.Partials.CinemaItem',['event'=>$event])
+                                </div>
                             @endforeach
                         </div>
                     </div>

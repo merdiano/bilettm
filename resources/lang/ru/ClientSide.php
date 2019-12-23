@@ -92,7 +92,7 @@ return [
     //SeatsPage.blade.php
     'seats' => 'Выбрать места',
     'available' => 'Доступные',
-    'booked' => 'Зарезервировано',
+    'booked' => 'Забронировано',
     'reserved' => 'Зарезервировано',
     'selection' => 'Ваш выбор',
     'selected' => 'Вы выбрали',
