@@ -78,8 +78,8 @@
                                         @else
                                             <meta property="availability" content="http://schema.org/InStock">
                                             <div class="standard-box" style="position: relative; padding: 20px 0">
-                                                <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  Bahasy {{$ticket->total_price}} TMT.</h5>
-                                                <h4 class="text-center my-2 ">{{$ticket->section->description}}</h4>
+                                                <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>Bahasy {{$ticket->total_price}} TMT.</small></h5>
+                                                <h4 class="text-center mt-3 mb-5">{{$ticket->section->description}}</h4>
                                                 <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
                                                     <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">
