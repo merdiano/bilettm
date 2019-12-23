@@ -11,6 +11,7 @@ use Auth;
 use Carbon\Carbon;
 use Cookie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Mail;
 use Validator;
 
@@ -45,7 +46,7 @@ class EventViewController extends Controller
         $ticket_dates = array();
 
         foreach ($tickets as $ticket){
-            $date = $ticket->ticket_date->format('d M');
+            $date = Str::limit($ticket->ticket_date->formatLocalized('%d %B'),6);
             $ticket_dates[$date][] = $ticket;
         }
 
