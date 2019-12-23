@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-12 p-0 it-detail" style="padding-left: 10px !important;">
                                 @if($event->images->count())
-                                    <img style="display: block; background-image: url({{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}); background-position: center center; background-size: cover; padding-top: 30.4223%; width: 24.2161%; border-radius: 0" class="details-image" alt="{{$event->title}}" property="image">
+                                    <imgg style="display: block; background-image: url({{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}); background-position: center center; background-size: cover; padding-top: 30.4223%; width: 24.2161%; border-radius: 0" class="details-image" alt="{{$event->title}}" property="image"></imgg>
 {{--                                    <button style="width: 24.2161%; clear: left; background-color: rgb(212, 61, 52); color: #ffffff; border: none; height: 41.6px; border-radius: 5px; float: left">Купить билет</button>--}}
 
                                 @endif
