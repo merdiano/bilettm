@@ -56,10 +56,16 @@ class SettingsSeeder extends Seeder
                 'field'       => '{"name":"value","label":"Value","type":"text"}',
                 'active'      => 1,
             ],[
-                'key'         => 'ticket_text',
+                'key'         => 'ticket_text_title',
+                'name'        => 'Text title on ticket',
+                'description' => 'Text title that will be printed on tickets',
+                'value'       => 'Uns berin',
+                'field'       => '{"name":"value","label":"Value","type":"text"}',
+                'active'      => 1,
+            ],[ 'key'         => 'ticket_text',
                 'name'        => 'Text on ticket',
                 'description' => 'Text that will be printed on tickets',
-                'value'       => 'twitter.com',
+                'value'       => 'Satyn alynan biletlar yzyny gaytarylanok',
                 'field'       => '{"name":"value","label":"Value","type":"text"}',
                 'active'      => 1,
             ],[

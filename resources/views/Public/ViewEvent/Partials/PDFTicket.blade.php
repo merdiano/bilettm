@@ -74,7 +74,7 @@
                             <h2 style="margin-top: 5px; margin-bottom: 0">{{$attendee->reference}}</h2>
                         </td>
                         <td rowspan="2" style="width: 30%; padding: 20px; vertical-align: top">
-                            <p><b>Lorem ipsum dolor sit amet.</b> <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci facere hic id minus non omnis porro provident repellat sunt voluptatibus!</span></p>
+                            <p><b>{{\Backpack\Settings\app\Models\Setting::get('ticket_text_title')}}</b> <span class="text-muted">{{\Backpack\Settings\app\Models\Setting::get('ticket_text')}}</span></p>
                         </td>
                     </tr>
                     <tr>
