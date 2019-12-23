@@ -1,6 +1,6 @@
 @if(count($ticket_dates) > 0)
-    <h2 class="main-title" style="padding-left: 5px">Расписание</h2>
-    <div class="main-title-bottom-line" style="margin-left: 5px"></div>
+    {{--<h2 class="main-title" style="padding-left: 5px">Расписание</h2>--}}
+    {{--<div class="main-title-bottom-line" style="margin-left: 5px"></div>--}}
     @if($event->end_date->isPast())
     <div class="alert alert-boring">
         <h4 class="date-small-title">
@@ -8,7 +8,7 @@
         </h4>
     </div>
     @else
-        <h4 class="date-small-title">Дата проведения</h4>
+        <h4 class="date-small-title mt-3" style="font-size: 26px;">Дата проведения</h4>
         <div class="date-box-wrap">
             <ul class="nav nav-pills details-page">
 
@@ -19,7 +19,7 @@
 
             </ul>
         </div>
-        <h4 class="time-small-title">Время проведения</h4>
+        <h4 class="time-small-title" style="font-size: 26px;">Время проведения</h4>
         <div class="time-box-wraper col-md-6" style="padding-left: 5px">
 
             <div class="tab-content" id="myTabContent">
@@ -31,12 +31,10 @@
 
                                 @foreach($tickets as $ticket)
                                 <div class="form-group">
-                                    <input type="radio" id="time{{$ticket->id}}" @if ($loop->first)checked @endif name="ticket_date" value="{{$ticket->ticket_date}}">
+                                    <input type="radio" id="time{{$ticket->id}}" @if ($loop->first) @endif name="ticket_date" value="{{$ticket->ticket_date}}">
                                     <label for="time{{$ticket->id}}"><span>{{$ticket->ticket_date->format('H:i')}}</span></label>
                                 </div>
-
                                 @endforeach
-
                         </div>
                     </div>
                 @endforeach
@@ -63,10 +61,13 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            tablinks[0].className += " active";
+
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
         }
+
+        var tablinks = document.getElementsByClassName("tablinks");
+        tablinks[0].className += " active";
 
         $(document).ready(function () {
             $(".time-box-wrap input[type=radio]").css('display', 'none');

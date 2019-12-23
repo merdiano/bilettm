@@ -1,5 +1,5 @@
 <section id='order_form' class="container">
-    <div class="row justify-content-center bg-danger my-3">
+    <div class="row justify-content-center my-3" style="background-color: rgba(211,61,51,1)">
         <h1 class="section_head text-light">
             @lang("Public_ViewEvent.order_details")
         </h1>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="p20 pl0">
-                    <a href="javascript:void(0);" class="btn btn-primary btn-sm" id="mirror_buyer_info">
+                    <a href="javascript:void(0);" class="btn btn-sm" id="mirror_buyer_info" style="background-color: rgba(211,61,51,1); color: #ffffff; padding: 7px 30px; ">
                         @lang("Public_ViewEvent.copy_buyer")
                     </a>
                 </div>
@@ -178,7 +178,7 @@
                 @endif
 
                 {!! Form::hidden('is_embedded', $is_embedded) !!}
-                {!! Form::submit(trans("Public_ViewEvent.checkout_submit"), ['class' => 'btn btn-lg btn-danger card-submit']) !!}
+                {!! Form::submit(trans("Public_ViewEvent.checkout_submit"), ['class' => 'check-order-btn btn btn-lg btn-danger card-submit']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

@@ -1191,7 +1191,7 @@ a:hover {
 .details-image {
   float: left;
   width: 275px;
-  margin: 0 30px 30px 0; }
+  margin: 0 30px 20px 0; }
   @media only screen and (max-width: 1440px) {
     .details-image {
       width: 200px; } }
@@ -1949,6 +1949,7 @@ input.reserved-seats ~ label svg {
 .it-detail p, .it-detail{
   color: #000000;
   font-size: 20px;
+  line-height: 24px;
 }
 
 .nav.nav-pills.details-page .tablinks:hover{
@@ -2042,4 +2043,14 @@ choose_seats_content > div.tab-pane.fade{
 
 #teator.container{
   padding: 100px 7.2% !important;
+}
+
+.seats-map:focus{
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.check-order-btn{
+  background-color: rgba(211,61,51,1) !important;
 }
