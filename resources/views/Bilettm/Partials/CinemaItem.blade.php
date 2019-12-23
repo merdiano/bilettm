@@ -5,7 +5,7 @@
     <div class="u-block-hover__additional--partially-slide-up h-100 text-center g-z-index-1 mt-auto" style="background-image: url({{asset('assets/images/overlay/1.svg')}})">
         <div class="overlay-details">
             <h2 class="title">{{$event->title}}</h2>
-            <h4 class="date">{{__("ClientSide.starting")}} {{Str::limit($event->start_date->formatLocalized('%d %B'), 6 ,'.'}} </h4>
+            <h4 class="date">{{__("ClientSide.starting")}} {{Str::limit($event->start_date->formatLocalized('%d %B'), 6 ,'.')}} </h4>
             @if(isset($size))
             <p class="description">{!! Markdown::parse($event->description) !!}</p>
             @endif
