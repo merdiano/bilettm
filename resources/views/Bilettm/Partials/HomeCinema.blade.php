@@ -11,10 +11,7 @@
             <div class="slider-slider">
                 <div class="row w-100 m-auto">
                     @foreach($cinema->events->slice(0,8) as $event)
-                        <div class="col-6 single-item-6">
-                            @include('Bilettm.Partials.CinemaItem',['event'=>$event])
-                        </div>
-                        <div class="col-6 single-item-6">
+                        <div class="col-4 single-item-6">
                             @include('Bilettm.Partials.CinemaItem',['event'=>$event])
                         </div>
                     @endforeach
