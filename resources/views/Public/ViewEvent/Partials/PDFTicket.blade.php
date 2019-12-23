@@ -93,7 +93,7 @@
                                 $grand_total += $tax_amt;
                             @endphp
 
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Стоимость билета:</span> <b>{{money($grand_total, $order->event->currency)}} @if ($attendee->ticket->total_booking_fee) (inc. {{money($attendee->ticket->total_booking_fee, $order->event->currency)}}@endif</b>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Стоимость билета:</span> <b>{{money($grand_total, $order->event->currency)}} @if ($attendee->ticket->total_booking_fee) (hz. {{money($attendee->ticket->total_booking_fee, $order->event->currency)}}@endif</b>
                             </p>
                         </td>
                     </tr>
