@@ -11,31 +11,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="pills-struct mt-5">
+                        @if($tickets->count()>1)
                         <ul role="tablist" class="nav nav-pills m-auto w-auto justify-content-center" id="choose_seats">
                             @foreach($tickets as $ticket)
                                 <li class="active" role="presentation" style="display: inline-block;">
                                     <a aria-expanded="true" data-toggle="tab" class="@if ($loop->first)active @endif show"
                                        role="tab" id="home_tab_{{$ticket->id}}" href="#home_{{$ticket->id}}" aria-selected="true">
-                                        {{--{{$ticket->title}} - {{$ticket->total_price}} TMT.--}}
-                                        Sector 1
-                                    </a>
-                                </li>
-                                <li class="active" role="presentation" style="display: inline-block;">
-                                    <a aria-expanded="true" data-toggle="tab" class="@if ($loop->first) @endif "
-                                       role="tab" id="home_tab_{{$ticket->id}}" href="#home_{{$ticket->id}}2" aria-selected="true">
-                                        {{--{{$ticket->title}} - {{$ticket->total_price}} TMT.--}}
-                                        Sector 2
-                                    </a>
-                                </li>
-                                <li class="active" role="presentation" style="display: inline-block;">
-                                    <a aria-expanded="true" data-toggle="tab" class="@if ($loop->first) @endif "
-                                       role="tab" id="home_tab_{{$ticket->id}}" href="#home_{{$ticket->id}}3" aria-selected="true">
-                                        {{--{{$ticket->title}} - {{$ticket->total_price}} TMT.--}}
-                                        Sector 3
+                                        {{$ticket->title}} - {{$ticket->total_price}} TMT.
+
                                     </a>
                                 </li>
                             @endforeach
                         </ul>
+                        @endif
                         <div class="d-flex mt-5 mb-4" style="width: fit-content; margin: auto">
                             <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> {{__('ClientSide.available')}}</span>
                             <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> {{__('ClientSide.booked')}}</span>
@@ -61,6 +49,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div style="width: 100%; height: 800px; background-color: #FF2C00"></div>
+                                        <img src="{{asset($event->venue->seats_image)}}">
                                     </div>
                                 </div>
                             </div>
@@ -69,12 +58,6 @@
                             @csrf
                         <div class="tab-content" id="choose_seats_content">
                             @foreach($tickets as $ticket)
-                                <div id="home_{{$ticket->id}}2" class="tab-pane fade" role="tabpanel">
-                                    Sector 2 content
-                                </div>
-                                <div id="home_{{$ticket->id}}3" class="tab-pane fade" role="tabpanel">
-                                    Sector 3 content
-                                </div>
                                 <div id="home_{{$ticket->id}}" class="tab-pane fade active show in " role="tabpanel">
                                     <meta property="priceCurrency"
                                           content="TMT">
@@ -97,7 +80,7 @@
                                             <meta property="availability" content="http://schema.org/InStock">
                                             <div class="standard-box" style="position: relative; padding: 20px 0">
                                                 <h5 style="font-weight: bold; font-size: 24px; margin-bottom: 20px; text-align: center">{{$ticket->section->section_no}} </h5>
-                                                <h4>{{$ticket->section->description}}</h4>
+                                                <h4 class="text-center">{{$ticket->section->description}}</h4>
                                                 <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
                                                     <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">
