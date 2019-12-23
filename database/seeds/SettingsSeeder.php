@@ -56,6 +56,13 @@ class SettingsSeeder extends Seeder
                 'field'       => '{"name":"value","label":"Value","type":"text"}',
                 'active'      => 1,
             ],[
+                'key'         => 'ticket_text',
+                'name'        => 'Text on ticket',
+                'description' => 'Text that will be printed on tickets',
+                'value'       => 'twitter.com',
+                'field'       => '{"name":"value","label":"Value","type":"text"}',
+                'active'      => 1,
+            ],[
                 'key'         => 'cinema_category_id',
                 'name'        => 'Cinema category Id',
                 'description' => 'Home page cinema section category id',

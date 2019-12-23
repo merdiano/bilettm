@@ -80,8 +80,8 @@
                     <tr>
                         <td style="padding: 20px; vertical-align: top">
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">Мероприятие:</span> <b>{{$event->title}}</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Организатор:</span> <b>{{$event->venue->venue_name}}</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Дата и время:</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y HH:ss')}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Площадка:</span> <b>{{$event->venue->venue_name}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Дата и время:</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y h:i')}}</b></p>
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">ФИО:</span> <b>{{$attendee->first_name.' '.$attendee->last_name}}</b></p>
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">Тип билета:</span> <b>{{$attendee->ticket->title}}</b></p>
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">Место:</span> <b>{{$attendee->seat_no}}</b></p>
