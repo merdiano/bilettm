@@ -10,18 +10,14 @@
         <div class="owl-carousel container row" id="kinoteator-tab1" style="padding: 0 !important; margin: 0">
             <div class="slider-slider">
                 <div class="row w-100 m-auto">
-                    <div class="col-6" style="padding: 0">
-                        <div class="row">
-                            @foreach($cinema->events->slice(0,8) as $event)
-                            <div class="col-6 single-item-6">
-                                @include('Bilettm.Partials.CinemaItem',['event'=>$event])
-                            </div>
-                                <div class="col-6 single-item-6">
-                                    @include('Bilettm.Partials.CinemaItem',['event'=>$event])
-                                </div>
-                            @endforeach
+                    @foreach($cinema->events->slice(0,8) as $event)
+                        <div class="col-6 single-item-6">
+                            @include('Bilettm.Partials.CinemaItem',['event'=>$event])
                         </div>
-                    </div>
+                        <div class="col-6 single-item-6">
+                            @include('Bilettm.Partials.CinemaItem',['event'=>$event])
+                        </div>
+                    @endforeach
                 </div>
             </div>
             @if($cinema->count()>7)
