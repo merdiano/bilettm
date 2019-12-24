@@ -35,12 +35,16 @@ class VenueCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->addColumns([
-            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name'],
+            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
+            ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name Ru'],
+            ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name Tk'],
             ['name'=>'active','type'=>'boolean','label'=>'Active']
         ]);
 
         $this->crud->addFields([
-            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name'],
+            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
+            ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name Ru'],
+            ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name Tk'],
             [   // Address
                 'name' => 'address',
                 'label' => 'Address',

@@ -1,3 +1,6 @@
+@php
+    $error_number = 400;
+@endphp
 <html>
 <head>
     <title>

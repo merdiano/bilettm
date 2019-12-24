@@ -1,15 +1,14 @@
-<h2 class="main-title" style="padding-left: 5px">{{__("ClientSide.schedule")}}</h2>
-<div class="main-title-bottom-line" style="margin-left: 5px"></div>
-@if($event->end_date->isPast())
+@if(count($ticket_dates) > 0)
+    <h2 class="main-title" style="padding-left: 5px">Расписание</h2>
+    <div class="main-title-bottom-line" style="margin-left: 5px"></div>
+    @if($event->end_date->isPast())
     <div class="alert alert-boring">
         <h4 class="date-small-title">
             @lang("Public_ViewEvent.event_already", ['started' => trans('Public_ViewEvent.event_already_ended')])
         </h4>
     </div>
-@else
-    @if(count($ticket_dates) > 0)
-
-        <h4 class="date-small-title">{{__('ClientSide.datePlay')}}</h4>
+    @else
+        <h4 class="date-small-title">Дата проведения</h4>
         <div class="date-box-wrap">
             <ul class="nav nav-pills details-page">
 
@@ -20,7 +19,7 @@
 
             </ul>
         </div>
-        <h4 class="time-small-title">{{__("ClientSide.timePlay")}}</h4>
+        <h4 class="time-small-title">Время проведения</h4>
         <div class="time-box-wraper col-md-6" style="padding-left: 5px">
 
             <div class="tab-content" id="myTabContent">
@@ -41,7 +40,7 @@
                         </div>
                     </div>
                 @endforeach
-                {!!Form::submit('{{__("ClientSide.buy_ticket")', ['class' => 'btn btn-lg btn-danger'])!!}
+                {!!Form::submit(trans('ClientSide.buy_ticket'), ['class' => 'btn btn-lg btn-danger'])!!}
                 {!! Form::close() !!}
             </div>
         </div>

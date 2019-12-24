@@ -15,12 +15,7 @@
                 <div id="desc">
                     {!! Markdown::parse($event->description) !!}
                 </div>
-                @if($event->starting_ticket_price)
-                <div class="buy_and_salary">
-                    <span class="cost">{{__("ClientSide.prices_from")}}: {{$event->starting_ticket_price}} TMT</span>
-                    <a class="btn btn-danger buy_button" href="{{$event->event_url}}">{{__("ClientSide.buy_ticket")}}</a>
-                </div>
-                @endif
+
             </div>
         </div>
     </div>
