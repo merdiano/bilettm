@@ -10,9 +10,9 @@ return array (
   // Defined in file C:\\wamp\\www\\attendize\\resources\\views\\Shared\\Layouts\\Master.blade.php
   'create_organiser' => 'Создать органайзер',
   // Defined in file C:\\wamp\\www\\attendize\\resources\\views\\Shared\\Layouts\\Master.blade.php
-  'feedback_bug_report' => 'Feedback / Bug Report',
+  'feedback_bug_report' => 'Отзывы / Сообщить об ошибке',
   // Defined in file C:\\wamp\\www\\attendize\\resources\\views\\Shared\\Layouts\\Master.blade.php
-  'my_profile' => 'Мой профайл',
+  'my_profile' => 'Мой профилъ',
   // Defined in file C:\\wamp\\www\\attendize\\resources\\views\\Shared\\Layouts\\Master.blade.php
   'sign_out' => 'Выход',
 );
