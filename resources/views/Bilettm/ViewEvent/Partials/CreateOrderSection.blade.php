@@ -55,9 +55,9 @@
                                     <div class="card card-info mt-2">
 
                                         <div class="card-header">
-                                            <h3 class="card-title">
+                                            <h4 class="card-title">
                                                 <b>{{$ticket['ticket']['title']}}</b>: @lang("Public_ViewEvent.ticket_holder_n", ["n"=>$seat])
-                                            </h3>
+                                            </h4>
                                         </div>
                                         <div class="card-body px-5">
                                             <div class="row">
