@@ -259,188 +259,188 @@ class EventCheckoutController extends Controller
         exit('Please enable Javascript in your browser.');
     }
 
-    public function postValidateTickets(Request $request, $event_id)
-    {
-        if (!$request->has('seats')) {
-            return response()->json([
-                'status'  => 'error',
-                'message' => 'No seats selected',
-            ]);
-        }
-        /*
-         * Order expires after X min
-         */
-        $order_expires_time = Carbon::now()->addMinutes(config('attendize.checkout_timeout_after'));
-
-        $event = Event::findOrFail($event_id);
-        $ticket_ids = $request->get('tickets');
-
-        /*
-         * Remove any tickets the user has reserved
-         */
-        ReservedTickets::where('session_id', '=', session()->getId())->delete();
-
-        /*
-         * Go though the selected tickets and check if they're available
-         * , tot up the price and reserve them to prevent over selling.
-         */
-
-        $validation_rules = [];
-        $validation_messages = [];
-        $tickets = [];
-        $order_total = 0;
-        $total_ticket_quantity = 0;
-        $booking_fee = 0;
-        $organiser_booking_fee = 0;
-        $quantity_available_validation_rules = [];
-
-        foreach ($ticket_ids as $ticket_id) {
-            $current_ticket_quantity = (int)$request->get('ticket_' . $ticket_id);
-
-            if ($current_ticket_quantity < 1) {
-                continue;
-            }
-
-            $total_ticket_quantity = $total_ticket_quantity + $current_ticket_quantity;
-            $ticket = Ticket::find($ticket_id);
-            $ticket_quantity_remaining = $ticket->quantity_remaining;
-            $max_per_person = min($ticket_quantity_remaining, $ticket->max_per_person);
-
-            $quantity_available_validation_rules['ticket_' . $ticket_id] = [
-                'numeric',
-                'min:' . $ticket->min_per_person,
-                'max:' . $max_per_person
-            ];
-
-            $quantity_available_validation_messages = [
-                'ticket_' . $ticket_id . '.max' => 'The maximum number of tickets you can register is ' . $ticket_quantity_remaining,
-                'ticket_' . $ticket_id . '.min' => 'You must select at least ' . $ticket->min_per_person . ' tickets.',
-            ];
-
-            $validator = Validator::make(['ticket_' . $ticket_id => (int)$request->get('ticket_' . $ticket_id)],
-                $quantity_available_validation_rules, $quantity_available_validation_messages);
-
-            if ($validator->fails()) {
-                return response()->json([
-                    'status'   => 'error',
-                    'messages' => $validator->messages()->toArray(),
-                ]);
-            }
-
-            $order_total = $order_total + ($current_ticket_quantity * $ticket->price);
-            $booking_fee = $booking_fee + ($current_ticket_quantity * $ticket->booking_fee);
-            $organiser_booking_fee = $organiser_booking_fee + ($current_ticket_quantity * $ticket->organiser_booking_fee);
-
-            $tickets[] = [
-                'ticket'                => $ticket,
-                'qty'                   => $current_ticket_quantity,
-                'price'                 => ($current_ticket_quantity * $ticket->price),
-                'booking_fee'           => ($current_ticket_quantity * $ticket->booking_fee),
-                'organiser_booking_fee' => ($current_ticket_quantity * $ticket->organiser_booking_fee),
-                'full_price'            => $ticket->price + $ticket->total_booking_fee,
-            ];
-
-            /*
-             * Reserve the tickets for X amount of minutes
-             */
-            $reservedTickets = new ReservedTickets();
-            $reservedTickets->ticket_id = $ticket_id;
-            $reservedTickets->event_id = $event_id;
-            $reservedTickets->quantity_reserved = $current_ticket_quantity;
-            $reservedTickets->expires = $order_expires_time;
-            $reservedTickets->session_id = session()->getId();
-            $reservedTickets->save();
-
-            for ($i = 0; $i < $current_ticket_quantity; $i++) {
-                /*
-                 * Create our validation rules here
-                 */
-                $validation_rules['ticket_holder_first_name.' . $i . '.' . $ticket_id] = ['required'];
-                $validation_rules['ticket_holder_last_name.' . $i . '.' . $ticket_id] = ['required'];
-                $validation_rules['ticket_holder_email.' . $i . '.' . $ticket_id] = ['required', 'email'];
-
-                $validation_messages['ticket_holder_first_name.' . $i . '.' . $ticket_id . '.required'] = 'Ticket holder ' . ($i + 1) . '\'s first name is required';
-                $validation_messages['ticket_holder_last_name.' . $i . '.' . $ticket_id . '.required'] = 'Ticket holder ' . ($i + 1) . '\'s last name is required';
-                $validation_messages['ticket_holder_email.' . $i . '.' . $ticket_id . '.required'] = 'Ticket holder ' . ($i + 1) . '\'s email is required';
-                $validation_messages['ticket_holder_email.' . $i . '.' . $ticket_id . '.email'] = 'Ticket holder ' . ($i + 1) . '\'s email appears to be invalid';
-
-                /*
-                 * Validation rules for custom questions
-                 */
-                foreach ($ticket->questions as $question) {
-                    if ($question->is_required && $question->is_enabled) {
-                        $validation_rules['ticket_holder_questions.' . $ticket_id . '.' . $i . '.' . $question->id] = ['required'];
-                        $validation_messages['ticket_holder_questions.' . $ticket_id . '.' . $i . '.' . $question->id . '.required'] = "This question is required";
-                    }
-                }
-            }
-        }
-
-        if (empty($tickets)) {
-            return response()->json([
-                'status'  => 'error',
-                'message' => 'No tickets selected.',
-            ]);
-        }
-
-//        if (config('attendize.enable_dummy_payment_gateway') == TRUE) {
-//            $activeAccountPaymentGateway = new AccountPaymentGateway();
-//            $activeAccountPaymentGateway->fill(['payment_gateway_id' => config('attendize.payment_gateway_dummy')]);
-//            $paymentGateway = $activeAccountPaymentGateway;
-//        } else {
-//            $activeAccountPaymentGateway = $event->account->getGateway($event->account->payment_gateway_id);
-//            //if no payment gateway configured and no offline pay, don't go to the next step and show user error
-//            if (empty($activeAccountPaymentGateway) && !$event->enable_offline_payments) {
+//    public function postValidateTickets(Request $request, $event_id)
+//    {
+//        if (!$request->has('seats')) {
+//            return response()->json([
+//                'status'  => 'error',
+//                'message' => 'No seats selected',
+//            ]);
+//        }
+//        /*
+//         * Order expires after X min
+//         */
+//        $order_expires_time = Carbon::now()->addMinutes(config('attendize.checkout_timeout_after'));
+//
+//        $event = Event::findOrFail($event_id);
+//        $ticket_ids = $request->get('tickets');
+//
+//        /*
+//         * Remove any tickets the user has reserved
+//         */
+//        ReservedTickets::where('session_id', '=', session()->getId())->delete();
+//
+//        /*
+//         * Go though the selected tickets and check if they're available
+//         * , tot up the price and reserve them to prevent over selling.
+//         */
+//
+//        $validation_rules = [];
+//        $validation_messages = [];
+//        $tickets = [];
+//        $order_total = 0;
+//        $total_ticket_quantity = 0;
+//        $booking_fee = 0;
+//        $organiser_booking_fee = 0;
+//        $quantity_available_validation_rules = [];
+//
+//        foreach ($ticket_ids as $ticket_id) {
+//            $current_ticket_quantity = (int)$request->get('ticket_' . $ticket_id);
+//
+//            if ($current_ticket_quantity < 1) {
+//                continue;
+//            }
+//
+//            $total_ticket_quantity = $total_ticket_quantity + $current_ticket_quantity;
+//            $ticket = Ticket::find($ticket_id);
+//            $ticket_quantity_remaining = $ticket->quantity_remaining;
+//            $max_per_person = min($ticket_quantity_remaining, $ticket->max_per_person);
+//
+//            $quantity_available_validation_rules['ticket_' . $ticket_id] = [
+//                'numeric',
+//                'min:' . $ticket->min_per_person,
+//                'max:' . $max_per_person
+//            ];
+//
+//            $quantity_available_validation_messages = [
+//                'ticket_' . $ticket_id . '.max' => 'The maximum number of tickets you can register is ' . $ticket_quantity_remaining,
+//                'ticket_' . $ticket_id . '.min' => 'You must select at least ' . $ticket->min_per_person . ' tickets.',
+//            ];
+//
+//            $validator = Validator::make(['ticket_' . $ticket_id => (int)$request->get('ticket_' . $ticket_id)],
+//                $quantity_available_validation_rules, $quantity_available_validation_messages);
+//
+//            if ($validator->fails()) {
 //                return response()->json([
-//                    'status'  => 'error',
-//                    'message' => 'No payment gateway configured',
+//                    'status'   => 'error',
+//                    'messages' => $validator->messages()->toArray(),
 //                ]);
 //            }
-//            $paymentGateway = $activeAccountPaymentGateway ? $activeAccountPaymentGateway->payment_gateway : false;
+//
+//            $order_total = $order_total + ($current_ticket_quantity * $ticket->price);
+//            $booking_fee = $booking_fee + ($current_ticket_quantity * $ticket->booking_fee);
+//            $organiser_booking_fee = $organiser_booking_fee + ($current_ticket_quantity * $ticket->organiser_booking_fee);
+//
+//            $tickets[] = [
+//                'ticket'                => $ticket,
+//                'qty'                   => $current_ticket_quantity,
+//                'price'                 => ($current_ticket_quantity * $ticket->price),
+//                'booking_fee'           => ($current_ticket_quantity * $ticket->booking_fee),
+//                'organiser_booking_fee' => ($current_ticket_quantity * $ticket->organiser_booking_fee),
+//                'full_price'            => $ticket->price + $ticket->total_booking_fee,
+//            ];
+//
+//            /*
+//             * Reserve the tickets for X amount of minutes
+//             */
+//            $reservedTickets = new ReservedTickets();
+//            $reservedTickets->ticket_id = $ticket_id;
+//            $reservedTickets->event_id = $event_id;
+//            $reservedTickets->quantity_reserved = $current_ticket_quantity;
+//            $reservedTickets->expires = $order_expires_time;
+//            $reservedTickets->session_id = session()->getId();
+//            $reservedTickets->save();
+//
+//            for ($i = 0; $i < $current_ticket_quantity; $i++) {
+//                /*
+//                 * Create our validation rules here
+//                 */
+//                $validation_rules['ticket_holder_first_name.' . $i . '.' . $ticket_id] = ['required'];
+//                $validation_rules['ticket_holder_last_name.' . $i . '.' . $ticket_id] = ['required'];
+//                $validation_rules['ticket_holder_email.' . $i . '.' . $ticket_id] = ['required', 'email'];
+//
+//                $validation_messages['ticket_holder_first_name.' . $i . '.' . $ticket_id . '.required'] = 'Ticket holder ' . ($i + 1) . '\'s first name is required';
+//                $validation_messages['ticket_holder_last_name.' . $i . '.' . $ticket_id . '.required'] = 'Ticket holder ' . ($i + 1) . '\'s last name is required';
+//                $validation_messages['ticket_holder_email.' . $i . '.' . $ticket_id . '.required'] = 'Ticket holder ' . ($i + 1) . '\'s email is required';
+//                $validation_messages['ticket_holder_email.' . $i . '.' . $ticket_id . '.email'] = 'Ticket holder ' . ($i + 1) . '\'s email appears to be invalid';
+//
+//                /*
+//                 * Validation rules for custom questions
+//                 */
+//                foreach ($ticket->questions as $question) {
+//                    if ($question->is_required && $question->is_enabled) {
+//                        $validation_rules['ticket_holder_questions.' . $ticket_id . '.' . $i . '.' . $question->id] = ['required'];
+//                        $validation_messages['ticket_holder_questions.' . $ticket_id . '.' . $i . '.' . $question->id . '.required'] = "This question is required";
+//                    }
+//                }
+//            }
 //        }
-
-        /*
-         * The 'ticket_order_{event_id}' session stores everything we need to complete the transaction.
-         */
-        session()->put('ticket_order_' . $event->id, [
-            'validation_rules'        => $validation_rules,
-            'validation_messages'     => $validation_messages,
-            'event_id'                => $event->id,
-            'tickets'                 => $tickets,
-            'total_ticket_quantity'   => $total_ticket_quantity,
-            'order_started'           => time(),
-            'expires'                 => $order_expires_time,
-            'reserved_tickets_id'     => $reservedTickets->id,
-            'order_total'             => $order_total,
-            'booking_fee'             => $booking_fee,
-            'organiser_booking_fee'   => $organiser_booking_fee,
-            'total_booking_fee'       => $booking_fee + $organiser_booking_fee,
-            'order_requires_payment'  => (ceil($order_total) == 0) ? false : true,
-            'account_id'              => $event->account->id,
-            'affiliate_referral'      => Cookie::get('affiliate_' . $event_id),
-//            'account_payment_gateway' => $activeAccountPaymentGateway,
-//            'payment_gateway'         => $paymentGateway
-        ]);
-
-        /*
-         * If we're this far assume everything is OK and redirect them
-         * to the the checkout page.
-         */
-        if ($request->ajax()) {
-            return response()->json([
-                'status'      => 'success',
-                'redirectUrl' => route('showEventCheckout', [
-                        'event_id'    => $event_id,
-                        'is_embedded' => $this->is_embedded,
-                    ]) . '#order_form',
-            ]);
-        }
-
-        /*
-         * todo Maybe display something prettier than this?
-         */
-        exit('Please enable Javascript in your browser.');
-    }
+//
+//        if (empty($tickets)) {
+//            return response()->json([
+//                'status'  => 'error',
+//                'message' => 'No tickets selected.',
+//            ]);
+//        }
+//
+////        if (config('attendize.enable_dummy_payment_gateway') == TRUE) {
+////            $activeAccountPaymentGateway = new AccountPaymentGateway();
+////            $activeAccountPaymentGateway->fill(['payment_gateway_id' => config('attendize.payment_gateway_dummy')]);
+////            $paymentGateway = $activeAccountPaymentGateway;
+////        } else {
+////            $activeAccountPaymentGateway = $event->account->getGateway($event->account->payment_gateway_id);
+////            //if no payment gateway configured and no offline pay, don't go to the next step and show user error
+////            if (empty($activeAccountPaymentGateway) && !$event->enable_offline_payments) {
+////                return response()->json([
+////                    'status'  => 'error',
+////                    'message' => 'No payment gateway configured',
+////                ]);
+////            }
+////            $paymentGateway = $activeAccountPaymentGateway ? $activeAccountPaymentGateway->payment_gateway : false;
+////        }
+//
+//        /*
+//         * The 'ticket_order_{event_id}' session stores everything we need to complete the transaction.
+//         */
+//        session()->put('ticket_order_' . $event->id, [
+//            'validation_rules'        => $validation_rules,
+//            'validation_messages'     => $validation_messages,
+//            'event_id'                => $event->id,
+//            'tickets'                 => $tickets,
+//            'total_ticket_quantity'   => $total_ticket_quantity,
+//            'order_started'           => time(),
+//            'expires'                 => $order_expires_time,
+//            'reserved_tickets_id'     => $reservedTickets->id,
+//            'order_total'             => $order_total,
+//            'booking_fee'             => $booking_fee,
+//            'organiser_booking_fee'   => $organiser_booking_fee,
+//            'total_booking_fee'       => $booking_fee + $organiser_booking_fee,
+//            'order_requires_payment'  => (ceil($order_total) == 0) ? false : true,
+//            'account_id'              => $event->account->id,
+//            'affiliate_referral'      => Cookie::get('affiliate_' . $event_id),
+////            'account_payment_gateway' => $activeAccountPaymentGateway,
+////            'payment_gateway'         => $paymentGateway
+//        ]);
+//
+//        /*
+//         * If we're this far assume everything is OK and redirect them
+//         * to the the checkout page.
+//         */
+//        if ($request->ajax()) {
+//            return response()->json([
+//                'status'      => 'success',
+//                'redirectUrl' => route('showEventCheckout', [
+//                        'event_id'    => $event_id,
+//                        'is_embedded' => $this->is_embedded,
+//                    ]) . '#order_form',
+//            ]);
+//        }
+//
+//        /*
+//         * todo Maybe display something prettier than this?
+//         */
+//        exit('Please enable Javascript in your browser.');
+//    }
 
     /**
      * Show the checkout page
