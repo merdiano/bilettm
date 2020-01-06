@@ -61,7 +61,7 @@
                                     <meta property="priceCurrency"
                                           content="TMT">
                                     <meta property="price"
-                                          content="{{ number_format($ticket->price, 2, '.', '') }}">
+                                          content="{{ number_format($ticket->total_price, 2, '.', '') }}">
                                     {{--<div class="row justify-content-center">--}}
                                         {{--<img style="max-width: 60%;" class="img-responsive" alt="{{$event->venue->venue_name}} - {{$ticket->section->section_no}}"--}}
                                              {{--src="{{asset('user_content/'.$ticket->section->section_image)}}" >--}}
@@ -82,7 +82,7 @@
                                                 <h4 class="text-center mt-3 mb-5">{{$ticket->section->description}}</h4>
                                                 <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
-                                                    <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">
+                                                    <tbody  data-num="{{$ticket->total_price}}" data-max="{{$ticket->max_per_person}}">
                                                     @foreach($ticket->section->seats as $row)
                                                         <tr>
                                                             <td>{{$row['row']}}</td>
