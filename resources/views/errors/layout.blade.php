@@ -2,7 +2,9 @@
 {{-- show error using sidebar layout if looged in AND on an admin page; otherwise use a blank page --}}
 
 @php
-  $title = 'Error '.$error_number ?? 500;
+if(!isset($error_number))
+  $error_number = 500;
+  $title = 'Error '.$error_number;
 @endphp
 
 @section('after_styles')
@@ -45,7 +47,7 @@
   <div class="col-md-12 text-center">
     <div class="error_number m-t-80">
       <small>ERROR</small><br>
-      {{ $error_number ?? 500}}
+      {{ $error_number}}
       <hr>
     </div>
     <div class="error_title">

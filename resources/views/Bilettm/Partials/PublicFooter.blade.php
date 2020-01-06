@@ -23,16 +23,16 @@
                     </a>
                     <ul class="list-inline mb-50 row footer-social-icons pt-4" style="width: 100%">
                         <li class="text-center">
-                            <a href=""><img src="{{asset('assets/images/icons/social/3.svg')}}"></a>
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_facebook')}}"><img src="{{asset('assets/images/icons/social/3.svg')}}"></a>
                         </li>
                         <li class="text-center">
-                            <a href=""><img src="{{asset('assets/images/icons/social/2.svg')}}"></a>
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_pinterest')}}"><img src="{{asset('assets/images/icons/social/2.svg')}}"></a>
                         </li>
                         <li class="text-center">
-                            <a href=""><img src="{{asset('assets/images/icons/social/1.svg')}}"></a>
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_twitter')}}"><img src="{{asset('assets/images/icons/social/1.svg')}}"></a>
                         </li>
                         <li class="text-center">
-                            <a href=""><img src="{{asset('assets/images/icons/social/4.svg')}}"></a>
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_linkedin')}}"><img src="{{asset('assets/images/icons/social/4.svg')}}"></a>
                         </li>
                     </ul>
                 </div>

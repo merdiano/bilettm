@@ -23,7 +23,7 @@ class SettingsSeeder extends Seeder
             ],[
                 'key'         => 'phone',
                 'name'        => 'Phone number',
-                'description' => 'The phone number where custmers should call',
+                'description' => 'The phone number where customers should call',
                 'value'       => '+(993) 12 60-60-60',
                 'field'       => '{"name":"value","label":"Value","type":"text"}',
                 'active'      => 1,
