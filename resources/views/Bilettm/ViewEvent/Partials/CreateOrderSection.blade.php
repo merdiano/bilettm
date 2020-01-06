@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            <div class="event_order_form card p-3">
+            <div class="event_order_form card py-3 px-5">
                 {!! Form::open(['url' => route('postCreateOrder', ['event_id' => $event->id]), 'class' => ($order_requires_payment && @$payment_gateway->is_on_site) ? 'ajax payment-form' : 'ajax', 'data-stripe-pub-key' => isset($account_payment_gateway->config['publishableKey']) ? $account_payment_gateway->config['publishableKey'] : '']) !!}
 
                 {!! Form::hidden('event_id', $event->id) !!}
@@ -52,14 +52,14 @@
                             @foreach($tickets as $ticket)
                                 @foreach($ticket['seats'] as  $seat)
 
-                                    <div class="card card-info">
+                                    <div class="card card-info mt-2">
 
                                         <div class="card-header">
                                             <h3 class="card-title">
                                                 <b>{{$ticket['ticket']['title']}}</b>: @lang("Public_ViewEvent.ticket_holder_n", ["n"=>$seat])
                                             </h3>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body px-5">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
