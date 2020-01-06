@@ -43,7 +43,7 @@ return array (
     'sub_total' => 'Промежуточный итог',
     'ticket' => 'Проездной билет',
     'tickets' => 'Билет (ы)',
-    'total' => 'Общее количество',
+    'total' => 'Общая сумма',
     'transaction_id' => 'ID транзакции',
     'view_order' => 'Посмотреть заказ',
     'view_order_num' => 'Посмотреть заказ #:num',

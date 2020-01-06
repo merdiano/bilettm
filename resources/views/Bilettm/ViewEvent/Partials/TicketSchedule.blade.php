@@ -1,6 +1,6 @@
 <div class="col-12 p-0">
 
-    <h2 class="main-title" style="padding-left: 5px">Расписание</h2>
+    <h2 class="main-title" style="padding-left: 5px">{{__("ClientSide.schedule")}}</h2>
     <div class="main-title-bottom-line" style="margin-left: 5px"></div>
     @if($event->end_date->isPast())
         <div class="alert alert-boring">
@@ -9,7 +9,7 @@
     @else
         @if(count($ticket_dates) > 0)
 
-        <h4 class="date-small-title">Дата проведения</h4>
+        <h4 class="date-small-title">{{__("ClientSide.datePlay")}}</h4>
         <div class="date-box-wrap">
             <ul class="nav nav-pills details-page">
 
@@ -56,9 +56,9 @@
                                                         <span title='{{money($ticket->price, $event->currency)}} @lang("Public_ViewEvent.ticket_price") + {{money($ticket->total_booking_fee, $event->currency)}} @lang("Public_ViewEvent.booking_fees")'>{{money($ticket->total_price, $event->currency)}} </span>
                                                         <span class="tax-amount text-muted text-smaller">{{ ($event->organiser->tax_name && $event->organiser->tax_value) ? '(+'.money(($ticket->total_price*($event->organiser->tax_value)/100), $event->currency).' '.$event->organiser->tax_name.')' : '' }}</span>
                                                         <meta property="priceCurrency"
-                                                              content="tmt">
+                                                              content="TMT">
                                                         <meta property="price"
-                                                              content="{{ number_format($ticket->price, 2, '.', 'tmt') }}">
+                                                              content="{{ number_format($ticket->price, 2, '.', 'TMT') }}">
                                                     @endif
                                                 </div>
                                             </td>

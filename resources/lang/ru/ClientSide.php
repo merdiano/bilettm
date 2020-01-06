@@ -5,7 +5,7 @@ return [
     //cinema.blade.php + concert.blade.php + CinemaItem.blade.php + EventItem.blade.php
     'share' => 'Поделиться',
     'buy_ticket' => 'Купить билет',
-    'views' => 'Виды',
+    'views' => 'Просмотры',
     'prices_from' => 'Цена от',
     'starting' => 'В кино с',
 
@@ -99,4 +99,11 @@ return [
     'seatsTotal' => 'мест. Общая стоимость',
     'yourSeats' => 'Ваши места',
 
+    //CheckoutPage
+    'confirm-seats' => 'Подтвердите ваши места',
+
+    //Schedule.blade.php
+    'schedule' => 'Расписание',
+    'datePlay' => 'Дата проведения',
+    'timePlay' => 'Время проведения',
 ];

@@ -1,5 +1,5 @@
-{{--<h4>Поделитесь:</h4>--}}
-<div class="top-social-icons-wrapper pb-4" style="float: right">
+<h4>{{__("ClientSide.share")}}</h4>
+<div class="top-social-icons-wrapper pb-4">
     @if($event->social_show_facebook)
     <a class="top-social-icons" href="https://www.facebook.com/sharer/sharer.php?u={{$event->event_url}}" style="margin: 0 3px">
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
@@ -23,5 +23,5 @@
         </svg>
     </a>
     @endif
-    
+
 </div>
