@@ -4,16 +4,16 @@
             <span class="massive-icon">
                 <i class="ico ico-checkmark-circle"></i>
             </span>
-            <h1>{{ @trans("Public_ViewEvent.thank_you_for_your_order") }}</h1>
+            <h1>@lang("Public_ViewEvent.thank_you_for_your_order")</h1>
             <h2>
-                {{ @trans("Public_ViewEvent.your") }}
+                @lang("Public_ViewEvent.your")
                 <a class="ticket_download_link"
                    href="{{ route('showOrderTickets', ['order_reference' => $order->order_reference] ).'?download=1' }}">
-                    {{ @trans("Public_ViewEvent.tickets") }}</a> {{ @trans("Public_ViewEvent.confirmation_email") }}
+                    @lang("Public_ViewEvent.tickets") }}</a>  @lang("Public_ViewEvent.confirmation_email")
             </h2>
         </div>
     </div>
-    {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab commodi consequatur dignissimos impedit officia omnis porro quas repellat rerum vitae.--}}
+
     <div class="row">
         <div class="col-md-12">
             <div class="content event_view_order">
