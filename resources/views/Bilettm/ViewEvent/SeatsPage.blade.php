@@ -38,7 +38,7 @@
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog" role="document" style="max-width: 800px">
                                 <div class="modal-content" style="background-color: unset; border: none; ">
                                     <div class="modal-header" style="border-bottom: none">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
@@ -48,7 +48,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <img class="img-responsive" src="{{asset('user_content/'.$event->venue->seats_image)}}" width="800">
+                                        <img class="img-responsive" src="{{asset('user_content/'.$event->venue->seats_image)}}" style="width: 100%">
                                     </div>
                                 </div>
                             </div>
