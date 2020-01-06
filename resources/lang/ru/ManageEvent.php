@@ -56,7 +56,7 @@ return array (
     'no_orders_yet' => 'Пока нет заказов',
     'no_orders_yet_text' => 'Новые заказы будут появляться здесь по мере их создания.',
     'order_contact_will_receive_instructions' => 'Заказчику будет дано указание отправить любой ответ :email',
-    'order_details' => 'Информация для заказа',
+    'order_details' => 'Заполните поля для заказа',
     'order_overview' => 'Обзор заказа',
     'order_ref' => 'Order: #:order_ref',
     'order_refunded' => ':money этого заказа был возвращен.',
