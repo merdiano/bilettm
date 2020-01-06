@@ -52,10 +52,10 @@
                             @foreach($tickets as $ticket)
                                 @foreach($ticket['seats'] as  $seat)
 
-                                    <div class="card card-info mt-2">
+                                    <div class="card card-info my-2">
 
                                         <div class="card-header">
-                                            <h4 class="card-title">
+                                            <h4 class="card-title text-center">
                                                 <b>{{$ticket['ticket']['title']}}</b>: @lang("Public_ViewEvent.ticket_holder_n", ["n"=>$seat])
                                             </h4>
                                         </div>
