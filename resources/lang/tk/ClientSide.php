@@ -98,4 +98,13 @@ return [
     'selected' => 'Siz saýladyňyz',
     'seatsTotal' => 'ýeri. Umumy baha',
     'yourSeats' => 'Siziň ýerleriňiz',
+
+    //CheckoutPage
+    'confirm-seats' => 'Ýerleriňizi tassyklaň',
+
+    //Schedule.blade.php
+    'schedule' => 'Geçirilýän tertibi',
+    'datePlay' => 'Geçirilýän senesi',
+    'timePlay' => 'Geçirilýän wagty',
+
 ];

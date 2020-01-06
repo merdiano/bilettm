@@ -107,7 +107,7 @@
                             <h5 class="text-center">{{__("ClientSide.yourSeats")}}:</h5>
                                 <div class="your-selected-seats" style="text-align: center; margin-bottom: 50px">
                                 </div>
-                            {!!Form::submit('Confirm seats', ['id' => 'confirm-seats'])!!}
+                            {!!Form::submit('{{__("ClientSide.confirm-seats")}}', ['id' => 'confirm-seats'])!!}
                         </div>
                         </form>
                     </div>

@@ -3,7 +3,7 @@
 return array (
   'already_have_account' => 'Уже есть аккаунт? <a class="semibold" href=":url">Войти в систему</a>',
   'after_welcome' => 'Прежде чем продолжить, обновите свой аккаунт, указав свое имя и новый пароль.',
-  'change_password' => 'Измени пароль',
+  'change_password' => 'Изменить пароль',
   'confirm_new_password' => 'Подтвердите новый пароль',
   'dont_have_account_button' => 'У вас нет аккаунта?<a class="semibold" href=":url">зарегистрироваться</a>',
   'email' => 'Email',

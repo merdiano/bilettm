@@ -1,4 +1,4 @@
-<h4>Поделитесь:</h4>
+<h4>{{__("ClientSide.share")}}</h4>
 <div class="top-social-icons-wrapper pb-4">
     @if($event->social_show_facebook)
     <a class="top-social-icons" href="https://www.facebook.com/sharer/sharer.php?u={{$event->event_url}}" style="margin: 0 3px">
