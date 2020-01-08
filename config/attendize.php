@@ -41,7 +41,7 @@ return [
     'ticket_status_on_sale'          => 4,
     'ticket_status_off_sale'         => 5,
 
-    'ticket_booking_fee_fixed'      => 0,
+    'ticket_booking_fee_fixed'      => 1,
     'ticket_booking_fee_percentage' => 0,
 
     /* Order statuses */

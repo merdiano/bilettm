@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('event_id');
             $table->integer('quantity_reserved');
             $table->datetime('expires');
-            $table->string('session_id', 45);
+            $table->string('session_id', 45); //todo unique?
             $table->nullableTimestamps();
         });
 

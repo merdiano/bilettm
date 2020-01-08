@@ -56,7 +56,7 @@
 
                                         <div class="card-header">
                                             <h4 class="card-title text-center">
-                                                <b>{{$ticket['ticket']['title']}}</b>: @lang("Public_ViewEvent.ticket_holder_n", ["n"=>$seat])
+                                                @lang("Public_ViewEvent.ticket_holder_n", ["n"=>$seat]) {{$ticket['ticket']['title']}}
                                             </h4>
                                         </div>
                                         <div class="card-body px-5">
