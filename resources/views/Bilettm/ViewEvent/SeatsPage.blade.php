@@ -57,11 +57,11 @@
                             @csrf
                         <div class="tab-content" id="choose_seats_content">
                             @foreach($tickets as $ticket)
-                                <div id="home_{{$ticket->id}}" class="tab-pane fade active show in " role="tabpanel">
+                                <div id="home_{{$ticket->id}}" class="tab-pane fade  in @if ($loop->first)active show@endif " role="tabpanel">
                                     <meta property="priceCurrency"
                                           content="TMT">
                                     <meta property="price"
-                                          content="{{ number_format($ticket->total_price, 2, '.', '') }}">
+                                          content="{{ number_format($ticket->price, 2, '.', '') }}">
                                     {{--<div class="row justify-content-center">--}}
                                         {{--<img style="max-width: 60%;" class="img-responsive" alt="{{$event->venue->venue_name}} - {{$ticket->section->section_no}}"--}}
                                              {{--src="{{asset('user_content/'.$ticket->section->section_image)}}" >--}}
@@ -78,11 +78,11 @@
                                         @else
                                             <meta property="availability" content="http://schema.org/InStock">
                                             <div class="standard-box" style="position: relative; padding: 20px 0">
-                                                <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>@lang('Public_ViewEvent.price') {{$ticket->total_price}} TMT.</small></h5>
+                                                <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>@lang('Public_ViewEvent.price') {{$ticket->price}} TMT.</small></h5>
                                                 <h4 class="text-center mt-3 mb-5">{{$ticket->section->description}}</h4>
                                                 <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
-                                                    <tbody  data-num="{{$ticket->total_price}}" data-max="{{$ticket->max_per_person}}">
+                                                    <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">
                                                     @foreach($ticket->section->seats as $row)
                                                         <tr>
                                                             <td>{{$row['row']}}</td>
@@ -116,7 +116,6 @@
                             @endforeach
                         </div>
                         <div class="checked-seats" style="padding: 50px 0; text-align: center">
-                            <h5 class="text-center font-weight-bold">{{__("ClientSide.selected")}} <span id="total_seats">0</span> {{__("ClientSide.seatsTotal")}} <span id="total_cost">0</span> man.</h5>
                             <h5 class="text-center">{{__("ClientSide.yourSeats")}}:</h5>
                                 <div class="your-selected-seats" style="text-align: center; margin-bottom: 50px">
                                 </div>
@@ -152,14 +151,6 @@
                 $('.your-selected-seats').find("[aria-label='"+this.id+"']").remove();
             }
 
-            var total_cost = 0;
-            var numberOfChecked = $('input:checkbox:checked').length;
-            $('input:checkbox:checked').each(function(index, elem) {
-                total_cost += parseFloat($(elem).closest('tbody').data('num'));
-
-            });
-            $('#total_seats').html(numberOfChecked);
-            $('#total_cost').html(total_cost.toFixed(2));
         });
 
         $(document).ready(function () {
