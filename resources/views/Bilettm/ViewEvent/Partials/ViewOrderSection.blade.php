@@ -26,30 +26,30 @@
 
                 <div class="order_details well">
                     <div class="row">
-                        <div class="col-sm-4 col-xs-6">
+                        <div class="col-4">
                             <b>@lang("Public_ViewEvent.first_name")</b><br> {{$order->first_name}}
                         </div>
 
-                        <div class="col-sm-4 col-xs-6">
+                        <div class="col-4">
                             <b>@lang("Public_ViewEvent.last_name")</b><br> {{$order->last_name}}
                         </div>
 
-                        <div class="col-sm-4 col-xs-6">
+                        <div class="col-4">
                             <b>@lang("Public_ViewEvent.amount")</b><br> {{$order->event->currency_symbol}}{{number_format($order->total_amount, 2)}}
                             @if($event->organiser->charge_tax)
                                 <small>{{ $orderService->getVatFormattedInBrackets() }}</small>
                             @endif
                         </div>
 
-                        <div class="col-sm-4 col-xs-6">
+                        <div class="col-4">
                             <b>@lang("Public_ViewEvent.reference")</b><br> {{$order->order_reference}}
                         </div>
 
-                        <div class="col-sm-4 col-xs-6">
+                        <div class="col-4">
                             <b>@lang("Public_ViewEvent.date")</b><br> {{$order->created_at->toDateTimeString()}}
                         </div>
 
-                        <div class="col-sm-4 col-xs-6">
+                        <div class="col-4">
                             <b>@lang("Public_ViewEvent.email")</b><br> {{$order->email}}
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                 </h3>
 
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-bordered">
                         <thead>
                         <tr>
                             <th>
@@ -225,6 +225,7 @@
                                 <td>
                                     {{{$attendee->ticket->title}}}
                                 </td>
+                                <td>{{$attendee->seat_no}}</td>
                                 <td>
                                     @if($attendee->is_cancelled)
                                         @lang("Public_ViewEvent.attendee_cancelled")
