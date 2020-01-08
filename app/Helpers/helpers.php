@@ -11,7 +11,7 @@ if (!function_exists('money')) {
     function money($amount, \App\Models\Currency $currency = null)
     {
         if(!$currency){
-            return number_format($amount,2,'.',',').' tmt';
+            return number_format($amount,2,'.',',').' TMT';
         }
         return $currency->symbol_left . number_format($amount, $currency->decimal_place, $currency->decimal_point,
             $currency->thousand_point) . $currency->symbol_right;

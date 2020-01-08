@@ -69,7 +69,7 @@
 
                 @endif
 
-                <h3>
+                <h3 class="mt-5">
                     @lang("Public_ViewEvent.order_items")
                 </h3>
 

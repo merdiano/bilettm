@@ -851,7 +851,6 @@ class EventCheckoutController extends Controller
             'order_reference' => $order->order_reference,
         ]);
 
-
     }
 
     /**
