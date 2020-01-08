@@ -57,7 +57,7 @@
                             @csrf
                         <div class="tab-content" id="choose_seats_content">
                             @foreach($tickets as $ticket)
-                                <div id="home_{{$ticket->id}}" class="tab-pane fade  in @if ($loop->first)active show@endif " role="tabpanel">
+                                <div id="home_{{$ticket->id}}" class="tab-pane fade in @if ($loop->first) active show @endif " role="tabpanel">
                                     <meta property="priceCurrency"
                                           content="TMT">
                                     <meta property="price"
