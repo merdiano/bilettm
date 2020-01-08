@@ -9,7 +9,7 @@
                 @lang("Public_ViewEvent.your")
                 <a class="ticket_download_link"
                    href="{{ route('showOrderTickets', ['order_reference' => $order->order_reference] ).'?download=1' }}">
-                    @lang("Public_ViewEvent.tickets") }}</a>  @lang("Public_ViewEvent.confirmation_email")
+                    @lang("Public_ViewEvent.tickets") </a>  @lang("Public_ViewEvent.confirmation_email")
             </h2>
         </div>
     </div>
