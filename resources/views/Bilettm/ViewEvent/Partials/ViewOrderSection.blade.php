@@ -69,7 +69,7 @@
 
                 @endif
 
-                <h3 class="mt-5">
+                <h3 class="mt-4">
                     @lang("Public_ViewEvent.order_items")
                 </h3>
 
@@ -129,20 +129,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <b>@lang("Public_ViewEvent.sub_total")</b>
-                            </td>
-                            <td colspan="2">
-                                {{ $orderService->getOrderTotalWithBookingFee(true) }}
-                            </td>
-                        </tr>
+
                         @if($event->organiser->charge_tax)
                             <tr>
                                 <td>
