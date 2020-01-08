@@ -17,7 +17,7 @@
                                 <li class="active" role="presentation" style="display: inline-block;">
                                     <a aria-expanded="true" data-toggle="tab" class="@if ($loop->first)active @endif show"
                                        role="tab" id="home_tab_{{$ticket->id}}" href="#home_{{$ticket->id}}" aria-selected="true">
-                                        {{$ticket->title}} - {{$ticket->total_price}} TMT.
+                                        {{$ticket->title}} - {{$ticket->price}} TMT.
 
                                     </a>
                                 </li>
@@ -33,7 +33,7 @@
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary seats-map" data-toggle="modal" data-target="#exampleModal"
                                 style="background-color: #ffffff; color: #d43d34; border: 1px solid #d43d34; display: block; margin: auto; margin-bottom: 20px; padding: 10px 50px">
-                            Seats map
+                            @lang("Public_ViewEvent.seats_map")
                         </button>
 
                         <!-- Modal -->
@@ -78,8 +78,8 @@
                                         @else
                                             <meta property="availability" content="http://schema.org/InStock">
                                             <div class="standard-box" style="position: relative; padding: 20px 0">
-                                                <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>@lang('Public_ViewEvent.price') {{$ticket->price}} TMT.</small></h5>
-                                                <h4 class="text-center mt-3 mb-5">{{$ticket->section->description}}</h4>
+                                                <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>{{$ticket->section->description}}</small></h5>
+
                                                 <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
                                                     <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">

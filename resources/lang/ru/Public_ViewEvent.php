@@ -75,5 +75,6 @@ return [
     'your_information' => 'Ваши данные',
     'your_message' => 'Ваше сообщение',
     'your_name' => 'Ваше имя',
-    'your' => 'Ваш'
+    'your' => 'Ваш',
+    'seats_map' => 'Посмотреть схему зала'
 ];
