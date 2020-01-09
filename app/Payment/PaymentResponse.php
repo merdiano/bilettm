@@ -16,6 +16,7 @@ abstract class PaymentResponse
 
     public function setResponseData($data){
         $this->response_data = json_decode($data, true);
+        dd($this->response_data);
     }
 
     public function setExceptionMessage($message){
