@@ -611,8 +611,6 @@ class EventCheckoutController extends Controller
      */
     public function showEventCheckoutPaymentReturn(Request $request, $event_id)
     {
-
-
         if ($request->get('is_payment_cancelled') == '1') {
             session()->flash('message', trans('Event.payment_cancelled'));
             return response()->redirectToRoute('showEventCheckout', [
@@ -621,19 +619,10 @@ class EventCheckoutController extends Controller
             ]);
         }
 
-//        $ticket_order = session()->get('ticket_order_' . $event_id);
-//        $gateway = Omnipay::create($ticket_order['payment_gateway']->name);
-//
-//        $gateway->initialize($ticket_order['account_payment_gateway']->config + [
-//                'testMode' => config('attendize.enable_test_payments'),
-//            ]);
-//
-//        $transaction = $gateway->completePurchase($ticket_order['transaction_data'][0]);
-//        $gateway = app()->make('App\Payment\CardPayment');
         $transaction_data = session()->get('ticket_order_' . $event_id . '.transaction_data');
-//        dd($transaction_data);
+
         $response = $this->gateway->getPaymentStatus($transaction_data[0]['orderId']);
-        dd($response->getResponseData());
+
         if ($response->isSuccessfull()) {
             session()->push('ticket_order_' . $event_id . '.transaction_id', $response->getPaymentReferenceId());
             return $this->completeOrder($event_id, false);
@@ -644,7 +633,6 @@ class EventCheckoutController extends Controller
                 'is_payment_failed' => 1,
             ]);
         }
-
     }
 
     /**
