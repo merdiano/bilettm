@@ -86,8 +86,8 @@ class PublicController extends Controller
     }
 
     private function sorts_filters(){
-        $data['start'] = \request()->get('start') ;
-        $data['end'] = \request()->get('end');
+        $data['start'] = \request()->get('start') ?? null;
+        $data['end'] = \request()->get('end') ?? null;
         $sort = \request()->get('sort');
 
         if($sort == 'new')
