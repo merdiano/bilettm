@@ -485,8 +485,8 @@ ICSTemplate;
         if(isset($start_date) && isset($end_date))
             $query->where('start_date','<',$end_date)
                 ->where('end_date','>',$start_date);
-        else
-            $query->where('end_date','>',Carbon::now(config('app.timezone')));
+//        else
+//            $query->where('end_date','>',Carbon::now(config('app.timezone')));
 
         return $query->where('is_live',1)
             ->withCount(['images as image_url' => function($q){
