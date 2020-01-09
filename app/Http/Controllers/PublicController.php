@@ -59,10 +59,10 @@ class PublicController extends Controller
         $data['category'] = $category;
         $data['sub_cats'] = $category->children()
             ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit)
-//            ->whereHas('cat_events',
-//                function ($query) use($data){
-//                    $query->onLive($data['start'], $data['end']);
-//                })
+            ->whereHas('cat_events',
+                function ($query) use($data){
+                    $query->onLive($data['start'], $data['end']);
+                })
             ->get();
 
 
@@ -86,8 +86,8 @@ class PublicController extends Controller
     }
 
     private function sorts_filters(){
-        $data['start'] = \request()->get('start') ?? Carbon::today();
-        $data['end'] = \request()->get('end')?? Carbon::today()->endOfCentury();
+        $data['start'] = \request()->get('start') ;
+        $data['end'] = \request()->get('end');
         $sort = \request()->get('sort');
 
         if($sort == 'new')
