@@ -483,8 +483,11 @@ ICSTemplate;
     public function scopeOnLive($query, $start_date = null, $end_date = null){
         //if date is null carbon creates now date instance
         if(isset($start_date) && isset($end_date))
+        {
+            dd($query);
             $query->where('start_date','<',$end_date)
                 ->where('end_date','>',$start_date);
+        }
 //        else
 //            $query->where('end_date','>',Carbon::now(config('app.timezone')));
 
