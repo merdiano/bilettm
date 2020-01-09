@@ -14,6 +14,8 @@ class PaymentStatusResponse extends PaymentResponse
 
     public function isSuccessfull()
     {
+
+
         if(!$this->exception_message)
             return $this->response_data['ErrorCode'] == 0
                 && $this->response_data['OrderStatus'] == 2;
@@ -24,5 +26,9 @@ class PaymentStatusResponse extends PaymentResponse
     public function getPaymentReferenceId()
     {
         return $this->response_data['OrderNumber'];
+    }
+
+    public function getResponseData(){
+        return $this->response_data;
     }
 }

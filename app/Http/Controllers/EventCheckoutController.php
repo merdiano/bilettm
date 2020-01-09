@@ -633,7 +633,7 @@ class EventCheckoutController extends Controller
         $transaction_data = session()->get('ticket_order_' . $event_id . '.transaction_data');
 //        dd($transaction_data);
         $response = $this->gateway->getPaymentStatus($transaction_data[0]['orderId']);
-
+        dd($response->getResponseData());
         if ($response->isSuccessfull()) {
             session()->push('ticket_order_' . $event_id . '.transaction_id', $response->getPaymentReferenceId());
             return $this->completeOrder($event_id, false);
