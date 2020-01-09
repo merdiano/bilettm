@@ -24,7 +24,7 @@ class PublicController extends Controller
 {
     public function showHomePage(){
         $cinema = Category::where('view_type','cinema')
-            ->categoryLiveEvents(21)
+            ->categoryLiveEvents(16)
             ->first();
 
         $theatre = Category::where('view_type','theatre')
@@ -59,10 +59,11 @@ class PublicController extends Controller
         $data['category'] = $category;
         $data['sub_cats'] = $category->children()
             ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit)
-            ->whereHas('cat_events',
-                function ($query) use($data){
-                    $query->onLive($data['start'], $data['end']);
-                })->get();
+//            ->whereHas('cat_events',
+//                function ($query) use($data){
+//                    $query->onLive($data['start'], $data['end']);
+//                })
+            ->get();
 
 
         return view("Bilettm.Public.EventsPage")->with($data);
