@@ -171,7 +171,7 @@ Route::group(
             'uses' => 'EventViewController@showEventHomePreview',
         ]);
 
-        Route::post('{event_id}/checkout/date',[
+        Route::get('{event_id}/checkout/date',[
             'as'   => 'postValidateDate',
             'uses' => 'EventCheckoutController@postValidateDate'
         ]);

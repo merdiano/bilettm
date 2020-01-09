@@ -3,7 +3,7 @@
 
 @php
 if(!isset($error_number))
-  $error_number = 500;
+  $error_number = 419;
   $title = 'Error '.$error_number;
 @endphp
 

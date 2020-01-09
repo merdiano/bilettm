@@ -11,7 +11,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="pills-struct mt-5">
-                        @if($tickets->count()>1)
                         <ul role="tablist" class="nav nav-pills m-auto w-auto justify-content-center" id="choose_seats">
                             @foreach($tickets as $ticket)
                                 <li class="active" role="presentation" style="display: inline-block;">
@@ -23,7 +22,6 @@
                                 </li>
                             @endforeach
                         </ul>
-                        @endif
                         <div class="d-flex mt-5 mb-4" style="width: fit-content; margin: auto">
                             <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> {{__('ClientSide.available')}}</span>
                             <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> {{__('ClientSide.booked')}}</span>

@@ -23,8 +23,7 @@
         <div class="time-box-wraper col-md-6" style="padding-left: 5px">
 
             <div class="tab-content" id="myTabContent">
-                {!! Form::open(['url' => route('postValidateDate', ['event_id' => $event->id])]) !!}
-                @csrf
+                {!! Form::open(['url' => route('postValidateDate', ['event_id' => $event->id]),'method'=>'GET']) !!}
                 @foreach($ticket_dates as $date =>$tickets)
                     <div class="tab-pane fade show tabcontent @if ($loop->first)active @endif" id="{{$date}}" role="tabpanel" aria-labelledby="{{$date}}-tab">
                         <div class="time-box-wrap">
