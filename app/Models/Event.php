@@ -484,7 +484,6 @@ ICSTemplate;
         //if date is null carbon creates now date instance
         if(!empty($start_date) && !empty($end_date))
         {
-            dd($query);
             $query->where('start_date','<',$end_date)
                 ->where('end_date','>',$start_date);
         }
