@@ -58,7 +58,7 @@
             <div class="row" style="margin: 20px 0">
                 <table border="1" style="width: 800px; margin: auto">
                     <tr>
-                        <td rowspan="2" style="width: 25%; padding: 20px; vertical-align: top; position: relative">
+                        <td rowspan="2" style="width: 20%; padding: 20px; vertical-align: top; position: relative">
                             <div class="barcode">
                                 {!! DNS2D::getBarcodeSVG($attendee->private_reference_number, "QRCODE", 7, 7) !!}
                             </div>
@@ -69,11 +69,11 @@
                             @endif
                             <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: 78%; position: absolute; bottom: 20px;" />
                         </td>
-                        <td style="width: 45%; padding: 20px; vertical-align: top">
+                        <td style="width: 55%; padding: 20px; vertical-align: top">
                             <span class="text-muted">Номер билета</span>
                             <h2 style="margin-top: 5px; margin-bottom: 0">{{$attendee->reference}}</h2>
                         </td>
-                        <td rowspan="2" style="width: 30%; padding: 20px; vertical-align: top">
+                        <td rowspan="2" style="width: 25%; padding: 20px; vertical-align: top">
                             <p><b>{{\Backpack\Settings\app\Models\Setting::get('ticket_text_title')}}</b></p>
                             <p> <span class="text-muted">{{\Backpack\Settings\app\Models\Setting::get('ticket_text')}}</span></p>
                         </td>
