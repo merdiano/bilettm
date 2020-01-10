@@ -67,7 +67,7 @@
                                     {!! DNS1D::getBarcodeSVG($attendee->private_reference_number, "C39+", 1, 50) !!}
                                 </div>
                             @endif
-                            <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: calc(100% - 40px); position: absolute; bottom: 20px;" />
+                            <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: 78%; position: absolute; bottom: 20px;" />
                         </td>
                         <td style="width: 45%; padding: 20px; vertical-align: top">
                             <span class="text-muted">Номер билета</span>
