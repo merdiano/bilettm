@@ -60,7 +60,7 @@
                     <tr>
                         <td rowspan="2" style="width: 25%; padding: 20px; vertical-align: top; position: relative">
                             <div class="barcode">
-                                {!! DNS2D::getBarcodeSVG($attendee->private_reference_number, "QRCODE", 8, 8) !!}
+                                {!! DNS2D::getBarcodeSVG($attendee->private_reference_number, "QRCODE", 7, 7) !!}
                             </div>
                             @if($event->is_1d_barcode_enabled)
                                 <div class="barcode_vertical">
