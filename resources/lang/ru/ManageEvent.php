@@ -4,7 +4,7 @@ return array (
     'all_attendees' => 'Все участники',
     'all_attendees_cancelled' => 'Все участники в этом порядке были отменены.',
     'all_order_refunded' => 'Все :money этого заказа были возвращены.',
-    'amount' => 'Количество',
+    'amount' => 'Сумма',
     'attendee_cancelled' => 'отменен',
     'attendee_cancelled_help' => 'Этот участник был отменен',
     'attendees_file_requirements' => 'Файл должен быть .csv, а первая строка должна содержать first_name, last_name, email',
