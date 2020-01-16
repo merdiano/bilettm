@@ -14,9 +14,9 @@ class AddHolderInfoToReservedTicketsTable extends Migration
     public function up()
     {
         Schema::table('reserved_tickets', function (Blueprint $table) {
-            $table->string('holder_name')->nullable();
-            $table->string('holder_surname')->nullable();
-            $table->string('holder_email')->nullable();
+//            $table->string('holder_name')->nullable();
+//            $table->string('holder_surname')->nullable();
+//            $table->string('holder_email')->nullable();
         });
     }
 
@@ -28,9 +28,9 @@ class AddHolderInfoToReservedTicketsTable extends Migration
     public function down()
     {
         Schema::table('reserved_tickets', function (Blueprint $table) {
-            $table->dropColumn('holder_name');
-            $table->dropColumn('holder_surname');
-            $table->dropColumn('holder_email');
+//            $table->dropColumn('holder_name');
+//            $table->dropColumn('holder_surname');
+//            $table->dropColumn('holder_email');
         });
     }
 }
