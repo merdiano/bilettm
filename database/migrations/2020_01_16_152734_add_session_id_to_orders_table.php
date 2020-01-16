@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddReferenceIdToOrdersTable extends Migration
+class AddSessionIdToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddReferenceIdToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('payment_reference_id')->nullable();
-            $table->string('phone_id')->nullable();
+//            $table->string('payment_reference_id')->nullable();
+            $table->string('session_id',45)->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ class AddReferenceIdToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('payment_reference_id');
-            $table->dropColumn('phone_id');
+//            $table->dropColumn('payment_reference_id');
+            $table->dropColumn('session_id');
         });
     }
 }
