@@ -262,7 +262,7 @@ class CreateUsersTable extends Migration
         Schema::create('tickets', function ($t) {
 
             $t->increments('id');
-                        $t->nullableTimestamps();
+            $t->nullableTimestamps();
             $t->softDeletes();
 
             $t->unsignedInteger('edited_by_user_id')->nullable();
