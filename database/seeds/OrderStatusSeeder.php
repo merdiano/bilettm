@@ -28,6 +28,10 @@ class OrderStatusSeeder extends Seeder
                 'id' => 4,
                 'name' => 'Cancelled',
             ],
+            [
+                'id' => 5,
+                'name' => 'Registered',
+            ],
         ];
         Schema::disableForeignKeyConstraints();
         DB::table('order_statuses')->delete();
