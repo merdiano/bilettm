@@ -541,8 +541,9 @@ class EventCheckoutController extends Controller
                 'amount'      => $orderService->getGrandTotal()*100,//multiply by 100 to obtain tenge
                 'currency' => 934,
                 'sessionTimeoutSecs' => $secondsToExpire,
-                'description' => 'Order for customer: ' . $request->get('order_email'),
+                'description' => 'Bilettm sargyt: ' . $request->get('order_email'),
                 'orderNumber'     => uniqid(),
+
                 'failUrl'     => route('showEventCheckoutPaymentReturn', [
                     'event_id'             => $event_id,
                     'is_payment_cancelled' => 1
