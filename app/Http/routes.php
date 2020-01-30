@@ -196,9 +196,14 @@ Route::group(
             'uses' => 'EventCheckoutController@showEventCheckout',
         ]);
 
-        Route::get('{event_id}/checkout/success', [
+        Route::get('{event_id}/checkout/finish', [
             'as'   => 'showEventCheckoutPaymentReturn',
             'uses' => 'EventCheckoutController@showEventCheckoutPaymentReturn',
+        ]);
+
+        Route::get('{event_id}/checkout/finish_mobile', [
+            'as'   => 'mobileCheckoutPaymentReturn',
+            'uses' => 'EventCheckoutController@mobileCheckoutPaymentReturn',
         ]);
 
         Route::post('{event_id}/checkout/create', [

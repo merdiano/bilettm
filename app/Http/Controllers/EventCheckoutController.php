@@ -637,6 +637,24 @@ class EventCheckoutController extends Controller
         }
     }
 
+    public function mobileCheckoutPaymentReturn(Request $request, $event_id){
+        if ($request->get('is_payment_cancelled') == '1') {
+
+        }
+
+        $response = $this->gateway->getPaymentStatus($request->get('orderId'));
+
+        if ($response->isSuccessfull()) {
+            return $this->mobileCompleteOrder($event_id,$request->get('orderId'));
+        } else {
+            return response()->redirectToRoute('showEventCheckout', [
+                'event_id'          => $event_id,
+                'is_payment_failed' => 1,
+                'message' => $response->errorMessage()
+            ]);
+        }
+
+    }
     /**
      * Complete an order
      *
@@ -670,13 +688,13 @@ class EventCheckoutController extends Controller
             $order->first_name = sanitise($request_data['order_first_name']);
             $order->last_name = sanitise($request_data['order_last_name']);
             $order->email = sanitise($request_data['order_email']);
-            $order->order_status_id = isset($request_data['pay_offline']) ? config('attendize.order_awaiting_payment') : config('attendize.order_complete');
             $order->amount = $ticket_order['order_total'];
             $order->booking_fee = $ticket_order['booking_fee'];
             $order->organiser_booking_fee = $ticket_order['organiser_booking_fee'];
             $order->discount = 0.00;
             $order->account_id = $event->account->id;
             $order->event_id = $ticket_order['event_id'];
+            $order->order_status_id = isset($request_data['pay_offline']) ? config('attendize.order_awaiting_payment') : config('attendize.order_complete');
             $order->is_payment_received = isset($request_data['pay_offline']) ? 0 : 1;
 
             // Calculating grand total including tax
@@ -913,5 +931,111 @@ class EventCheckoutController extends Controller
         return view('Public.ViewEvent.Partials.PDFTicket', $data);
     }
 
+    private function mobileCompleteOrder($event_id,$transaction_id){
+        DB::beginTransaction();
+
+        try {
+
+            $order = Order::where('transaction_id',$transaction_id)
+                ->where('event_id',$event_id)
+                ->first();
+
+            $order->order_status_id = config('attendize.order_complete');
+            $order->is_payment_received = true;
+
+            $grand_total = $order->amount + $order->booking_fee + $order->orgenizer_booking_fee + $order->taxamt;
+
+            /*
+             * Update the event sales volume
+             */
+            $event = Event::findOrfail($event_id, ['id', 'sales_volume', 'organiser_fees_volume']);
+            $event->increment('sales_volume', $grand_total);
+            $event->increment('organiser_fees_volume', $order->organiser_booking_fee);
+
+            $reserved_tickets = ReservedTickets::select('id', 'seat_no', 'ticket_id')
+                ->with(['ticket:id,quantity_sold,sales_volume,organiser_fees_volume,price,organiser_booking_fee'])
+                ->where('session_id', $order->session_id)
+                ->where('event_id', $event_id)
+                ->get();
+            /*
+             * Update the event stats
+             */
+            $event_stats = EventStats::updateOrCreate([
+                'event_id' => $event_id,
+                'date' => DB::raw('CURRENT_DATE'),
+            ]);
+
+            $event_stats->increment('tickets_sold', $reserved_tickets->count() ?? 0);
+            $event_stats->increment('sales_volume', $order->amount);
+            $event_stats->increment('organiser_fees_volume', $order->organiser_booking_fee);
+            $attendee_increment = 1;
+            /*
+             * Add the attendees
+             */
+
+            foreach ($reserved_tickets as $reserved) {
+
+                $ticket = $reserved->ticket;
+
+                /*
+                 * Update some ticket info
+                 */
+                $ticket->increment('quantity_sold', $reserved->quantity);//$reserved->quantity_reserved);
+                $ticket->increment('sales_volume', $ticket->price);
+                $ticket->increment('organiser_fees_volume', $ticket->orgniser_booking_fee);// * $reserved->quantity_reserved
+
+                /*
+                 * Insert order items (for use in generating invoices)
+                 */
+                $orderItem = new OrderItem();
+                $orderItem->title = $ticket->title;
+                $orderItem->quantity = 1;
+                $orderItem->order_id = $order->id;
+                $orderItem->unit_price = $ticket->price;
+                $orderItem->unit_booking_fee = $ticket->booking_fee + $ticket->organiser_booking_fee;
+                $orderItem->save();
+
+                /*
+                 * Create the attendees
+                 */
+                $attendee = new Attendee();
+                $attendee->first_name = $order->first_name;
+                $attendee->last_name = $order->last_name;
+                $attendee->email = $order->email;
+                $attendee->event_id = $order->event_id;
+                $attendee->order_id = $order->id;
+                $attendee->ticket_id = $reserved->ticket_id;
+                $attendee->account_id = $event->account->id;
+                $attendee->reference_index = $attendee_increment;
+                $attendee->seat_no = $reserved->seat_no;
+                $attendee->save();
+
+                /* Keep track of total number of attendees */
+                $attendee_increment++;
+            }
+
+
+            DB::commit();
+        }
+        catch (\Exception $ex){
+
+            Log::error($ex);
+            DB::rollBack();
+
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Whoops! There was a problem processing your order. Please try again.'
+            ]);
+        }
+
+        /*
+         * Remove any tickets the user has reserved after they have been ordered for the user
+         */
+        ReservedTickets::where('session_id', $order->session_id)->delete();
+
+        Log::info('Firing the event');
+        event(new OrderCompletedEvent($order));
+        return response()->json(['status'=>'success','message'=>'payment resived tickets created']);
+    }
 }
 
