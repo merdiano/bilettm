@@ -639,7 +639,11 @@ class EventCheckoutController extends Controller
 
     public function mobileCheckoutPaymentReturn(Request $request, $event_id){
         if ($request->get('is_payment_cancelled') == '1') {
+            return response()->json(['message'=>'payment_cancelled','status'=>'cancelled']);
+        }
 
+        if(!$request->has('orderId')){
+            return response()->json(['status'=>'error','message'=>'orderi id not provided'],400);
         }
 
         $response = $this->gateway->getPaymentStatus($request->get('orderId'));
@@ -647,8 +651,9 @@ class EventCheckoutController extends Controller
         if ($response->isSuccessfull()) {
             return $this->mobileCompleteOrder($event_id,$request->get('orderId'));
         } else {
-            return response()->redirectToRoute('showEventCheckout', [
-                'event_id'          => $event_id,
+            return response()->json([
+                'status' => 'fail',
+                'event_id' => $event_id,
                 'is_payment_failed' => 1,
                 'message' => $response->errorMessage()
             ]);
