@@ -34,13 +34,13 @@
     <section id="intro" class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h1 property="name" style="font-weight: bold">{{$event->title}}</h1>
+                <h1 property="name" style="font-weight: bold">{Töleg geçmedi. Birsalymdan gaýtadan synanşyp görüň!</h1>
             </div>
         </div>
     </section>
     <section id="order_form" class="container">
 
-        <h1>Töleg geçmedi. Birsalymdan gaýtadan synanşyp görüň! {{$message}}</h1>
+        <h1> {{$message}}</h1>
     </section>
 
 </main>
