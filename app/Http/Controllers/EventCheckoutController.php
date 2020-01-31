@@ -956,7 +956,7 @@ class EventCheckoutController extends Controller
             $event->increment('organiser_fees_volume', $order->organiser_booking_fee);
 
             $reserved_tickets = ReservedTickets::select('id', 'seat_no', 'ticket_id')
-                ->with(['ticket:id,quantity_sold,sales_volume,organiser_fees_volume,price,organiser_booking_fee'])
+                ->with(['ticket:id,quantity_sold,sales_volume,organiser_fees_volume,price'])
                 ->where('session_id', $order->session_id)
                 ->where('event_id', $event_id)
                 ->get();
@@ -985,7 +985,7 @@ class EventCheckoutController extends Controller
                  */
                 $ticket->increment('quantity_sold', $reserved->quantity);//$reserved->quantity_reserved);
                 $ticket->increment('sales_volume', $ticket->price);
-                $ticket->increment('organiser_fees_volume', $ticket->orgniser_booking_fee);// * $reserved->quantity_reserved
+                $ticket->increment('organiser_fees_volume', $order->orgniser_booking_fee);// * $reserved->quantity_reserved
 
                 /*
                  * Insert order items (for use in generating invoices)
@@ -995,7 +995,7 @@ class EventCheckoutController extends Controller
                 $orderItem->quantity = 1;
                 $orderItem->order_id = $order->id;
                 $orderItem->unit_price = $ticket->price;
-                $orderItem->unit_booking_fee = $ticket->booking_fee + $ticket->organiser_booking_fee;
+                $orderItem->unit_booking_fee = $ticket->booking_fee + $order->organiser_booking_fee;
                 $orderItem->save();
 
                 /*
