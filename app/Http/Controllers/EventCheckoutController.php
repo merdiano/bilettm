@@ -1021,8 +1021,8 @@ class EventCheckoutController extends Controller
             Log::error($ex);
             DB::rollBack();
 
-            return view('Bilettm.Mobile.CheckoutFiled',
-                ['message' => 'Whoops! There was a problem processing your order. Please try again.']
+            return view('Bilettm.Mobile.CheckoutFailed',
+                ['message' => $ex->getMessage()]
             );
         }
 
