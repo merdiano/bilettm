@@ -1017,7 +1017,7 @@ class EventCheckoutController extends Controller
                 $attendee_increment++;
             }
 
-
+            //hmmm
             DB::commit();
         }
         catch (\Exception $ex){
