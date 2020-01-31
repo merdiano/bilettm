@@ -13,5 +13,8 @@ namespace App\Models;
  */
 class ReservedTickets extends \Illuminate\Database\Eloquent\Model
 {
-    //put your code here
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
 }
