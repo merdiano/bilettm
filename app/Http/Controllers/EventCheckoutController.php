@@ -638,12 +638,8 @@ class EventCheckoutController extends Controller
     }
 
     public function mobileCheckoutPaymentReturn(Request $request, $event_id){
-        if ($request->get('is_payment_cancelled') == '1') {
-            return response()->json(['message'=>'payment_cancelled','status'=>'cancelled']);
-        }
-
-        if(!$request->has('orderId')){
-            return response()->json(['status'=>'error','message'=>'orderi id not provided'],400);
+        if ($request->get('is_payment_cancelled') == '1'|| !$request->has('orderId')) {
+            return view('Bilettm.Mobile.CheckoutFailed');
         }
 
         $response = $this->gateway->getPaymentStatus($request->get('orderId'));
@@ -651,12 +647,7 @@ class EventCheckoutController extends Controller
         if ($response->isSuccessfull()) {
             return $this->mobileCompleteOrder($event_id,$request->get('orderId'));
         } else {
-            return response()->json([
-                'status' => 'fail',
-                'event_id' => $event_id,
-                'is_payment_failed' => 1,
-                'message' => $response->errorMessage()
-            ]);
+            return view('Bilettm.Mobile.CheckoutFailed');
         }
 
     }
@@ -948,6 +939,9 @@ class EventCheckoutController extends Controller
             $order->order_status_id = config('attendize.order_complete');
             $order->is_payment_received = true;
 
+            $orderService = new OrderService($order->amount, $order->booking_fee+$order->organiser_booking_fee, $order->event);
+            $orderService->calculateFinalCosts();
+
             $grand_total = $order->amount + $order->booking_fee + $order->orgenizer_booking_fee + $order->taxamt;
 
             /*
@@ -1027,10 +1021,9 @@ class EventCheckoutController extends Controller
             Log::error($ex);
             DB::rollBack();
 
-            return response()->json([
-                'status'  => 'error',
-                'message' => 'Whoops! There was a problem processing your order. Please try again.'
-            ]);
+            return view('Bilettm.Mobile.CheckoutFiled',
+                ['message' => 'Whoops! There was a problem processing your order. Please try again.']
+            );
         }
 
         /*
@@ -1040,7 +1033,14 @@ class EventCheckoutController extends Controller
 
         Log::info('Firing the event');
         event(new OrderCompletedEvent($order));
-        return response()->json(['status'=>'success','message'=>'payment resived tickets created']);
+        $data = [
+            'order'        => $order,
+            'orderService' => $orderService,
+            'event'        => $order->event,
+            'tickets'      => $order->event->tickets,
+            'is_embedded'  => $this->is_embedded,
+        ];
+        return view('Bilettm.Mobile.CheckoutSuccess', $data);
     }
 }
 
