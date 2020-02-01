@@ -936,7 +936,10 @@ class EventCheckoutController extends Controller
 
         try {
 
-            $order = Order::where('transaction_id',$transaction_id)
+            $order = Order::select('orders.id','order_status_id','is_payment_received','amount','booking_fee',
+                'organiser_booking','event_id','session_id')
+                ->with(['event:id,sales_volume,organiser_fees_volume,organiser_id'])
+                ->where('transaction_id',$transaction_id)
                 ->where('event_id',$event_id)
                 ->first();
 
@@ -945,16 +948,14 @@ class EventCheckoutController extends Controller
 
             $orderService = new OrderService($order->amount, $order->booking_fee+$order->organiser_booking_fee, $order->event);
             $orderService->calculateFinalCosts();
-
-            $grand_total = $order->amount + $order->booking_fee + $order->orgenizer_booking_fee + $order->taxamt;
-
             /*
              * Update the event sales volume
              */
-            $event = Event::findOrfail($event_id, ['id', 'sales_volume', 'organiser_fees_volume']);
-            $event->increment('sales_volume', $grand_total);
+            $event = $order->event;
+            $event->increment('sales_volume', $orderService->getGrandTotal());
             $event->increment('organiser_fees_volume', $order->organiser_booking_fee);
 
+            //todo join with order
             $reserved_tickets = ReservedTickets::select('id', 'seat_no', 'ticket_id')
                 ->with(['ticket:id,quantity_sold,sales_volume,organiser_fees_volume,price'])
                 ->where('session_id', $order->session_id)
