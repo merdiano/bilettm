@@ -937,7 +937,7 @@ class EventCheckoutController extends Controller
         try {
 
             $order = Order::select('orders.id','order_status_id','is_payment_received','amount','booking_fee',
-                'organiser_booking_fee','event_id','session_id')
+                'organiser_booking_fee','event_id','session_id','account_id')
                 ->with(['event:id,sales_volume,organiser_fees_volume,organiser_id'])
                 ->where('transaction_id',$transaction_id)
                 ->where('event_id',$event_id)
@@ -1009,7 +1009,7 @@ class EventCheckoutController extends Controller
                 $attendee->event_id = $order->event_id;
                 $attendee->order_id = $order->id;
                 $attendee->ticket_id = $reserved->ticket_id;
-                $attendee->account_id = $event->account->id;
+                $attendee->account_id = $order->account_id;
                 $attendee->reference_index = $attendee_increment;
                 $attendee->seat_no = $reserved->seat_no;
                 $attendee->save();
