@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="col-4">
-                                <b>@lang("Public_ViewEvent.amount")</b><br> {{$order->event->currency_symbol}}{{number_format($order->total_amount, 2)}}
+                                <b>@lang("Public_ViewEvent.amount")</b><br> {{number_format($order->total_amount, 2)}} man.
                                 @if($event->organiser->charge_tax)
                                     <small>{{ $orderService->getVatFormattedInBrackets() }}</small>
                                 @endif
@@ -95,19 +95,6 @@
                         </div>
                     </div>
 
-
-                    @if(!$order->is_payment_received)
-                        <h3>
-                            @lang("Public_ViewEvent.payment_instructions")
-                        </h3>
-                        <div class="alert alert-info">
-                            @lang("Public_ViewEvent.order_awaiting_payment")
-                        </div>
-                        <div class="offline_payment_instructions well">
-                            {!! Markdown::parse($event->offline_payment_instructions) !!}
-                        </div>
-
-                    @endif
 
                     <h3 class="mt-4">
                         @lang("Public_ViewEvent.order_items")
@@ -200,36 +187,6 @@
                                     {{ $orderService->getGrandTotal(true) }}
                                 </td>
                             </tr>
-                            @if($order->is_refunded || $order->is_partially_refunded)
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <b>@lang("Public_ViewEvent.refunded_amount")</b>
-                                    </td>
-                                    <td colspan="2">
-                                        {{money($order->amount_refunded, $order->event->currency)}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <b>@lang("Public_ViewEvent.total")</b>
-                                    </td>
-                                    <td colspan="2">
-                                        {{money($order->total_amount - $order->amount_refunded, $order->event->currency)}}
-                                    </td>
-                                </tr>
-                            @endif
                             </tbody>
                         </table>
 
