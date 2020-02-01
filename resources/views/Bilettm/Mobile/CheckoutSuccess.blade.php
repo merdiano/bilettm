@@ -8,14 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" href="{{asset('vendor/bootstrap4/bootstrap.min.css')}}">
-    <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="{{asset('vendor/icon-awesome/css/font-awesome.min.css')}}">
-
-    @yield('after_styles')
 
 
 <!-- CSS Unify Theme -->
@@ -24,33 +18,26 @@
     <!--  KMB Custom css  -->
     <link rel="stylesheet" href='{{asset("assets/stylesheet/custom.css")}}'>
     <link rel="stylesheet" href='{{asset("assets/stylesheet/custom_new.css")}}'>
-    @stack('after_styles')
 
 </head>
 
 <body>
 
 <main>
-    <section id="intro" class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 property="name" style="font-weight: bold">{{$event->title}}</h1>
-            </div>
-        </div>
-    </section>
+
     <section id="order_form" class="container">
         <div class="row">
             <div class="col-md-12 order_header">
             <span class="massive-icon">
                 <i class="ico ico-checkmark-circle"></i>
             </span>
-                <h1>@lang("Public_ViewEvent.thank_you_for_your_order")</h1>
-                <h2>
+                <h3>@lang("Public_ViewEvent.thank_you_for_your_order")</h3>
+                <h4>
                     @lang("Public_ViewEvent.your")
                     <a class="ticket_download_link"
                        href="{{ route('showOrderTickets', ['order_reference' => $order->order_reference] ).'?download=1' }}">
                         @lang("Public_ViewEvent.tickets") </a>  @lang("Public_ViewEvent.confirmation_email")
-                </h2>
+                </h4>
             </div>
         </div>
 
@@ -66,15 +53,11 @@
 
                     <div class="order_details well">
                         <div class="row">
-                            <div class="col-4">
-                                <b>@lang("Public_ViewEvent.first_name")</b><br> {{$order->first_name}}
+                            <div class="col-6">
+                                <b>@lang("Attendee.name")</b><br> {{$order->full_name}}
                             </div>
 
-                            <div class="col-4">
-                                <b>@lang("Public_ViewEvent.last_name")</b><br> {{$order->last_name}}
-                            </div>
-
-                            <div class="col-4">
+                            <div class="col-6">
                                 <b>@lang("Public_ViewEvent.amount")</b><br> {{number_format($order->total_amount, 2)}} man.
                                 @if($event->organiser->charge_tax)
                                     <small>{{ $orderService->getVatFormattedInBrackets() }}</small>
@@ -96,9 +79,9 @@
                     </div>
 
 
-                    <h3 class="mt-4">
+                    <h4 class="mt-4">
                         @lang("Public_ViewEvent.order_items")
-                    </h3>
+                    </h4>
 
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
@@ -192,9 +175,9 @@
 
                     </div>
 
-                    <h3>
+                    <h4>
                         @lang("Public_ViewEvent.order_attendees")
-                    </h3>
+                    </h4>
 
                     <div class="table-responsive">
                         <table class="table table-hover table-striped">
@@ -204,17 +187,13 @@
                                     <td>
                                         {{$attendee->first_name}}
                                         {{$attendee->last_name}}
-                                        (<a href="mailto:{{$attendee->email}}">{{$attendee->email}}</a>)
+                                        {{$attendee->email}}
                                     </td>
                                     <td>
                                         {{{$attendee->ticket->title}}}
                                     </td>
                                     <td>{{$attendee->seat_no}}</td>
-                                    <td>
-                                        @if($attendee->is_cancelled)
-                                            @lang("Public_ViewEvent.attendee_cancelled")
-                                        @endif
-                                    </td>
+
                                 </tr>
                             @endforeach
                             </tbody>
