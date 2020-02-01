@@ -1022,7 +1022,7 @@ class EventCheckoutController extends Controller
         }
         catch (\Exception $ex){
 
-            Log::error($ex,$obf);
+            Log::error($ex);
             DB::rollBack();
 
             return view('Bilettm.Mobile.CheckoutFailed',
