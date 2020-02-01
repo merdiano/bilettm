@@ -983,7 +983,7 @@ class EventCheckoutController extends Controller
                 /*
                  * Update some ticket info
                  */
-                $ticket->increment('quantity_sold', $reserved->quantity_reserved);
+                $ticket->increment('quantity_sold', 1);
                 $ticket->increment('sales_volume', $ticket->price);
                 $ticket->increment('organiser_fees_volume', $order->orgniser_booking_fee);// * $reserved->quantity_reserved
 
