@@ -957,7 +957,7 @@ class EventCheckoutController extends Controller
 
             //todo join with order
             $reserved_tickets = ReservedTickets::select('id', 'seat_no', 'ticket_id')
-                ->with(['ticket:id,quantity_sold,sales_volume,organiser_fees_volume,price'])
+                ->with(['ticket:id,quantity_sold,sales_volume,organiser_fees_volume,price,title'])
                 ->where('session_id', $order->session_id)
                 ->where('event_id', $event_id)
                 ->get();
@@ -1022,7 +1022,7 @@ class EventCheckoutController extends Controller
         }
         catch (\Exception $ex){
 
-            Log::error($ex);
+            Log::error($ex,$obf);
             DB::rollBack();
 
             return view('Bilettm.Mobile.CheckoutFailed',
