@@ -945,15 +945,15 @@ class EventCheckoutController extends Controller
 
             $order->order_status_id = config('attendize.order_complete');
             $order->is_payment_received = true;
-
-            $orderService = new OrderService($order->amount, $order->booking_fee+$order->organiser_booking_fee, $order->event);
+            $obf = $order->organiser_booking_fee;
+            $orderService = new OrderService($order->amount, $order->booking_fee + $obf, $order->event);
             $orderService->calculateFinalCosts();
             /*
              * Update the event sales volume
              */
             $event = $order->event;
             $event->increment('sales_volume', $orderService->getGrandTotal());
-            $event->increment('organiser_fees_volume', $order->organiser_booking_fee);
+            $event->increment('organiser_fees_volume', $obf);
 
             //todo join with order
             $reserved_tickets = ReservedTickets::select('id', 'seat_no', 'ticket_id')
@@ -971,7 +971,7 @@ class EventCheckoutController extends Controller
 
             $event_stats->increment('tickets_sold', $reserved_tickets->count() ?? 0);
             $event_stats->increment('sales_volume', $order->amount);
-            $event_stats->increment('organiser_fees_volume', $order->organiser_booking_fee);
+            $event_stats->increment('organiser_fees_volume', $obf);
             $attendee_increment = 1;
             /*
              * Add the attendees
@@ -986,7 +986,7 @@ class EventCheckoutController extends Controller
                  */
                 $ticket->increment('quantity_sold', 1);
                 $ticket->increment('sales_volume', $ticket->price);
-                $ticket->increment('organiser_fees_volume', $order->orgniser_booking_fee);// * $reserved->quantity_reserved
+                $ticket->increment('organiser_fees_volume', $obf);// * $reserved->quantity_reserved
 
                 /*
                  * Insert order items (for use in generating invoices)
@@ -996,7 +996,7 @@ class EventCheckoutController extends Controller
                 $orderItem->quantity = 1;
                 $orderItem->order_id = $order->id;
                 $orderItem->unit_price = $ticket->price;
-                $orderItem->unit_booking_fee = $ticket->booking_fee + $order->organiser_booking_fee;
+                $orderItem->unit_booking_fee = $ticket->booking_fee + $obf;
                 $orderItem->save();
 
                 /*
