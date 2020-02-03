@@ -28,7 +28,7 @@ return array (
     'order_date' => 'Дата заказа',
     'order_page_settings' => 'Настройки страницы заказа',
     'order_ref' => 'Код заказа',
-    'organiser_booking_fees' => 'Организатор бронирования сборов',
+    'organiser_booking_fees' => 'Плата за обслуживание',
     'payment_gateway' => 'Платежный шлюз',
     'payment_intent' => 'Способ оплаты',
     'payment_failed' => 'Платеж не прошел, попробуйте ввести свои платежные данные снова.',

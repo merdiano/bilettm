@@ -191,14 +191,22 @@
                         @lang("Public_ViewEvent.order_summary")
                     </h3>
                     <table class="table mb0 table-condensed">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>@lang('Public_ViewEvent.booking_fees')</th>
+                            <th>@lang('Public_ViewEvent.price')</th>
+                        </tr>
+                        </thead>
                         @foreach($tickets as $ticket)
                             <tr>
                                 <td class="pl0">{{{$ticket['ticket']['title']}}} X <b>{{$ticket['qty']}}</b></td>
+                                <td style="text-align: right;">{{$ticket['total_booking_fee']}}</td>
                                 <td style="text-align: right;">
-                                    @if((int)ceil($ticket['full_price']) === 0)
+                                    @if((int)ceil($ticket['price']) === 0)
                                         @lang("Public_ViewEvent.free")
                                     @else
-                                        {{ money($ticket['full_price'], $event->currency) }}
+                                        {{ money($ticket['price'], $event->currency) }}
                                     @endif
                                 </td>
                             </tr>
