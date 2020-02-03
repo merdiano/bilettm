@@ -174,7 +174,7 @@ class EventCheckoutController extends Controller
                 'booking_fee'           => ($seats_count * $ticket->booking_fee),
                 'organiser_booking_fee' => ($seats_count * $ticket->organiser_booking_fee),
                 'total_booking_fee'     => $ticket->total_booking_fee,
-                'full_price'            => $ticket->price + $ticket->total_booking_fee,
+                'original_price'        => $ticket->price,
             ];
 
 
