@@ -1,4 +1,4 @@
-@extends('en.Emails.Layouts.Master')
+@extends('ru.Emails.Layouts.Master')
 
 @section('message_content')
     Здравствуйте {{$attendee->first_name}},<br><br>
@@ -7,5 +7,5 @@
     Ваш билет на мероприятие прилагается к этому письму.
 
 <br><br>
-Regards
+С уважением!
 @stop

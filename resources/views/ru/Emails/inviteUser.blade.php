@@ -1,21 +1,21 @@
-@extends('en.Emails.Layouts.Master')
+@extends('ru.Emails.Layouts.Master')
 
 @section('message_content')
 
 <p>Здравствуйте</p>
 <p>
-    Вы были добавлены в {{ config('attendize.app_name') }} счет по {{$inviter->first_name.' '.$inviter->last_name}}.
+     {{$inviter->first_name.' '.$inviter->last_name}} вас добавил к {{ config('attendize.app_name') }}.
 </p>
 
 <p>
-    Вы можете войти используя следующие данные.<br><br>
+    Вы можете войти {{url('/login')}}, используя следующие данные:<br><br>
 
     имя пользователя: <b>{{$user->email}}</b> <br>
     пароль: <b>{{$temp_password}}</b>
 </p>
 
 <p>
-    Вы можете изменить свой временный пароль, как только вы вошли в систему.
+    Вы можете изменить свой временный пароль, после входа в систему.
 </p>
 
 <div style="padding: 5px; border: 1px solid #ccc;" >
@@ -23,7 +23,7 @@
 </div>
 <br><br>
 <p>
-    Вы можете изменить свой временный пароль, как только вы вошли в систему.
+    Вы можете изменить свой временный пароль, после входа в систему.
 </p>
 <p>
     Спасибо

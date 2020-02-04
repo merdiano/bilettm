@@ -1,8 +1,8 @@
-@extends('en.Emails.Layouts.Master')
+@extends('ru.Emails.Layouts.Master')
 
 @section('message_content')
 
-    <p>Всем привет,</p>
+    <p>Добрый день,</p>
     <p>
         Вы получили возврат от имени вашего аннулированного билета за <b>{{{$attendee->event->title}}}</b>.
         <b>Чтобы сумма билетов: {{{ $refund_amount }}} была возвращена первоначальному получателю, вы должны увидеть платеж в течение нескольких дней.</b>

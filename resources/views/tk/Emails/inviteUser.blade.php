@@ -1,4 +1,4 @@
-@extends('en.Emails.Layouts.Master')
+@extends('tk.Emails.Layouts.Master')
 
 @section('message_content')
 
@@ -9,7 +9,7 @@
 
 <p>
     Siz aşakdaky maglumatlary ullanyp öz akkaundyňyza girip bilersiňiz.<br><br>
-    
+
     Ullanyjy belgiňiz: <b>{{$user->email}}</b> <br>
     Açar sözi: <b>{{$temp_password}}</b>
 </p>

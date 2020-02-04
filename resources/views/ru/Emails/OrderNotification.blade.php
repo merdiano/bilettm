@@ -1,4 +1,4 @@
-@extends('en.Emails.Layouts.Master')
+@extends('ru.Emails.Layouts.Master')
 
 @section('message_content')
     Здравствуйте,<br><br>
@@ -13,12 +13,12 @@
     Итог заказа:
 <br><br>
     Код заказа: <b>{{$order->order_reference}}</b><br>
-    Название заказа: <b>{{$order->full_name}}</b><br>
+    Имя покупателя: <b>{{$order->full_name}}</b><br>
     Дата заказа: <b>{{$order->created_at->toDayDateTimeString()}}</b><br>
-    Электронная почта заказа: <b>{{$order->email}}</b><br>
+    Электронная почта покупателя: <b>{{$order->email}}</b><br>
 
 
-<h3>Элементы заказа</h3>
+<h3>Подробности заказа</h3>
 <div style="padding:10px; background: #F9F9F9; border: 1px solid #f1f1f1;">
 
     <table style="width:100%; margin:10px;">
@@ -33,10 +33,10 @@
                 Цена
             </th>
             <th>
-                Плата за бронирование
+                Плата за обслуживание
             </th>
             <th>
-                Общее
+                Итого
             </th>
         </tr>
         @foreach($order->orderItems as $order_item)
@@ -73,20 +73,20 @@
             </td>
         </tr>
         @endforeach
-        <tr>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-                <b>Промежуточный итог</b>
-            </td>
-            <td colspan="2">
-                {{$orderService->getOrderTotalWithBookingFee(true)}}
-            </td>
-        </tr>
+{{--        <tr>--}}
+{{--            <td>--}}
+{{--            </td>--}}
+{{--            <td>--}}
+{{--            </td>--}}
+{{--            <td>--}}
+{{--            </td>--}}
+{{--            <td>--}}
+{{--                <b>Промежуточный итог</b>--}}
+{{--            </td>--}}
+{{--            <td colspan="2">--}}
+{{--                {{$orderService->getOrderTotalWithBookingFee(true)}}--}}
+{{--            </td>--}}
+{{--        </tr>--}}
         @if($order->event->organiser->charge_tax == 1)
         <tr>
             <td>
@@ -111,7 +111,7 @@
             <td>
             </td>
             <td>
-                <b>Общее</b>
+                <b>Итого</b>
             </td>
             <td colspan="2">
                 {{$orderService->getGrandTotal(true)}}
@@ -125,5 +125,5 @@
     <br><br>
 </div>
 <br><br>
-Thank you
+Спасибо!
 @stop

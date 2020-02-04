@@ -1,10 +1,10 @@
-Привет! {{{$attendee->first_name}}}<br><br>
+Здравствуйте! {{{$attendee->first_name}}}<br><br>
 
-Мы прикрепили ваши билеты к этому письму.<br><br>
+Ваши билеты во вложении данного письма.<br><br>
 
 Вы можете просмотреть информацию о заказе и скачать билеты на {{route('showOrderDetails', ['order_reference' => $attendee->order->order_reference])}} в любое время.<br><br>
 
-Ваш ссылка на заказ  <b>{{$attendee->order->order_reference}}</b>.<br>
+Номер вашего заказа <b>{{$attendee->order->order_reference}}</b>.<br>
 
 Спасибо!<br>
 

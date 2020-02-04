@@ -1,4 +1,4 @@
-@extends('en.Emails.Layouts.Master')
+@extends('tk.Emails.Layouts.Master')
 
 @section('message_content')
 Salam!<br><br>
