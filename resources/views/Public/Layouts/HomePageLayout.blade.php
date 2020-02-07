@@ -18,14 +18,14 @@
 
     {!!HTML::style('assets/out/bootstrap/bootstrap.min.css')!!}
     <!-- CSS Implementing Plugins -->
-    {!!HTML::style('assets/out/icon-awesome/css/font-awesome.min.css')!!}
-    {!!HTML::style('assets/out/icon-line/css/simple-line-icons.css')!!}
-    {!!HTML::style('assets/out/icon-hs/style.css')!!}
-    {!!HTML::style('assets/out/hs-megamenu/src/hs.megamenu.css')!!}
+    {!!HTML::style('vendor/icon-awesome/css/font-awesome.min.css')!!}
+    {!!HTML::style('vendor/icon-line/css/simple-line-icons.css')!!}
+    {!!HTML::style('vendor/icon-hs/style.css')!!}
+    {!!HTML::style('vendor/hs-megamenu/src/hs.megamenu.css')!!}
 
    <!-- CSS Template -->
     {!!HTML::style('assets/css/styles.op-agency.css')!!}
-    {!!HTML::style('assets/out/icon-material/material-icons.css')!!}
+    {!!HTML::style('vendor/icon-material/material-icons.css')!!}
     @yield('head')
 </head>
 <body>

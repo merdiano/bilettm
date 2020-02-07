@@ -1,6 +1,6 @@
 {!! HTML::script('vendor/simplemde/dist/simplemde.min.js') !!}
 {!! HTML::style('vendor/simplemde/dist/simplemde.min.css') !!}
-{!!HTML::style('assets/vendor/icon-awesome/css/font-awesome.min.css')!!}
+{!!HTML::style('vendor/icon-awesome/css/font-awesome.min.css')!!}
 <script>
     $(function() {
         // try {
