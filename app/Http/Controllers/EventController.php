@@ -51,9 +51,9 @@ class EventController extends MyBaseController
             ]);
         }
 
-        $event->title = $request->get('title');
+        $event->title_ru = $request->get('title_ru');
         $event->title_tk = $request->get('title_tk');
-        $event->description = strip_tags($request->get('description'));
+        $event->description_ru = strip_tags($request->get('description_ru'));
         $event->description_tk = strip_tags($request->get('description_tk'));
         $event->start_date = $request->get('start_date');
         $event->category_id = $request->get('category_id');
@@ -228,9 +228,9 @@ class EventController extends MyBaseController
 
         $event->is_live = $request->get('is_live');
 //        $event->currency_id = $request->get('currency_id');
-        $event->title = $request->get('title');
+        $event->title_ru = $request->get('title_ru');
         $event->title_tk = $request->get('title_tk');
-        $event->description = strip_tags($request->get('description'));
+        $event->description_ru = strip_tags($request->get('description_ru'));
         $event->description_tk = strip_tags($request->get('description_tk'));
         $event->start_date = $request->get('start_date');
         $event->category_id = $request->get('category_id');
