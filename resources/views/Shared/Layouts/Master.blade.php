@@ -7,7 +7,7 @@
         @show
     </title>
 
-{{--    @include('Shared.Layouts.ViewJavascript')--}}
+    @include('Shared.Layouts.ViewJavascript')
 
     <!--Meta-->
     @include('Shared.Partials.GlobalMeta')
