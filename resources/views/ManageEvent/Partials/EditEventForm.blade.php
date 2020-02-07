@@ -28,11 +28,6 @@
                                                 ))  !!}
                 </div>
             </div>
-        {{--<div class="form-group">--}}
-          {{--{!! Form::label('currency_id', trans("ManageEvent.default_currency"), array('class'=>'control-label required')) !!}--}}
-          {{--{!! Form::select('currency_id', $currencies, $event->currency_id, ['class' => 'form-control']) !!}--}}
-        {{--</div>--}}
-
 
             <div class="form-group col-md-6">
                 {!! Form::label('title_ru', trans("Event.event_title_ru"), array('class'=>'control-label required')) !!}
@@ -51,7 +46,7 @@
                                             ))  !!}
             </div>
 
-        <div class="form-group col-md-6">
+            <div class="form-group col-md-6">
             {!! Form::label('description_ru', trans("Event.event_description_ru"), array('class'=>'control-label')) !!}
             {!! Form::textarea('description_ru', Input::old('description_ru'),
                                         array(
@@ -67,7 +62,7 @@
                                             'rows' => 5
                                             ))  !!}
             </div>
-        <div class="form-group address-automatic">
+            <div class="form-group address-automatic">
             {!! Form::label('venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}
             {!! Form::select('venue_id',venues_list(), Input::old('venue_id'), ['class' => 'form-control','id'=>'venue_name']) !!}
             {{--{!! Form::label('name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}--}}
@@ -97,57 +92,7 @@
             {{--<!-- /These are populated with the Google places info-->--}}
 
         </div>
-
-        {{--<div class="address-manual" style="display:{{$event->location_is_manual ? 'block' : 'none'}};">--}}
-            {{--<div class="form-group">--}}
-                {{--{!! Form::label('location_venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}--}}
-                {{--{!! Form::text('location_venue_name', $event->venue_name, [--}}
-                                        {{--'class'=>'form-control location_field',--}}
-                                        {{--'placeholder'=>trans("Event.venue_name_placeholder") // same as above--}}
-                            {{--])  !!}--}}
-            {{--</div>--}}
-            {{--<div class="form-group">--}}
-                {{--{!! Form::label('location_address_line_1', trans("Event.address_line_1"), array('class'=>'control-label')) !!}--}}
-                {{--{!! Form::text('location_address_line_1', $event->location_address_line_1, [--}}
-                                        {{--'class'=>'form-control location_field',--}}
-                                        {{--'placeholder'=>trans("Event.address_line_1_placeholder")//'E.g: 45 Grafton St.'--}}
-                            {{--])  !!}--}}
-            {{--</div>--}}
-            {{--<div class="form-group">--}}
-                {{--{!! Form::label('location_address_line_2', trans("Event.address_line_2"), array('class'=>'control-label')) !!}--}}
-                {{--{!! Form::text('location_address_line_2', $event->location_address_line_2, [--}}
-                                        {{--'class'=>'form-control location_field',--}}
-                                        {{--'placeholder'=>trans("Event.address_line_2_placeholder")//'E.g: Dublin.'--}}
-                            {{--])  !!}--}}
-            {{--</div>--}}
-
-            {{--<div class="row">--}}
-                {{--<div class="col-md-6">--}}
-                    {{--<div class="form-group">--}}
-                        {{--{!! Form::label('location_state', trans("Event.city"), array('class'=>'control-label')) !!}--}}
-                        {{--{!! Form::text('location_state', $event->location_state, [--}}
-                                        {{--'class'=>'form-control location_field',--}}
-                                        {{--'placeholder'=>trans("Event.city_placeholder")//'E.g: Dublin.'--}}
-                            {{--])  !!}--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-6">--}}
-                    {{--<div class="form-group">--}}
-                        {{--{!! Form::label('location_post_code', trans("Event.post_code"), array('class'=>'control-label')) !!}--}}
-                        {{--{!! Form::text('location_post_code', $event->location_post_code, [--}}
-                                        {{--'class'=>'form-control location_field',--}}
-                                        {{--'placeholder'=>trans("Event.post_code_placeholder")// 'E.g: 94568.'--}}
-                            {{--])  !!}--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
         </div>
-
-        {{--<div class="clearfix" style="margin-top:-10px; padding: 5px; padding-top: 0px;">--}}
-            {{--<span class="pull-right">--}}
-                {{--@lang("Event.or(manual/existing_venue)") <a data-clear-field=".location_field" data-toggle-class=".address-automatic, .address-manual" data-show-less-text="{{$event->location_is_manual ? trans("Event.enter_manual"):trans("Event.enter_existing")}}" href="javascript:void(0);" class="show-more-options clear_location">{{$event->location_is_manual ? trans("Event.enter_existing"):trans("Event.enter_manual")}}</a>--}}
-            {{--</span>--}}
-        {{--</div>--}}
 
         <div class="row">
             <div class="col-sm-6">
@@ -212,18 +157,7 @@
                 </div>
             </div>
         </div>
-{{--        <div class="row">--}}
-{{--            <div class="col-md-6">--}}
-{{--                <div class="form-group">--}}
-{{--                    {!! Form::label('google_tag_manager_code', trans("Organiser.google_tag_manager_code"), ['class'=>'control-label']) !!}--}}
-{{--                    {!!  Form::text('google_tag_manager_code', Input::old('google_tag_manager_code'), [--}}
-{{--                            'class'=>'form-control',--}}
-{{--                            'placeholder' => trans("Organiser.google_tag_manager_code_placeholder"),--}}
-{{--                        ])--}}
-{{--                    !!}--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+
     </div>
 
     <div class="col-md-12">
@@ -232,5 +166,6 @@
            {!! Form::submit(trans("Event.save_changes"), ['class'=>"btn btn-success"]) !!}
         </div>
     </div>
-    {!! Form::close() !!}
+
 </div>
+{!! Form::close() !!}
