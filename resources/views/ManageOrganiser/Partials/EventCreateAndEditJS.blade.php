@@ -27,9 +27,10 @@
         $("#DatePicker").remove();
         var $div = $("<div>", {id: "DatePicker"});
         $("body").append($div);
+        console.log(window.Attendize);
         $div.DateTimePicker({
-            dateTimeFormat: Attendize.DateTimeFormat,
-            dateSeparator: Attendize.DateSeparator
+            dateTimeFormat: window.Attendize.DateTimeFormat,
+            dateSeparator: window.Attendize.DateSeparator
         });
         var parent = $("#categories"). children("option:selected"). val();
         filterSub(parent);
