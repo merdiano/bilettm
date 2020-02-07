@@ -6,6 +6,6 @@
  * Time: 11:09 PM
  */
 return array (
-    'category_title'    => 'title_ru',
+    'category_title'    => 'title_tk',
     'event_category'          => 'Event Category'
 );

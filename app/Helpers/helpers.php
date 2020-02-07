@@ -24,7 +24,7 @@ if(!function_exists('main_categories')){
      * @return mixed
      */
     function main_categories(){
-        return \App\Models\Category::main()->pluck(trans('Category.category_title'),'id');
+        return \App\Models\Category::main()->pluck('title_ru','id');
     }
 }
 
