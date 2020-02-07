@@ -52,7 +52,9 @@ class EventController extends MyBaseController
         }
 
         $event->title = $request->get('title');
+        $event->title_tk = $request->get('title_tk');
         $event->description = strip_tags($request->get('description'));
+        $event->description_tk = strip_tags($request->get('description_tk'));
         $event->start_date = $request->get('start_date');
         $event->category_id = $request->get('category_id');
         $event->sub_category_id = $request->get('sub_category_id');
@@ -180,7 +182,7 @@ class EventController extends MyBaseController
 
             $img = Image::make($file_full_path);
 
-            $img->resize(800, null, function ($constraint) {
+            $img->resize(406, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
@@ -227,7 +229,9 @@ class EventController extends MyBaseController
         $event->is_live = $request->get('is_live');
 //        $event->currency_id = $request->get('currency_id');
         $event->title = $request->get('title');
+        $event->title_tk = $request->get('title_tk');
         $event->description = strip_tags($request->get('description'));
+        $event->description_tk = strip_tags($request->get('description_tk'));
         $event->start_date = $request->get('start_date');
         $event->category_id = $request->get('category_id');
         $event->sub_category_id = $request->get('sub_category_id');
@@ -254,7 +258,7 @@ class EventController extends MyBaseController
 
             $img = Image::make($file_full_path);
 
-            $img->resize(800, null, function ($constraint) {
+            $img->resize(406, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
@@ -296,7 +300,7 @@ class EventController extends MyBaseController
 
             $img = Image::make($the_file);
 
-            $img->resize(1000, null, function ($constraint) {
+            $img->resize(406, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });

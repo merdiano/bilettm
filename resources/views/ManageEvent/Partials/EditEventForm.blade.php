@@ -33,16 +33,25 @@
           {{--{!! Form::select('currency_id', $currencies, $event->currency_id, ['class' => 'form-control']) !!}--}}
         {{--</div>--}}
 
-        <div class="form-group col-md-12">
-            {!! Form::label('title', trans("Event.event_title"), array('class'=>'control-label required')) !!}
-            {!! Form::text('title', Input::old('title'),
-                                        array(
-                                        'class'=>'form-control',
-                                        'placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name])
-                                        ))  !!}
-        </div>
 
-        <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
+                {!! Form::label('title', trans("Event.event_title"), array('class'=>'control-label required')) !!}
+                {!! Form::text('title', Input::old('title'),
+                                            array(
+                                            'class'=>'form-control',
+                                            'placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name])
+                                            ))  !!}
+            </div>
+            <div class="form-group col-md-6">
+                {!! Form::label('title_tk', trans("Event.event_title_tk"), array('class'=>'control-label required')) !!}
+                {!! Form::text('title_tk', Input::old('title_tk'),
+                                            array(
+                                            'class'=>'form-control',
+                                            'placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name])
+                                            ))  !!}
+            </div>
+
+        <div class="form-group col-md-6">
             {!! Form::label('description', trans("Event.event_description"), array('class'=>'control-label')) !!}
             {!! Form::textarea('description', Input::old('description'),
                                         array(
@@ -50,7 +59,14 @@
                                         'rows' => 5
                                         ))  !!}
         </div>
-
+            <div class="form-group col-md-6">
+                {!! Form::label('description_tk', trans("Event.event_description_tk"), array('class'=>'control-label')) !!}
+                {!! Form::textarea('description_tk', Input::old('description_tk'),
+                                            array(
+                                            'class'=>'form-control editable',
+                                            'rows' => 5
+                                            ))  !!}
+            </div>
         <div class="form-group address-automatic">
             {!! Form::label('venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}
             {!! Form::select('venue_id',venues_list(), Input::old('venue_id'), ['class' => 'form-control','id'=>'venue_name']) !!}
@@ -196,18 +212,18 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    {!! Form::label('google_tag_manager_code', trans("Organiser.google_tag_manager_code"), ['class'=>'control-label']) !!}
-                    {!!  Form::text('google_tag_manager_code', Input::old('google_tag_manager_code'), [
-                            'class'=>'form-control',
-                            'placeholder' => trans("Organiser.google_tag_manager_code_placeholder"),
-                        ])
-                    !!}
-                </div>
-            </div>
-        </div>
+{{--        <div class="row">--}}
+{{--            <div class="col-md-6">--}}
+{{--                <div class="form-group">--}}
+{{--                    {!! Form::label('google_tag_manager_code', trans("Organiser.google_tag_manager_code"), ['class'=>'control-label']) !!}--}}
+{{--                    {!!  Form::text('google_tag_manager_code', Input::old('google_tag_manager_code'), [--}}
+{{--                            'class'=>'form-control',--}}
+{{--                            'placeholder' => trans("Organiser.google_tag_manager_code_placeholder"),--}}
+{{--                        ])--}}
+{{--                    !!}--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 
     <div class="col-md-12">

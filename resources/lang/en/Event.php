@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2018/04/26 10:54:45 
+ Generated via "php artisan localization:missing" at 2018/04/26 10:54:45
 *************************************************************************/
 
 return array (
@@ -17,13 +17,16 @@ return array (
   'delete?' => 'Delete?',
   'enter_existing' => 'Select From Existing Venues',
   'enter_manual' => 'Enter Address Manually',
-  'event_description' => 'Event Description',
+  'event_description' => 'Event Description ru',
+  'event_description_tk' => 'Event Description tk',
   'event_end_date' => 'Event End Date',
   'event_flyer' => 'Event Flyer',
   'event_image' => 'Event Image (Flyer or Graphic etc.)',
   'event_orders' => 'Event Orders',
   'event_start_date' => 'Event Start Date',
-  'event_title' => 'Event Title',
+  'event_title' => 'Event Title ru',
+  'event_title_tk' => 'Event Title tk',
+
   'event_title_placeholder' => 'E.g: :name\'s Interational Conference',
   'event_visibility' => 'Event Visibility',
   'go_live' => 'Event Successfully Made Live! You can undo this action in event settings page.',

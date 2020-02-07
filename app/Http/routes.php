@@ -7,17 +7,6 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function() {
-    /*
-     * Include our API routes file
-     */
-    Route::group(['prefix' => 'api'], function () {
-
-        Route::get('category/{parent_id?}','API\PublicController@getCategories');
-        Route::get('cat_events/{cat_id}','API\PublicController@showCategoryEvents');
-        Route::get('sub_cat_events/{cat_id}','API\PublicController@showSubCategoryEvents');
-        Route::get('event/{id}','API\PublicController@getEvent');
-
-    });
 
     /*
      * -------------------------

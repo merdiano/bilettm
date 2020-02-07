@@ -192,15 +192,15 @@
                 <li data-route="{{route('showEventCustomizeTab', ['event_id' => $event->id, 'tab' => 'order_page'])}}"
                     class="{{$tab == 'order_page' ? 'active' : ''}}"><a href="#order_page" data-toggle="tab">@lang("basic.order_form")</a></li>
 
-                <li data-route="{{route('showEventCustomizeTab', ['event_id' => $event->id, 'tab' => 'social'])}}"
-                    class="{{$tab == 'social' ? 'active' : ''}}"><a href="#social" data-toggle="tab">@lang("basic.social")</a></li>
-                <li data-route="{{route('showEventCustomizeTab', ['event_id' => $event->id, 'tab' => 'affiliates'])}}"
-                    class="{{$tab == 'affiliates' ? 'active' : ''}}"><a href="#affiliates"
-                                                                        data-toggle="tab">@lang("basic.affiliates")</a></li>
+{{--                <li data-route="{{route('showEventCustomizeTab', ['event_id' => $event->id, 'tab' => 'social'])}}"--}}
+{{--                    class="{{$tab == 'social' ? 'active' : ''}}"><a href="#social" data-toggle="tab">@lang("basic.social")</a></li>--}}
+{{--                <li data-route="{{route('showEventCustomizeTab', ['event_id' => $event->id, 'tab' => 'affiliates'])}}"--}}
+{{--                    class="{{$tab == 'affiliates' ? 'active' : ''}}"><a href="#affiliates"--}}
+{{--                                                                        data-toggle="tab">@lang("basic.affiliates")</a></li>--}}
                 <li data-route="{{route('showEventCustomizeTab', ['event_id' => $event->id, 'tab' => 'fees'])}}"
                     class="{{$tab == 'fees' ? 'active' : ''}}"><a href="#fees" data-toggle="tab">@lang("basic.service_fees")</a></li>
-                <li data-route="{{route('showEventCustomizeTab', ['event_id' => $event->id, 'tab' => 'ticket_design'])}}"
-                    class="{{$tab == 'ticket_design' ? 'active' : ''}}"><a href="#ticket_design" data-toggle="tab">@lang("basic.ticket_design")</a></li>
+{{--                <li data-route="{{route('showEventCustomizeTab', ['event_id' => $event->id, 'tab' => 'ticket_design'])}}"--}}
+{{--                    class="{{$tab == 'ticket_design' ? 'active' : ''}}"><a href="#ticket_design" data-toggle="tab">@lang("basic.ticket_design")</a></li>--}}
 
             </ul>
             <!--/ tab -->
@@ -210,127 +210,127 @@
                     @include('ManageEvent.Partials.EditEventForm', ['event'=>$event, 'organisers'=>organisers()])
                 </div>
 
-                <div class="tab-pane {{$tab == 'affiliates' ? 'active' : ''}}" id="affiliates">
+{{--                <div class="tab-pane {{$tab == 'affiliates' ? 'active' : ''}}" id="affiliates">--}}
 
-                    <h4>@lang("Affiliates.affiliate_tracking")</h4>
+{{--                    <h4>@lang("Affiliates.affiliate_tracking")</h4>--}}
 
-                    <div class="well">
-                        @lang("Affiliates.affiliate_tracking_text")
+{{--                    <div class="well">--}}
+{{--                        @lang("Affiliates.affiliate_tracking_text")--}}
 
-                        <br><br>
+{{--                        <br><br>--}}
 
-                        <input type="text" id="affiliateGenerator" name="affiliateGenerator" class="form-control"/>
+{{--                        <input type="text" id="affiliateGenerator" name="affiliateGenerator" class="form-control"/>--}}
 
-                        <div style="display:none; margin-top:10px; " id="referralUrl">
-                            <input onclick="this.select();" type="text" name="affiliateLink" class="form-control"/>
-                        </div>
-                    </div>
+{{--                        <div style="display:none; margin-top:10px; " id="referralUrl">--}}
+{{--                            <input onclick="this.select();" type="text" name="affiliateLink" class="form-control"/>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    @if($event->affiliates->count())
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>@lang("Affiliates.affiliate_name")</th>
-                                    <th>@lang("Affiliates.visits_generated")</th>
-                                    <th>@lang("Affiliates.ticket_sales_generated")</th>
-                                    <th>@lang("Affiliates.sales_volume_generated")</th>
-                                    <th>@lang("Affiliates.last_referral")</th>
-                                </tr>
-                                </thead>
+{{--                    @if($event->affiliates->count())--}}
+{{--                        <div class="table-responsive">--}}
+{{--                            <table class="table">--}}
+{{--                                <thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th>@lang("Affiliates.affiliate_name")</th>--}}
+{{--                                    <th>@lang("Affiliates.visits_generated")</th>--}}
+{{--                                    <th>@lang("Affiliates.ticket_sales_generated")</th>--}}
+{{--                                    <th>@lang("Affiliates.sales_volume_generated")</th>--}}
+{{--                                    <th>@lang("Affiliates.last_referral")</th>--}}
+{{--                                </tr>--}}
+{{--                                </thead>--}}
 
-                                <tbody>
-                                @foreach($event->affiliates as $affiliate)
-                                    <tr>
-                                        <td>{{ $affiliate->name }}</td>
-                                        <td>{{ $affiliate->visits }}</td>
-                                        <td>{{ $affiliate->tickets_sold }}</td>
-                                        <td>{{ money($affiliate->sales_volume, $event->currency) }}</td>
-                                        <td>{{ $affiliate->updated_at->format(env("DEFAULT_DATETIME_FORMAT")) }}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <div class="alert alert-info">
-                            @lang("Affiliates.no_affiliate_referrals_yet")
-                        </div>
-                    @endif
-
-
-                </div>
-                <div class="tab-pane {{$tab == 'social' ? 'active' : ''}}" id="social">
-                    <div class="well hide"> <?php /*Seems like unfinished feature -> not translating*/ ?>
-                        <h5>The following short codes are available for use:</h5>
-                        Display the event's public URL: <code>[event_url]</code><br>
-                        Display the organiser's name: <code>[organiser_name]</code><br>
-                        Display the event title: <code>[event_title]</code><br>
-                        Display the event description: <code>[event_description]</code><br>
-                        Display the event start date & time: <code>[event_start_date]</code><br>
-                        Display the event end date & time: <code>[event_end_date]</code>
-                    </div>
-
-                    {!! Form::model($event, array('url' => route('postEditEventSocial', ['event_id' => $event->id]), 'class' => 'ajax ')) !!}
-
-                    <h4>@lang("Social.social_settings")</h4>
-
-                    <div class="form-group hide">
-
-                        {!! Form::label('social_share_text', trans("Social.social_share_text"), array('class'=>'control-label ')) !!}
-
-                        {!!  Form::textarea('social_share_text', $event->social_share_text, [
-                            'class' => 'form-control',
-                            'rows' => 4
-                        ])  !!}
-                        <div class="help-block">
-                            @lang("Social.social_share_text_help")
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">@lang("Social.share_buttons_to_show")</label>
-                        <br>
-
-                        <div class="custom-checkbox mb5">
-                            {!! Form::checkbox('social_show_facebook', 1, $event->social_show_facebook, ['id' => 'social_show_facebook', 'data-toggle' => 'toggle']) !!}
-                            {!! Form::label('social_show_facebook', trans("Social.facebook")) !!}
-                        </div>
-                        <div class="custom-checkbox mb5">
-
-                            {!! Form::checkbox('social_show_twitter', 1, $event->social_show_twitter, ['id' => 'social_show_twitter', 'data-toggle' => 'toggle']) !!}
-                            {!! Form::label('social_show_twitter', trans("Social.twitter")) !!}
-
-                        </div>
-
-                        <div class="custom-checkbox mb5">
-                            {!! Form::checkbox('social_show_email', 1, $event->social_show_email, ['id' => 'social_show_email', 'data-toggle' => 'toggle']) !!}
-                            {!! Form::label('social_show_email', trans("Social.email")) !!}
-                        </div>
-                        <div class="custom-checkbox mb5">
-                            {!! Form::checkbox('social_show_googleplus', 1, $event->social_show_googleplus, ['id' => 'social_show_googleplus', 'data-toggle' => 'toggle']) !!}
-                            {!! Form::label('social_show_googleplus', trans("Social.g+")) !!}
-                        </div>
-                        <div class="custom-checkbox mb5">
-                            {!! Form::checkbox('social_show_linkedin', 1, $event->social_show_linkedin, ['id' => 'social_show_linkedin', 'data-toggle' => 'toggle']) !!}
-                            {!! Form::label('social_show_linkedin', trans("Social.linkedin")) !!}
-                        </div>
-                        <div class="custom-checkbox">
-
-                            {!! Form::checkbox('social_show_whatsapp', 1, $event->social_show_whatsapp, ['id' => 'social_show_whatsapp', 'data-toggle' => 'toggle']) !!}
-                            {!! Form::label('social_show_whatsapp', trans("Social.whatsapp")) !!}
+{{--                                <tbody>--}}
+{{--                                @foreach($event->affiliates as $affiliate)--}}
+{{--                                    <tr>--}}
+{{--                                        <td>{{ $affiliate->name }}</td>--}}
+{{--                                        <td>{{ $affiliate->visits }}</td>--}}
+{{--                                        <td>{{ $affiliate->tickets_sold }}</td>--}}
+{{--                                        <td>{{ money($affiliate->sales_volume, $event->currency) }}</td>--}}
+{{--                                        <td>{{ $affiliate->updated_at->format(env("DEFAULT_DATETIME_FORMAT")) }}</td>--}}
+{{--                                    </tr>--}}
+{{--                                @endforeach--}}
+{{--                                </tbody>--}}
+{{--                            </table>--}}
+{{--                        </div>--}}
+{{--                    @else--}}
+{{--                        <div class="alert alert-info">--}}
+{{--                            @lang("Affiliates.no_affiliate_referrals_yet")--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
 
 
-                        </div>
-                    </div>
+{{--                </div>--}}
+{{--                <div class="tab-pane {{$tab == 'social' ? 'active' : ''}}" id="social">--}}
+{{--                    <div class="well hide"> <?php /*Seems like unfinished feature -> not translating*/ ?>--}}
+{{--                        <h5>The following short codes are available for use:</h5>--}}
+{{--                        Display the event's public URL: <code>[event_url]</code><br>--}}
+{{--                        Display the organiser's name: <code>[organiser_name]</code><br>--}}
+{{--                        Display the event title: <code>[event_title]</code><br>--}}
+{{--                        Display the event description: <code>[event_description]</code><br>--}}
+{{--                        Display the event start date & time: <code>[event_start_date]</code><br>--}}
+{{--                        Display the event end date & time: <code>[event_end_date]</code>--}}
+{{--                    </div>--}}
 
-                    <div class="panel-footer mt15 text-right">
-                        {!! Form::submit(trans("basic.save_changes"), ['class'=>"btn btn-success"]) !!}
-                    </div>
+{{--                    {!! Form::model($event, array('url' => route('postEditEventSocial', ['event_id' => $event->id]), 'class' => 'ajax ')) !!}--}}
 
-                    {!! Form::close() !!}
+{{--                    <h4>@lang("Social.social_settings")</h4>--}}
 
-                </div>
+{{--                    <div class="form-group hide">--}}
+
+{{--                        {!! Form::label('social_share_text', trans("Social.social_share_text"), array('class'=>'control-label ')) !!}--}}
+
+{{--                        {!!  Form::textarea('social_share_text', $event->social_share_text, [--}}
+{{--                            'class' => 'form-control',--}}
+{{--                            'rows' => 4--}}
+{{--                        ])  !!}--}}
+{{--                        <div class="help-block">--}}
+{{--                            @lang("Social.social_share_text_help")--}}
+{{--                        </div>--}}
+
+{{--                    </div>--}}
+{{--                    <div class="form-group">--}}
+{{--                        <label class="control-label">@lang("Social.share_buttons_to_show")</label>--}}
+{{--                        <br>--}}
+
+{{--                        <div class="custom-checkbox mb5">--}}
+{{--                            {!! Form::checkbox('social_show_facebook', 1, $event->social_show_facebook, ['id' => 'social_show_facebook', 'data-toggle' => 'toggle']) !!}--}}
+{{--                            {!! Form::label('social_show_facebook', trans("Social.facebook")) !!}--}}
+{{--                        </div>--}}
+{{--                        <div class="custom-checkbox mb5">--}}
+
+{{--                            {!! Form::checkbox('social_show_twitter', 1, $event->social_show_twitter, ['id' => 'social_show_twitter', 'data-toggle' => 'toggle']) !!}--}}
+{{--                            {!! Form::label('social_show_twitter', trans("Social.twitter")) !!}--}}
+
+{{--                        </div>--}}
+
+{{--                        <div class="custom-checkbox mb5">--}}
+{{--                            {!! Form::checkbox('social_show_email', 1, $event->social_show_email, ['id' => 'social_show_email', 'data-toggle' => 'toggle']) !!}--}}
+{{--                            {!! Form::label('social_show_email', trans("Social.email")) !!}--}}
+{{--                        </div>--}}
+{{--                        <div class="custom-checkbox mb5">--}}
+{{--                            {!! Form::checkbox('social_show_googleplus', 1, $event->social_show_googleplus, ['id' => 'social_show_googleplus', 'data-toggle' => 'toggle']) !!}--}}
+{{--                            {!! Form::label('social_show_googleplus', trans("Social.g+")) !!}--}}
+{{--                        </div>--}}
+{{--                        <div class="custom-checkbox mb5">--}}
+{{--                            {!! Form::checkbox('social_show_linkedin', 1, $event->social_show_linkedin, ['id' => 'social_show_linkedin', 'data-toggle' => 'toggle']) !!}--}}
+{{--                            {!! Form::label('social_show_linkedin', trans("Social.linkedin")) !!}--}}
+{{--                        </div>--}}
+{{--                        <div class="custom-checkbox">--}}
+
+{{--                            {!! Form::checkbox('social_show_whatsapp', 1, $event->social_show_whatsapp, ['id' => 'social_show_whatsapp', 'data-toggle' => 'toggle']) !!}--}}
+{{--                            {!! Form::label('social_show_whatsapp', trans("Social.whatsapp")) !!}--}}
+
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+{{--                    <div class="panel-footer mt15 text-right">--}}
+{{--                        {!! Form::submit(trans("basic.save_changes"), ['class'=>"btn btn-success"]) !!}--}}
+{{--                    </div>--}}
+
+{{--                    {!! Form::close() !!}--}}
+
+{{--                </div>--}}
                 <div class="tab-pane scale_iframe {{$tab == 'design' ? 'active' : ''}}" id="design">
 
                     <div class="row">
@@ -357,7 +357,7 @@
                         {!! @trans("Fees.organiser_fees_text") !!}
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-6 col-sm-12">
                         {!! Form::label('organiser_fee_percentage', trans("Fees.service_fee_percentage"), array('class'=>'control-label required')) !!}
                         {!!  Form::text('organiser_fee_percentage', $event->organiser_fee_percentage, [
                             'class' => 'form-control',
@@ -367,7 +367,7 @@
                             {!! @trans("Fees.service_fee_percentage_help") !!}
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6 col-sm-12">
                         {!! Form::label('organiser_fee_fixed', trans("Fees.service_fee_fixed_price"), array('class'=>'control-label required')) !!}
                         {!!  Form::text('organiser_fee_fixed', null, [
                             'class' => 'form-control',
@@ -382,22 +382,22 @@
                     </div>
                     {!! Form::close() !!}
                 </div>
-                <div class="tab-pane" id="social"> <?php /* Seems like another unused section (duplicate id 'social') */ ?>
-                    <h4>Social Settings</h4>
+{{--                <div class="tab-pane" id="social"> <?php /* Seems like another unused section (duplicate id 'social') */ ?>--}}
+{{--                    <h4>Social Settings</h4>--}}
 
-                    <div class="form-group">
-                        <div class="checkbox custom-checkbox">
-                            {!! Form::label('event_page_show_map', 'Show map on event page?', array('id' => 'customcheckbox', 'class'=>'control-label')) !!}
-                            {!! Form::checkbox('event_page_show_map', 1, false) !!}
-                        </div>
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        <div class="checkbox custom-checkbox">--}}
+{{--                            {!! Form::label('event_page_show_map', 'Show map on event page?', array('id' => 'customcheckbox', 'class'=>'control-label')) !!}--}}
+{{--                            {!! Form::checkbox('event_page_show_map', 1, false) !!}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="form-group">
-                        {!! Form::label('event_page_show_social_share', 'Show social share buttons?', array('class'=>'control-label')) !!}
-                        {!! Form::checkbox('event_page_show_social_share', 1, false) !!}
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        {!! Form::label('event_page_show_social_share', 'Show social share buttons?', array('class'=>'control-label')) !!}--}}
+{{--                        {!! Form::checkbox('event_page_show_social_share', 1, false) !!}--}}
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
                 <div class="tab-pane {{$tab == 'order_page' ? 'active' : ''}}" id="order_page">
                     {!! Form::model($event, array('url' => route('postEditEventOrderPage', ['event_id' => $event->id]), 'class' => 'ajax ')) !!}
@@ -428,19 +428,19 @@
                     </div>
 
 
-                        <h4>@lang("Order.offline_payment_settings")</h4>
-                        <div class="form-group">
-                            <div class="custom-checkbox">
-                                <input {{ $event->enable_offline_payments ? 'checked="checked"' : '' }} data-toggle="toggle" id="enable_offline_payments" name="enable_offline_payments" type="checkbox" value="1">
-                                <label for="enable_offline_payments">@lang("Order.enable_offline_payments")</label>
-                            </div>
-                        </div>
-                        <div class="offline_payment_details" style="display: none;">
-                            {!! Form::textarea('offline_payment_instructions', $event->offline_payment_instructions, ['class' => 'form-control editable']) !!}
-                            <div class="help-block">
-                                @lang("Order.offline_payment_instructions")
-                            </div>
-                        </div>
+{{--                        <h4>@lang("Order.offline_payment_settings")</h4>--}}
+{{--                        <div class="form-group">--}}
+{{--                            <div class="custom-checkbox">--}}
+{{--                                <input {{ $event->enable_offline_payments ? 'checked="checked"' : '' }} data-toggle="toggle" id="enable_offline_payments" name="enable_offline_payments" type="checkbox" value="1">--}}
+{{--                                <label for="enable_offline_payments">@lang("Order.enable_offline_payments")</label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="offline_payment_details" style="display: none;">--}}
+{{--                            {!! Form::textarea('offline_payment_instructions', $event->offline_payment_instructions, ['class' => 'form-control editable']) !!}--}}
+{{--                            <div class="help-block">--}}
+{{--                                @lang("Order.offline_payment_instructions")--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
                     <div class="panel-footer mt15 text-right">
@@ -452,71 +452,71 @@
                 </div>
 
 
-                <div class="tab-pane {{$tab == 'ticket_design' ? 'active' : ''}}" id="ticket_design">
-                    {!! Form::model($event, array('url' => route('postEditEventTicketDesign', ['event_id' => $event->id]), 'class' => 'ajax ')) !!}
-                    <h4>@lang("Ticket.ticket_design")</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('ticket_border_color', trans("Ticket.ticket_border_color"), ['class'=>'control-label required ']) !!}
-                                {!!  Form::input('text', 'ticket_border_color', Input::old('ticket_border_color'),
-                                                            [
-                                                            'class'=>'form-control colorpicker',
-                                                            'placeholder'=>'#000000'
-                                                            ])  !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('ticket_bg_color', trans("Ticket.ticket_background_color"), ['class'=>'control-label required ']) !!}
-                                {!!  Form::input('text', 'ticket_bg_color', Input::old('ticket_bg_color'),
-                                                            [
-                                                            'class'=>'form-control colorpicker',
-                                                            'placeholder'=>'#FFFFFF'
-                                                            ])  !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('ticket_text_color', trans("Ticket.ticket_text_color"), ['class'=>'control-label required ']) !!}
-                                {!!  Form::input('text', 'ticket_text_color', Input::old('ticket_text_color'),
-                                                            [
-                                                            'class'=>'form-control colorpicker',
-                                                            'placeholder'=>'#000000'
-                                                            ])  !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('ticket_sub_text_color', trans("Ticket.ticket_sub_text_color"), ['class'=>'control-label required ']) !!}
-                                {!!  Form::input('text', 'ticket_sub_text_color', Input::old('ticket_border_color'),
-                                                            [
-                                                            'class'=>'form-control colorpicker',
-                                                            'placeholder'=>'#000000'
-                                                            ])  !!}
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('is_1d_barcode_enabled', trans("Ticket.show_1d_barcode"), ['class' => 'control-label required']) !!}
-                                {!! Form::select('is_1d_barcode_enabled', [1 => trans("basic.yes"), 0 => trans("basic.no")], $event->is_1d_barcode_enabled, ['class'=>'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
+{{--                <div class="tab-pane {{$tab == 'ticket_design' ? 'active' : ''}}" id="ticket_design">--}}
+{{--                    {!! Form::model($event, array('url' => route('postEditEventTicketDesign', ['event_id' => $event->id]), 'class' => 'ajax ')) !!}--}}
+{{--                    <h4>@lang("Ticket.ticket_design")</h4>--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="form-group">--}}
+{{--                                {!! Form::label('ticket_border_color', trans("Ticket.ticket_border_color"), ['class'=>'control-label required ']) !!}--}}
+{{--                                {!!  Form::input('text', 'ticket_border_color', Input::old('ticket_border_color'),--}}
+{{--                                                            [--}}
+{{--                                                            'class'=>'form-control colorpicker',--}}
+{{--                                                            'placeholder'=>'#000000'--}}
+{{--                                                            ])  !!}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="form-group">--}}
+{{--                                {!! Form::label('ticket_bg_color', trans("Ticket.ticket_background_color"), ['class'=>'control-label required ']) !!}--}}
+{{--                                {!!  Form::input('text', 'ticket_bg_color', Input::old('ticket_bg_color'),--}}
+{{--                                                            [--}}
+{{--                                                            'class'=>'form-control colorpicker',--}}
+{{--                                                            'placeholder'=>'#FFFFFF'--}}
+{{--                                                            ])  !!}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="form-group">--}}
+{{--                                {!! Form::label('ticket_text_color', trans("Ticket.ticket_text_color"), ['class'=>'control-label required ']) !!}--}}
+{{--                                {!!  Form::input('text', 'ticket_text_color', Input::old('ticket_text_color'),--}}
+{{--                                                            [--}}
+{{--                                                            'class'=>'form-control colorpicker',--}}
+{{--                                                            'placeholder'=>'#000000'--}}
+{{--                                                            ])  !!}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="form-group">--}}
+{{--                                {!! Form::label('ticket_sub_text_color', trans("Ticket.ticket_sub_text_color"), ['class'=>'control-label required ']) !!}--}}
+{{--                                {!!  Form::input('text', 'ticket_sub_text_color', Input::old('ticket_border_color'),--}}
+{{--                                                            [--}}
+{{--                                                            'class'=>'form-control colorpicker',--}}
+{{--                                                            'placeholder'=>'#000000'--}}
+{{--                                                            ])  !!}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-12">--}}
+{{--                            <div class="form-group">--}}
+{{--                                {!! Form::label('is_1d_barcode_enabled', trans("Ticket.show_1d_barcode"), ['class' => 'control-label required']) !!}--}}
+{{--                                {!! Form::select('is_1d_barcode_enabled', [1 => trans("basic.yes"), 0 => trans("basic.no")], $event->is_1d_barcode_enabled, ['class'=>'form-control']) !!}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="row">--}}
 
-                        <div class="col-md-12">
-                            <h4>@lang("Ticket.ticket_preview")</h4>
-                            @include('ManageEvent.Partials.TicketDesignPreview')
-                        </div>
-                    </div>
-                    <div class="panel-footer mt15 text-right">
-                        {!! Form::submit(trans("basic.save_changes"), ['class'=>"btn btn-success"]) !!}
-                    </div>
+{{--                        <div class="col-md-12">--}}
+{{--                            <h4>@lang("Ticket.ticket_preview")</h4>--}}
+{{--                            @include('ManageEvent.Partials.TicketDesignPreview')--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="panel-footer mt15 text-right">--}}
+{{--                        {!! Form::submit(trans("basic.save_changes"), ['class'=>"btn btn-success"]) !!}--}}
+{{--                    </div>--}}
 
-                    {!! Form::close() !!}
+{{--                    {!! Form::close() !!}--}}
 
-                </div>
+{{--                </div>--}}
 
             </div>
             <!--/ tab content -->
