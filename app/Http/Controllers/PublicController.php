@@ -106,9 +106,10 @@ class PublicController extends Controller
 
     public function search(SearchRequest $request){
         //todo implement with elastick search and scout
-        $query = $request->get('q');
+        $query = sanitise($request->get('q'));
         $events = Event::onLive()
-            ->where('title','like',"%{$query}%")
+            ->where('title_ru','like',"%{$query}%")
+            ->orWhere('title_tk','like',"%{$query}%")
             ->paginate(10);
 
         return view('Bilettm.Public.SearchResults')

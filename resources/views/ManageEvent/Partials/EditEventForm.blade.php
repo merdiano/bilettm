@@ -35,8 +35,8 @@
 
 
             <div class="form-group col-md-6">
-                {!! Form::label('title', trans("Event.event_title"), array('class'=>'control-label required')) !!}
-                {!! Form::text('title', Input::old('title'),
+                {!! Form::label('title_ru', trans("Event.event_title_ru"), array('class'=>'control-label required')) !!}
+                {!! Form::text('title_ru', Input::old('title_ru'),
                                             array(
                                             'class'=>'form-control',
                                             'placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name])
@@ -52,8 +52,8 @@
             </div>
 
         <div class="form-group col-md-6">
-            {!! Form::label('description', trans("Event.event_description"), array('class'=>'control-label')) !!}
-            {!! Form::textarea('description', Input::old('description'),
+            {!! Form::label('description_ru', trans("Event.event_description_ru"), array('class'=>'control-label')) !!}
+            {!! Form::textarea('description_ru', Input::old('description_ru'),
                                         array(
                                         'class'=>'form-control editable',
                                         'rows' => 5

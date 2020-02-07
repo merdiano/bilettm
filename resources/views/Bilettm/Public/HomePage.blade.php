@@ -47,7 +47,7 @@
     <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
     <!-- JS Unify -->
     <script src="{{ asset('assets/javascript/components/hs.select.js') }}"></script>
-    <script src="{{ asset('assets/javascript/components/hs.datepicker.js') }}"></script>
+{{--    <script src="{{ asset('assets/javascript/components/hs.datepicker.js') }}"></script>--}}
     <!-- JS Plugins Init. -->
     <script>
         $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
@@ -55,7 +55,7 @@
         $.HSCore.components.HSSelect.init('.js-custom-select');
 
         // initialization of forms
-        $.HSCore.components.HSDatepicker.init('#datepickerInline');
+        // $.HSCore.components.HSDatepicker.init('#datepickerInline');
         $('#carouselCus1').slick('setOption', 'responsive', [{
             breakpoint: 1200,
             settings: {
@@ -95,11 +95,11 @@
             $("#slide-teator-next").click(function(){
                 $("#carousel-09-1 .js-next").click();
             });
-            // home page teatrda ulanan sliderim un script
-            // initialization of carousel
-            $('#date-click').click(function () {
-                $('#date-click-content').toggleClass('show-content');
-            });
+            // // home page teatrda ulanan sliderim un script
+            // // initialization of carousel
+            // $('#date-click').click(function () {
+            //     $('#date-click-content').toggleClass('show-content');
+            // });
         });
     </script>
 

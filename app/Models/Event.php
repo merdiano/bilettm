@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Str;
 use URL;
@@ -217,6 +218,15 @@ class Event extends MyBaseModel
         return $this->belongsTo(Category::class,'sub_category_id');
     }
 
+    public function getTitleAttribute(){
+
+        return $this->{'title_'.Config::get('app.locale')};
+    }
+
+    public function getDescriptionAttribute(){
+
+        return $this->{'description_'.Config::get('app.locale')};
+    }
     /**
      * Get the embed url.
      *
