@@ -141,7 +141,7 @@
                     {{--</div>--}}
                 {{--</div>--}}
             {{--</div>--}}
-        {{--</div>--}}
+        </div>
 
         {{--<div class="clearfix" style="margin-top:-10px; padding: 5px; padding-top: 0px;">--}}
             {{--<span class="pull-right">--}}
