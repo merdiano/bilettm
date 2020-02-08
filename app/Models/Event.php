@@ -24,8 +24,8 @@ class Event extends MyBaseModel
     {
         $format = config('attendize.default_datetime_format');
         return [
-                'title'               => 'required',
-                'description'         => 'required',
+                'title_ru'               => 'required',
+                'description_ru'         => 'required',
                 'venue_id'            => 'required',
 //                'location_venue_name' => 'required_without:venue_name_full',
 //                'venue_name_full'     => 'required_without:location_venue_name',
