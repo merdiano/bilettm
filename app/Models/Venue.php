@@ -23,6 +23,8 @@ class Venue extends Model
     // protected $guarded = ['id'];
     protected $fillable = [
         'venue_name',
+        'venue_name_ru',
+        'venue_name_tk',
         'venue_name_full',
         'location_address',
         'location_address_line_1',
