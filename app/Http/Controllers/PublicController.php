@@ -27,7 +27,7 @@ class PublicController extends Controller
             ->categoryLiveEvents(16)
             ->first();
 
-        $theatre = Category::where('view_type','theatre')//todo change to cartoon multik
+        $cartoon = Category::where('view_type','theatre')//todo change to cartoon multik
             ->categoryLiveEvents(16)
             ->first();
 
@@ -39,7 +39,7 @@ class PublicController extends Controller
 //dd($cinema->events->first());
         return view('Bilettm.Public.HomePage')->with([
             'cinema' => $cinema,
-            'theatre' => $theatre,
+            'cartoon' => $cartoon,
             'musical' => $musical,
             'sliders' => $sliders
         ]);

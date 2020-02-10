@@ -27,7 +27,7 @@
 {{--</section>--}}
 
 @if(isset($theatre))
-    @include('Bilettm.Partials.HomeCinema',['category'=>$theatre,'id'=>'teator'])
+    @include('Bilettm.Partials.HomeCinema',['category'=>$cartoon,'id'=>'cartoon'])
 @endif
 {{--<section id="second-add-wrapper" style="margin: 100px 0;">--}}
 {{--    <div class="container">--}}

@@ -203,16 +203,16 @@ article > .u-block-hover__additional--partially-slide-up {
 .big-cinema-item-col6 .share, .big-cinema-item-col6 .like{
   font-size: 20px !important;
 }
-  #kinoteator .tab-ozi a.nav-link.active {
+  .kinoteator-section .tab-ozi a.nav-link.active {
     background-color: unset; }
-  #kinoteator .tab-ozi {
+  .kinoteator-section .tab-ozi {
     margin-top: 7px; }
-    #kinoteator .tab-ozi .nav.u-nav-v1-1 {
+.kinoteator-section .tab-ozi .nav.u-nav-v1-1 {
       padding: 0 5px; }
-  #kinoteator .owl-nav.disabled {
+.kinoteator-section .owl-nav.disabled {
     display: block;
   font-size: 35px;}
-    #kinoteator .owl-nav.disabled .owl-prev span, #kinoteator .owl-nav.disabled .owl-next span {
+    .kinoteator-section .owl-nav.disabled .owl-prev span, .kinoteator-section .owl-nav.disabled .owl-next span {
       font-size: 30px; }
 
 article.u-block-hover img {
