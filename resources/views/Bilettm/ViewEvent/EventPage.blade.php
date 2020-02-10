@@ -35,10 +35,11 @@
 
 {{--                                    <b>{{$event->organiser->name}}</b> @lang("Public_ViewEvent.presents")--}}
 {{--                                    @lang("Public_ViewEvent.at")--}}
-{{--                                    <span property="location" typeof="Place">--}}
-{{--                                        <b property="name">{{$event->venue->venue_name}}</b>--}}
-{{--                                        <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">--}}
-{{--                                    </span>--}}
+                                    <span property="location" typeof="Place">
+                                        <i class="fa fa-location-arrow"></i>
+                                        <b property="name">{{$event->venue->venue_name}}</b>
+                                        <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">
+                                    </span>
                                     @include('Bilettm.ViewEvent.Partials.Schedule')
                             </div>
                             {{--<div class="col-6 p-0">--}}
