@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 
 class Venue extends Model
@@ -81,6 +82,9 @@ class Venue extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function getVenueNameAttribute(){
+        return $this->{'venue_name_'.Config::get('app.locale')};
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
