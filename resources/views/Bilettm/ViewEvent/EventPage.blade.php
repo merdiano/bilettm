@@ -29,13 +29,16 @@
 {{--                                    <button style="width: 24.2161%; clear: left; background-color: rgb(212, 61, 52); color: #ffffff; border: none; height: 41.6px; border-radius: 5px; float: left">Купить билет</button>--}}
 
                                 @endif
+                                <div class="col-10">
                                     {!! Markdown::parse($event->description) !!}
-                                    <b>{{$event->organiser->name}}</b> @lang("Public_ViewEvent.presents")
-                                    @lang("Public_ViewEvent.at")
-                                    <span property="location" typeof="Place">
-                                        <b property="name">{{$event->venue->venue_name}}</b>
-                                        <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">
-                                    </span>
+                                </div>
+
+{{--                                    <b>{{$event->organiser->name}}</b> @lang("Public_ViewEvent.presents")--}}
+{{--                                    @lang("Public_ViewEvent.at")--}}
+{{--                                    <span property="location" typeof="Place">--}}
+{{--                                        <b property="name">{{$event->venue->venue_name}}</b>--}}
+{{--                                        <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">--}}
+{{--                                    </span>--}}
                                     @include('Bilettm.ViewEvent.Partials.Schedule')
                             </div>
                             {{--<div class="col-6 p-0">--}}
