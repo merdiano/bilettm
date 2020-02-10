@@ -10,13 +10,21 @@
         <div class="owl-carousel container row" id="konserty-tab1" style="padding: 0 !important; margin: 0">
 
             <div class="slider-slider row">
-                @foreach($musical->events as $event)
+                @foreach($musical->events->slice(0,4) as $event)
                     <div class="col-3">
                         @include('Bilettm.Partials.MusicalItem',['event'=>$event])
                     </div>
                 @endforeach
             </div>
-
+            @if($category->count()>4)
+                <div class="slider-slider row">
+                    @foreach($musical->events->slice(4,4) as $event)
+                        <div class="col-3">
+                            @include('Bilettm.Partials.MusicalItem',['event'=>$event])
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </section>

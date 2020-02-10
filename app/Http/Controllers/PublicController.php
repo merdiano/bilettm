@@ -32,7 +32,7 @@ class PublicController extends Controller
             ->first();
 
         $musical =Category::where('view_type','concert')
-            ->categoryLiveEvents(12)
+            ->categoryLiveEvents(8)
             ->first();
 
         $sliders = Slider::where('active',1)->get();
