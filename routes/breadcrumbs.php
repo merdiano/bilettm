@@ -22,7 +22,7 @@ Breadcrumbs::for('category', function ($trail, $category){
 
 Breadcrumbs::for('event',function($trail, $event){
     $trail->parent('category', $event->mainCategory);
-    $trail->push($event->title,$event->event_url);
+    $trail->push($event->title??$event->title_ru,$event->event_url);
 });
 
 Breadcrumbs::for('seats',function ($trail,$event){
