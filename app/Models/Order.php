@@ -119,6 +119,10 @@ class Order extends MyBaseModel
         return $this->amount + $this->organiser_booking_fee + $this->booking_fee;
     }
 
+    public function getGrandTotalAmountAttribute(){
+        return $this->amount + $this->organiser_booking_fee + $this->booking_fee + $this->taxamt;
+    }
+
     /**
      * Get the full name of the order.
      *

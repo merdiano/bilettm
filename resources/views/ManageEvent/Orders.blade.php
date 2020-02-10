@@ -114,8 +114,8 @@
                                 > {{$order->email}}</a>
                             </td>
                             <td>
-                                <a href="#" class="hint--top" data-hint="{{money($order->amount, $event->currency)}} + {{money($order->organiser_booking_fee, $event->currency)}} @lang("Order.organiser_booking_fees")">
-                                    {{money($order->amount + $order->organiser_booking_fee + $order->taxamt, $event->currency)}}
+                                <a href="#" class="hint--top" data-hint="{{money($order->amount, $event->currency)}} + {{money($order->organiser_booking_fee, $event->currency)}} + {{money($order->booking_fee, $event->currency)}}@lang("Order.organiser_booking_fees")">
+                                    {{money($order->grand_total_amount, $event->currency)}}
                                     @if($order->is_refunded || $order->is_partially_refunded)
 
                                     @endif
