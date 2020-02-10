@@ -27,7 +27,7 @@ class PublicController extends Controller
             ->categoryLiveEvents(16)
             ->first();
 
-        $cartoon = Category::where('view_type','theatre')//todo change to cartoon multik
+        $cartoon = Category::where('view_type','exhibition')//todo change to cartoon multik
             ->categoryLiveEvents(16)
             ->first();
 
@@ -80,7 +80,7 @@ class PublicController extends Controller
         $data['events'] = $category->cat_events()
             ->onLive($data['start'],$data['end'])
             ->orderBy($order['field'],$order['order'])
-            ->get();
+            ->paginate(16);
 
         return view("Bilettm.Public.CategoryEventsPage")->with($data);
     }

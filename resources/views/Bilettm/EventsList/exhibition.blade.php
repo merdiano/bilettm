@@ -1,7 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: merdan
- * Date: 9/24/2019
- * Time: 11:49
- */
+<div class="col-3">
+    @include('Bilettm.Partials.CinemaItem')
+</div>
