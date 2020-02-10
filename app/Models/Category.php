@@ -91,7 +91,7 @@ class Category extends \Illuminate\Database\Eloquent\Model{
         return $query->select('id','title_tk','title_ru','lft')
             ->orderBy('lft')
             ->with(['events' => function($q) use($limit){
-            $q->select('id','title','description','category_id','sub_category_id','start_date')
+            $q->select('id','title_'.Config::get('app.locale'),'description_'.Config::get('app.locale'),'category_id','sub_category_id','start_date')
                 ->limit($limit)
                 ->with('starting_ticket')
                 ->withCount(['stats as views' => function($q){
@@ -107,7 +107,7 @@ class Category extends \Illuminate\Database\Eloquent\Model{
 
     public function children(){
         return $this->hasMany(Category::class,'parent_id')
-            ->select('id','title_ru','title_tk','parent_id','lft')
+            ->select('id','title_'.Config::get('app.locale'),'parent_id','lft')
             ->orderBy('lft');
     }
     public function scopeMain($query){
@@ -124,7 +124,7 @@ class Category extends \Illuminate\Database\Eloquent\Model{
 
     public function scopeWithLiveEvents($query, $orderBy, $start_date = null,$end_date = null, $limit = 8 ){
         return $query->with(['cat_events' => function($query) use ($start_date, $end_date, $limit, $orderBy) {
-            $query->select('id','title','description','category_id','sub_category_id','start_date')
+            $query->select('id','title_'.Config::get('app.locale'),'description_'.Config::get('app.locale'),'category_id','sub_category_id','start_date')
                ->limit($limit)
                ->with('starting_ticket')
                ->withCount(['stats as views' => function($q){
