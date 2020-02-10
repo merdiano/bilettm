@@ -152,15 +152,15 @@ article > .u-block-hover__additional--partially-slide-up {
   #main-top-slider .owl-dots .owl-dot.active {
     background-color: #ffffff; }
 
-#kinoteator {
+.kinoteator-section {
   margin-top: 50px; }
-  #kinoteator .tab-header h2 {
+.kinoteator-section .tab-header h2 {
     font-size: 35px;
     font-weight: bold; }
     @media only screen and (max-width: 1440px) {
-      #kinoteator .tab-header h2 {
+      .kinoteator-section .tab-header h2 {
         font-size: 30px; } }
-  #kinoteator .tab-header a {
+.kinoteator-section .tab-header a {
     color: #ffffff;
     background-color: #d33d33;
     height: fit-content;
@@ -170,30 +170,30 @@ article > .u-block-hover__additional--partially-slide-up {
     margin-right: 0;
     transition-property: background-color;
     transition-duration: .2s; }
-  #kinoteator .tab-header a.top-social-icons {
+.kinoteator-section .tab-header a.top-social-icons {
     background-color: unset;
     padding: 0;
     margin-right: 10px; }
-    #kinoteator .tab-header a.top-social-icons svg {
+.kinoteator-section .tab-header a.top-social-icons svg {
       width: 40px; }
       @media only screen and (max-width: 1440px) {
-        #kinoteator .tab-header a.top-social-icons svg {
+        .kinoteator-section .tab-header a.top-social-icons svg {
           width: 30px; } }
-  #kinoteator .tab-header a:hover, #kinoteator .form-group.d-block input:hover {
+.kinoteator-section .tab-header a:hover, .kinoteator-section .form-group.d-block input:hover {
     background-color: #db635b;
     text-decoration: none; }
-  #kinoteator .tab-header a.top-social-icons:hover {
+.kinoteator-section .tab-header a.top-social-icons:hover {
     background-color: unset; }
-    #kinoteator .tab-header a.top-social-icons:hover svg path {
+.kinoteator-section .tab-header a.top-social-icons:hover svg path {
       fill: #db635b; }
-  #kinoteator .tab-header a:focus, #kinoteator .form-group.d-block input:focus {
+.kinoteator-section .tab-header a:focus, .kinoteator-section .form-group.d-block input:focus {
     text-decoration: none;
     background-color: #ff4159; }
-  #kinoteator .tab-header a.top-social-icons:focus {
+.kinoteator-section .tab-header a.top-social-icons:focus {
     background-color: unset; }
-    #kinoteator .tab-header a.top-social-icons:focus svg path {
+.kinoteator-section .tab-header a.top-social-icons:focus svg path {
       fill: #ff4159; }
-  #kinoteator .tab-ozi a {
+.kinoteator-section .tab-ozi a {
     font-size: 15px;
     margin-right: 15px;
     padding: 0; }
