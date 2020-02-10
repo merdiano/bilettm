@@ -27,8 +27,8 @@ class PublicController extends Controller
             ->categoryLiveEvents(16)
             ->first();
 
-        $theatre = Category::where('view_type','theatre')
-            ->categoryLiveEvents(6)
+        $theatre = Category::where('view_type','theatre')//todo change to cartoon multik
+            ->categoryLiveEvents(16)
             ->first();
 
         $musical =Category::where('view_type','concert')

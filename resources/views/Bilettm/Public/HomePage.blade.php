@@ -9,10 +9,13 @@
 
     @include('Bilettm.Partials.HomeSlider')
 
-    @include('Bilettm.Partials.HomeCinema')
+@if(isset($cinema))
+    @include('Bilettm.Partials.HomeCinema',['category'=>$cinema])
+@endif
 
+@if(isset($musical))
     @include('Bilettm.Partials.HomeMusical')
-
+@endif
 {{--<section id="first-add-wrapper" style="margin: 100px 0;">--}}
 {{--    <div class="container">--}}
 {{--        <div class="row" style="padding: 0 20px;">--}}
@@ -24,7 +27,7 @@
 {{--</section>--}}
 
 @if(isset($theatre))
-    @include('Bilettm.Partials.HomeTheatre')
+    @include('Bilettm.Partials.HomeCinema',['category'=>$theatre])
 @endif
 {{--<section id="second-add-wrapper" style="margin: 100px 0;">--}}
 {{--    <div class="container">--}}

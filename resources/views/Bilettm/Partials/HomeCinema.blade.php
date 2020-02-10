@@ -1,26 +1,26 @@
-@if(!empty($cinema->events) && $cinema->events->count()>0)
+@if(!empty($category->events) && $category->events->count()>0)
 <section id="kinoteator" class="kinoteator-section container">
     <div class="tab-header d-flex justify-content-between col-12 px-0">
-        <h2 class="">{{$cinema->title}}</h2>
+        <h2 class="">{{$category->title}}</h2>
         <div style="height: 5px; position: absolute; bottom: 0; width: 100px; background-color: rgba(211,61,51,1)"></div>
-        <a class="" href="{{$cinema->url}}">{{__('ClientSide.view')}}</a>
+        <a class="" href="{{$category->url}}">{{__('ClientSide.view')}}</a>
     </div>
     <div class="tab-ozi col-12 px-0">
 
         <div class="owl-carousel container row" id="kinoteator-tab1" style="padding: 0 !important; margin: 0">
             <div class="slider-slider">
                 <div class="row w-100 m-auto">
-                    @foreach($cinema->events->slice(0,8) as $event)
+                    @foreach($category->events->slice(0,8) as $event)
                         <div class="col-3 single-item-6">
                             @include('Bilettm.Partials.CinemaItem',['event'=>$event])
                         </div>
                     @endforeach
                 </div>
             </div>
-            @if($cinema->count()>8)
+            @if($category->count()>8)
                 <div class="slider-slider">
                     <div class="row">
-                        @foreach($cinema->events->slice(4) as $event)
+                        @foreach($category->events->slice(8) as $event)
                             <div class="col-3 single-item-6 ">
                                 @include('Bilettm.Partials.CinemaItem',['event'=>$event])
                             </div>
