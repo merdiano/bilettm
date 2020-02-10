@@ -16,9 +16,9 @@
                     </div>
                 @endforeach
             </div>
-            @if($category->count()>4)
+            @if($musical->events->count()>4)
                 <div class="slider-slider row">
-                    @foreach($musical->events->slice(4,4) as $event)
+                    @foreach($musical->events->slice(4) as $event)
                         <div class="col-3">
                             @include('Bilettm.Partials.MusicalItem',['event'=>$event])
                         </div>
