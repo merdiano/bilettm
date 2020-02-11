@@ -16,6 +16,7 @@
                                     @include("Bilettm.EventsList.{$category->view_type}")
                                 @endforeach
                             </div>
+                            {{$events->onEachSide(5)->links()}}
                         </div>
                     </div>
                     <!-- End Tab panes -->
