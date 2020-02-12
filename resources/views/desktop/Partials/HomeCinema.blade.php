@@ -1,5 +1,5 @@
 @if(!empty($category->events) && $category->events->count()>0)
-<section id="{{$id}}" class="kinoteator-section container">
+<section id="{{$id}}" class="kinoteator-section waaa container">
     <div class="tab-header d-flex justify-content-between col-12 px-0">
         <h2 class="">{{$category->title}}</h2>
         <div style="height: 5px; position: absolute; bottom: 0; width: 100px; background-color: rgba(211,61,51,1)"></div>
