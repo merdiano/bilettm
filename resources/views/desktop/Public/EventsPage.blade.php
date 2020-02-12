@@ -17,7 +17,7 @@
                             <div class="container">
                                 <div class="row">
                                     @foreach($cat->cat_events as $event)
-                                        @include("desktop{$category->view_type}",['event'=>$event])
+                                        @include("desktop.{$category->view_type}",['event'=>$event])
                                     @endforeach
                                 </div>
                             </div>
