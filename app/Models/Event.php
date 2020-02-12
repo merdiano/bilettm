@@ -493,7 +493,6 @@ ICSTemplate;
     public function scopeOnLive($query, $start_date = null, $end_date = null){
         //if date is null carbon creates now date instance
         //todo what if only end date is null??
-        dd($start_date,$end_date);
         if(!empty($start_date) && !empty($end_date))
         {
             $query->where('start_date','<',$end_date)

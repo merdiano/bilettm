@@ -79,7 +79,7 @@ class EventCheckoutController extends Controller
             return redirect()->back();
         }
 
-        return view('Bilettm.ViewEvent.SeatsPage',compact('event','tickets'));
+        return view('desktop.ViewEvent.SeatsPage',compact('event','tickets'));
     }
     /**
      * Validate a ticket request. If successful reserve the tickets and redirect to checkout
@@ -478,7 +478,7 @@ class EventCheckoutController extends Controller
         }
 
 //        return view('Public.ViewEvent.EventPageCheckout', $data);
-        return view('Bilettm.ViewEvent.CheckoutPage', $data);
+        return view('desktop.ViewEvent.CheckoutPage', $data);
     }
 
     /**
@@ -542,7 +542,7 @@ class EventCheckoutController extends Controller
                 'amount'      => $orderService->getGrandTotal()*100,//multiply by 100 to obtain tenge
                 'currency' => 934,
                 'sessionTimeoutSecs' => $secondsToExpire,
-                'description' => 'Bilettm sargyt: ' . $request->get('order_email'),
+                'description' => 'desktop sargyt: ' . $request->get('order_email'),
                 'orderNumber'     => uniqid(),
 
                 'failUrl'     => route('showEventCheckoutPaymentReturn', [
@@ -640,11 +640,11 @@ class EventCheckoutController extends Controller
 
     public function mobileCheckoutPaymentReturn(Request $request, $event_id){
         if ($request->get('is_payment_cancelled') == '1') {
-            return view('Bilettm.Mobile.CheckoutFailed',['message'=>'Toleg besedildi']);
+            return view('mobile.CheckoutFailed',['message'=>'Toleg besedildi']);
         }
 
         if(!$request->has('orderId')){
-            return view('Bilettm.Mobile.CheckoutFailed',['message'=>'order id yok']);
+            return view('mobile.CheckoutFailed',['message'=>'order id yok']);
         }
 
         $response = $this->gateway->getPaymentStatus($request->get('orderId'));
@@ -652,7 +652,7 @@ class EventCheckoutController extends Controller
         if ($response->isSuccessfull()) {
             return $this->mobileCompleteOrder($event_id,$request->get('orderId'));
         } else {
-            return view('Bilettm.Mobile.CheckoutFailed',['message'=>$response->errorMessage()]);
+            return view('mobile.CheckoutFailed',['message'=>$response->errorMessage()]);
         }
 
     }
@@ -892,7 +892,7 @@ class EventCheckoutController extends Controller
             return view('Public.ViewEvent.Embedded.EventPageViewOrder', $data);
         }
 
-        return view('Bilettm.ViewEvent.ViewOrderPage', $data);
+        return view('desktop.ViewEvent.ViewOrderPage', $data);
 //        return view('Public.ViewEvent.EventPageViewOrder', $data);
     }
 
@@ -1027,7 +1027,7 @@ class EventCheckoutController extends Controller
             Log::error($ex);
             DB::rollBack();
 
-            return view('Bilettm.Mobile.CheckoutFailed',
+            return view('mobile.CheckoutFailed',
                 ['message' => $ex->getMessage()]
             );
         }
@@ -1046,7 +1046,7 @@ class EventCheckoutController extends Controller
             'tickets'      => $order->event->tickets,
             'is_embedded'  => $this->is_embedded,
         ];
-        return view('Bilettm.Mobile.CheckoutSuccess', $data);
+        return view('mobile.CheckoutSuccess', $data);
     }
 }
 

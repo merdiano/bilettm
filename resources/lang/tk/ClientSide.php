@@ -107,4 +107,7 @@ return [
     'datePlay' => 'Geçirilýän senesi',
     'timePlay' => 'Geçirilýän wagty',
 
+    //Chcekout page
+    'checkout' => 'Checkout',
+
 ];

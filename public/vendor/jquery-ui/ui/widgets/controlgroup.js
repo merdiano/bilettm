@@ -52,7 +52,7 @@ return $.widget( "ui.controlgroup", {
 		this._enhance();
 	},
 
-	// To support the enhanced option in jQuery Mobile, we isolate DOM manipulation
+	// To support the enhanced option in jQuery mobile, we isolate DOM manipulation
 	_enhance: function() {
 		this.element.attr( "role", "toolbar" );
 		this.refresh();

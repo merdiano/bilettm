@@ -11158,7 +11158,7 @@ elFinder.prototype._options = {
 			minWidth : 150,
 			maxWidth : 500,
 			// auto hide on initial open
-			autoHideUA: [] // e.g. ['Mobile']
+			autoHideUA: [] // e.g. ['mobile']
 		},
 		navdock : {
 			// disabled navdock ui
@@ -11172,7 +11172,7 @@ elFinder.prototype._options = {
 			// display parent folder with ".." name :)
 			oldSchool : false,
 			
-			// fm.UA types array to show item select checkboxes e.g. ['All'] or ['Mobile'] etc. default: ['Touch']
+			// fm.UA types array to show item select checkboxes e.g. ['All'] or ['mobile'] etc. default: ['Touch']
 			showSelectCheckboxUA : ['Touch'],
 			
 			// file info columns displayed

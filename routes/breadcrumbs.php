@@ -27,15 +27,11 @@ Breadcrumbs::for('event',function($trail, $event){
 
 Breadcrumbs::for('seats',function ($trail,$event){
     $trail->parent('event',$event);
-    $trail->push('Pokupka');
+    $trail->push(trans('ClientSide.checkout'));//'Pokupka'
 });
 
 Breadcrumbs::for('search',function($trail){
     $trail->parent('home');
-    $trail->push('Результат поиска');
+    $trail->push(trans('ClientSide.results'));//'Результат поиска'
 });
 
-Breadcrumbs::for('add_event',function($trail){
-    $trail->parent('home');
-    $trail->push('+ ДОБАВИТЬ СОБЫТИЕ');
-});

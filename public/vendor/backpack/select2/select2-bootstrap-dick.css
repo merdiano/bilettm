@@ -458,7 +458,7 @@
  * These styles alter Select2's default background-position of 100%
  * and supply the new background-position syntax to browsers which support it:
  *
- * 1. Android, Safari < 6/Mobile, IE<9: change to a relative background-position of 99%
+ * 1. Android, Safari < 6/mobile, IE<9: change to a relative background-position of 99%
  * 2. Chrome 25+, Firefox 13+, IE 9+, Opera 10.5+: use the new CSS3-background-position syntax
  *
  * @see http://www.w3.org/TR/css3-background/#background-position

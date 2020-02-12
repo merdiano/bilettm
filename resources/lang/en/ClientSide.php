@@ -100,4 +100,7 @@ return [
     'seatsTotal' => 'seats. Total cost',
     'yourSeats' => 'Your Seats',
 
+    //Chcekout page
+    'checkout' => 'Checkout'
+
 ];

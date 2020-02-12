@@ -106,4 +106,7 @@ return [
     'schedule' => 'Расписание',
     'datePlay' => 'Дата проведения',
     'timePlay' => 'Время проведения',
+
+    //Chcekout page
+    'checkout' => 'Checkout',
 ];

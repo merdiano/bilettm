@@ -46,7 +46,8 @@
         "backpack/settings": "~2.1",
         "backpack/pagemanager": "~1.1",
         "backpack/permissionmanager": "~4.0",
-        "davejamesmiller/laravel-breadcrumbs": "5.3"
+        "davejamesmiller/laravel-breadcrumbs": "5.3",
+        "jenssegers/agent": "^2.6"
 
 
     },

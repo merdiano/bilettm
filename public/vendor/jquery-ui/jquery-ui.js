@@ -6280,7 +6280,7 @@ var widgetsControlgroup = $.widget( "ui.controlgroup", {
 		this._enhance();
 	},
 
-	// To support the enhanced option in jQuery Mobile, we isolate DOM manipulation
+	// To support the enhanced option in jQuery mobile, we isolate DOM manipulation
 	_enhance: function() {
 		this.element.attr( "role", "toolbar" );
 		this.refresh();
@@ -6650,7 +6650,7 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 		}
 	},
 
-	// Support jQuery Mobile enhanced option
+	// Support jQuery mobile enhanced option
 	_enhance: function() {
 		this._updateIcon( this.element[ 0 ].checked );
 	},
@@ -6831,7 +6831,7 @@ $.widget( "ui.button", {
 	_getCreateOptions: function() {
 		var disabled,
 
-			// This is to support cases like in jQuery Mobile where the base widget does have
+			// This is to support cases like in jQuery mobile where the base widget does have
 			// an implementation of _getCreateOptions
 			options = this._super() || {};
 

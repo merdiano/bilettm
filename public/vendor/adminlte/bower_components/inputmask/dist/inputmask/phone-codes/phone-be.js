@@ -132,22 +132,22 @@
                 mask: "+32(46#)##-##-##",
                 cc: "BE",
                 cd: "Belgium",
-                city: "Mobile Phones"
+                city: "mobile Phones"
             }, {
                 mask: "+32(47#)##-##-##",
                 cc: "BE",
                 cd: "Belgium",
-                city: "Mobile Phones"
+                city: "mobile Phones"
             }, {
                 mask: "+32(48#)##-##-##",
                 cc: "BE",
                 cd: "Belgium",
-                city: "Mobile Phones"
+                city: "mobile Phones"
             }, {
                 mask: "+32(49#)##-##-##",
                 cc: "BE",
                 cd: "Belgium",
-                city: "Mobile Phones"
+                city: "mobile Phones"
             }, {
                 mask: "+32(461)8#-##-##",
                 cc: "BE",

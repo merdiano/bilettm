@@ -1306,7 +1306,7 @@ var initSlider = function (container,opt) {
 	opt.c=container;
 	opt.ul = container.find('.tp-revslider-mainul');
 
-	 // Remove Not Needed Slides for Mobile Devices
+	 // Remove Not Needed Slides for mobile Devices
     opt.ul.find('>li').each(function(i) {
     	var li = jQuery(this);    	
     	if (li.data('hideslideonmobile')=="on" && _ISM) li.remove();

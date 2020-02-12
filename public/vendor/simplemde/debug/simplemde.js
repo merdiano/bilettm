@@ -2311,7 +2311,7 @@ CodeMirror.overlayMode = function(base, overlay, combine) {
       var te = this.textarea = div.firstChild;
       display.wrapper.insertBefore(div, display.wrapper.firstChild);
 
-      // Needed to hide big blue blinking cursor on Mobile Safari (doesn't seem to work in iOS 8 anymore)
+      // Needed to hide big blue blinking cursor on mobile Safari (doesn't seem to work in iOS 8 anymore)
       if (ios) te.style.width = "0px";
 
       on(te, "input", function() {
@@ -9347,7 +9347,7 @@ CodeMirror.overlayMode = function(base, overlay, combine) {
   function lst(arr) { return arr[arr.length-1]; }
 
   var selectInput = function(node) { node.select(); };
-  if (ios) // Mobile Safari apparently has a bug where select() is broken.
+  if (ios) // mobile Safari apparently has a bug where select() is broken.
     selectInput = function(node) { node.selectionStart = 0; node.selectionEnd = node.value.length; };
   else if (ie) // Suppress mysterious IE10 errors
     selectInput = function(node) { try { node.select(); } catch(_e) {} };

@@ -1,7 +1,7 @@
 module.exports = function(grunt) 
 {
 	var sBanner = '/* ----------------------------------------------------------------------------- ' +
-	'\n\n  jQuery DateTimePicker - Responsive flat design jQuery DateTime Picker plugin for Web & Mobile' +
+	'\n\n  jQuery DateTimePicker - Responsive flat design jQuery DateTime Picker plugin for Web & mobile' +
 	'\n  Version <%= pkg.version %>' + 
 	'\n  Copyright (c)2014-<%= grunt.template.today("yyyy") %> Lajpat Shah' +
 	'\n  Contributors : https://github.com/nehakadam/DateTimePicker/contributors' +

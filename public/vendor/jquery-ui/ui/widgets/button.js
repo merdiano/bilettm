@@ -55,7 +55,7 @@ $.widget( "ui.button", {
 	_getCreateOptions: function() {
 		var disabled,
 
-			// This is to support cases like in jQuery Mobile where the base widget does have
+			// This is to support cases like in jQuery mobile where the base widget does have
 			// an implementation of _getCreateOptions
 			options = this._super() || {};
 

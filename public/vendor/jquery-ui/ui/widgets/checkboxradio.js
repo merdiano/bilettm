@@ -140,7 +140,7 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 		}
 	},
 
-	// Support jQuery Mobile enhanced option
+	// Support jQuery mobile enhanced option
 	_enhance: function() {
 		this._updateIcon( this.element[ 0 ].checked );
 	},

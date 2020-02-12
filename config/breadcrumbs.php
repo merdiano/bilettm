@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'view' => 'Bilettm.Partials.BreadCrumbs',
+    'view' => 'desktop.Partials.BreadCrumbs',
 
     /*
     |--------------------------------------------------------------------------

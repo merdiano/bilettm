@@ -325,13 +325,13 @@
 
   /* SUPPORTS FIXED POSITION?
    *
-   * Based on code from jQuery Mobile 1.1.0
+   * Based on code from jQuery mobile 1.1.0
    * http://jquerymobile.com/
    *
    * In a nutshell, we need to figure out if fixed positioning is supported.
    * Unfortunately, this is very difficult to do on iOS, and usually involves
    * injecting content, scrolling the page, etc.. It's ugly.
-   * jQuery Mobile uses this workaround. It's not ideal, but works.
+   * jQuery mobile uses this workaround. It's not ideal, but works.
    *
    * Modified to detect IE6
    * ========================= */
@@ -360,7 +360,7 @@
       //Android lte 2.1: Platform is Android and Webkit version is less than 533 (Android 2.2)
       (ua.indexOf( "Android" ) > -1 && wkversion && wkversion < 533) ||
       
-      // Firefox Mobile before 6.0 -
+      // Firefox mobile before 6.0 -
       (ffversion && ffversion < 6) ||
       
       // WebOS less than 3

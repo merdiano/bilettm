@@ -12,7 +12,7 @@ return [
     */
 
     // Project name. Shown in the breadcrumbs and a few other places.
-    'project_name' => 'Bilettm',
+    'project_name' => 'desktop',
 
     // Menu logos
     'logo_lg'   => '<b>Bilet</b>tm',
