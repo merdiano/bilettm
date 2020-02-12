@@ -2129,3 +2129,21 @@ choose_seats_content > div.tab-pane.fade{
 .check-order-btn{
   background-color: rgba(211,61,51,1) !important;
 }
+
+.pagination-wrapper ul.pagination{
+  width: fit-content;
+  margin: 20px auto;
+}
+
+.pagination-wrapper span.page-link{
+  width: auto;
+}
+
+.pagination-wrapper .page-item *{
+  color: rgba(211,61,51,1);
+}
+
+.pagination-wrapper .page-item.active .page-link{
+  background-color: rgba(211,61,51,1);
+  border-color: rgba(211,61,51,1);
+}

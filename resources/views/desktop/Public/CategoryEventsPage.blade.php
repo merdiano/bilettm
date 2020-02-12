@@ -16,7 +16,9 @@
                                     @include("desktop.EventsList.{$category->view_type}")
                                 @endforeach
                             </div>
-                            {{$events->appends(['sort'=>$sort,'start'=>$start,'end'=>$end])->links()}}
+                            <div class="pagination-wrapper">
+                                {{$events->appends(['sort'=>$sort,'start'=>$start,'end'=>$end])->links()}}
+                            </div>
                         </div>
                     </div>
                     <!-- End Tab panes -->
