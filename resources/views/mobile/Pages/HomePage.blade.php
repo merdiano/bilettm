@@ -1,4 +1,4 @@
-@extends('Shared.Layouts.BilettmLayout',['folder'=>'mobile])
+@extends('Shared.Layouts.BilettmLayout',['folder'=>'mobile'])
 @section('after_styles')
     <link rel="stylesheet" href="{{asset('vendor/slick-carousel/slick/slick.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.carousel.min.css')}}">
