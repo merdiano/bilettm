@@ -79,7 +79,7 @@ class EventCheckoutController extends Controller
             return redirect()->back();
         }
 
-        return view('desktop.ViewEvent.SeatsPage',compact('event','tickets'));
+        return view('desktop.Pages.SeatsPage',compact('event','tickets'));
     }
     /**
      * Validate a ticket request. If successful reserve the tickets and redirect to checkout
@@ -478,7 +478,7 @@ class EventCheckoutController extends Controller
         }
 
 //        return view('Public.ViewEvent.EventPageCheckout', $data);
-        return view('desktop.ViewEvent.CheckoutPage', $data);
+        return view('desktop.Pages.CheckoutPage', $data);
     }
 
     /**
@@ -892,7 +892,7 @@ class EventCheckoutController extends Controller
             return view('Public.ViewEvent.Embedded.EventPageViewOrder', $data);
         }
 
-        return view('desktop.ViewEvent.ViewOrderPage', $data);
+        return view('desktop.Pages.ViewOrderPage', $data);
 //        return view('Public.ViewEvent.EventPageViewOrder', $data);
     }
 
