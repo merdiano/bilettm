@@ -37,7 +37,14 @@ class PublicController extends Controller
 
         $sliders = Slider::where('active',1)->get();
 //dd($cinema->events->first());
-        return view('desktop.Pages.HomePage')->with([
+//        return view('desktop.Pages.HomePage')->with([
+//            'cinema' => $cinema,
+//            'cartoon' => $cartoon,
+//            'musical' => $musical,
+//            'sliders' => $sliders
+//        ]);
+
+        return $this->render("Pages.HomePage",[
             'cinema' => $cinema,
             'cartoon' => $cartoon,
             'musical' => $musical,
