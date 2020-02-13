@@ -13,7 +13,7 @@ abstract class Controller extends BaseController
 
     protected function render($view, $data = null){
 
-        $dir = Agent::isDesktop()?'desktop.':'mobile';
+        $dir = Agent::isDesktop()?'desktop.':'mobile.';
         return view($dir.$view, $data);
     }
 }
