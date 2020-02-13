@@ -1,0 +1,16 @@
+<div class="container" style="padding: 0 5% !important;">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between">
+            <h5 class="">{{$category->title}}
+                <div class="title-bottom-line"></div>
+            </h5>
+            <a href="{{$category->url}}" class="show-all">{{__('ClientSide.view')}}</a>
+        </div>
+    </div>
+</div>
+<div class="owl-carousel owl-theme" id="section-slider1">
+    @foreach($category->events as $event)
+        @include('mobile.Partials.EventListItem',['event'=>$event])
+    @endforeach
+</div>
+

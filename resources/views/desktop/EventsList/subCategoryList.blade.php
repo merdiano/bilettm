@@ -1,4 +1,4 @@
-@extends('desktop.Layouts.BilettmLayout')
+@extends('Shared.Layouts.BilettmLayout')
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('category',$category)}}
     @include("desktop.Partials.FilterMenu")

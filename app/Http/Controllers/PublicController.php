@@ -37,7 +37,7 @@ class PublicController extends Controller
 
         $sliders = Slider::where('active',1)->get();
 //dd($cinema->events->first());
-        return view('desktop.Public.HomePage')->with([
+        return view('desktop.Pages.HomePage')->with([
             'cinema' => $cinema,
             'cartoon' => $cartoon,
             'musical' => $musical,
@@ -66,7 +66,7 @@ class PublicController extends Controller
             ->get();
 
 
-        return view("desktop.Public.EventsPage")->with($data);
+        return view("desktop.Pages.EventsPage")->with($data);
     }
 
     public function showSubCategoryEvents($cat_id){
@@ -82,7 +82,7 @@ class PublicController extends Controller
             ->orderBy($order['field'],$order['order'])
             ->paginate(16);
 
-        return view("desktop.Public.CategoryEventsPage")->with($data);
+        return view("desktop.Pages.CategoryEventsPage")->with($data);
     }
 
     private function sorts_filters(){
@@ -112,7 +112,7 @@ class PublicController extends Controller
             ->orWhere('title_tk','like',"%{$query}%")
             ->paginate(10);
 
-        return view('desktop.Public.SearchResults')
+        return view('desktop.Pages.SearchResults')
             ->with([
                 'events' => $events,
                 'query' => $query
@@ -128,7 +128,7 @@ class PublicController extends Controller
             'phone' => sanitise($request->get('phone')),
             'detail' => sanitise($request->get('detail'))
         ]);
-        return view('desktop.Public.AddEventResult',compact('addEvent'));
+        return view('desktop.Pages.AddEventResult',compact('addEvent'));
     }
 
     public function subscribe(SubscribeRequest $request){

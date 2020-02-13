@@ -23,30 +23,34 @@
                     </a>
                     <ul class="list-inline mb-50 row footer-social-icons pt-4" style="width: 100%">
                         <li class="text-center">
-                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_facebook')}}"><img src="{{asset('assets/images/icons/social/3.svg')}}"></a>
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_facebook')}}">
+                                <img src="{{asset('assets/images/icons/social/3.svg')}}"></a>
                         </li>
                         <li class="text-center">
-                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_pinterest')}}"><img src="{{asset('assets/images/icons/social/2.svg')}}"></a>
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_pinterest')}}">
+                                <img src="{{asset('assets/images/icons/social/2.svg')}}"></a>
                         </li>
                         <li class="text-center">
-                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_twitter')}}"><img src="{{asset('assets/images/icons/social/1.svg')}}"></a>
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_twitter')}}">
+                                <img src="{{asset('assets/images/icons/social/1.svg')}}"></a>
                         </li>
                         <li class="text-center">
-                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_linkedin')}}"><img src="{{asset('assets/images/icons/social/4.svg')}}"></a>
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_linkedin')}}"
+                            ><img src="{{asset('assets/images/icons/social/4.svg')}}"></a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="#">{{__('ClientSide.cabinet')}}</a></li>
                         <li><a href="#">{{__('ClientSide.introduction')}}</a></li>
                         <li><a href="#">{{__("ClientSide.questions")}}</a></li>
                         <li><a href="#">{{__("ClientSide.offices")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.rassylka")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="#">{{__("ClientSide.rassylka")}}</a></li>
+
                         <li><a href="#">{{__("ClientSide.collective")}}</a></li>
                         <li><a href="#">{{__("ClientSide.organizers")}}</a></li>
                         <li><a href="#">{{__("ClientSide.concert_halls")}}</a></li>
@@ -68,7 +72,7 @@
     <div class="container g-pt-30 g-pb-10 pt-4">
         <div class="row justify-content-between align-items-center" style="border-top: 1px solid #ffffff">
             <div class="col-12">
-                <p class="g-font-size-13 mb-0 text-center all-rights-reserved">&copy; 2019 {{__("ClientSide.ticket_service")}} Billettm.com. {{__("ClientSide.copyright")}}.</p>
+                <p class="g-font-size-13 mb-0 text-center all-rights-reserved">&copy; 2020 {{__("ClientSide.ticket_service")}} Billettm.com. {{__("ClientSide.copyright")}}.</p>
             </div>
         </div>
     </div>
