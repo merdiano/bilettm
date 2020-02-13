@@ -1,4 +1,4 @@
-@extends('Shared.Layouts.BilettmLayout')
+@extends('Shared.Layouts.BilettmLayout',['folder' => 'desktop'])
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('search')}}
     <section class="movie-items-group firts-child" style="margin-bottom: 100px">

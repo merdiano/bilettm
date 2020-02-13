@@ -1,4 +1,4 @@
-@extends('Shared.Layouts.BilettmLayout')
+@extends('Shared.Layouts.BilettmLayout',['folder' => 'desktop'])
 
 @section('after_styles')
     <link href="{{asset('vendor/gijgo/gijgo.min.css')}}" rel="stylesheet" type="text/css" />
