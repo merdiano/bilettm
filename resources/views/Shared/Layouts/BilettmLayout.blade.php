@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-<main>
+<main id="{{$folder}}">
     @include($folder.'.Partials.PublicHeader')
     @yield('content')
     @stack('after_content')
