@@ -57,28 +57,7 @@
 {{--    <script src="{{ asset('assets/javascript/components/hs.datepicker.js') }}"></script>--}}
     <!-- JS Plugins Init. -->
     <script>
-        $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
-        // initialization of custom select
-        $.HSCore.components.HSSelect.init('.js-custom-select');
 
-        // initialization of forms
-        // $.HSCore.components.HSDatepicker.init('#datepickerInline');
-        $('#carouselCus1').slick('setOption', 'responsive', [{
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 4
-            }
-        }, {
-            breakpoint: 992,
-            settings: {
-                slidesToShow: 3
-            }
-        }, {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 2
-            }
-        }], true);
         //owl carousel
         $("#mob-top-slider").owlCarousel({
             items: 1,
@@ -87,7 +66,9 @@
         });
 
         $(".owl-carousel").owlCarousel({
-            items: 1,
+            items: 2,
+            center:true,
+            margin:20,
         });
 
         $(document).ready(function(){
