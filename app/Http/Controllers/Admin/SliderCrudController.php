@@ -41,6 +41,8 @@ class SliderCrudController extends CrudController
             ['name' => 'text_ru','type' => 'text', 'label' => 'Text Ru'],
             ['name' => 'text_tk','type' => 'text', 'label' => 'Text Tk'],
             ['name' => 'link','type' => 'text', 'label' => 'Link'],
+            ['name' => 'ru','type' => 'boolean', 'label' => 'Russian'],
+            ['name' => 'tk','type' => 'boolean', 'label' => 'Turkmen'],
             ['name' => 'active','type' => 'boolean', 'label' => 'Active'],
             ['name' => 'image','type' => 'text', 'label' => 'Image'],
         ]);
@@ -48,6 +50,8 @@ class SliderCrudController extends CrudController
             ['name' => 'title','type' => 'text', 'label' => 'Title'],
             ['name' => 'text','type' => 'text', 'label' => 'Text'],
             ['name' => 'link','type' => 'text', 'label' => 'Link'],
+            ['name' => 'ru','type' => 'checkbox', 'label' => 'Russian'],
+            ['name' => 'tk','type' => 'checkbox', 'label' => 'Turkmen'],
             ['name' => 'active','type' => 'checkbox', 'label' => 'Active'],
             [ // image
                 'label' => "Image",

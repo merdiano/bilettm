@@ -13,12 +13,11 @@ use App\Http\Requests\SearchRequest;
 use App\Http\Requests\SubscribeRequest;
 use App\Models\EventRequest;
 use App\Models\Subscriber;
-use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Slider;
-use Carbon\Carbon;
 use App;
+use Illuminate\Support\Facades\Config;
 
 class PublicController extends Controller
 {
@@ -35,7 +34,9 @@ class PublicController extends Controller
             ->categoryLiveEvents(8)
             ->first();
 
-        $sliders = Slider::where('active',1)->get();
+        $sliders = Slider::where('active',1)
+            ->where(Config::get('app.locale'),1)
+            ->get();
 //dd($cinema->events->first());
 //        return view('desktop.Pages.HomePage')->with([
 //            'cinema' => $cinema,
