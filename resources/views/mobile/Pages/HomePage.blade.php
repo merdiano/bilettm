@@ -16,6 +16,12 @@
             padding-left: 70px !important;
             padding-right: 70px !important;
         }
+        .konserty h5{
+            color: #ffffff !important;
+        }
+        .section-section .owl-nav{
+            display: none !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -69,7 +75,7 @@
             stagePadding: 70,
             loop:true,
             margin:10,
-            nav:true,
+            nav:false,
             responsive:{
                 0:{
                     items:1
