@@ -6,7 +6,7 @@
 
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('category',$category)}}
-    @include("desktop.Partials.FilterMenu")
+    @include("Shared.Partials.FilterMenu")
 
     @yield('inner_content')
 

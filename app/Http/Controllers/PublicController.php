@@ -72,8 +72,7 @@ class PublicController extends Controller
                 })
             ->get();
 
-
-        return view("desktop.Pages.EventsPage")->with($data);
+        return $this->render("Pages.EventsPage",$data);
     }
 
     public function showSubCategoryEvents($cat_id){
@@ -89,7 +88,7 @@ class PublicController extends Controller
             ->orderBy($order['field'],$order['order'])
             ->paginate(16);
 
-        return view("desktop.Pages.CategoryEventsPage")->with($data);
+        return $this->render("Pages.CategoryEventsPage",$data);
     }
 
     private function sorts_filters(){
@@ -119,12 +118,10 @@ class PublicController extends Controller
             ->orWhere('title_tk','like',"%{$query}%")
             ->paginate(10);
 
-        return view('desktop.Pages.SearchResults')
-            ->with([
-                'events' => $events,
-                'query' => $query
-            ]);
-
+        return $this->render('Pages.SearchResults',[
+            'events' => $events,
+            'query' => $query
+        ]);
     }
 
     public function postAddEvent(AddEventRequest $request){

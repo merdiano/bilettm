@@ -48,7 +48,7 @@ return [
     'onDate' => '13 Sentýabr',
     'onTime' => '19:00, Anna',
     'title' => '"Möý Adam"',
-    'description' => 'Piter Parker we onung dostlary.',
+    'description' => 'Mazmuny',
     'shown' => 'Sahypada bar',
 
     //PublicFooterBlade.php

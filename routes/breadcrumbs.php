@@ -35,3 +35,7 @@ Breadcrumbs::for('search',function($trail){
     $trail->push(trans('ClientSide.results'));//'Результат поиска'
 });
 
+Breadcrumbs::for('add_event',function($trail){
+    $trail->parent('home');
+    $trail->push('+ ДОБАВИТЬ СОБЫТИЕ');
+});

@@ -1,7 +1,7 @@
 @extends('Shared.Layouts.BilettmLayout')
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('category',$category)}}
-    @include("desktop.Partials.FilterMenu")
+    @include("Shared.Partials.FilterMenu")
     <section class="movie-items-group">
         <div class="container">
             <div class="row kinoteator tab-part">

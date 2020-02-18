@@ -49,7 +49,7 @@ return [
     'onDate' => '13 September',
     'onTime' => '19:00, Friday',
     'title' => '"Spider Man"',
-    'description' => 'Peter Parker and his friends go on a summer vacation to Europe. However, friends are unlikely to rest - Peter will have to agree to help Nick Fury uncover the secret of creatures that cause natural disasters and destruction throughout the continent.',
+    'description' => 'Description.',
     'shown' => 'Shown on page',
 
     //PublicFooter.blade.php
