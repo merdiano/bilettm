@@ -12,6 +12,10 @@
             position: absolute;
             bottom: 0;
         }
+        .section-section .owl-stage{
+            padding-left: 70px !important;
+            padding-right: 70px !important;
+        }
     </style>
 @endsection
 @section('content')
