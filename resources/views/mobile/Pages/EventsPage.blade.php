@@ -16,7 +16,10 @@
                 </h5>
                 {{--                        <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>--}}
             </div>
-            @include("Shared.Partials.FilterMenu")
+            <div class="row">
+                @include("Shared.Partials.FilterMenu")
+            </div>
+
             <div class="owl-carousel owl-theme" id="section-slider{{$loop->iteration}}">
                 @foreach($cat->cat_events as $event)
                     @include('mobile.Partials.EventListItem')
@@ -58,5 +61,4 @@
             }
         });
     </script>
-
 @endsection

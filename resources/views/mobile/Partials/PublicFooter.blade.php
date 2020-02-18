@@ -39,3 +39,13 @@
         </div>
     </div>
 </footer>
+
+@push('after_scripts')
+    <script>
+        $('.header-search-a').click(function () {
+            $('.navbar-toggler').click();
+            $('.search-input-box').focus();
+
+        })
+    </script>
+@endpush

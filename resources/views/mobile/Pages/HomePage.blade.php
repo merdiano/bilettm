@@ -98,11 +98,6 @@
                 $("#carousel-09-1 .js-next").click();
             });
 
-            $('.header-search-a').click(function () {
-                $('.navbar-toggler').click();
-                $('.search-input-box').focus();
-
-            })
         });
 
     </script>
