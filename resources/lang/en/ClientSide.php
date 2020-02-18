@@ -88,6 +88,7 @@ return [
     'rep' => 'The whole repertoire',
 
     //SearchResults.blade.php
+    'search' => 'Search',
     'results' => 'Search results',
 
     //SeatsPage.blade.php

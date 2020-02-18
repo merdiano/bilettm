@@ -12,18 +12,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 100%; padding: 10px 30px;">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">@lang('ClientSide.Home') <span class="sr-only">(current)</span></a>
+                <li class="nav-item @if(Route::currentRouteName()=='home') active @endif">
+                    <a class="nav-link" href="/">@lang('ClientSide.home') <span class="sr-only">(current)</span></a>
                 </li>
                 @foreach(category_menu() as $category)
                 <li class="nav-item">
-                    <a class="nav-link" href="{{$category->url}}">{{$category->title}}</a>
+                    <a class="nav-link @if(url()->current()==$category->url) active @endif" href="{{$category->url}}">{{$category->title}}</a>
                 </li>
                 @endforeach
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{route('search')}}" method="GET">
                 <input class="form-control mr-sm-2 search-input-box" type="search" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
-                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">{{__('ClientSide.placeholder')}}</button>
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">{{__('ClientSide.search')}}</button>
             </form>
         </div>
     </nav>

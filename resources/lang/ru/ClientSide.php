@@ -87,6 +87,7 @@ return [
     'rep' => 'Посмотреть все',
 
     //SearchResults.blade.php
+    'search' => 'Поиск',
     'results' => 'Результаты поиска',
 
     //SeatsPage.blade.php

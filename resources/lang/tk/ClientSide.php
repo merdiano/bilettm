@@ -87,6 +87,7 @@ return [
     'rep' => 'Ähli repertuar',
 
     //SearchResults.blade.php
+    'search' => 'Gözle',
     'results' => 'Gözlegiň netijeleri',
 
     //SeatsPage.blade.php
