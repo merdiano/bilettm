@@ -18,8 +18,9 @@
 
                     {{--                        <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>--}}
                 </div>
-                @include("Shared.Partials.FilterMenu")
+
             </div>
+            @include("Shared.Partials.FilterMenu")
             <div class="owl-carousel owl-theme" id="section-slider{{$loop->iteration}}">
                 @foreach($cat->cat_events as $event)
                     @include('mobile.Partials.EventListItem')
