@@ -7,7 +7,7 @@
     </div>
     <div class="tab-ozi col-12 px-0">
 
-        <div class="owl-carousel container row" id="{{$id}}-tab1" style="padding: 0 !important;">
+        <div class="owl-carousel" id="{{$id}}-tab1">
             <div class="row">
                 @foreach($category->events->slice(0,8) as $event)
                     <div class="col-3 pb-4">
