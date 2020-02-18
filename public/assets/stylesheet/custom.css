@@ -310,8 +310,8 @@ article.u-block-hover img {
   width: 100%;}
 #kinoteator-tab1 .owl-nav, .movie-items-group .owl-nav {
   position: absolute;
-  top: -63px;
-  right: 275px; }
+  top: -97px;
+  right: 285px; }
 #kinoteator-tab1 .owl-prev, #kinoteator-tab1 .owl-next, .movie-items-group .owl-prev, .movie-items-group .owl-next {
   border: 1px solid #000000;
   border-radius: 5px;
@@ -383,8 +383,8 @@ article.u-block-hover img {
   width: 100%;}
 #cartoon .owl-nav, .movie-items-group .owl-nav {
   position: absolute;
-  top: -63px;
-  right: 275px; }
+  top: -97px;
+  right: 285px; }
 #cartoon .owl-prev, #cartoon .owl-next, .movie-items-group .owl-prev, .movie-items-group .owl-next {
   border: 1px solid #000000;
   border-radius: 5px;
@@ -483,7 +483,7 @@ article.u-block-hover img {
 #konserty-tab1 .owl-nav {
   position: absolute;
   top: -76px;
-  right: 280px;}
+  right: 285px;}
 #konserty-tab1 .owl-prev, #konserty-tab1 .owl-next {
   border: 1px solid #ffffff;
   border-radius: 5px;
@@ -2097,9 +2097,6 @@ choose_seats_content > div.tab-pane.fade{
   margin-top: 40px;
 }
 
-#kinoteator-tab1 .owl-nav{
-  top: -96px;
-}
 
 #konserty .tab-ozi {
   margin-top: 40px;
