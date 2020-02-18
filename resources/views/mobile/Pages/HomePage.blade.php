@@ -1,4 +1,4 @@
-@extends('Shared.Layouts.BilettmLayout',['folder'=>'mobile'])
+@extends('mobile.Layouts.BilettmLayout',['folder'=>'mobile'])
 @section('after_styles')
     <link rel="stylesheet" href="{{asset('vendor/slick-carousel/slick/slick.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.carousel.min.css')}}">
@@ -67,18 +67,13 @@
             }
         }], true);
         //owl carousel
-        $("#main-top-slider").owlCarousel({
+        $("#mob-top-slider").owlCarousel({
             items: 1,
             loop: true,
             autoplay: true,
         });
-        $("#kinoteator-tab1").owlCarousel({
-            items: 1,
-        });
-        $("#konserty-tab1").owlCarousel({
-            items: 1,
-        })
-        $("#cartoon-tab1").owlCarousel({
+
+        $(".owl-carousel").owlCarousel({
             items: 1,
         });
 
@@ -89,12 +84,14 @@
             $("#slide-teator-next").click(function(){
                 $("#carousel-09-1 .js-next").click();
             });
-            // // home page teatrda ulanan sliderim un script
-            // // initialization of carousel
-            // $('#date-click').click(function () {
-            //     $('#date-click-content').toggleClass('show-content');
-            // });
+
+            $('.header-search-a').click(function () {
+                $('.navbar-toggler').click();
+                $('.search-input-box').focus();
+
+            })
         });
+
     </script>
 
 @endsection

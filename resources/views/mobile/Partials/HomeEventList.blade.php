@@ -8,7 +8,7 @@
         </div>
     </div>
 </div>
-<div class="owl-carousel owl-theme" id="section-slider1">
+<div class="owl-carousel owl-theme" >
     @foreach($category->events as $event)
         @include('mobile.Partials.EventListItem',['event'=>$event])
     @endforeach

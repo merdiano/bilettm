@@ -5,10 +5,10 @@
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="ti-menu"></span>
+            <span class="fa fa-bars"></span>
         </button>
 
-        <a href="" class="header-search-a"><i class="ti-search g-color-white"></i></a>
+        <a class="header-search-a"><i class="fa fa-search text-white"></i></a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 100%; padding: 10px 30px;">
             <ul class="navbar-nav mr-auto">
@@ -22,7 +22,7 @@
                 @endforeach
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{route('search')}}" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
+                <input class="form-control mr-sm-2 search-input-box" type="search" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
                 <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">{{__('ClientSide.placeholder')}}</button>
             </form>
         </div>
