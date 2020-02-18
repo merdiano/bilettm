@@ -1,6 +1,10 @@
 @extends('Shared.Layouts.BilettmLayout',['folder' => 'mobile'])
 @section('after_styles')
     <link href="{{asset('vendor/gijgo/gijgo.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{asset('vendor/slick-carousel/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.theme.default.min.css')}}">
+    <link  rel="stylesheet" href="{{asset('vendor/jquery-ui/themes/base/jquery-ui.min.css')}}">
 @endsection
 @section('content')
     @foreach($sub_cats as $cat)
@@ -32,6 +36,8 @@
 @section('after_scripts')
 
     <script src="{{asset('vendor/gijgo/gijgo.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('vendor/slick-carousel/slick/slick.js')}}"></script>
+    <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
     <script>
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
