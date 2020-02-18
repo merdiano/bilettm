@@ -22,6 +22,7 @@
         .section-section .owl-nav{
             display: none !important;
         }
+
     </style>
 @endsection
 @section('content')
