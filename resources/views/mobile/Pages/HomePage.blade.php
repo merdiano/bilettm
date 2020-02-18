@@ -4,6 +4,15 @@
     <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.theme.default.min.css')}}">
     <link  rel="stylesheet" href="{{asset('vendor/jquery-ui/themes/base/jquery-ui.min.css')}}">
+    <style>
+        .owl-carousel .owl-dots{
+            display: none !important;
+        }
+        .overlay-details.smalll{
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
 @endsection
 @section('content')
 

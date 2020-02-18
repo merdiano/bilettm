@@ -10,7 +10,7 @@
 
         <a class="header-search-a"><i class="fa fa-search text-white"></i></a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 100%; padding: 10px 30px;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 100%; padding: 10px 30px;box-shadow: 0px 0px 10px rgba(0,0,0,.3)">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item @if(Route::currentRouteName()=='home') active @endif">
                     <a class="nav-link" href="/">@lang('ClientSide.home') <span class="sr-only">(current)</span></a>
@@ -23,7 +23,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{route('search')}}" method="GET">
                 <input class="form-control mr-sm-2 search-input-box" type="search" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
-                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">{{__('ClientSide.search')}}</button>
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="width: 100%;">{{__('ClientSide.search')}}</button>
             </form>
         </div>
     </nav>

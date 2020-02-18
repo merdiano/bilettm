@@ -1,4 +1,4 @@
-<div class="container" style="padding: 0 5% !important;">
+<div class="container" style="padding: 0 12px !important; margin-bottom: 15px;">
     <div class="row">
         <div class="col-12 d-flex justify-content-between">
             <h5 class="">{{$category->title}}
