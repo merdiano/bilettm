@@ -7,25 +7,21 @@
     </div>
     <div class="tab-ozi col-12 px-0">
 
-        <div class="owl-carousel container row" id="{{$id}}-tab1" style="padding: 0 !important; margin: 0">
-            <div class="slider-slider">
-                <div class="row w-100 m-auto">
-                    @foreach($category->events->slice(0,8) as $event)
-                        <div class="col-3 single-item-6">
+        <div class="owl-carousel container row" id="{{$id}}-tab1" style="padding: 0 !important;">
+            <div class="row">
+                @foreach($category->events->slice(0,8) as $event)
+                    <div class="col-3 pb-4">
+                        @include('desktop.Partials.CinemaItem',['event'=>$event])
+                    </div>
+                @endforeach
+            </div>
+            @if($category->count()>8)
+                <div class="row">
+                    @foreach($category->events->slice(8) as $event)
+                        <div class="col-3">
                             @include('desktop.Partials.CinemaItem',['event'=>$event])
                         </div>
                     @endforeach
-                </div>
-            </div>
-            @if($category->count()>8)
-                <div class="slider-slider">
-                    <div class="row">
-                        @foreach($category->events->slice(8) as $event)
-                            <div class="col-3 single-item-6 ">
-                                @include('desktop.Partials.CinemaItem',['event'=>$event])
-                            </div>
-                        @endforeach
-                    </div>
                 </div>
             @endif
 

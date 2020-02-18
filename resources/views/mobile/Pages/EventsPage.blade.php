@@ -16,7 +16,7 @@
                 </h5>
                 {{--                        <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>--}}
             </div>
-            <div class="row">
+            <div class="row mt-2">
                 @include("Shared.Partials.FilterMenu")
             </div>
 
