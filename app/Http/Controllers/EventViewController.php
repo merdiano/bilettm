@@ -85,7 +85,7 @@ class EventViewController extends Controller
             }
         }
 
-        return view('desktop.Pages.EventPage', $data);
+        return $this->render('Pages.EventPage', $data);
     }
 
     /**
