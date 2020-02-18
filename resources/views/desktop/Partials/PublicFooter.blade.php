@@ -17,7 +17,7 @@
                     </form>
                     <h6>{{__("ClientSide.email_for")}}</h6>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                     <a href="" style="width: 100%">
                         <img src="{{asset('assets/images/logo/bilet-logo.svg')}}" class="footer-logo">
                     </a>
