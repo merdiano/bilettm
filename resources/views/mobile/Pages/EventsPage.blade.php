@@ -10,15 +10,11 @@
     @foreach($sub_cats as $cat)
 
         <div class="section-section py-3">
-            <div class="container">
-                <div class="col-12 d-flex justify-content-between">
-                    <h5 >{{$cat->title}}
-                        <div class="title-bottom-line"></div>
-                    </h5>
-
-                    {{--                        <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>--}}
-                </div>
-
+            <div class="col-12 d-flex justify-content-between">
+                <h5 >{{$cat->title}}
+                    <div class="title-bottom-line"></div>
+                </h5>
+                {{--                        <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>--}}
             </div>
             @include("Shared.Partials.FilterMenu")
             <div class="owl-carousel owl-theme" id="section-slider{{$loop->iteration}}">
