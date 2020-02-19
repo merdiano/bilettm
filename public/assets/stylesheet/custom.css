@@ -2142,13 +2142,6 @@ choose_seats_content > div.tab-pane.fade{
   background-color: rgba(211,61,51,1);
   border-color: rgba(211,61,51,1);
 }
-
-#mobile {
-  display: none !important; }
-@media only screen and (max-width: 992px) {
-  #mobile {
-    display: block !important; } }
-
 #mobile .navbar-brand {
   position: absolute;
   left: 50%;

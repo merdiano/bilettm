@@ -1,4 +1,4 @@
-<nav>
+<nav class="w-100">
     <div class="container">
         <ul class="nav u-nav-v1-1 g-mb-20 category-filter" data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-lightgray g-mb-20">
 
