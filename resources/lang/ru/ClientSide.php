@@ -86,6 +86,10 @@ return [
     //EventsPage.blade.php
     'rep' => 'Посмотреть все',
 
+    //Event schedule
+    'event_dates' =>'Дата проведения',
+    'event_times' =>'Время проведения',
+
     //SearchResults.blade.php
     'search' => 'Поиск',
     'results' => 'Результаты поиска',

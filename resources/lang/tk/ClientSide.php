@@ -4,8 +4,8 @@ return [
 
     //cinema.blade.php + concert.blade.php + CinemaItem.blade.php + EventItem.blade.php
     'share' => 'Paýlaş',
-    'buy_ticket' => 'Petek al',
-    'views' => 'Görnüşleri',
+    'buy_ticket' => 'Bilet satyn al',
+    'views' => '',
     'prices_from' => 'Bahasy',
     'starting' => 'Kinoteatrlarda başlaýar',
 
@@ -13,7 +13,7 @@ return [
     'date' => 'Sene',
 
     //FilterMenu.blade.php
-    'select' => 'Sene saýla',
+    'select' => 'Sene saýlaň',
     'popular' => 'Meşhur',
     'new' => 'Täze',
     'filter' => 'Filtr',
@@ -23,11 +23,11 @@ return [
     'month' => 'Şu aýda',
 
     //HomeCinema.blade.php
-    'view' => 'Ählisini görmek',
+    'view' => 'Ähli filmler',
 
     //ItemList.blade.php
     'home' => 'Baş sahypa',
-    'for_cinema' => 'Kinoteatra petek',
+    'for_cinema' => 'Kinoteatra bilet',
     'composers' => 'Çykyş edijiler',
     'events' => 'Çäreler',
     'concerts' => 'Konsertler',
@@ -58,7 +58,7 @@ return [
     'email_for' => 'Täze habarlara ýazylyň we çäreler barada soňky habarlary alyp duruň!',
     'cabinet' => 'ŞAHSY KABINET',
     'introduction' => 'BILETTM.COM BILEN TANYŞ BOL!',
-    'questions' => 'SORAGLAR WE JOGALAR',
+    'questions' => 'SORAGLAR WE JOGAPLAR',
     'offices' => 'PETEK OFISLARY',
     'rassylka' => 'PAÝLAMA',
     'collective' => 'BIRNÄÇE PETEK ALMAK',
@@ -67,41 +67,44 @@ return [
     'partners' => 'PARTNERS',
     'logo' => 'MEDIA WE REKLAMA ÜÇIN LOGO',
     'addEvent' => 'Çäre goş',
-    'ticket_service' => 'Petek hyzmatlary',
+    'ticket_service' => 'Bilet hyzmatlary',
     'copyright' => 'Ähli hukuklar goralan',
 
     //PublicHeader.blade.php
-    'placeholder' => 'Çäreler, artistlar, zallar',
+    'placeholder' => 'Çäreler, geçirilýän ýerleri',
 
     //AddEventForm.blade.php
-    'send' => 'Iber',
-    'required' => 'Hökmany doldurylmaly',
+    'send' => 'Ugrat',
+    'required' => 'Hökmany doldurylmalydyr',
     'name' => 'Ady',
-    'phone' => 'Telefon',
-    'venue' => 'Geçiriljek ýeri',
-    'place' => 'Konsert zaly Türkmenistan',
+    'phone' => 'Telefon belgisi',
+    'venue' => 'Görkeziljek ýeri',
+    'place' => 'ýeri',
     'message' => 'Habar',
-    'text' => 'Gechirmek isleyan charaniz  barada maglumatlary doldyryp bize ugradyn! maglumatlarynyzy seljerip siz bilen habarlasharys',
+    'text' => 'Geçirmek isleýän çäräňiz  barada maglumatlary dolduryp bize ugradyň! Maglumatlaryňyzy gözden geçirip, siz bilen habarlaşarys',
 
     //EventsPage.blade.php
-    'rep' => 'Ähli repertuar',
+    'rep' => 'Ähli filmler',
+    //Event schedule
+    'event_dates' =>'Görkeziljek senesi',
+    'event_times' =>'Görkeziljek wagty',
 
     //SearchResults.blade.php
-    'search' => 'Gözle',
+    'search' => 'Gözleg',
     'results' => 'Gözlegiň netijeleri',
 
     //SeatsPage.blade.php
     'seats' => 'Ýer saýla',
-    'available' => 'El ýeter',
+    'available' => 'Elýeter',
     'booked' => 'Rezerwlenen',
     'reserved' => 'Rezerwlenen',
-    'selection' => 'Siziň saýlanyňyz',
+    'selection' => 'Siziň saýlan ýeriňiz',
     'selected' => 'Siz saýladyňyz',
     'seatsTotal' => 'ýeri. Umumy baha',
     'yourSeats' => 'Siziň ýerleriňiz',
 
     //CheckoutPage
-    'confirm-seats' => 'Ýerleriňizi tassyklaň',
+    'confirm-seats' => 'Saýlan ýerleriňizi tassyklaň',
 
     //Schedule.blade.php
     'schedule' => 'Geçirilýän tertibi',
