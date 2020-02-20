@@ -917,7 +917,8 @@ footer {
       font-size: 20px;
       color: #ffffff;
       font-weight: bold;
-      padding: 0 90px; }
+      text-align: left;
+    }
       @media only screen and (max-width: 1600px) {
         footer .footer-header h6 {
           font-size: 18px; } }
@@ -1908,7 +1909,7 @@ input.reserved-seats ~ label svg {
 
 .category-filter li a{
   padding-left: 0;
-  padding-right: 30px;
+  padding-right: 15px;
 }
 
 .category-filter li a.active{
@@ -1924,7 +1925,7 @@ input.reserved-seats ~ label svg {
 }
 
 .calendar-form .gj-datepicker{
-  width: 200px;
+  width: 70px;
   margin: 0 10px;
 }
 
@@ -2141,13 +2142,6 @@ choose_seats_content > div.tab-pane.fade{
   background-color: rgba(211,61,51,1);
   border-color: rgba(211,61,51,1);
 }
-
-#mobile {
-  display: none !important; }
-@media only screen and (max-width: 992px) {
-  #mobile {
-    display: block !important; } }
-
 #mobile .navbar-brand {
   position: absolute;
   left: 50%;

@@ -160,42 +160,42 @@ Route::group(
             'uses' => 'EventViewController@showEventHomePreview',
         ]);
 
-        Route::get('{event_id}/checkout/date',[
+        Route::get('/{event_id}/checkout/date',[
             'as'   => 'postValidateDate',
             'uses' => 'EventCheckoutController@postValidateDate'
         ]);
 
-        Route::post('{event_id}/checkout/', [
+        Route::post('/{event_id}/checkout/', [
             'as'   => 'postValidateTickets',
             'uses' => 'EventCheckoutController@postValidateSeats',
         ]);
 
-        Route::post('{event_id}/checkout/validate', [
+        Route::post('/{event_id}/checkout/validate', [
             'as'   => 'postValidateOrder',
             'uses' => 'EventCheckoutController@postValidateOrder',
         ]);
 
-        Route::get('{event_id}/checkout/payment', [
+        Route::get('/{event_id}/checkout/payment', [
             'as'   => 'showEventPayment',
             'uses' => 'EventCheckoutController@showEventPayment',
         ]);
 
-        Route::get('{event_id}/checkout/create', [
+        Route::get('/{event_id}/checkout/create', [
             'as'   => 'showEventCheckout',
             'uses' => 'EventCheckoutController@showEventCheckout',
         ]);
 
-        Route::get('{event_id}/checkout/finish', [
+        Route::get('/{event_id}/checkout/finish', [
             'as'   => 'showEventCheckoutPaymentReturn',
             'uses' => 'EventCheckoutController@showEventCheckoutPaymentReturn',
         ]);
 
-        Route::get('{event_id}/checkout/finish_mobile', [
+        Route::get('/{event_id}/checkout/finish_mobile', [
             'as'   => 'mobileCheckoutPaymentReturn',
             'uses' => 'EventCheckoutController@mobileCheckoutPaymentReturn',
         ]);
 
-        Route::post('{event_id}/checkout/create', [
+        Route::post('/{event_id}/checkout/create', [
             'as'   => 'postCreateOrder',
             'uses' => 'EventCheckoutController@postCreateOrder',
         ]);
