@@ -1265,12 +1265,9 @@ a:hover {
   background-color: #d33d33; }
 
 .details-image {
-  float: left;
-  width: 275px;
-  margin: 0 30px 20px 0; }
-  @media only screen and (max-width: 1440px) {
-    .details-image {
-      width: 200px; } }
+
+  width: 100%;
+}
 
 .outter-p {
   float: left; }

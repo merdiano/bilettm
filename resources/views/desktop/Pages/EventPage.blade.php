@@ -27,12 +27,12 @@
             <div class="row">
                 <div class="col-3">
                     @if($event->images->count())
-                        <img style="display: block; border-radius: 0" class="details-image" alt="{{$event->title}}" src="{{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}">
+                        <img class="details-image" alt="{{$event->title}}" src="{{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}">
 
                     @endif
                 </div>
                 <div class="col-7 ">
-                    <div class="row it-detail">
+                    <div class="it-detail">
                         {!! Markdown::parse($event->description) !!}
                         <span property="location" typeof="Place">
                                         <i class="fa fa-map-marker"></i>
@@ -40,9 +40,7 @@
                                         <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">
                                     </span>
                     </div>
-                    <div class="row align-items-end">
-                        @include('desktop.Partials.Schedule')
-                    </div>
+                    @include('desktop.Partials.Schedule')
 
                 </div>
             </div>
