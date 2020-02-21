@@ -40,8 +40,10 @@
                                         <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">
                                     </span>
                     </div>
+                    <div class="row align-items-end">
+                        @include('desktop.Partials.Schedule')
+                    </div>
 
-                    @include('desktop.Partials.Schedule')
                 </div>
             </div>
         </div>
