@@ -2370,7 +2370,9 @@ choose_seats_content > div.tab-pane.fade{
 #mobile tr.last-tr td {
   font-size: 6px; }
 #mobile tr td:first-child {
-  font-size: 20px; }
+  font-size: 20px;
+display: block;
+}
 #mobile tr {
   height: 10px; }
 

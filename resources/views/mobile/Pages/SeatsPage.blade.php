@@ -73,10 +73,10 @@
                                             <span class="text-danger">@lang("Public_ViewEvent.sales_have_ended")</span>
                                         @else
                                             <meta property="availability" content="http://schema.org/InStock">
-                                            <div class="standard-box" style="position: relative; padding: 20px 0;overflow: scroll">
+                                            <div class="standard-box" style="position: relative; padding: 20px 0;">
                                                 <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>{{$ticket->section->description}}</small></h5>
 
-                                                <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
+                                                <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto;display: block;overflow-x: scroll"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
                                                     <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">
                                                     @foreach($ticket->section->seats as $row)
