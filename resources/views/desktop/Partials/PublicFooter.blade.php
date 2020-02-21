@@ -72,7 +72,7 @@
     <div class="container g-pt-30 g-pb-10 pt-4">
         <div class="row justify-content-between align-items-center" style="border-top: 1px solid #ffffff">
             <div class="col-12">
-                <p class="g-font-size-13 mb-0 text-center all-rights-reserved">&copy; 2020 {{__("ClientSide.ticket_service")}} Billettm.com. {{__("ClientSide.copyright")}}.</p>
+                <p class="g-font-size-13 mb-0 text-center all-rights-reserved">&copy; {{Carbon::now()->year}} {{__("ClientSide.ticket_service")}} Billettm.com. {{__("ClientSide.copyright")}}.</p>
             </div>
         </div>
     </div>

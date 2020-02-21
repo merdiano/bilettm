@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="row text-center">
-            <p class="all-rights">© 2020 {{__("ClientSide.ticket_service")}} Billettm.com. {{__("ClientSide.copyright")}}.</p>
+            <p class="all-rights">© {{Carbon::now()->year}} {{__("ClientSide.ticket_service")}} Billettm.com. {{__("ClientSide.copyright")}}.</p>
         </div>
     </div>
 </footer>

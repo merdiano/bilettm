@@ -79,7 +79,7 @@ class EventCheckoutController extends Controller
             return redirect()->back();
         }
 
-        return view('desktop.Pages.SeatsPage',compact('event','tickets'));
+        return $this->render('Pages.SeatsPage',compact('event','tickets'));
     }
     /**
      * Validate a ticket request. If successful reserve the tickets and redirect to checkout
@@ -478,7 +478,7 @@ class EventCheckoutController extends Controller
         }
 
 //        return view('Public.ViewEvent.EventPageCheckout', $data);
-        return view('desktop.Pages.CheckoutPage', $data);
+        return $this->render('Pages.CheckoutPage', $data);
     }
 
     /**

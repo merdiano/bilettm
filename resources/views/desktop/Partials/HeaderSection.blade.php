@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div onclick="window.location='{{$event->event_url}}#organiser'" class="event_organizer text-center p-3">
-                    @ <b>{{$event->organiser->name}}</b> @lang("Public_ViewEvent.presents")
+                     <b>{{$event->venue->venue_name}}</b> @lang("Public_ViewEvent.presents")
                 </div>
             </div>
         </div>
