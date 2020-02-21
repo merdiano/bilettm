@@ -8,7 +8,7 @@
                 </span>
             </a>
             <div class="row">
-                <div class="pills-struct mt-5">
+                <div class="pills-struct mt-5 w-100">
                     <ul role="tablist" class="nav nav-pills m-auto w-auto justify-content-center" id="choose_seats">
                         @foreach($tickets as $ticket)
                             <li class="active" role="presentation" style="display: inline-block;">
@@ -20,7 +20,7 @@
                             </li>
                         @endforeach
                     </ul>
-                    <div class="d-flex mt-5 mb-4" style="width: fit-content; margin: auto">
+                    <div class="row d-flex my-5">
                         <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> {{__('ClientSide.available')}}</span>
                         <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> {{__('ClientSide.booked')}}</span>
                         <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #b6b6b6; font-size: 13px"></i> {{__('ClientSide.reserved')}}</span>
