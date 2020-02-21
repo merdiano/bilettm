@@ -8,7 +8,7 @@
         </h4>
     </div>
     @else
-        <h4 class="date-small-title mt-3" style="font-size: 26px;">Дата проведения</h4>
+        <h4 class="date-small-title mt-3" style="font-size: 26px;">@lang('ClientSide.event_dates')</h4>
         <div class="date-box-wrap">
             <ul class="nav nav-pills details-page">
 
@@ -19,7 +19,7 @@
 
             </ul>
         </div>
-        <h4 class="time-small-title" style="font-size: 26px;">Время проведения</h4>
+        <h4 class="time-small-title" style="font-size: 26px;">@lang('ClientSide.event_times')</h4>
         <div class="time-box-wraper col-md-6" style="padding-left: 5px">
 
             <div class="tab-content" id="myTabContent">

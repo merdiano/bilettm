@@ -12,8 +12,8 @@ return [
     'access_code_title' => 'Elýeterlik kody',
     'access_code_title_placeholder' => 'ex: CONFERENCE2019',
     'valid_code_required' => 'Hakyky elýeterlik kody hökmany',
-    'no_tickets_matched' => 'Siziň kodyňyza deň gelýan petek ýok',
+    'no_tickets_matched' => 'Siziň kodyňyza deň gelýan bilet ýok',
     'select_access_code' => 'Elýeterlik kodlary saýlaň',
-    'access_codes_usage_count' => 'Ullanyş sanawy',
-    'unique_error' => 'Bu kod eýýäm bir çäre üçin ullanylýar',
+    'access_codes_usage_count' => 'Ulanyş sanawy',
+    'unique_error' => 'Bu kod eýýäm bir çäre üçin ulanylýar',
 ];

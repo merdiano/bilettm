@@ -5,8 +5,8 @@
 
 return array (
   //============================== New strings to translate ==============================//
-  'scan_another_ticket' => 'Başga petegi skanlamak',
-  'scanning' => 'Skanlamak',
+  'scan_another_ticket' => 'Başga bileti skanirlemek',
+  'scanning' => 'Skanirlemek',
   //==================================== Translations ====================================//
   'attendees' => 'Gatnaşyjylar',
   'check_in' => 'Girmek: :event',
@@ -16,8 +16,8 @@ return array (
   'first_name' => 'Ady',
   'last_name' => 'Familiýasy',
   'name' => 'Ady',
-  'ticket' => 'Petek',
+  'ticket' => 'Bilet',
   'reference' => 'Bellikler',
   'search_attendees' => 'Gatnaşyjylary gözlemek...',
-  'send_invitation_n_ticket_to_attendee' => 'Gatnaşyja çakylyk we petek ibermek.',
+  'send_invitation_n_ticket_to_attendee' => 'Gatnaşyja çakylyk we bilet ibermek.',
 );

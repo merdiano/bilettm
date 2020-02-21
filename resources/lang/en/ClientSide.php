@@ -87,6 +87,9 @@ return [
     //EventsPage.blade.php
     'rep' => 'The whole repertoire',
 
+    //Event schedule
+    'event_dates' =>'Dates',
+    'event_times' =>'Times',
     //SearchResults.blade.php
     'search' => 'Search',
     'results' => 'Search results',
