@@ -14,49 +14,35 @@
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('event',$event)}}
     <section style="margin-top: 30px; margin-bottom: 50px">
         <div class="container">
-            <div class="row m-0">
-                <div class="col-12">
-                    <div class="container" style="padding: 0 !important;">
-                        <div class="row">
-                            <div class="col-12 p-0" style="margin-bottom: 10px">
-                                <h2 class="main-title" style="float: left">«{{$event->title}}»</h2>
-                                <div class="main-title-bottom-line" style="float: left"></div>
-                                @include('desktop.Partials.EventShareButtons')
-                            </div>
-                            <div class="col-12 p-0 it-detail" style="padding-left: 10px !important;">
-                                @if($event->images->count())
-                                    <imgg style="display: block; background-image: url({{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}); background-position: center center; background-size: cover; padding-top: 30.4223%; width: 24.2161%; border-radius: 0" class="details-image" alt="{{$event->title}}" property="image"></imgg>
-{{--                                    <button style="width: 24.2161%; clear: left; background-color: rgb(212, 61, 52); color: #ffffff; border: none; height: 41.6px; border-radius: 5px; float: left">Купить билет</button>--}}
+            <div class="row mb-2">
+                <div class="col-10">
+                    <h2 class="main-title" style="float: left">«{{$event->title}}»</h2>
+                    <div class="main-title-bottom-line" style="float: left"></div>
 
-                                @endif
-                                <div class="col-10">
-                                    {!! Markdown::parse($event->description) !!}
-                                </div>
+                </div>
+                <div class="col-2">
+                    @include('desktop.Partials.EventShareButtons')
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    @if($event->images->count())
+                        <img style="display: block; border-radius: 0" class="details-image" alt="{{$event->title}}" src="{{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}">
 
-{{--                                    <b>{{$event->organiser->name}}</b> @lang("Public_ViewEvent.presents")--}}
-{{--                                    @lang("Public_ViewEvent.at")--}}
-                                    <span property="location" typeof="Place">
+                    @endif
+                </div>
+                <div class="col-7 ">
+                    <div class="row it-detail">
+                        {!! Markdown::parse($event->description) !!}
+                        <span property="location" typeof="Place">
                                         <i class="fa fa-map-marker"></i>
                                         <b property="name">{{$event->venue->venue_name}}</b>
                                         <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">
                                     </span>
-                                    @include('desktop.Partials.Schedule')
-                            </div>
-                            {{--<div class="col-6 p-0">--}}
-                            {{--@include('desktop.ViewEvent.Partials.Schedule')--}}
-                            {{--</div>--}}
-                        </div>
                     </div>
+
+                    @include('desktop.Partials.Schedule')
                 </div>
-                {{--<div class="col-2 text-center">--}}
-
-                    {{--@include('desktop.ViewEvent.Partials.EventShareButtons')--}}
-                    {{--<img src="{{asset('assets/images/advs/adv.png')}}" style="width: 100%">--}}
-
-                {{--</div>--}}
-                {{--<div class="col-12 p-0">--}}
-                    {{--@include('desktop.Partials.EventTags')--}}
-                {{--</div>--}}
             </div>
         </div>
     </section>

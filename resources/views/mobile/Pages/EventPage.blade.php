@@ -29,7 +29,7 @@
                     <img src="{{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}" style="width: 40%; float: left; margin: 0 15px 10px 0" alt="{{$event->title}}">
                     <p style="color: #000000; font-size: 13px; margin-bottom: 5px;"><b>@lang('ClientSide.description'): </b>{!! Markdown::parse($event->description) !!}</p>
                     <p style="color: #000000; font-size: 13px; margin-bottom: 5px;"><b><i class="fa fa-map-marker"></i> </b>{{$event->venue->venue_name}}<meta property="address" content="{{ urldecode($event->venue->venue_name) }}"></p>
-                    @include('desktop.Partials.Schedule')
+                    @include('mobile.Partials.Schedule')
                 </div>
             </div>
         </div>
