@@ -20,7 +20,7 @@
                             </li>
                         @endforeach
                     </ul>
-                    <div class="row d-flex my-5">
+                    <div class="row my-5">
                         <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> {{__('ClientSide.available')}}</span>
                         <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> {{__('ClientSide.booked')}}</span>
                         <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #b6b6b6; font-size: 13px"></i> {{__('ClientSide.reserved')}}</span>
@@ -73,7 +73,7 @@
                                             <span class="text-danger">@lang("Public_ViewEvent.sales_have_ended")</span>
                                         @else
                                             <meta property="availability" content="http://schema.org/InStock">
-                                            <div class="standard-box" style="position: relative; padding: 20px 0">
+                                            <div class="standard-box" style="position: relative; padding: 20px 0;overflow: scroll">
                                                 <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>{{$ticket->section->description}}</small></h5>
 
                                                 <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
@@ -94,7 +94,7 @@
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25">
                                                                             <path id="Rectangle_3" data-name="Rectangle 3" d="M8,0H18a8,8,0,0,1,8,8V25a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V8A8,8,0,0,1,8,0Z"></path>
                                                                         </svg>
-                                                                        <span style="position:relative;right: 55%">{{$i}}</span>
+                                                                        <span style="position:relative;top: -28px">{{$i}}</span>
                                                                     </label>
                                                                 </td>
                                                             @endfor

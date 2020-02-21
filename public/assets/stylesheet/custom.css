@@ -2370,17 +2370,16 @@ choose_seats_content > div.tab-pane.fade{
 #mobile tr.last-tr td {
   font-size: 6px; }
 #mobile tr td:first-child {
-  font-size: 8px; }
+  font-size: 20px; }
 #mobile tr {
   height: 10px; }
-#mobile td {
-  padding: 0 1px !important;
-  line-height: 1.1; }
+
 #mobile td label {
   margin-bottom: 0 !important; }
 #mobile td svg {
-  width: 10px !important;
-  height: 10px !important; }
+  margin: 3px;
+  width: 30px !important;
+  height: 30px !important; }
 #mobile .seats-top-overlay {
   width: 100%;
   display: block; }
