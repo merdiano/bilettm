@@ -113,9 +113,9 @@
                         </div>
                         <div class="checked-seats" style="padding: 50px 0; text-align: center">
                             <h5 class="text-center">{{__("ClientSide.yourSeats")}}:</h5>
-                            <div class="your-selected-seats" style="text-align: center; margin-bottom: 50px">
+                            <div class="your-selected-seats" style="width: fit-content; text-align: center; margin: auto; margin-bottom: 50px">
                             </div>
-                            {!!Form::submit(trans("ClientSide.confirm-seats"), ['id' => 'confirm-seats'])!!}
+                            {!!Form::submit(trans("ClientSide.confirm-seats"), ['id' => 'confirm-seats', 'style' => 'margin-top: 20px'])!!}
                         </div>
                     </form>
                 </div>

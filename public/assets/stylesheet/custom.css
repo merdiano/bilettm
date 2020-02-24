@@ -1609,7 +1609,10 @@ input.reserved-seats ~ label svg {
     margin: 3px;
     border-top-right-radius: 10px;
     font-size: 1.25rem;
-    border-top-left-radius: 10px; }
+    border-top-left-radius: 10px;
+  display: block;
+    width: fit-content;
+  float: left}
 
 #confirm-seats {
   font-size: 1.25rem;

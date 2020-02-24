@@ -12,7 +12,7 @@
 
                 {!! Form::hidden('event_id', $event->id) !!}
 
-                <h3> @lang("Public_ViewEvent.your_information")</h3>
+                <h4> @lang("Public_ViewEvent.your_information")</h4>
 
                 <div class="form-row">
                     <div class="col-6">
@@ -46,7 +46,7 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <div class="ticket_holders_details" >
-                            <h3>@lang("Public_ViewEvent.ticket_holder_information")</h3>
+                            <h4>@lang("Public_ViewEvent.ticket_holder_information")</h4>
                             <?php
                             $total_attendee_increment = 0;
                             ?>
@@ -56,9 +56,9 @@
                                     <div class="card card-info my-2">
 
                                         <div class="card-header">
-                                            <h4 class="card-title text-center">
+                                            <h5 class="card-title text-center">
                                                 @lang("Public_ViewEvent.ticket_holder_n", ["n"=>$seat]) {{$ticket['ticket']['title']}}
-                                            </h4>
+                                            </h5>
                                         </div>
                                         <div class="card-body px-5">
                                             <div class="row">
