@@ -5,7 +5,61 @@
         </h1>
     </div>
     <div class="row">
-        <div class="col-md-7 col-lg-8">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body pt0">
+                    <h3 class="card-title">
+                        <i class="ico-cart mr5"></i>
+                        @lang("Public_ViewEvent.order_summary")
+                    </h3>
+                    <table class="table mb0 table-condensed">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th style="text-align: right;">@lang('Public_ViewEvent.booking_fees')</th>
+                            <th style="text-align: right;">@lang('Public_ViewEvent.price')</th>
+                        </tr>
+                        </thead>
+                        @foreach($tickets as $ticket)
+                            <tr>
+                                <td class="pl0">{{{$ticket['ticket']['title']}}} X <b>{{$ticket['qty']}}</b></td>
+                                <td style="text-align: right;">{{money($ticket['total_booking_fee'], $event->currency)}}</td>
+                                <td style="text-align: right;">
+                                    @if((int)ceil($ticket['original_price']) === 0)
+                                        @lang("Public_ViewEvent.free")
+                                    @else
+                                        {{ money($ticket['original_price'], $event->currency) }}
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+                @if($order_total > 0)
+                    <div class="card-footer">
+                        <h5>
+                            @lang("Public_ViewEvent.total"): <span style="float: right;"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
+                        </h5>
+                        @if($event->organiser->charge_tax)
+                            <h5>
+                                {{ $event->organiser->tax_name }} ({{ $event->organiser->tax_value }}%):
+                                <span style="float: right;"><b>{{ $orderService->getTaxAmount(true) }}</b></span>
+                            </h5>
+                            <h5>
+                                <strong>@lang("Public_ViewEvent.grand_total")</strong>
+                                <span style="float: right;"><b>{{  $orderService->getGrandTotal(true) }}</b></span>
+                            </h5>
+                        @endif
+                    </div>
+                @endif
+
+            </div>
+            <div class="help-block">
+                {!! @trans("Public_ViewEvent.time", ["time"=>"<span id='countdown'></span>"]) !!}
+            </div>
+        </div>
+        <div class="col-12">
             <div class="event_order_form card py-3 px-5">
                 {!! Form::open(['url' => route('postCreateOrder', ['event_id' => $event->id]),
                 'class' => ($order_requires_payment && @$payment_gateway->is_on_site) ? 'ajax payment-form' : 'ajax', 'data-stripe-pub-key' => isset($account_payment_gateway->config['publishableKey']) ? $account_payment_gateway->config['publishableKey'] : '']) !!}
@@ -180,60 +234,7 @@
                 {!! Form::close() !!}
             </div>
         </div>
-        <div class="col-md-5 col-lg-4">
-            <div class="card">
 
-                <div class="card-body pt0">
-                    <h3 class="card-title">
-                        <i class="ico-cart mr5"></i>
-                        @lang("Public_ViewEvent.order_summary")
-                    </h3>
-                    <table class="table mb0 table-condensed">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th style="text-align: right;">@lang('Public_ViewEvent.booking_fees')</th>
-                            <th style="text-align: right;">@lang('Public_ViewEvent.price')</th>
-                        </tr>
-                        </thead>
-                        @foreach($tickets as $ticket)
-                            <tr>
-                                <td class="pl0">{{{$ticket['ticket']['title']}}} X <b>{{$ticket['qty']}}</b></td>
-                                <td style="text-align: right;">{{money($ticket['total_booking_fee'], $event->currency)}}</td>
-                                <td style="text-align: right;">
-                                    @if((int)ceil($ticket['original_price']) === 0)
-                                        @lang("Public_ViewEvent.free")
-                                    @else
-                                        {{ money($ticket['original_price'], $event->currency) }}
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table>
-                </div>
-                @if($order_total > 0)
-                    <div class="card-footer">
-                        <h5>
-                            @lang("Public_ViewEvent.total"): <span style="float: right;"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
-                        </h5>
-                        @if($event->organiser->charge_tax)
-                            <h5>
-                                {{ $event->organiser->tax_name }} ({{ $event->organiser->tax_value }}%):
-                                <span style="float: right;"><b>{{ $orderService->getTaxAmount(true) }}</b></span>
-                            </h5>
-                            <h5>
-                                <strong>@lang("Public_ViewEvent.grand_total")</strong>
-                                <span style="float: right;"><b>{{  $orderService->getGrandTotal(true) }}</b></span>
-                            </h5>
-                        @endif
-                    </div>
-                @endif
-
-            </div>
-            <div class="help-block">
-                {!! @trans("Public_ViewEvent.time", ["time"=>"<span id='countdown'></span>"]) !!}
-            </div>
-        </div>
 
     </div>
 </section>
