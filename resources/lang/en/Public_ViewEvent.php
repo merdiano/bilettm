@@ -66,6 +66,7 @@ return [
   'ticket' => 'Ticket',
   'ticket_holder_information' => 'Ticket Holder Information',
   'ticket_holder_n' => 'Ticket Holder :n Details',
+    'seat_holder_n' => ':ticket :seat_no ticket holder  Details',
   'ticket_price' => 'Ticket Price',
   'tickets' => 'Ticket(s)',
   'tickets_are_currently_unavailable' => 'Tickets are currently unavailable',

@@ -66,6 +66,7 @@ return [
     'ticket' => 'Bilet',
     'ticket_holder_information' => 'Bilediň eýesi barada maglumat',
     'ticket_holder_n' => 'Bilediň eýesi barada :n maglumatlar',
+    'seat_holder_n' => ':ticket :seat_no bilediň eýesi barada maglumat',
     'ticket_price' => 'Bilediň bahasy',
     'tickets' => 'Bilet(ler)',
     'tickets_are_currently_unavailable' => 'Biletler şu wagt elýeterli däl',

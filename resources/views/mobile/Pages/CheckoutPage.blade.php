@@ -2,7 +2,7 @@
 @section('content')
     @include('desktop.Partials.HeaderSection')
 
-    @include('desktop.Partials.CreateOrderSection')
+    @include('mobile.Partials.CreateOrderSection')
 
     @include('desktop.Partials.FooterSection')
 @endsection

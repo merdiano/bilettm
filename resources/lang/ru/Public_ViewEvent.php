@@ -66,6 +66,7 @@ return [
     'ticket' => 'билет',
     'ticket_holder_information' => 'Информация о владельце билета',
     'ticket_holder_n' => 'Информация о владельце билета :n ',
+    'seat_holder_n' => 'Информация о владельце билета :ticket :seat_no',
     'ticket_price' => 'Цена билета',
     'tickets' => 'Билет (ы)',
     'tickets_are_currently_unavailable' => 'Билеты в настоящее время недоступны',
