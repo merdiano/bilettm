@@ -23,8 +23,8 @@
                         </thead>
                         @foreach($tickets as $ticket)
                             <tr>
-                                <td class="pl0">{{{$ticket['ticket']['title']}}} X <b>{{$ticket['qty']}}</b></td>
-                                <td style="text-align: right;">{{money($ticket['total_booking_fee'], $event->currency)}}</td>
+                                <td class="pl0">{{{$ticket['ticket']['title']}}} x <b>{{$ticket['qty']}}</b></td>
+                                <td style="text-align: right; font-size: 20px">{{money($ticket['total_booking_fee'], $event->currency)}}</td>
                                 <td style="text-align: right; font-size: 20px">
                                     @if((int)ceil($ticket['original_price']) === 0)
                                         @lang("Public_ViewEvent.free")
@@ -39,7 +39,7 @@
                 @if($order_total > 0)
                     <div class="card-footer">
                         <h5>
-                            @lang("Public_ViewEvent.total"): <span style="float: right;"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
+                            @lang("Public_ViewEvent.total"): <span style="float: right;width: fit-content"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
                         </h5>
                         @if($event->organiser->charge_tax)
                             <h5>
