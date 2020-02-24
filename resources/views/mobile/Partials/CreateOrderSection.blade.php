@@ -25,7 +25,7 @@
                             <tr>
                                 <td class="pl0">{{{$ticket['ticket']['title']}}} X <b>{{$ticket['qty']}}</b></td>
                                 <td style="text-align: right;">{{money($ticket['total_booking_fee'], $event->currency)}}</td>
-                                <td style="text-align: right;">
+                                <td style="text-align: right; font-size: 20px">
                                     @if((int)ceil($ticket['original_price']) === 0)
                                         @lang("Public_ViewEvent.free")
                                     @else
@@ -44,18 +44,18 @@
                         @if($event->organiser->charge_tax)
                             <h5>
                                 {{ $event->organiser->tax_name }} ({{ $event->organiser->tax_value }}%):
-                                <span style="float: right;"><b>{{ $orderService->getTaxAmount(true) }}</b></span>
+                                <span style="float: right;width: fit-content"><b>{{ $orderService->getTaxAmount(true) }}</b></span>
                             </h5>
                             <h5>
                                 <strong>@lang("Public_ViewEvent.grand_total")</strong>
-                                <span style="float: right;"><b>{{  $orderService->getGrandTotal(true) }}</b></span>
+                                <span style="float: right; width: fit-content"><b>{{  $orderService->getGrandTotal(true) }}</b></span>
                             </h5>
                         @endif
                     </div>
                 @endif
 
             </div>
-            <div class="help-block">
+            <div class="help-block my-4 ">
                 {!! @trans("Public_ViewEvent.time", ["time"=>"<span id='countdown'></span>"]) !!}
             </div>
         </div>
