@@ -39,3 +39,8 @@ Breadcrumbs::for('add_event',function($trail){
     $trail->parent('home');
     $trail->push('+ ДОБАВИТЬ СОБЫТИЕ');
 });
+
+Breadcrumbs::for('about',function($trail,$title){
+    $trail->parent('home');
+    $trail->push($title);
+});
