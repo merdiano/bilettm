@@ -13,7 +13,7 @@
                     <ul class="list-group">
                         <li class="list-group-item"><h3>@lang('ClientSide.about_us')</h3></li>
                         <li class="list-group-item"><a href="{{route('about',['page'=>'introduction'])}}">{{__('ClientSide.introduction')}}</a></li>
-                        <li class="list-group-item"><a href="{{route('about',['page'=>'partners])}}">{{__("ClientSide.partners")}}</a></li>
+                        <li class="list-group-item"><a href="{{route('about',['page'=>'partners'])}}">{{__("ClientSide.partners")}}</a></li>
                         <li class="list-group-item"><a href="{{route('about',['page'=>'contacts'])}}">{{__("ClientSide.contacts")}}</a></li>
 
 

@@ -42,18 +42,18 @@
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__('ClientSide.introduction')}}</a></li>
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__("ClientSide.how_to_buy")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__("ClientSide.questions")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__("ClientSide.concert_halls")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'introduction'])}}">{{__('ClientSide.introduction')}}</a></li>
+                        <li><a href="{{route('about',['page'=>'how_to_buy'])}}">{{__("ClientSide.how_to_buy")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'questions'])}}">{{__("ClientSide.questions")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
 
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__("ClientSide.organizers")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__("ClientSide.oferta")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__("ClientSide.refund")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'organizers'])}}">{{__("ClientSide.organizers")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'oferta'])}}">{{__("ClientSide.oferta")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'refund'])}}">{{__("ClientSide.refund")}}</a></li>
 
                     </ul>
                 </div>
