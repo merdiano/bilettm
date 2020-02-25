@@ -66,7 +66,7 @@ class PublicController extends Controller
         [$order, $data] = $this->sorts_filters();
         $data['category'] = $category;
         $data['sub_cats'] = $category->children()
-            ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit)
+            ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit+2)
             ->whereHas('cat_events',
                 function ($query) use($data){
                     $query->onLive($data['start'], $data['end']);

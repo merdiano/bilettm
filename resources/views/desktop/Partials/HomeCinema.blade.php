@@ -18,7 +18,7 @@
             @if($category->count()>8)
                 <div class="row">
                     @foreach($category->events->slice(8) as $event)
-                        <div class="col-3">
+                        <div class="col-3 pb-4">
                             @include('desktop.Partials.CinemaItem',['event'=>$event])
                         </div>
                     @endforeach
