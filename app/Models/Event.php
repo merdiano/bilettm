@@ -505,7 +505,7 @@ ICSTemplate;
             ->withCount(['images as image_url' => function($q){
                 $q->select(DB::raw("image_path as imgurl"))
                     ->orderBy('created_at','desc')
-                    ->limit(1);
+                    ->take(1);
             }] );
     }
 }
