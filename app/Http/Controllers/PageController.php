@@ -16,7 +16,7 @@ class PageController extends Controller
         }
 
         $data['title'] = $page->title;
-        $data['page'] = $page->withFakes();
+        $data['page'] = $page->content;
 
         return view('desktop.Pages.AboutPage', $data);
     }
