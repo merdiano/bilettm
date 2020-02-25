@@ -129,7 +129,7 @@ class Category extends \Illuminate\Database\Eloquent\Model{
                ->with('starting_ticket')
                ->withCount(['stats as views' => function($q){
                    $q->select(DB::raw("SUM(views) as v"));}])
-               ->onLive($start_date, $end_date)//event scope onLive get only live events
+//               ->onLive($start_date, $end_date)//event scope onLive get only live events
                ->orderBy($orderBy['field'],$orderBy['order']);
         }]);
 
