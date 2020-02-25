@@ -43,24 +43,25 @@
                 <div class="col-3 col-3-with-text">
                     <ul>
                         <li><a href="#">{{__('ClientSide.introduction')}}</a></li>
+                        <li><a href="#">{{__("ClientSide.how_to_buy")}}</a></li>
                         <li><a href="#">{{__("ClientSide.questions")}}</a></li>
-                        <li><a href="#">{{__("ClientSide.offices")}}</a></li>
-                        <li><a href="#">{{__("ClientSide.rassylka")}}</a></li>
-                    </ul>
-                </div>
-                <div class="col-3 col-3-with-text">
-                    <ul>
-
-                        <li><a href="#">{{__("ClientSide.collective")}}</a></li>
-                        <li><a href="#">{{__("ClientSide.organizers")}}</a></li>
                         <li><a href="#">{{__("ClientSide.concert_halls")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
+
+                        <li><a href="#">{{__("ClientSide.organizers")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.oferta")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.refund")}}</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-3 col-3-with-text">
+                    <ul>
                         <li><a href="#">{{__("ClientSide.partners")}}</a></li>
-                        <li><a href="#">{{__("ClientSide.logo")}}</a></li>
                         <li><a style="color: #ffffff; cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter">{{__("ClientSide.addEvent")}}</a></li>
+                        <li><a href="#">{{__("ClientSide.contacts")}}</a></li>
                     </ul>
                 </div>
             </div>
