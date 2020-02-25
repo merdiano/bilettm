@@ -7,7 +7,7 @@
  */
 // Home
 Breadcrumbs::for('home', function ($trail) {
-    $trail->push('Home', route('home'));
+    $trail->push(trans('ClientSide.home'), route('home'));
 });
 
 Breadcrumbs::for('category', function ($trail, $category){

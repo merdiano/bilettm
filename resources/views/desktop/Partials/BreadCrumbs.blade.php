@@ -2,7 +2,7 @@
 <section class="page-breadcrumbs">
     <div class="container">
         <div class="row">
-            <ul style="padding-left: 15px" class="breadcrumbs-ul">
+            <ul style="padding-left: 15px" class="breadcrumbs-ul text-capitalize">
                 @foreach ($breadcrumbs as $breadcrumb)
                     @if ($breadcrumb->url && !$loop->last)
                         <li style="text-transform: capitalize">
