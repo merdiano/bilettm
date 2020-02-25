@@ -741,7 +741,7 @@ Route::group(
 //        }
 //    ]);
     /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
-    Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\PageController@index'])
+    Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\PageController@index','as'=>'about'])
         ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
 
 });

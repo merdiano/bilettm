@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="#">{{__('ClientSide.introduction')}}</a></li>
+                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__('ClientSide.introduction')}}</a></li>
                         <li><a href="#">{{__("ClientSide.how_to_buy")}}</a></li>
                         <li><a href="#">{{__("ClientSide.questions")}}</a></li>
                         <li><a href="#">{{__("ClientSide.concert_halls")}}</a></li>

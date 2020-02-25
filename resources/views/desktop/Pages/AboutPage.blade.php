@@ -29,8 +29,8 @@
                     </ul>
                 </div>
                 <div class="col-10">
-                    <h1>{{$page->title}}</h1>
-                    {!! Markdown::parse($page->description) !!}
+                    <h1>{{$title}}</h1>
+                    {!! Markdown::parse($page) !!}
                 </div>
             </div>
         </div>
