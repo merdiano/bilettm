@@ -42,26 +42,26 @@
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="{{route('about',['page'=>'introduction'])}}">{{__('ClientSide.introduction')}}</a></li>
-                        <li><a href="{{route('about',['page'=>'how_to_buy'])}}">{{__("ClientSide.how_to_buy")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'questions'])}}">{{__("ClientSide.questions")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'introduction_'.Config::get('app.locale')])}}">{{__('ClientSide.introduction')}}</a></li>
+                        <li><a href="{{route('about',['page'=>'how_to_buy_'.Config::get('app.locale')])}}">{{__("ClientSide.how_to_buy")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'questions_'.Config::get('app.locale')])}}">{{__("ClientSide.questions")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'concert_halls_'.Config::get('app.locale')])}}">{{__("ClientSide.concert_halls")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
 
-                        <li><a href="{{route('about',['page'=>'organizers'])}}">{{__("ClientSide.organizers")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'oferta'])}}">{{__("ClientSide.oferta")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'refund'])}}">{{__("ClientSide.refund")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'organizers_'.Config::get('app.locale')])}}">{{__("ClientSide.organizers")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'oferta_'.Config::get('app.locale')])}}">{{__("ClientSide.oferta")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'refund_'.Config::get('app.locale')])}}">{{__("ClientSide.refund")}}</a></li>
 
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">
                     <ul>
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__("ClientSide.partners")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'partners_'.Config::get('app.locale')])}}">{{__("ClientSide.partners")}}</a></li>
                         <li><a style="color: #ffffff; cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter">{{__("ClientSide.addEvent")}}</a></li>
-                        <li><a href="{{route('about',['page'=>'znakomstwa-s-bilettm'])}}">{{__("ClientSide.contacts")}}</a></li>
+                        <li><a href="{{route('about',['page'=>'contacts_'.Config::get('app.locale')])}}">{{__("ClientSide.contacts")}}</a></li>
                     </ul>
                 </div>
             </div>

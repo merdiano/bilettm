@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use Backpack\PageManager\app\Models\Page;
+use Illuminate\Support\Facades\Config;
 class PageController extends Controller
 {
     public function index($slug, $subs = null)
