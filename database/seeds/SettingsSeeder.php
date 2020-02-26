@@ -49,6 +49,13 @@ class SettingsSeeder extends Seeder
                 'field'       => '{"name":"value","label":"Value","type":"text"}',
                 'active'      => 1,
             ],[
+                'key'         => 'social_instagram',
+                'name'        => 'Instagram page',
+                'description' => 'Social Instagram page address',
+                'value'       => 'instagram.com',
+                'field'       => '{"name":"value","label":"Value","type":"text"}',
+                'active'      => 1,
+            ],[
                 'key'         => 'social_twitter',
                 'name'        => 'Twitter page',
                 'description' => 'Social Twitter page address',
@@ -88,6 +95,20 @@ class SettingsSeeder extends Seeder
                 'description' => 'Home page concert section category id',
                 'value'       => 5,
                 'field'       => '{"name":"value","label":"Value","type":"number"}',
+                'active'      => 1,
+            ],[
+                'key'         => 'booking_fee_fixed',
+                'name'        => 'Booking fee fixed',
+                'description' => 'Event ticket booking fee fixed',
+                'value'       => 0,
+                'field'       => '{"name":"value","label":"Value","type":"number","attributes":{"step" : "any"}}',
+                'active'      => 1,
+            ],[
+                'key'         => 'booking_fee_percentage',
+                'name'        => 'Booking fee percentage',
+                'description' => 'Event ticket booking fee percentage',
+                'value'       => 0,
+                'field'       => '{"name":"value","label":"Value","type":"number","attributes":{"step" : "any"}}',
                 'active'      => 1,
             ],
         ]);
