@@ -116,7 +116,7 @@ return [
     'cooperation' => 'Cooperation',
     'oferta' => 'Oferta',
 
-    'terms_conditions' => '<a href=":link">Terms and conditions</a>',
+    'terms_conditions' => '<a href=":link" target="_blank">Terms and conditions</a>',
 
 
 ];
