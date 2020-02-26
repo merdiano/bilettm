@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/attendize/public'),
+    'url' => env('APP_URL', 'http://bilettm.com'),
 
     /*
     |--------------------------------------------------------------------------
