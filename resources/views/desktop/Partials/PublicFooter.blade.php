@@ -27,16 +27,8 @@
                                 <img src="{{asset('assets/images/icons/social/3.svg')}}"></a>
                         </li>
                         <li class="text-center">
-                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_pinterest')}}">
-                                <img src="{{asset('assets/images/icons/social/2.svg')}}"></a>
-                        </li>
-                        <li class="text-center">
-                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_twitter')}}">
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_instagram')}}">
                                 <img src="{{asset('assets/images/icons/social/1.svg')}}"></a>
-                        </li>
-                        <li class="text-center">
-                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_linkedin')}}"
-                            ><img src="{{asset('assets/images/icons/social/4.svg')}}"></a>
                         </li>
                     </ul>
                 </div>
