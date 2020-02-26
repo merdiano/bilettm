@@ -202,7 +202,7 @@ class Ticket extends MyBaseModel
     public function getBookingFeeAttribute()
     {
         return (int)ceil($this->price) === 0 ? 0 : round(
-            ($this->price * (config('attendize.ticket_booking_fee_percentage') / 100)) + (config('attendize.ticket_booking_fee_fixed')),
+            ($this->price * (config('settings.booking_fee_percentage') / 100)) + (config('settings.booking_fee_fixed')),
             2
         );
     }
