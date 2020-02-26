@@ -182,8 +182,8 @@
                 <div class="form-row">
                     <div class="col-6">
                         <div class="form-group">
-                            {!! Form::label("terms_conditions", trans("ClientSide.terms_conditions",['link' => route('about',['page'=>'oferta_'.Config::get('app.locale')])])) !!}
                             {!! Form::checkbox("order_terms", true, true,['required' => 'required', 'class' => 'form-control']) !!}
+                            <a target="_blank" href="{{route('about',['page'=>'oferta_'.Config::get('app.locale')])}}">@lang('ClientSide.terms_conditions')</a>
                         </div>
                     </div>
                     <div class="col-6">
