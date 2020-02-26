@@ -116,6 +116,16 @@ return [
     'checkout' => 'Checkout',
 
     //About page
+    'about_us' => 'Знакомство с bilettm.com',
+    'contacts'=> 'Контакты',
+    'venues' => 'Площадки',
+    'how_to_buy' => 'Как купить билет',
+    'refund' => 'Возврат билетов',
+    'cooperation' => 'Партнёрам',
+    'oferta' => 'Публичная оферта',
+    'questions' => 'Вопросы и ответы',
+    'organisers' => 'Организаторам',
+    'add_event' => 'Добавить мероприятие',
     'about_us' => 'About us',
     'contacts'=> 'Contacts',
     'about_payment' => 'About payment',

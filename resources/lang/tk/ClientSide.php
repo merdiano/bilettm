@@ -54,7 +54,7 @@ return [
     //PublicFooterBlade.php
     'want' => 'Hemişe soňky habarlary bilesiňiz gelýärmi?',
     'subscribe' => 'Ýazyl',
-    'email' => 'E-poçta belgiňizi giriziň',
+    'email' => 'Elektron poçtaňyzy giriziň',
     'email_for' => 'Täze habarlara ýazylyň we çäreler barada soňky habarlary alyp duruň!',
     'cabinet' => 'ŞAHSY KABINET',
     'introduction' => 'BILETTM.COM BILEN TANYŞ BOL!',
@@ -84,7 +84,7 @@ return [
     'text' => 'Geçirmek isleýän çäräňiz  barada maglumatlary dolduryp bize ugradyň! Maglumatlaryňyzy gözden geçirip, siz bilen habarlaşarys',
 
     //EventsPage.blade.php
-    'rep' => 'Ähli filmler',
+    'rep' => 'Ählisini görkez',
     //Event schedule
     'event_dates' =>'Görkeziljek senesi',
     'event_times' =>'Görkeziljek wagty',
@@ -96,7 +96,7 @@ return [
     //SeatsPage.blade.php
     'seats' => 'Ýer saýla',
     'available' => 'Elýeter',
-    'booked' => 'Rezerwlenen',
+    'booked' => 'Satyn alynan',
     'reserved' => 'Rezerwlenen',
     'selection' => 'Siziň saýlan ýeriňiz',
     'selected' => 'Siz saýladyňyz',
@@ -108,20 +108,23 @@ return [
 
     //Schedule.blade.php
     'schedule' => 'Geçirilýän tertibi',
-    'datePlay' => 'Geçirilýän senesi',
-    'timePlay' => 'Geçirilýän wagty',
+    'datePlay' => 'Sene',
+    'timePlay' => 'Wagty',
 
     //Chcekout page
     'checkout' => 'Checkout',
 
     //About page
-    'about_us' => 'About us',
-    'contacts'=> 'Contacts',
-    'about_payment' => 'About payment',
-    'how_to_buy' => 'How to buy',
-    'refund' => 'Refund',
-    'cooperation' => 'Cooperation',
+    'about_us' => 'Bilettm.com bilen tanyş bol',
+    'contacts'=> 'Habarlaşmak üçin',
+    'about_payment' => 'Geçirilýän merkezler',
+    'how_to_buy' => 'Biledi nähili satyn almaly',
+    'refund' => 'Biledi yzyna gaýtarmak',
+    'cooperation' => 'Hyzmatdaşlar üçin',
     'oferta' => 'Oferta',
+    'questions' => 'Soraglar we jogaplar',
+    'organisers' => 'Gurnaýjylar üçin',
+    'add_event' => 'Çäre goşmak',
 
     'terms_conditions' => 'Terms and conditions',
 
