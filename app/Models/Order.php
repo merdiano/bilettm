@@ -19,6 +19,7 @@ class Order extends MyBaseModel
         'order_first_name' => ['required'],
         'order_last_name'  => ['required'],
         'order_email'      => ['required', 'email'],
+        'order_terms'      => ['required'],
     ];
 
     /**
@@ -26,11 +27,17 @@ class Order extends MyBaseModel
      *
      * @var array $messages
      */
-    public $messages = [
-        'order_first_name.required' => 'Please enter a valid first name',
-        'order_last_name.required'  => 'Please enter a valid last name',
-        'order_email.email'         => 'Please enter a valid email',
-    ];
+    public $messages ;
+
+    public function __construct()
+    {
+        $this->messages = [
+            'order_first_name.required' => trans('Order.order_first_name_required'),
+            'order_last_name.required'  => trans('Order.order_last_name_required'),
+            'order_email.email'         => trans('Order.order_email_email'),
+            'order_terms.required'      => trans('Order.order_terms_required'),
+        ] ;
+    }
 
     /**
      * The items associated with the order.

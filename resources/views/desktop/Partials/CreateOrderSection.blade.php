@@ -4,7 +4,7 @@
             @lang("Public_ViewEvent.order_details")
         </h1>
     </div>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-7 col-lg-8">
             <div class="event_order_form card py-3 px-5">
                 {!! Form::open(['url' => route('postCreateOrder', ['event_id' => $event->id]),
@@ -18,13 +18,13 @@
                     <div class="col-6">
                         <div class="form-group">
                             {!! Form::label("order_first_name", trans("Public_ViewEvent.first_name")) !!}
-                            {!! Form::text("order_first_name", null, ['required' => 'required', 'class' => 'form-control']) !!}
+                            {!! Form::text("order_first_name", old('order_first_name'), ['required' => 'required', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             {!! Form::label("order_last_name", trans("Public_ViewEvent.last_name")) !!}
-                            {!! Form::text("order_last_name", null, ['required' => 'required', 'class' => 'form-control']) !!}
+                            {!! Form::text("order_last_name", old('order_last_name'), ['required' => 'required', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!! Form::label("order_email", trans("Public_ViewEvent.email")) !!}
-                            {!! Form::text("order_email", null, ['required' => 'required', 'class' => 'form-control']) !!}
+                            {!! Form::text("order_email", old('order_email'), ['required' => 'required', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -179,7 +179,20 @@
                 @endif
 
                 {!! Form::hidden('is_embedded', $is_embedded) !!}
-                {!! Form::submit(trans("Public_ViewEvent.checkout_submit"), ['class' => 'check-order-btn btn btn-lg btn-danger card-submit']) !!}
+                <div class="form-row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            {!! Form::checkbox("order_terms", true, true,['required' => 'required', 'class' => 'form-control']) !!}
+                            <a target="_blank" href="{{route('about',['page'=>'oferta_'.Config::get('app.locale')])}}">@lang('ClientSide.terms_conditions')</a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            {!! Form::submit(trans("Public_ViewEvent.checkout_submit"), ['class' => 'check-order-btn btn btn-lg btn-danger card-submit']) !!}
+                        </div>
+                    </div>
+                </div>
+
                 {!! Form::close() !!}
             </div>
         </div>

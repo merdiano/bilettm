@@ -116,5 +116,7 @@ return [
     'cooperation' => 'Cooperation',
     'oferta' => 'Oferta',
 
+    'terms_conditions' => 'Terms and conditions',
+
 
 ];

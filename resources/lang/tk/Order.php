@@ -47,4 +47,9 @@ return array (
     'transaction_id' => 'Transaction ID',
     'view_order' => 'View Order',
     'view_order_num' => 'View Order #:num',
+
+    'order_first_name_required' => 'Please enter a valid first name',
+    'order_last_name_required'  => 'Please enter a valid last name',
+    'order_email_email'         => 'Please enter a valid email',
+    'order_terms_required'      => 'Please accept terms',
 );

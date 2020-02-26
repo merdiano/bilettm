@@ -126,4 +126,13 @@ return [
     'questions' => 'Вопросы и ответы',
     'organisers' => 'Организаторам',
     'add_event' => 'Добавить мероприятие',
+    'about_us' => 'About us',
+    'contacts'=> 'Contacts',
+    'about_payment' => 'About payment',
+    'how_to_buy' => 'How to buy',
+    'refund' => 'Refund',
+    'cooperation' => 'Cooperation',
+    'oferta' => 'Oferta',
+
+    'terms_conditions' => 'Terms and conditions',
 ];

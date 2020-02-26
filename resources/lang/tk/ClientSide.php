@@ -125,4 +125,7 @@ return [
     'questions' => 'Soraglar we jogaplar',
     'organisers' => 'Gurnaýjylar üçin',
     'add_event' => 'Çäre goşmak',
+
+    'terms_conditions' => 'Terms and conditions',
+
 ];
