@@ -48,8 +48,8 @@ return array (
     'view_order' => 'View Order',
     'view_order_num' => 'View Order #:num',
 
-    'order_first_name_required' => 'Please enter a valid first name',
-    'order_last_name_required'  => 'Please enter a valid last name',
-    'order_email_email'         => 'Please enter a valid email',
-    'order_terms_required'      => 'Please accept terms',
+    'order_first_name_required' => 'Adyňyzy giriziň',
+    'order_last_name_required'  => 'Familiýaňyzy giriziň',
+    'order_email_email'         => 'E-mail giriziň',
+    'order_terms_required'      => 'Ofertanyň şertlerini kabul ediň',
 );
