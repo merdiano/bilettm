@@ -123,4 +123,6 @@ return [
     'refund' => 'Refund',
     'cooperation' => 'Cooperation',
     'oferta' => 'Oferta',
+
+    'terms_conditions' => '<a href=":link">Terms and conditions</a>',
 ];

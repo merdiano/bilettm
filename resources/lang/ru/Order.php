@@ -47,4 +47,9 @@ return array (
     'transaction_id' => 'ID транзакции',
     'view_order' => 'Посмотреть заказ',
     'view_order_num' => 'Посмотреть заказ #:num',
+
+    'order_first_name_required' => 'Please enter a valid first name',
+    'order_last_name_required'  => 'Please enter a valid last name',
+    'order_email_email'         => 'Please enter a valid email',
+    'order_terms_required'      => 'Please accept terms',
 );
