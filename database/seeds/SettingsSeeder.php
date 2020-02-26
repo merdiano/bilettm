@@ -101,14 +101,14 @@ class SettingsSeeder extends Seeder
                 'name'        => 'Booking fee fixed',
                 'description' => 'Event ticket booking fee fixed',
                 'value'       => 0,
-                'field'       => '{"name":"value","label":"Value","type":"number"}',
+                'field'       => '{"name":"value","label":"Value","type":"number","attributes" => ["step" => "any"]}',
                 'active'      => 1,
             ],[
                 'key'         => 'booking_fee_percentage',
                 'name'        => 'Booking fee percentage',
                 'description' => 'Event ticket booking fee percentage',
                 'value'       => 0,
-                'field'       => '{"name":"value","label":"Value","type":"number"}',
+                'field'       => '{"name":"value","label":"Value","type":"number","attributes" => ["step" => "any"],}',
                 'active'      => 1,
             ],
         ]);
