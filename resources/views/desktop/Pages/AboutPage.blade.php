@@ -10,7 +10,7 @@
                 <div class="col-3">
 
 
-                    <ul class="list-group" >
+                    <ul class="list-group" style="float: left">
                         <li class="list-group-item border-0 pl-0">
                             <h3>@lang('ClientSide.about_us')</h3><div style="background-color: rgba(211,61,51,1);height: 5px;width: 80px;margin-bottom: 15px;"></div> </li>
                         <li class="list-group-item border-0 pl-0">
@@ -40,6 +40,7 @@
                         <li class="list-group-item border-0 pl-0">
                             <a  class="text-dark capitalizer" data-toggle="modal" data-target="#exampleModalCenter">{{__("ClientSide.addEvent")}}</a></li>
                     </ul>
+                    <div style="width: 5px;float: left;height: calc(100% - 20px); margin-top: 10px; margin-left: -6px; box-shadow: 2px 0 10px rgba(0,0,0,.4)"></div>
                 </div>
                 <div class="col-9">
                     <h2>{{$title}}</h2>
