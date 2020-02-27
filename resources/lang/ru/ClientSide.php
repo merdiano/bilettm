@@ -57,6 +57,7 @@ return [
     'email' => 'Введите ваш e-mail',
     'email_for' => 'Подпишитесь на рассылку и получайте на почту персональную подборку событий вашего города',
     'cabinet' => 'ЛИЧНЫЙ КАБИНЕТ',
+    'introduction' => 'ЗНАКОМСТВО С BILETTM.COM',
     'questions' => 'ВОПРОСЫ И ОТВЕТЫ',
     'offices' => 'БИЛЕТНЫЕ ОФИСЫ',
     'rassylka' => 'РАССЫЛКА',
@@ -115,7 +116,7 @@ return [
     'checkout' => 'Checkout',
 
     //About page
-    'about_us' => 'Знакомство с bilettm.com',
+    'about_us' => 'О нас',
     'contacts'=> 'Контакты',
     'venues' => 'Площадки',
     'how_to_buy' => 'Как купить билет',
@@ -126,7 +127,7 @@ return [
     'add_event' => 'Добавить мероприятие',
 
 
-    'about_payment' => 'About payment',
+    'about_payment' => 'Об оплате',
 
-    'terms_conditions' => 'Terms and conditions',
+    'terms_conditions' => 'Я принимаю условия Публичной Оферты',
 ];

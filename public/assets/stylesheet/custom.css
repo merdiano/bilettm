@@ -2417,8 +2417,9 @@ display: block;
   z-index: 100;
   background-color: #ffffff; }
 .capitalizer{
+  display: block;
   text-transform: lowercase;
 }
-.capitalizer::first-letter{
+.capitalizer:first-letter{
   text-transform: uppercase;
 }

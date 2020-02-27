@@ -56,14 +56,15 @@ return [
     'subscribe' => 'Ýazyl',
     'email' => 'Elektron poçtaňyzy giriziň',
     'email_for' => 'Täze habarlara ýazylyň we çäreler barada soňky habarlary alyp duruň!',
-
+    'cabinet' => 'ŞAHSY KABINET',
+    'introduction' => 'BILETTM.COM BILEN TANYŞ BOL!',
     'questions' => 'SORAGLAR WE JOGAPLAR',
     'offices' => 'PETEK OFISLARY',
     'rassylka' => 'PAÝLAMA',
     'collective' => 'BIRNÄÇE PETEK ALMAK',
     'organizers' => 'ORGANIZATORLAR ÜÇIN',
-    'concert_halls' => 'KONSERT ZALLARY',
-    'partners' => 'PARTNERS',
+    'concert_halls' => 'KINOKONSERT ZALLARY',
+    'partners' => 'HYZMATDAŞLAR',
     'logo' => 'MEDIA WE REKLAMA ÜÇIN LOGO',
     'addEvent' => 'Çäre goş',
     'ticket_service' => 'Bilet hyzmatlary',
@@ -114,16 +115,17 @@ return [
     'checkout' => 'Checkout',
 
     //About page
-    'about_us' => 'Bilettm.com bilen tanyş bol',
+    'about_us' => 'Biz barada',
     'contacts'=> 'Habarlaşmak üçin',
-    'about_payment' => 'Geçirilýän merkezler',
+    'about_payment' => 'Töleg barada',
     'how_to_buy' => 'Biledi nähili satyn almaly',
     'refund' => 'Biledi yzyna gaýtarmak',
     'cooperation' => 'Hyzmatdaşlar üçin',
     'oferta' => 'Oferta',
+
     'organisers' => 'Gurnaýjylar üçin',
     'add_event' => 'Çäre goşmak',
 
-    'terms_conditions' => 'Terms and conditions',
+    'terms_conditions' => 'Ofertanyň şertlerini kabul edýärin',
 
 ];
