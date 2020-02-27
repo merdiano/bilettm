@@ -2416,3 +2416,9 @@ display: block;
 #mobile #navbarSupportedContent {
   z-index: 100;
   background-color: #ffffff; }
+.capitalizer{
+  text-transform: lowercase;
+}
+.capitalizer::first-letter{
+  text-transform: uppercase;
+}
