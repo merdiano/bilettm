@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="g-bg-main-light-v1">
+<footer class="g-bg-main-light-v1 mt-5">
     <!-- Content -->
     <div class="g-brd-bottom g-brd-secondary-light-v1 pb-5" style="border-bottom: none !important">
         <div class="container g-pt-100">

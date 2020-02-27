@@ -46,7 +46,7 @@
                 rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
             }
         }).on('changeDate', function(e) {
-            alert('date_changed');
+            console.log(e.format());
         });
 
     </script>

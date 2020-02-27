@@ -56,8 +56,7 @@ return [
     'subscribe' => 'Ýazyl',
     'email' => 'Elektron poçtaňyzy giriziň',
     'email_for' => 'Täze habarlara ýazylyň we çäreler barada soňky habarlary alyp duruň!',
-    'cabinet' => 'ŞAHSY KABINET',
-    'introduction' => 'BILETTM.COM BILEN TANYŞ BOL!',
+
     'questions' => 'SORAGLAR WE JOGAPLAR',
     'offices' => 'PETEK OFISLARY',
     'rassylka' => 'PAÝLAMA',
@@ -122,7 +121,6 @@ return [
     'refund' => 'Biledi yzyna gaýtarmak',
     'cooperation' => 'Hyzmatdaşlar üçin',
     'oferta' => 'Oferta',
-    'questions' => 'Soraglar we jogaplar',
     'organisers' => 'Gurnaýjylar üçin',
     'add_event' => 'Çäre goşmak',
 

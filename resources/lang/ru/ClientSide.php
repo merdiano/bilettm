@@ -57,7 +57,6 @@ return [
     'email' => 'Введите ваш e-mail',
     'email_for' => 'Подпишитесь на рассылку и получайте на почту персональную подборку событий вашего города',
     'cabinet' => 'ЛИЧНЫЙ КАБИНЕТ',
-    'introduction' => 'ЗНАКОМСТВО С BILETTM.COM',
     'questions' => 'ВОПРОСЫ И ОТВЕТЫ',
     'offices' => 'БИЛЕТНЫЕ ОФИСЫ',
     'rassylka' => 'РАССЫЛКА',
@@ -123,16 +122,11 @@ return [
     'refund' => 'Возврат билетов',
     'cooperation' => 'Партнёрам',
     'oferta' => 'Публичная оферта',
-    'questions' => 'Вопросы и ответы',
     'organisers' => 'Организаторам',
     'add_event' => 'Добавить мероприятие',
-    'about_us' => 'About us',
-    'contacts'=> 'Contacts',
+
+
     'about_payment' => 'About payment',
-    'how_to_buy' => 'How to buy',
-    'refund' => 'Refund',
-    'cooperation' => 'Cooperation',
-    'oferta' => 'Oferta',
 
     'terms_conditions' => 'Terms and conditions',
 ];
