@@ -27,7 +27,7 @@
                         <li class="list-group-item border-0 pl-0">
                             <a class="text-dark capitalizer" href="{{route('about',['page'=>'questions'])}}">{{__("ClientSide.questions")}}</a></li>
                         <li class="list-group-item border-0 pl-0">
-                            <a class="text-dark capitalizer" href="{{route('about',['page'=>'concert_halls])}}">{{__("ClientSide.concert_halls")}}</a></li>
+                            <a class="text-dark capitalizer" href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
                         <li class="list-group-item border-0 pl-0">
                             <a class="text-dark capitalizer" href="{{route('about',['page'=>'refund'])}}">{{__("ClientSide.refund")}}</a></li>
 
