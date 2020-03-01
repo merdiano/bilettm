@@ -9,7 +9,7 @@ class PageController extends Controller
 {
     public function index($slug, $subs = null)
     {
-        $page = Page::findBySlug($slug);
+        $page = Page::findBySlug($slug.'_'.Config::get('app.locale'));
 
         if (!$page)
         {
