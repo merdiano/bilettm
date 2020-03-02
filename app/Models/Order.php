@@ -29,6 +29,17 @@ class Order extends MyBaseModel
      */
     public $messages ;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->messages = [
+            'order_first_name.required' => trans('Order.order_first_name_required'),
+            'order_last_name.required'  => trans('Order.order_last_name_required'),
+            'order_email.email'         => trans('Order.order_email_email'),
+            'order_terms.required'      => trans('Order.order_terms_required'),
+        ] ;
+    }
+
     /**
      * The items associated with the order.
      *
@@ -177,12 +188,6 @@ class Order extends MyBaseModel
 
         static::creating(function ($order) {
             $order->order_reference = strtoupper(str_random(5)) . date('jn');
-            $order->messages = [
-                'order_first_name.required' => trans('Order.order_first_name_required'),
-                'order_last_name.required'  => trans('Order.order_last_name_required'),
-                'order_email.email'         => trans('Order.order_email_email'),
-                'order_terms.required'      => trans('Order.order_terms_required'),
-            ] ;
         });
     }
 }
