@@ -73,7 +73,7 @@
                                             <div class="standard-box" style="position: relative; padding: 20px 0">
                                                 <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>{{$ticket->section->description}}</small></h5>
 
-                                                <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto"
+                                                <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto;position: relative"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
                                                     <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">
                                                     @foreach($ticket->section->seats as $row)
@@ -82,7 +82,7 @@
                                                             <td></td>
                                                             <td></td>
                                                             @for($i = $row['start_no'];$i<=$row['end_no'];$i++)
-                                                                <td>
+                                                                <td style="position: absolute;">
                                                                     <input type="checkbox" class="seat_check"
                                                                            id="seat{{$ticket->id.'-'.$row['row'].'-'.$i}}"
                                                                            name="seats[{{$ticket->id}}][]"
