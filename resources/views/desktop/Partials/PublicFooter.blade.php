@@ -21,7 +21,7 @@
                     <a href="" style="width: 100%">
                         <img src="{{asset('assets/images/logo/bilet-logo.svg')}}" class="footer-logo">
                     </a>
-                    <ul class="list-inline mb-50 row footer-social-icons pt-4" style="width: 100%">
+                    <ul class="list-inline mb-50 row footer-social-icons pt-4" style="width: 100%;margin: auto;">
                         <li class="text-center">
                             <a href="{{\Backpack\Settings\app\Models\Setting::get('social_facebook')}}">
                                 <img src="{{asset('assets/images/icons/social/3.svg')}}"></a>

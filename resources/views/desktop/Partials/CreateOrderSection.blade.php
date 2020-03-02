@@ -182,13 +182,13 @@
                 <div class="form-row">
                     <div class="col-6">
                         <div class="form-group">
-                            {!! Form::checkbox("order_terms", true, true,['required' => 'required', 'class' => 'form-control']) !!}
-                            <a target="_blank" href="{{route('about',['page'=>'oferta_'.Config::get('app.locale')])}}">@lang('ClientSide.terms_conditions')</a>
+                            {!! Form::checkbox("order_terms", true, true,['required' => 'required', 'class' => 'form-control','style'=>'width:fit-content;display:inline-block;margin-right:10px']) !!}
+                            <a style="color: #000000;" target="_blank" href="{{route('about',['page'=>'oferta_'.Config::get('app.locale')])}}">@lang('ClientSide.terms_conditions')</a>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            {!! Form::submit(trans("Public_ViewEvent.checkout_submit"), ['class' => 'check-order-btn btn btn-lg btn-danger card-submit']) !!}
+                            {!! Form::submit(trans("Public_ViewEvent.checkout_submit"), ['class' => 'check-order-btn btn btn-lg btn-danger card-submit','style'=>'float:right']) !!}
                         </div>
                     </div>
                 </div>

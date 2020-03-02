@@ -1601,7 +1601,11 @@ input.reserved-seats ~ label svg {
 .your-selected-seats {
   padding-top: 20px;
   text-align: center;
-  margin-bottom: 60px; }
+  margin: auto;
+  margin-bottom: 100px;
+  width: fit-content;
+
+}
   .your-selected-seats span {
     color: #ffffff;
     background-color: #d43d34;
@@ -2426,3 +2430,12 @@ display: block;
 .text_black *{
   color: #000000 !important;
 }
+table[data-id='6']{
+text-align: center;
+  margin: auto;
+  position: relative;
+}
+table[data-id='6'] td{
+  position: absolute;
+}
+
