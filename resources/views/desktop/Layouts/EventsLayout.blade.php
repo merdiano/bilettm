@@ -39,6 +39,7 @@
 @section('after_scripts')
 
     <script src="{{asset('vendor/gijgo/gijgo.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/javascript/components/hs.datepicker.js')}}" type="text/javascript"></script>
     <script>
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
