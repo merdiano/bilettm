@@ -70,22 +70,22 @@
                             <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: 78%; position: absolute; bottom: 20px;" />
                         </td>
                         <td style="width: 55%; padding: 20px; vertical-align: top">
-                            <span class="text-muted">Номер билета</span>
+                            <span class="text-muted">@lang('Ticket.ticket_number')</span>
                             <h2 style="margin-top: 5px; margin-bottom: 0">{{$attendee->reference}}</h2>
                         </td>
                         <td rowspan="2" style="width: 25%; padding: 20px; vertical-align: top">
-                            <p><b>{{\Backpack\Settings\app\Models\Setting::get('ticket_text_title')}}</b></p>
-                            <p> <span class="text-muted">{{\Backpack\Settings\app\Models\Setting::get('ticket_text')}}</span></p>
+                            <p><b>@lang('Ticket.text_title')</b></p>
+                            <p> <span class="text-muted">@lang('warn_text')</span></p>
                         </td>
                     </tr>
                     <tr>
                         <td style="padding: 20px; vertical-align: top">
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Мероприятие:</span> <b>{{$event->title}}</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Площадка:</span> <b>{{$event->venue->venue_name}}</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Дата и время:</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y h:i')}}</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">ФИО:</span> <b>{{$attendee->first_name.' '.$attendee->last_name}}</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Тип билета:</span> <b>{{$attendee->ticket->title}}</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Место:</span> <b>{{$attendee->seat_no}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.event'):</span> <b>{{$event->title}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.venue'):</span> <b>{{$event->venue->venue_name}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.date_time'):</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y h:i')}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.full_name'):</span> <b>{{$attendee->first_name.' '.$attendee->last_name}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.ticket_type'):</span> <b>{{$attendee->ticket->title}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.seat'):</span> <b>{{$attendee->seat_no}}</b></p>
                             @php
                                 // Calculating grand total including tax
                                 $grand_total = $attendee->ticket->total_price;
@@ -93,7 +93,7 @@
                                 $grand_total += $tax_amt;
                             @endphp
 
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">Стоимость:</span> <b>{{money($grand_total, $order->event->currency)}}
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.total'):</span> <b>{{money($grand_total, $order->event->currency)}}
                                     @if ($attendee->ticket->total_booking_fee) (hz. {{money($attendee->ticket->total_booking_fee, $order->event->currency)}})@endif</b>
                             </p>
                         </td>

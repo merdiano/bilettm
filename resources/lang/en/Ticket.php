@@ -49,4 +49,11 @@ return array (
   'ticket_text_color' => 'Ticket Text Color',
   'ticket_type' => 'Ticket Type',
   'venue' => 'Venue',
+    'ticket_number' => 'Ticket number',
+    'date_time' => 'Date and time',
+    'full_name' => 'Full name',
+    'seat' => 'seat',
+    'total' => 'Total',
+    'warn_text' => 'Show this ticket on entrance',
+    'text_title' => 'Attention'
 );
