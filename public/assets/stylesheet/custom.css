@@ -2430,12 +2430,4 @@ display: block;
 .text_black *{
   color: #000000 !important;
 }
-table[data-id='6']{
-text-align: center;
-  margin: auto;
-  position: relative;
-}
-table[data-id='6'] td{
-  position: absolute;
-}
 
