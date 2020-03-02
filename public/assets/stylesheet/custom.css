@@ -2423,3 +2423,6 @@ display: block;
 .capitalizer:first-letter{
   text-transform: uppercase;
 }
+.text_black *{
+  color: #000000 !important;
+}
