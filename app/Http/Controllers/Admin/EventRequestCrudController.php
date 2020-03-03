@@ -23,7 +23,7 @@ class EventRequestCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\EventRequest');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/eventrequest');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/event_request');
         $this->crud->setEntityNameStrings('eventrequest', 'event_requests');
 
         /*
