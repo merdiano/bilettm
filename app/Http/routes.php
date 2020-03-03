@@ -719,10 +719,10 @@ Route::group(
         'uses' => 'PublicController@search'
     ]);
 
-    Route::get('/add_event',[
-        'as' => 'add_event',
-        'uses' => 'PublicController@showAddEventForm'
-    ]);
+//    Route::get('/add_event',[
+//        'as' => 'add_event',
+//        'uses' => 'PublicController@showAddEventForm'
+//    ]);
 
     Route::post('/add_event',[
         'as' => 'add_event',

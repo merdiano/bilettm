@@ -55,11 +55,6 @@ class PublicController extends Controller
 
     public function showCategoryEvents($cat_id){
 
-//        dd(Carbon::parse('aasddwawda') ?? null);/
-//        setlocale(LC_TIME, 'tk');
-//        Carbon::setLocale('tk');
-//        dd(Carbon::parse('2019-01-01',config('app.timezone')) ->formatLocalized('%d %B'));
-//        Carbon::
         $category = Category::select('id','title_tk','title_ru','view_type','events_limit','parent_id')
             ->findOrFail($cat_id);
 
