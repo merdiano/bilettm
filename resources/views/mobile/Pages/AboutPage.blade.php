@@ -3,9 +3,9 @@
 
 @endsection
 @section('content')
-    <section class="my-3">
-        <div class="container">
-            <h2>{{$title}}</h2>
+    <section class="my-4">
+        <div class="container text_black" style="font-size: 16px;">
+            <h3>{{$title}}</h3>
             {!! Markdown::parse($page) !!}
         </div>
     </section>
