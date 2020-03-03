@@ -167,6 +167,5 @@
         }
 
     </script>
-    @include("Shared.Partials.LangScript")
-    {!!HTML::script(config('attendize.cdn_url_static_assets').'/assets/javascript/frontend.js')!!}
+
 @endsection
