@@ -49,6 +49,10 @@
             console.log(e.format());
         });
 
+        $('td.gj-cursor-pointer').click(function () {
+            alert($('#datepicker').value);
+        });
+
     </script>
 
 @endsection
