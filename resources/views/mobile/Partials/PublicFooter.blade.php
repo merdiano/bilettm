@@ -18,18 +18,18 @@
         <div class="row pt-4">
             <div class="col-6">
                 <ul>
-                    <li><a href="#">{{__('ClientSide.introduction')}}</a></li>
-                    <li><a href="#">{{__("ClientSide.questions")}}</a></li>
-                    <li><a href="#">{{__("ClientSide.offices")}}</a></li>
-                    <li><a href="#">{{__("ClientSide.partners")}}</a></li>
-                    <li><a href="#">{{__("ClientSide.logo")}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('about',['page'=>'introduction'])}}">{{__('ClientSide.introduction')}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('about',['page'=>'questions'])}}">{{__("ClientSide.questions")}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('about',['page'=>'oferta'])}}">{{__("ClientSide.oferta")}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('about',['page'=>'partners'])}}">{{__("ClientSide.partners")}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('about',['page'=>'contacts'])}}">{{__("ClientSide.contacts")}}</a></li>
                 </ul>
             </div>
             <div clas="col-6">
                 <ul>
-                    <li><a href="#">{{__("ClientSide.collective")}}</a></li>
-                    <li><a href="#">{{__("ClientSide.organizers")}}</a></li>
-                    <li><a href="#">{{__("ClientSide.concert_halls")}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('about',['page'=>'refund'])}}">{{__("ClientSide.refund")}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('about',['page'=>'organizers'])}}">{{__("ClientSide.organizers")}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
                     <li><a style="color: #ffffff; cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter">{{__("ClientSide.addEvent")}}</a></li>
                 </ul>
             </div>

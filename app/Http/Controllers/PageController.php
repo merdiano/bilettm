@@ -19,7 +19,7 @@ class PageController extends Controller
         $data['title'] = $page->title;
         $data['page'] = $page->content;
 
-        return view('desktop.Pages.AboutPage', $data);
+        return $this->render('Pages.AboutPage', $data);
     }
 
 }
