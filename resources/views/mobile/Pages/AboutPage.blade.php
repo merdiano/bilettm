@@ -5,7 +5,7 @@
 @section('content')
     <section class="my-4">
         <div class="container text_black" style="font-size: 16px;">
-            <h3>{{$title}}</h3>
+            <h4 class="mb-2">{{$title}}</h4>
             {!! Markdown::parse($page) !!}
         </div>
     </section>
