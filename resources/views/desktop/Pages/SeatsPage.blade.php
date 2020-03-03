@@ -82,16 +82,16 @@
                                                             <td></td>
                                                             <td></td>
                                                             @for($i = $row['start_no'];$i<=$row['end_no'];$i++)
-                                                                <td>
+                                                                <td style="position: relative">
                                                                     <input type="checkbox" class="seat_check"
                                                                            id="seat{{$ticket->id.'-'.$row['row'].'-'.$i}}"
                                                                            name="seats[{{$ticket->id}}][]"
                                                                            value="{{$row['row'].'-'.$i}}">
                                                                     <label for="seat{{$ticket->id.'-'.$row['row'].'-'.$i}}">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25">
+                                                                        <svg style="position: absolute;top: 0;left: 0;" xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25">
                                                                             <path id="Rectangle_3" data-name="Rectangle 3" d="M8,0H18a8,8,0,0,1,8,8V25a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V8A8,8,0,0,1,8,0Z"></path>
                                                                         </svg>
-                                                                        <span style="position:relative;right: 55%">{{$i}}</span>
+                                                                        <span style="position:absolute;left: -3px;top: 1px;">{{$i}}</span>
                                                                     </label>
                                                                 </td>
                                                             @endfor

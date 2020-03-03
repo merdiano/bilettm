@@ -7,10 +7,10 @@
     <section class="my-3">
         <div class="container">
             <div class="row text_black" >
-                <div class="col-lg-2 col-md-3">
+                <div class="col-lg-2 col-md-4">
 
 
-                    <ul class="list-group w-100 " style="float: left;height: 100%; background-color: #ffffff; z-index: 10;position: relative;color: #000000;font-size: 16px;">
+                    <ul class="list-group w-100 " style="float: left;height: 100%; background-color: #ffffff; z-index: 10;position: relative;color: #000000;font-size: 17px;">
                         <li class="list-group-item border-0 pl-0">
                             <h3>@lang('ClientSide.about_us')</h3><div style="background-color: rgba(211,61,51,1);height: 5px;width: 80px;margin-bottom: 15px;"></div> </li>
                         <li class="list-group-item border-0 pl-0">
@@ -42,7 +42,7 @@
                     </ul>
                     <div style="width: 5px;float: left;height: calc(100% - 20px); margin-top: 10px; margin-left: -6px; box-shadow: 2px 0 10px rgba(0,0,0,.1)"></div>
                 </div>
-                <div class="col-9 pl-4" style="font-size: 16px">
+                <div class="col-lg-10 col-md-8 pl-4" style="font-size: 17px">
                     <h2>{{$title}}</h2>
                     {!! Markdown::parse($page) !!}
                 </div>
