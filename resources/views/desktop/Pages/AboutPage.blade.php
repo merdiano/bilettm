@@ -7,7 +7,7 @@
     <section class="my-3">
         <div class="container">
             <div class="row text_black" >
-                <div class="col-lg-2 col-md-4">
+                <div class="col-3">
 
 
                     <ul class="list-group w-100 " style="float: left;height: 100%; background-color: #ffffff; z-index: 10;position: relative;color: #000000;font-size: 17px;">
@@ -42,7 +42,7 @@
                     </ul>
                     <div style="width: 5px;float: left;height: calc(100% - 20px); margin-top: 10px; margin-left: -6px; box-shadow: 2px 0 10px rgba(0,0,0,.1)"></div>
                 </div>
-                <div class="col-lg-10 col-md-8 pl-4" style="font-size: 17px">
+                <div class="col-9 pl-4" style="font-size: 17px">
                     <h2>{{$title}}</h2>
                     {!! Markdown::parse($page) !!}
                 </div>
