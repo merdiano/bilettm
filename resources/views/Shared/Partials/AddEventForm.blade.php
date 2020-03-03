@@ -12,23 +12,23 @@
     <div class="row">
 
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                <label for="">{{__("ClientSide.name")}}*</label>
+                <label for="name">{{__("ClientSide.name")}}*</label>
                 <input type="text" placeholder="Orazgeldi" name="name" class="form-control" required>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                <label for="">{{__("ClientSide.phone")}}*</label>
+                <label for="phone">{{__("ClientSide.phone")}}*</label>
                 <input type="text" placeholder="+99362222222"  name="phone" class="form-control" required>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                <label for="">{{__('ClientSide.venue')}}*</label>
+                <label for="place">{{__('ClientSide.venue')}}*</label>
                 <input type="text" placeholder="{{__('ClientSide.place')}}" name="place" class="form-control" required>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                <label for="">Email*</label>
-                <input type="email" name="place" placeholder="Sizin elektron poctanyz" class="form-control" required>
+                <label for="email">Email*</label>
+                <input type="email" name="email" placeholder="Sizin elektron poctanyz" class="form-control" required>
             </div>
             <div class="form-group col-12" style="padding: 0 5px">
-                <label for="">{{__('ClientSide.message')}}*</label>
+                <label for="details">{{__('ClientSide.message')}}*</label>
                 <textarea name="details" id="" cols="30" rows="5" placeholder="{{__('ClientSide.message')}}" class="form-control" required></textarea>
             </div>
 
