@@ -5,7 +5,7 @@
         <h4 class="font-weight-bold">{{__("ClientSide.addEvent")}}</h4>
         <div style="height: 5px; position: absolute; bottom: 15px; width: 100px; background-color: rgba(211,61,51,1)"></div>
         <div class="">
-            <button type="submit" class="modal-send red_button" style="float: right" >{{__("ClientSide.send")}}</button>
+            <input type="submit" class="modal-send red_button" style="float: right" value="{{__("ClientSide.send")}}">
             <span style="float: right; font-size: 12px" class="text-right font-weight-bold">*{{__("ClientSide.required")}}</span>
         </div>
     </div>
