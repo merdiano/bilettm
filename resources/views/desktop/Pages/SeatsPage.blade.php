@@ -73,7 +73,7 @@
                                             <div class="standard-box" style="position: relative; padding: 20px 0">
                                                 <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>{{$ticket->section->description}}</small></h5>
 
-                                                <table data-id="{{$ticket->id}}" style="text-align: center; margin: auto;position: relative"
+                                                <table data-id="{{$ticket->id}}" style="margin: auto;position: relative"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
                                                     <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}">
                                                     @foreach($ticket->section->seats as $row)
