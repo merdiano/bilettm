@@ -82,7 +82,7 @@
                                                             <td></td>
                                                             <td></td>
                                                             @for($i = $row['start_no'];$i<=$row['end_no'];$i++)
-                                                                <td style="position: relative">
+                                                                <td style="position: relative; display: inline-block; margin: 15px !important">
                                                                     <input type="checkbox" class="seat_check"
                                                                            id="seat{{$ticket->id.'-'.$row['row'].'-'.$i}}"
                                                                            name="seats[{{$ticket->id}}][]"
