@@ -1,10 +1,13 @@
 <div class="title-and-btn">
     <form action="{{route('add_event')}}" class="row w-100 m-auto ajax" method="post">
         @csrf
-    <div class="tab-header d-flex justify-content-between col-12 px-0 m-auto" style="width: calc(100% - 10px)">
-        <h4 class="font-weight-bold">{{__("ClientSide.addEvent")}}</h4>
-        <div style="height: 5px; position: absolute; bottom: 15px; width: 100px; background-color: rgba(211,61,51,1)"></div>
-        <div class="">
+    <div class="tab-header d-flex justify-content-between row px-0 m-auto" style="width: calc(100% - 10px)">
+        <div class="col-6">
+            <h4 class="font-weight-bold">{{__("ClientSide.addEvent")}}</h4>
+            <div style="height: 5px; position: absolute; bottom: 15px; width: 100px; background-color: rgba(211,61,51,1)"></div>
+        </div>
+
+        <div class="col-6">
             <input type="submit" class="modal-send red_button" style="float: right" value="{{__("ClientSide.send")}}">
             <span style="float: right; font-size: 12px" class="text-right font-weight-bold">*{{__("ClientSide.required")}}</span>
         </div>
