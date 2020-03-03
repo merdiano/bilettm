@@ -126,7 +126,7 @@ class PublicController extends Controller
             'name' => sanitise($request->get('name')),
             'email' => sanitise($request->get('email')),
             'phone' => sanitise($request->get('phone')),
-            'detail' => sanitise($request->get('detail'))
+            'details' => sanitise($request->get('details'))
         ]);
 
         return response()->json([

@@ -25,7 +25,7 @@ class AddEventRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'phone'=>'required',
+            'phone'=>'required|numeric',
             'email' =>'required|email',
             'details' => 'required'
             //
