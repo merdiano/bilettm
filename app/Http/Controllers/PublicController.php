@@ -128,7 +128,11 @@ class PublicController extends Controller
             'phone' => sanitise($request->get('phone')),
             'detail' => sanitise($request->get('detail'))
         ]);
-        return view('desktop.Pages.AddEventResult',compact('addEvent'));
+
+        return response()->json([
+            'status'   => 'success',
+            'message' => 'Thanks for request. We will contact you as soon as possible',
+        ]);
     }
 
     public function subscribe(SubscribeRequest $request){
@@ -136,9 +140,9 @@ class PublicController extends Controller
         //todo validate email
         $subscribe = Subscriber::updateOrCreate(['email'=>$email,'active'=>1]);
 
-        if($subscribe){
-            session()->flash('message','Subscription successfully');
-        }
+//        if($subscribe){
+//            session()->flash('message','Subscription successfully');
+//        }
 
         return response()->json([
             'status'   => 'success',
