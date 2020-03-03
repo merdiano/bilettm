@@ -73,9 +73,9 @@
                                             <div class="standard-box" style="position: relative; padding: 20px 0">
                                                 <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>{{$ticket->section->description}}</small></h5>
 
-                                                <table data-id="{{$ticket->id}}" style="margin: auto;position: relative; display: block; overflow-x: scrollw"
+                                                <table data-id="{{$ticket->id}}" style="margin: auto;position: relative; display: block; overflow-x: scroll"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
-                                                    <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}" style="display: block; width: 140%">
+                                                    <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}" style="display: block; width: 1180px; margin: auto">
                                                     @foreach($ticket->section->seats as $row)
                                                         <tr>
                                                             <td>{{$row['row']}}</td>
