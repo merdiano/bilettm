@@ -1,3 +1,10 @@
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding: 40px 20px">
+            @include('Shared.Partials.AddEventForm')
+        </div>
+    </div>
+</div>
 <footer class="mob-footer">
     <div class="container">
         <div class="row">

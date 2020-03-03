@@ -106,6 +106,19 @@ return [
 
     //Chcekout page
     'checkout' => 'Checkout',
+    'no_seats' => 'No seats selected',
+    'min_ticket_message' => 'You must select at least :min tickets.',
+    'max_ticket_message' => 'The maximum number of tickets you can register is :max',
+    'holder_first_name_required' => 'Ticket holder :seat\'s first name is required',
+    'holder_last_name_required' => 'Ticket holder :seat\'s last name is required',
+    'holder_email_required' => 'Ticket holder :seat\'s email is required',
+    'holder_email_invalid' => 'Ticket holder :seat\'s email appears to be invalid',
+    'question_required' => "This question is required",
+    'enable_javascript' => 'Please enable Javascript in your browser.',
+    'payment_error' => 'Sorry, there was an error processing your payment. Please try again.',
+    'payment_cancelled' => 'Payment cancelled',
+    'no_ordere_id' => 'Order id does not exist',
+    'order_error' => 'Whoops! There was a problem processing your order. Please try again.',
 
     //About page
     'about_us' => 'About us',
@@ -118,5 +131,10 @@ return [
 
     'terms_conditions' => 'Terms and conditions',
 
+    //add event request and subscribe
+    'add_event_success_message' => 'Thanks for request. We will contact you as soon as possible',
+    'add_event_error_message' => 'There is some problem occured on adding event request',
+    'subscribe_success_message' => 'Subscription successfully',
+    'subscribe_error_message' => 'Subscription unsuccessful',
 
 ];

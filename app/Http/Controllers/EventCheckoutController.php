@@ -92,7 +92,7 @@ class EventCheckoutController extends Controller
         if (!$request->has('seats')) {
             return response()->json([
                 'status'  => 'error',
-                'message' => 'No seats selected',
+                'message' => trans('ClientSide.no_seats'),
             ]);
         }
 
@@ -150,9 +150,9 @@ class EventCheckoutController extends Controller
              * Validation max min ticket count
              */
             if($seats_count < $ticket->min_per_person){
-                $message = 'You must select at least ' . $ticket->min_per_person . ' tickets.';
+                $message = trans('ClientSide.min_ticket_message',['min' => $ticket->min_per_person]);
             }elseif ($seats_count > $max_per_person){
-                $message = 'The maximum number of tickets you can register is ' . $ticket->quantity_remaining;
+                $message = trans('ClientSide.max_ticket_message',['max' => $ticket->quantity_remaining]);
             }
 
             if (isset($message)) {
@@ -194,17 +194,17 @@ class EventCheckoutController extends Controller
                 $validation_rules['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id] = ['required'];
                 $validation_rules['ticket_holder_email.' . $seat_no . '.' . $ticket_id] = ['required', 'email'];
 
-                $validation_messages['ticket_holder_first_name.' . $seat_no . '.' . $ticket_id . '.required'] = 'Ticket holder ' . $seat_no . '\'s first name is required';
-                $validation_messages['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id . '.required'] = 'Ticket holder ' . $seat_no . '\'s last name is required';
-                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.required'] = 'Ticket holder ' . $seat_no . '\'s email is required';
-                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.email'] = 'Ticket holder ' . $seat_no . '\'s email appears to be invalid';
+                $validation_messages['ticket_holder_first_name.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_first_name_required',['seat' => $seat_no]);
+                $validation_messages['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_last_name_required',['seat' => $seat_no]);
+                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_email_required',['seat' => $seat_no]);;
+                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.email'] = trans('ClientSide.holder_email_invalid',['seat' => $seat_no]);;
                 /*
                  * Validation rules for custom questions
                  */
                 foreach ($ticket->questions as $question) {
                     if ($question->is_required && $question->is_enabled) {
                         $validation_rules['ticket_holder_questions.' . $ticket_id . '.' . $seat_no . '.' . $question->id] = ['required'];
-                        $validation_messages['ticket_holder_questions.' . $ticket_id . '.' . $seat_no . '.' . $question->id . '.required'] = "This question is required";
+                        $validation_messages['ticket_holder_questions.' . $ticket_id . '.' . $seat_no . '.' . $question->id . '.required'] = trans('ClientSide.question_required');
                     }
                 }
             }
@@ -257,7 +257,7 @@ class EventCheckoutController extends Controller
         /*
          * todo Maybe display something prettier than this?
          */
-        exit('Please enable Javascript in your browser.');
+        exit(trans('ClientSide.enable_javascript'));
     }
 
 //    public function postValidateTickets(Request $request, $event_id)
@@ -591,7 +591,7 @@ class EventCheckoutController extends Controller
         } catch (\Exeption $e) {
 //            dd($e);
             Log::error($e);
-            $error = 'Sorry, there was an error processing your payment. Please try again.';
+            $error = trans('ClientSide.payment_error');
         }
 
         if ($error) {
@@ -640,11 +640,11 @@ class EventCheckoutController extends Controller
 
     public function mobileCheckoutPaymentReturn(Request $request, $event_id){
         if ($request->get('is_payment_cancelled') == '1') {
-            return view('mobile.CheckoutFailed',['message'=>'Toleg besedildi']);
+            return view('mobile.CheckoutFailed',['message'=>trans('ClientSide.payment_cancelled')]);
         }
 
         if(!$request->has('orderId')){
-            return view('mobile.CheckoutFailed',['message'=>'order id yok']);
+            return view('mobile.CheckoutFailed',['message'=> trans('ClientSide.no_order_id')]);
         }
 
         $response = $this->gateway->getPaymentStatus($request->get('orderId'));
@@ -826,7 +826,7 @@ class EventCheckoutController extends Controller
 
             return response()->json([
                 'status'  => 'error',
-                'message' => 'Whoops! There was a problem processing your order. Please try again.'
+                'message' => trans('ClientSide.order_error')
             ]);
 
         }

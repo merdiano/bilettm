@@ -129,10 +129,16 @@ class PublicController extends Controller
             'details' => sanitise($request->get('details'))
         ]);
 
-        return response()->json([
-            'status'   => 'success',
-            'message' => 'Thanks for request. We will contact you as soon as possible',
-        ]);
+        if($addEvent)
+            return response()->json([
+                'status'   => 'success',
+                'message' => trans('ClientSide.add_event_success_message'),
+            ]);
+        else
+            return response()->json([
+                'status'   => 'error',
+                'message' => trans('ClientSide.add_event_error_message'),
+            ]);
     }
 
     public function subscribe(SubscribeRequest $request){
@@ -140,13 +146,15 @@ class PublicController extends Controller
         //todo validate email
         $subscribe = Subscriber::updateOrCreate(['email'=>$email,'active'=>1]);
 
-//        if($subscribe){
-//            session()->flash('message','Subscription successfully');
-//        }
-
-        return response()->json([
-            'status'   => 'success',
-            'message' => 'Subscription successfully',
-        ]);
+        if($subscribe)
+            return response()->json([
+                'status'   => 'success',
+                'message' => trans('ClientSide.subscribe_success_message'),
+            ]);
+        else
+            return response()->json([
+                'status'   => 'error',
+                'message' => trans('ClientSide.subscribe_error_message'),
+            ]);
     }
 }
