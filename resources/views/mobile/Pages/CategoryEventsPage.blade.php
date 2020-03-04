@@ -19,8 +19,8 @@
             @include("Shared.Partials.FilterMenu")
         </div>
 
-        <div class="owl-carousel owl-theme" id="section-slider{{$loop->iteration}}">
-            @foreach($category->cat_events as $event)
+        <div class="owl-carousel owl-theme" id="section-slider1">
+            @foreach($events as $event)
                 @include('mobile.Partials.EventListItem')
             @endforeach
         </div>
