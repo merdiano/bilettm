@@ -8,18 +8,19 @@
 @endsection
 @section('content')
 
-    <div class="section-section py-5">
-        <div class="container" >
-            <div class="col-12 d-flex justify-content-between">
-                <h5>{{$category->title}}
-                    <div class="title-bottom-line"></div>
-                </h5>
-            </div>
-            @include("Shared.Partials.FilterMenu")
-
+    <div class="section-section py-3">
+        <div class="col-12 d-flex justify-content-between">
+            <h5 >{{$category->title}}
+                <div class="title-bottom-line"></div>
+            </h5>
+            <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>
         </div>
-        <div class="owl-carousel owl-theme" id="section-slider1">
-            @foreach($events as $event)
+        <div class="row mt-2">
+            @include("Shared.Partials.FilterMenu")
+        </div>
+
+        <div class="owl-carousel owl-theme" id="section-slider{{$loop->iteration}}">
+            @foreach($category->cat_events as $event)
                 @include('mobile.Partials.EventListItem')
             @endforeach
         </div>
