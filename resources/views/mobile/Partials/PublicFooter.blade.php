@@ -5,7 +5,7 @@
         </div>
     </div>
 </div>
-<footer class="mob-foote mt-5r">
+<footer class="mob-foote mt-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
