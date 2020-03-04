@@ -13,7 +13,7 @@
             <h5 >{{$category->title}}
                 <div class="title-bottom-line"></div>
             </h5>
-            <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>
+            <a class="red_button" href="{{$category->url}}">{{__("ClientSide.rep")}}</a>
         </div>
         <div class="row mt-2">
             @include("Shared.Partials.FilterMenu")
