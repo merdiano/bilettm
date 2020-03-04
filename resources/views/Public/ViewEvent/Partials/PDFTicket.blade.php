@@ -75,14 +75,14 @@
                         </td>
                         <td rowspan="2" style="width: 25%; padding: 20px; vertical-align: top">
                             <p><b>@lang('Ticket.text_title')</b></p>
-                            <p> <span class="text-muted">@lang('warn_text')</span></p>
+                            <p> <span class="text-muted">@lang('Ticket.warn_text')</span></p>
                         </td>
                     </tr>
                     <tr>
                         <td style="padding: 20px; vertical-align: top">
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.event'):</span> <b>{{$event->title}}</b></p>
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.venue'):</span> <b>{{$event->venue->venue_name}}</b></p>
-                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.date_time'):</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y h:i')}}</b></p>
+                            <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.date_time'):</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y H:i')}}</b></p>
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.full_name'):</span> <b>{{$attendee->first_name.' '.$attendee->last_name}}</b></p>
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.ticket_type'):</span> <b>{{$attendee->ticket->title}}</b></p>
                             <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.seat'):</span> <b>{{$attendee->seat_no}}</b></p>

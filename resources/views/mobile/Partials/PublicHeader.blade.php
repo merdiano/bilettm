@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="{{asset('assets/images/logo/bilet-logo.svg')}}" style="height: 46px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -22,7 +22,7 @@
                 @endforeach
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{route('search')}}" method="GET">
-                <input class="form-control mr-sm-2 search-input-box" type="search" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
+                <input class="form-control mr-sm-2 search-input-box" type="search" name="key" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
                 <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="width: 100%;">{{__('ClientSide.search')}}</button>
             </form>
         </div>

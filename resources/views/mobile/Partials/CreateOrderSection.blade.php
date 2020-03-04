@@ -134,10 +134,21 @@
                                                     {!! Form::text("ticket_holder_email[{$seat}][{$ticket['ticket']['id']}]", null, ['required' => 'required', 'class' => "ticket_holder_email.$seat.{$ticket['ticket']['id']} ticket_holder_email form-control"]) !!}
                                                 </div>
                                             </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    {!! Form::checkbox("order_terms", true, true,['required' => 'required', 'class' => 'form-control','style'=>'width:fit-content;display:inline-block;margin-right:10px']) !!}
+                                                    <a style="color: #000000;" target="_blank" href="{{route('about',['page'=>'oferta_'.Config::get('app.locale')])}}">@lang('ClientSide.terms_conditions')</a>
+                                                </div>
+                                            </div>
                                             @include('Public.ViewEvent.Partials.AttendeeQuestions', ['ticket' => $ticket['ticket'],'attendee_number' => $total_attendee_increment++])
 
                                         </div>
-
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                {!! Form::checkbox("order_terms", true, true,['required' => 'required', 'class' => 'form-control','style'=>'width:fit-content;display:inline-block;margin-right:10px']) !!}
+                                                <a style="color: #000000;" target="_blank" href="{{route('about',['page'=>'oferta_'.Config::get('app.locale')])}}">@lang('ClientSide.terms_conditions')</a>
+                                            </div>
+                                        </div>
                                     </div>
 
 
