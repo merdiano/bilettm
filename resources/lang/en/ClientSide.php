@@ -119,6 +119,8 @@ return [
     'payment_cancelled' => 'Payment cancelled',
     'no_ordere_id' => 'Order id does not exist',
     'order_error' => 'Whoops! There was a problem processing your order. Please try again.',
+    'message_reserved' => 'Some of selected seats are already reserved',
+    'message_wait' => 'Just a second',
 
     //About page
     'about_us' => 'About us',
@@ -128,6 +130,7 @@ return [
     'refund' => 'Refund',
     'cooperation' => 'Cooperation',
     'oferta' => 'Oferta',
+
 
     'terms_conditions' => 'Terms and conditions',
 

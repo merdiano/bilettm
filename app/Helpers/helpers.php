@@ -30,7 +30,7 @@ if(!function_exists('main_categories')){
 
 if(!function_exists('venues_list')){
     function venues_list(){
-        return \App\Models\Venue::where('active',1)->pluck('venue_name','id');
+        return \App\Models\Venue::where('active',1)->pluck('venue_name_ru','id');
     }
 }
 if(!function_exists('sections_list')){

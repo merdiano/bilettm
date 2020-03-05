@@ -5,11 +5,11 @@
         </div>
     </div>
 </div>
-<footer class="mob-foote mt-5">
+<footer class="mob-footer mt-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center g-color-white font-weight-bold">{{__('ClientSide.want')}}</h2>
+                <h3 class="text-center g-color-white font-weight-bold">{{__('ClientSide.want')}}</h3>
                 <p class="text-center g-color-white">{{__("ClientSide.email_for")}}</p>
             </div>
         </div>

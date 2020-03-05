@@ -22,7 +22,7 @@
                 @endforeach
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{route('search')}}" method="GET">
-                <input class="form-control mr-sm-2 search-input-box" type="search" name="key" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
+                <input class="form-control mr-sm-2 search-input-box" type="search" name="q" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
                 <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="width: 100%;">{{__('ClientSide.search')}}</button>
             </form>
         </div>

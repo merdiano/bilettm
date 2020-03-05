@@ -141,7 +141,7 @@ class EventCheckoutController extends Controller
             if(count($reserved_tickets)>0 || count($booked_tickets)>0)
                 return response()->json([
                     'status'   => 'error',
-                    'messages' => 'Some of selected seats are already reserved',//todo show which are reserved
+                    'message' => trans('ClientSide.message_reserved'),//todo show which are reserved
                 ]);
 
             $ticket = Ticket::findOrFail($ticket_id);

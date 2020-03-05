@@ -16,7 +16,8 @@
                         <li class="list-group-item border-0 pl-0">
                             <a class="text-dark capitalizer" href="{{route('about',['page'=>'introduction'])}}">{{__('ClientSide.introduction')}}</a></li>
                         <li class="list-group-item border-0 pl-0">
-                            <a class="text-dark capitalizer" href="{{route('about',['page'=>'partners'])}}">{{__("ClientSide.partners")}}</a></li>
+                            <a  class="text-dark capitalizer" href="{{route('about',['page'=>'oferta'])}}">{{__("ClientSide.oferta")}}</a></li>
+
                         <li class="list-group-item border-0 pl-0">
                             <a  class="text-dark capitalizer" href="{{route('about',['page'=>'contacts'])}}">{{__("ClientSide.contacts")}}</a></li>
 
@@ -26,8 +27,7 @@
                             <a class="text-dark capitalizer" href="{{route('about',['page'=>'how_to_buy'])}}">{{__("ClientSide.how_to_buy")}}</a></li>
                         <li class="list-group-item border-0 pl-0">
                             <a class="text-dark capitalizer" href="{{route('about',['page'=>'questions'])}}">{{__("ClientSide.questions")}}</a></li>
-                        <li class="list-group-item border-0 pl-0">
-                            <a class="text-dark capitalizer" href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
+
                         <li class="list-group-item border-0 pl-0">
                             <a class="text-dark capitalizer" href="{{route('about',['page'=>'refund'])}}">{{__("ClientSide.refund")}}</a></li>
 
@@ -36,7 +36,9 @@
                         <li class="list-group-item border-0 pl-0">
                             <a  class="text-dark capitalizer" href="{{route('about',['page'=>'organizers'])}}">{{__("ClientSide.organizers")}}</a></li>
                         <li class="list-group-item border-0 pl-0">
-                            <a  class="text-dark capitalizer" href="{{route('about',['page'=>'oferta'])}}">{{__("ClientSide.oferta")}}</a></li>
+                            <a class="text-dark capitalizer" href="{{route('about',['page'=>'partners'])}}">{{__("ClientSide.partners")}}</a></li>
+                        <li class="list-group-item border-0 pl-0">
+                            <a class="text-dark capitalizer" href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
                         <li class="list-group-item border-0 pl-0">
                             <a  class="text-dark capitalizer" data-toggle="modal" data-target="#exampleModalCenter">{{__("ClientSide.addEvent")}}</a></li>
                     </ul>

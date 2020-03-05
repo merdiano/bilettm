@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="event_order_form card py-3 px-md-5">
+            <div class="event_order_form py-3 px-md-5">
                 {!! Form::open(['url' => route('postCreateOrder', ['event_id' => $event->id]),
                 'class' => ($order_requires_payment && @$payment_gateway->is_on_site) ? 'ajax payment-form' : 'ajax', 'data-stripe-pub-key' => isset($account_payment_gateway->config['publishableKey']) ? $account_payment_gateway->config['publishableKey'] : '']) !!}
 
