@@ -39,7 +39,6 @@ if(!function_exists('sections_list')){
     function sections_list($venue_id){
         return \App\Models\Section::select('id','section_no_ru')
             ->where('venue_id',$venue_id)
-            ->where('active',1)
             ->pluck('section_no_ru','id');
     }
 }

@@ -42,6 +42,7 @@ class SectionCrudController extends CrudController
             ['name'=>'description','type'=>'text','label'=>'Description En'],
             ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
             ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
+            ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru'],
         ]);
 
         $this->crud->addFields([
@@ -51,7 +52,7 @@ class SectionCrudController extends CrudController
             ['name'=>'description','type'=>'text','label'=>'Description'],
             ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
             ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
-            ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name'],
+            ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru'],
             [ // image
                 'label' => "Section Image",
                 'name' => "section_image",
