@@ -53,7 +53,7 @@
                                         'class'=>'form-control editable',
                                         'rows' => 5
                                         ))  !!}
-        </div>
+
             <div class="form-group col-md-6">
                 {!! Form::label('description_tk', trans("Event.event_description_tk"), array('class'=>'control-label')) !!}
                 {!! Form::textarea('description_tk', Input::old('description_tk'),
@@ -62,7 +62,7 @@
                                             'rows' => 5
                                             ))  !!}
             </div>
-            <div class="form-group address-automatic">
+            <div class="form-group col-md-6 address-automatic">
             {!! Form::label('venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}
             {!! Form::select('venue_id',venues_list(), Input::old('venue_id'), ['class' => 'form-control','id'=>'venue_name']) !!}
             {{--{!! Form::label('name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}--}}
@@ -90,7 +90,7 @@
                {{--{!! Form::hidden('locality', $event->location_address_line_1, ['class' => 'location_field']) !!}--}}
             {{--</div>--}}
             {{--<!-- /These are populated with the Google places info-->--}}
-
+            </div>
         </div>
         </div>
 

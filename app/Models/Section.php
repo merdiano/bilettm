@@ -20,7 +20,9 @@ class Section extends Model
     // protected $primaryKey = 'id';
     public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['section_no','description','venue_id','seats','section_image'];
+    protected $fillable = ['section_no','section_no_ru','section_no_tk',
+        'description','description_ru','description_tk',
+        'venue_id','seats','section_image'];
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = ['seats' => 'array'];
