@@ -75,7 +75,7 @@
 
                                                 <table data-id="{{$ticket->id}}" style="margin: auto;position: relative; display: block; overflow-x: scroll"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
-                                                    <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}" style="display: block; width: 1180px; margin: auto">
+                                                    <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}" style="display: block; width: 1490px; margin: auto">
                                                     @foreach($ticket->section->seats as $row)
                                                         <tr>
                                                             <td>{{$row['row']}}</td>

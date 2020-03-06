@@ -18,6 +18,7 @@ use App\Models\Event;
 use App\Models\Slider;
 use App;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class PublicController extends Controller
 {
@@ -112,6 +113,8 @@ class PublicController extends Controller
         $events = Event::onLive()
             ->where('title_ru','like',"%{$query}%")
             ->orWhere('title_tk','like',"%{$query}%")
+            ->withCount(['stats as views' => function($q){
+                $q->select(DB::raw("SUM(views) as v"));}])
             ->paginate(10);
 
         return $this->render('Pages.SearchResults',[
