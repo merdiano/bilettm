@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 
 class Section extends Model
@@ -68,6 +69,15 @@ class Section extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
+    public function getSectionNoAttribute(){
+        return $this->{'section_no_'.Config::get('app.locale')};
+    }
+
+    public function getDescriptionAttribute(){
+        return $this->{'description_'.Config::get('app.locale')};
+    }
+
     public function setSectionImageAttribute($value){
         $attribute_name = "section_image";
         $disk = config('filesystems.default'); // or use your own disk, defined in config/filesystems.php
