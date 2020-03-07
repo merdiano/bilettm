@@ -3,7 +3,7 @@
 return array (
   'new_message' => 'Новое сообщение',
   'sent_messages' => 'Отправленные сообщения',
-  'all_event_attendees' => 'Все участники мероприятия',
+  'all_event_attendees' => 'Все участники события',
   'attendees_with_ticket_type' => 'Участники с типом билета',
   'before_send_message' => 'Участнику будет предложено отправить любой ответ :organiser',
   'content' => 'Содержание сообщения',

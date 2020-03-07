@@ -12,7 +12,7 @@ return array (
   'check_in' => 'Прибытие:: событие',
   'email' => 'Почта',
   'email_address' => 'Адрес электронной почты',
-  'event_attendees' => 'Участники мероприятия',
+  'event_attendees' => 'Участники события',
   'first_name' => 'Имя',
   'last_name' => 'Фамилия',
   'name' => 'Имя Фамилия',

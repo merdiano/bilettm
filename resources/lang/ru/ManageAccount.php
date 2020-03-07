@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2018/04/13 13:27:24 
+ Generated via "php artisan localization:missing" at 2018/04/13 13:27:24
 *************************************************************************/
 
 return array (
@@ -14,7 +14,7 @@ return array (
   'bitpay_api_key' => 'BitPay API ключ',
   'bitpay_settings' => 'Bitpay настройки',
   'branding_name' => 'Название бренда',
-  'branding_name_help' => 'Это имя покупатели увидят при выезде. Оставьте это поле пустым, если хотите, чтобы имя организатора мероприятия использовалось.',
+  'branding_name_help' => 'Это имя покупатели увидят при выезде. Оставьте это поле пустым, если хотите, чтобы имя организатора события использовалось.',
   'coinbase_settings' => 'Настройки Coinbase',
   'default_currency' => 'Валюта по умолчанию',
   'default_payment_gateway' => 'Платежный шлюз по умолчанию',
@@ -48,5 +48,5 @@ return array (
   'version_out_of_date' => 'Your version (<b>:installed</b>) of Attendize is out of date. The latest version (<b>:latest</b>) can be <a href=":url" target="_blank">downloaded here</a>',
   'version_up_to_date' => 'Your Attendize version (<b>:installed</b>) is up to date!',
     'account_payment' => 'Account / Payment',
-    'event_attendees' => 'Участники мероприятия',
+    'event_attendees' => 'Участники события',
 );

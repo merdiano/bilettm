@@ -8,7 +8,7 @@ return array (
   // Defined in file C:\\wamp\\www\\attendize\\resources\\views\\ManageOrganiser\\Events.blade.php
   'sort' =>
   array (
-    'event_title' => 'Название мероприятия',
+    'event_title' => 'Название события',
     'start_date' => 'Дата начала',
     'created_at' => 'Дата создания',
     'quantity_sold' => 'Количество продано',
@@ -59,7 +59,7 @@ return array (
       'passcheck' => 'Этот пароль неверный.',
     ),
   ),
-  'event_create_exception' => 'Упс! При создании вашего мероприятия возникла проблема. Пожалуйста, попробуйте еще раз.',
+  'event_create_exception' => 'Упс! При создании вашего события возникла проблема. Пожалуйста, попробуйте еще раз.',
   'event_page_successfully_updated' => 'Страница события успешно обновлена.',
   'event_successfully_updated' => 'Событие успешно обновлено!',
   'fill_email_and_password' => 'Пожалуйста, введите свой адрес электронной почты и пароль',
@@ -68,7 +68,7 @@ return array (
   'login_password_incorrect' => 'Ваше имя пользователя и пароль были неверны',
   'maximum_refund_amount' => 'Максимальная сумма возврата: деньги',
   'message_successfully_sent' => 'Сообщение успешно отправлено!',
-  'no_organiser_name_error' => 'Вы должны дать имя организаторa мероприятия.',
+  'no_organiser_name_error' => 'Вы должны дать имя организаторa события.',
   'nothing_to_do' => 'Пусто',
   'nothing_to_refund' => 'Нечего возмещать.',
   'num_attendees_checked_in' => ': num Участник (ы) Зарегистрирован.',

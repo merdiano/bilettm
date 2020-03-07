@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2018/04/19 18:57:21 
+ Generated via "php artisan localization:missing" at 2018/04/19 18:57:21
 *************************************************************************/
 
 return array (
@@ -18,7 +18,7 @@ return array (
     'quick_links' => 'Быстрые ссылки',
     'registrations_by_ticket' => 'Регистрация по билетам',
     'sales_volume' => 'Объем продаж',
-    'share_event' => 'Поделиться мероприятием',
+    'share_event' => 'Поделиться событием',
     'this_event_is_on_now' => 'Это событие сейчас',
     'ticket_sales_volume' => 'Объем продаж билетов',
     'tickets_sold' => 'Билеты проданы',
