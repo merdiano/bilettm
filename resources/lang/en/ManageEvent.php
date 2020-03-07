@@ -93,7 +93,8 @@ return array (
   'ticket_date' => 'Ticket Date',
   'update_order' => 'Update Order',
   'widgets' => 'Widgets',
-  'LLH:obsolete' => 
+    'select_section' =>'Select Section',
+  'LLH:obsolete' =>
   array (
     'create_question' => 'Create Question',
   ),

@@ -8,8 +8,8 @@ return array (
   'scan_another_ticket' => 'Сканировать другой билет',
   'scanning' => 'Cканирование',
   //==================================== Translations ====================================//
-  'attendees' => 'Присутствующие',
-  'check_in' => 'Прибытие:: событие',
+  'attendees' => 'Участники',
+  'check_in' => 'Check in: :event',
   'email' => 'Почта',
   'email_address' => 'Адрес электронной почты',
   'event_attendees' => 'Участники события',
@@ -19,5 +19,5 @@ return array (
   'ticket' => 'Билет',
   'reference' => 'Код',
   'search_attendees' => 'Поиск участников ...',
-  'send_invitation_n_ticket_to_attendee' => 'Отправить приглашение и билет посетителю.',
+  'send_invitation_n_ticket_to_attendee' => 'Отправить приглашение и билет участнику.',
 );
