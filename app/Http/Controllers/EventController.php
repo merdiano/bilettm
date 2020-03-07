@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\EventImage;
+use App\Models\EventStats;
 use App\Models\Organiser;
 use Auth;
 use Illuminate\Http\Request;
@@ -163,6 +164,8 @@ class EventController extends MyBaseController
 
         try {
             $event->save();
+            $event_stats = new EventStats();
+            $event_stats->updateViewCount($event->id);
         } catch (\Exception $e) {
             Log::error($e);
 

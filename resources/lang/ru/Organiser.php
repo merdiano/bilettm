@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2018/04/26 10:16:27 
+ Generated via "php artisan localization:missing" at 2018/04/26 10:16:27
 *************************************************************************/
 
 return array (
@@ -16,13 +16,13 @@ return array (
   'create_organiser' => 'Создать организатора',
   'create_organiser_text' => 'Прежде чем создавать события, вам нужно создать организатора. Организатор - тот, кто организует мероприятие. Организатором может выступать физ. лицо или юр. лицо.',
   'current_logo' => 'Текущий логотип',
-  'customize' => 'Настроить',
+  'customize' => 'Настройки',
   'dashboard' => 'Панель',
   'delete_logo?' => 'Удалить логотип?',
   'enable_public_organiser_page' => 'Включить публичную страницу организатора',
   'event' => 'Мероприятие',
   'event_calendar' => 'Календарь событий',
-  'events' => 'Мероприятия',
+  'events' => 'Мероприятии',
   'google_analytics_code' => 'Код Google Analytics',
   'google_analytics_code_placeholder' => 'UA-XXXXX-X',
   'header_background_color' => 'Цвет фона заголовка',

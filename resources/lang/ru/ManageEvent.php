@@ -32,7 +32,7 @@ return array (
     'end_sale_on' => 'Завершить продажу на',
     'event_not_live' => 'Это событие не видно публике.',
     'event_page' => 'Страница события',
-    'event_tools' => 'Инструменты для проведения мероприятий',
+    'event_tools' => 'Инструменты',
     'export' => 'экспорт',
     'go_to_attendee_name' => 'Перейти к участнику :name',
     'hide_this_ticket' => 'Скрыть этот билет',
