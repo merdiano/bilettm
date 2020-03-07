@@ -229,7 +229,7 @@ class EventOrdersController extends MyBaseController
         $attendees = $request->get('attendees');
         $error_message = false;
 
-        if ($refund_order && $order->payment_gateway->can_refund) {
+        if ($refund_order) {
             if (!$order->transaction_id) {
                 $error_message = trans("Controllers.order_cant_be_refunded");
             }
@@ -251,17 +251,17 @@ class EventOrdersController extends MyBaseController
                     $payment_gateway_config = $order->account->getGateway($order->payment_gateway->id)->config + [
                             'testMode' => config('attendize.enable_test_payments')];
 
-                    $payment_gateway_factory = new PaymentGatewayFactory();
-                    $gateway = $payment_gateway_factory->create($order->payment_gateway->name, $payment_gateway_config);
+                    //$payment_gateway_factory = new PaymentGatewayFactory();
+                    //$gateway = $payment_gateway_factory->create($order->payment_gateway->name, $payment_gateway_config);
 
                     if ($refund_type === 'full') { /* Full refund */
                         $refund_amount = $order->organiser_amount - $order->amount_refunded;
                     }
 
                     $refund_application_fee = floatval($order->booking_fee) > 0 ? true : false;
-                    $response = $gateway->refundTransaction($order, $refund_amount, $refund_application_fee);
+                    //$response = $gateway->refundTransaction($order, $refund_amount, $refund_application_fee);
 
-                    if ($response['successful']) {
+//                    if ($response['successful']) {
                         /* Update the event sales volume*/
                         $order->event->decrement('sales_volume', $refund_amount);
                         $order->amount_refunded = round(($order->amount_refunded + $refund_amount), 2);
@@ -273,9 +273,9 @@ class EventOrdersController extends MyBaseController
                             $order->is_partially_refunded = 1;
                             $order->order_status_id = config('attendize.order_partially_refunded');
                         }
-                    } else {
-                        $error_message = $response['error_message'];
-                    }
+//                    } else {
+//                        $error_message = $response['error_message'];
+//                    }
 
                     $order->save();
 
