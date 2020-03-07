@@ -49,7 +49,11 @@
         {{--}).on('changeDate', function(e) {--}}
         {{--    console.log(e.format());--}}
         {{--});--}}
+
+        $(document).on('ready', function () {
+            // initialization of custom select
             $.HSCore.components.HSDatepicker.init('#datepicker');
+        });
 
     </script>
 
