@@ -99,7 +99,6 @@
 
 
                 @if($order->transaction_id)
-                @if($order->payment_gateway->can_refund)
 
                 <div class="refund_section">
                     @if(!$order->is_refunded)
@@ -175,8 +174,6 @@
                 <div class="alert alert-info">
                     {{ @trans("ManageEvent.cant_refund_here", ["gateway"=>$order->payment_gateway->provider_name]) }}
                 </div>
-                @endif
-
                 @endif
 
             </div>
