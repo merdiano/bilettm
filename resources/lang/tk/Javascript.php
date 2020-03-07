@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "processing" => "Just a second...",
+    "processing" => "Garaşyň...",
     "time_run_out" => "You have run out of time! You will have to restart the order process.",
     "just_2_minutes" => "You only have 2 minutes left to complete this order!",
     "whoops" => 'Whoops!, it looks like the server returned an error.

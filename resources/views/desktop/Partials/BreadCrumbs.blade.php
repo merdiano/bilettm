@@ -6,13 +6,13 @@
                 @foreach ($breadcrumbs as $breadcrumb)
                     @if ($breadcrumb->url && !$loop->last)
                         <li style="text-transform: capitalize">
-                            <a class="capitalizer" style="text-transform: capitalize" href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a>
+                            <a class="text-uppercase" style="text-transform: capitalize" href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a>
                         </li>
                         <li>
                             <i class="fa fa-caret-right"></i>
                         </li>
                     @else
-                        <li class="page-name capitalizer" style="color: #7f7f7f; text-transform: capitalize">
+                        <li class="page-name text-capitalize" style="color: #7f7f7f; text-transform: capitalize">
                             {{ $breadcrumb->title }}
                         </li>
                     @endif
