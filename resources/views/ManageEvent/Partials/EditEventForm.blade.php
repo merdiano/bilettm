@@ -53,7 +53,7 @@
                                         'class'=>'form-control editable',
                                         'rows' => 5
                                         ))  !!}
-
+            </div>
             <div class="form-group col-md-6">
                 {!! Form::label('description_tk', trans("Event.event_description_tk"), array('class'=>'control-label')) !!}
                 {!! Form::textarea('description_tk', Input::old('description_tk'),
@@ -92,8 +92,6 @@
             {{--<!-- /These are populated with the Google places info-->--}}
             </div>
         </div>
-        </div>
-
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
