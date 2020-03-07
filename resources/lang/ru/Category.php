@@ -7,6 +7,6 @@
  */
 return array (
     'category_title'    => 'title_ru',
-    'event_sub_category'=> 'Sub Категория события',
+    'event_sub_category'=> 'Подкатегория события',
     'event_category'    => 'Категория события'
 );
