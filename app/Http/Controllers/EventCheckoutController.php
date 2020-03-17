@@ -443,8 +443,8 @@ class EventCheckoutController extends Controller
                 'title' => 'sector1',//$attendee_details['ticket']['title'],
                 'order_id' => $order_id,
                 'quantity' => $attendee_details['qty'],
-                'unit_price' => $attendee_details['ticket']['price'],
-                'unit_booking_fee' => $unit_booking_fee
+                'unit_price' => 1,//$attendee_details['ticket']['price'],
+                'unit_booking_fee' => 1//$unit_booking_fee
             ]);
         }
 
