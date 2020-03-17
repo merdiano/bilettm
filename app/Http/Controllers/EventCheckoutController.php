@@ -111,7 +111,7 @@ class EventCheckoutController extends Controller
         $validation_messages = [];
         foreach ($seats as $ticket_id=>$ticket_seats){
             $seats_count = count($ticket_seats);
-            if($seats_count<1)
+            if(!$seats_count)
                 continue;
 
             $seat_nos = array_values($ticket_seats);

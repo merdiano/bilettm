@@ -14,7 +14,7 @@ class AddEventsLimitToCategoriesTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->smallInteger('events_limit')->default(6);
+            $table->smallInteger('events_limit')->default(8);
         });
     }
 
