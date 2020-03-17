@@ -1,9 +1,16 @@
 <?php
 
 namespace App\Services;
-
+use PhpSpec\Exception\Exception;
+use App\Events\OrderCompletedEvent;
 use App\Models\Event;
-
+use App\Models\EventStats;
+use App\Models\Ticket;
+use App\Models\Attendee;
+use App\Models\ReservedTickets;
+use App\Models\QuestionAnswer;
+use DB;
+use Log;
 class EventOrderService
 {
 
@@ -258,13 +265,13 @@ class EventOrderService
             $order->order_status_id = config('attendize.order_complete');
             $order->is_payment_received = true;
             $obf = $order->organiser_booking_fee;
-            $orderService = new OrderService($order->amount, $order->booking_fee + $obf, $order->event);
-            $orderService->calculateFinalCosts();
+//            $orderService = new OrderService($order->amount, $order->booking_fee + $obf, $order->event);
+//            $orderService->calculateFinalCosts();
             /*
              * Update the event sales volume
              */
             $event = $order->event;
-            $event->increment('sales_volume', $orderService->getGrandTotal());
+//            $event->increment('sales_volume', $orderService->getGrandTotal());
             $event->increment('organiser_fees_volume', $obf);
 
             $reserved_tickets = ReservedTickets::select('id', 'seat_no', 'ticket_id')
