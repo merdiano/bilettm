@@ -374,7 +374,7 @@ class EventCheckoutController extends Controller
                 $order->order_date = Carbon::now();
                 $order->save();
 
-                session()->push('ticket_order_' . $event_id . '.transaction_id', $order->i);
+                session()->push('ticket_order_' . $event_id . '.order_id', $order->id);
                 Log::info("Redirect url: " . $response->getRedirectUrl());
 
                 $return = [
