@@ -12,7 +12,7 @@ use App\Models\EventStats;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Services\Order as OrderService;
+use App\Services\EventOrderService as OrderService;
 use App\Models\Ticket;
 use Auth;
 use Config;

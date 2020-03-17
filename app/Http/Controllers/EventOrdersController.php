@@ -9,7 +9,7 @@ use App\Models\Event;
 use App\Models\EventStats;
 use App\Models\Order;
 use App\Models\PaymentGateway;
-use App\Services\Order as OrderService;
+use App\Services\EventOrderService as OrderService;
 use Services\PaymentGateway\Factory as PaymentGatewayFactory;
 use DB;
 use Excel;

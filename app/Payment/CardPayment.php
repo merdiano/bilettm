@@ -27,6 +27,7 @@ class CardPayment{
         //dd($params);
         try{
             $request = $this->client->post('register.do',$params);
+
             $response->setResponseData($request->getBody());
         }
         catch (\Exception $ex){

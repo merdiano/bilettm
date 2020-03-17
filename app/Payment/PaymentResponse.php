@@ -15,7 +15,13 @@ abstract class PaymentResponse
     protected $exception_message;
 
     public function setResponseData($data){
-        $this->response_data = json_decode($data, true);
+//        dd(json_decode($data, true));
+        $rsp = json_decode($data, true);
+        if($rsp)
+            $this->response_data = $rsp;
+        else
+            $this->exception_message = 'Bank connection failed. Please try again later!';
+
     }
 
     public function setExceptionMessage($message){
