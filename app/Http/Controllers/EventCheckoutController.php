@@ -440,11 +440,11 @@ class EventCheckoutController extends Controller
             $unit_booking_fee = $attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'];
 //            dd($attendee_details['ticket']['booking_fee'] , $attendee_details['ticket']['organiser_booking_fee'],$unit_booking_fee);
             OrderItem::create([
-                'title' => 'sector1',//$attendee_details['ticket']['title'],
-                'order_id' => $order_id,
-                'quantity' => $attendee_details['qty'],
+                'title' => 'title',//$attendee_details['ticket']['title'],
+                'order_id' => 129,//$order_id,
+                'quantity' => 1,//$attendee_details['qty'],
                 'unit_price' => 1,//$attendee_details['ticket']['price'],
-                'unit_booking_fee' => 1//$unit_booking_fee
+                'unit_booking_fee' => 1,//$unit_booking_fee
             ]);
         }
 
