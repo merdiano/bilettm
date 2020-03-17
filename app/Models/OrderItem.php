@@ -13,7 +13,7 @@ namespace App\Models;
  */
 class OrderItem extends MyBaseModel
 {
-    use \Backpack\CRUD\CrudTrait;
+//    use \Backpack\CRUD\CrudTrait;
     /**
      * Indicates if the model should be timestamped.
      *
