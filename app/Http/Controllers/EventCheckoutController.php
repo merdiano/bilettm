@@ -426,6 +426,8 @@ class EventCheckoutController extends Controller
 
         $order_id = session()->get('ticket_order_' . $event_id . '.order_id');
         $ticket_order = session()->get('ticket_order_' . $event_id);
+        dd($order_id);
+        $order = Order::findOrFail(sanitise($order_id));
         foreach ($ticket_order['tickets'] as $attendee_details) {
             /*
              * Insert order items (for use in generating invoices)
@@ -440,15 +442,15 @@ class EventCheckoutController extends Controller
             $unit_booking_fee = $attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'];
 //            dd($attendee_details['ticket']['booking_fee'] , $attendee_details['ticket']['organiser_booking_fee'],$unit_booking_fee);
             OrderItem::create([
-                'title' => 'title',//$attendee_details['ticket']['title'],
-                'order_id' => 129,//$order_id,
-                'quantity' => 1,//$attendee_details['qty'],
-                'unit_price' => 1,//$attendee_details['ticket']['price'],
-                'unit_booking_fee' => 1,//$unit_booking_fee
+                'title' => $attendee_details['ticket']['title'],
+                'order_id' => $order_id,
+                'quantity' => $attendee_details['qty'],
+                'unit_price' => $attendee_details['ticket']['price'],
+                'unit_booking_fee' => $unit_booking_fee
             ]);
         }
 
-        $order = Order::findOrFail(sanitise($order_id));
+
         $response = $this->gateway->getPaymentStatus($order->transaction_id);
 
         //todo try catch for connection errors
