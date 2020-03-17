@@ -3,7 +3,7 @@
 namespace App\Mailers;
 
 use App\Models\Order;
-use App\Services\Order as OrderService;
+use App\Services\EventOrderService as OrderService;
 use Log;
 use Mail;
 

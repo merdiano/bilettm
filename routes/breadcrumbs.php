@@ -21,7 +21,10 @@ Breadcrumbs::for('category', function ($trail, $category){
 });
 
 Breadcrumbs::for('event',function($trail, $event){
-    $trail->parent('category', $event->subCategory);
+    if($event->subCategory)
+        $trail->parent('category', $event->subCategory);
+    else
+        $trail->parent('category', $event->mainCategory);
     $trail->push($event->title,$event->event_url);
 });
 
