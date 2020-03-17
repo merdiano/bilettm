@@ -426,8 +426,8 @@ class EventCheckoutController extends Controller
 
         $order_id = session()->get('ticket_order_' . $event_id . '.order_id');
         $ticket_order = session()->get('ticket_order_' . $event_id);
-        dd($order_id);
-        $order = Order::findOrFail(sanitise($order_id));
+//        dd($order_id);
+        $order = Order::findOrFail(sanitise($order_id[0]));
         foreach ($ticket_order['tickets'] as $attendee_details) {
             /*
              * Insert order items (for use in generating invoices)
@@ -443,7 +443,7 @@ class EventCheckoutController extends Controller
 //            dd($attendee_details['ticket']['booking_fee'] , $attendee_details['ticket']['organiser_booking_fee'],$unit_booking_fee);
             OrderItem::create([
                 'title' => $attendee_details['ticket']['title'],
-                'order_id' => $order_id,
+                'order_id' => $order->id,
                 'quantity' => $attendee_details['qty'],
                 'unit_price' => $attendee_details['ticket']['price'],
                 'unit_booking_fee' => $unit_booking_fee
