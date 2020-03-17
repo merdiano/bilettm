@@ -20,4 +20,5 @@ class OrderItem extends MyBaseModel
      * @var bool $timestamps
      */
     public $timestamps = false;
+    protected $fillable = ['title','order_id','quantity','unit_price','unit_booking_fee'];
 }

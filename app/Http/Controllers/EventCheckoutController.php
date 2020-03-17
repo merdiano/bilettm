@@ -430,13 +430,20 @@ class EventCheckoutController extends Controller
             /*
              * Insert order items (for use in generating invoices)
              */
-            $orderItem = new OrderItem();
-            $orderItem->title = $attendee_details['ticket']['title'];
-            $orderItem->quantity = $attendee_details['qty'];
-            $orderItem->order_id = $order_id;
-            $orderItem->unit_price = $attendee_details['ticket']['price'];
-            $orderItem->unit_booking_fee = $attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'];
-            $orderItem->save();
+//            $orderItem = new OrderItem();
+//            $orderItem->title = $attendee_details['ticket']['title'];
+//            $orderItem->quantity = $attendee_details['qty'];
+//            $orderItem->order_id = $order_id;
+//            $orderItem->unit_price = $attendee_details['ticket']['price'];
+//            $orderItem->unit_booking_fee = $attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'];
+//            $orderItem->save();
+            OrderItem::create([
+                'title' => $attendee_details['ticket']['title'],
+                'order_id' => $order_id,
+                'quantity' => $attendee_details['qty'],
+                'unit_price' => $attendee_details['ticket']['price'],
+                'unit_booking_fee' => ($attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'])
+            ]);
         }
 
         $order = Order::findOrFail(sanitise($order_id));
