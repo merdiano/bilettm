@@ -426,21 +426,13 @@ class EventCheckoutController extends Controller
 
         $order_id = session()->get('ticket_order_' . $event_id . '.order_id');
         $ticket_order = session()->get('ticket_order_' . $event_id);
-//        dd($order_id);
         $order = Order::findOrFail(sanitise($order_id[0]));
         foreach ($ticket_order['tickets'] as $attendee_details) {
             /*
              * Insert order items (for use in generating invoices)
              */
-//            $orderItem = new OrderItem();
-//            $orderItem->title = $attendee_details['ticket']['title'];
-//            $orderItem->quantity = $attendee_details['qty'];
-//            $orderItem->order_id = $order_id;
-//            $orderItem->unit_price = $attendee_details['ticket']['price'];
-//            $orderItem->unit_booking_fee = $attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'];
-//            $orderItem->save();
             $unit_booking_fee = $attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'];
-//            dd($attendee_details['ticket']['booking_fee'] , $attendee_details['ticket']['organiser_booking_fee'],$unit_booking_fee);
+
             OrderItem::create([
                 'title' => $attendee_details['ticket']['title'],
                 'order_id' => $order->id,
@@ -471,11 +463,14 @@ class EventCheckoutController extends Controller
         if ($request->get('is_payment_cancelled') == '1') {
             return view('mobile.CheckoutFailed',['message'=>trans('ClientSide.payment_cancelled')]);
         }
-
-        if(!$request->has('orderId')){
+        else if(!$request->has('orderId')){
             return view('mobile.CheckoutFailed',['message'=> trans('ClientSide.no_order_id')]);
         }
-        $order = Order::where('event_id',$event_id)
+
+        $order = Order::select('orders.id','order_status_id','is_payment_received','amount','booking_fee','created_at',
+            'organiser_booking_fee','event_id','session_id','account_id','first_name','last_name','email','order_reference')
+            ->with(['event:id,sales_volume,organiser_fees_volume,organiser_id,title,post_order_display_message'])
+            ->where('event_id',$event_id)
             ->where('transaction_id',$request->get('orderId'))
             ->first();
 
@@ -505,7 +500,7 @@ class EventCheckoutController extends Controller
         $response = $this->gateway->getPaymentStatus($request->get('orderId'));
 
         if ($response->isSuccessfull()) {
-            $data = OrderService::mobileCompleteOrder($event_id,$request->get('orderId'));
+            $data = OrderService::mobileCompleteOrder($order);
             return view('mobile.CheckoutSuccess', $data);
         } else {
             ProcessPayment::dispatch($order)->delay(now()->addMinutes(5));

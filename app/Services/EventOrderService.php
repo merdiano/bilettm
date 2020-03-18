@@ -250,46 +250,37 @@ class EventOrderService
 
     }
 
-    public static function mobileCompleteOrder($event_id,$transaction_id){
+    public static function mobileCompleteOrder($order){
         DB::beginTransaction();
 
         try {
 
-            $order = Order::select('orders.id','order_status_id','is_payment_received','amount','booking_fee','created_at',
-                'organiser_booking_fee','event_id','session_id','account_id','first_name','last_name','email','order_reference')
-                ->with(['event:id,sales_volume,organiser_fees_volume,organiser_id,title,post_order_display_message'])
-                ->where('transaction_id',$transaction_id)
-                ->where('event_id',$event_id)
-                ->first();
-
             $order->order_status_id = config('attendize.order_complete');
             $order->is_payment_received = true;
-            $obf = $order->organiser_booking_fee;
-//            $orderService = new OrderService($order->amount, $order->booking_fee + $obf, $order->event);
-//            $orderService->calculateFinalCosts();
+
             /*
              * Update the event sales volume
              */
             $event = $order->event;
-//            $event->increment('sales_volume', $orderService->getGrandTotal());
-            $event->increment('organiser_fees_volume', $obf);
+            $event->increment('sales_volume', $order->grand_total_amount);
+            $event->increment('organiser_fees_volume', $order->organiser_booking_fee);
 
             $reserved_tickets = ReservedTickets::select('id', 'seat_no', 'ticket_id')
                 ->with(['ticket:id,quantity_sold,sales_volume,organiser_fees_volume,price'])
                 ->where('session_id', $order->session_id)
-                ->where('event_id', $event_id)
+                ->where('event_id', $order->event_id)
                 ->get();
             /*
              * Update the event stats
              */
             $event_stats = EventStats::updateOrCreate([
-                'event_id' => $event_id,
+                'event_id' => $order->event_id,
                 'date' => DB::raw('CURRENT_DATE'),
             ]);
 
             $event_stats->increment('tickets_sold', $reserved_tickets->count() ?? 0);
             $event_stats->increment('sales_volume', $order->amount);
-            $event_stats->increment('organiser_fees_volume', $obf);
+            $event_stats->increment('organiser_fees_volume', $order->organiser_booking_fee);
             $attendee_increment = 1;
             /*
              * Add the attendees
@@ -304,7 +295,7 @@ class EventOrderService
                  */
                 $ticket->increment('quantity_sold', 1);
                 $ticket->increment('sales_volume', $ticket->price);
-                $ticket->increment('organiser_fees_volume', $obf);// * $reserved->quantity_reserved
+                $ticket->increment('organiser_fees_volume', $order->organiser_booking_fee);// * $reserved->quantity_reserved
 
                 /*
                  * Create the attendees
@@ -345,7 +336,6 @@ class EventOrderService
         event(new OrderCompletedEvent($order));
         return [
             'order'        => $order,
-            'orderService' => $orderService,
             'event'        => $order->event,
             'tickets'      => $order->event->tickets,
         ];

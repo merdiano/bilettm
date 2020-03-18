@@ -59,9 +59,6 @@
 
                             <div class="col-6">
                                 <b>@lang("Public_ViewEvent.amount")</b><br> {{number_format($order->total_amount, 2)}} man.
-                                @if($event->organiser->charge_tax)
-                                    <small>{{ $orderService->getVatFormattedInBrackets() }}</small>
-                                @endif
                             </div>
 
                             <div class="col-4">

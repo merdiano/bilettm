@@ -1,4 +1,4 @@
-@extends('Shared.Layouts.BilettmLayout',['folder' => 'desktop'])
+@extends('Shared.Layouts.BilettmLayout',['folder' => 'mobile'])
 
 @section('content')
 
