@@ -102,6 +102,7 @@ return [
     'selected' => 'Siz saýladyňyz',
     'seatsTotal' => 'ýeri. Umumy baha',
     'yourSeats' => 'Siziň ýerleriňiz',
+    'exceeds' => "Satyn almaga rugsat berilen biletleriň aňyrybaşy",
 
     //CheckoutPage
     'confirm-seats' => 'Saýlan ýerleriňizi tassyklaň',

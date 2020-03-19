@@ -17,6 +17,7 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Slider;
 use App;
+use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -52,6 +53,8 @@ class PublicController extends Controller
             'musical' => $musical,
             'sliders' => $sliders
         ]);
+
+        Markdown::parse();
     }
 
     public function showCategoryEvents($cat_id){
@@ -159,5 +162,9 @@ class PublicController extends Controller
                 'status'   => 'error',
                 'message' => trans('ClientSide.subscribe_error_message'),
             ]);
+    }
+
+    public function venues(){
+
     }
 }

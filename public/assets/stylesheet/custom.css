@@ -1570,15 +1570,15 @@ tr.ver-space {
 #seats-form input:checked ~ label svg {
   fill: #d43d34; }
 
-#seats-form input:checked ~ label span {
+#seats-form input:checked ~ label span, #seats-form input:disabled ~ label span{
   color: #ffffff;
 }
 
 input.booked-seats ~ label svg {
-  fill: #6a687e; }
+  fill: #06b84d; }
 
 input.reserved-seats ~ label svg {
-  fill: #a4a4a4; }
+  fill: #4e5ced; }
 
 .seats-top-overlay {
   background-color: #d33d33;

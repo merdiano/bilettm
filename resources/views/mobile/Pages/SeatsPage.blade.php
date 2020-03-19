@@ -11,7 +11,7 @@
                 <div class="pills-struct mt-5 w-100">
                     <ul role="tablist" class="nav nav-pills m-auto w-auto justify-content-center" id="choose_seats">
                         @foreach($tickets as $ticket)
-                            <li class="active" role="presentation" style="display: inline-block;">
+                            <li class="active mb-5" role="presentation" style="display: inline-block;">
                                 <a aria-expanded="true" data-toggle="tab" class="@if ($loop->first)active @endif show"
                                    role="tab" id="home_tab_{{$ticket->id}}" href="#home_{{$ticket->id}}" aria-selected="true">
                                     {{$ticket->title}} - {{$ticket->price}} TMT.

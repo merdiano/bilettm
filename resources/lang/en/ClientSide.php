@@ -103,6 +103,7 @@ return [
     'selected' => 'You Have Selected',
     'seatsTotal' => 'seats. Total cost',
     'yourSeats' => 'Your Seats',
+    'exceeds' => "You have exceeded maximum ticket count: ",
 
     //Chcekout page
     'checkout' => 'Checkout',

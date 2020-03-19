@@ -130,7 +130,7 @@
 
             if(checkedCount>max_seats){
                 $(this).prop("checked",false)
-                showMessage("You have excidid maximum ticket count: "+max_seats)
+                showMessage("@lang('ClientSide.exceeds')"+max_seats)
                 return;
             }
 
