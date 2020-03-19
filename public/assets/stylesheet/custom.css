@@ -2074,11 +2074,11 @@ input.reserved-seats ~ label svg {
 }
 
 input[type=checkbox].input-reserved ~ label svg{
-  fill: #b6b6b6;
+  fill: #4e5ced;
 }
 
 input[type=checkbox].input-booked ~ label svg{
-  fill: #69687d;
+  fill: #06b84d;
 }
 
 choose_seats_content > div.tab-pane.fade{

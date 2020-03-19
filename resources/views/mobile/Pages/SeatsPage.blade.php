@@ -22,8 +22,8 @@
                     </ul>
                     <div class="row my-5">
                         <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #ebeced; font-size: 13px"></i> {{__('ClientSide.available')}}</span>
-                        <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #69687d; font-size: 13px"></i> {{__('ClientSide.booked')}}</span>
-                        <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #b6b6b6; font-size: 13px"></i> {{__('ClientSide.reserved')}}</span>
+                        <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #06b84d; font-size: 13px"></i> {{__('ClientSide.booked')}}</span>
+                        <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #4e5ced; font-size: 13px"></i> {{__('ClientSide.reserved')}}</span>
                         <span class="text-center" style="width: fit-content; margin: 0 15px; font-size: 18px"><i class="fa fa-circle" style="color: #ff4159; font-size: 13px"></i> {{__('ClientSide.selection')}}</span>
                     </div>
                     <!-- Button trigger modal -->
