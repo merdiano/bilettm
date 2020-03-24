@@ -505,7 +505,7 @@ class EventCheckoutController extends Controller
             return view('mobile.CheckoutSuccess', $data);
         } else {
             ProcessPayment::dispatch($order)->delay(now()->addMinutes(5));
-            return $this->render('Pages.OrderExpectingPayment');
+            return $this->render('Pages.OrderExpectingPayment',$order);
         }
     }
     /**
