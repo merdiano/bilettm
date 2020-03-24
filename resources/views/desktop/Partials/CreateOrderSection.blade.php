@@ -210,7 +210,7 @@
                             <th></th>
                             <th style="text-align: right;">@lang('Public_ViewEvent.price')</th>
                             <th style="text-align: right;">@lang('Public_ViewEvent.booking_fees')</th>
-                            <th style="text-align: right;">@lang('Public_ViewEvent.total')</th>
+                            <th style="text-align: right;">@lang('Public_ViewEvent.sub_total')</th>
                         </tr>
                         </thead>
                         @foreach($tickets as $ticket)

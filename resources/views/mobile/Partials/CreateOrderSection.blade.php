@@ -17,21 +17,23 @@
                         <thead>
                         <tr>
                             <th></th>
-                            <th style="text-align: right;">@lang('Public_ViewEvent.booking_fees')</th>
                             <th style="text-align: right;">@lang('Public_ViewEvent.price')</th>
+                            <th style="text-align: right;">@lang('Public_ViewEvent.booking_fees')</th>
+                            <th style="text-align: right;">@lang('Public_ViewEvent.sub_total')</th>
                         </tr>
                         </thead>
                         @foreach($tickets as $ticket)
                             <tr>
-                                <td class="pl0">{{{$ticket['ticket']['title']}}} x <b>{{$ticket['qty']}}</b></td>
-                                <td style="text-align: right; font-size: 20px">{{money($ticket['total_booking_fee'], $event->currency)}}</td>
-                                <td style="text-align: right; font-size: 20px">
+                                <td class="pl0" style="font-size: 12px;">{{{$ticket['ticket']['title']}}} x <b>{{$ticket['qty']}}</b></td>
+                                <td style="text-align: right; font-size: 12px;">
                                     @if((int)ceil($ticket['original_price']) === 0)
                                         @lang("Public_ViewEvent.free")
                                     @else
                                         {{ money($ticket['original_price'], $event->currency) }}
                                     @endif
                                 </td>
+                                <td style="text-align: right; font-size: 12px;">{{money($ticket['total_booking_fee'], $event->currency)}}</td>
+                                <td style="text-align: right;font-size: 12px;">{{money($ticket['price']+$ticket['organiser_booking_fee']+$ticket['booking_fee'], $event->currency)}}</td>
                             </tr>
                         @endforeach
                     </table>
