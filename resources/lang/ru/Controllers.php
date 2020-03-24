@@ -111,7 +111,7 @@ return array (
   'ticket_successfully_deleted' => 'Билет успешно удален',
   'ticket_successfully_resent' => 'Билет успешно отправлен!',
   'ticket_successfully_updated' => 'Билет успешно обновлен!',
-  'tickets_for_event' => 'Ваши билеты на событие: событие.',
+  'tickets_for_event' => 'Ваши билеты на событие :event.',
   'whoops' => 'Упс! Похоже, что-то пошло не так. Пожалуйста, попробуйте еще раз.',
   'your_password_reset_link' => 'Ссылка для сброса вашего пароля',
 );

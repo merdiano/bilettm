@@ -158,9 +158,9 @@ class EventCheckoutController extends Controller
                 'qty'                   => $seats_count,
                 'seats'                 => $ticket_seats,
                 'price'                 => ($seats_count * $ticket->price),
-                'booking_fee'           => ($seats_count * $ticket->booking_fee),
-                'organiser_booking_fee' => ($seats_count * $ticket->organiser_booking_fee),
-                'total_booking_fee'     => $ticket->total_booking_fee,
+                'booking_fee'           => ($seats_count * $ticket->booking_fee),//total_service_booking_fee per ticket
+                'organiser_booking_fee' => ($seats_count * $ticket->organiser_booking_fee),//total_organiser_booking_fee per ticket
+                'total_booking_fee'     => $ticket->total_booking_fee,//service + organiser original booking fee sum
                 'original_price'        => $ticket->price,
             ];
 
@@ -454,6 +454,7 @@ class EventCheckoutController extends Controller
                 'order_reference' => $order->order_reference,
             ]);
         } else {
+            //some times bank responds as payment not processed and we check 5 minutes later paymant status
             ProcessPayment::dispatch($order,$ticket_order)->delay(now()->addMinutes(5));
             return $this->render('Pages.OrderExpectingPayment');
         }

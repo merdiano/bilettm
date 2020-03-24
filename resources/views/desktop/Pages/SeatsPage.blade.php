@@ -70,7 +70,7 @@
                                             <span class="text-danger">@lang("Public_ViewEvent.sales_have_ended")</span>
                                         @else
                                             <meta property="availability" content="http://schema.org/InStock">
-                                            <div class="standard-box" style="position: relative; padding: 20px 0">
+                                            <div class="standard-box" style="position: relative; padding: 20px 0; user-select: none;">
                                                 <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>{{$ticket->section->description}}</small></h5>
 
                                                 <table data-id="{{$ticket->id}}" style="margin: auto;position: relative; display: block; overflow-x: scroll"

@@ -164,7 +164,11 @@ class PublicController extends Controller
             ]);
     }
 
-    public function venues(){
+    public function venues($id = false){
+        $data['venues'] = App\Models\Venue::where('active',1)->get();
 
+        $data['current'] = $id ? $data['venues']->where('id',$id)->first(): $data['venues']->first();
+
+        return $this->render('Pages.VenuesPage',$data);
     }
 }
