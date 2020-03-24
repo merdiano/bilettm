@@ -21,4 +21,8 @@ class OrderItem extends MyBaseModel
      */
     public $timestamps = false;
     protected $fillable = ['title','order_id','quantity','unit_price','unit_booking_fee'];
+
+    public function getUnitTotalAttribute(){
+        return ($this->unit_price + $this->unit_booking_fee) * $this->quantity;
+    }
 }
