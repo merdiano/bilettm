@@ -66,7 +66,7 @@
                    @if((int)ceil($order_item->unit_price) == 0)
                        БЕСПЛАТНО
                    @else
-                   {{money(($order_item->unit_price) * ($order_item->quantity), $order->event->currency)}}
+                       {{money($order_item->unit_total, $order->event->currency)}}
                    @endif
 
                </td>

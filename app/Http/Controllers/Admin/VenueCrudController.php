@@ -35,34 +35,40 @@ class VenueCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->addColumns([
-            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
+//            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
             ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name Ru'],
             ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name Tk'],
             ['name'=>'active','type'=>'boolean','label'=>'Active']
         ]);
 
         $this->crud->addFields([
-            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
-            ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name Ru'],
-            ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name Tk'],
+//            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
+            ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name','tab' => 'Russian'],
+            ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name','tab' => 'Turkmen'],
+            ['name'=>'description_ru','type'=>'text','label'=>'Description', 'tab' => 'Russian'],
+            ['name'=>'description_tk','type'=>'text','label'=>'Description', 'tab' => 'Turkmen'],
             [   // Address
                 'name' => 'address',
                 'label' => 'Address',
                 'type' => 'address_google',
                 // optional
-                'store_as_json' => true
+                'store_as_json' => true,
+                'tab' => 'General'
             ],
+            ['name'=>'images','type'=>'upload_multiple','label'=>'Suratlar',
+                'upload' => true, 'disk' => config('filesystems.default'), 'tab' => 'Suratlar'],
             [ // image
                 'label' => "Seats Image",
                 'name' => "seats_image",
                 'type' => 'image',
                 'upload' => true,
+                'tab' => 'Suratlar',
 //                'crop' => true, // set to true to allow cropping, false to disable
 //                'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
                 // 'disk' => 's3_bucket', // in case you need to show images from a different disk
                  'prefix' => 'user_content/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
             ],
-            ['name'=>'active','type'=>'checkbox','label'=>'Active']
+            ['name'=>'active','type'=>'checkbox','label'=>'Active','tab' => 'General']
         ]);
 
         // add asterisk for fields that are required in VenueRequest

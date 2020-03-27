@@ -1,4 +1,4 @@
-@extends('en.Emails.Layouts.Master')
+@extends('tk.Emails.Layouts.Master')
 
 @section('message_content')
 Salam!<br><br>
@@ -20,7 +20,7 @@ Sargydyň poçtasy: <b>{{$order->email}}</b><br>
 <a href="{!! route('downloadCalendarIcs', ['event_id' => $order->event->id]) !!}">Add To Calendar</a>
 <h3>Sargydyň petekleri</h3>
 <div style="padding:10px; background: #F9F9F9; border: 1px solid #f1f1f1;">
-    <table style="width:100%; margin:10px;">
+    <table style="width:100%;border-collapse: collapse;" border="1" cellpadding="5">
         <tr>
             <td>
                 <b>Petek</b>
@@ -66,7 +66,7 @@ Sargydyň poçtasy: <b>{{$order->email}}</b><br>
                                         @if((int)ceil($order_item->unit_price) == 0)
                                             MUGT
                                         @else
-                                        {{money(($order_item->unit_price + $order_item->unit_booking_fee) * ($order_item->quantity), $order->event->currency)}}
+                                            {{money($order_item->unit_total, $order->event->currency)}}
                                         @endif
 
                                     </td>
