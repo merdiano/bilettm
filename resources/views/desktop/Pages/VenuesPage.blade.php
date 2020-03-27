@@ -1,6 +1,6 @@
 @extends('Shared.Layouts.BilettmLayout',['folder' => 'desktop'])
 @section('content')
-    {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('about',$title)}}
+    {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('about',trans('ClientSide.concert_halls'))}}
     <section class="my-3">
         <div class="container">
             <div class="row text_black" >
