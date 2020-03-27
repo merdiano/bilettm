@@ -47,6 +47,8 @@ class PublicController extends Controller
 //            'sliders' => $sliders
 //        ]);
 
+        //todo use union;
+
         return $this->render("Pages.HomePage",[
             'cinema' => $cinema,
             'cartoon' => $cartoon,
