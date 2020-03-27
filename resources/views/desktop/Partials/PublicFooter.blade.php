@@ -45,7 +45,7 @@
                         <li><a class='text-uppercase' href="{{route('about',['page'=>'introduction'])}}">{{__('ClientSide.introduction')}}</a></li>
                         <li><a class='text-uppercase' href="{{route('about',['page'=>'how_to_buy'])}}">{{__("ClientSide.how_to_buy")}}</a></li>
                         <li><a class='text-uppercase' href="{{route('about',['page'=>'questions'])}}">{{__("ClientSide.questions")}}</a></li>
-                        <li><a class='text-uppercase' href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
+                        <li><a class='text-uppercase' href="{{route('venues')}}">{{__("ClientSide.concert_halls")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-3-with-text">

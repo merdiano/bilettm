@@ -36,7 +36,7 @@
                 <ul>
                     <li><a class='text-uppercase' href="{{route('about',['page'=>'refund'])}}">{{__("ClientSide.refund")}}</a></li>
                     <li><a class='text-uppercase' href="{{route('about',['page'=>'organizers'])}}">{{__("ClientSide.organizers")}}</a></li>
-                    <li><a class='text-uppercase' href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
+                    <li><a class='text-uppercase' href="{{route('venues')}}">{{__("ClientSide.concert_halls")}}</a></li>
                     <li><a style="color: #ffffff; cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter">{{__("ClientSide.addEvent")}}</a></li>
                 </ul>
             </div>

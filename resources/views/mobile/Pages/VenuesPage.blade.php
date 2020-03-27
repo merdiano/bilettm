@@ -11,7 +11,7 @@
 
                     <ul class="list-group w-100 " style="float: left;height: 100%; background-color: #ffffff; z-index: 10;position: relative;color: #000000;font-size: 17px;">
                         <li class="list-group-item border-0 pl-0">
-                            <h3>@lang('ClientSide.venues')</h3><div style="background-color: rgba(211,61,51,1);height: 5px;width: 80px;margin-bottom: 15px;"></div> </li>
+                            <h3>@lang('ClientSide.concert_halls')</h3><div style="background-color: rgba(211,61,51,1);height: 5px;width: 80px;margin-bottom: 15px;"></div> </li>
                         @foreach($venues as $venue)
                             <li class="list-group-item border-0 pl-0">
                                 <a class="text-dark capitalizer" href="{{route('venues',['id'=>$venue->id])}}">{{$venue->venue_name}}</a></li>
