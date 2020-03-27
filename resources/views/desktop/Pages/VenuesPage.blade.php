@@ -57,10 +57,8 @@
     <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
     <script>
         $(".owl-carousel").owlCarousel({
-            stagePadding: 70,
             loop:true,
-            margin:10,
-            nav:true,
+            nav:false,
             responsive:{
                 0:{
                     items:1
