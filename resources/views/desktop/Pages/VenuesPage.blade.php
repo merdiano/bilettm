@@ -24,10 +24,10 @@
                     </div>
                     <div class="row">
                         <div class="col-3">
-                            @if($current->images)
-                                <img class="details-image" alt="{{$current->venue_name}}" src="{{config('attendize.cdn_url_user_assets').'/'}}">
+                            @foreach($current->images as $key =>$img)
+                                <img class="details-image" alt="{{$current->venue_name}}" src="{{config('attendize.cdn_url_user_assets').'/'.$img}}">
 
-                            @endif
+                            @endforeach
                         </div>
                         <div class="col-7 ">
                             <div class="it-detail">
