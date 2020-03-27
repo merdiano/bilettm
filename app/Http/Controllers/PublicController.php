@@ -165,7 +165,11 @@ class PublicController extends Controller
     }
 
     public function venues($id = false){
-        $data['venues'] = App\Models\Venue::where('active',1)->get();
+        $data['venues'] = App\Models\Venue::select('id','venue_name_'.Config::get('app.locale'),
+            'description_'.Config::get('app.locale').' as description','address','images')
+            ->where('active',1)
+            ->orderBy('venue_name_'.Config::get('app.locale'),'ASC')
+            ->get();
 
         $data['current'] = $id ? $data['venues']->where('id',$id)->first(): $data['venues']->first();
 

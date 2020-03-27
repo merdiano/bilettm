@@ -1,6 +1,8 @@
-@extends('Shared.Layouts.BilettmLayout',['folder' => 'desktop'])
+@extends('Shared.Layouts.BilettmLayout',['folder' => 'mobile'])
+@section('after_styles')
+
+@endsection
 @section('content')
-    {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('about',$title)}}
     <section class="my-3">
         <div class="container">
             <div class="row text_black" >
@@ -50,7 +52,7 @@
 @section('after_scripts')
     <script>
         function initMap() {
-            var uluru = {lat: {{$current->address['latlng']['lat']}}, lng: {{$current->address['latlng']['lng']}}};
+            var uluru = {lat: {{$venue->address['latlng']['lat']}}, lng: {{$venue->address['latlng']['lng']}}};
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: uluru,
                 zoom: 15

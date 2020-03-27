@@ -734,6 +734,11 @@ Route::group(
         'uses' =>'PublicController@subscribe'
     ]);
 
+    Route::get('/venues/{id?}',[
+        'as' =>'venues',
+        'uses' => 'PublicController@venues'
+    ]);
+
 //    Route::get('/terms_and_conditions', [
 //        'as' => 'termsAndConditions',
 //        function () {
