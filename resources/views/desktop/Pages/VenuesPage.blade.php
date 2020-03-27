@@ -1,4 +1,8 @@
 @extends('Shared.Layouts.BilettmLayout',['folder' => 'desktop'])
+@section('after_styles')
+    <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.theme.default.min.css')}}">
+@endsection
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('about',trans('ClientSide.concert_halls'))}}
     <section class="my-3">
