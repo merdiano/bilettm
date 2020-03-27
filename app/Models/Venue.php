@@ -141,7 +141,6 @@ class Venue extends Model
         // if a file has been marked for removal,
         // delete it from the disk and from the db
         if ($files_to_clear) {
-            $attribute_value = (array) $this->{$attribute_name};
             foreach ($files_to_clear as $key => $filename) {
                 \Storage::disk($disk)->delete($filename);
                 $attribute_value = array_where($attribute_value, function ($value, $key) use ($filename) {
@@ -152,9 +151,10 @@ class Venue extends Model
         // if a new file is uploaded, store it on disk and its filename in the database
         if ($request->hasFile($attribute_name)) {
             foreach ($request->file($attribute_name) as $file) {
+                dd($value);
                 if ($file->isValid()) {
                     // 1. Generate a new file name
-                    $new_file_name = md5($value.time()).'.jpg';
+                    $new_file_name = md5($file.time()).'.jpg';
                     // 2. Move the new file to the correct path
                     $file_path = $file->storeAs($destination_path, $new_file_name, $disk);
                     // 3. Add the public path to the database
