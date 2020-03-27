@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-3">
                             @foreach($current->images as $key =>$img)
-                                <img class="details-image" alt="{{$current->venue_name}}" src="{{config('attendize.cdn_url_user_assets').'/'.$img}}">
+                                <img class="details-image" alt="{{$current->venue_name}}" src="{{asset('user_content/'.$img)}}">
 
                             @endforeach
                         </div>
