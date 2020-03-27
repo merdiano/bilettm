@@ -151,7 +151,6 @@ class Venue extends Model
         // if a new file is uploaded, store it on disk and its filename in the database
         if ($request->hasFile($attribute_name)) {
             foreach ($request->file($attribute_name) as $file) {
-                dd($value);
                 if ($file->isValid()) {
                     // 1. Generate a new file name
                     $new_file_name = md5($file.time()).'.jpg';
