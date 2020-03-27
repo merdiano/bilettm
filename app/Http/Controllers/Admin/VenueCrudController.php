@@ -45,8 +45,8 @@ class VenueCrudController extends CrudController
 //            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
             ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name','tab' => 'Russian'],
             ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name','tab' => 'Turkmen'],
-            ['name'=>'description_ru','type'=>'text','label'=>'Description', 'tab' => 'Russian'],
-            ['name'=>'description_tk','type'=>'text','label'=>'Description', 'tab' => 'Turkmen'],
+            ['name'=>'description_ru','type'=>'simplemde','label'=>'Description', 'tab' => 'Russian'],
+            ['name'=>'description_tk','type'=>'simplemde','label'=>'Description', 'tab' => 'Turkmen'],
             [   // Address
                 'name' => 'address',
                 'label' => 'Address',
