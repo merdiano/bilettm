@@ -154,7 +154,7 @@ class Venue extends Model
             foreach ($request->file($attribute_name) as $file) {
                 if ($file->isValid()) {
                     // 1. Generate a new file name
-                    $new_file_name = $file->getClientOriginalName();
+                    $new_file_name = md5($value.time()).'.jpg';
                     // 2. Move the new file to the correct path
                     $file_path = $file->storeAs($destination_path, $new_file_name, $disk);
                     // 3. Add the public path to the database
