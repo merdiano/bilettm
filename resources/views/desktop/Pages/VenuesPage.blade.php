@@ -24,10 +24,12 @@
                     </div>
                     <div class="row">
                         <div class="col-3">
+                            <div class="owl-carousel owl-theme" >
                             @foreach($current->images as $key =>$img)
                                 <img class="details-image img-responsive" alt="{{$current->venue_name}}" src="{{asset('user_content/'.$img)}}">
 
                             @endforeach
+                            </div>
                         </div>
                         <div class="col-7 ">
                             <div class="it-detail">
@@ -48,7 +50,26 @@
     </section>
 @endsection
 @section('after_scripts')
+    <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
     <script>
+        $(".owl-carousel").owlCarousel({
+            stagePadding: 70,
+            loop:true,
+            margin:10,
+            nav:false,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        });
+
         function initMap() {
             var uluru = {lat: {{$current->address['latlng']['lat']}}, lng: {{$current->address['latlng']['lng']}}};
             var map = new google.maps.Map(document.getElementById('map'), {

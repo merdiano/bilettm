@@ -10,7 +10,9 @@
 </div>
 <div class="owl-carousel owl-theme" >
     @foreach($category->events as $event)
+        <div class="item">
         @include('mobile.Partials.EventListItem',['event'=>$event])
+        </div>
     @endforeach
 </div>
 
