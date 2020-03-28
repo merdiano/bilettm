@@ -52,17 +52,19 @@ class PublicController extends Controller
 
         [$order, $data] = $this->sorts_filters();
         $category = Category::select('id','title_tk','title_ru')
-            ->with(['children' => function($query) use($data){
+            ->with(['children' => function($query) use($data,$order){
                 $query->whereHas('cat_events',
                     function ($query) use($data){
                         $query->onLive($data['start'], $data['end']);
                     });
+                $query->withLiveEvents($order, $data['start'], $data['end'])
             }])
             ->findOrFail($cat_id);
 
         dd($category);
-
         $data['category'] = $category;
+
+//        $sub_cats = $category->children->first
         $data['sub_cats'] = $category->children()
             ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit)//wiered
             ->whereHas('cat_events',
@@ -170,7 +172,7 @@ class PublicController extends Controller
             ->orderBy('venue_name_'.Config::get('app.locale'),'ASC')
             ->get();
 
-        $data['current'] = $id ? $data['venues']->where('id',$id)->first(): $data['venues']->first();
+        $data['current'] = $id ? $data['venues']->where('id',$id)->first() ?? $data['venues']->first(): $data['venues']->first();
 
         return $this->render('Pages.VenuesPage',$data);
     }

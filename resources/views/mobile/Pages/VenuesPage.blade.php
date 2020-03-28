@@ -38,7 +38,7 @@
 
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-5">
                         <div class="col-12">
                             <div class="google-maps content" id="map" style="height: 250px">
                             </div>
