@@ -38,25 +38,14 @@ class PublicController extends Controller
 ;
         $all = $cinema->unionAll($cartoon)->unionAll($musical)->get();
 
-        dd($all);
+        dd($all->where('view_type','cinema'));
 
         $sliders = Slider::where('active',1)
             ->where(Config::get('app.locale'),1)
             ->get();
-//dd($cinema->events->first());
-//        return view('desktop.Pages.HomePage')->with([
-//            'cinema' => $cinema,
-//            'cartoon' => $cartoon,
-//            'musical' => $musical,
-//            'sliders' => $sliders
-//        ]);
-
-        //todo use union;
 
         return $this->render("Pages.HomePage",[
-            'cinema' => $cinema,
-            'cartoon' => $cartoon,
-            'musical' => $musical,
+            'all' => $all,
             'sliders' => $sliders
         ]);
 
