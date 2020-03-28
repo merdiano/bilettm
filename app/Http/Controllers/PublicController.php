@@ -90,6 +90,7 @@ class PublicController extends Controller
 
         $data['sub_cats'] = $sub_cats->push($lastKid);
 
+        dd($data);
         return $this->render("Pages.EventsPage",$data);
     }
 
