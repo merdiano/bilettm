@@ -58,8 +58,7 @@ class PublicController extends Controller
                         $query->onLive($data['start'], $data['end']);
                     })
                     ->with(['cat_events' => function($q) use($data,$order){
-                        $q->onLive($data['start'], $data['end'])
-                            ->take(20)
+                        $q->onLive($data['start'], $data['end'],8)
                             ->orderBy($order['field'],$order['order']);
                     }]);
 //                $query->withLiveEvents($order, $data['start'], $data['end']);

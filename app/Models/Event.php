@@ -490,7 +490,7 @@ ICSTemplate;
         return (is_null($this->access_codes()->where('id', $accessCodeId)->first()) === false);
     }
 
-    public function scopeOnLive($query, $start_date = null, $end_date = null){
+    public function scopeOnLive($query, $start_date = null, $end_date = null,$limit = false){
         //if date is null carbon creates now date instance
         //todo what if only end date is null??
         if(!empty($start_date) && !empty($end_date))
@@ -500,6 +500,8 @@ ICSTemplate;
         }
         else
             $query->where('end_date','>',Carbon::now(config('app.timezone')));
+        if($limit)
+            $query->take($limit);
 
         return $query->where('is_live',1)
             ->withCount(['images as image_url' => function($q){
