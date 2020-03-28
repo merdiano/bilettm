@@ -80,7 +80,9 @@ class Category extends \Illuminate\Database\Eloquent\Model{
     }
 
     public function cat_events(){
+        $locale = Config::get('app.locale');
         return $this->hasMany(\App\Models\Event::class,'sub_category_id')
+            ->select('id','sub_category_id',"title_{$locale}","description_{$locale}",'start_date')
             ->withCount(['stats as views' => function($q){
                 $q->select(DB::raw("SUM(views) as v"));
             }]);
