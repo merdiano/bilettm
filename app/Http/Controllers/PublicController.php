@@ -51,26 +51,41 @@ class PublicController extends Controller
     public function showCategoryEvents($cat_id){
 
         [$order, $data] = $this->sorts_filters();
-        $category = Category::select('id','title_tk','title_ru')
+        $category = Category::select('id','title_tk','title_ru','events_limit')
             ->with(['children' => function($query) use($data,$order){
                 $query->whereHas('cat_events',
                     function ($query) use($data){
                         $query->onLive($data['start'], $data['end']);
-                    })
-                    ->with(['cat_events' => function($q) use($data,$order){
-                        $q->onLive($data['start'], $data['end'],8)
-                            ->orderBy($order['field'],$order['order']);
-                    }]);
+                    });
+//                    ->with(['cat_events' => function($q) use($data,$order){
+//                        $q->onLive($data['start'], $data['end'])
+//                            ->orderBy($order['field'],$order['order']);
+//                    }]);
 //                $query->withLiveEvents($order, $data['start'], $data['end']);
 
             }])
             ->findOrFail($cat_id);
 
-        dd($category);
+        $sub_cats = $category->children;
+
+        $sub_cats_events = $sub_cats->pop()
+            ->cat_events()
+            ->onLive($data['start'],$data['end'])
+            ->orderBy($order['field'],$order['order'])
+            ->take($category->events_limit);
+
+        foreach ($sub_cats as $sub_cat){
+            $events = $sub_cat->cat_events()
+                ->onLive($data['start'],$data['end'])
+                ->orderBy($order['field'],$order['order'])
+                ->take($category->events_limit);
+            $sub_cats_events = $sub_cats_events->unionAll($events);
+        }
+
+        dd($sub_cats_events->get());
 
         $data['category'] = $category;
 
-        $sub_cats = $category->children->first();
         $data['sub_cats'] = $category->children()
             ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit)//wiered
             ->whereHas('cat_events',
