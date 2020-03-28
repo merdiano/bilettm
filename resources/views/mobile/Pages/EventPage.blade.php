@@ -28,7 +28,8 @@
                 <div class="col-12">
                     <img src="{{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}" style="width: 40%; float: left; margin: 0 15px 10px 0" alt="{{$event->title}}">
                     <p style="color: #000000; font-size: 13px; margin-bottom: 5px;"><b>@lang('ClientSide.description'): </b>{!! Markdown::parse($event->description) !!}</p>
-                    <p style="color: #000000; font-size: 13px; margin-bottom: 5px;"><b><i class="fa fa-map-marker"></i> </b>{{$event->venue->venue_name}}<meta property="address" content="{{ urldecode($event->venue->venue_name) }}"></p>
+                    <p style="color: #000000; font-size: 13px; margin-bottom: 5px;"><b><i class="fa fa-map-marker"></i> </b><a href="{{route('venues',['id'=> $event->venue_id])}}"> <b property="name">{{$event->venue->venue_name}}</b></a>
+                        <meta property="address" content="{{ urldecode($event->venue->venue_name) }}"></p>
                     @include('mobile.Partials.Schedule')
                 </div>
             </div>
