@@ -12,7 +12,7 @@
     @foreach($categories as $category)
         @include("desktop.Partials.{$category->view_type}",['category'=>$category])
     @endforeach
-
+@stop
 @section('after_scripts')
     <script src="{{asset('vendor/jquery-migrate/jquery-migrate.min.js')}}"></script>
     <!-- JS Implementing Plugins -->
