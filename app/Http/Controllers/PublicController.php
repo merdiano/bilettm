@@ -67,7 +67,7 @@ class PublicController extends Controller
             ->findOrFail($cat_id);
         $locale = Config::get('app.locale');
 
-        $sub_cats = Category::select('id','parent_id',"title_.{$locale} as title",'events_limit')
+        $sub_cats = Category::select('id','parent_id',"title_{$locale} as title",'events_limit')
             ->with(["parent:id,title_{$locale} as title","cat_events" => function($q) use ($data,$order){
                 $q->select('id','sub_category_id','title_tk','title_ru')
                     ->onLive($data['start'],$data['end'])
