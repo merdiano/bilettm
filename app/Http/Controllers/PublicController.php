@@ -30,13 +30,12 @@ class PublicController extends Controller
 
         $cartoon = Category::where('view_type','exhibition')//todo change to cartoon multik
             ->categoryLiveEvents(16)
-            ->take(1)
-            ->union($cinema);
+            ->take(1);
 
         $musical = Category::where('view_type','concert')
 //            ->categoryLiveEvents(8)
             ->take(1)
-            ->unionAll($cartoon);
+            ->unionAll($cartoon,$cinema);
         $all = $musical->get();
 
         dd($all);
