@@ -2,6 +2,9 @@
 @section('inner_content')
     @foreach($sub_cats as $cat)
 
+        @php
+        $cat_events = $events->where('sub_category_id',$cat->id);
+        @endphp
         <section class="movie-items-group firts-child">
             <div class="container">
                 <div class="row kinoteator tab-part">
@@ -16,8 +19,8 @@
                         <div class="tab-content">
                             <div class="container">
                                 <div class="row">
-                                    @foreach($cat->cat_events as $event)
-                                        @include("desktop.EventsList.{$category->view_type}",['event'=>$event])
+                                    @foreach($cat_events as $event)
+                                        @include("desktop.EventsList.{$cat->view_type}",['event'=>$event])
                                     @endforeach
                                 </div>
                             </div>

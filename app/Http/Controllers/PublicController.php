@@ -54,6 +54,7 @@ class PublicController extends Controller
 
         $locale = Config::get('app.locale');
 
+        //get sub categories which has live events
         $sub_cats = Category::select('id','parent_id',"title_{$locale} as title",'events_limit')
             ->with(["parent:id,title_{$locale} as title"])
             ->where('parent_id',$cat_id)->whereHas('cat_events',
@@ -63,31 +64,31 @@ class PublicController extends Controller
             ->get();
 
 
-
         $lastKid = $sub_cats->pop();
 
         $data['category'] = $lastKid?:$lastKid->parent;
 
+        // get all live events belong to sub categories
         $sub_cats_events = $lastKid->cat_events()
-            ->select('id','sub_category_id','title_tk','title_ru')
+            ->select('id','sub_category_id',"title_{$locale}","description_{$locale}",'start_date')
             ->onLive($data['start'],$data['end'])
             ->orderBy($order['field'],$order['order'])
             ->take($lastKid->events_limit);
 
         foreach ($sub_cats as $sub_cat){
-            $events_query = $sub_cat->cat_events()->select('id','sub_category_id','title_tk','title_ru')
+
+            $events_query = $sub_cat->cat_events()
+                ->select('id','sub_category_id',"title_{$locale}","description_{$locale}",'start_date')
                 ->onLive($data['start'],$data['end'])
                 ->orderBy($order['field'],$order['order'])
                 ->take($sub_cat->events_limit);
+
             $sub_cats_events = $sub_cats_events->unionAll($events_query);
         }
 
         $data['events'] = $sub_cats_events->get();
 
-
-        $data['sub_cats'] = $sub_cats;
-
-        dd($data);
+        $data['sub_cats'] = $sub_cats->push($lastKid);
 
         return $this->render("Pages.EventsPage",$data);
     }
