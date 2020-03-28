@@ -55,7 +55,7 @@ class PublicController extends Controller
         $locale = Config::get('app.locale');
 
         //get sub categories which has live events
-        $sub_cats = Category::select('id','parent_id',"title_{$locale} as title",'events_limit')
+        $sub_cats = Category::select('id','parent_id',"title_{$locale} as title",'events_limit','view_type')
             ->with(["parent:id,title_{$locale} as title"])
             ->where('parent_id',$cat_id)->whereHas('cat_events',
                 function ($query) use($data){
