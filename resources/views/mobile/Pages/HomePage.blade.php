@@ -36,9 +36,9 @@
 
 
     @foreach($categories as $category)
-        <div class="section-section py-5 {{$category->view_type}}">
+
             @include('mobile.Partials.HomeEventList',['category'=>$category])
-        </div>
+
     @endforeach
 
 @endsection
