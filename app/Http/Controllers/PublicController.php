@@ -35,8 +35,8 @@ class PublicController extends Controller
         $musical = Category::where('view_type','concert')
             ->categoryLiveEvents(8)
             ->take(1)
-            ->unionAll($cartoon,$cinema);
-        $all = $musical->get();
+;
+        $all = $cinema->unionAll($cartoon)->unionAll($musical)->get();
 
         dd($all);
 
