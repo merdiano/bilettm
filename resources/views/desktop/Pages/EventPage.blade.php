@@ -36,7 +36,7 @@
                         {!! Markdown::parse($event->description) !!}
                         <span property="location" typeof="Place">
                                         <i class="fa fa-map-marker"></i>
-                                        <b property="name">{{$event->venue->venue_name}}</b>
+                                        <a href="{{route('venues',['id'=> $event->venue_id])}}"> <b property="name">{{$event->venue->venue_name}}</b></a>
                                         <meta property="address" content="{{ urldecode($event->venue->venue_name) }}">
                                     </span>
                     </div>
