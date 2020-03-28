@@ -72,7 +72,7 @@ class PublicController extends Controller
             ->cat_events()->select('id','sub_category_id','title_tk','title_ru')
             ->onLive($data['start'],$data['end'])
             ->orderBy($order['field'],$order['order'])
-            ->take($category->events_limit);
+            ->take(8);
 
         foreach ($sub_cats as $sub_cat){
             $events = $sub_cat->cat_events()->select('id','sub_category_id','title_tk','title_ru')
@@ -82,7 +82,8 @@ class PublicController extends Controller
             $sub_cats_events = $sub_cats_events->unionAll($events);
         }
 
-        dd($sub_cats_events->get());
+        $sub_cats_events = $sub_cats_events->get();
+        dd($sub_cats_events);
 
         $data['category'] = $category;
 
