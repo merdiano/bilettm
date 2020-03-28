@@ -20,6 +20,7 @@ use App;
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use function Clue\StreamFilter\fun;
 
 class PublicController extends Controller
 {
@@ -49,10 +50,18 @@ class PublicController extends Controller
 
     public function showCategoryEvents($cat_id){
 
-        $category = Category::select('id','title_tk','title_ru','view_type','events_limit','parent_id')
+        [$order, $data] = $this->sorts_filters();
+        $category = Category::select('id','title_tk','title_ru')
+            ->with(['children' => function($query) use($data){
+                $query->whereHas('cat_events',
+                    function ($query) use($data){
+                        $query->onLive($data['start'], $data['end']);
+                    });
+            }])
             ->findOrFail($cat_id);
 
-        [$order, $data] = $this->sorts_filters();
+        dd($category);
+
         $data['category'] = $category;
         $data['sub_cats'] = $category->children()
             ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit)//wiered
