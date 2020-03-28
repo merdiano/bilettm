@@ -65,6 +65,17 @@ class PublicController extends Controller
 
             }])
             ->findOrFail($cat_id);
+        $locale = Config::get('app.locale');
+
+        $sub_cats = Category::select('id','parent_id',"title_.{$locale} as title",'events_limit')
+            ->with(["parent:id,title_{$locale} as title","cat_events" => function($q) use ($data,$order){
+                $q->select('id','sub_category_id','title_tk','title_ru')
+                    ->onLive($data['start'],$data['end'])
+                    ->orderBy($order['field'],$order['order'])
+                    ->take(8);
+            }])->where('parent_id',$cat_id)
+            ->get();
+        dd($sub_cats);
 
         $sub_cats = $category->children;
 
@@ -75,25 +86,20 @@ class PublicController extends Controller
             ->take($category->events_limit);
 
         foreach ($sub_cats as $sub_cat){
-            $events = $sub_cat->cat_events()->select('id','sub_category_id','title_tk','title_ru')
+            $events_query = $sub_cat->cat_events()->select('id','sub_category_id','title_tk','title_ru')
                 ->onLive($data['start'],$data['end'])
                 ->orderBy($order['field'],$order['order'])
                 ->take($category->events_limit);
-            $sub_cats_events = $sub_cats_events->unionAll($events);
+            $sub_cats_events = $sub_cats_events->unionAll($events_query);
         }
 
-        $sub_cats_events = $sub_cats_events->get();
-        dd($sub_cats_events);
+        $data['events'] = $sub_cats_events->get();
 
         $data['category'] = $category;
 
-        $data['sub_cats'] = $category->children()
-            ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit)//wiered
-            ->whereHas('cat_events',
-                function ($query) use($data){
-                    $query->onLive($data['start'], $data['end']);
-                })
-            ->get();
+        $data['sub_cats'] = $sub_cats;
+
+
 
         return $this->render("Pages.EventsPage",$data);
     }
