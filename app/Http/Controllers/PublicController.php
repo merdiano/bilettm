@@ -27,7 +27,7 @@ class PublicController extends Controller
         $cinema = Category::categoryLiveEvents(16,'cinema')
             ->take(1);
 
-        $cartoon = Category::categoryLiveEvents(16,'cartoon')
+        $cartoon = Category::categoryLiveEvents(16,'exhibition')
             ->take(1);
 
         $musical = Category::categoryLiveEvents(8,'concert')
