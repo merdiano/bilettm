@@ -57,7 +57,7 @@ class PublicController extends Controller
                     function ($query) use($data){
                         $query->onLive($data['start'], $data['end']);
                     });
-                $query->withLiveEvents($order, $data['start'], $data['end'])
+                $query->withLiveEvents($order, $data['start'], $data['end']);
             }])
             ->findOrFail($cat_id);
 
