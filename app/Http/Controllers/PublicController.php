@@ -24,19 +24,19 @@ use Illuminate\Support\Facades\DB;
 class PublicController extends Controller
 {
     public function showHomePage(){
-//        $cinema = Category::where('view_type','cinema')
-//            ->categoryLiveEvents(16)
-//            ->take(1);
+        $cinema = Category::where('view_type','cinema')
+            ->categoryLiveEvents(16)
+            ->take(1);
 
         $cartoon = Category::where('view_type','exhibition')//todo change to cartoon multik
-//            ->categoryLiveEvents(16)
-            ->take(1);
-//            ->union($cinema);
+            ->categoryLiveEvents(16)
+            ->take(1)
+            ->unionAll($cinema);
 
         $musical = Category::where('view_type','concert')
 //            ->categoryLiveEvents(8)
             ->take(1)
-            ->union($cartoon);
+            ->unionAll($cartoon);
         $all = $musical->get();
 
         dd($all);
