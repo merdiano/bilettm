@@ -25,11 +25,11 @@ class PublicController extends Controller
 {
     public function showHomePage(){
         $cinema = Category::where('view_type','cinema')
-//            ->categoryLiveEvents(16)
+            ->categoryLiveEvents(16)
             ->take(1);
 
         $cartoon = Category::where('view_type','exhibition')//todo change to cartoon multik
-//            ->categoryLiveEvents(16)
+            ->categoryLiveEvents(16)
             ->take(1)
             ->union($cinema);
 
