@@ -9,36 +9,10 @@
 
     @include('desktop.Partials.HomeSlider')
 
-@if(isset($cinema))
-    @include('desktop.Partials.HomeCinema',['category'=>$cinema,'id'=>'kinoteator'])
-@endif
+    @foreach($categories as $category)
+        @include("desktop.Partials.{$category->view_type}",['category'=>$category])
+    @endforeach
 
-@if(isset($musical))
-    @include('desktop.Partials.HomeMusical')
-@endif
-{{--<section id="first-add-wrapper" style="margin: 100px 0;">--}}
-{{--    <div class="container">--}}
-{{--        <div class="row" style="padding: 0 20px;">--}}
-{{--            <a href="" style="width: 100%">--}}
-{{--                <img src="{{asset('assets/images/advs/first.png')}}" style="width: 100%">--}}
-{{--            </a>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</section>--}}
-
-@if(isset($cartoon))
-    @include('desktop.Partials.HomeCinema',['category'=>$cartoon,'id'=>'cartoon'])
-@endif
-{{--<section id="second-add-wrapper" style="margin: 100px 0;">--}}
-{{--    <div class="container">--}}
-{{--        <div class="row" style="padding: 0 20px;">--}}
-{{--            <a href="" style="width: 100%">--}}
-{{--                <img src="{{asset('assets/images/advs/second.png')}}" style="width: 100%">--}}
-{{--            </a>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</section>--}}
-@endsection
 @section('after_scripts')
     <script src="{{asset('vendor/jquery-migrate/jquery-migrate.min.js')}}"></script>
     <!-- JS Implementing Plugins -->

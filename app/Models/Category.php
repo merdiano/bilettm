@@ -86,9 +86,10 @@ class Category extends \Illuminate\Database\Eloquent\Model{
             }]);
     }
 
-    public function scopeCategoryLiveEvents($query,$limit){
+    public function scopeCategoryLiveEvents($query,$limit,$view){
 //        dd($this->view_type);
-        return $query->select('id','title_tk','title_ru','lft')
+        return $query->select('id','title_tk','title_ru','view_type')
+            ->where('view_type',$view)
             ->orderBy('lft')
             ->with(['events' => function($q) use($limit){
             $q->select('id','title_'.Config::get('app.locale'),'description_'.Config::get('app.locale'),'category_id','sub_category_id','start_date')
