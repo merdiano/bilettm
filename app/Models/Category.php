@@ -65,11 +65,11 @@ class Category extends \Illuminate\Database\Eloquent\Model{
         }
         return sprintf('%s?%s', $url, implode('&', $qs));
     }
-//
-//    public function getTitleAttribute(){
-//
-//        return $this->{'title_'.Config::get('app.locale')};
-//    }
+
+    public function getTitleAttribute(){
+
+        return $this->{'title_'.Config::get('app.locale')};
+    }
     /**
      * The events associated with the category.
      *
