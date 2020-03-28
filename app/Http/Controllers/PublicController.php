@@ -56,15 +56,21 @@ class PublicController extends Controller
                 $query->whereHas('cat_events',
                     function ($query) use($data){
                         $query->onLive($data['start'], $data['end']);
-                    });
-                $query->withLiveEvents($order, $data['start'], $data['end']);
+                    })
+                    ->with(['cat_events' => function($q) use($data,$order){
+                        $q->onLive($data['start'], $data['end'])
+                            ->orderBy($order['field'],$order['order']);
+                    }]);
+//                $query->withLiveEvents($order, $data['start'], $data['end']);
+
             }])
             ->findOrFail($cat_id);
 
         dd($category);
+
         $data['category'] = $category;
 
-//        $sub_cats = $category->children->first
+        $sub_cats = $category->children->first();
         $data['sub_cats'] = $category->children()
             ->withLiveEvents($order, $data['start'], $data['end'], $category->events_limit)//wiered
             ->whereHas('cat_events',
