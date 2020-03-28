@@ -23,31 +23,23 @@
             display: none !important;
         }
 
+        .concert{
+            background-image: url({{asset('assets/images/bg/konserty.jpg')}});
+            background-repeat: no-repeat; background-size: cover; padding: 100px 0;
+        }
+
     </style>
 @endsection
 @section('content')
 
     @include('mobile.Partials.HomeSlider')
 
-    @if(isset($cinema) && !empty($cinema->events) && $cinema->events->count()>0)
-        <div class="section-section py-5">
-        @include('mobile.Partials.HomeEventList',['category'=>$cinema])
-        </div>
-    @endif
 
-    @if(isset($musical) && !empty($musical->events) && $musical->events->count()>0)
-        <div class="section-section py-5 konserty"
-             style="background-image: url({{asset('assets/images/bg/konserty.jpg')}});
-                     background-repeat: no-repeat; background-size: cover; padding: 100px 0;">
-        @include('mobile.Partials.HomeEventList',['category'=>$musical])
+    @foreach($categories as $category)
+        <div class="section-section py-5 {{$category->view_type}}">
+            @include('mobile.Partials.HomeEventList',['category'=>$category])
         </div>
-    @endif
-
-    @if(isset($cartoon) && !empty($cartoon->events) && $cartoon->events->count()>0)
-        <div class="section-section py-5">
-        @include('mobile.Partials.HomeEventList',['category'=>$cartoon])
-        </div>
-    @endif
+    @endforeach
 
 @endsection
 @section('after_scripts')
