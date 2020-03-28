@@ -127,7 +127,7 @@ class Category extends \Illuminate\Database\Eloquent\Model{
         return $query->with(['cat_events' => function($query) use ($start_date, $end_date, $limit, $orderBy) {
             $query->select('id','title_'.Config::get('app.locale'),'description_'.Config::get('app.locale'),'category_id','sub_category_id','start_date')
                ->take($limit)
-               ->with('starting_ticket')
+//               ->with('starting_ticket')
 //               ->withCount(['stats as views' => function($q){
 //                   $q->select(DB::raw("SUM(views) as v"));}])
                ->onLive($start_date, $end_date)//event scope onLive get only live events
