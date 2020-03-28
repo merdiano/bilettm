@@ -13,7 +13,7 @@ Breadcrumbs::for('home', function ($trail) {
 Breadcrumbs::for('category', function ($trail, $category){
     $trail->parent('home');
 
-    if(!empty($category) && $category->parent){
+    if(!empty($category) && $category->parent_id){
         $parent = $category->parent;
         $trail->push($parent->title,$parent->url);
     }
