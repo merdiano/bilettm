@@ -68,7 +68,7 @@ class Category extends \Illuminate\Database\Eloquent\Model{
 
     public function getTitleAttribute(){
 
-        return $this->{'title_'.Config::get('app.locale')};
+        return $this->{'title_'.Config::get('app.locale')}??'#title_transation';
     }
     /**
      * The events associated with the category.

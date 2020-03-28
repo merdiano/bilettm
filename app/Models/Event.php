@@ -225,7 +225,7 @@ class Event extends MyBaseModel
 
     public function getDescriptionAttribute(){
 
-        return $this->{'description_'.Config::get('app.locale')};
+        return $this->{'description_'.Config::get('app.locale')} ?? 'No translation';
     }
     /**
      * Get the embed url.

@@ -15,9 +15,9 @@ Breadcrumbs::for('category', function ($trail, $category){
 
     if(!empty($category) && $category->parent_id){
         $parent = $category->parent;
-        $trail->push($parent->title,$parent->url);
+        $trail->push($parent->title ?? '#title_transation', $parent->url?? '#');
     }
-    $trail->push($category->title, $category->url ?? '#');
+    $trail->push($category->title?? 'No translation', $category->url ?? '#');
 });
 
 Breadcrumbs::for('event',function($trail, $event){
@@ -25,7 +25,7 @@ Breadcrumbs::for('event',function($trail, $event){
         $trail->parent('category', $event->subCategory);
     else
         $trail->parent('category', $event->mainCategory);
-    $trail->push($event->title,$event->event_url);
+    $trail->push($event->title?? '#title_transation',$event->event_url ?? '#');
 });
 
 Breadcrumbs::for('seats',function ($trail,$event){
@@ -45,5 +45,5 @@ Breadcrumbs::for('add_event',function($trail){
 
 Breadcrumbs::for('about',function($trail,$title){
     $trail->parent('home');
-    $trail->push($title);
+    $trail->push($title??'#title_transation');
 });
