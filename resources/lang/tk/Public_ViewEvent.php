@@ -19,7 +19,7 @@ return [
     'checkout_submit' => 'Töleg geçir',
     'checkout_order' => 'Tölemek üçin dowam et',
     'confirmation_email' => 'poçtaňyza ugradyldy.',
-    'confirmation_email_mobile' => 'poçtaňyza ugradyldy we olary sargytlar bölüminde görüp bilersiňiz.',
+    'mobile_tickets_sent_email' => 'Biletleriňiz poçtaňyza ugradyldy. Olary sargytlar bölüminde hem, görüp bilersiňiz.',
     'copy_buyer' => 'Töleýjiniň maglumatlaryny beýleki biletlere göçür',
     'currently_not_on_sale' => 'Şu wagt satlykda ýok',
     'cvc_number' => 'CVC belgi',
