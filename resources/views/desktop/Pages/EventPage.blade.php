@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-7 ">
                     <div class="it-detail">
-                        {!! Markdown::parse($event->description) !!}
+                        <b>@lang('ClientSide.description'): </b>{!! Markdown::parse($event->description) !!}
                         <span property="location" typeof="Place">
                                         <i class="fa fa-map-marker"></i>
                                         <a href="{{route('venues',['id'=> $event->venue_id])}}"> <b property="name">{{$event->venue->venue_name}}</b></a>

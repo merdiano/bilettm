@@ -502,7 +502,7 @@ class EventCheckoutController extends Controller
 
         if ($response->isSuccessfull()) {
             $data = OrderService::mobileCompleteOrder($order);
-            return view('mobile.CheckoutSuccess', $data);
+            return view('mobile.Pages.ViewOrderPage', $data);
         } else {
             ProcessPayment::dispatch($order)->delay(now()->addMinutes(5));
             return $this->render('Pages.OrderExpectingPayment',$order);
@@ -696,7 +696,7 @@ class EventCheckoutController extends Controller
             return view('Public.ViewEvent.Embedded.EventPageViewOrder', $data);
         }
 
-        return view('desktop.Pages.ViewOrderPage', $data);
+        return $this->render('Pages.ViewOrderPage', $data);
 //        return view('Public.ViewEvent.EventPageViewOrder', $data);
     }
 
