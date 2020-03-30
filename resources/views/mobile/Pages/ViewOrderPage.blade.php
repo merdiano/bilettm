@@ -14,7 +14,7 @@
 
 </head>
 
-<body style="background-color: #0b011d; color: white;">
+<body style="background-color: #1d1d26; color: white;">
 
 <main>
 
@@ -22,47 +22,48 @@
         <div class="row">
             <div class="col-12 order_header mt-5">
 
-                <h4>@lang("Public_ViewEvent.thank_you_for_your_order")</h4>
-                <h5>
+                <h5>@lang("Public_ViewEvent.thank_you_for_your_order")</h5>
+                <p class="mt-3">
                     @lang("Public_ViewEvent.mobile_tickets_sent_email")
-                </h5>
+                </p>
             </div>
         </div>
-
-        <div class="row">
+        @if($event->post_order_display_message)
+        <div class="row mt-3">
             <div class="col-12">
-                @if($event->post_order_display_message)
+
                     <div class="alert alert-dismissable alert-info">
                         {{ nl2br(e($event->post_order_display_message)) }}
                     </div>
-                @endif
+
 
             </div>
         </div>
-        <div class="row mt-5">
+        @endif
+        <div class="row mt-3">
             <div class="col-6">
-                <b>@lang("Attendee.first_name")</b><br> {{$order->first_name}}
+                <b>@lang("Attendee.first_name")</b><br> <small>{{$order->first_name}}</small>
             </div>
             <div class="col-6">
-                <b>@lang("Attendee.last_name")</b><br> {{$order->last_name}}
+                <b>@lang("Attendee.last_name")</b><br> <small>{{$order->last_name}}</small>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-3">
             <div class="col-6">
-                <b>@lang("Public_ViewEvent.reference")</b><br> {{$order->order_reference}}
+                <b>@lang("Public_ViewEvent.reference")</b><br> <small>{{$order->order_reference}}</small>
             </div>
             <div class="col-6">
-                <b>@lang("Public_ViewEvent.amount")</b><br> {{number_format($order->total_amount, 2)}} man.
+                <b>@lang("Public_ViewEvent.amount")</b><br> <small>{{number_format($order->total_amount, 2)}} man.</small>
             </div>
 
         </div>
-        <div class="row mt-5">
+        <div class="row mt-3">
             <div class="col-6">
-                <b>@lang("Public_ViewEvent.date")</b><br> {{$order->created_at->toDateTimeString()}}
+                <b>@lang("Public_ViewEvent.date")</b><br> <small>{{$order->created_at->format(config('attendize.default_datetime_format'))}}</small>
             </div>
 
             <div class="col-6">
-                <b>@lang("Public_ViewEvent.email")</b><br> {{$order->email}}
+                <b>@lang("Public_ViewEvent.email")</b><br> <small>{{$order->email}}</small>
             </div>
         </div>
     </section>

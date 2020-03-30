@@ -15,7 +15,7 @@
 <h3>Информация о заказе</h3>
     Код заказа: <b>{{$order->order_reference}}</b><br>
     Имя покупателя: <b>{{$order->full_name}}</b><br>
-    Дата заказа: <b>{{$order->created_at->format('d-m-Y H:i')}}</b><br>
+    Дата заказа: <b>{{$order->created_at->format(config('attendize.default_datetime_format'))}}</b><br>
     Электронная почта покупателя: <b>{{$order->email}}</b><br>
 {{--<a href="{!! route('downloadCalendarIcs', ['event_id' => $order->event->id]) !!}">Добавить в календарь</a>--}}
 <h3>Подробности заказа</h3>
