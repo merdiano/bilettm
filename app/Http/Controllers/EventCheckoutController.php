@@ -462,10 +462,10 @@ class EventCheckoutController extends Controller
 
     public function mobileCheckoutPaymentReturn(Request $request, $event_id){
         if ($request->get('is_payment_cancelled') == '1') {
-            return view('mobile.CheckoutFailed',['message'=>trans('ClientSide.payment_cancelled')]);
+            return view('mobile.Pages.CheckoutFailed',['message'=>trans('ClientSide.payment_cancelled')]);
         }
         else if(!$request->has('orderId')){
-            return view('mobile.CheckoutFailed',['message'=> trans('ClientSide.no_order_id')]);
+            return view('mobile.Pages.CheckoutFailed',['message'=> trans('ClientSide.no_order_id')]);
         }
 
         $order = Order::select('orders.id','order_status_id','is_payment_received','amount','booking_fee','created_at',
@@ -476,7 +476,7 @@ class EventCheckoutController extends Controller
             ->first();
 
         if(!$order){
-            return view('mobile.CheckoutFailed',['message'=> trans('ClientSide.order_error')]);
+            return view('mobile.Pages.CheckoutFailed',['message'=> trans('ClientSide.order_error')]);
         }
 
         $reserved_tickets = ReservedTickets::select('ticket_id',DB::raw('count(*) as quantity'))
@@ -502,7 +502,7 @@ class EventCheckoutController extends Controller
 
         if ($response->isSuccessfull()) {
             $data = OrderService::mobileCompleteOrder($order);
-            return view('mobile.Pages.ViewOrderPage', $data);
+            return view('mobile.Pages.ViewOrderPageApp', $data);
         } else {
             ProcessPayment::dispatch($order)->delay(now()->addMinutes(5));
             return $this->render('Pages.OrderExpectingPayment',$order);

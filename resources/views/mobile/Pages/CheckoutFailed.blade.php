@@ -28,7 +28,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #1d1d26; color: white;">
 
 <main>
     <section id="intro" class="container">
