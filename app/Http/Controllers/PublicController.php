@@ -55,8 +55,8 @@ class PublicController extends Controller
         $locale = Config::get('app.locale');
 
         $category = Category::select('id',"title_{$locale}")
-            ->with(['children'=>function($q) use($data){
-                $q->select('id','parent_id','events_limit','view_type');
+            ->with(['children'=>function($q) use($data,$locale){
+                $q->select('id','parent_id','events_limit','view_type',"title_{$locale}");
                 $q->whereHas('cat_events',
                     function ($query) use($data){
                         $query->onLive($data['start'], $data['end']);

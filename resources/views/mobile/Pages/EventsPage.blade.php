@@ -8,20 +8,24 @@
 @endsection
 @section('content')
     @foreach($category->children as $cat)
-
+        @php
+            $cat_events = $events->where('sub_category_id',$cat->id);
+        @endphp
         <div class="section-section py-3">
             <div class="col-12 d-flex justify-content-between">
                 <h5 >{{$cat->title}}
                     <div class="title-bottom-line"></div>
                 </h5>
+                @if($cat_events->count() == $cat->events_limit)
                 <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>
+                @endif
             </div>
             <div class="row mt-2">
                 @include("Shared.Partials.FilterMenu")
             </div>
 
             <div class="owl-carousel owl-theme" id="section-slider{{$loop->iteration}}">
-                @foreach($events->where('sub_category_id',$cat->id) as $event)
+                @foreach($cat_events as $event)
                     @include('mobile.Partials.EventListItem')
                 @endforeach
             </div>
