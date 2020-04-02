@@ -1,7 +1,7 @@
 @if(!empty($category->events) && $category->events->count()>0)
 <section id="cartoon" class="kinoteator-section waaa container mb-5">
     <div class="tab-header d-flex justify-content-between col-12 px-0">
-        <h2 class="">{{$category->title}}</h2>
+        <h2> <a class="text-dark text-uppercase" href="{{$category->url}}">{{$category->title}}</a></h2>
         <div style="height: 5px; position: absolute; bottom: 0; width: 100px; background-color: rgba(211,61,51,1)"></div>
     </div>
     <div class="tab-ozi col-12 px-0 mt-5">

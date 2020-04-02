@@ -1,7 +1,7 @@
 @if(!empty($theatre->events) && $theatre->events->count()>0)
 <section id="teator" class="container teator">
     <div class="tab-header d-flex justify-content-between col-12">
-        <h2 class="font-weight-bold">{{$theatre->title}}</h2>
+        <h2> <a class="text-dark text-uppercase" href="{{$theatre->url}}">{{$theatre->title}}</a></h2>
         <div style="height: 5px; position: absolute; bottom: 10px; width: 100px; background-color: rgba(211,61,51,1)"></div>
         <div class="owl-nav disabled" style="float: right">
             <button type="button" role="presentation" class="owl-prev">
