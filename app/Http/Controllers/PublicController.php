@@ -93,8 +93,6 @@ class PublicController extends Controller
 
                 $sub_cats_events = $sub_cats_events->unionAll($events_query);
             }
-
-            dd($sub_cats_events->get());
             $data['events'] = $sub_cats_events->get();
         }
 

@@ -3,11 +3,8 @@
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('category',$category)}}
     @include("Shared.Partials.FilterMenu")
 
-    @foreach($sub_cats as $cat)
+    @foreach($category->children as $cat)
 
-        @php
-        $cat_events = $events->where('sub_category_id',$cat->id);
-        @endphp
         <section class="movie-items-group firts-child">
             <div class="container">
                 <div class="row kinoteator tab-part">
@@ -22,7 +19,7 @@
                         <div class="tab-content">
                             <div class="container">
                                 <div class="row">
-                                    @foreach($cat_events as $event)
+                                    @foreach($events->where('sub_category_id',$cat->id) as $event)
                                         @include("desktop.EventsList.{$cat->view_type}",['event'=>$event])
                                     @endforeach
                                 </div>
