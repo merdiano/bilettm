@@ -14,7 +14,7 @@ class PublicController extends Controller
         $categories = Category::select('title_tk','title_ru','id','parent_id');
 
         if($parent_id)
-            $categories->children($parent_id);
+            $categories->children($parent_id)->orderBy('lft');
         else
             $categories->main();
         return response()->json($categories->get());
@@ -33,7 +33,12 @@ class PublicController extends Controller
             ->whereHas('cat_events',
                 function ($query) use($data){
                     $query->onLive($data['start'], $data['end']);
-                })->get();
+                })
+            ->withCount(['cat_events' => function($query) use($data){
+                $query->onLive($data['start'], $data['end']);
+            }])
+            ->orderBy('cats_event_count','desc')
+            ->get();
 
 
         return response()->json($data);
