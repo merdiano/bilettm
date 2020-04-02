@@ -110,8 +110,8 @@ class Category extends \Illuminate\Database\Eloquent\Model{
 
     public function children(){
         return $this->hasMany(Category::class,'parent_id')
-            ->select('id','title_'.Config::get('app.locale'),'parent_id','lft')
-            ->orderBy('lft');
+            ->select('id','title_'.Config::get('app.locale'),'parent_id','lft');
+//            ->orderBy('lft');
     }
     public function scopeMain($query){
         return $query->where('depth',1)->orderBy('lft','asc');
