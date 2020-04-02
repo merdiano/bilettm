@@ -78,7 +78,7 @@ class PublicController extends Controller
 
         if($category->children->count()){
 
-            $sub_cats_events = [];
+            $sub_cats_events = Event::query();
 
             foreach ($category->children as $sub_cat){
 
