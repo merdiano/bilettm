@@ -77,12 +77,12 @@ class PublicController extends Controller
         // get all live events belong to sub categories
 
         if($category->children->count()){
-            $sub_cat = $category->children->pop();
-            $sub_cats_events = $sub_cat->cat_events()
+            $sub_cat_last = $category->children->pop();
+            $sub_cats_events = $sub_cat_last->cat_events()
 
                 ->onLive($data['start'],$data['end'])
                 ->orderBy($order['field'],$order['order'])
-                ->take($sub_cat->events_limit);
+                ->take($sub_cat_last->events_limit);
 
             foreach ($category->children as $sub_cat){
 
@@ -94,7 +94,7 @@ class PublicController extends Controller
                 $sub_cats_events = $sub_cats_events->unionAll($events_query);
             }
 
-            $category->children->push($sub_cat);
+            $category->children->push($sub_cat_last);
             $data['events'] = $sub_cats_events->get();
         }
 
