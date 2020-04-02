@@ -11,7 +11,6 @@
                 <span aria-label="Next">˃</span>
             </button>
         </div>
-        <a class="teatr-show-more m-0" href="{{$theatre->url}}">{{__('ClientSide.view')}}</a>
     </div>
     <div class="tab-ozi col-12 pt-4">
         <div class="kinoteator-tab1-wrapper">

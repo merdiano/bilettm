@@ -3,7 +3,6 @@
     <div class="tab-header d-flex justify-content-between col-12 px-0">
         <h2 class="">{{$category->title}}</h2>
         <div style="height: 5px; position: absolute; bottom: 0; width: 100px; background-color: rgba(211,61,51,1)"></div>
-        <a class="" href="{{$category->url}}">{{__('ClientSide.view')}}</a>
     </div>
     <div class="tab-ozi col-12 px-0 mt-5">
 
