@@ -20,7 +20,7 @@
                             <div class="container">
                                 <div class="row">
                                     @foreach($events->where('sub_category_id',$cat->id) as $event)
-                                        @include("desktop.EventsList.{$cat->view_type}",['event'=>$event])
+                                        @include("desktop.EventsList.{$category->view_type}",['event'=>$event])
                                     @endforeach
                                 </div>
                             </div>
