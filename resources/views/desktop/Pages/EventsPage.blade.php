@@ -13,7 +13,7 @@
                 <div class="row kinoteator tab-part">
                     <div class="tab-header d-flex justify-content-between col-12">
                         <h2  class="font-weight-bold">{{$cat->title}}</h2>
-                        <div style="height: 5px; position: absolute; bottom: 10px; width: 100px; background-color: rgba(211,61,51,1)"></div>
+                        <div style="height: 5px; position: absolute; bottom: 0px; width: 100px; background-color: rgba(211,61,51,1)"></div>
                         @if($cat_events->count() == $cat->events_limit)
                         <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>
                         @endif
