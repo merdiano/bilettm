@@ -69,7 +69,7 @@ class PublicController extends Controller
                     function ($query) use($data){
                         $query->onLive($data['start'], $data['end']);
                     });
-            }]);
+            }])->findOrFail($cat_id);
         dd($category);
 
         $lastKid = $sub_cats->pop();
