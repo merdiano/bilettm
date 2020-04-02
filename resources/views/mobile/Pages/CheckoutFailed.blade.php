@@ -12,18 +12,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" href="{{asset('vendor/bootstrap4/bootstrap.min.css')}}">
-    <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="{{asset('vendor/icon-awesome/css/font-awesome.min.css')}}">
 
     @yield('after_styles')
 
-
-<!-- CSS Unify Theme -->
-    <link rel="stylesheet" href="{{asset('assets/stylesheet/styles.e-commerce.css')}}">
-
-    <!--  KMB Custom css  -->
-    <link rel="stylesheet" href='{{asset("assets/stylesheet/custom.css")}}'>
-    <link rel="stylesheet" href='{{asset("assets/stylesheet/custom_new.css")}}'>
     @stack('after_styles')
 
 </head>
@@ -34,13 +25,13 @@
     <section id="intro" class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2 property="name" style="font-weight: bold">Töleg geçmedi. Birsalymdan gaýtadan synanşyp görüň!</h2>
+                <h4 property="name" style="font-weight: bold">Töleg geçmedi. Birsalymdan gaýtadan synanşyp görüň!</h4>
             </div>
         </div>
     </section>
     <section id="order_form" class="container">
 
-        <h3> {{$message}}</h3>
+        <h5> {{$message}}</h5>
     </section>
 
 </main>

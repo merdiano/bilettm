@@ -1,5 +1,8 @@
 @extends("desktop.Layouts.EventsLayout")
-@section('inner_content')
+@section('content')
+    {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('category',$category)}}
+    @include("Shared.Partials.FilterMenu")
+
     @foreach($sub_cats as $cat)
 
         @php

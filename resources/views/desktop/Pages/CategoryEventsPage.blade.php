@@ -1,5 +1,7 @@
 @extends("desktop.Layouts.EventsLayout")
-@section('inner_content')
+@section('content')
+    {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('sub_category',$category)}}
+    @include("Shared.Partials.FilterMenu")
     <section class="movie-items-group">
         <div class="container">
             <div class="row kinoteator tab-part">

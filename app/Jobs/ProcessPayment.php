@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Order;
+use App\Models\ReservedTickets;
 use App\Payment\CardPayment;
 use App\Services\EventOrderService;
 use Illuminate\Bus\Queueable;
@@ -48,5 +49,10 @@ class ProcessPayment extends Job implements ShouldQueue
             //todo send mail that order is unsuccessfull;
             Log::info('ProcessPayment Job payment is unsuccessful for order id: '.$this->order->id);
         }
+
+        ReservedTickets::where('event_id', $this->order->event_id)
+            ->where('session_id',$this->order->session_id)
+            ->whereNotNull('expects_payment_at')
+            ->delete();
     }
 }

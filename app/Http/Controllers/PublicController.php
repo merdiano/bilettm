@@ -64,6 +64,7 @@ class PublicController extends Controller
             ->get();
 
 
+        dd($sub_cats);
         $lastKid = $sub_cats->pop();
 
         $data['category'] = $lastKid?:$lastKid->parent;

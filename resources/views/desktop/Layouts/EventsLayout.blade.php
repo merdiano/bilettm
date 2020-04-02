@@ -4,23 +4,6 @@
     <link href="{{asset('vendor/gijgo/gijgo.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
-@section('content')
-    {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('category',$category)}}
-    @include("Shared.Partials.FilterMenu")
-
-    @yield('inner_content')
-
-{{--    <section id="first-add-wrapper" style="margin: 100px 0;">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row" style="padding: 0 20px;">--}}
-{{--                <a href="" style="width: 100%">--}}
-{{--                    <img src="{{asset('assets/images/advs/first.png')}}" style="width: 100%">--}}
-{{--                </a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-
-@endsection
 @push('after_styles')
 <style type="text/css">
     .red_button{

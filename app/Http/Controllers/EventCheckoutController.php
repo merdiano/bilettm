@@ -95,7 +95,10 @@ class EventCheckoutController extends Controller
         /*
          * Remove any tickets the user has reserved
          */
-        ReservedTickets::where('session_id', '=', session()->getId())->delete();
+        ReservedTickets::where('session_id', '=', session()->getId())
+            ->whereNull('expects_payment_at')
+            ->orWhere('expects_payment_at','<',Carbon::now()->addMinutes(-5))
+            ->delete();
 
         /*
          * Go though the selected tickets and check if they're available
@@ -321,16 +324,6 @@ class EventCheckoutController extends Controller
         //Add the request data to a session in case payment is required off-site
         session()->push('ticket_order_' . $event_id . '.request_data', $request->except(['card-number', 'card-cvc']));
 
-        $orderRequiresPayment = $ticket_order['order_requires_payment'];
-
-        if ($orderRequiresPayment && $request->get('pay_offline') && $event->enable_offline_payments) {
-            return $this->completeOrder($event_id);
-        }
-
-        if (!$orderRequiresPayment) {
-            return $this->completeOrder($event_id);
-        }
-
         try {
             $orderService = new OrderService($ticket_order['order_total'], $ticket_order['total_booking_fee'], $event);
             $orderService->calculateFinalCosts();
@@ -504,166 +497,12 @@ class EventCheckoutController extends Controller
             $data = OrderService::mobileCompleteOrder($order);
             return view('mobile.Pages.ViewOrderPageApp', $data);
         } else {
+            ReservedTickets::where('session_id', $order->session_id)
+                ->where('event_id', $event_id)
+                ->update(['expects_payment_at' => Carbon::now()]);
             ProcessPayment::dispatch($order)->delay(now()->addMinutes(5));
             return $this->render('Pages.OrderExpectingPayment',$order);
         }
-    }
-    /**
-     * Complete an order
-     *
-     * @param $event_id
-     * @param bool|true $return_json
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
-    public function completeOrder($event_id, $return_json = true)
-    {
-
-        DB::beginTransaction();
-
-        try {
-
-            $order = Order::with('event')
-                ->where('event_id', $event_id)
-                ->where('session_id', session()->getId());
-            $ticket_order = session()->get('ticket_order_' . $event_id);
-            $request_data = $ticket_order['request_data'][0];
-//            $event = Event::findOrFail($ticket_order['event_id']);
-            $attendee_increment = 1;
-            $ticket_questions = isset($request_data['ticket_holder_questions']) ? $request_data['ticket_holder_questions'] : [];
-            $order->order_status_id = isset($request_data['pay_offline']) ? config('attendize.order_awaiting_payment') : config('attendize.order_complete');
-            $order->is_payment_received = isset($request_data['pay_offline']) ? 0 : 1;
-            $order->save();
-
-            /*
-             * Update the event sales volume
-             */
-            $order->event->increment('sales_volume', $order->amount);
-            $order->event->increment('organiser_fees_volume', $order->organiser_booking_fee);
-
-            /*
-             * Update the event stats
-             */
-            $event_stats = EventStats::updateOrCreate([
-                'event_id' => $event_id,
-                'date'     => DB::raw('CURRENT_DATE'),
-            ]);
-            $event_stats->increment('tickets_sold', $ticket_order['total_ticket_quantity']);
-
-            if ($ticket_order['order_requires_payment']) {
-                $event_stats->increment('sales_volume', $order->amount);
-                $event_stats->increment('organiser_fees_volume', $order->organiser_booking_fee);
-            }
-
-            /*
-             * Add the attendees
-             */
-            foreach ($ticket_order['tickets'] as $attendee_details) {
-
-                $ticket = Ticket::findOrFail($attendee_details['ticket']['id']);
-
-                /*
-                 * Update some ticket info
-                 */
-                $ticket->increment('quantity_sold', $attendee_details['qty']);
-                $ticket->increment('sales_volume', ($attendee_details['ticket']['price'] * $attendee_details['qty']));
-                $ticket->increment('organiser_fees_volume',
-                    ($attendee_details['ticket']['organiser_booking_fee'] * $attendee_details['qty']));
-
-                /*
-                 * Create the attendees
-                 */
-                foreach ($attendee_details['seats'] as $i) {
-
-                    $attendee = new Attendee();
-                    $attendee->first_name = strip_tags($request_data["ticket_holder_first_name"][$i][$attendee_details['ticket']['id']]);
-                    $attendee->last_name = strip_tags($request_data["ticket_holder_last_name"][$i][$attendee_details['ticket']['id']]);
-                    $attendee->email = $request_data["ticket_holder_email"][$i][$attendee_details['ticket']['id']];
-                    $attendee->event_id = $event_id;
-                    $attendee->order_id = $order->id;
-                    $attendee->ticket_id = $attendee_details['ticket']['id'];
-                    $attendee->account_id = $order->account_id;
-                    $attendee->reference_index = $attendee_increment;
-                    $attendee->seat_no = $i;
-                    $attendee->save();
-
-
-                    /*
-                     * Save the attendee's questions
-                     */
-                    foreach ($attendee_details['ticket']->questions as $question) {
-
-
-                        $ticket_answer = isset($ticket_questions[$attendee_details['ticket']->id][$i][$question->id]) ? $ticket_questions[$attendee_details['ticket']->id][$i][$question->id] : null;
-
-                        if (is_null($ticket_answer)) {
-                            continue;
-                        }
-
-                        /*
-                         * If there are multiple answers to a question then join them with a comma
-                         * and treat them as a single answer.
-                         */
-                        $ticket_answer = is_array($ticket_answer) ? implode(', ', $ticket_answer) : $ticket_answer;
-
-                        if (!empty($ticket_answer)) {
-                            QuestionAnswer::create([
-                                'answer_text' => $ticket_answer,
-                                'attendee_id' => $attendee->id,
-                                'event_id'    => $event_id,
-                                'account_id'  => $order->account_id,
-                                'question_id' => $question->id
-                            ]);
-
-                        }
-                    }
-
-
-                    /* Keep track of total number of attendees */
-                    $attendee_increment++;
-                }
-            }
-
-        } catch (Exception $e) {
-
-            Log::error($e);
-            DB::rollBack();
-
-            return response()->json([
-                'status'  => 'error',
-                'message' => trans('ClientSide.order_error')
-            ]);
-
-        }
-        //save the order to the database
-        DB::commit();
-        //forget the order in the session
-        session()->forget('ticket_order_' . $event_id);
-
-        /*
-         * Remove any tickets the user has reserved after they have been ordered for the user
-         */
-        ReservedTickets::where('session_id', '=', session()->getId())->delete();
-
-        // Queue up some tasks - Emails to be sent, PDFs etc.
-        Log::info('Firing the event');
-        event(new OrderCompletedEvent($order));
-
-
-        if ($return_json) {
-            return response()->json([
-                'status'      => 'success',
-                'redirectUrl' => route('showOrderDetails', [
-                    'is_embedded'     => $this->is_embedded,
-                    'order_reference' => $order->order_reference,
-                ]),
-            ]);
-        }
-
-        return response()->redirectToRoute('showOrderDetails', [
-            'is_embedded'     => $this->is_embedded,
-            'order_reference' => $order->order_reference,
-        ]);
-
     }
 
     /**
