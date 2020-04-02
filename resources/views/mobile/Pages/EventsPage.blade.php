@@ -7,10 +7,8 @@
     <link  rel="stylesheet" href="{{asset('vendor/jquery-ui/themes/base/jquery-ui.min.css')}}">
 @endsection
 @section('content')
-    @foreach($sub_cats as $cat)
-        @php
-            $cat_events = $events->where('sub_category_id',$cat->id);
-        @endphp
+    @foreach($category->children as $cat)
+
         <div class="section-section py-3">
             <div class="col-12 d-flex justify-content-between">
                 <h5 >{{$cat->title}}
@@ -23,7 +21,7 @@
             </div>
 
             <div class="owl-carousel owl-theme" id="section-slider{{$loop->iteration}}">
-                @foreach($cat_events as $event)
+                @foreach($events->where('sub_category_id',$cat->id) as $event)
                     @include('mobile.Partials.EventListItem')
                 @endforeach
             </div>
