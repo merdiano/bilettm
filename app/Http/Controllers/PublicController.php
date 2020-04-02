@@ -70,32 +70,31 @@ class PublicController extends Controller
                         $query->onLive($data['start'], $data['end']);
                     });
             }])->findOrFail($cat_id);
-        dd($category);
 
-        $lastKid = $sub_cats->pop();
 
-        $data['category'] = $lastKid?:$lastKid->parent;
+        $data['category'] = $category;
 
         // get all live events belong to sub categories
-        $sub_cats_events = $lastKid->cat_events()
 
-            ->onLive($data['start'],$data['end'])
-            ->orderBy($order['field'],$order['order'])
-            ->take($lastKid->events_limit);
+        if($category->children->count()){
 
-        foreach ($sub_cats as $sub_cat){
+            $sub_cats_events = [];
 
-            $events_query = $sub_cat->cat_events()
-                ->onLive($data['start'],$data['end'])
-                ->orderBy($order['field'],$order['order'])
-                ->take($sub_cat->events_limit);
+            foreach ($category->children as $sub_cat){
 
-            $sub_cats_events = $sub_cats_events->unionAll($events_query);
+                $events_query = $sub_cat->cat_events()
+                    ->onLive($data['start'],$data['end'])
+                    ->orderBy($order['field'],$order['order'])
+                    ->take($sub_cat->events_limit);
+
+                $sub_cats_events = $sub_cats_events->unionAll($events_query);
+            }
+
+            dd($sub_cats_events->get());
+            if($sub_cats_events)
+                $data['events'] = $sub_cats_events->get();
+
         }
-
-        $data['events'] = $sub_cats_events->get();
-
-        $data['sub_cats'] = $sub_cats->push($lastKid);
 
         return $this->render("Pages.EventsPage",$data);
     }
