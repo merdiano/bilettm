@@ -56,11 +56,18 @@ class PublicController extends Controller
 
         $category = Category::select('id',"title_{$locale}")
             ->with(['children'=>function($q) use($data,$locale){
+
                 $q->select('id','parent_id','events_limit','view_type',"title_{$locale}");
+
+                $q->withCount('cat_events as events_count');
+
                 $q->whereHas('cat_events',
                     function ($query) use($data){
+
                         $query->onLive($data['start'], $data['end']);
-                    })->orderBy('lft');
+
+                })->orderBy('events_count');
+
             }])->findOrFail($cat_id);
 
 
@@ -69,9 +76,10 @@ class PublicController extends Controller
         // get all live events belong to sub categories
 
         if($category->children->count()){
-            $sub_cat_last = $category->children->pop();
-            $sub_cats_events = $sub_cat_last->cat_events()
 
+            $sub_cat_last = $category->children->pop();
+
+            $sub_cats_events = $sub_cat_last->cat_events()
                 ->onLive($data['start'],$data['end'])
                 ->orderBy($order['field'],$order['order'])
                 ->take($sub_cat_last->events_limit);
@@ -87,6 +95,7 @@ class PublicController extends Controller
             }
 
             $category->children->push($sub_cat_last);
+
             $data['events'] = $sub_cats_events->get();
         }
 
@@ -110,19 +119,27 @@ class PublicController extends Controller
     }
 
     private function sorts_filters(){
+
         $data['start'] = \request()->get('start');
+
         $data['end'] = \request()->get('end');
+
         $sort = \request()->get('sort');
 
         if($sort == 'new')
             $orderBy = ['field'=>'created_at','order'=>'desc'];
-        if ($sort =='popular')
-            $orderBy = ['field'=>'views','order'=>'desc'];
-        else
-        {
+
+        if ($sort =='popular') {
+
+            $orderBy = ['field' => 'views', 'order' => 'desc'];
+        }
+        else {
+
             $orderBy =['field'=>'start_date','order'=>'asc'];
+
             $sort = 'start_date';
         }
+
         $data['sort'] = $sort;
         //todo check date formats;
         return [$orderBy, $data];
@@ -131,6 +148,7 @@ class PublicController extends Controller
     public function search(SearchRequest $request){
         //todo implement with elastick search and scout
         $query = sanitise($request->get('q'));
+
         $events = Event::onLive()
             ->where('title_ru','like',"%{$query}%")
             ->orWhere('title_tk','like',"%{$query}%")
