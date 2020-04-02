@@ -70,6 +70,7 @@ class PublicController extends Controller
 
             }])->findOrFail($cat_id);
 
+        dd($category);
 
         $data['category'] = $category;
 
