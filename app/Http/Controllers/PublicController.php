@@ -93,6 +93,8 @@ class PublicController extends Controller
 
                 $sub_cats_events = $sub_cats_events->unionAll($events_query);
             }
+
+            $category->children->push($sub_cat);
             $data['events'] = $sub_cats_events->get();
         }
 
