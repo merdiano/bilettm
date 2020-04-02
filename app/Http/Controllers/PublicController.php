@@ -63,8 +63,15 @@ class PublicController extends Controller
                 })
             ->get();
 
+        $category = Category::select('id','events_limit','view_type',"title_{$locale}")
+            ->with(['children'=>function($q) use($data){
+                $q->whereHas('cat_events',
+                    function ($query) use($data){
+                        $query->onLive($data['start'], $data['end']);
+                    });
+            }]);
+        dd($category);
 
-        dd($sub_cats);
         $lastKid = $sub_cats->pop();
 
         $data['category'] = $lastKid?:$lastKid->parent;
