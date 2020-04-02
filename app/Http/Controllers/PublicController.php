@@ -74,8 +74,6 @@ class PublicController extends Controller
 
             }])->findOrFail($cat_id);
 
-        dd($category);
-
         $data['category'] = $category;
 
         // get all live events belong to sub categories
