@@ -59,14 +59,18 @@ class PublicController extends Controller
 
                 $q->select('id','parent_id','events_limit','view_type',"title_{$locale}");
 
-                $q->withCount('cat_events as events_count');
+                $q->withCount('cat_events',function ($query) use($data){
+
+                    $query->onLive($data['start'], $data['end']);
+
+                });
 
                 $q->whereHas('cat_events',
                     function ($query) use($data){
 
                         $query->onLive($data['start'], $data['end']);
 
-                })->orderBy('events_count','asc');
+                })->orderBy('cat_events_count','desc');
 
             }])->findOrFail($cat_id);
 
