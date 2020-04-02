@@ -66,7 +66,7 @@ class PublicController extends Controller
 
                         $query->onLive($data['start'], $data['end']);
 
-                })->orderBy('events_count');
+                })->orderBy('events_count','desc');
 
             }])->findOrFail($cat_id);
 
