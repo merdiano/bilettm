@@ -11,7 +11,7 @@
             <p class="description">{!! Markdown::parse($event->description) !!}</p>
             @endif
             <div class="overlay-details-bottom-part">
-                <a href="" class="like">
+                <a href="{{$event->event_url}}" class="like">
                     <i class="fa fa-eye"></i>
                     {{$event->views??0}} {{__("ClientSide.views")}}</a>
                 <div class="buy-btn-wrap">

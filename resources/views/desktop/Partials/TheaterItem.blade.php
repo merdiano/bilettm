@@ -7,7 +7,6 @@
                 <h2 style="font-size: 60px; line-height: 1">{{$event->title}}</h2>
                 <h5 style="margin-bottom: 20px">{{$event->venue_name}}</h5>
                 <span style="color: #ffffff; font-weight: bold; border: 1px solid #ffffff; border-radius: 5px; padding: 10px 30px; font-size: 20px">Купит билет</span>
-                <span style="color: #ffffff; font-size: 20px; width: 100%; margin-top: 10px; display: block">Цена: от 40 TMT</span>
             </div>
         </div>
     </a>
