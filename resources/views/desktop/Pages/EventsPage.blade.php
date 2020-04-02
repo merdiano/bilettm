@@ -5,13 +5,18 @@
 
     @foreach($category->children as $cat)
 
+        @php
+        $cat_events = $events->where('sub_category_id',$cat->id);
+        @endphp
         <section class="movie-items-group firts-child">
             <div class="container">
                 <div class="row kinoteator tab-part">
                     <div class="tab-header d-flex justify-content-between col-12">
                         <h2  class="font-weight-bold">{{$cat->title}}</h2>
                         <div style="height: 5px; position: absolute; bottom: 10px; width: 100px; background-color: rgba(211,61,51,1)"></div>
+                        @if($cat_events->count() == $cat->events_limit)
                         <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>
+                        @endif
                     </div>
                     <div class="tab-ozi col-12" style="margin-top: 10px">
 
@@ -19,8 +24,8 @@
                         <div class="tab-content">
                             <div class="container">
                                 <div class="row">
-                                    @foreach($events->where('sub_category_id',$cat->id) as $event)
-                                        @include("desktop.EventsList.{$category->view_type}",['event'=>$event])
+                                    @foreach($cat_events as $event)
+                                        @include("desktop.EventsList.{$cat->view_type}",['event'=>$event])
                                     @endforeach
                                 </div>
                             </div>
