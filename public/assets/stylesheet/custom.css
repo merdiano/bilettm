@@ -2345,7 +2345,7 @@ choose_seats_content > div.tab-pane.fade{
   font-size: 6px; }
 #mobile tr.last-tr td {
   font-size: 6px; }
-#mobile tr td:first-child {
+#seats tr td:first-child {
   font-size: 20px;
 display: block;
 }

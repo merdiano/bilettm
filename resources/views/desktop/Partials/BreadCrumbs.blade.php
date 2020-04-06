@@ -12,7 +12,7 @@
                             <i class="fa fa-caret-right"></i>
                         </li>
                     @else
-                        <li class="page-name text-capitalize" style="color: #7f7f7f; text-transform: capitalize">
+                        <li class="page-name text-uppercase" style="color: #7f7f7f; text-transform: capitalize">
                             {{ $breadcrumb->title }}
                         </li>
                     @endif
