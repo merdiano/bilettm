@@ -1,6 +1,7 @@
 @extends('Shared.Layouts.BilettmLayout',['folder' => 'mobile'])
 @section('after_styles')
-
+    <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.theme.default.min.css')}}">
 @endsection
 @section('content')
     <section class="my-3">
