@@ -13,16 +13,17 @@
             data-masterspeed="default"
             data-rotate="0"
             data-saveperformance="off"
-            data-title="Slide"
-            data-param1="asdadasdasdasdasdasdas"
-            data-description="">
+            data-title="{{$slider->title}}">
             <!-- Parallax Image -->
             <div class="divimage dzsparallaxer--target w-100"
                  style="position:absolute; top: 0; background-position: center center;
                          background-size: cover; bottom: -100px; background-image:
                          url({{asset($slider->image)}}); transform: unset !important;"></div>
             <!-- End Parallax Image -->
-            <a href="" class="d-block container g-py-200 h-100"></a>
+            <div>
+                {{$slider->text}}
+            </div>
+            <a href="{{$slider->link ?? '#'}}" class="d-block container g-py-200 h-100"></a>
         </li>
 
     </div>

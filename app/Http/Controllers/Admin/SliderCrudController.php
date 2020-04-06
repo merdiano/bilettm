@@ -34,10 +34,10 @@ class SliderCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->addColumns([
-            ['name' => 'title','type' => 'text', 'label' => 'Title En'],
+//            ['name' => 'title','type' => 'text', 'label' => 'Title En'],
             ['name' => 'title_ru','type' => 'text', 'label' => 'Title Ru'],
             ['name' => 'title_tk','type' => 'text', 'label' => 'Title Tk'],
-            ['name' => 'text','type' => 'text', 'label' => 'Text En'],
+//            ['name' => 'text','type' => 'text', 'label' => 'Text En'],
             ['name' => 'text_ru','type' => 'text', 'label' => 'Text Ru'],
             ['name' => 'text_tk','type' => 'text', 'label' => 'Text Tk'],
             ['name' => 'link','type' => 'text', 'label' => 'Link'],
@@ -47,8 +47,10 @@ class SliderCrudController extends CrudController
             ['name' => 'image','type' => 'text', 'label' => 'Image'],
         ]);
         $this->crud->addFields([
-            ['name' => 'title','type' => 'text', 'label' => 'Title'],
-            ['name' => 'text','type' => 'text', 'label' => 'Text'],
+            ['name' => 'title_ru','type' => 'text', 'label' => 'Title Ru'],
+            ['name' => 'title_tk','type' => 'text', 'label' => 'Title Tk'],
+            ['name' => 'text_ru','type' => 'summernote', 'label' => 'Text Ru'],
+            ['name' => 'text_tk','type' => 'summernote', 'label' => 'Text Tk'],
             ['name' => 'link','type' => 'text', 'label' => 'Link'],
             ['name' => 'ru','type' => 'checkbox', 'label' => 'Russian'],
             ['name' => 'tk','type' => 'checkbox', 'label' => 'Turkmen'],

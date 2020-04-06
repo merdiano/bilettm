@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 
 class Slider extends Model
@@ -36,6 +37,7 @@ class Slider extends Model
             \Storage::disk('local')->delete($obj->image);
         });
     }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -53,6 +55,16 @@ class Slider extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+    public function getTitleAttribute(){
+
+        return $this->{'title_'.Config::get('app.locale')}??'#title_transation';
+    }
+
+    public function getTextAttribute(){
+
+        return $this->{'text_'.Config::get('app.locale')}??'#title_transation';
+    }
+
     public function setImageAttribute($value)
     {
         $attribute_name = "image";
