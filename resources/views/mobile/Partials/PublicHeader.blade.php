@@ -21,13 +21,13 @@
                 </li>
                 @endforeach
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">@lang('ClientSide.concert_halls')
+                    <a class="dropdown-toggle navbar-link" data-toggle="dropdown" href="#">@lang('ClientSide.concert_halls')
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
 
                         @foreach(venues_list() as $id => $venue)
-                            <li>
-                                <a href="{{route('venues',['id'=>$id])}}">{{$venue}}</a></li>
+                            <li class="nav-item">
+                                <a class="navbar-link" href="{{route('venues',['id'=>$id])}}">{{$venue}}</a></li>
                         @endforeach
                     </ul>
                 </li>

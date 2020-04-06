@@ -56,7 +56,7 @@
             }
         });
         function initMap() {
-            var uluru = {lat: {{$venue->address['latlng']['lat']}}, lng: {{$venue->address['latlng']['lng']}}};
+            var uluru = {lat: {{$current->address['latlng']['lat']}}, lng: {{$current->address['latlng']['lng']}}};
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: uluru,
                 zoom: 15
