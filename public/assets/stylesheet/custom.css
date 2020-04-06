@@ -2011,7 +2011,9 @@ input.reserved-seats ~ label svg {
   background-color: #d43d34;
   border-color: #d43d34;
 }
-
+.dropdown-menu{
+  border: none;
+}
 #myTabContent .tabcontent{
   display: none;
 }
