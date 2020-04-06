@@ -21,7 +21,7 @@ class Slider extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['title','text','image','active','link','title_ru','_title_tk'];
+    protected $fillable = ['text_tk','text_ru','image','active','link','title_ru','_title_tk'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -62,7 +62,7 @@ class Slider extends Model
 
     public function getTextAttribute(){
 
-        return $this->{'text_'.Config::get('app.locale')}??'#title_transation';
+        return $this->{'text_'.Config::get('app.locale')}??'#text_transation';
     }
 
     public function setImageAttribute($value)
