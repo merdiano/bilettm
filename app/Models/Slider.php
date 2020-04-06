@@ -21,7 +21,7 @@ class Slider extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['text_tk','text_ru','image','active','link','title_ru','_title_tk'];
+    protected $fillable = ['text_tk','text_ru','image','active','link','title_ru','title_tk'];
     // protected $hidden = [];
     // protected $dates = [];
 
