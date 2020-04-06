@@ -17,6 +17,7 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Slider;
 use App;
+use Illuminate\Http\Request;
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -167,7 +168,21 @@ class PublicController extends Controller
         ]);
     }
 
-    public function postAddEvent(AddEventRequest $request){
+    public function postAddEvent(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name'=>'required|string|min:2|max:255',
+            'phone'=>'required|numeric|digits_between:8,12',
+            'email' =>'required|email',
+            'details' => 'required|string',
+            'place' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status'   => 'error',
+                'messages' => $validator->messages()->toArray(),
+            ]);
+        }
 
         $addEvent = EventRequest::create([
             'name' => sanitise($request->get('name')),

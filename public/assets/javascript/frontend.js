@@ -4812,7 +4812,6 @@ function processFormErrors($form, errors)
                 .parent()
                 .addClass('has-error');
         }
-        alert(error);
     });
 
     var $submitButton = $form.find('input[type=submit]');
