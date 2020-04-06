@@ -8,7 +8,7 @@ use DB;
 
 class Account extends MyBaseModel
 {
-    use SoftDeletes;
+    use SoftDeletes,\Backpack\CRUD\CrudTrait;
 
     /**
      * The validation rules

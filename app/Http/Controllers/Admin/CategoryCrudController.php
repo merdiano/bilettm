@@ -31,8 +31,6 @@ class CategoryCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-
-        // TODO: remove setFromDb() and manually define Fields and Columns
 //        $this->crud->setFromDb();
         $this->crud->addColumns([
             ['name'=>'id','type'=>'text','label'=>'Id'],

@@ -153,6 +153,7 @@ class PublicController extends Controller
         $query = sanitise($request->get('q'));
 
         $events = Event::onLive()
+            ->with(['mainCategory','subCategory'])
             ->where('title_ru','like',"%{$query}%")
             ->orWhere('title_tk','like',"%{$query}%")
             ->withCount(['stats as views' => function($q){
