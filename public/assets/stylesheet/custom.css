@@ -1997,7 +1997,11 @@ input.reserved-seats ~ label svg {
   font-size: 20px;
   line-height: 24px;
 }
-
+.mobile-detail p, .mobile-detail{
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+}
 .nav.nav-pills.details-page .tablinks:hover{
   color: #ffffff
 }

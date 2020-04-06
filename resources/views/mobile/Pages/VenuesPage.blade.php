@@ -11,7 +11,7 @@
                 <div class="col-12 pl-4" style="font-size: 17px">
                     <div class="row">
 
-                        <h2>{{$current->venue_name}}</h2>
+                        <h4>{{$current->venue_name}}</h4><div style="background-color: rgba(211,61,51,1);height: 5px;width: 80px;margin-bottom: 15px;"></div>
                     </div>
                     <div class="row">
                         <div class="owl-carousel owl-theme" >
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="it-detail">
+                        <div class="mobile-detail">
                             {!! Markdown::parse($current->description) !!}
                         </div>
 
