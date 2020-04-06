@@ -36,23 +36,23 @@ class SectionCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
 //        $this->crud->setFromDb();
         $this->crud->addColumns([
-            ['name'=>'section_no','type'=>'text','label'=>'Section No En'],
+//            ['name'=>'section_no','type'=>'text','label'=>'Section No En'],
             ['name'=>'section_no_ru','type'=>'text','label'=>'Section No Ru'],
             ['name'=>'section_no_tk','type'=>'text','label'=>'Section No Tk'],
-            ['name'=>'description','type'=>'text','label'=>'Description En'],
-            ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
-            ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
-            ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru'],
+//            ['name'=>'description','type'=>'text','label'=>'Description En'],
+//            ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
+//            ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
+            ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue'],
         ]);
 
         $this->crud->addFields([
-            ['name'=>'section_no','type'=>'text','label'=>'Section No'],
+//            ['name'=>'section_no','type'=>'text','label'=>'Section No'],
             ['name'=>'section_no_ru','type'=>'text','label'=>'Section No Ru'],
             ['name'=>'section_no_tk','type'=>'text','label'=>'Section No Tk'],
-            ['name'=>'description','type'=>'text','label'=>'Description'],
-            ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
-            ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
-            ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru'],
+//            ['name'=>'description','type'=>'text','label'=>'Description'],
+//            ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
+//            ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
+            ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue'],
             [ // image
                 'label' => "Section Image",
                 'name' => "section_image",
@@ -61,7 +61,7 @@ class SectionCrudController extends CrudController
 //                'crop' => true, // set to true to allow cropping, false to disable
 //                'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
                 // 'disk' => 's3_bucket', // in case you need to show images from a different disk
-                'prefix' => 'user_content/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
+//                'prefix' => 'user_content/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
             ],
             ['name'=>'seats','type'=>'table','label'=>'Seats',
                 'columns' => [
