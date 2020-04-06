@@ -37,7 +37,7 @@ class SliderCrudController extends CrudController
 //            ['name' => 'title','type' => 'text', 'label' => 'Title En'],
             ['name' => 'title_ru','type' => 'text', 'label' => 'Title Ru'],
             ['name' => 'title_tk','type' => 'text', 'label' => 'Title Tk'],
-//            ['name' => 'text','type' => 'text', 'label' => 'Text En'],
+            ['name' => 'order','type' => 'number', 'label' => 'Order'],
             ['name' => 'text_ru','type' => 'text', 'label' => 'Text Ru'],
             ['name' => 'text_tk','type' => 'text', 'label' => 'Text Tk'],
             ['name' => 'link','type' => 'text', 'label' => 'Link'],
@@ -49,6 +49,7 @@ class SliderCrudController extends CrudController
         $this->crud->addFields([
             ['name' => 'title_ru','type' => 'text', 'label' => 'Title Ru'],
             ['name' => 'title_tk','type' => 'text', 'label' => 'Title Tk'],
+            ['name' => 'order','type' => 'number', 'label' => 'Order'],
             ['name' => 'text_ru','type' => 'summernote', 'label' => 'Text Ru'],
             ['name' => 'text_tk','type' => 'summernote', 'label' => 'Text Tk'],
             ['name' => 'link','type' => 'text', 'label' => 'Link'],
