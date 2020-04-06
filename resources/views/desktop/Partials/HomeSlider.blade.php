@@ -21,9 +21,9 @@
                          url({{asset($slider->image)}}); transform: unset !important;"></div>
             <!-- End Parallax Image -->
 
-            <a href="{{$slider->link ?? '#'}}" class="d-block container g-py-200 h-100"></a>
+            <a href="{{$slider->link ?? '#'}}" class="d-block container g-py-200 h-100" style="top: 0; bottom: 0; left: 0; right: 0; position:absolute;"></a>
         </li>
-        <div class="slider-content">
+        <div class="slider-content" style="position: absolute;">
             {{$slider->text}}
         </div>
     </div>
