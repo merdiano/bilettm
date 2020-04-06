@@ -21,7 +21,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use function Clue\StreamFilter\fun;
+use Validator;
 
 class PublicController extends Controller
 {
