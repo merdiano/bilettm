@@ -53,9 +53,9 @@ class EventController extends MyBaseController
         }
 
         $event->title_ru = $request->get('title_ru');
-        $event->title_tk = $request->get('title_tk');
+        $event->title_tk = $request->get('title_tk')?:$request->get('title_ru');
         $event->description_ru = strip_tags($request->get('description_ru'));
-        $event->description_tk = strip_tags($request->get('description_tk'));
+        $event->description_tk = strip_tags($request->get('description_tk')?:$request->get('description_ru'));
         $event->start_date = $request->get('start_date');
         $event->category_id = $request->get('category_id');
         $event->sub_category_id = $request->get('sub_category_id');

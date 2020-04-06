@@ -20,6 +20,18 @@
                     <a class="nav-link @if(url()->current()==$category->url) active @endif" href="{{$category->url}}">{{$category->title}}</a>
                 </li>
                 @endforeach
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">@lang('ClientSide.concert_halls')
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        @foreach(venues_list() as $id => $venue)
+                            <li>
+                                <a href="{{route('venues',['id'=>$id])}}">{{$venue}}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
+
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{route('search')}}" method="GET">
                 <input class="form-control mr-sm-2 search-input-box" type="search" name="q" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
