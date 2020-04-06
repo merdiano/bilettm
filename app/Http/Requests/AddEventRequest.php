@@ -24,10 +24,11 @@ class AddEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'phone'=>'required|numeric',
+            'name'=>'required|string|min:2|max:255',
+            'phone'=>'required|numeric|digits_between:8,12',
             'email' =>'required|email',
-            'details' => 'required'
+            'details' => 'required|string',
+            'place' => 'required|string'
             //
         ];
     }

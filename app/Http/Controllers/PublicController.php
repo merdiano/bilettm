@@ -38,6 +38,7 @@ class PublicController extends Controller
 
         $sliders = Slider::where('active',1)
             ->where(Config::get('app.locale'),1)
+            ->orderBy('order','asc')
             ->get();
 
         return $this->render("Pages.HomePage",[
@@ -172,7 +173,8 @@ class PublicController extends Controller
             'name' => sanitise($request->get('name')),
             'email' => sanitise($request->get('email')),
             'phone' => sanitise($request->get('phone')),
-            'details' => sanitise($request->get('details'))
+            'details' => sanitise($request->get('details')),
+            'place' => sanitise($request->get('place'))
         ]);
 
         if($addEvent)
