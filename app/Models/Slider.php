@@ -57,12 +57,12 @@ class Slider extends Model
     */
     public function getTitleAttribute(){
 
-        return $this->{'title_'.Config::get('app.locale')}??'#title_transation';
+        return $this->{'title_'.Config::get('app.locale')};
     }
 
     public function getTextAttribute(){
 
-        return $this->{'text_'.Config::get('app.locale')}??'#text_transation';
+        return $this->{'text_'.Config::get('app.locale')};
     }
 
     public function setImageAttribute($value)

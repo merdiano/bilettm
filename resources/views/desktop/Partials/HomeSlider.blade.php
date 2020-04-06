@@ -20,12 +20,12 @@
                          background-size: cover; bottom: -100px; background-image:
                          url({{asset($slider->image)}}); transform: unset !important;"></div>
             <!-- End Parallax Image -->
-            <div class="slider-content">
-                {{$slider->text}}
-            </div>
+
             <a href="{{$slider->link ?? '#'}}" class="d-block container g-py-200 h-100"></a>
         </li>
-
+        <div class="slider-content">
+            {{$slider->text}}
+        </div>
     </div>
     @endforeach
 </section>
