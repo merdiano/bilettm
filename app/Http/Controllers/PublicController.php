@@ -161,7 +161,7 @@ class PublicController extends Controller
             ->join('venues','venues.id','=','events.venue_id')
             ->join('categories','categories.id','=','events.category_id')
 //            ->with(['mainCategory','subCategory'])
-            ->where('title_'.config('app.locale'),'like',"%{$query}%")
+            ->where('events.title_'.config('app.locale'),'like',"%{$query}%")
             ->orWhere('venues.venue_name_'.config('app.locale'),'like',"%{$query}%")
             ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%")
             ->withCount(['stats as views' => function($q){
