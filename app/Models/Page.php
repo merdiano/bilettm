@@ -89,10 +89,17 @@ class Page extends Model
     public function getSlugOrTitleAttribute()
     {
         if ($this->slug != '') {
-            return Str::substr($this->slug,0,Str::length($this->slug)-3);
-//            return $this->slug;
+            return $this->slug;
         }
 
+        return $this->title;
+    }
+
+    public function getSlugAttribute(){
+        if ($this->slug != '') {
+            return Str::substr($this->slug,0,Str::length($this->slug)-3);
+
+        }
         return $this->title;
     }
 
