@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 
 use Backpack\PageManager\app\Models\Page;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
+
 class PageController extends Controller
 {
     public function index($slug, $subs = null)
     {
-        $page = Page::findBySlug($slug.'_'.Config::get('app.locale'));
+        $page_slug = Str::endsWith($slug,'_tk') || Str::endsWith($slug,'_ru')? $slug : $slug.'_'.config('app.locale');
+
+        $page = Page::findBySlug($page_slug);
 
         if (!$page)
         {
