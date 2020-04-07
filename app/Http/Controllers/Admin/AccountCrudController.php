@@ -30,7 +30,61 @@ class AccountCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-        $this->crud->setFromDb();
+//        $this->crud->setFromDb();
+        $this->crud->setColumns([
+            [
+                'name'  => 'first_name',
+                'label' => 'First Name',
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'last_name',
+                'label' => 'Last Name',
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'email',
+                'label' => trans('backpack::permissionmanager.email'),
+                'type'  => 'email',
+            ],
+            [
+                'name'  => 'is_active',
+                'label' => 'Is Active',
+                'type'  => 'boolean'
+            ],
+            [
+                'name'  => 'is_banned',
+                'label' => 'Is Banned',
+                'type'  => 'boolean'
+            ]
+        ]);
+        $this->crud->addFields([
+            [
+                'name'  => 'first_name',
+                'label' => 'First Name',
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'last_name',
+                'label' => 'Last Name',
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'email',
+                'label' => trans('backpack::permissionmanager.email'),
+                'type'  => 'email',
+            ],
+            [
+                'name'  => 'is_active',
+                'label' => 'Is Active',
+                'type'  => 'boolean'
+            ],
+            [
+                'name'  => 'is_banned',
+                'label' => 'Is Banned',
+                'type'  => 'boolean'
+            ]
+        ]);
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
