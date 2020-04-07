@@ -55,7 +55,7 @@ class SubscriberCrudController extends CrudController
             ] ,
             [
                 'name' => 'active',
-                'type' => 'check',
+                'type' => 'checkbox',
                 'label' => 'Active'
             ]
         ]);

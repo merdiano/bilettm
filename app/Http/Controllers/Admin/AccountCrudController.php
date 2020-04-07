@@ -77,12 +77,12 @@ class AccountCrudController extends CrudController
             [
                 'name'  => 'is_active',
                 'label' => 'Is Active',
-                'type'  => 'check'
+                'type'  => 'checkbox'
             ],
             [
                 'name'  => 'is_banned',
                 'label' => 'Is Banned',
-                'type'  => 'check'
+                'type'  => 'checkbox'
             ]
         ]);
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
