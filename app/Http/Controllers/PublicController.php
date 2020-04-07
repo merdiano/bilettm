@@ -166,6 +166,7 @@ class PublicController extends Controller
             ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%")
             ->withCount(['stats as views' => function($q){
                 $q->select(DB::raw("SUM(views) as v"));}])
+            ->where('events.end_date','>',now(\config('app.timezone')))
             ->paginate(10);
 
         return $this->render('Pages.SearchResults',[
