@@ -154,10 +154,16 @@ class PublicController extends Controller
         //todo implement with elastick search and scout
         $query = sanitise($request->get('q'));
 
+        $lc = config('app.locale');
         $events = Event::onLive()
-            ->with(['mainCategory','subCategory'])
-            ->where('title_ru','like',"%{$query}%")
-            ->orWhere('title_tk','like',"%{$query}%")
+            ->select('events.id',"events.title_{$lc}",'start_date','end_date',"events.description_{$lc}")
+            ->select("venues.venue_name_{$lc} as venue_name","categories.title_{$lc} as category_title")
+            ->join('venues','venues.id','=','events.venue_id')
+            ->join('categories','categories.id','=','events.category_id')
+//            ->with(['mainCategory','subCategory'])
+            ->where('title_'.config('app.locale'),'like',"%{$query}%")
+            ->orWhere('venues.venue_name_'.config('app.locale'),'like',"%{$query}%")
+            ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%")
             ->withCount(['stats as views' => function($q){
                 $q->select(DB::raw("SUM(views) as v"));}])
             ->paginate(10);
