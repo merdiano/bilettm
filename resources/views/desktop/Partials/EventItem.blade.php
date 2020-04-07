@@ -7,7 +7,7 @@
             <div class="film_op">
                 <div class="date">
                     <div class="day">
-                        <h4>{{$event->start_date->format('d.m.Y')}}</h4>
+                        <h4>{{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h4>
                         <h6>{{$event->getSeansCount()}}</h6>
                     </div>
                 </div>
