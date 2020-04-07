@@ -60,7 +60,6 @@ class Page extends Model
     {
 
         $slug = $this->slug?:Str::substr($this->slug,0,Str::length($this->slug)-3);
-        dd($slug);
         return url($slug);
     }
 
