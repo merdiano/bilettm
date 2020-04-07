@@ -25,7 +25,60 @@ class OrganiserCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-        $this->crud->setFromDb();
+//        $this->crud->setFromDb();
+        $this->crud->setColumns([
+            [
+                'name'  => 'account_id',
+                'label' => 'Account',
+                'type'  => 'select',
+                'entity'=> 'account',
+                'attribute'=>'email'
+            ],
+            [
+                'name'  => 'name',
+                'label' => 'Name',
+                'type'  => 'text'
+            ],
+            [
+                'name'  => 'about',
+                'label' => 'About',
+                'type'  => 'text'
+            ],
+            [
+                'name'  => 'email',
+                'label' => trans('backpack::permissionmanager.email'),
+                'type'  => 'email',
+            ]
+        ]);
+        $this->crud->addFields([
+            [
+                'name'  => 'account_id',
+                'label' => 'Account',
+                'type'  => 'select',
+                'entity'=> 'account',
+                'attribute'=>'email'
+            ],
+            [
+                'name'  => 'name',
+                'label' => 'Name',
+                'type'  => 'text'
+            ],
+            [
+                'name'  => 'about',
+                'label' => 'About',
+                'type'  => 'textarea'
+            ],
+            [
+                'name'  => 'phone',
+                'label' => 'Phone',
+                'type'  => 'text'
+            ],
+            [
+                'name'  => 'email',
+                'label' => trans('backpack::permissionmanager.email'),
+                'type'  => 'email',
+            ]
+        ]);
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }

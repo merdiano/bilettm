@@ -52,6 +52,13 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
         'organiser_logo.mimes' => 'Please select a valid image type (jpeg, jpg, png)',
     ];
 
+    protected $fillable = [
+        'account_id',
+        'email',
+        'phone',
+        'name'
+    ];
+
     /**
      * The account associated with the organiser
      *
