@@ -155,18 +155,19 @@ class PublicController extends Controller
         $query = sanitise($request->get('q'));
 
         $lc = config('app.locale');
-        $events = Event::onLive()
-            ->select('events.id',"events.title_{$lc}",'events.start_date','events.end_date',"events.description_{$lc}",
+        $events = Event::select('events.id',"events.title_{$lc}",'events.start_date','events.end_date',"events.description_{$lc}",
                 "venues.venue_name_{$lc} as venue_name","categories.title_{$lc} as category_title")
             ->join('venues','venues.id','=','events.venue_id')
             ->join('categories','categories.id','=','events.category_id')
-//            ->with(['mainCategory','subCategory'])
-            ->where('events.title_'.config('app.locale'),'like',"%{$query}%")
-            ->orWhere('venues.venue_name_'.config('app.locale'),'like',"%{$query}%")
-            ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%")
             ->withCount(['stats as views' => function($q){
                 $q->select(DB::raw("SUM(views) as v"));}])
-            ->where('events.end_date','>',now(\config('app.timezone')))
+            ->onLive()
+            ->where(function ($q) use($query){
+                $q->where('events.title_'.config('app.locale'),'like',"%{$query}%")
+                    ->orWhere('venues.venue_name_'.config('app.locale'),'like',"%{$query}%")
+                    ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%");
+            })
+
             ->paginate(10);
 
         return $this->render('Pages.SearchResults',[
