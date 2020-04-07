@@ -60,14 +60,14 @@ class Page extends Model
     {
 
         $slug = $this->slug?:Str::substr($this->slug,0,Str::length($this->slug)-3);
-        dd($slug);
+
         return url($slug);
     }
 
     public function getOpenButton()
     {
         return '<a class="btn btn-default btn-xs" href="'.$this->getPageLink().'" target="_blank">'.
-            '<i class="fa fa-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
+            '<i class="fa fa-eye"></i> '.$this->getPageLink().trans('backpack::pagemanager.open').'</a>';
     }
 
     /*
