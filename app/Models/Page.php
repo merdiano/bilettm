@@ -58,7 +58,8 @@ class Page extends Model
 
     public function getPageLink()
     {
-        return url($this->slug);
+        $slug = $this->slug?:Str::substr($this->slug,0,Str::length($this->slug)-3);
+        return url($slug);
     }
 
     public function getOpenButton()
@@ -92,14 +93,6 @@ class Page extends Model
             return $this->slug;
         }
 
-        return $this->title;
-    }
-
-    public function getSlugAttribute(){
-        if ($this->slug != '') {
-            return Str::substr($this->slug,0,Str::length($this->slug)-3);
-
-        }
         return $this->title;
     }
 
