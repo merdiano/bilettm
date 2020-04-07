@@ -156,8 +156,8 @@ class PublicController extends Controller
 
         $lc = config('app.locale');
         $events = Event::onLive()
-            ->select('events.id',"events.title_{$lc}",'start_date','end_date',"events.description_{$lc}")
-            ->select("venues.venue_name_{$lc} as venue_name","categories.title_{$lc} as category_title")
+            ->select('events.id',"events.title_{$lc}",'events.start_date',"events.description_{$lc}",
+                "venues.venue_name_{$lc} as venue_name","categories.title_{$lc} as category_title")
             ->join('venues','venues.id','=','events.venue_id')
             ->join('categories','categories.id','=','events.category_id')
 //            ->with(['mainCategory','subCategory'])
