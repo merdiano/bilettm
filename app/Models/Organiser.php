@@ -56,7 +56,8 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
         'account_id',
         'email',
         'phone',
-        'name'
+        'name',
+        'about'
     ];
 
     /**

@@ -33,7 +33,32 @@ class SubscriberCrudController extends CrudController
         */
 
         // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
+//        $this->crud->setFromDb();
+        $this->crud->setColumns([
+           [
+               'name' => 'email',
+               'type' => 'email',
+               'label' => 'Email'
+           ] ,
+            [
+                'name' => 'active',
+                'type' => 'boolean',
+                'label' => 'Active'
+            ]
+        ]);
+
+        $this->crud->addFields([
+            [
+                'name' => 'email',
+                'type' => 'email',
+                'label' => 'Email'
+            ] ,
+            [
+                'name' => 'active',
+                'type' => 'check',
+                'label' => 'Active'
+            ]
+        ]);
 
         // add asterisk for fields that are required in SubscriberRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
