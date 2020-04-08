@@ -227,13 +227,21 @@
                                 <td style="text-align: right;">{{money($ticket['price']+$ticket['organiser_booking_fee']+$ticket['booking_fee'], $event->currency)}}</td>
                             </tr>
                         @endforeach
+                        @if($orderService->totalBookingFee)
+                            <tr>
+                                <td colspan="2">
+                                    @lang('Public_ViewEvent.booking_fees')
+                                </td>
+
+                                <td>{{$orderService->totalBookingFee}}</td>
+                            </tr>
+                        @endif
                     </table>
                 </div>
                 @if($order_total > 0)
+
                     <div class="card-footer">
-                        @if($orderService->totalBookingFee)
-                            <h5>@lang('Public_ViewEvent.booking_fees'): <span style="float: right;"><b>{{$orderService->totalBookingFee}}</b></span></h5>
-                        @endif
+
                         <h5>
                             @lang("Public_ViewEvent.total"): <span style="float: right;"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
                         </h5>
