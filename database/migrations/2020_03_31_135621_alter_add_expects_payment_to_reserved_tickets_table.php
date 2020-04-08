@@ -14,7 +14,7 @@ class AlterAddExpectsPaymentToReservedTicketsTable extends Migration
     public function up()
     {
         Schema::table('reserved_tickets', function (Blueprint $table) {
-            $table->dateTime('expexts_payment_at')->nullable();
+            $table->dateTime('expects_payment_at')->nullable();
         });
     }
 
