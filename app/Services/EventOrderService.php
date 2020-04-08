@@ -22,7 +22,7 @@ class EventOrderService
     /**
      * @var float
      */
-    private $totalBookingFee;
+    public $totalBookingFee;
 
     /**
      * @var Event
