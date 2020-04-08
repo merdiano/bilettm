@@ -107,9 +107,10 @@
 
                                         @endif
                                     @endif
-
+                                    <h4>@lang('Public_ViewEvent.booking_fee') {{money($ticket->totalbookingFee)}}</h4>
                                 </div>
                             @endforeach
+
                         </div>
                         <div class="checked-seats" style="padding: 50px 0; text-align: center">
                             <h5 class="text-center">{{__("ClientSide.yourSeats")}}:</h5>
