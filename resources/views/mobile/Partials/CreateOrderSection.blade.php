@@ -18,7 +18,6 @@
                         <tr>
                             <th></th>
                             <th style="text-align: right;">@lang('Public_ViewEvent.price')</th>
-                            <th style="text-align: right;">@lang('Public_ViewEvent.booking_fees')</th>
                             <th style="text-align: right;">@lang('Public_ViewEvent.sub_total')</th>
                         </tr>
                         </thead>
@@ -32,10 +31,18 @@
                                         {{ money($ticket['original_price'], $event->currency) }}
                                     @endif
                                 </td>
-                                <td style="text-align: right; font-size: 12px;">{{money($ticket['total_booking_fee'], $event->currency)}}</td>
-                                <td style="text-align: right;font-size: 12px;">{{money($ticket['price']+$ticket['organiser_booking_fee']+$ticket['booking_fee'], $event->currency)}}</td>
+                                <td style="text-align: right;font-size: 12px;">{{money($ticket['price'] * $ticket['qty'], $event->currency)}}</td>
                             </tr>
                         @endforeach
+                        @if($orderService->totalBookingFee)
+                            <tr>
+                                <td colspan="2">
+                                    @lang('Public_ViewEvent.booking_fees')
+                                </td>
+
+                                <td style="text-align: right;font-size: 12px;">{{$orderService->getTotalBookingFee()}}</td>
+                            </tr>
+                        @endif
                     </table>
                 </div>
                 @if($order_total > 0)

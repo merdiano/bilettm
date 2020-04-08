@@ -224,7 +224,7 @@
                                     @endif
                                 </td>
 {{--                                <td style="text-align: right;">{{money($ticket['total_booking_fee'], $event->currency)}}</td>--}}
-                                <td style="text-align: right;">{{money($ticket['price']+$ticket['organiser_booking_fee']+$ticket['booking_fee'], $event->currency)}}</td>
+                                <td style="text-align: right;">{{money($ticket['price'] * $ticket['qty'], $event->currency)}}</td>
                             </tr>
                         @endforeach
                         @if($orderService->totalBookingFee)
@@ -233,7 +233,7 @@
                                     @lang('Public_ViewEvent.booking_fees')
                                 </td>
 
-                                <td>{{$orderService->totalBookingFee}}</td>
+                                <td style="text-align: right;">{{$orderService->getTotalBookingFee()}}</td>
                             </tr>
                         @endif
                     </table>

@@ -58,6 +58,7 @@ class EventOrderService
     }
 
 
+
     /**
      * Calculates the final costs for an event and sets the various totals
      */
@@ -73,7 +74,13 @@ class EventOrderService
 
         $this->grandTotal = $this->orderTotalWithBookingFee + $this->taxAmount;
     }
+    public function getTotalBookingFee($currencyFormatted = false){
+        if ($currencyFormatted == false ) {
+            return number_format($this->totalBookingFee, 2, '.', '');
+        }
 
+        return money($this->totalBookingFee, $this->event->currency);
+    }
     /**
      * @param bool $currencyFormatted
      * @return float|string
