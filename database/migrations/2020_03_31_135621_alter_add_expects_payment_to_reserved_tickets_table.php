@@ -26,7 +26,7 @@ class AlterAddExpectsPaymentToReservedTicketsTable extends Migration
     public function down()
     {
         Schema::table('reserved_tickets', function (Blueprint $table) {
-            $table->dropColumn('expects_payment_at');
+            $table->dropColumn('expexts_payment_at');
         });
     }
 }
