@@ -40,7 +40,7 @@
                                     @lang('Public_ViewEvent.booking_fees')
                                 </td>
 
-                                <td style="text-align: right;font-size: 12px;">{{$orderService->getTotalBookingFee()}}</td>
+                                <td style="text-align: right;font-size: 12px;">{{$orderService->getTotalBookingFee(true)}}</td>
                             </tr>
                         @endif
                     </table>
