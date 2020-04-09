@@ -107,7 +107,9 @@
 
                                         @endif
                                     @endif
+                                    @if($ticket->totalbookingFee)
                                     <h6 class="text-center">* @lang('ClientSide.booking_fee_text') {{money($ticket->totalbookingFee)}}</h6>
+                                    @endif
                                 </div>
                             @endforeach
 

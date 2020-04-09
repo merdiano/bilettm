@@ -152,6 +152,6 @@ return [
     'subscribe_success_message' => 'Подписка прошла успешна',
     'subscribe_error_message' => 'Подписка не осуществилась. Пожалуйста, попробуйте еще раз',
 
-    'currency_code' => ' manat.',
-    'booking_fee_text' => 'Booking fee per ticket:'
+    'currency_code' => ' манат.',
+    'booking_fee_text' => 'За билет взимается сервисный сбор в размере '
 ];
