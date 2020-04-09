@@ -242,9 +242,9 @@
 
                     <div class="card-footer">
 
-                        <h5>
-                            @lang("Public_ViewEvent.total"): <span style="float: right;"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
-                        </h5>
+                        <h6 class="text-center">
+                           * @lang("Public_ViewEvent.total"): <span style="float: right;"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
+                        </h6>
                         @if($event->organiser->charge_tax)
                             <h5>
                                 {{ $event->organiser->tax_name }} ({{ $event->organiser->tax_value }}%):
