@@ -32,13 +32,16 @@
                 </svg>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-6 text-center mb-5 pb-5">
 
                 <h1 property="name" class="mb-3 font-weight-bold text-center">@lang('ClientSide.checkout_fail_title')</h1>
                 @lang('ClientSide.checkout_fail_text')
-                <a class="red_button my-5" href="/">@lang('ClientSide.checkout_fail_button')</a>
+
             </div>
+        </div>
+        <div class="row justify-content-center mb-5 py-5">
+            <a class="red_button my-5" href="/">@lang('ClientSide.checkout_fail_button')</a>
         </div>
     </section>
 
