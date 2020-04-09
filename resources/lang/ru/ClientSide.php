@@ -155,5 +155,6 @@ return [
     'currency_code' => ' манат.',
     'booking_fee_text' => 'За билет взимается сервисный сбор в размере ',
     'checkout_fail_title' => 'Sorry',
-    'checkout_fail_text' => 'Checkout failed!'
+    'checkout_fail_text' => 'Checkout failed!',
+    'checkout_fail_button' => 'Go home'
 ];

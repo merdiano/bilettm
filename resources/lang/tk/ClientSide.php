@@ -153,5 +153,6 @@ return [
     'currency_code' => ' manat.',
     'booking_fee_text' => 'Her bilet üçin hyzmat ýygymy ',
     'checkout_fail_title' => 'Sorry',
-    'checkout_fail_text' => 'Checkout failed!'
+    'checkout_fail_text' => 'Checkout failed!',
+    'checkout_fail_button' => 'Go home'
 ];

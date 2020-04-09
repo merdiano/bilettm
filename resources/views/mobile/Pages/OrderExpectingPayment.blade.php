@@ -34,7 +34,7 @@
                 <p class="pb-5 mb-5">
                     @lang('ClientSide.checkout_fail_text')
                 </p>
-                <a class="red_button" href="#">@lang('ClientSide.checkout_fail_button')</a>
+                <a class="red_button" href="/">@lang('ClientSide.checkout_fail_button')</a>
             </div>
         </div>
     </section>
