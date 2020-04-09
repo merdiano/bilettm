@@ -28,14 +28,17 @@
                     </g>
                 </svg>
             </div>
-            <div class="col-md-12 text-center mb-5 pb-5">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 g-font-size-16">
 
-                <h1 property="name" style="font-weight: bold">@lang('ClientSide.checkout_fail_title')</h1>
-                <p class="pb-5 mb-5">
-                    @lang('ClientSide.checkout_fail_text')
-                </p>
-                <a class="red_button" href="/">@lang('ClientSide.checkout_fail_button')</a>
+                <h1 property="name" class="mb-3 font-weight-bold text-center">@lang('ClientSide.checkout_fail_title')</h1>
+                @lang('ClientSide.checkout_fail_text')
+
             </div>
+        </div>
+        <div class="row justify-content-center py-5">
+            <a class="red_button mb-5" href="/">@lang('ClientSide.checkout_fail_button')</a>
         </div>
     </section>
 
