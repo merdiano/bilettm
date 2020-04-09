@@ -31,10 +31,8 @@
             <div class="col-md-12 text-center mb-5 pb-5">
 
                 <h1 property="name" style="font-weight: bold">@lang('ClientSide.checkout_fail_title')</h1>
-                <p class="pb-5 mb-5">
-                    @lang('ClientSide.checkout_fail_text')
-                </p>
-                <a class="red_button" href="/">@lang('ClientSide.checkout_fail_button')</a>
+                @lang('ClientSide.checkout_fail_text')
+                <a class="red_button mt-5" href="/">@lang('ClientSide.checkout_fail_button')</a>
             </div>
         </div>
     </section>
