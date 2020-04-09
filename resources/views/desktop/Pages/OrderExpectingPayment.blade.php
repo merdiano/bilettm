@@ -12,6 +12,10 @@
             transition-property: background-color;
             transition-duration: .2s;
         }
+        ul{
+            width: fit-content;
+            margin: auto;
+        }
     </style>
 @endpush
 @section('content')
@@ -30,9 +34,9 @@
             </div>
             <div class="col-md-12 text-center mb-5 pb-5">
 
-                <h1 property="name" style="font-weight: bold">@lang('ClientSide.checkout_fail_title')</h1>
+                <h1 property="name" class="mb-3 font-weight-bold">@lang('ClientSide.checkout_fail_title')</h1>
                 @lang('ClientSide.checkout_fail_text')
-                <a class="red_button mt-5" href="/">@lang('ClientSide.checkout_fail_button')</a>
+                <a class="red_button my-5" href="/">@lang('ClientSide.checkout_fail_button')</a>
             </div>
         </div>
     </section>
