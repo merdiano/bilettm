@@ -1,5 +1,19 @@
 @extends('Shared.Layouts.BilettmLayout',['folder' => 'desktop'])
-
+@push('after_styles')
+    <style type="text/css">
+        .red_button{
+            color: #ffffff;
+            background-color: #d33d33;
+            height: fit-content;
+            font-size: 20px;
+            padding: 12px 60px;
+            border-radius: 5px;
+            margin-right: 5px;
+            transition-property: background-color;
+            transition-duration: .2s;
+        }
+    </style>
+@stop
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('about',trans('ClientSide.checkout_fail_title'))}}
     <section id="intro" class="container">
@@ -20,7 +34,7 @@
                 <p class="pb-5 mb-5">
                     @lang('ClientSide.checkout_fail_text')
                 </p>
-                <a class="btn btn-danger mt-3" href="#">@lang('ClientSide.checkout_fail_button')</a>
+                <a class="red_button" href="#">@lang('ClientSide.checkout_fail_button')</a>
             </div>
         </div>
     </section>
