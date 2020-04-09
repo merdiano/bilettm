@@ -20,6 +20,7 @@
                 <p class="pb-5 mb-5">
                     @lang('ClientSide.checkout_fail_text')
                 </p>
+                <a class="btn btn-danger mt-3" href="#">@lang('ClientSide.checkout_fail_button')</a>
             </div>
         </div>
     </section>
