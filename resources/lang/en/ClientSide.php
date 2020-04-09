@@ -142,5 +142,7 @@ return [
     'subscribe_error_message' => 'Subscription unsuccessful',
 
     'currency_code' => ' manat.',
-    'booking_fee_text' => 'Booking fee per ticket:'
+    'booking_fee_text' => 'Booking fee per ticket:',
+    'checkout_fail_title' => 'Sorry',
+    'checkout_fail_text' => 'Checkout failed!'
 ];

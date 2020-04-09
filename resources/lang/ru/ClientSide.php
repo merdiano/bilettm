@@ -153,5 +153,7 @@ return [
     'subscribe_error_message' => 'Подписка не осуществилась. Пожалуйста, попробуйте еще раз',
 
     'currency_code' => ' манат.',
-    'booking_fee_text' => 'За билет взимается сервисный сбор в размере '
+    'booking_fee_text' => 'За билет взимается сервисный сбор в размере ',
+    'checkout_fail_title' => 'Sorry',
+    'checkout_fail_text' => 'Checkout failed!'
 ];
