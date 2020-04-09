@@ -59,6 +59,7 @@ class CardPayment{
             $request = $this->client->post('getOrderStatus.do',$params);
 
             $response->setResponseData($request->getBody());
+            Log::info($request->getBody());
         }
         catch (\Exception $ex){
             Log::error($ex);
