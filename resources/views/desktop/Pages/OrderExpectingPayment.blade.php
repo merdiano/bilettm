@@ -11,10 +11,6 @@
             transition-property: background-color;
             transition-duration: .2s;
         }
-        ul{
-            width: fit-content;
-            margin: auto;
-        }
     </style>
 @endpush
 @section('content')
@@ -33,7 +29,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-6 text-center mb-5 pb-5">
+            <div class="col-6">
 
                 <h1 property="name" class="mb-3 font-weight-bold text-center">@lang('ClientSide.checkout_fail_title')</h1>
                 @lang('ClientSide.checkout_fail_text')
