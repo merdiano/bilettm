@@ -152,7 +152,16 @@ return [
 
     'currency_code' => ' manat.',
     'booking_fee_text' => 'Her bilet üçin hyzmat ýygymy ',
-    'checkout_fail_title' => 'Sorry',
-    'checkout_fail_text' => 'Checkout failed!',
-    'checkout_fail_button' => 'Go home'
+    'checkout_fail_title' => 'Töleg bilen baglanyşykly mesele ýüze çykdy.',
+    'checkout_fail_text' => '<p>Ваш запрос находится в процессе обработки Банком. Дождитесь смс-уведомление об оплате. Если
+в течении 15 минут билеты не пришли на почту, Ваш заказ отклонен. Попробуйте купить снова.</p>
+<p>Причины, по которым могла произойти ошибка:</p>
+<ul>
+<li>Недостаточно средств на счету.</li>
+<li>Банк не успевает обработать запрос.</li>
+<li>Нестабильное Интернет-соединение.</li>
+</ul>
+
+<p>В случае, если оплата прошла успешно, но билеты не пришли на почту, свяжитесь с нами.</p>',
+    'checkout_fail_button' => 'Contact with us'
 ];

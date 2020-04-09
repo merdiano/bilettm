@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-12 g-font-size-16">
+            <div class="col-12 g-font-size-15">
 
                 <h2 property="name" class="my-3 font-weight-bold text-center">@lang('ClientSide.checkout_fail_title')</h2>
                 @lang('ClientSide.checkout_fail_text')
