@@ -13,7 +13,7 @@
             transition-duration: .2s;
         }
     </style>
-    @stop
+@endpush
 @section('content')
 
     <section id="intro" class="container">

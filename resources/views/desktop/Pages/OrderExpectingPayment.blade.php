@@ -13,7 +13,7 @@
             transition-duration: .2s;
         }
     </style>
-@stop
+@endpush
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('about',trans('ClientSide.checkout_fail_title'))}}
     <section id="intro" class="container">
