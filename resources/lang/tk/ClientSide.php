@@ -149,4 +149,7 @@ return [
     'add_event_error_message' => 'Talapnma ugradylanda ýalňyşlyk ýüze çykdy',
     'subscribe_success_message' => 'Ýazylanyňyz üçin sag boluň. Sizi täze çäreler bilen habardar ederis.',
     'subscribe_error_message' => 'Ýazylyşyk amala aşmady. Täzeden synanşmagyňyzy haýyş edýäris.',
+
+    'currency_code' => ' manat.',
+    'booking_fee_text' => 'Hyzmat ýygymy:'
 ];

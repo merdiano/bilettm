@@ -224,7 +224,7 @@
                                     @endif
                                 </td>
 {{--                                <td style="text-align: right;">{{money($ticket['total_booking_fee'], $event->currency)}}</td>--}}
-                                <td style="text-align: right;">{{money($ticket['price'] * $ticket['qty'], $event->currency)}}</td>
+                                <td style="text-align: right;">{{money($ticket['price'], $event->currency)}}</td>
                             </tr>
                         @endforeach
                         @if($orderService->totalBookingFee)
@@ -242,9 +242,9 @@
 
                     <div class="card-footer">
 
-                        <h6 class="text-center">
-                           * @lang("Public_ViewEvent.total"): <span style="float: right;"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
-                        </h6>
+                        <h5>
+                            @lang("Public_ViewEvent.total"): <span style="float: right;"><b>{{ $orderService->getOrderTotalWithBookingFee(true) }}</b></span>
+                        </h5>
                         @if($event->organiser->charge_tax)
                             <h5>
                                 {{ $event->organiser->tax_name }} ({{ $event->organiser->tax_value }}%):

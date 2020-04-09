@@ -31,7 +31,7 @@
                                         {{ money($ticket['original_price'], $event->currency) }}
                                     @endif
                                 </td>
-                                <td style="text-align: right;font-size: 12px;">{{money($ticket['price'] * $ticket['qty'], $event->currency)}}</td>
+                                <td style="text-align: right;font-size: 12px;">{{money($ticket['price'], $event->currency)}}</td>
                             </tr>
                         @endforeach
                         @if($orderService->totalBookingFee)

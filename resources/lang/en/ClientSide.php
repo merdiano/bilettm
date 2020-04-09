@@ -141,4 +141,6 @@ return [
     'subscribe_success_message' => 'Subscription successfully',
     'subscribe_error_message' => 'Subscription unsuccessful',
 
+    'currency_code' => ' manat.',
+    'booking_fee_text' => 'Booking fee per ticket:'
 ];

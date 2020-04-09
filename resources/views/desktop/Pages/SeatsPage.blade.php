@@ -104,7 +104,7 @@
 
                                         @endif
                                     @endif
-                                    <h5 class="text-center">* @lang('Public_ViewEvent.booking_fee') {{money($ticket->totalbookingFee)}}</h5>
+                                    <h5 class="text-center">* @lang('ClientSide.booking_fee_text') {{money($ticket->totalbookingFee)}}</h5>
                                 </div>
                             @endforeach
                         </div>
