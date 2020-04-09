@@ -11,7 +11,7 @@ abstract class Controller extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;
 
-    protected function render($view, $data = null){
+    protected function render($view, $data = []){
 
         $dir = Agent::isDesktop()?'desktop.':'mobile.';
         return view($dir.$view, $data);

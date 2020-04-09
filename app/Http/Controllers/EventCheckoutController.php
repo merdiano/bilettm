@@ -417,6 +417,7 @@ class EventCheckoutController extends Controller
             ]);
         }
 
+        //todo check the refresh page condition
         $order_id = session()->get('ticket_order_' . $event_id . '.order_id');
         $ticket_order = session()->get('ticket_order_' . $event_id);
         $order = Order::findOrFail(sanitise($order_id[0]));
