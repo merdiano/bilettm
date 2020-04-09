@@ -60,14 +60,14 @@
                                     {{--src="{{asset('user_content/'.$ticket->section->section_image)}}" >--}}
                                     {{--</div>--}}
                                     @if($ticket->is_paused)
-                                        <h1 class="text-danger">@lang("Public_ViewEvent.currently_not_on_sale")</h1>
+                                        <h1 class="text-danger text-center">@lang("Public_ViewEvent.currently_not_on_sale")</h1>
                                     @else
                                         @if($ticket->sale_status === config('attendize.ticket_status_sold_out'))
-                                            <span class="text-danger" property="availability"content="http://schema.org/SoldOut">
+                                            <h1 class="text-danger text-center" property="availability"content="http://schema.org/SoldOut">
                                                 @lang("Public_ViewEvent.sold_out")
-                                            </span>
+                                            </h1>
                                         @elseif($ticket->sale_status === config('attendize.ticket_status_after_sale_date'))
-                                            <span class="text-danger">@lang("Public_ViewEvent.sales_have_ended")</span>
+                                            <h1 class="text-danger text-center">@lang("Public_ViewEvent.sales_have_ended")</h1>
                                         @else
                                             <meta property="availability" content="http://schema.org/InStock">
                                             <div class="standard-box" style="position: relative; padding: 20px 0; user-select: none;">
