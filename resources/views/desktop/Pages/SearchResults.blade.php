@@ -20,17 +20,16 @@
             </div>
             <div class="row">
                 @foreach($events as $event)
-                    @include('desktop.Partials.EventItem')
                     <div class="col-4">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-4">
                                 <img class="film_img img-responsive" src="{{asset($event->images->first()->image_path ?? '#')}}" alt="{{$event->title}}"/>
                             </div>
-                            <div class="col-9">
-                                <h2 class="film_name"><a href="{{$event->event_url}}">{{$event->title}}</a></h2>
-                                <h4>@lang('ClientSide.category') : {{$event->category_title}}</h4>
-                                <h4>@lang('ClientSide.venue') : {{$event->venue_name}}</h4>
-                                <h4>@lang('ClientSide.date') : {{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h4>
+                            <div class="col-8">
+                                <h3 class="film_name"><a href="{{$event->event_url}}">{{$event->title}}</a></h3>
+                                <h6>@lang('ClientSide.category') : {{$event->category_title}}</h6>
+                                <h6>@lang('ClientSide.venue') : {{$event->venue_name}}</h6>
+                                <h6>@lang('ClientSide.date') : {{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h6>
                             </div>
                         </div>
                     </div>
