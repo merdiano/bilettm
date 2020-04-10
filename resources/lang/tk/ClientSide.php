@@ -152,16 +152,17 @@ return [
 
     'currency_code' => ' manat.',
     'booking_fee_text' => 'Her bilet üçin hyzmat ýygymy ',
-    'checkout_fail_title' => 'Töleg bilen baglanyşykly mesele ýüze çykdy.',
-    'checkout_fail_text' => '<p>Ваш запрос находится в процессе обработки Банком. Дождитесь смс-уведомление об оплате. Если
-в течении 15 минут билеты не пришли на почту, Ваш заказ отклонен. Попробуйте купить снова.</p>
-<p>Причины, по которым могла произойти ошибка:</p>
+    'checkout_fail_title' => 'Tölegiňiz geçmedi.',
+    'checkout_fail_text' => '<p>Siziň tölegeňiz Bank tarapyndan işlenilýän bolup biler. Töleg geçenligi barada habar berýän SMS-e garaşyň. 
+Eger-de siziň elektron poçtaňyza 15 minudyň dowamynda biletler gelmedik bolsa, siziň 
+sargydyňyz Bank tarapyndan ýatyrylandyr. Biletleri täzeden satyn almaga synanşyp görüň.</p>
+<p>Ýalňyşlyk ýüze çykmaklygyň sebäpleri:</p>
 <ul>
-<li>Недостаточно средств на счету.</li>
-<li>Банк не успевает обработать запрос.</li>
-<li>Нестабильное Интернет-соединение.</li>
+<li>Hasabyňyzda ýeterlik pul serişdesi ýok</li>
+<li>Bank siziň tölegiňizi geçirip ýetişmedi</li>
+<li> Internet baglanşygy pes.</li>
 </ul>
 
-<p>В случае, если оплата прошла успешно, но билеты не пришли на почту, свяжитесь с нами.</p>',
+<p>Eger-de töleg geçen bolsa, emma biletler elektron poçtaňyza gelmedik ýagdaýynda, bize ýüz tutmagyňyzy haýyş edýäris.</p>',
     'checkout_fail_button' => 'Contact with us'
 ];
