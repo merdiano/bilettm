@@ -20,16 +20,16 @@
             </div>
             <div class="row">
                 @foreach($events as $event)
-                    <div class="col-4 mb-2">
+                    <div class="col-4 mb-3">
                         <div class="row">
                             <div class="col-4">
                                 <img class="w-100 img-responsive" src="{{asset($event->images->first()->image_path ?? '#')}}" alt="{{$event->title}}"/>
                             </div>
                             <div class="col-8">
                                 <h4 class="film_name"><a href="{{$event->event_url}}">{{$event->title}}</a></h4>
-                                <h6 class="text-left">@lang('ClientSide.category') : {{$event->category_title}}</h6>
-                                <h6 class="text-left">@lang('ClientSide.venue') : {{$event->venue_name}}</h6>
-                                <h6 class="text-left">@lang('ClientSide.date') : {{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h6>
+                                <h5 class="text-left"><b>@lang('ClientSide.category')</b>: {{$event->category_title}}</h5>
+                                <h5 class="text-left"><b>@lang('ClientSide.venue')</b>: {{$event->venue_name}}</h5>
+                                <h5 class="text-left"><b>@lang('ClientSide.date')</b>: {{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h5>
                             </div>
                         </div>
                     </div>
