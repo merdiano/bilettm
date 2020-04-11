@@ -30,7 +30,7 @@ return [
     'connections' => [
 
         'sync' => [
-            'driver' => 'redis',
+            'driver' => 'sync',
         ],
         'database' => [
             'driver' => 'database',
@@ -62,8 +62,7 @@ return [
         'redis' => [
             'driver' => 'redis',
             'queue' => 'default',
-            'retry_after' => 90,
-            'block_for' => 5,
+            'expire' => 60,
         ],
     ],
     /*
