@@ -449,7 +449,7 @@ class EventCheckoutController extends Controller
             ]);
         } else {
             //some times bank responds as payment not processed and we check 5 minutes later paymant status
-            ProcessPayment::dispatch($order,$ticket_order)->delay(now()->addMinutes(5));
+            ProcessPayment::dispatch($order,$ticket_order)->delay(now()->addMinutes(1));
             return $this->render('Pages.OrderExpectingPayment');
         }
     }
@@ -501,7 +501,7 @@ class EventCheckoutController extends Controller
             ReservedTickets::where('session_id', $order->session_id)
                 ->where('event_id', $event_id)
                 ->update(['expects_payment_at' => Carbon::now()]);
-            ProcessPayment::dispatch($order)->delay(now()->addMinutes(5));
+            ProcessPayment::dispatch($order)->delay(now()->addMinutes(1));
             return $this->render('Pages.OrderExpectingPayment',$order);
         }
     }
