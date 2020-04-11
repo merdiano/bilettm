@@ -182,7 +182,7 @@
                 <div class="form-row">
                     <div class="col-6">
                         <div class="form-group">
-                            {!! Form::checkbox("order_terms", true, true,['required' => 'required', 'class' => 'form-control','style'=>'width:fit-content;display:inline-block;margin-right:10px']) !!}
+                            {!! Form::checkbox("order_terms", true, false,['required' => 'required', 'class' => 'form-control','style'=>'width:fit-content;display:inline-block;margin-right:10px']) !!}
                             <a style="color: #000000;" target="_blank" href="{{route('about',['page'=>'oferta_'.Config::get('app.locale')])}}">@lang('ClientSide.terms_conditions')</a>
                         </div>
                     </div>
