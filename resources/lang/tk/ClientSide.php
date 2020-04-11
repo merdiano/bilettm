@@ -164,5 +164,6 @@ sargydyňyz Bank tarapyndan ýatyrylandyr. Biletleri täzeden satyn almaga synan
 </ul>
 
 <p>Eger-de töleg geçen bolsa, emma biletler elektron poçtaňyza gelmedik ýagdaýynda, bize ýüz tutmagyňyzy haýyş edýäris.</p>',
-    'checkout_fail_button' => 'Contact with us'
+    'checkout_fail_button' => 'Habarlaşmak üçin.',
+    'category' => 'Kategoriýasy',
 ];

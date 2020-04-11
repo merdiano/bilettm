@@ -168,7 +168,7 @@ class PublicController extends Controller
                     ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%");
             })
 
-            ->paginate(10);
+            ->paginate(12);
 
         return $this->render('Pages.SearchResults',[
             'events' => $events,
