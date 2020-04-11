@@ -19,6 +19,7 @@ class ProcessPayment extends Job implements ShouldQueue
 
     protected $order;
     protected $session_data;
+    public $tries = 5;
     /**
      * Create a new job instance.
      *

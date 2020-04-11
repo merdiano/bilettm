@@ -88,6 +88,7 @@ class Ticket extends MyBaseModel
     public function booked(){
         return $this->hasMany(Attendee::class)
             ->where('is_cancelled',false)
+            ->where('is_refunded',false)
             ->orderBy('seat_no','asc');
     }
 
