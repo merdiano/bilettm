@@ -373,7 +373,7 @@ class EventCheckoutController extends Controller
                 $return = [
                     'status'       => 'success',
                     'redirectUrl'  => $response->getRedirectUrl(),
-                    'message'      => 'Redirecting to payment gateway'
+                    'message'      => trans('ClientSide.redirect_payment_message')
                 ];
 
                 return response()->json($return);

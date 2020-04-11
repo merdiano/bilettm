@@ -154,5 +154,6 @@ return [
 </ul>
 
 <p>В случае, если оплата прошла успешно, но билеты не пришли на почту, свяжитесь с нами.</p>',
-    'checkout_fail_button' => 'Contact us'
+    'checkout_fail_button' => 'Contact us',
+    'redirect_payment_message' =>'Redirecting to payment gateway',
 ];

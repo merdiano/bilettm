@@ -160,4 +160,5 @@ return [
 <p>В случае, если оплата прошла успешно, но билеты не пришли на почту.</p>',
     'checkout_fail_button' => 'свяжитесь с нами',
     'category' => 'Категория',
+    'redirect_payment_message' =>'Redirecting to payment gateway',
 ];
