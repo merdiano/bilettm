@@ -35,14 +35,14 @@
                             @endforeach
                             </div>
                         </div>
-                        <div class="col-8 ">
+                        <div class="col-8">
                             <div class="it-detail">
                                 {!! Markdown::parse($current->description) !!}
                             </div>
 
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-5">
                         <div class="col-12">
                             <div class="google-maps content" id="map" style="height: 250px">
                             </div>
