@@ -27,7 +27,7 @@
                         <h2>{{$current->venue_name}}</h2>
                     </div>
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-4">
                             <div class="owl-carousel owl-theme" >
                             @foreach($current->images as $key =>$img)
                                 <img class="details-image img-responsive" alt="{{$current->venue_name}}" src="{{asset('user_content/'.$img)}}">
@@ -35,7 +35,7 @@
                             @endforeach
                             </div>
                         </div>
-                        <div class="col-7 ">
+                        <div class="col-8 ">
                             <div class="it-detail">
                                 {!! Markdown::parse($current->description) !!}
                             </div>
