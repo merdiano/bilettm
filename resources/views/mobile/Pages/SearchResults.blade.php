@@ -9,38 +9,28 @@
                 </div>
                 <div class="tab-ozi col-12">
                     <!-- Nav tabs -->
-                    <ul class="nav u-nav-v1-1 g-mb-20" role="tablist" data-target="nav-1-1-default-hor-left" data-tabs-mobile-type="slide-up-down" data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-lightgray g-mb-20">
+                    <ul class="nav u-nav-v1-1 g-mb-20">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" role="tab">{{__("ClientSide.results")}}: {{$events->count()}}/{{$events->total()}}</a>
                         </li>
                     </ul>
-                    <!-- End Nav tabs -->
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="kinoteator-tab1-wrapper">
-                            <div class="container">
-                                @foreach($events as $event)
-                                    <div class="row mb-4" onclick="window.location.href = '{{$event->event_url}}';">
-                                        <div class="col-4 pr-0">
-                                            <img class="w-100 img-responsive" src="{{asset($event->images->first()->image_path ?? '#')}}" alt="{{$event->title}}"/>
-                                        </div>
-                                        <div class="col-8">
-                                            <h5 >{{$event->title}}</h5>
-                                            <h6 class="text-left"><b>@lang('ClientSide.category')</b>: {{$event->category_title}}</h6>
-                                            <h6 class="text-left"><b>@lang('ClientSide.venue')</b>: {{$event->venue_name}}</h6>
-                                            <h6 class="text-left"><b>@lang('ClientSide.date')</b>: {{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h6>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <div class="row">
-                                        {{$events->links('vendor.pagination.simple-bootstrap-4')}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Tab panes -->
                 </div>
+            </div>
+            @foreach($events as $event)
+                <div class="row mb-4" onclick="window.location.href = '{{$event->event_url}}';">
+                    <div class="col-4 pr-0">
+                        <img class="w-100 img-responsive" src="{{asset($event->images->first()->image_path ?? '#')}}" alt="{{$event->title}}"/>
+                    </div>
+                    <div class="col-8">
+                        <h5 >{{$event->title}}</h5>
+                        <h6 class="text-left"><b>@lang('ClientSide.category')</b>: {{$event->category_title}}</h6>
+                        <h6 class="text-left"><b>@lang('ClientSide.venue')</b>: {{$event->venue_name}}</h6>
+                        <h6 class="text-left"><b>@lang('ClientSide.date')</b>: {{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h6>
+                    </div>
+                </div>
+            @endforeach
+            <div class="row">
+                {{$events->links('vendor.pagination.simple-bootstrap-4')}}
             </div>
         </div>
     </section>
