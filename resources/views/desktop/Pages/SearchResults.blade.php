@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row kinoteator tab-part">
                 <div class="tab-header d-flex justify-content-between col-12">
-                    <h2 class="">@lang('ClientSide.search_result') : {{$query}}</h2>
+                    <h2 class="">@lang('ClientSide.search_result') {{$query}}</h2>
                     <div style="height: 5px; margin-left: 5px; position: absolute; bottom: 0px; width: 100px; background-color: rgba(211,61,51,1)"></div>
                 </div>
                 <div class="tab-ozi col-12">
