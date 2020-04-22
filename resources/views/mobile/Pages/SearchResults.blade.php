@@ -21,18 +21,16 @@
                         <div class="kinoteator-tab1-wrapper">
                             <div class="container">
                                 @foreach($events as $event)
-                                    <div class="row mb-4">
-                                        <a href="{{$event->event_url}}">
+                                    <div class="row mb-4" onclick="alert('click')">
                                         <div class="col-4 pr-0">
                                             <img class="w-100 img-responsive" src="{{asset($event->images->first()->image_path ?? '#')}}" alt="{{$event->title}}"/>
                                         </div>
                                         <div class="col-8">
-                                            <h5 class="film_name">{{$event->title}}</h5>
+                                            <h5 class="film_name"><a href="{{$event->event_url}}">{{$event->title}}</a></h5>
                                             <h6 class="text-left"><b>@lang('ClientSide.category')</b>: {{$event->category_title}}</h6>
                                             <h6 class="text-left"><b>@lang('ClientSide.venue')</b>: {{$event->venue_name}}</h6>
                                             <h6 class="text-left"><b>@lang('ClientSide.date')</b>: {{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h6>
                                         </div>
-                                        </a>
                                     </div>
                                 @endforeach
                                 <div class="row">
