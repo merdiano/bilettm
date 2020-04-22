@@ -21,7 +21,7 @@
                         <div class="kinoteator-tab1-wrapper">
                             <div class="container">
                                 @foreach($events as $event)
-                                    <div class="row mb-4" onclick="window.location.href = '{{{{$event->event_url}}}}';">
+                                    <div class="row mb-4" onclick="window.location.href = '{{$event->event_url}}';">
                                         <div class="col-4 pr-0">
                                             <img class="w-100 img-responsive" src="{{asset($event->images->first()->image_path ?? '#')}}" alt="{{$event->title}}"/>
                                         </div>
