@@ -16,7 +16,7 @@
                             <h3>@lang('ClientSide.concert_halls')</h3><div style="background-color: rgba(211,61,51,1);height: 5px;width: 80px;margin-bottom: 15px;"></div> </li>
                         @foreach($venues as $venue)
                             <li class="list-group-item border-0 pl-0">
-                                <a class="text-dark capitalizer" href="{{route('venues',['id'=>$venue->id])}}">{{$venue->venue_name}}</a></li>
+                                <a class="text-dark" href="{{route('venues',['id'=>$venue->id])}}">{{$venue->venue_name}}</a></li>
                         @endforeach
                     </ul>
                     <div style="width: 5px;float: left;height: calc(100% - 20px); margin-top: 10px; margin-left: -6px; box-shadow: 2px 0 10px rgba(0,0,0,.1)"></div>

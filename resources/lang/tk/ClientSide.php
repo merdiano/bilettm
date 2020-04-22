@@ -94,18 +94,16 @@ return [
     'results' => 'Gözlegiň netijeleri',
 
     //SeatsPage.blade.php
-    'seats' => 'Ýer saýla',
+    'seats' => 'Orun saýlaň',
     'available' => 'Elýeter',
     'booked' => 'Satyn alynan',
     'reserved' => 'Rezerwlenen',
-    'selection' => 'Siziň saýlan ýeriňiz',
-    'selected' => 'Siz saýladyňyz',
-    'seatsTotal' => 'ýeri. Umumy baha',
-    'yourSeats' => 'Siziň ýerleriňiz',
+    'selection' => 'Siziň belläniňiz',
+    'yourSeats' => 'Siziň orunlaryňyz',
     'exceeds' => "Satyn almaga rugsat berilen biletleriň aňyrybaşy",
 
     //CheckoutPage
-    'confirm-seats' => 'Saýlan ýerleriňizi tassyklaň',
+    'confirm-seats' => 'Saýlananlary tassyklaň',
 
     //Schedule.blade.php
     'schedule' => 'Geçirilýän tertibi',
@@ -113,10 +111,10 @@ return [
     'timePlay' => 'Wagty',
 
     //Chcekout page
-    'checkout' => 'Checkout',
-    'no_seats' => 'Ýer saýlamagyňyzy haýyş edýäris',
-    'min_ticket_message' => 'Iň azyndan :min ýer saýlaň.',
-    'max_ticket_message' => 'Siz iň köp :max ýer saýlap bilersiňiz' ,
+    'checkout' => 'Orunlar',
+    'no_seats' => 'Orun saýlamagyňyzy haýyş edýäris',
+    'min_ticket_message' => 'Iň azyndan :min orun saýlaň.',
+    'max_ticket_message' => 'Siz iň köp :max orun saýlap bilersiňiz' ,
     'holder_first_name_required' => ':seat biletiň eýesiniň adyny giriziň',
     'holder_last_name_required' => ':seat biletiň eýesiniň familiýasyny giriziň',
     'holder_email_required' => ':seat biletiň eýesiniň elektron poçtasyny giriziň',
@@ -127,7 +125,7 @@ return [
     'payment_cancelled' => 'Töleg kabul edilmedi',
     'no_ordere_id' => 'Sargydyň belgisi ýok',
     'order_error' => 'Bagyşlaň! Siziň sargydyňyz işlenilen wagty ýalňyşlyk ýüze çykdy. Täzeden synanyşmagyňyzy haýyş edýäris.',
-    'message_reserved' => 'Bu ýer eýýäm eýelendi. Başga ýeri saýlamagyňyzy haýyş edýäris.',
+    'message_reserved' => 'Bu orun eýýäm eýelendi. Başga orun saýlamagyňyzy haýyş edýäris.',
     'message_wait' => 'Garaşyň',
 
     //About page
@@ -167,4 +165,5 @@ sargydyňyz Bank tarapyndan ýatyrylandyr. Biletleri täzeden satyn almaga synan
     'checkout_fail_button' => 'Habarlaşmak üçin.',
     'category' => 'Kategoriýasy',
     'redirect_payment_message' =>'Töleg sahypasyna geçilýär',
+    'search_result' => 'Gözleg netijesi:',
 ];

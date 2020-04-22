@@ -100,8 +100,6 @@ return [
     'booked' => 'Booked',
     'reserved' => 'Reserved',
     'selection' => 'Your Selection',
-    'selected' => 'You Have Selected',
-    'seatsTotal' => 'seats. Total cost',
     'yourSeats' => 'Your Seats',
     'exceeds' => "You have exceeded maximum ticket count: ",
 
@@ -140,7 +138,7 @@ return [
     'add_event_error_message' => 'There is some problem occured on adding event request',
     'subscribe_success_message' => 'Subscription successfully',
     'subscribe_error_message' => 'Subscription unsuccessful',
-
+    'search_result' => 'Search results for',
     'currency_code' => ' manat.',
     'booking_fee_text' => 'Booking fee per ticket:',
     'checkout_fail_title' => 'Sorry',
