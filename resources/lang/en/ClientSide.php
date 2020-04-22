@@ -139,6 +139,7 @@ return [
     'subscribe_success_message' => 'Subscription successfully',
     'subscribe_error_message' => 'Subscription unsuccessful',
     'search_result' => 'Search results for',
+    'search_showing' => 'Displayed on page',
     'currency_code' => ' manat.',
     'booking_fee_text' => 'Booking fee per ticket:',
     'checkout_fail_title' => 'Sorry',

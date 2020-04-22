@@ -161,4 +161,5 @@ return [
     'category' => 'Категория',
     'redirect_payment_message' =>'Переход на страницу оплаты',
     'search_result' => 'Результат поиска по',
+    'search_showing' => 'Видно на странице',
 ];

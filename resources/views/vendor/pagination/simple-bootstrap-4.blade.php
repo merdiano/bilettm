@@ -1,5 +1,5 @@
 <div class="pagination_blk">
-    <span>Видно на странице - {{$paginator->count()}}/{{$paginator->total()}}</span>
+    <span>@lang('ClientSide.search_showing') - {{$paginator->count()}}/{{$paginator->total()}}</span>
 @if ($paginator->hasPages())
         <ul class="pagination" role="navigation">
             {{-- Previous Page Link --}}
