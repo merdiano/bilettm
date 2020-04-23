@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddEventRequest;
 use App\Http\Requests\SearchRequest;
 use App\Http\Requests\SubscribeRequest;
 use App\Models\EventRequest;
@@ -18,7 +17,6 @@ use App\Models\Event;
 use App\Models\Slider;
 use App;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -35,14 +33,13 @@ class PublicController extends Controller
         $musical = Category::categoryLiveEvents(8,'concert')
             ->take(1)
 ;
-        $categories = $cinema->unionAll($cartoon)->unionAll($musical)->get();
+        $categories = $cinema->unionAll($musical)->unionAll($cartoon)->get();
 
         $sliders = Slider::where('active',1)
             ->where(Config::get('app.locale'),1)
             ->orderBy('order','asc')
             ->get();
 
-        dump($categories);
         return $this->render("Pages.HomePage",[
             'categories' => $categories,
             'sliders' => $sliders
