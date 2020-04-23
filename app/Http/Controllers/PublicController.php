@@ -42,12 +42,12 @@ class PublicController extends Controller
             ->orderBy('order','asc')
             ->get();
 
+        dump($categories);
         return $this->render("Pages.HomePage",[
             'categories' => $categories,
             'sliders' => $sliders
         ]);
 
-        Markdown::parse();
     }
 
     public function showCategoryEvents($cat_id){
