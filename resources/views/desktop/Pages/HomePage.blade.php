@@ -10,7 +10,9 @@
     @include('desktop.Partials.HomeSlider')
 
     @foreach($categories as $category)
-        @include("desktop.Partials.{$category->view_type}",['category'=>$category])
+        @if(!empty($category->events) && $category->events->count()>0)
+            @include("desktop.Partials.{$category->view_type}",['category'=>$category])
+        @endif
     @endforeach
 @stop
 @section('after_scripts')

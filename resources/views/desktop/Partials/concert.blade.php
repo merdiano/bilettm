@@ -1,4 +1,3 @@
-@if(!empty($category->events) && $category->events->count()>0)
 <section id="konserty" class="container" style="background-image: url({{asset('assets/images/bg/konserty.jpg')}});
         background-repeat: no-repeat; background-size: 100%;">
     <div class="tab-header d-flex justify-content-between col-12">
@@ -28,4 +27,4 @@
         </div>
     </div>
 </section>
-@endif
+

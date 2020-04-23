@@ -39,7 +39,7 @@ class PublicController extends Controller
             ->where(Config::get('app.locale'),1)
             ->orderBy('order','asc')
             ->get();
-
+        dump($categories);
         return $this->render("Pages.HomePage",[
             'categories' => $categories,
             'sliders' => $sliders

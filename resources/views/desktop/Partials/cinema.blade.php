@@ -1,4 +1,3 @@
-@if(!empty($category->events) && $category->events->count()>0)
 <section id="kinoteator" class="kinoteator-section waaa container mb-5">
     <div class="tab-header d-flex justify-content-between col-12 px-0">
         <h2> <a class="text-dark text-uppercase" href="{{$category->url}}">{{$category->title}}</a></h2>
@@ -28,4 +27,3 @@
         </div>
     </div>
 </section>
-@endif
