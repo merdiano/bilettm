@@ -236,10 +236,6 @@ article.u-block-hover img {
     #teator .owl-nav.disabled .owl-prev span, #teator .owl-nav.disabled .owl-next span {
       font-size: 30px; }
 
-#konserty {
-  padding: 100px 7.2% !important;
-  margin-top: 100px; }
-
   #konserty .tab-header a:hover {
     background-color: #db635b;
     text-decoration: none; }
@@ -446,10 +442,7 @@ article.u-block-hover img {
 #konserty-tab1 .overlay-details {
   position: absolute;
   bottom: 0; }
-#konserty-tab1 .owl-nav {
-  position: absolute;
-  top: -76px;
-  right: 285px;}
+
 #konserty-tab1 .owl-prev, #konserty-tab1 .owl-next {
   border: 1px solid #ffffff;
   border-radius: 5px;
@@ -2080,6 +2073,7 @@ choose_seats_content > div.tab-pane.fade{
 
 #konserty-tab1 .owl-nav {
   top: -90px;
+  right: 0px;
 }
 
 #konserty-tab1 .owl-dots {
