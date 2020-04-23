@@ -2072,6 +2072,7 @@ choose_seats_content > div.tab-pane.fade{
 }
 
 #konserty-tab1 .owl-nav {
+  position: absolute;
   top: -90px;
   right: 0px;
 }
