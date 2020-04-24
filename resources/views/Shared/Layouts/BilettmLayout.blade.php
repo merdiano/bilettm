@@ -15,8 +15,10 @@
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{asset('vendor/icon-awesome/css/font-awesome.min.css')}}">
 
-    @yield('after_styles')
+    {{-- Favicon --}}
+    <link rel="shortcut icon" href="{{asset('assets/images/icons/favicon.ico')}}" type="image/x-icon">
 
+    @yield('after_styles')
 
     <!-- CSS Unify Theme -->
     <link rel="stylesheet" href="{{asset('assets/stylesheet/styles.e-commerce.css')}}">
