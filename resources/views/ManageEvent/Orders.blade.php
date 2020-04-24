@@ -97,7 +97,8 @@
                         @foreach($orders as $order)
                         <tr>
                             <td>
-                                <a href='javascript:void(0);' data-modal-id='view-order-{{ $order->id }}' data-href="{{route('showManageOrder', ['order_id'=>$order->id])}}" title="@lang("Order.view_order_num", ["num"=>$order->order_reference])" class="loadModal">
+                                <a href='javascript:void(0);' data-modal-id='view-order-{{ $order->id }}' data-href="{{route('showManageOrder', ['order_id'=>$order->id])}}"
+                                   title="@lang("Order.view_order_num", ["num"=>$order->order_reference])" class="loadModal">
                                     {{$order->order_reference}}
                                 </a>
                             </td>
@@ -127,7 +128,8 @@
                                 </span>
                             </td>
                             <td class="text-center">
-                                <a href="javascript:void(0);" data-modal-id="cancel-order-{{ $order->id }}" data-href="{{route('showCancelOrder', ['order_id'=>$order->id])}}" title="@lang("Order.cancel_order")" class="btn btn-xs btn-danger loadModal">
+                                <a href="javascript:void(0);" data-modal-id="cancel-order-{{ $order->id }}" data-href="{{route('showCancelOrder', ['order_id'=>$order->id])}}"
+                                   title="@lang("Order.cancel_order")" class="btn btn-xs btn-danger loadModal">
                                                 @lang("Order.refund/cancel")
                                             </a>
                                 <a data-modal-id="view-order-{{ $order->id }}" data-href="{{route('showManageOrder', ['order_id'=>$order->id])}}" title="@lang("Order.view_order")" class="btn btn-xs btn-primary loadModal">@lang("Order.details")</a>

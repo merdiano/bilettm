@@ -156,7 +156,6 @@ class EventOrdersController extends MyBaseController
     }
 
     /**
-     * Cancels an order
      *
      * @param Request $request
      * @param $order_id
@@ -198,6 +197,7 @@ class EventOrdersController extends MyBaseController
 
 
     /**
+     * Cancels an order
      * @param Request $request
      * @param $order_id
      * @return \Illuminate\Http\JsonResponse
@@ -298,16 +298,19 @@ class EventOrdersController extends MyBaseController
          */
         if ($attendees) {
             foreach ($attendees as $attendee_id) {
-                $attendee = Attendee::scope()->where('id', '=', $attendee_id)->first();
-                $attendee->ticket->decrement('quantity_sold');
-                $attendee->ticket->decrement('sales_volume', $attendee->ticket->price);
-                $order->event->decrement('sales_volume', $attendee->ticket->price);
-                $order->decrement('amount', $attendee->ticket->price);
+                $attendee = Attendee::with('ticket')->scope()->where('id', '=', $attendee_id)->first();
+                if($refund_order){
+                    $attendee->ticket->decrement('quantity_sold');
+                    $attendee->ticket->decrement('sales_volume', $attendee->ticket->price);
+                    $order->event->decrement('sales_volume', $attendee->ticket->price);
+                    $order->decrement('amount', $attendee->ticket->price);
+                }
+
                 $attendee->is_cancelled = 1;
                 $attendee->save();
 
                 $eventStats = EventStats::where('event_id', $attendee->event_id)->where('date', $attendee->created_at->format('Y-m-d'))->first();
-                if($eventStats){
+                if($eventStats && $refund_order){
                     $eventStats->decrement('tickets_sold',  1);
                     $eventStats->decrement('sales_volume',  $attendee->ticket->price);
                 }
