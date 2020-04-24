@@ -22,6 +22,7 @@
                     <input id="datepicker" placeholder="{{__('ClientSide.select')}}" name="date"/>
                 </form>
             </li>
+            <li><a href="">Test</a></li>
         </ul>
     </div>
 </nav>
