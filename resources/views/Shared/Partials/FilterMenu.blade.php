@@ -1,12 +1,3 @@
-@push('after_styles')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-    <style>
-        label{margin-left: 20px;}
-        #datepicker{width:180px; margin: 0 20px 20px 20px;}
-        #datepicker > span:hover{cursor: pointer;}
-    </style>
-@endpush
-
 <nav class="w-100">
     <div class="container">
         <ul class="nav u-nav-v1-1 g-mb-20 category-filter" data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-lightgray g-mb-20">
@@ -31,28 +22,7 @@
                     <input id="datepicker" placeholder="{{__('ClientSide.select')}}" name="date"/>
                 </form>
             </li>
-            <li>
-                <label>Select Date: </label>
-                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" id="hithit" readonly />
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                </div>
-            </li>
+            <li>Test</li>
         </ul>
     </div>
 </nav>
-
-@push('after_scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker({
-                autoclose: true,
-                todayHighlight: true
-            }).datepicker('update', new Date());
-            $("#hithit").bind("change", function(){
-                alert("hit");
-            });
-        });
-    </script>
-@endpush
