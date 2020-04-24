@@ -35,8 +35,12 @@
                                 <img src="{{asset('assets/images/icons/social/3.svg')}}"></a>
                         </li>
                         <li class="text-center">
-                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_instagram')}}">
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_twitter')}}">
                                 <img src="{{asset('assets/images/icons/social/1.svg')}}"></a>
+                        </li>
+                        <li class="text-center">
+                            <a href="{{\Backpack\Settings\app\Models\Setting::get('social_instagram')}}">
+                                <img src="{{asset('assets/images/icons/social/5.svg')}}"></a>
                         </li>
                     </ul>
                 </div>
