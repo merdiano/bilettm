@@ -1,6 +1,11 @@
 @push('after_styles')
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <style>
+        label{margin-left: 20px;}
+        #datepicker{width:180px; margin: 0 20px 20px 20px;}
+        #datepicker > span:hover{cursor: pointer;}
+    </style>
 @endpush
 
 <nav class="w-100">
@@ -41,4 +46,13 @@
 @push('after_scripts')
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            }).datepicker('update', new Date());
+        });
+
+    </script>
 @endpush
