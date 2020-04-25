@@ -167,4 +167,5 @@ sargydyňyz Bank tarapyndan ýatyrylandyr. Biletleri täzeden satyn almaga synan
     'redirect_payment_message' =>'Töleg sahypasyna geçilýär',
     'search_result' => 'Gözleg netijesi:',
     'search_showing' => 'Sahypada görkezileni',
+    'organiser' => 'Gurnaýjy',
 ];

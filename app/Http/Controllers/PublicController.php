@@ -152,16 +152,18 @@ class PublicController extends Controller
 
         $lc = config('app.locale');
         $events = Event::select('events.id',"events.title_{$lc}",'events.start_date','events.end_date',"events.description_{$lc}",
-                "venues.venue_name_{$lc} as venue_name","categories.title_{$lc} as category_title")
+                "venues.venue_name_{$lc} as venue_name","categories.title_{$lc} as category_title","organisers.name as organiser")
             ->join('venues','venues.id','=','events.venue_id')
             ->join('categories','categories.id','=','events.category_id')
-            ->withCount(['stats as views' => function($q){
-                $q->select(DB::raw("SUM(views) as v"));}])
+            ->join('organisers','organisers.id','=','events.organiser_id')
+//            ->withCount(['stats as views' => function($q){
+//                $q->select(DB::raw("SUM(views) as v"));}])
             ->onLive()
             ->where(function ($q) use($query){
                 $q->where('events.title_'.config('app.locale'),'like',"%{$query}%")
                     ->orWhere('venues.venue_name_'.config('app.locale'),'like',"%{$query}%")
-                    ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%");
+                    ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%")
+                    ->orWhere('organisers.name','like',"%{$query}%");
             })
 
             ->paginate(12);

@@ -28,7 +28,7 @@ return array (
   'no_tickets_yet' => 'No Tickets Yet',
   'no_tickets_yet_text' => 'Create your first ticket by clicking the button below.',
   'order_ref' => 'Order Ref.',
-  'organiser' => 'Organiser',
+  'organiser' => 'Gurna',
   'pause' => 'Pause',
   'price' => 'Price',
   'questions' => 'Questions',
