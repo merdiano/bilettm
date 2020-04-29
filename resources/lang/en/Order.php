@@ -51,4 +51,8 @@ return array (
     'order_last_name_required'  => 'Please enter a valid last name',
     'order_email_email'         => 'Please enter a valid email',
     'order_terms_required'      => 'Please accept terms',
+    'cardholder_name' => 'Card holder name',
+    'cardholder_pan' => 'Card holder pan',
+    'cardholder_expiration' => 'Card expiration date',
+    'payment_status_message' => 'Payment message',
 );

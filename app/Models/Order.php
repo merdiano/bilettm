@@ -179,15 +179,15 @@ class Order extends MyBaseModel
         return file_exists($pdf_file);
     }
 
-    /**
-     * Boot all of the bootable traits on the model.
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($order) {
-            $order->order_reference = strtoupper(str_random(5)) . date('jn');
-        });
-    }
+//    /**
+//     * Boot all of the bootable traits on the model.
+//     */
+//    public static function boot()
+//    {
+//        parent::boot();
+//
+//        static::creating(function ($order) {
+//                $order->order_reference = strtoupper(str_random(5)) . date('jn');
+//        });
+//    }
 }

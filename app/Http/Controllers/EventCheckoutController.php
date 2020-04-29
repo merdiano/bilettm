@@ -305,14 +305,15 @@ class EventCheckoutController extends Controller
         }
 
         $event = Event::findOrFail($event_id);
-        $order = new Order();
         $ticket_order = session()->get('ticket_order_' . $event_id);
 
         $validation_rules = $ticket_order['validation_rules'];
         $validation_messages = $ticket_order['validation_messages'];
 
+        $order = new Order();
         $order->rules = $order->rules + $validation_rules;
         $order->messages = $order->messages + $validation_messages;
+        $order->order_reference = strtoupper(str_random(5)) . date('jn');
 
         if (!$order->validate($request->all())) {
             return response()->json([
@@ -328,12 +329,13 @@ class EventCheckoutController extends Controller
             $orderService = new OrderService($ticket_order['order_total'], $ticket_order['total_booking_fee'], $event);
             $orderService->calculateFinalCosts();
             $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
+
             $transaction_data =[
                 'amount'      => $orderService->getGrandTotal()*100,//multiply by 100 to obtain tenge
                 'currency' => 934,
                 'sessionTimeoutSecs' => $secondsToExpire,
                 'description' => 'bilettm sargyt: ' . $request->get('order_email'),
-                'orderNumber'     => uniqid(),
+                'orderNumber'     => $order->order_reference,
 
                 'failUrl'     => route('showEventCheckoutPaymentReturn', [
                     'event_id'             => $event_id,
@@ -439,6 +441,16 @@ class EventCheckoutController extends Controller
 
         $response = $this->gateway->getPaymentStatus($order->transaction_id);
 
+        $resp_data = $response->getResponseData();
+
+        $order->payment_card_pan = $resp_data['Pan'];
+        $order->payment_card_expiration = $resp_data['expiration'];
+        $order->payment_card_holder_name = $resp_data['cardholderName'];
+        $order->payment_order_status = $resp_data['OrderStatus'];
+        $order->payment_error_code = $resp_data['ErrorCode'];
+        $order->payment_error_message = $resp_data['ErrorMessage'];
+
+
         //todo try catch for connection errors
         if ($response->isSuccessfull()) {
 
@@ -493,6 +505,16 @@ class EventCheckoutController extends Controller
         }
 
         $response = $this->gateway->getPaymentStatus($request->get('orderId'));
+
+        $resp_data = $response->getResponseData();
+
+        $order->payment_card_pan = $resp_data['Pan'];
+        $order->payment_card_expiration = $resp_data['expiration'];
+        $order->payment_card_holder_name = $resp_data['cardholderName'];
+        $order->payment_order_status = $resp_data['OrderStatus'];
+        $order->payment_error_code = $resp_data['ErrorCode'];
+        $order->payment_error_message = $resp_data['ErrorMessage'];
+
 
         if ($response->isSuccessfull()) {
             $data = OrderService::mobileCompleteOrder($order);
