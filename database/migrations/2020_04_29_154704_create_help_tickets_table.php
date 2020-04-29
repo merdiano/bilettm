@@ -35,6 +35,6 @@ class CreateHelpTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('helpTicket');
+        Schema::drop('help_tickets');
     }
 }
