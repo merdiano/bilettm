@@ -15,11 +15,11 @@ class HelpTicketCategory extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'help_ticlet_categories';
+    protected $table = 'help_ticket_categories';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
+     public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['title_tk','title_ru','active'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -35,6 +35,9 @@ class HelpTicketCategory extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function tickets(){
+        return $this->hasMany(HelpTicket::class,'ticket_category_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

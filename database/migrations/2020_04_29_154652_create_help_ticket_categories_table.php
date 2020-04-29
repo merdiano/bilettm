@@ -16,6 +16,7 @@ class CreateHelpTicketCategoriesTable extends Migration
             $table->increments('id');
             $table->string('title_tk');
             $table->string('title_ru');
+            $table->boolean('active')->default(1);
         });
     }
 

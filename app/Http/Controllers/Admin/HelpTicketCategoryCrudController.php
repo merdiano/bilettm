@@ -34,7 +34,12 @@ class HelpTicketCategoryCrudController extends CrudController
         */
 
         // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
+//        $this->crud->setFromDb();
+        $this->crud->setColumns([
+            ['name' => 'title_tk','label'=>'Title Turkmen','type'=>'text'],
+            ['name' => 'title_ru','label'=>'Title Russioan','type'=>'text'],
+            ['name' => 'active', 'label' => 'Active', 'type' => 'check']
+        ]);
 
         // add asterisk for fields that are required in HelpTicletCategoryRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

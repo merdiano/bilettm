@@ -15,11 +15,11 @@ class HelpTicket extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'help_ticlets';
+    protected $table = 'help_tickets';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['code','email','name','phone','text','subject', 'attachment','status','ticket_category_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -35,6 +35,13 @@ class HelpTicket extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function category(){
+        return $this->belongsTo(HelpTicketCategory::class,'ticket_category_id');
+    }
+
+    public function comments(){
+        return $this->hasMany(HelpTicketComment::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

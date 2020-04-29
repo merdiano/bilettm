@@ -17,9 +17,9 @@ class HelpTicketComment extends Model
 
     protected $table = 'help_ticket_comments';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
+     public $timestamps = true;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['text','attachment','parent_id','user_id','name','help_ticket_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -35,6 +35,9 @@ class HelpTicketComment extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function ticket(){
+        return $this->belongsTo(HelpTicket::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
