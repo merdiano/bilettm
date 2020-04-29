@@ -59,4 +59,15 @@ class HelpTicket extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    /**
+     * Boot all of the bootable traits on the model.
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($ticket) {
+            $ticket->code = strtoupper(str_random(5)) . date('jn');
+        });
+    }
 }

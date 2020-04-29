@@ -36,6 +36,7 @@ class HelpTicketCategoryCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
 //        $this->crud->setFromDb();
         $this->crud->setColumns([
+            ['name' => 'position','label'=>'Order Position','type'=>'number'],
             ['name' => 'title_tk','label'=>'Title Turkmen','type'=>'text'],
             ['name' => 'title_ru','label'=>'Title Russioan','type'=>'text'],
             ['name' => 'active', 'label' => 'Active', 'type' => 'check']
@@ -43,6 +44,7 @@ class HelpTicketCategoryCrudController extends CrudController
 
         $this->crud->addFields([
             ['name' => 'title_tk','label'=>'Title Turkmen','type'=>'text'],
+            ['name' => 'position','label'=>'Order Position','type'=>'number'],
             ['name' => 'title_ru','label'=>'Title Russioan','type'=>'text'],
             ['name' => 'active', 'label' => 'Active', 'type' => 'checkbox']
         ]);
