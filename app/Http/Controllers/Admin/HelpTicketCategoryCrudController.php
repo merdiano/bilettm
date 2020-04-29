@@ -41,6 +41,11 @@ class HelpTicketCategoryCrudController extends CrudController
             ['name' => 'active', 'label' => 'Active', 'type' => 'check']
         ]);
 
+        $this->crud->addFields([
+            ['name' => 'title_tk','label'=>'Title Turkmen','type'=>'text'],
+            ['name' => 'title_ru','label'=>'Title Russioan','type'=>'text'],
+            ['name' => 'active', 'label' => 'Active', 'type' => 'checkbox']
+        ]);
         // add asterisk for fields that are required in HelpTicletCategoryRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
