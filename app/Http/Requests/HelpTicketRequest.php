@@ -27,7 +27,7 @@ class HelpTicketRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'subject' => 'required|min:5|max:255',
+            'topic' => 'required',
             'text' => 'required',
         ];
     }

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\HelpTicketCategoryRequest as StoreRequest;
-use App\Http\Requests\HelpTicketCategoryRequest as UpdateRequest;
+use App\Http\Requests\HelpTopicRequest as StoreRequest;
+use App\Http\Requests\HelpTopicRequest as UpdateRequest;
 use Backpack\CRUD\CrudPanel;
 
 /**
