@@ -56,7 +56,9 @@
             // $('#datepicker').datepicker().on('changeDate', function (e) {
             //     alert('43');
             // });
-            alert($("#datepicker").val());
+            setTimeout(function () {
+                alert($("#datepicker").val());
+            }, 500);
         });
     </script>
 @endsection
