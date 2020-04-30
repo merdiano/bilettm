@@ -49,14 +49,9 @@
                 rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
             }
         });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $(document).on('click', '.gj-picker-bootstrap td div', function () {
-                alert(5342);
-            });
-        });
+        $('.gj-picker-bootstrap tbody').on('click', 'tr > td > div',function(){
+            alert(524312);
+        })
     </script>
 
 @endsection
