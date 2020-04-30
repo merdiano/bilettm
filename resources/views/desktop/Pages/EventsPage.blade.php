@@ -53,7 +53,7 @@
 
     <script>
         $(document).ready(function () {
-            $(document).on('click', '.gj-picker-bootstrap', function () {
+            $(document).on('click', '.gj-picker-bootstrap td div', function () {
                 alert(5342);
             });
         });
