@@ -53,8 +53,8 @@
     </script>
     <script>
         $(document).ready(function () {
-            $('.gj-picker-bootstrap table *').bind('click', function () {
-                alert('test');
+            $('.gj-picker-bootstrap').change(function () {
+                $('.gj-picker-bootstrap').attr('selectedday');
             });
         });
     </script>
