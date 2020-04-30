@@ -51,15 +51,4 @@
         });
 
     </script>
-    <script type="text/javascript"
-            src="https://raw.github.com/meetselva/attrchange/master/attrchange.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#datepicker").attrchange({
-                callback: function (event) {
-                    alert(53412524314);
-                }
-            });
-        });
-    </script>
 @endsection
