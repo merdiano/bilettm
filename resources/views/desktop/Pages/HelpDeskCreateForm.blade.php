@@ -23,7 +23,7 @@
 
                         <div class="form-group address-automatic">
                         {!! Form::label('category', trans("ClientSide.category"), array('class'=>'control-label')) !!}
-                        {!! Form::select('category',$categories->pluck('id','title'), old('category'), ['class' => 'form-control','id'=>'category']) !!}
+                        {!! Form::select('category',help_topics(), old('category'), ['class' => 'form-control','id'=>'category']) !!}
                         </div>
                         <div class="form-group custom-theme">
                             {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}

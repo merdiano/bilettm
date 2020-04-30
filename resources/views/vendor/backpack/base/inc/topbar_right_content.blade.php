@@ -1,7 +1,7 @@
 <!-- This file is used to store topbar (right) items -->
 <li><a href='{{ backpack_url('event_request') }}'><i class='fa fa-tag'></i> <span>Event Requests</span></a></li>
 
-<li><a href='{{ backpack_url('helpTicket') }}'><i class='fa fa-tag'></i> <span>Help Tickets</span></a></li>
+<li><a href='{{ backpack_url('helpTicket') }}'><i class='fa fa-tag'></i> <span>Help Desk</span></a></li>
 {{--<li class="">
     <a href="{{ url(config('backpack.base.route_prefix', 'admin')) }}">
         <i class="fa fa-cog"></i> Direct Link

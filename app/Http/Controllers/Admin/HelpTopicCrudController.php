@@ -14,7 +14,7 @@ use Backpack\CRUD\CrudPanel;
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class HelpTicketCategoryCrudController extends CrudController
+class HelpTopicCrudController extends CrudController
 {
     public function setup()
     {
@@ -23,9 +23,9 @@ class HelpTicketCategoryCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\HelpTicketCategory');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/helpTicketCategory');
-        $this->crud->setEntityNameStrings('help ticket category', 'help ticket categories');
+        $this->crud->setModel('App\Models\HelpTopic');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/helpTopic');
+        $this->crud->setEntityNameStrings('help topic', 'help topics');
 
         /*
         |--------------------------------------------------------------------------
@@ -33,7 +33,6 @@ class HelpTicketCategoryCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
 //        $this->crud->setFromDb();
         $this->crud->setColumns([
             ['name' => 'position','label'=>'Order Position','type'=>'number'],
@@ -44,8 +43,8 @@ class HelpTicketCategoryCrudController extends CrudController
 
         $this->crud->addFields([
             ['name' => 'title_tk','label'=>'Title Turkmen','type'=>'text'],
+            ['name' => 'title_ru','label'=>'Title Russian','type'=>'text'],
             ['name' => 'position','label'=>'Order Position','type'=>'number'],
-            ['name' => 'title_ru','label'=>'Title Russioan','type'=>'text'],
             ['name' => 'active', 'label' => 'Active', 'type' => 'checkbox']
         ]);
         // add asterisk for fields that are required in HelpTicletCategoryRequest

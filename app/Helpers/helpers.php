@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\HelpTopic;
+
 if (!function_exists('money')) {
     /**
      * Format a given amount to the given currency
@@ -89,5 +91,13 @@ if(!function_exists('zanitlananlar')){
                 return [$item =>'booked'];
             });
         return $booked->merge($reserved)->toJson();
+    }
+}
+if(!function_exists('help_topics')){
+    function help_topics(){
+        return HelpTopic::where('active',1)
+            ->select(['id','title_'.config('app.locale').' as title'])
+            ->orderBy('position','asc')
+            ->pluck('title','id');
     }
 }
