@@ -50,7 +50,7 @@
             }
         });
         function myFunc() {
-            alert('hi!');
+            alert($("#datepicker").val());
         }
 
     </script>
