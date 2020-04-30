@@ -53,7 +53,9 @@
 
     <script>
         $(document).ready(function () {
-            alert(!$('.gj-picker-bootstrap table tbody tr td div'));
+            $("#datepicker ~ button").on('click', function () {
+                alert(!$('.gj-picker-bootstrap table tbody tr td div'));
+            });
             // $(document).on('click', '.gj-picker-bootstrap table tbody tr td', function () {
             //     alert(5342);
             // });
