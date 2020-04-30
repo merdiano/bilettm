@@ -51,20 +51,11 @@
         });
     </script>
 
-    <script type="text/javascript"
-            src="{{ asset('vendor/attrchange/js/attrchange.js') }}"></script>
     <script>
-        $('.gj-picker-bootstrap').attrchange({
-            trackValues: true, /* Default to false, if set to true the event object is
-				updated with old and new value.*/
-            callback: function (event) {
-                //event    	          - event object
-                //event.attributeName - Name of the attribute modified
-                //event.oldValue      - Previous value of the modified attribute
-                //event.newValue      - New value of the modified attribute
-                //Triggered when the selected elements attribute is added/updated/removed
-                alert($("#datepicker").val());
-            }
+        $(document).ready(function () {
+            $(document).on('click', '.gj-picker-bootstrap', function () {
+                alert(5342);
+            });
         });
     </script>
 
