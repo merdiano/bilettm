@@ -739,6 +739,25 @@ Route::group(
         'uses' => 'PublicController@venues'
     ]);
 
+    Route::get('/help/',[
+        'as' =>'help',
+        'uses' => 'HelpDeskController@create'
+    ]);
+
+    Route::post('/help/',[
+        'as' =>'help.create',
+        'uses' => 'HelpDeskController@store'
+    ]);
+
+    Route::get('/help/{code}',[
+        'as' =>'help.show',
+        'uses' => 'HelpDeskController@show'
+    ]);
+
+    Route::post('/help/{code}',[
+        'as' =>'help.comment',
+        'uses' => 'HelpDeskController@comment'
+    ]);
 //    Route::get('/terms_and_conditions', [
 //        'as' => 'termsAndConditions',
 //        function () {
