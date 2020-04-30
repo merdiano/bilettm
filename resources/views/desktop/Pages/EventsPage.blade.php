@@ -53,7 +53,7 @@
     </script>
     <script>
         $(document).ready(function () {
-            $('.current-month.gj-cursor-pointer').bind('click', function () {
+            $('.current-month.gj-cursor-pointer div').bind('click', function () {
                 alert(32442433);
             });
         });
