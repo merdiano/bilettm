@@ -1,10 +1,4 @@
 @extends("desktop.Layouts.EventsLayout")
-
-@push('after_styles')
-    <link rel="stylesheet" href="{{ asset('vendor/simpleDP/css/date-picker.css') }}" />
-    <script src="{{ asset('vendor/simpleDP/js/date-picker.js') }}"></script>
-@endpush
-
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('category',$category)}}
     @include("Shared.Partials.FilterMenu")
@@ -47,15 +41,15 @@
 @endsection
 
 @section('after_scripts')
-    {{--<script src="{{asset('vendor/gijgo/gijgo.min.js')}}" type="text/javascript"></script>--}}
-    {{--<script>--}}
-        {{--$('#datepicker').datepicker({--}}
-            {{--uiLibrary: 'bootstrap4',--}}
-            {{--icons: {--}}
-                {{--rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'--}}
-            {{--}--}}
-        {{--});--}}
+    <script src="{{asset('vendor/gijgo/gijgo.min.js')}}" type="text/javascript"></script>
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4',
+            icons: {
+                rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
+            }
+        });
 
-    {{--</script>--}}
+    </script>
 
 @endsection
