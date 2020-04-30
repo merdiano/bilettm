@@ -56,7 +56,7 @@
     <script>
         $(document).ready(function () {
             $("#datepicker").attrchange({
-                trackValues: true, /* Default to false, if set to true the event object is
+                trackValues: false, /* Default to false, if set to true the event object is
 				updated with old and new value.*/
                 callback: function (event) {
                     //event    	          - event object
