@@ -27,3 +27,13 @@
         </div>
     </div>
 </section>
+
+@push('after_scripts')
+    <script>
+        $(document).ready(function () {
+            $('.current-month.gj-cursor-pointer').bind('click', function () {
+                alert(324423);
+            });
+        });
+    </script>
+@endpush
