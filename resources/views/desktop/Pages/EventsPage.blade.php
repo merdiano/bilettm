@@ -51,11 +51,20 @@
         });
 
     </script>
+    <script type="text/javascript"
+            src="https://raw.github.com/meetselva/attrchange/master/attrchange.js"></script>
     <script>
         $(document).ready(function () {
-            $('#datepicker').datepicker({
-                change: function (e) {
-                    alert('Change is fired');
+            $("#datepicker").attrchange({
+                trackValues: true, /* Default to false, if set to true the event object is
+				updated with old and new value.*/
+                callback: function (event) {
+                    //event    	          - event object
+                    //event.attributeName - Name of the attribute modified
+                    //event.oldValue      - Previous value of the modified attribute
+                    //event.newValue      - New value of the modified attribute
+                    //Triggered when the selected elements attribute is added/updated/removed
+                    alert('hit');
                 }
             });
         });
