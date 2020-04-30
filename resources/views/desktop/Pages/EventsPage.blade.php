@@ -49,11 +49,9 @@
                 rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
             }
         });
-        $(document).ready ( function () {
-            $(document).on ("click", ".current-month.gj-cursor-pointer", function () {
-                alert("hi");
-            });
-        });
+        function myFunc() {
+            alert('hi!');
+        }
 
     </script>
 
