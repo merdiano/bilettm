@@ -20,8 +20,9 @@ class HelpDeskController extends Controller
 
         $categories = HelpTicketCategory::where('active',1)
             ->select(['id','title_'.config('app.locale').' as title'])
+            ->orderBy('position','asc')
             ->pluck('title','id');
-        dump($categories);
+//        dump($categories);
 
         $this->render('Pages.HelpDeskCreateForm',$categories);
     }
