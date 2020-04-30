@@ -53,9 +53,10 @@
     </script>
     <script>
         $(document).ready(function () {
-            $('#datepicker').datepicker().on('changeDate', function (e) {
-                alert('43');
-            });
+            // $('#datepicker').datepicker().on('changeDate', function (e) {
+            //     alert('43');
+            // });
+            alert($("#datepicker").val());
         });
     </script>
 @endsection
