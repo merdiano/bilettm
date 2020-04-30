@@ -41,13 +41,6 @@
 @endsection
 
 @section('after_scripts')
-    <script>
-        $(document).ready(function () {
-            function gotoFunc(){
-                alert('hit');
-            }
-        });
-    </script>
     <script src="{{asset('vendor/gijgo/gijgo.min.js')}}" type="text/javascript"></script>
     <script>
         $('#datepicker').datepicker({
@@ -57,5 +50,12 @@
             }
         });
 
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#datepicker').datepicker().on('changeDate', function (e) {
+                alert('43');
+            });
+        });
     </script>
 @endsection
