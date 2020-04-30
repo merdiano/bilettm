@@ -51,4 +51,11 @@
         });
 
     </script>
+    <script>
+        $(document).ready(function () {
+            $('.current-month.gj-cursor-pointer').bind('click', function () {
+                alert(32442433);
+            });
+        });
+    </script>
 @endsection
