@@ -53,7 +53,7 @@
 
     <script>
         $(document).ready(function () {
-            $(document).on('click', '.gj-picker-bootstrap table', function () {
+            $(document).on('click', '.gj-picker-bootstrap table tbody', function () {
                 alert(5342);
             });
         });
