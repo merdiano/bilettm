@@ -46,7 +46,8 @@
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
             icons: {
-                rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
+                {{--rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'--}}
+                rightIcon: '<i class="fa fa-calendar" style="padding: 7px;background-color: #d33d33;color: #ffffff;border-radius: 5px;margin: -10px;"></i>'
             }
         });
     </script>
