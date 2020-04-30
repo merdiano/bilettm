@@ -51,7 +51,7 @@
         });
         $(document).on ("click", ".current-month.gj-cursor-pointer", function () {
             alert("hi");
-        });
+        });b
 
     </script>
 
