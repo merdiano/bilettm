@@ -53,7 +53,7 @@
 
     <script>
         $(document).ready(function () {
-            $("#datepicker").siblings("button").bind('click', function () {
+            $("#datepicker").siblings("span button").bind('click', function () {
                 alert(!$('.gj-picker-bootstrap table tbody tr td div'));
             });
             // $(document).on('click', '.gj-picker-bootstrap table tbody tr td', function () {
