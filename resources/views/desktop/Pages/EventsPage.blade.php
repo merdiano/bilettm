@@ -49,10 +49,23 @@
                 rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
             }
         });
-        function myFunc() {
-            alert($("#datepicker").val());
-        }
+    </script>
 
+    <script type="text/javascript"
+            src="https://raw.github.com/meetselva/attrchange/master/attrchange.js"></script>
+    <script>
+        $('.gj-picker-bootstrap').attrchange({
+            trackValues: true, /* Default to false, if set to true the event object is
+				updated with old and new value.*/
+            callback: function (event) {
+                //event    	          - event object
+                //event.attributeName - Name of the attribute modified
+                //event.oldValue      - Previous value of the modified attribute
+                //event.newValue      - New value of the modified attribute
+                //Triggered when the selected elements attribute is added/updated/removed
+                alert('hit');
+            }
+        });
     </script>
 
 @endsection
