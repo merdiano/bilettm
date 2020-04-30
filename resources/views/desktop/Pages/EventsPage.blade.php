@@ -51,15 +51,4 @@
         });
     </script>
 
-    <script>
-        $(document).ready(function () {
-            $("#datepicker").siblings("span button").bind('click', function () {
-                alert(!$('.gj-picker-bootstrap table tbody tr td div'));
-            });
-            // $(document).on('click', '.gj-picker-bootstrap table tbody tr td', function () {
-            //     alert(5342);
-            // });
-        });
-    </script>
-
 @endsection
