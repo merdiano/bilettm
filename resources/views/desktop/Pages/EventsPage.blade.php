@@ -43,7 +43,7 @@
 @section('after_scripts')
     <script src="{{asset('vendor/gijgo/gijgo.min.js')}}" type="text/javascript"></script>
     <script>
-        $('#datepicker').datepicker({
+        $('#datepickerr').datepicker({
             uiLibrary: 'bootstrap4',
             icons: {
                 rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
