@@ -1,8 +1,8 @@
 @extends("desktop.Layouts.EventsLayout")
 
 @push('after_styles')
-    <link rel="stylesheet" href="{{ asset('vendor/css/date-picker.css') }}" />
-    <script src="{{ asset('vendor/js/date-picker.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('vendor/simpleDP/css/date-picker.css') }}" />
+    <script src="{{ asset('vendor/simpleDP/js/date-picker.js') }}"></script>
 @endpush
 
 @section('content')
