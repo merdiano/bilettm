@@ -56,15 +56,8 @@
     <script>
         $(document).ready(function () {
             $("#datepicker").attrchange({
-                trackValues: false, /* Default to false, if set to true the event object is
-				updated with old and new value.*/
                 callback: function (event) {
-                    //event    	          - event object
-                    //event.attributeName - Name of the attribute modified
-                    //event.oldValue      - Previous value of the modified attribute
-                    //event.newValue      - New value of the modified attribute
-                    //Triggered when the selected elements attribute is added/updated/removed
-
+                    alert(53412524314);
                 }
             });
         });
