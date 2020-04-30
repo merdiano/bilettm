@@ -19,7 +19,7 @@
                 <form action="{{$category->url}}" method="post" class="calendar-form ">
                     @csrf
                     {{--<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="tab">Дата <i class="fa fa-caret-down"></i></a>--}}
-                    <input id="datepickerr" placeholder="{{__('ClientSide.select')}}" name="date"/>
+                    <input id="datepicker" placeholder="{{__('ClientSide.select')}}" name="date"/>
                 </form>
             </li>
         </ul>
