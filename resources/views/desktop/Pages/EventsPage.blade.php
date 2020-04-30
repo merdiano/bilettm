@@ -52,7 +52,7 @@
     </script>
 
     <script type="text/javascript"
-            src="https://raw.github.com/meetselva/attrchange/master/attrchange.js"></script>
+            src="{{ asset('vendor/attrchange/js/attrchange.js') }}"></script>
     <script>
         $('.gj-picker-bootstrap').attrchange({
             trackValues: true, /* Default to false, if set to true the event object is
