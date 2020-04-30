@@ -58,7 +58,7 @@
             // });
             setTimeout(function () {
                 alert($("#datepicker").val());
-            }, 500);
+            }, 5000);
         });
     </script>
 @endsection
