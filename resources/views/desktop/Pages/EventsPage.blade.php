@@ -53,7 +53,7 @@
     </script>
     <script>
         $(document).ready(function () {
-            alert($('.gj-picker-bootstrap table').innerHTML());
+            alert($('.gj-picker-bootstrap table *'));
         });
     </script>
 @endsection
