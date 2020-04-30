@@ -63,7 +63,7 @@
                 //event.oldValue      - Previous value of the modified attribute
                 //event.newValue      - New value of the modified attribute
                 //Triggered when the selected elements attribute is added/updated/removed
-                alert('hit');
+                alert(event.attributeName);
             }
         });
     </script>
