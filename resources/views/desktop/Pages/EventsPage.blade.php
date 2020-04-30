@@ -53,7 +53,7 @@
 
     <script>
         $(document).ready(function () {
-            $(document).on('click', '.current-month div', function () {
+            $(document).on('click', '.gj-picker-bootstrap', function () {
                 alert(5342);
             });
         });
