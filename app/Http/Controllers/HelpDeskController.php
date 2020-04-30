@@ -24,7 +24,7 @@ class HelpDeskController extends Controller
             ->pluck('title','id');
 //        dump($categories);
 
-        $this->render('Pages.HelpDeskCreateForm',$categories);
+        return $this->render('Pages.HelpDeskCreateForm',$categories);
     }
 
     public function store(){
