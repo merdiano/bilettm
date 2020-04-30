@@ -53,7 +53,9 @@
     </script>
     <script>
         $(document).ready(function () {
-            alert($('.gj-picker-bootstrap table *'));
+            $('.gj-picker-bootstrap table *').bind('click', function () {
+                alert('test');
+            });
         });
     </script>
 @endsection
