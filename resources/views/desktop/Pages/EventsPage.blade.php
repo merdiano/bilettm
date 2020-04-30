@@ -53,7 +53,7 @@
     </script>
     <script>
         $(document).ready(function () {
-            alert($('.gj-picker-bootstrap').attr('selectedday'));
+            alert($('.gj-picker-bootstrap table').innerHTML());
         });
     </script>
 @endsection
