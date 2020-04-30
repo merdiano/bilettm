@@ -53,8 +53,10 @@
     </script>
     <script>
         $(document).ready(function () {
-            $("#datepicker").datepicker().on('changeDate', function (e) {
-                alert(e.format());
+            $('#datepicker').datepicker({
+                change: function (e) {
+                    alert('Change is fired');
+                }
             });
         });
     </script>
