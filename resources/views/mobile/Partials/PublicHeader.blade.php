@@ -37,6 +37,15 @@
                 <input class="form-control mr-sm-2 search-input-box" type="search" name="q" placeholder="{{__('ClientSide.placeholder')}}" aria-label="Search">
                 <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="width: 100%;">{{__('ClientSide.search')}}</button>
             </form>
+            <ul style="list-style: none; padding-left: 0;">
+
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li style="padding: 0 0 5px 0;">
+                        <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" style="color: rgba(0,0,0,.5);">{{ $properties['native'] }}</a>
+                    </li>
+                @endforeach
+
+            </ul>
         </div>
     </nav>
 </header>
