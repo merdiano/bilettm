@@ -101,6 +101,6 @@ if(!function_exists('help_topics')){
             ->orderBy('position','asc')
             ->pluck('title','id');
 
-        return $topics->append(0 , trans('ClientSide.other'));
+        return $topics->merge( [0 => trans('ClientSide.other')]);
     }
 }
