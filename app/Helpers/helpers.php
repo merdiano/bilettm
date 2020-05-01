@@ -101,6 +101,6 @@ if(!function_exists('help_topics')){
             ->orderBy('position','asc')
             ->pluck('title','id');
 
-        return $topics +=  [0 => trans('ClientSide.other')];
+        return $topics->push( [0 => trans('ClientSide.other')]);
     }
 }
