@@ -44,7 +44,8 @@
     <script src="{{asset('vendor/gijgo/gijgo.min.js')}}" type="text/javascript"></script>
     <script>
         $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4',
+            uiLibrary: 'bootstrap4',s
+            format: 'yyyy-mm-dd',
             icons: {
                 {{--rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'--}}
                 rightIcon: '<i class="fa fa-calendar" style="padding: 7px;background-color: #d33d33;color: #ffffff;border-radius: 5px;margin: -10px;margin-left: 95px;"></i>'
