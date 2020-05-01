@@ -52,8 +52,10 @@
 @section('after_scripts')
     <script>
         $('select[name="topic"]').on('change', function() {
-            if(this.val() == 0)
+            if(this.value == 0)
             {
+                alert(this.val())
+
                 $('input[name="subject"]').parent().removeClass('d-none');
                 $('input[name="subject"]').val('');
             }else{
