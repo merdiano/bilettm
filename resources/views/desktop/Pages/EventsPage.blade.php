@@ -35,9 +35,7 @@
                 </div>
             </div>
         </section>
-
     @endforeach
-
 @endsection
 
 @section('after_scripts')
@@ -55,7 +53,4 @@
             }
         });
     </script>
-
-
-
 @endsection
