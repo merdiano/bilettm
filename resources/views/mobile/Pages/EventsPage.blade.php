@@ -7,6 +7,9 @@
     <link  rel="stylesheet" href="{{asset('vendor/jquery-ui/themes/base/jquery-ui.min.css')}}">
 @endsection
 @section('content')
+    <div class="row mt-2">
+        @include("Shared.Partials.FilterMenu")
+    </div>
     @foreach($category->children as $cat)
         @php
             $cat_events = $events->where('sub_category_id',$cat->id);
@@ -19,9 +22,6 @@
                 @if($cat_events->count() == $cat->events_limit)
                 <a class="red_button" href="{{$cat->url}}">{{__("ClientSide.rep")}}</a>
                 @endif
-            </div>
-            <div class="row mt-2">
-                @include("Shared.Partials.FilterMenu")
             </div>
 
             <div class="owl-carousel owl-theme" id="section-slider{{$loop->iteration}}">
