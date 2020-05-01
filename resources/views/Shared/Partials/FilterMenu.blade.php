@@ -29,7 +29,7 @@
                     {{--<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="tab">Дата <i class="fa fa-caret-down"></i></a>--}}
                     {{--<input id="datepicker" placeholder="{{__('ClientSide.select')}}" name="date" style="width: 95px; opacity: 1; z-index: 1; border-radius: 3px; margin-top: -2px; padding: 3px 10px;"/>--}}
                     <input id="datepicker" placeholder="00/00/00" name="date" style="width: 95px; opacity: 1; z-index: 1; border-radius: 3px; margin-top: -2px; padding: 3px 10px;"/>
-                    <a href="" style="position: absolute; top: 0; left: 40px; margin: 7px;">
+                    <a id="calendar-search-btn" style="position: absolute; top: 0; left: 40px; margin: 7px;">
                         <i class="fa fa-search" style="padding: 7px; background-color: #d33d33; color: #ffffff; border-radius: 5px; margin: -10px; margin-left: 95px;"></i>
                     </a>
                 </form>
