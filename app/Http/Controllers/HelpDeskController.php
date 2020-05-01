@@ -9,6 +9,7 @@ use App\Http\Requests\HelpTicketRequest;
 use App\Models\HelpTicket;
 use App\Models\HelpTicketComment;
 use App\Models\HelpTopic;
+use Illuminate\Support\Facades\Log;
 
 class HelpDeskController extends Controller
 {
@@ -33,16 +34,22 @@ class HelpDeskController extends Controller
     }
 
     public function store(HelpTicketRequest $request){
+//
+//        try{
 
-        $ticekt = HelpTicket::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'text' => $request->get('text'),
-            'phone' => $request->get('phone'),
-            'subject' => $request->get('subject'),
-            'ticket_category_id' => $request->get('topic')
-        ]);
-
+            $ticekt = HelpTicket::create([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'text' => $request->get('text'),
+                'phone' => $request->get('phone'),
+                'subject' => $request->get('subject'),
+                'ticket_category_id' => $request->get('topic'),
+                'attachment' => $request->get('attachment')
+            ]);
+//        }
+//        catch (\Exception $exception){
+//            Log::error($exception);
+//        }
         //todo fire event notify admin by mail, attachment
 
         return redirect()->route('help.show',['code' => $ticekt->code]);
@@ -63,6 +70,10 @@ class HelpDeskController extends Controller
         ]);
 
         $ticket->update(['status' => 'pending']) ;
+
+        if($request->has('attachment')){
+
+        }
 
         //todo notify, attachment
 

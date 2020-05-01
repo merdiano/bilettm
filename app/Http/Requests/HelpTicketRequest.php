@@ -29,6 +29,7 @@ class HelpTicketRequest extends FormRequest
             'email' => 'required|email',
             'topic' => 'required',
             'text' => 'required',
+            'attachment' =>  'image|max:1024'
         ];
     }
 

@@ -26,7 +26,8 @@ class HelpTicketCommentRequest extends FormRequest
     public function rules()
     {
         return [
-             'text' => 'required'
+            'text' => 'required',
+            'attachment' =>  'max:1024|mimes:pdf,jpg,png,jpeg,txt'
         ];
     }
 

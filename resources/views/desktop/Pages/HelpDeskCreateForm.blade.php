@@ -33,6 +33,10 @@
                                     'rows' => 5
                                     ))  !!}
                     </div>
+                    <div class="form-group">
+                        {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
+                        {!! Form::file('attachment') !!}
+                    </div>
                     {!! Form::submit(trans("ClientSide.create_ticket"), ['class'=>"btn btn-success"]) !!}
                 </form>
             </div>
