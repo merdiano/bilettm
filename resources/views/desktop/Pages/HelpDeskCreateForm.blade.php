@@ -52,7 +52,7 @@
 @section('after_scripts')
     <script>
         $('select[name="topic"]').on('change', function() {
-            $('input[name="subject"]').val(this.value);
+            $('input[name="subject"]').val(this.html());
         });
     </script>
 
