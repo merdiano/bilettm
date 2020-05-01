@@ -95,9 +95,12 @@ if(!function_exists('zanitlananlar')){
 }
 if(!function_exists('help_topics')){
     function help_topics(){
-        return HelpTopic::where('active',1)
+
+        $topics =  HelpTopic::where('active',1)
             ->select(['id','title_'.config('app.locale').' as title'])
             ->orderBy('position','asc')
             ->pluck('title','id');
+
+        $topics [] = [0 => 'Other'];
     }
 }

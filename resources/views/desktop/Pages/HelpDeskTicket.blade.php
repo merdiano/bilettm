@@ -9,3 +9,7 @@
         </div>
     </section>
 @endsection
+@section('after_scripts')
+
+
+@endsection

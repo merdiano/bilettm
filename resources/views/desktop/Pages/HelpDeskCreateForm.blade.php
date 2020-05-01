@@ -8,6 +8,7 @@
             <div class="col-6">
                 <form action="{{route('help.create')}}" method="POST">
                     @csrf
+
                     <div class="form-group">
                         {!! Form::label('name', trans("ClientSide.name"), array('class'=>'control-label')) !!}
                         {!! Form::text('name', old('name'),array('class'=>'form-control' ))  !!}
@@ -24,6 +25,10 @@
                     <div class="form-group">
                         {!! Form::label('topic', trans("ClientSide.topic"), array('class'=>'control-label')) !!}
                         {!! Form::select('topic',help_topics(), old('topic'), ['class' => 'form-control','id'=>'topic']) !!}
+                    </div>
+                    <div class="form-group hidden">
+                        {!! Form::label('subject', trans("ClientSide.subject"), array('class'=>'control-label')) !!}
+                        {!! Form::text('subject', old('subject','Other'),array('class'=>'form-control' ))  !!}
                     </div>
                     <div class="form-group custom-theme">
                         {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}
@@ -43,4 +48,8 @@
         </div>
     </div>
 </section>
+@endsection
+@section('after_scripts')
+
+
 @endsection
