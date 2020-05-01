@@ -25,7 +25,6 @@
 
             <li class="nav-item dropdown" style="position: relative; margin-left: -10px;">
                 <form action="{{$category->url}}" method="get" class="calendar-form " id="calendar-form-id">
-                    @csrf
                     {{--<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="tab">Дата <i class="fa fa-caret-down"></i></a>--}}
                     {{--<input id="datepicker" placeholder="{{__('ClientSide.select')}}" name="date" style="width: 95px; opacity: 1; z-index: 1; border-radius: 3px; margin-top: -2px; padding: 3px 10px;"/>--}}
                     <input id="datepicker" placeholder="00/00/00" name="date" style="width: 95px; opacity: 1; z-index: 1; border-radius: 3px; margin-top: -2px; padding: 3px 10px;"/>
