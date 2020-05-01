@@ -44,9 +44,7 @@
     <script>
         $(document).ready(function () {
             $("#calendar-search-btn").bind('click', function () {
-                var dt = new Date();
-                var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-                $("#calendar-start").val($(".gj-picker-bootstrap").attr('selectedday')+"+"+time);
+                $("#calendar-start").val($(".gj-picker-bootstrap").attr('selectedday')+"+00:00:01");
                 $("#calendar-end").val($(".gj-picker-bootstrap").attr('selectedday')+"+23:59:59");
                 $("#calendar-form-id").submit();
             });
