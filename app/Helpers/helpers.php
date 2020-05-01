@@ -101,6 +101,6 @@ if(!function_exists('help_topics')){
             ->orderBy('position','asc')
             ->pluck('title','id');
 
-        return $topics + [0 => 'Other'];
+        return $topics [] =  [0 => 'Other'];
     }
 }
