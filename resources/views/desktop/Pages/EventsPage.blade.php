@@ -52,13 +52,6 @@
         });
     </script>
 
-    <script>
-        $(document).ready(function () {
-            $("#calendar-search-btn").bind('click', function () {
-                $("#calendar-search-btn").attr('href', 'https://www.bilettm.com/gotten/date/'+$("#datepicker").val());
-                $("#calendar-search-btn").click();
-            });
-        });
-    </script>
+
 
 @endsection
