@@ -54,12 +54,15 @@
         $('select[name="topic"]').on('change', function() {
             if(this.value == 0)
             {
-                alert(this.val())
 
                 $('input[name="subject"]').parent().removeClass('d-none');
+
                 $('input[name="subject"]').val('');
+
             }else{
+
                 $('input[name="subject"]').parent().addClass('d-none');
+
                 $('input[name="subject"]').val(this.text());
             }
 
