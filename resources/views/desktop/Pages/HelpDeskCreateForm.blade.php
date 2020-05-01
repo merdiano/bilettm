@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         {!! Form::label('topic', trans("ClientSide.topic"), array('class'=>'control-label')) !!}
-                        {!! Form::select('topic',help_topics(), old('topic'), ['class' => 'form-control','id'=>'topic']) !!}
+                        {!! Form::select('topic',[null=>'Please Select'] + help_topics(), old('topic'), ['class' => 'form-control','id'=>'topic']) !!}
                     </div>
                     <div class="form-group hidden">
                         {!! Form::label('subject', trans("ClientSide.subject"), array('class'=>'control-label')) !!}
