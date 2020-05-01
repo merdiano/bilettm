@@ -24,13 +24,13 @@
             </li>
 
             <li class="nav-item dropdown" style="position: relative; margin-left: -10px;">
-                <form action="{{$category->url}}" method="get" class="calendar-form ">
+                <form action="{{$category->url}}" method="get" class="calendar-form " id="calendar-form-id">
                     @csrf
                     {{--<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="tab">Дата <i class="fa fa-caret-down"></i></a>--}}
                     {{--<input id="datepicker" placeholder="{{__('ClientSide.select')}}" name="date" style="width: 95px; opacity: 1; z-index: 1; border-radius: 3px; margin-top: -2px; padding: 3px 10px;"/>--}}
                     <input id="datepicker" placeholder="00/00/00" name="date" style="width: 95px; opacity: 1; z-index: 1; border-radius: 3px; margin-top: -2px; padding: 3px 10px;"/>
-                    <input type="hidden"  name="start" value="">
-                    <input type="hidden"  name="end" value="">
+                    <input type="hidden" id="calendar-start" name="start" value="">
+                    <input type="hidden" id="calendar-end" name="end" value="23">
 
                     <a id="calendar-search-btn" style="position: absolute; top: 0; left: 40px; margin: 7px;">
                         <i class="fa fa-search" style="padding: 7px; background-color: #d33d33; color: #ffffff; border-radius: 5px; margin: -10px; margin-left: 95px;"></i>
@@ -45,8 +45,9 @@
     <script>
         $(document).ready(function () {
             $("#calendar-search-btn").bind('click', function () {
-                $("#calendar-search-btn").attr('href', 'https://www.bilettm.com/gotten/date/'+$("#datepicker").val());
-                $("#calendar-search-btn").click();
+                $("#calendar-start").val($(".gj-picker-bootstrap").attr('selectedday'));
+                $("#calendar-end").val($(".gj-picker-bootstrap").attr('selectedday')+"+23:59:59");
+                $("#calendar-form-id").submit();
             });
         });
     </script>
