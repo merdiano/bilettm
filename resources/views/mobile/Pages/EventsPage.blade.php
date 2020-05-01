@@ -15,7 +15,7 @@
             $cat_events = $events->where('sub_category_id',$cat->id);
         @endphp
         <div class="section-section py-3">
-            <div class="col-12 d-flex justify-content-between">
+            <div class="col-12 d-flex justify-content-between" style="margin-bottom: 20px">
                 <h5 >{{$cat->title}}
                     <div class="title-bottom-line"></div>
                 </h5>
