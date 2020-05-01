@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.theme.default.min.css')}}">
     <link  rel="stylesheet" href="{{asset('vendor/jquery-ui/themes/base/jquery-ui.min.css')}}">
 @endsection
+
+@push('after_styles')
+    <style>
+        .gj-picker-bootstrap{
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="row mt-2">
         @include("Shared.Partials.FilterMenu")
