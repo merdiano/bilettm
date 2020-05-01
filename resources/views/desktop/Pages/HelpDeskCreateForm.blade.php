@@ -26,7 +26,7 @@
                         {!! Form::label('topic', trans("ClientSide.topic"), array('class'=>'control-label')) !!}
                         {!! Form::select('topic',help_topics(), old('topic'), ['placeholder'=>trans('ClientSide.please_select'),'class' => 'form-control','id'=>'topic']) !!}
                     </div>
-                    <div class="form-group hidden">
+                    <div class="form-group d-none">
                         {!! Form::label('subject', trans("ClientSide.subject"), array('class'=>'control-label')) !!}
                         {!! Form::text('subject', old('subject',trans('ClientSide.other')),array('class'=>'form-control' ))  !!}
                     </div>
@@ -52,7 +52,15 @@
 @section('after_scripts')
     <script>
         $('select[name="topic"]').on('change', function() {
-            $('input[name="subject"]').val(this.html());
+            if(this.val() == 0)
+            {
+                $('input[name="subject"]').parent().removeClass('d-none');
+                $('input[name="subject"]').val('');
+            }else{
+                $('input[name="subject"]').parent().addClass('d-none');
+                $('input[name="subject"]').val(this.text());
+            }
+
         });
     </script>
 
