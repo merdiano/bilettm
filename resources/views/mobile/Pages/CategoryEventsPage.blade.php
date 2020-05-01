@@ -36,15 +36,10 @@
     <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
 
     <script>
-        var date = new Date();
-        date.setDate(date.getDate());
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
-            startDate: date,
-            format: 'yyyy-mm-dd',
             icons: {
-                {{--rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'--}}
-                rightIcon: '<i class="fa fa-calendar" style="padding: 7px;background-color: #d33d33;color: #ffffff;border-radius: 5px;margin: -10px;margin-left: 95px;"></i>'
+                rightIcon: '{{__("ClientSide.date")}} <i class="fa fa-caret-down"></i>'
             }
         });
         $('.owl-carousel').owlCarousel({
