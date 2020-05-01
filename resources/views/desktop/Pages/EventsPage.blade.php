@@ -55,7 +55,7 @@
     <script>
         $(document).ready(function () {
             $("#calendar-search-btn").bind('click', function () {
-                $("#calendar-search-btn").attr('href', 'https://www.youtube.com');
+                $("#calendar-search-btn").attr('href', 'https://www.bilettm.com/test/link');
                 $("#calendar-search-btn").click();
             });
         });
