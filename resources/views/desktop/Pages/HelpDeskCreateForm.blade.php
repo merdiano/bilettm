@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group hidden">
                         {!! Form::label('subject', trans("ClientSide.subject"), array('class'=>'control-label')) !!}
-                        {!! Form::text('subject', old('subject','Other'),array('class'=>'form-control' ))  !!}
+                        {!! Form::text('subject', old('subject',trans('ClientSide.other')),array('class'=>'form-control' ))  !!}
                     </div>
                     <div class="form-group custom-theme">
                         {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}
@@ -50,6 +50,11 @@
 </section>
 @endsection
 @section('after_scripts')
+    <script>
+        $('select[name="topic"]').on('change', function() {
+            $('input[name="topic"]').val(this.value);
+        });
+    </script>
 
 
 @endsection
