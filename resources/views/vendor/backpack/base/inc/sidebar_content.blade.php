@@ -20,13 +20,14 @@
 {{--    </ul>--}}
 {{--</li>--}}
 {{--<li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>--}}
+<li><a href='{{ backpack_url('slider') }}'><i class='fa fa-image'></i> <span>Sliders</span></a></li>
 <li><a href='{{ backpack_url('category') }}'><i class='fa fa-tag'></i> <span>Categories</span></a></li>
+<li><a href='{{ backpack_url('venue') }}'><i class='fa fa-tag'></i> <span>Venues</span></a></li>
+<li><a href='{{ backpack_url('section') }}'><i class='fa fa-align-center'></i> <span>Sections</span></a></li>
 <li><a href='{{ backpack_url('page') }}'><i class='fa fa-file-o'></i> <span>Pages</span></a></li>
+<li><a href='{{ backpack_url('subscriber') }}'><i class='fa fa-tag'></i> <span>Subscribers</span></a></li>
+<li><a href='{{ backpack_url('helpTicketCategory') }}'><i class='fa fa-tag'></i> <span>Help Topics</span></a></li>
 <li><a href='{{ backpack_url('setting') }}'><i class='fa fa-cog'></i> <span>Settings</span></a></li>
 <li><a href='{{ backpack_url('backup') }}'><i class='fa fa-hdd-o'></i> <span>Backups</span></a></li>
 
-<li><a href='{{ backpack_url('subscriber') }}'><i class='fa fa-tag'></i> <span>Subscribers</span></a></li>
-<li><a href='{{ backpack_url('event_request') }}'><i class='fa fa-tag'></i> <span>Event Requests</span></a></li>
-<li><a href='{{ backpack_url('venue') }}'><i class='fa fa-tag'></i> <span>Venues</span></a></li>
-<li><a href='{{ backpack_url('section') }}'><i class='fa fa-tag'></i> <span>Sections</span></a></li>
-<li><a href='{{ backpack_url('slider') }}'><i class='fa fa-image'></i> <span>Sliders</span></a></li>
+

@@ -52,4 +52,8 @@ return array (
     'order_last_name_required'  => 'Введите, пожалуйста, фамилию',
     'order_email_email'         => 'Введите, пожалуйста, email',
     'order_terms_required'      => 'Примите, пожалуйста, условия оферты',
+    'cardholder_name' => 'Card holder name',
+    'cardholder_pan' => 'Card holder pan',
+    'cardholder_expiration' => 'Card expiration date',
+    'payment_status_message' => 'Payment message',
 );

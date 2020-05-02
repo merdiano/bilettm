@@ -65,6 +65,19 @@
                         <div class="col-sm-6 col-xs-6">
                             <b>@lang("Order.transaction_id")</b><br> {{$order->transaction_id}}
                         </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <b>@lang("Order.cardholder_name")</b><br> {{$order->payment_card_holder_name}}
+                            </div>
+
+                            <div class="col-sm-6 col-xs-6">
+                                <b>@lang("Order.cardholder_pan")</b><br> {{$order->payment_card_pan}}
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <b>@lang("Order.cardholder_expiration")</b><br> {{$order->payment_card_expiration}}
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <b>@lang("Order.payment_status_message")</b><br> {{$order->payment_error_message}}
+                            </div>
                         <div class="col-sm-6 col-xs-6">
                             {{--<b>@lang("Order.payment_gateway")</b><br> <a href="{{ $order->payment_gateway->provider_url }}" target="_blank">{{$order->payment_gateway->provider_name}}</a>--}}
                         </div>

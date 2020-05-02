@@ -52,4 +52,8 @@ return array (
     'order_last_name_required'  => 'Familiýaňyzy giriziň',
     'order_email_email'         => 'E-mail giriziň',
     'order_terms_required'      => 'Ofertanyň şertlerini kabul ediň',
+    'cardholder_name' => 'Card holder name',
+    'cardholder_pan' => 'Card holder pan',
+    'cardholder_expiration' => 'Card expiration date',
+    'payment_status_message' => 'Payment message',
 );

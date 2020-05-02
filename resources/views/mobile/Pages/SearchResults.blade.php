@@ -17,7 +17,7 @@
                         <h5 >{{$event->title}}</h5>
                         <h6 class="text-left"><b>@lang('ClientSide.category')</b>: {{$event->category_title}}</h6>
                         <h6 class="text-left"><b>@lang('ClientSide.venue')</b>: {{$event->venue_name}}</h6>
-                        <h6 class="text-left"><b>@lang('ClientSide.date')</b>: {{$event->start_date->format('d.m.Y')}} - {{$event->end_date->format('d.m.Y')}}</h6>
+                        <h6 class="text-left"><b>@lang('ClientSide.organiser')</b>: {{$event->organiser}}</h6>
                     </div>
                 </div>
             @endforeach
