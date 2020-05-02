@@ -63,7 +63,7 @@
 
                 $('input[name="subject"]').parent().addClass('d-none');
 
-                $('input[name="subject"]').val($(this).text());
+                $('input[name="subject"]').val(this.options[this.selectedIndex].text);
             }
 
         });
