@@ -64,7 +64,7 @@
 @section('after_scripts')
     <script>
         $('select[name="topic"]').on('change', function() {
-            if(this.value === 0)
+            if(this.options[this.selectedIndex].value === 0)
             {
 
                 $('input[name="subject"]').parent().removeClass('d-none');
