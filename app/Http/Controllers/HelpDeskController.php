@@ -36,6 +36,8 @@ class HelpDeskController extends Controller
     public function store(HelpTicketRequest $request){
 //
 //        try{
+
+        dump($request);
             $ticekt = HelpTicket::create([
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
