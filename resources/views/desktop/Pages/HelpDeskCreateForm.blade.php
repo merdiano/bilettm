@@ -63,9 +63,9 @@
 @endsection
 @section('after_scripts')
     <script>
-        $('select.topic').on('change', function() {
+        $('select[name=topic]').on('change', function() {
             // alert(this.options[this.selectedIndex].text);
-            let  subject = $('input.subject');
+            let  subject = $('input[name=subject]');
             if(this.options[this.selectedIndex].value == 0)
             {
 
