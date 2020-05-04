@@ -63,21 +63,24 @@
 @endsection
 @section('after_scripts')
     <script>
-        $('select[name="topic"]').on('change', function() {
-            alert(this.options[this.selectedIndex].text);
+        $('select.topic').on('change', function() {
+            // alert(this.options[this.selectedIndex].text);
+            let  subject = $('input.subject');
             if(this.options[this.selectedIndex].value == 0)
             {
 
-                $('input[name="subject"]').parent().removeClass('d-none');
+                subject.parent().removeClass('d-none');
 
-                $('input[name="subject"]').val('');
+                subject.val('');
 
             }else{
 
-                $('input[name="subject"]').parent().addClass('d-none');
+                subject.parent().addClass('d-none');
 
-                $('input[name="subject"]').val(this.options[this.selectedIndex].text);
+                subject.val(this.options[this.selectedIndex].text);
             }
+
+            subject.trigger('change');
 
         });
     </script>
