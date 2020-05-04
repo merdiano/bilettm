@@ -64,7 +64,7 @@
 @section('after_scripts')
     <script>
         $('select[name="topic"]').on('change', function() {
-            alert(this.value);
+            alert(this.options[this.selectedIndex].text);
             if(this.options[this.selectedIndex].value == 0)
             {
 
