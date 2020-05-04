@@ -13,36 +13,48 @@
                         {!! Form::label('name', trans("ClientSide.name"), array('class'=>'control-label')) !!}
                         {!! Form::text('name', old('name'),array('class'=>'form-control' ))  !!}
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">
                         {!! Form::label('email', trans("ClientSide.email"), array('class'=>'control-label required')) !!}
                         {!! Form::text('email', old('email'),array('class'=>'form-control' ))  !!}
+                        @if($errors->has('email'))
+                            <p class="help-block">{{ $errors->first('email') }}</p>
+                        @endif
                     </div>
                     <div class="form-group">
                         {!! Form::label('phone', trans("ClientSide.phone"), array('class'=>'control-label')) !!}
                         {!! Form::text('phone', old('phone'),array('class'=>'form-control' ))  !!}
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group {{ ($errors->has('topic')) ? 'has-error' : '' }}">
                         {!! Form::label('topic', trans("ClientSide.topic"), array('class'=>'control-label')) !!}
                         {!! Form::select('topic',help_topics(), old('topic'), ['placeholder'=>trans('ClientSide.please_select'),'class' => 'form-control','id'=>'topic']) !!}
+                        @if($errors->has('topic'))
+                            <p class="help-block">{{ $errors->first('topic') }}</p>
+                        @endif
                     </div>
                     <div class="form-group d-none">
                         {!! Form::label('subject', trans("ClientSide.subject"), array('class'=>'control-label')) !!}
                         {!! Form::text('subject', old('subject',trans('ClientSide.other')),array('class'=>'form-control' ))  !!}
                     </div>
-                    <div class="form-group custom-theme">
+                    <div class="form-group custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
                         {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}
                         {!! Form::textarea('text', old('text'),
                                     array(
                                     'class'=>'form-control  editable',
                                     'rows' => 5
                                     ))  !!}
+                        @if($errors->has('text'))
+                            <p class="help-block">{{ $errors->first('text') }}</p>
+                        @endif
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ ($errors->has('attachment')) ? 'has-error' : '' }}">
                         {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
                         {!! Form::file('attachment') !!}
                     </div>
                     {!! Form::submit(trans("ClientSide.create_ticket"), ['class'=>"btn btn-success"]) !!}
+                    @if($errors->has('attachment'))
+                        <p class="help-block">{{ $errors->first('attachment') }}</p>
+                    @endif
                 </form>
             </div>
         </div>
@@ -52,7 +64,7 @@
 @section('after_scripts')
     <script>
         $('select[name="topic"]').on('change', function() {
-            if(this.value == 0)
+            if(this.value === 0)
             {
 
                 $('input[name="subject"]').parent().removeClass('d-none');
