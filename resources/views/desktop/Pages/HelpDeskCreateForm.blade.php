@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
-                <form action="{{route('help.create')}}" method="POST">
+                <form action="{{route('help.create')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -55,6 +55,7 @@
                     @if($errors->has('attachment'))
                         <p class="help-block">{{ $errors->first('attachment') }}</p>
                     @endif
+
                 </form>
             </div>
         </div>
