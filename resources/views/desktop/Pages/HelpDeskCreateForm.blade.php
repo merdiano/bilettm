@@ -71,7 +71,7 @@
 
                 subject.parent().removeClass('d-none');
 
-                subject.val('');
+                subject.val('bosh');
 
             }else{
 
