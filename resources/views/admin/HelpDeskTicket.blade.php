@@ -65,6 +65,7 @@
                         <div class="col-lg-8 col-md-8">
                             <div class="alert alert-info" role="alert">
                                 <p>{{$entry->text}}</p>
+                                <br>
                                 @if($entry->attachment)
                                     <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>
                                 @endif
@@ -72,9 +73,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8">
-                            <div class="alert alert-info" role="alert">
-                                <p>{{$entry->text}}</p>
+                        <div class="col-lg-offset-4 col-md-offset-4 col-lg-8 col-md-8">
+                            <div class="alert alert-success" role="alert">
+                                <p>{{$entry->text}}</p><br>
                                 @if($entry->attachment)
                                     <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>
                                 @endif
