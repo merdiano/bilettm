@@ -24,5 +24,5 @@ Route::group([
     CRUD::resource('account', 'AccountCrudController');
     CRUD::resource('helpTopic','HelpTopicCrudController');
     CRUD::resource('helpTicket','HelpTicketCrudController');
-    Route::get('helpTopic/{id}/replay', 'HelpTopicCrudController@replay');
+    Route::get('helpTicket/{id}/replay', 'HelpTopicCrudController@replay')->name('ticket.replay');
 }); // this should be the absolute last line of this file
