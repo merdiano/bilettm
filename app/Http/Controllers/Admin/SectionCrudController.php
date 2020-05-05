@@ -49,7 +49,7 @@ class SectionCrudController extends CrudController
 //            ['name'=>'section_no','type'=>'text','label'=>'Section No'],
             ['name'=>'section_no_ru','type'=>'text','label'=>'Section No Ru'],
             ['name'=>'section_no_tk','type'=>'text','label'=>'Section No Tk'],
-            ['name'=>'description','type'=>'text','label'=>'Notes'],
+            ['name'=>'description','type'=>'textarea','label'=>'Notes'],
 //            ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
 //            ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
             ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue'],
