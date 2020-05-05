@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\HelpTicket;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -91,6 +92,9 @@ class HelpTicketCrudController extends CrudController
 
     public function replay($id){
 
-        return view('admin.HelpDeskTicket')->with('crud',$this->crud);
+        $entry = HelpTicket::with(['comments','topic'])->findOrFail($id);
+        return view('admin.HelpDeskTicket')
+            ->with('entry',$entry)
+            ->with('crud',$this->crud);
     }
 }
