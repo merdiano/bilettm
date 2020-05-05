@@ -34,8 +34,16 @@ class HelpTicketCrudController extends CrudController
         */
 
         // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
+//        $this->crud->setFromDb();
 
+        $this->crud->setColumns([
+            ['name'=>'code','type'=>'text','label'=>'Code'],
+            ['name'=>'name','type'=>'text','label'=>'Name'],
+            ['name'=>'phone','type'=>'text','label'=>'Phone'],
+            ['name'=>'email','type'=>'email','label'=>'Email'],
+            ['name'=>'subject','type'=>'text','label'=>'Subject'],
+            ['name'=>'status','type'=>'text','label'=>'Status'],
+        ]);
         // add asterisk for fields that are required in HelpTicletRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
