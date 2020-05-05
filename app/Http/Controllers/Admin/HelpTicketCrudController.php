@@ -57,16 +57,16 @@ class HelpTicketCrudController extends CrudController
     {
         $content = parent::show($id);
 
-        $this->crud->addColumn([
-            'name' => 'table',
-            'label' => 'Table',
-            'type' => 'table',
-            'columns' => [
-                'code'  => 'Code',
-                'name'  => 'Name',
-                'phone' => 'Phone',
-            ]
-        ]);
+//        $this->crud->addColumn([
+//            'name' => 'table',
+//            'label' => 'Table',
+//            'type' => 'table',
+//            'columns' => [
+//                'code'  => 'Code',
+//                'name'  => 'Name',
+//                'phone' => 'Phone',
+//            ]
+//        ]);
 
         return $content;
     }
@@ -91,5 +91,6 @@ class HelpTicketCrudController extends CrudController
 
     public function replay($id){
 
+        return view('admin.HelpDeskTicket');
     }
 }
