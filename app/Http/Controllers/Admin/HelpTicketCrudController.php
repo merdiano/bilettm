@@ -45,6 +45,8 @@ class HelpTicketCrudController extends CrudController
             ['name'=>'status','type'=>'text','label'=>'Status'],
         ]);
         // add asterisk for fields that are required in HelpTicletRequest
+
+        $this->crud->ad
 //        $this->crud->setRequiredFields(StoreRequest::class, 'create');
 //        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
         $this->crud->denyAccess('create');
@@ -52,6 +54,23 @@ class HelpTicketCrudController extends CrudController
         $this->crud->allowAccess('show');
         $this->crud->addButtonFromView('line', 'replay', 'replay', 'beginning');
 
+    }
+    public function show($id)
+    {
+        $content = parent::show($id);
+
+        $this->crud->addColumn([
+            'name' => 'table',
+            'label' => 'Table',
+            'type' => 'table',
+            'columns' => [
+                'code'  => 'Code',
+                'name'  => 'Name',
+                'phone' => 'Phone',
+            ]
+        ]);
+
+        return $content;
     }
 
     public function store(StoreRequest $request)
