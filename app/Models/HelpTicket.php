@@ -51,7 +51,7 @@ class HelpTicket extends Model
 
     /*
     |--------------------------------------------------------------------------
-    | ACCESORS
+    | ACCESSORS
     |--------------------------------------------------------------------------
     */
 
@@ -64,7 +64,6 @@ class HelpTicket extends Model
         $attribute_name = "attachment";
         $disk = config('filesystems.default'); // or use your own disk, defined in config/filesystems.php
         $destination_path = "help"; // path relative to the disk above
-        dd($value);
         // if the image was erased
         if ($value==null) {
             // delete the image from disk
@@ -74,21 +73,6 @@ class HelpTicket extends Model
             $this->attributes[$attribute_name] = null;
         }
 
-        // if a base64 was sent, store it in the db
-        if (starts_with($value, 'data:image'))
-        {
-            // 0. Make the image
-            $image = \Image::make($value)->encode('jpg', 90);
-            // 1. Generate a filename.
-            $filename = md5($value.time()).'.jpg';
-            // 2. Store the image on disk.
-            \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
-            // 3. Save the public path to the database
-            // but first, remove "public/" from the path, since we're pointing to it from the root folder
-            // that way, what gets saved in the database is the user-accesible URL
-            $public_destination_path = Str::replaceFirst('public/', '', $destination_path);
-            $this->attributes[$attribute_name] = $public_destination_path.'/'.$filename;
-        }
     }
     /**
      * Boot all of the bootable traits on the model.
