@@ -36,7 +36,7 @@ class HelpTicket extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function category(){
+    public function topic(){
         return $this->belongsTo(HelpTopic::class,'ticket_category_id');
     }
 
