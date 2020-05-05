@@ -54,20 +54,35 @@
                             <td><strong>Subject : </strong></td>
                             <td colspan="5">{{$entry->subject}}</td>
                         </tr>
-                        @if($entry->attachment)
-                        <tr>
-                            <td><strong>Attachment:</strong></td>
-                            <td><a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a> </td>
-                        </tr>
-                        @endif
+
                         </tbody>
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
             <div class="card">
-                <div class="alert alert-primary" role="alert">
-                    {{$entry->text}}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="alert alert-info" role="alert">
+                                <p>{{$entry->text}}</p>
+                                @if($entry->attachment)
+                                    <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8">
+                            <div class="alert alert-info" role="alert">
+                                <p>{{$entry->text}}</p>
+                                @if($entry->attachment)
+                                    <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
         </div>
