@@ -42,15 +42,15 @@
                             </td>
                             <td>{{$entry->email}}</td>
                             <td>
-                                Phone :
+                                <strong>Phone :</strong>
                             </td>
                             <td>{{$entry->phone}}</td>
                         </tr>
                         <tr>
                             <td><strong>Subject : </strong></td>
-                            <td>{{$entry->subject}}</td>
+                            <td colspan="2">{{$entry->subject}}</td>
                         </tr>
-                        <tr><td>{{$entry->text}}</td></tr>
+                        <tr><td colspan="3">{{$entry->text}}</td></tr>
 
                         </tbody>
                     </table>
