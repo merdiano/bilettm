@@ -57,14 +57,14 @@
                         @if($entry->attachment)
                         <tr>
                             <td><strong>Attachment:</strong></td>
-                            <td><a href="{{asset($entry->attachment)}}">{{$entry->attachment}}</a> </td>
+                            <td><a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a> </td>
                         </tr>
                         @endif
                         </tbody>
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
-            <div class="well">
+            <div class="card">
                 <div class="alert alert-primary" role="alert">
                     {{$entry->text}}
                 </div>
