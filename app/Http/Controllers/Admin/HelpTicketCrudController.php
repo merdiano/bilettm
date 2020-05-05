@@ -91,6 +91,6 @@ class HelpTicketCrudController extends CrudController
 
     public function replay($id){
 
-        return view('admin.HelpDeskTicket');
+        return view('admin.HelpDeskTicket')->with('crud',$this->crud);
     }
 }
