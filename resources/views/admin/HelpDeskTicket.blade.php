@@ -35,12 +35,16 @@
                             <td>
                                 {{$entry->name}}
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <strong>
                                     Email :
                                 </strong>
                             </td>
                             <td>{{$entry->email}}</td>
+                        </tr>
+                        <tr>
                             <td>
                                 <strong>Phone :</strong>
                             </td>
@@ -48,9 +52,8 @@
                         </tr>
                         <tr>
                             <td><strong>Subject : </strong></td>
-                            <td colspan="2">{{$entry->subject}}</td>
+                            <td colspan="5">{{$entry->subject}}</td>
                         </tr>
-                        <tr><td colspan="3">{{$entry->text}}</td></tr>
 
                         </tbody>
                     </table>
