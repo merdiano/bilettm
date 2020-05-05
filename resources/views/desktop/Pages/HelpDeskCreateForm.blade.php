@@ -5,6 +5,7 @@
 <section class="movie-items-group firts-child my-5">
     <div class="container">
         <div class="row justify-content-center">
+            <p class="my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque libero mollitia nemo, nobis odit quasi quidem quisquam sunt. Cupiditate dolores nisi nostrum officiis provident quasi recusandae unde voluptate. Eos, suscipit!</p>
             <div class="col-6">
                 <form action="{{route('help.create')}}" method="POST" enctype="multipart/form-data">
                     @csrf

@@ -87,13 +87,8 @@ class HelpTicket extends Model
 
         static::deleting(function($obj) {
             $disk = config('filesystems.default');
-            \Storage::disk($disk)->delete($obj->seats_image);
+            \Storage::disk($disk)->delete($obj->attachment);
 
-            if (count((array)$obj->images)) {
-                foreach ($obj->images as $file_path) {
-                    \Storage::disk('uploads')->delete($file_path);
-                }
-            }
         });
     }
 }

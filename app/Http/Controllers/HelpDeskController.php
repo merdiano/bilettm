@@ -34,9 +34,8 @@ class HelpDeskController extends Controller
     }
 
     public function store(HelpTicketRequest $request){
-//
-//        try{
 
+        try{
 
             $ticekt = HelpTicket::create([
                 'name' => $request->get('name'),
@@ -47,13 +46,15 @@ class HelpDeskController extends Controller
                 'ticket_category_id' => $request->get('topic'),
                 'attachment' => $request->file('attachment')
             ]);
-//        }
-//        catch (\Exception $exception){
-//            Log::error($exception);
-//        }
-        //todo fire event notify admin by mail, attachment
+            //todo fire event notify admin by mail, attachment
+            return redirect()->route('help.show',['code' => $ticekt->code]);
+        }
+        catch (\Exception $exception){
+            Log::error($exception);
+        }
 
-        return redirect()->route('help.show',['code' => $ticekt->code]);
+
+
     }
 
     public function comment(HelpTicketCommentRequest $request,$code){
