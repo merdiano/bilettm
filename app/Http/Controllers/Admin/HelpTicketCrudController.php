@@ -45,8 +45,10 @@ class HelpTicketCrudController extends CrudController
             ['name'=>'status','type'=>'text','label'=>'Status'],
         ]);
         // add asterisk for fields that are required in HelpTicletRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+//        $this->crud->setRequiredFields(StoreRequest::class, 'create');
+//        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+        $this->crud->denyAccess(['create','edit']);
+
     }
 
     public function store(StoreRequest $request)
