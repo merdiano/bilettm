@@ -64,7 +64,7 @@ class HelpTicket extends Model
         $attribute_name = "attachment";
         $disk = config('filesystems.default'); // or use your own disk, defined in config/filesystems.php
         $destination_path = "help"; // path relative to the disk above
-
+        dd($value);
         // if the image was erased
         if ($value==null) {
             // delete the image from disk

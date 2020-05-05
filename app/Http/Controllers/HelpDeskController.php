@@ -37,7 +37,7 @@ class HelpDeskController extends Controller
 //
 //        try{
 
-        dd($request);
+
             $ticekt = HelpTicket::create([
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
@@ -45,7 +45,7 @@ class HelpDeskController extends Controller
                 'phone' => $request->get('phone'),
                 'subject' => $request->get('subject'),
                 'ticket_category_id' => $request->get('topic'),
-                'attachment' => $request->get('attachment')
+                'attachment' => $request->file('attachment')
             ]);
 //        }
 //        catch (\Exception $exception){
