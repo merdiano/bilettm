@@ -54,11 +54,21 @@
                             <td><strong>Subject : </strong></td>
                             <td colspan="5">{{$entry->subject}}</td>
                         </tr>
-
+                        @if($entry->attachment)
+                        <tr>
+                            <td><strong>Attachment:</strong></td>
+                            <td><a href="{{asset($entry->attachment)}}">{{$entry->attachment}}</a> </td>
+                        </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
+            <div class="well">
+                <div class="alert alert-primary" role="alert">
+                    {{$entry->text}}
+                </div>
+            </div>
 
         </div>
     </div>
