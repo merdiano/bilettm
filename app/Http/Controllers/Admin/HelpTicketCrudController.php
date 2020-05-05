@@ -50,7 +50,7 @@ class HelpTicketCrudController extends CrudController
         $this->crud->denyAccess('create');
         $this->crud->denyAccess('update');
         $this->crud->allowAccess('show');
-        $this->crud->addButton('line', 'replay', 'view', '', 'beginning');
+        $this->crud->addButtonFromView('line', 'replay', 'replay', 'beginning');
 
     }
 
@@ -70,5 +70,9 @@ class HelpTicketCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+    }
+
+    public function replay($id){
+
     }
 }
