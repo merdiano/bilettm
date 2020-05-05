@@ -49,6 +49,8 @@ class HelpTicketCrudController extends CrudController
 //        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
         $this->crud->denyAccess('create');
         $this->crud->denyAccess('update');
+        $this->crud->allowAccess('show');
+        $this->crud->addButton('line', 'replay', 'view', '', 'beginning');
 
     }
 
