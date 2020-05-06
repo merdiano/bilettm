@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <form action="{{route('',['id' => $entry->getKey()])}}" method="post">
+                    <form action="{{route('ticket.replay.post',['id' => $entry->getKey()])}}" method="post">
                         @csrf
                         <div class="form-group custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
                             {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}
