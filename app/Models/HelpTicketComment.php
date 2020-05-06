@@ -39,6 +39,10 @@ class HelpTicketComment extends Model
     public function ticket(){
         return $this->belongsTo(HelpTicket::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -51,6 +55,9 @@ class HelpTicketComment extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function getOwnerAttribute(){
+        return $this->user->full_name ?? $this->name;
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

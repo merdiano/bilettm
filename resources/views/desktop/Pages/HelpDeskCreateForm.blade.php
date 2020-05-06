@@ -51,11 +51,12 @@
                     <div class="form-group {{ ($errors->has('attachment')) ? 'has-error' : '' }}">
                         {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
                         {!! Form::file('attachment') !!}
+                        @if($errors->has('attachment'))
+                            <p class="help-block">{{ $errors->first('attachment') }}</p>
+                        @endif
                     </div>
                     {!! Form::submit(trans("ClientSide.create_ticket"), ['class'=>"btn btn-success"]) !!}
-                    @if($errors->has('attachment'))
-                        <p class="help-block">{{ $errors->first('attachment') }}</p>
-                    @endif
+
 
                 </form>
             </div>

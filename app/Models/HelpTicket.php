@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
 class HelpTicket extends Model
 {
     use CrudTrait;
-
+    use Notifiable;
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
@@ -55,6 +56,9 @@ class HelpTicket extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function getOwnerAttribute(){
+        return $this->name ?? $this->email;
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <div class="alert alert-info" role="alert">
-                                <p>{{$entry->text}}</p>
+                                <p><strong>{{$entry->owner}} : </strong>{{$entry->text}}</p>
                                 <br>
                                 @if($entry->attachment)
                                     <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>
@@ -72,18 +72,37 @@
                             </div>
                         </div>
                     </div>
+                    @foreach($entry->comments as $comment)
                     <div class="row">
-                        <div class="col-lg-offset-4 col-md-offset-4 col-lg-8 col-md-8">
+                        <div class="@if($comment->user_id)col-lg-offset-4 col-md-offset-4 @endif col-lg-8 col-md-8">
                             <div class="alert alert-success" role="alert">
-                                <p>{{$entry->text}}</p><br>
-                                @if($entry->attachment)
-                                    <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>
+                                <p><strong>{{$comment->name}} : </strong>{{$comment->text}}</p><br>
+                                @if($comment->attachment)
+                                    <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$comment->attachment)}}">{{$comment->attachment}}</a></span>
                                 @endif
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
 
+                <div class="card-footer">
+                    <form action="{{route('',['id' => $entry->getKey()])}}" method="post">
+                        @csrf
+                        <div class="form-group custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
+                            {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}
+                            {!! Form::textarea('text', old('text'),
+                                        array(
+                                        'class'=>'form-control  editable',
+                                        'rows' => 5
+                                        ))  !!}
+                            @if($errors->has('text'))
+                                <p class="help-block">{{ $errors->first('text') }}</p>
+                            @endif
+                        </div>
+                        {!! Form::submit(trans("ClientSide.create_ticket"), ['class'=>"btn btn-success"]) !!}
+                    </form>
+                </div>
             </div>
 
         </div>
