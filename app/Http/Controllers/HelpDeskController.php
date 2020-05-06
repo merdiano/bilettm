@@ -9,6 +9,7 @@ use App\Http\Requests\HelpTicketRequest;
 use App\Models\HelpTicket;
 use App\Models\HelpTicketComment;
 use App\Models\HelpTopic;
+use App\Models\User;
 use App\Notifications\TicketReceived;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
