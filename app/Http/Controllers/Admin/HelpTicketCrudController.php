@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\HelpTicketCommentRequest;
 use App\Models\HelpTicket;
+use App\Models\HelpTicketComment;
+use App\Notifications\TicketCommented;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\HelpTicketRequest as StoreRequest;
 use App\Http\Requests\HelpTicketRequest as UpdateRequest;
 use Backpack\CRUD\CrudPanel;
+use Illuminate\Support\Facades\Notification;
 
 /**
  * Class HelpTicletCrudController
@@ -96,5 +100,21 @@ class HelpTicketCrudController extends CrudController
         return view('admin.HelpDeskTicket')
             ->with('entry',$entry)
             ->with('crud',$this->crud);
+    }
+
+    public function replayPost(HelpTicketCommentRequest $request, $ticket_id){
+        $ticket = HelpTicket::findOrFail($ticket_id,['id','email','name']);
+
+        $comment = HelpTicketComment::create([
+            'help_ticket_id' => $ticket_id,
+            'text' => $request->text,
+            'name' => auth()->user()->full_name,
+            'user_id' => auth()->id()
+        ]);
+
+        Notification::route('mail', $ticket->email)
+            ->notify(new TicketCommented($comment));
+
+        return redirect()->route('ticket.replay',['id'=>$ticket_id]);
     }
 }
