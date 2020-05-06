@@ -762,6 +762,8 @@ Route::group(
 //            return 'TODO: add terms and cond';
 //        }
 //    ]);
+    Route::get('helpTicket/{id}/replay', 'HelpTicketCrudController@replay')->name('ticket.replay');
+    Route::post('helpTicket/{id}/replay', 'HelpTicketCrudController@replayPost')->name('ticket.replay.post');
     /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
     Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\PageController@index','as'=>'about'])
         ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);

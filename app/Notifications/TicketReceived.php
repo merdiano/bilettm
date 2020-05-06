@@ -19,6 +19,13 @@ class TicketReceived extends Notification implements ShouldQueue
      * @return void
      */
 
+    /**
+     * The maximum number of exceptions to allow before failing.
+     *
+     * @var int
+     */
+    public $maxExceptions = 3;
+
     protected $ticket;
 
     public function __construct(HelpTicket $ticket)
