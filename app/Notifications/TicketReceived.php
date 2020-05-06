@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Log;
 
 class TicketReceived extends Notification implements ShouldQueue
 {
@@ -55,6 +56,8 @@ class TicketReceived extends Notification implements ShouldQueue
                     ->line('You have new ticket')
                     ->action('Notification Action', route('ticket.replay',['id'=>$this->ticket->id]))
                     ->line('Thank you for using our application!');
+
+        Log::info('Mail Notification: ',$notifiable);
     }
 
     /**
@@ -66,5 +69,6 @@ class TicketReceived extends Notification implements ShouldQueue
     public function toDatabase($notifiable)
     {
         return $this->ticket->toArray();
+        Log::info('Database Notification: ',$notifiable);
     }
 }
