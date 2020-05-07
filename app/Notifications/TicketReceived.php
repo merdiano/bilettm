@@ -53,7 +53,6 @@ class TicketReceived extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         try{
-            Log::info('Mail Notification: ',$notifiable);
             if($notifiable instanceof HelpTicket){
                 return (new MailMessage)
                     ->line('The introduction to the notification.')
@@ -87,6 +86,5 @@ class TicketReceived extends Notification implements ShouldQueue
     public function toDatabase($notifiable)
     {
         return $this->ticket->toArray();
-        Log::info('Database Notification: ',$notifiable);
     }
 }
