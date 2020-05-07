@@ -52,6 +52,7 @@ class TicketReceived extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        Log::info($notifiable);
         try{
             if($notifiable instanceof HelpTicket){
                 return (new MailMessage)
