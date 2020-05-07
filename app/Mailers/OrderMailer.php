@@ -29,7 +29,7 @@ class OrderMailer
     public function sendOrderTickets(Order $order)
     {
         $orderService = new OrderService($order->amount, $order->booking_fee + $order->organiser_booking_fee, $order->event);
-        $orderService->calculateFinalCosts();
+//        $orderService->calculateFinalCosts();
 
         Log::info("Sending ticket to: " . $order->email);
         $data = [
