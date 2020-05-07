@@ -38,7 +38,7 @@
                         <li class="list-group-item border-0 pl-0">
                             <a class="text-dark capitalizer" href="{{route('about',['page'=>'partners'])}}">{{__("ClientSide.partners")}}</a></li>
                         <li class="list-group-item border-0 pl-0">
-                            <a class="text-dark capitalizer" href="{{route('about',['page'=>'concert_halls'])}}">{{__("ClientSide.concert_halls")}}</a></li>
+                            <a class="text-dark capitalizer" href="{{route('venues')}}">{{__("ClientSide.concert_halls")}}</a></li>
                         <li class="list-group-item border-0 pl-0">
                             <a  class="text-dark capitalizer" data-toggle="modal" data-target="#exampleModalCenter">{{__("ClientSide.addEvent")}}</a></li>
                     </ul>
