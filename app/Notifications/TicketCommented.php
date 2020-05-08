@@ -33,7 +33,7 @@ class TicketCommented extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -56,10 +56,8 @@ class TicketCommented extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
-        return [
-            //
-        ];
+        return $this->comment->toArray();
     }
 }

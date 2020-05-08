@@ -8,8 +8,8 @@ use App\Http\Requests\HelpTicketCommentRequest;
 use App\Http\Requests\HelpTicketRequest;
 use App\Models\HelpTicket;
 use App\Models\HelpTicketComment;
-use App\Models\HelpTopic;
 use App\Models\User;
+use App\Notifications\TicketCommented;
 use App\Notifications\TicketReceived;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
@@ -56,12 +56,7 @@ class HelpDeskController extends Controller
              */
             $ticket->notify(new TicketReceived($ticket));
 
-            /**
-             * Notify administrators that ticket is arrived;
-             */
-            $administrators = User::where('is_admin',1)->get(['id','email']);
-
-            Notification::send($administrators, new TicketReceived($ticket));
+            $this->notifyAdministrators(new TicketReceived($ticket))   ;
 
             return redirect()->route('help.show',['code' => $ticket->code]);
         }
@@ -73,9 +68,19 @@ class HelpDeskController extends Controller
 
     }
 
+    /**
+     * Notify administrators that ticket is arrived;
+     */
+    private function notifyAdministrators(\Illuminate\Notifications\Notification $notification){
+
+        $administrators = User::where('is_admin',1)->get(['id','email']);
+
+        Notification::send($administrators, $notification);
+    }
+
     public function comment(HelpTicketCommentRequest $request,$code){
 
-        $ticket = HelpTicket::select('id')
+        $ticket = HelpTicket::select('id','name','email')
             ->where('code',$code)
             ->first();
 
@@ -84,16 +89,14 @@ class HelpDeskController extends Controller
 
         $comment =  HelpTicketComment::create([
             'text' => $request->text,
-            'help_ticket_id' => $ticket->id
+            'help_ticket_id' => $ticket->id,
+            'attachment' => $request->file('attachment'),
+            'name' => $ticket->owner,
         ]);
 
         $ticket->update(['status' => 'pending']) ;
 
-        if($request->has('attachment')){
-
-        }
-
-        //todo notify, attachment
+        $this->notifyAdministrators(new TicketCommented($comment));
 
         return redirect()->route('help.show',['code' => $code]);
 
