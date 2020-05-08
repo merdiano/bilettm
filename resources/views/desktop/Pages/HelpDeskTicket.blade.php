@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <form action="{{route('ticket.replay.post',['id' => $ticket->getKey()])}}" method="post">
+                        <form action="{{route('help.comment',['code' => $ticket->code])}}" method="post">
                             @csrf
                             <div class="form-group custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
                                 {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}
