@@ -1,7 +1,7 @@
 <!-- This file is used to store topbar (right) items -->
 <li><a href='{{ backpack_url('event_request') }}'><span>Event Requests</span></a></li>
 
-<li><a href='{{ backpack_url('helpTicket') }}'><span>Help Desk <span class="badge badge-danger">{{auth()->user()->unreadNotifications()->count() ?? 0}}</span></span></a></li>
+<li><a href='{{ backpack_url('helpTicket') }}'><span>Help Desk <span class="badge badge-danger">{{backpack_user()->unreadNotifications()->count() ?? 0}}</span></span></a></li>
 {{--<li class="">
     <a href="{{ url(config('backpack.base.route_prefix', 'admin')) }}">
         <i class="fa fa-cog"></i> Direct Link
