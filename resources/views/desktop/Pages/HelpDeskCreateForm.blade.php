@@ -12,7 +12,7 @@
             </div>
             <div>
                 <form action="{{route('help.show',['code'=>''])}}" method="GET">
-                    {!! Form::text('code', null, array(['class'=>'form-control'])) !!}}
+                    {!! Form::text('code', null, array('class'=>'form-control')) !!}}
                 </form>
             </div>
         </div>
