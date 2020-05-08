@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HelpTicketCommentRequest;
 use App\Http\Requests\HelpTicketRequest;
+use App\Models\BackpackUser;
 use App\Models\HelpTicket;
 use App\Models\HelpTicketComment;
 use App\Models\User;
@@ -73,7 +74,7 @@ class HelpDeskController extends Controller
      */
     private function notifyAdministrators(\Illuminate\Notifications\Notification $notification){
 
-        $administrators = User::where('is_admin',1)->get(['id','email']);
+        $administrators = BackpackUser::where('is_admin',1)->get(['id','email']);
 
         Notification::send($administrators, $notification);
     }
