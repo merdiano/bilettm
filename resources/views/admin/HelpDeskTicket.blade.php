@@ -100,7 +100,7 @@
                                 <p class="help-block">{{ $errors->first('text') }}</p>
                             @endif
                         </div>
-                        {!! Form::submit(trans("ClientSide.create_ticket"), ['class'=>"btn btn-success"]) !!}
+                        {!! Form::submit('Submit', ['class'=>"btn btn-success"]) !!}
                     </form>
                 </div>
             </div>

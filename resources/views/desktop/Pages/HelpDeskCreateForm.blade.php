@@ -4,8 +4,20 @@
 
 <section class="movie-items-group firts-child my-5">
     <div class="container">
+        <div class="row justify-content-around">
+            <div>
+                <h1>
+                    @lang('ClientSide.support')
+                </h1>
+            </div>
+            <div>
+                <form action="{{route('help.show')}}" method="GET">
+                    {!! Form::input('code', null, array(['class'=>'form-control'])) !!}}
+                </form>
+            </div>
+        </div>
         <div class="row justify-content-center">
-            <p class="my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque libero mollitia nemo, nobis odit quasi quidem quisquam sunt. Cupiditate dolores nisi nostrum officiis provident quasi recusandae unde voluptate. Eos, suscipit!</p>
+            <p class="my-4">@lang('ClientSide.support_form_text')</p>
             <div class="col-6">
                 <form action="{{route('help.create')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -27,18 +39,18 @@
                     </div>
 
                     <div class="form-group {{ ($errors->has('topic')) ? 'has-error' : '' }}">
-                        {!! Form::label('topic', trans("ClientSide.topic"), array('class'=>'control-label')) !!}
+                        {!! Form::label('topic', trans("ClientSide.support_topic"), array('class'=>'control-label')) !!}
                         {!! Form::select('topic',help_topics(), old('topic'), ['placeholder'=>trans('ClientSide.please_select'),'class' => 'form-control','id'=>'topic']) !!}
                         @if($errors->has('topic'))
                             <p class="help-block">{{ $errors->first('topic') }}</p>
                         @endif
                     </div>
                     <div class="form-group d-none">
-                        {!! Form::label('subject', trans("ClientSide.subject"), array('class'=>'control-label')) !!}
+                        {!! Form::label('subject', trans("ClientSide.support_subject"), array('class'=>'control-label')) !!}
                         {!! Form::text('subject', old('subject',trans('ClientSide.other')),array('class'=>'form-control' ))  !!}
                     </div>
                     <div class="form-group custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
-                        {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}
+                        {!! Form::label('text', trans("ClientSide.message"), array('class'=>'control-label required')) !!}
                         {!! Form::textarea('text', old('text'),
                                     array(
                                     'class'=>'form-control  editable',
@@ -55,7 +67,7 @@
                             <p class="help-block">{{ $errors->first('attachment') }}</p>
                         @endif
                     </div>
-                    {!! Form::submit(trans("ClientSide.create_ticket"), ['class'=>"btn btn-success"]) !!}
+                    {!! Form::submit(trans("ClientSide.submit_ticket"), ['class'=>"btn btn-success"]) !!}
 
 
                 </form>

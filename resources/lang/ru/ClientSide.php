@@ -163,4 +163,15 @@ return [
     'search_result' => 'Результат поиска по',
     'search_showing' => 'Видно на странице',
     'organiser' => 'Организатор',
+
+    'support' => 'Tech. support',
+    'submit_ticket' => 'Submit ticket',
+    'support_form_text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque libero mollitia nemo, nobis odit quasi quidem quisquam sunt. Cupiditate dolores nisi nostrum officiis provident quasi recusandae unde voluptate. Eos, suscipit!',
+    'support_topic' => 'Topic',
+    'choose_support_topic' => 'Please chose topic',
+    'other' => 'Other',
+    'attachment' => 'attachment',
+    'support_subject' => 'Subject',
+    'reply' => 'Reply',
+    'new_ticket' => 'New ticket',
 ];

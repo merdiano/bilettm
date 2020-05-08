@@ -156,4 +156,15 @@ return [
     'checkout_fail_button' => 'Contact us',
     'redirect_payment_message' =>'Redirecting to payment gateway',
     'organiser' => 'Organiser',
+    'support' => 'Tech. support',
+    'submit_ticket' => 'Submit ticket',
+    'support_form_text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque libero mollitia nemo, nobis odit quasi quidem quisquam sunt. Cupiditate dolores nisi nostrum officiis provident quasi recusandae unde voluptate. Eos, suscipit!',
+    'support_topic' => 'Topic',
+    'choose_support_topic' => 'Please chose topic',
+    'other' => 'Other',
+    'attachment' => 'attachment',
+    'support_subject' => 'Subject',
+    'reply' => 'Reply',
+    'new_ticket' => 'New ticket',
+
 ];
