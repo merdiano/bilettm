@@ -11,7 +11,7 @@
                 </h1>
             </div>
             <div>
-                <form action="{{route('help.show')}}" method="GET">
+                <form action="{{route('help.show',['code'=>''])}}" method="GET">
                     {!! Form::input('code', null, array(['class'=>'form-control'])) !!}}
                 </form>
             </div>

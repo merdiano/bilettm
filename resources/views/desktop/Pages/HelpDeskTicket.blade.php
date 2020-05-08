@@ -3,6 +3,18 @@
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('help')}}
     <section class="movie-items-group firts-child my-5">
         <div class="container">
+            <div class="row justify-content-around">
+                <div>
+                    <h1>
+                        @lang('ClientSide.support') : {{$ticket->code}}
+                    </h1>
+                </div>
+                <div>
+                    <form action="{{route('help.show',['code'=>''])}}" method="GET">
+                        {!! Form::input('code', null, array(['class'=>'form-control'])) !!}}
+                    </form>
+                </div>
+            </div>
             <div class="row justify-content-center">
                 <div class="card">
                     <div class="card-body">
