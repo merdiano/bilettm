@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <form action="{{route('help.comment',['code' => $ticket->code])}}" method="post">
+                        <form action="{{route('help.comment',['code' => $ticket->code])}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
                                 {!! Form::label('text', trans("ClientSide.text"), array('class'=>'control-label required')) !!}
@@ -43,6 +43,13 @@
                                             ))  !!}
                                 @if($errors->has('text'))
                                     <p class="help-block">{{ $errors->first('text') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group {{ ($errors->has('attachment')) ? 'has-error' : '' }}">
+                                {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
+                                {!! Form::file('attachment') !!}
+                                @if($errors->has('attachment'))
+                                    <p class="help-block">{{ $errors->first('attachment') }}</p>
                                 @endif
                             </div>
                             {!! Form::submit(trans("ClientSide.create_ticket"), ['class'=>"btn btn-success"]) !!}
