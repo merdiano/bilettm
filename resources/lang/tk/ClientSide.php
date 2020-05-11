@@ -169,14 +169,18 @@ sargydyňyz Bank tarapyndan ýatyrylandyr. Biletleri täzeden satyn almaga synan
     'search_showing' => 'Sahypada görkezileni',
     'organiser' => 'Gurnaýjy',
 
-    'support' => 'Tech. support',
-    'submit_ticket' => 'Submit ticket',
-    'support_form_text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque libero mollitia nemo, nobis odit quasi quidem quisquam sunt. Cupiditate dolores nisi nostrum officiis provident quasi recusandae unde voluptate. Eos, suscipit!',
-    'support_topic' => 'Topic',
-    'choose_support_topic' => 'Please chose topic',
-    'other' => 'Other',
-    'attachment' => 'attachment',
-    'support_subject' => 'Subject',
-    'reply' => 'Reply',
-    'new_ticket' => 'New ticket',
+    'support' => 'Tehniki goldaw',
+    'submit_ticket' => 'Arz et',
+    'support_form_text' => '<p>Tehniki goldaw gullugyna ýüz tutmazdan öň, soragyňyzyň çözgüdini "Soraglar we jogaplar" bölüminde gözläp bilersiňiz.</p>
+<p>Sizden şol bir sorag boýunça birnäçe arza döretmezligiňizi, ýüz tutan wagtyňyz sabyrly we sypaýy bolmagyňyzy haýyş edýäris. Hiç bir ýüzlenme jogapsyz galmaz.</p>
+<p>
+Soragyň jogabyna 10 minutdan 24 sagada çenli garaşyp bilersiňiz.
+</p>',
+    'support_topic' => 'Arza Mowzugy',
+    'choose_support_topic' => 'Mowzuk saýlaň',
+    'other' => 'Başga',
+    'attachment' => 'goşundy',
+    'support_subject' => 'Tema',
+    'reply' => 'Jogapla',
+    'new_ticket' => 'Arza döret',
 ];

@@ -166,7 +166,9 @@ return [
 
     'support' => 'Tech. support',
     'submit_ticket' => 'Submit ticket',
-    'support_form_text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque libero mollitia nemo, nobis odit quasi quidem quisquam sunt. Cupiditate dolores nisi nostrum officiis provident quasi recusandae unde voluptate. Eos, suscipit!',
+    'support_form_text' => '<p>Перед тем как послать заявку в службу технической поддержки, Вы можете поискать решение проблемы в разделе “Вопросы и ответы”.</p>
+<p>Не создавайте несколько одинаковых заявок и не дублируйте вопросы заявки по e-mail. Сохраняйте терпение и будьте вежливы. Помните! Ни одна заявка не останется без ответа.</p>
+<p>Время ответа: от 10 минут до 24 часов. </p>',
     'support_topic' => 'Topic',
     'choose_support_topic' => 'Please chose topic',
     'other' => 'Other',
