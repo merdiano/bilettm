@@ -13,6 +13,7 @@
             <div>
                 <form action="{{route('help.show',['code'=>''])}}" method="GET">
                     {!! Form::text('code', null, array('class'=>'form-control','placeholder' => trans('ClientSide.search_ticket'))) !!}
+                    {!! Form::submit('search') !!}
                 </form>
             </div>
         </div>

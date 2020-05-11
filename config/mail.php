@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.sendgrid.net'),
+    'host' => env('MAIL_HOST', 'smtp.yandex.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     */
 
     'from' => ['address' => env('MAIL_FROM_ADDRESS'), 'name' => env('MAIL_FROM_NAME')],
-
+    'from_help' => ['address' => env('MAIL_FROM_ADDRESS','maglumat@.bilettm.com'), 'name' => env('MAIL_FROM_NAME','Magulumat')],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

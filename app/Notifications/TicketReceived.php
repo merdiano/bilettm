@@ -55,19 +55,16 @@ class TicketReceived extends Notification implements ShouldQueue
         Log::info($notifiable);
         try{
             if($notifiable instanceof HelpTicket){
-                return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->line($this->ticket->text)
-                    ->line($this->ticket->created_at)
-                    ->action('Notification Action', route('help.show',['code' => $this->ticket->code]))
-                    ->line('Thank you for using our application!');
+                return (new MailMessage)->from(config('mail.from_help.address'),config('mail.from.name'))
+                    ->view('Emails.Help.CustomerNotification',['ticket' => $this->ticket]);
             }
             else
                 return (new MailMessage)
+                    ->from(config('mail.from_help.address'),config('mail.from.name'))
                     ->line('You have new ticket')
                     ->line($this->ticket->text)
                     ->line($this->ticket->created_at)
-                    ->action('Notification Action', route('ticket.replay',['id'=>$this->ticket->id]))
+                    ->action('Reply here', route('ticket.replay',['id'=>$this->ticket->id]))
                     ->line('Thank you for using our application!');
 
 

@@ -125,6 +125,7 @@ class EventCheckoutController extends Controller
 
             $booked_tickets = Attendee::where('ticket_id',$ticket_id)
                 ->where('event_id',$event_id)
+                ->where('is_cancelled',false)
                 ->whereIn('seat_no',$seat_nos)
                 ->pluck('seat_no');
 

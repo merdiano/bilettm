@@ -1,4 +1,4 @@
-@extends('ru.Emails.Layouts.Master')
+@extends('Emails.Layouts.Master')
 
 @section('message_content')
 

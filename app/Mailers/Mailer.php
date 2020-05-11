@@ -8,7 +8,7 @@ class Mailer
 {
     public function sendTo($toEmail, $fromEmail, $fromName, $subject, $view, $data = [], $attachment = false)
     {
-        Mail::send($view, $data, function ($message) use ($toEmail, $fromEmail, $fromName, $subject, $attachment) {
+        Mail::queue($view, $data, function ($message) use ($toEmail, $fromEmail, $fromName, $subject, $attachment) {
             $replyEmail = $fromEmail;
             $fromEmail = config('attendize.outgoing_email');
             if ($attachment) {

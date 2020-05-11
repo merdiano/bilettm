@@ -19,7 +19,7 @@ class OrderMailer
             'orderService' => $orderService
         ];
 
-        Mail::send('Emails.OrderNotification', $data, function ($message) use ($order) {
+        Mail::queue('Emails.OrderNotification', $data, function ($message) use ($order) {
             $message->to($order->account->email);
             $message->subject('New order received on the event ' . $order->event->title . ' [' . $order->order_reference . ']');
         });
@@ -44,7 +44,7 @@ class OrderMailer
             return;
         }
 
-        Mail::send('Mailers.TicketMailer.SendOrderTickets', $data, function ($message) use ($order, $file_path) {
+        Mail::queue('Mailers.TicketMailer.SendOrderTickets', $data, function ($message) use ($order, $file_path) {
             $message->to($order->email);
             $message->subject(trans("Controllers.tickets_for_event", ["event" => $order->event->title]));
             $message->attach($file_path);
