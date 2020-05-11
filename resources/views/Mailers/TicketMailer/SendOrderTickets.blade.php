@@ -1,7 +1,7 @@
 @extends('tk.Emails.Layouts.Master')
 
 @section('message_content')
-Salam! Form Mailer<br><br>
+Salam!<br><br>
 
 Siziň <b>{{$order->event->title}}</b> çäresi üçin sargydyňyz üstünlikli ýerine ýetirildi.<br><br>
 
