@@ -21,7 +21,7 @@ class AttendeeMailer extends Mailer
             'attendee' => $attendee,
         ];
 
-        Mail::queue('Mailers.TicketMailer.SendAttendeeTicket', $data, function ($message) use ($attendee) {
+        Mail::send('Mailers.TicketMailer.SendAttendeeTicket', $data, function ($message) use ($attendee) {
             $message->to($attendee->email);
             $message->subject(trans("Email.your_ticket_for_event", ["event" => $attendee->order->event->title]));
 
@@ -61,7 +61,7 @@ class AttendeeMailer extends Mailer
                 'email_logo'      => $attendee->event->organiser->full_logo_path,
             ];
 
-            Mail::queue('Emails.messageReceived', $data, function ($message) use ($attendee, $data) {
+            Mail::send('Emails.messageReceived', $data, function ($message) use ($attendee, $data) {
                 $message->to($attendee->email, $attendee->full_name)
                     ->from(config('attendize.outgoing_email_noreply'), $attendee->event->organiser->name)
                     ->replyTo($attendee->event->organiser->email, $attendee->event->organiser->name)
@@ -83,7 +83,7 @@ class AttendeeMailer extends Mailer
             'attendee' => $attendee,
         ];
 
-        Mail::queue('Mailers.TicketMailer.SendAttendeeInvite', $data, function ($message) use ($attendee) {
+        Mail::send('Mailers.TicketMailer.SendAttendeeInvite', $data, function ($message) use ($attendee) {
             $message->to($attendee->email);
             $message->subject(trans("Email.your_ticket_for_event", ["event" => $attendee->order->event->title]));
 
