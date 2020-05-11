@@ -12,7 +12,7 @@
             </div>
             <div>
                 <form action="{{route('help.show',['code'=>''])}}" method="GET">
-                    {!! Form::text('code', null, array('class'=>'form-control')) !!}}
+                    {!! Form::text('code', null, array('class'=>'form-control','placeholder' => trans('ClientSide.search_ticket'))) !!}
                 </form>
             </div>
         </div>
@@ -86,7 +86,7 @@
 
                 subject.parent().removeClass('d-none');
 
-                subject.val('bosh');
+                subject.val('');
 
             }else{
 

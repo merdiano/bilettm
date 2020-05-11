@@ -166,5 +166,6 @@ return [
     'support_subject' => 'Subject',
     'reply' => 'Reply',
     'new_ticket' => 'New ticket',
+    'search_ticket' => 'Type ticket code here'
 
 ];
