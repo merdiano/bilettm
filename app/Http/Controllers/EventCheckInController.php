@@ -23,7 +23,7 @@ class EventCheckInController extends MyBaseController
 
         $data = [
             'event'     => $event,
-            'attendees' => $event->attendees
+            'attendees' => $event->attendees()
         ];
 
         JavaScript::put([

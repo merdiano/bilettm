@@ -77,7 +77,9 @@ class Event extends MyBaseModel
      */
     public function attendees()
     {
-        return $this->hasMany(\App\Models\Attendee::class);
+        return $this->hasMany(\App\Models\Attendee::class)
+            ->where('is_cancelled',false)
+            ->where('is_refunded',false);
     }
 
     /**
