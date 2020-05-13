@@ -19,11 +19,12 @@ class EventCheckInController extends MyBaseController
      */
     public function showCheckIn($event_id)
     {
-        $event = Event::scope()->findOrFail($event_id);
+        $event = Event::scope()->with('attendees')->findOrFail($event_id);
 
+        dump($event->attendees);
         $data = [
             'event'     => $event,
-            'attendees' => $event->attendees()
+            'attendees' => $event->attendees
         ];
 
         JavaScript::put([
