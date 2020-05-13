@@ -21,7 +21,8 @@ class EventCheckInController extends MyBaseController
     {
         $event = Event::scope()->with('attendees')->findOrFail($event_id);
 
-        dump($event->attendees);
+        dump($event->attendees->pluck());
+
         $data = [
             'event'     => $event,
             'attendees' => $event->attendees
