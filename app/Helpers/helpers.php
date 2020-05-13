@@ -85,7 +85,7 @@ if(!function_exists('zanitlananlar')){
             ->transform(function ($item,$key){
                return [$item => 'reserved'];
             });
-
+        dump($ticket->booked);
         $booked = $ticket->booked->pluck('seat_no')
             ->transform(function ($item,$key){
                 return [$item =>'booked'];
