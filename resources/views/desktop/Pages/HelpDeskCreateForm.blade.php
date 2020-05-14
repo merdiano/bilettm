@@ -2,13 +2,14 @@
 @section('content')
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('help')}}
 
-<section class="movie-items-group firts-child my-5">
+<section class="movie-items-group firts-child my-5" style="margin-bottom: 100px !important;">
     <div class="container">
         <div class="row justify-content-between w-100 m-auto">
             <div>
                 <h1>
                     @lang('ClientSide.support')
                 </h1>
+                <div style="height: 4px;width: 100px;background-color: #d43d34;"></div>
             </div>
             <div>
                 <form action="{{route('help.show',['code'=>''])}}" method="GET">
