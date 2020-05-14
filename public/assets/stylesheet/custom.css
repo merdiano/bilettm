@@ -2397,3 +2397,7 @@ display: block;
   color: #000000 !important;
 }
 
+.form-control:focus, .custom-select:focus{
+  border-color: #d43d34;
+  box-shadow: none;
+}
