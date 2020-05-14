@@ -12,9 +12,9 @@
                 <div style="height: 4px;width: 100px;background-color: #d43d34;"></div>
             </div>
             <div>
-                <form action="{{route('help.show',['code'=>''])}}" method="GET" id="helpSearchForm">
+                <form action="{{route('help.show',['code'=>''])}}" method="GET" id="helpSearchForm" style="position: relative">
                     {!! Form::text('code', null, array('class'=>'form-control','placeholder' => trans('ClientSide.search_ticket'), 'style'=>'padding: 10px;width: 300px;border: 1px solid #d43d34;')) !!}
-                    <a id="helpSearchSubmit"><i class="fa fa-search" style="color: #d43d34"></i></a>
+                    <a id="helpSearchSubmit" style="position: absolute; cursor: pointer; top: 9px; right: 15px;"><i class="fa fa-search" style="color: #d43d34; font-size: 22px;"></i></a>
                 </form>
             </div>
         </div>
