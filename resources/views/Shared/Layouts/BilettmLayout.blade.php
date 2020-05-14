@@ -73,4 +73,12 @@
 @if(session()->get('message'))
     <script>showMessage('{{\Session::get('message')}}');</script>
 @endif
+
+<script>
+    $('document').ready(function () {
+        $("#helpSearchSubmit").bind('click', function () {
+            $("#helpSearchForm").submit();
+        });
+    });
+</script>
 </body>
