@@ -13,7 +13,7 @@
             </div>
             <div>
                 <form action="{{route('help.show',['code'=>''])}}" method="GET">
-                    {!! Form::text('code', null, array('class'=>'form-control','placeholder' => trans('ClientSide.search_ticket'))) !!}
+                    {!! Form::text('code', null, array('class'=>'form-control','placeholder' => trans('ClientSide.search_ticket'), 'style'=>'padding: 10px;width: 300px;border: 1px solid #d43d34;')) !!}
                     {!! Form::submit('search') !!}
                 </form>
             </div>
@@ -70,7 +70,7 @@
                             <p class="help-block">{{ $errors->first('text') }}</p>
                         @endif
                     </div>
-                    {!! Form::submit(trans("ClientSide.submit_ticket"), ['class'=>"btn btn-success", 'style'=>'background-color: #d43d34; border: #d43d34;']) !!}
+                    {!! Form::submit(trans("ClientSide.submit_ticket"), ['class'=>"btn btn-success", 'style'=>'background-color: #d43d34; border: #d43d34;padding: 10px 30px;']) !!}
 
 
                 </form>
