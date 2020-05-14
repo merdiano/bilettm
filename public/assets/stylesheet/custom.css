@@ -2401,3 +2401,7 @@ display: block;
   border-color: #d43d34;
   box-shadow: none;
 }
+
+.black-text-wrapper *{
+  color: #000000;
+}

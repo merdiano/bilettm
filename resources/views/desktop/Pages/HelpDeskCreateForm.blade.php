@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row w-100 m-auto">
-            <div class="col-12 p-0"><p class="my-4">@lang('ClientSide.support_form_text')</p></div>
+            <div class="col-12 p-0 black-text-wrapper"><p class="my-4">@lang('ClientSide.support_form_text')</p></div>
             <div class="col-12 p-0">
                 <form action="{{route('help.create')}}" method="POST" enctype="multipart/form-data" class="row w-100 m-auto">
                     @csrf
