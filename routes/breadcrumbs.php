@@ -40,7 +40,7 @@ Breadcrumbs::for('search',function($trail){
 
 Breadcrumbs::for('help',function($trail){
     $trail->parent('home');
-    $trail->push(trans('ClientSide.help'));
+    $trail->push(trans('ClientSide.support'));
 });
 
 Breadcrumbs::for('add_event',function($trail){

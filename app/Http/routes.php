@@ -756,6 +756,7 @@ Route::group(
         'as' =>'help.comment',
         'uses' => 'HelpDeskController@comment'
     ]);
+
 //    Route::get('/terms_and_conditions', [
 //        'as' => 'termsAndConditions',
 //        function () {

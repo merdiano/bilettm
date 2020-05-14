@@ -133,7 +133,7 @@ class EventOrderService
 
         try {
             $request_data = $session_data['request_data'][0];
-            $event = Event::findOrFail($order->id);
+            $event = Event::findOrFail($order->event_id);
             $attendee_increment = 1;
             $ticket_questions = isset($request_data['ticket_holder_questions']) ? $request_data['ticket_holder_questions'] : [];
             $order->order_status_id = isset($request_data['pay_offline']) ? config('attendize.order_awaiting_payment') : config('attendize.order_complete');
@@ -311,7 +311,7 @@ class EventOrderService
                 $attendee->first_name = $order->first_name;
                 $attendee->last_name = $order->last_name;
                 $attendee->email = $order->email;
-                $attendee->event_id = $order->event_id;
+                $attendee->event_id = $event->id;
                 $attendee->order_id = $order->id;
                 $attendee->ticket_id = $reserved->ticket_id;
                 $attendee->account_id = $order->account_id;

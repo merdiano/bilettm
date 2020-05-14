@@ -745,7 +745,7 @@ class EventAttendeesController extends MyBaseController
             'email_logo' => $attendee->event->organiser->full_logo_path,
         ];
 
-        if ($request->get('notify_attendee') == '1') {
+        if ($request->get('notify_attendee') == '1') {//todo queue this mail
             Mail::send('Emails.notifyCancelledAttendee', $data, function ($message) use ($attendee) {
                 $message->to($attendee->email, $attendee->full_name)
                     ->from(config('attendize.outgoing_email_noreply'), $attendee->event->organiser->name)

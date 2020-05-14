@@ -31,7 +31,7 @@ abstract class PaymentResponse
     public function errorMessage(){
         if(!$this->exception_message)
         {
-            return $this->response_data['ErrorMessage'];}
+            return $this->response_data['errorMessage'];}
         else
             return $this->exception_message;
     }

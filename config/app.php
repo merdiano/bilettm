@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://bilettm.com'),
+    'url' => env('APP_URL', 'https://bilettm.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -236,7 +236,7 @@ return [
         'HttpClient'   => Vinelab\Http\Facades\Client::class,
         'Purifier'     => Mews\Purifier\Facades\Purifier::class,
         'Markdown'     => MaxHoffmann\Parsedown\ParsedownFacade::class,
-        'Omnipay'      => Omnipay\Omnipay::class,
+//        'Omnipay'      => Omnipay\Omnipay::class,
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ],

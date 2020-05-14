@@ -6,10 +6,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HelpTicketCommentRequest;
 use App\Http\Requests\HelpTicketRequest;
+use App\Models\BackpackUser;
 use App\Models\HelpTicket;
 use App\Models\HelpTicketComment;
-use App\Models\HelpTopic;
+use App\Models\User;
+use App\Notifications\TicketCommented;
+use App\Notifications\TicketReceived;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Notification;
 
 class HelpDeskController extends Controller
 {
@@ -34,30 +38,50 @@ class HelpDeskController extends Controller
     }
 
     public function store(HelpTicketRequest $request){
-//
-//        try{
 
-            $ticekt = HelpTicket::create([
+        try{
+
+            $ticket = HelpTicket::create([
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
                 'text' => $request->get('text'),
                 'phone' => $request->get('phone'),
                 'subject' => $request->get('subject'),
                 'ticket_category_id' => $request->get('topic'),
-                'attachment' => $request->get('attachment')
+                'attachment' => $request->file('attachment')
             ]);
-//        }
-//        catch (\Exception $exception){
-//            Log::error($exception);
-//        }
-        //todo fire event notify admin by mail, attachment
 
-        return redirect()->route('help.show',['code' => $ticekt->code]);
+
+            /**
+             * Notify customer that ticket is received;
+             */
+            $ticket->notify(new TicketReceived($ticket));
+
+            $this->notifyAdministrators(new TicketReceived($ticket))   ;
+
+            return redirect()->route('help.show',['code' => $ticket->code]);
+        }
+        catch (\Exception $exception){
+            Log::error($exception);
+        }
+
+
+
+    }
+
+    /**
+     * Notify administrators that ticket is arrived;
+     */
+    private function notifyAdministrators(\Illuminate\Notifications\Notification $notification){
+
+        $administrators = BackpackUser::where('is_admin',1)->get(['id','email']);
+
+        Notification::send($administrators, $notification);
     }
 
     public function comment(HelpTicketCommentRequest $request,$code){
 
-        $ticket = HelpTicket::select('id')
+        $ticket = HelpTicket::select('id','name','email')
             ->where('code',$code)
             ->first();
 
@@ -66,16 +90,14 @@ class HelpDeskController extends Controller
 
         $comment =  HelpTicketComment::create([
             'text' => $request->text,
-            'help_ticket_id' => $ticket->id
+            'help_ticket_id' => $ticket->id,
+            'attachment' => $request->file('attachment'),
+            'name' => $ticket->owner,
         ]);
 
         $ticket->update(['status' => 'pending']) ;
 
-        if($request->has('attachment')){
-
-        }
-
-        //todo notify, attachment
+        $this->notifyAdministrators(new TicketCommented($comment));
 
         return redirect()->route('help.show',['code' => $code]);
 

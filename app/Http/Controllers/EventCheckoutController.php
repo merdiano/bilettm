@@ -125,6 +125,7 @@ class EventCheckoutController extends Controller
 
             $booked_tickets = Attendee::where('ticket_id',$ticket_id)
                 ->where('event_id',$event_id)
+                ->where('is_cancelled',false)
                 ->whereIn('seat_no',$seat_nos)
                 ->pluck('seat_no');
 
@@ -356,7 +357,7 @@ class EventCheckoutController extends Controller
                 $order->last_name = $request->get('order_last_name');
                 $order->email = $request->get('order_email');
                 $order->order_status_id = 5;//order awaiting payment
-                $order->amount = $orderService->getGrandTotal();
+                $order->amount = $ticket_order['order_total'];
                 $order->booking_fee = $ticket_order['booking_fee'];
                 $order->organiser_booking_fee = $ticket_order['organiser_booking_fee'];
                 $order->discount = 0.00;

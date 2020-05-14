@@ -2,24 +2,27 @@
 
 namespace App\Notifications;
 
+use App\Models\HelpTicketComment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class UserResetPassword extends Notification implements ShouldQueue
+class TicketCommented extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private $token;
-
     /**
-     * UserResetPassword constructor.
-     * @param $token
+     * Create a new notification instance.
+     *
+     * @return void
      */
-    public function __construct($token)
+    protected $comment;
+
+    public function __construct(HelpTicketComment $comment)
     {
-        $this->token = $token;
+        $this->comment = $comment;
+        //
     }
 
     /**
@@ -30,7 +33,7 @@ class UserResetPassword extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -41,11 +44,7 @@ class UserResetPassword extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-
-        $mailMessage = new MailMessage();
-        $mailMessage->view('Emails.Auth.Reminder', ['token' => $this->token]);
-
-        return ($mailMessage)
+        return (new MailMessage)
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
@@ -57,10 +56,8 @@ class UserResetPassword extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
-        return [
-            //
-        ];
+        return $this->comment->toArray();
     }
 }

@@ -151,7 +151,7 @@ return [
     'currency_code' => ' manat.',
     'booking_fee_text' => 'Her bilet üçin hyzmat ýygymy ',
     'checkout_fail_title' => 'Tölegiňiz geçmedi.',
-    'checkout_fail_text' => '<p>Siziň tölegeňiz Bank tarapyndan işlenilýän bolup biler. Töleg geçenligi barada habar berýän SMS-e garaşyň. 
+    'checkout_fail_text' => '<p>Siziň tölegiňiz Bank tarapyndan işlenilýän bolup biler. Töleg geçenligi barada habar berýän SMS-e garaşyň. 
 Eger-de siziň elektron poçtaňyza 15 minudyň dowamynda biletler gelmedik bolsa, siziň 
 sargydyňyz Bank tarapyndan ýatyrylandyr. Biletleri täzeden satyn almaga synanşyp görüň.</p>
 <p>Ýalňyşlyk ýüze çykmaklygyň sebäpleri:</p>
@@ -168,4 +168,19 @@ sargydyňyz Bank tarapyndan ýatyrylandyr. Biletleri täzeden satyn almaga synan
     'search_result' => 'Gözleg netijesi:',
     'search_showing' => 'Sahypada görkezileni',
     'organiser' => 'Gurnaýjy',
+
+    'support' => 'Tehniki goldaw',
+    'submit_ticket' => 'Arz et',
+    'support_form_text' => '<p>Tehniki goldaw gullugyna ýüz tutmazdan öň, soragyňyzyň çözgüdini "Soraglar we jogaplar" bölüminde gözläp bilersiňiz.</p>
+<p>Sizden şol bir sorag boýunça birnäçe arza döretmezligiňizi, ýüz tutan wagtyňyz sabyrly we sypaýy bolmagyňyzy haýyş edýäris. Hiç bir ýüzlenme jogapsyz galmaz.</p>
+<p>
+Soragyň jogabyna 10 minutdan 24 sagada çenli garaşyp bilersiňiz.
+</p>',
+    'support_topic' => 'Arza Mowzugy',
+    'choose_support_topic' => 'Mowzuk saýlaň',
+    'other' => 'Başga',
+    'attachment' => 'goşundy',
+    'support_subject' => 'Tema',
+    'reply' => 'Jogapla',
+    'new_ticket' => 'Arza döret',
 ];

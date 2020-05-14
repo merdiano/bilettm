@@ -73,6 +73,7 @@
                                             <div class="standard-box" style="position: relative; padding: 20px 0; user-select: none;">
                                                 <h5 style="font-size: 24px;" class="text-center font-weight-bold">{{$ticket->section->section_no}}  <small>{{$ticket->section->description}}</small></h5>
 
+                                                @if($ticket->section->seats)
                                                 <table data-id="{{$ticket->id}}" style="margin: auto;position: relative; display: block; overflow-x: scroll"
                                                        data-content='{!! zanitlananlar($ticket)!!}'>
                                                     <tbody  data-num="{{$ticket->price}}" data-max="{{$ticket->max_per_person}}" style="display: block; width: 1490px; margin: auto">
@@ -98,8 +99,9 @@
                                                             <td></td>
                                                         </tr>
                                                     @endforeach
-                                                    </tbody></table>
-                                                <!--<div class="seats-top-overlay" style="width: 70%"></div>-->
+                                                    </tbody>
+                                                </table>
+                                                @endif
                                             </div>
 
                                         @endif

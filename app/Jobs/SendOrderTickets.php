@@ -14,7 +14,7 @@ class SendOrderTickets extends Job implements ShouldQueue
     use InteractsWithQueue, SerializesModels, DispatchesJobs;
 
     public $order;
-
+    public $maxExceptions = 3;
     /**
      * Create a new job instance.
      *
