@@ -28,8 +28,8 @@
                         {!! Form::text('name', old('name'),array('class'=>'form-control', 'placeholder'=>'Пример: Аман' ))  !!}
                     </div>
                     <div class="form-group col-4 {{ ($errors->has('email')) ? 'has-error' : '' }}">
-                        {!! Form::label('email', trans("ClientSide.email"), array('class'=>'control-label required', 'placeholder'=>'Пример: aman@mail.ru')) !!}
-                        {!! Form::text('email', old('email'),array('class'=>'form-control' ))  !!}
+                        {!! Form::label('email', trans("ClientSide.email"), array('class'=>'control-label required')) !!}
+                        {!! Form::text('email', old('email'),array('class'=>'form-control', 'placeholder'=>'Пример: aman@mail.ru' ))  !!}
                         @if($errors->has('email'))
                             <p class="help-block">{{ $errors->first('email') }}</p>
                         @endif
@@ -62,6 +62,7 @@
                         {!! Form::textarea('text', old('text'),
                                     array(
                                     'class'=>'form-control  editable',
+                                    'placeholder'=>'Опишите вашу проблему',
                                     'rows' => 5
                                     ))  !!}
                         @if($errors->has('text'))
