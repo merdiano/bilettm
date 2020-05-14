@@ -23,7 +23,7 @@
                 <form action="{{route('help.create')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="form-group col-4">
+                    <div class="form-group col-4 pl-0">
                         {!! Form::label('name', trans("ClientSide.name"), array('class'=>'control-label')) !!}
                         {!! Form::text('name', old('name'),array('class'=>'form-control' ))  !!}
                     </div>
@@ -34,12 +34,12 @@
                             <p class="help-block">{{ $errors->first('email') }}</p>
                         @endif
                     </div>
-                    <div class="form-group col-4">
+                    <div class="form-group col-4 pr-0">
                         {!! Form::label('phone', trans("ClientSide.phone"), array('class'=>'control-label')) !!}
                         {!! Form::text('phone', old('phone'),array('class'=>'form-control' ))  !!}
                     </div>
 
-                    <div class="form-group col-4 {{ ($errors->has('topic')) ? 'has-error' : '' }}">
+                    <div class="form-group col-4 pl-0 {{ ($errors->has('topic')) ? 'has-error' : '' }}">
                         {!! Form::label('topic', trans("ClientSide.support_topic"), array('class'=>'control-label')) !!}
                         {!! Form::select('topic',help_topics(), old('topic'), ['placeholder'=>trans('ClientSide.please_select'),'class' => 'form-control','id'=>'topic']) !!}
                         @if($errors->has('topic'))
@@ -50,7 +50,14 @@
                         {!! Form::label('subject', trans("ClientSide.support_subject"), array('class'=>'control-label')) !!}
                         {!! Form::text('subject', old('subject',trans('ClientSide.other')),array('class'=>'form-control' ))  !!}
                     </div>
-                    <div class="form-group col-4 custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
+                    <div class="form-group col-4 pr-0 {{ ($errors->has('attachment')) ? 'has-error' : '' }}">
+                        {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
+                        {!! Form::file('attachment') !!}
+                        @if($errors->has('attachment'))
+                            <p class="help-block">{{ $errors->first('attachment') }}</p>
+                        @endif
+                    </div>
+                    <div class="form-group col-12 custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
                         {!! Form::label('text', trans("ClientSide.message"), array('class'=>'control-label required')) !!}
                         {!! Form::textarea('text', old('text'),
                                     array(
@@ -59,13 +66,6 @@
                                     ))  !!}
                         @if($errors->has('text'))
                             <p class="help-block">{{ $errors->first('text') }}</p>
-                        @endif
-                    </div>
-                    <div class="form-group col-4 {{ ($errors->has('attachment')) ? 'has-error' : '' }}">
-                        {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
-                        {!! Form::file('attachment') !!}
-                        @if($errors->has('attachment'))
-                            <p class="help-block">{{ $errors->first('attachment') }}</p>
                         @endif
                     </div>
                     {!! Form::submit(trans("ClientSide.submit_ticket"), ['class'=>"btn btn-success"]) !!}
