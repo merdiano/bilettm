@@ -151,7 +151,7 @@ return [
     'currency_code' => ' manat.',
     'booking_fee_text' => 'Her bilet üçin hyzmat ýygymy ',
     'checkout_fail_title' => 'Tölegiňiz geçmedi.',
-    'checkout_fail_text' => '<p>Siziň tölegeňiz Bank tarapyndan işlenilýän bolup biler. Töleg geçenligi barada habar berýän SMS-e garaşyň. 
+    'checkout_fail_text' => '<p>Siziň tölegiňiz Bank tarapyndan işlenilýän bolup biler. Töleg geçenligi barada habar berýän SMS-e garaşyň. 
 Eger-de siziň elektron poçtaňyza 15 minudyň dowamynda biletler gelmedik bolsa, siziň 
 sargydyňyz Bank tarapyndan ýatyrylandyr. Biletleri täzeden satyn almaga synanşyp görüň.</p>
 <p>Ýalňyşlyk ýüze çykmaklygyň sebäpleri:</p>
