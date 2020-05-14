@@ -25,10 +25,10 @@
 
                     <div class="form-group col-4 pl-0">
                         {!! Form::label('name', trans("ClientSide.name"), array('class'=>'control-label')) !!}
-                        {!! Form::text('name', old('name'),array('class'=>'form-control' ))  !!}
+                        {!! Form::text('name', old('name'),array('class'=>'form-control', 'placeholder'=>'Пример: Аман' ))  !!}
                     </div>
                     <div class="form-group col-4 {{ ($errors->has('email')) ? 'has-error' : '' }}">
-                        {!! Form::label('email', trans("ClientSide.email"), array('class'=>'control-label required')) !!}
+                        {!! Form::label('email', trans("ClientSide.email"), array('class'=>'control-label required', 'placeholder'=>'Пример: aman@mail.ru')) !!}
                         {!! Form::text('email', old('email'),array('class'=>'form-control' ))  !!}
                         @if($errors->has('email'))
                             <p class="help-block">{{ $errors->first('email') }}</p>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group col-4 pr-0">
                         {!! Form::label('phone', trans("ClientSide.phone"), array('class'=>'control-label')) !!}
-                        {!! Form::text('phone', old('phone'),array('class'=>'form-control' ))  !!}
+                        {!! Form::text('phone', old('phone'),array('class'=>'form-control', 'placeholder'=>'Пример: +993 65555555' ))  !!}
                     </div>
 
                     <div class="form-group col-8 pl-0 {{ ($errors->has('topic')) ? 'has-error' : '' }}">
