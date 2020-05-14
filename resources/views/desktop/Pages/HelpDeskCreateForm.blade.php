@@ -4,7 +4,7 @@
 
 <section class="movie-items-group firts-child my-5">
     <div class="container">
-        <div class="row justify-content-around">
+        <div class="row justify-content-between w-100 m-auto">
             <div>
                 <h1>
                     @lang('ClientSide.support')
@@ -17,7 +17,7 @@
                 </form>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-between w-100 m-auto">
             <p class="my-4">@lang('ClientSide.support_form_text')</p>
             <div class="col-6">
                 <form action="{{route('help.create')}}" method="POST" enctype="multipart/form-data">
