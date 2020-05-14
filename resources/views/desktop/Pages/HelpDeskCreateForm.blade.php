@@ -69,7 +69,7 @@
                             <p class="help-block">{{ $errors->first('text') }}</p>
                         @endif
                     </div>
-                    {!! Form::submit(trans("ClientSide.submit_ticket"), ['class'=>"btn btn-success"]) !!}
+                    {!! Form::submit(trans("ClientSide.submit_ticket"), ['class'=>"btn btn-success", 'style'=>'background-color: #d43d34; border: #d43d34;']) !!}
 
 
                 </form>
