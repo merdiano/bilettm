@@ -18,9 +18,9 @@
             </div>
         </div>
         <div class="row w-100 m-auto">
-            <div class="col-12"><p class="my-4">@lang('ClientSide.support_form_text')</p></div>
-            <div class="col-12">
-                <form action="{{route('help.create')}}" method="POST" enctype="multipart/form-data">
+            <div class="col-12 p-0"><p class="my-4">@lang('ClientSide.support_form_text')</p></div>
+            <div class="col-12 p-0">
+                <form action="{{route('help.create')}}" method="POST" enctype="multipart/form-data" class="row">
                     @csrf
 
                     <div class="form-group col-4 pl-0">
@@ -39,7 +39,7 @@
                         {!! Form::text('phone', old('phone'),array('class'=>'form-control' ))  !!}
                     </div>
 
-                    <div class="form-group col-4 pl-0 {{ ($errors->has('topic')) ? 'has-error' : '' }}">
+                    <div class="form-group col-8 pl-0 {{ ($errors->has('topic')) ? 'has-error' : '' }}">
                         {!! Form::label('topic', trans("ClientSide.support_topic"), array('class'=>'control-label')) !!}
                         {!! Form::select('topic',help_topics(), old('topic'), ['placeholder'=>trans('ClientSide.please_select'),'class' => 'form-control','id'=>'topic']) !!}
                         @if($errors->has('topic'))
@@ -57,7 +57,7 @@
                             <p class="help-block">{{ $errors->first('attachment') }}</p>
                         @endif
                     </div>
-                    <div class="form-group col-12 custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
+                    <div class="form-group col-12 p-0 custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
                         {!! Form::label('text', trans("ClientSide.message"), array('class'=>'control-label required')) !!}
                         {!! Form::textarea('text', old('text'),
                                     array(
