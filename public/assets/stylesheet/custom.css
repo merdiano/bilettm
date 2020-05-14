@@ -2405,3 +2405,7 @@ display: block;
 .black-text-wrapper *{
   color: #000000;
 }
+
+#helpSearchForm input::placeholder{
+  color: #d43d34;
+}
