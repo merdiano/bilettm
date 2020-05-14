@@ -78,8 +78,8 @@ class Event extends MyBaseModel
     public function attendees()
     {
         return $this->hasMany(\App\Models\Attendee::class)
-            ->where('is_cancelled',false)
-            ->where('is_refunded',false);
+            ->where('attendees.is_cancelled',false)
+            ->where('attendees.is_refunded',false);
     }
 
     /**
