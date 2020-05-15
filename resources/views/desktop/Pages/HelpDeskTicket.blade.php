@@ -27,7 +27,7 @@
                                         <small class="d-block">{{$ticket->created_at->diffForHumans()}}</small>
                                     </p>
                                     <div style="width: calc(100% - 120px);">
-                                        <p class="message-one-right" style="position: relative; width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$ticket->text}}</p>
+                                        <p class="message-one-right" style="margin-bottom: -8px; position: relative; width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$ticket->text}}</p>
                                     </div>
                                     <br>
                                     @if($ticket->attachment)
