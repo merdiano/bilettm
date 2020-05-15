@@ -22,7 +22,7 @@
                         <div class="row justify-content-end">
                             <div class="col-lg-8 col-md-8">
                                 <div class="alert alert-info" role="alert">
-                                    <p><strong>{{$ticket->owner}} </strong><br> <small>{{$ticket->created_at->diffForHumans()}}</small></p>
+                                    <p><strong class="d-block">{{$ticket->owner}} </strong><small class="d-block">{{$ticket->created_at->diffForHumans()}}</small></p>
                                     <p>{{$ticket->text}}</p>
                                     <br>
                                     @if($ticket->attachment)
@@ -32,10 +32,10 @@
                             </div>
                         </div>
                         @foreach($ticket->comments as $comment)
-                            <div class="row">
+                            <div class="row justify-content-end">
                                 <div class="@if($comment->user_id)col-lg-offset-4 col-md-offset-4 @endif col-lg-8 col-md-8">
                                     <div class="alert alert-success" role="alert">
-                                        <p><strong>{{$comment->name}} : </strong><small>{{$comment->created_at->diffForHumans()}}</small></p>
+                                        <p><strong class="d-block">{{$comment->name}} </strong> <small class="d-block">{{$comment->created_at->diffForHumans()}}</small></p>
 
                                         <p>{{$comment->text}}</p>
                                         <br>
