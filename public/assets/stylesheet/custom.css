@@ -2397,3 +2397,15 @@ display: block;
   color: #000000 !important;
 }
 
+.form-control:focus, .custom-select:focus{
+  border-color: #d43d34;
+  box-shadow: none;
+}
+
+.black-text-wrapper *{
+  color: #000000;
+}
+
+#helpSearchForm input::placeholder{
+  color: #d43d34;
+}
