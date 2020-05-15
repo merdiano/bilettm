@@ -40,17 +40,19 @@ class HelpDeskController extends Controller
     public function store(HelpTicketRequest $request){
 
         try{
-
-            $ticket = HelpTicket::create([
+            $ticket = new HelpTicket([
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
                 'text' => $request->get('text'),
                 'phone' => $request->get('phone'),
                 'subject' => $request->get('subject'),
-                'ticket_category_id' => $request->get('topic'),
                 'attachment' => $request->file('attachment')
             ]);
 
+            if($request->get('topic'))
+                $ticket->ticket_category_id = $request->get('topic');
+
+            $ticket->save();
 
             /**
              * Notify customer that ticket is received;
@@ -63,6 +65,8 @@ class HelpDeskController extends Controller
         }
         catch (\Exception $exception){
             Log::error($exception);
+            session()->flash(['error' => $exception->getMessage()]);
+            return redirect()->back();
         }
 
 
