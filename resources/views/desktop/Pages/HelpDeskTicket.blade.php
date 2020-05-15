@@ -10,11 +10,11 @@
                     </h1>
                     <div style="height: 4px;width: 100px;background-color: #d43d34;"></div>
                 </div>
-                <div>
-                    <form action="{{route('help.show',['code'=>''])}}" method="GET">
-                        {!! Form::text('code', null, array('class'=>'form-control')) !!}}
-                    </form>
-                </div>
+                {{--<div>--}}
+                    {{--<form action="{{route('help.show',['code'=>''])}}" method="GET">--}}
+                        {{--{!! Form::text('code', null, array('class'=>'form-control')) !!}}--}}
+                    {{--</form>--}}
+                {{--</div>--}}
             </div>
             <div class="row w-100 m-auto" style="margin-top: 20px !important;">
                 <div class="card w-100" style="border: none;">
@@ -51,7 +51,13 @@
                                         </div>
                                         <br>
                                         @if($comment->attachment)
-                                            <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$comment->attachment)}}">{{$comment->attachment}}</a></span>
+                                            <span>
+                                                <strong>Attachment:</strong>
+                                                <a href="{{asset('user_content/'.$comment->attachment)}}" target="_blank">
+                                                    {{--{{$comment->attachment}}--}}
+                                                    <img src="{{asset('user_content/'.$comment->attachment)}}" style="width: 300px; float: left;">
+                                                </a>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
