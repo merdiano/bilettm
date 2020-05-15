@@ -24,7 +24,7 @@ class TicketReceived extends Notification implements ShouldQueue
      *
      * @var int
      */
-    public $maxExceptions = 3;
+    public $tries = 2;
 
     protected $ticket;
 

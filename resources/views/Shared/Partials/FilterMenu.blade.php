@@ -50,4 +50,4 @@
             });
         });
     </script>
-    @endpush
+@endpush

@@ -19,6 +19,8 @@ class TicketCommented extends Notification implements ShouldQueue
      */
     protected $comment;
 
+    public $tries = 2;
+
     public function __construct(HelpTicketComment $comment)
     {
         $this->comment = $comment;

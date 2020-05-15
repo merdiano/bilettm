@@ -13,6 +13,7 @@ class UserResetPassword extends Notification implements ShouldQueue
 
     private $token;
 
+    public $tries = 2;
     /**
      * UserResetPassword constructor.
      * @param $token
