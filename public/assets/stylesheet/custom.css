@@ -2428,10 +2428,10 @@ display: block;
   position: absolute;
   width: 0;
   height: 0;
-  left: auto;
-  right: -15px;
+  right: auto;
+  left: -15px;
   top: 8px;
   bottom: auto;
   border: 12px solid;
-  border-color: #e3e3e3 transparent transparent #e3e3e3;
+  border-color: #e3e3e3 #e3e3e3 transparent transparent;
 }
