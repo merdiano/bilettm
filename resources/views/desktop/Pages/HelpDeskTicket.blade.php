@@ -18,7 +18,7 @@
             </div>
             <div class="row w-100 m-auto" style="margin-top: 20px !important;">
                 <div class="card w-100">
-                    <div class="card-body">
+                    <div class="card-body" style="height: 400px; overflow-y: scroll">
                         <div class="row justify-content-end">
                             <div class="col-lg-8 col-md-8">
                                 <div>
