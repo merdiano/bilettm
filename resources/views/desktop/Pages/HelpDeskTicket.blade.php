@@ -22,8 +22,8 @@
                         <div class="row justify-content-end">
                             <div class="col-lg-8 col-md-8">
                                 <div>
-                                    <p><strong class="d-block">{{$ticket->owner}} </strong><small class="d-block">{{$ticket->created_at->diffForHumans()}}</small></p>
-                                    <p>{{$ticket->text}}</p>
+                                    <p style="border: 1px solid #000000; width: 120px; float: right;"><strong class="d-block">{{$ticket->owner}} </strong><small class="d-block">{{$ticket->created_at->diffForHumans()}}</small></p>
+                                    <div style="border: 1px solid #000000; width: calc(100% - 120px);"><p>{{$ticket->text}}</p></div>
                                     <br>
                                     @if($ticket->attachment)
                                         <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>
