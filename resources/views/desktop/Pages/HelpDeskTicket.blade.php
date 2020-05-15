@@ -19,10 +19,10 @@
             <div class="row w-100 m-auto" style="margin-top: 20px !important;">
                 <div class="card w-100">
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row justify-content-end">
                             <div class="col-lg-8 col-md-8">
                                 <div class="alert alert-info" role="alert">
-                                    <p><strong>{{$ticket->owner}} : </strong> <small>{{$ticket->created_at->diffForHumans()}}</small></p>
+                                    <p><strong>{{$ticket->owner}} </strong><br> <small>{{$ticket->created_at->diffForHumans()}}</small></p>
                                     <p>{{$ticket->text}}</p>
                                     <br>
                                     @if($ticket->attachment)
