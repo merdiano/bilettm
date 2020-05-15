@@ -80,7 +80,7 @@
                                     <p class="help-block">{{ $errors->first('attachment') }}</p>
                                 @endif
                             </div>
-                            {!! Form::submit(trans("ClientSide.reply"), ['class'=>"btn btn-success"]) !!}
+                            {!! Form::submit(trans("ClientSide.reply"), ['class'=>"btn btn-success", 'style'=>'background-color: #d43d34; border: #d43d34']) !!}
                         </form>
                     </div>
                 </div>
