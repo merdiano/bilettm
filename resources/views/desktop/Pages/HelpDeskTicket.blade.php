@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="row justify-content-end">
                             <div class="col-lg-8 col-md-8">
-                                <div class="alert alert-info" role="alert">
+                                <div>
                                     <p><strong class="d-block">{{$ticket->owner}} </strong><small class="d-block">{{$ticket->created_at->diffForHumans()}}</small></p>
                                     <p>{{$ticket->text}}</p>
                                     <br>
@@ -34,7 +34,7 @@
                         @foreach($ticket->comments as $comment)
                             <div class="row @if($comment->user_id)justify-content-start @else justify-content-end @endif ">
                                 <div class="col-lg-8 col-md-8">
-                                    <div class="alert alert-success" role="alert">
+                                    <div>
                                         <p><strong class="d-block">{{$comment->name}} </strong> <small class="d-block">{{$comment->created_at->diffForHumans()}}</small></p>
 
                                         <div><p>{{$comment->text}}</p></div>
