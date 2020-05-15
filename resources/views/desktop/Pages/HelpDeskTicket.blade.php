@@ -75,7 +75,7 @@
                             </div>
                             <div class="form-group {{ ($errors->has('attachment')) ? 'has-error' : '' }}">
                                 {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
-                                {!! Form::file('attachment'), array('class'=>'form-control', 'style'=>'width: fit-content') !!}
+                                {!! Form::file('attachment'), array('class'=>'form-control') !!}
                                 @if($errors->has('attachment'))
                                     <p class="help-block">{{ $errors->first('attachment') }}e</p>
                                 @endif
