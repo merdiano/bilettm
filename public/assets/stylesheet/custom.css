@@ -2409,3 +2409,16 @@ display: block;
 #helpSearchForm input::placeholder{
   color: #d43d34;
 }
+
+.message-one:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -20px;
+  top: 38px;
+  bottom: auto;
+  border: 12px solid;
+  border-color: #e3e3e3;
+}
