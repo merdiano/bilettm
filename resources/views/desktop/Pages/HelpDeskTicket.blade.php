@@ -16,8 +16,8 @@
                     </form>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="card">
+            <div class="row w-100 m-auto" style="margin-top: 20px !important;">
+                <div class="card w-100">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-8 col-md-8">
