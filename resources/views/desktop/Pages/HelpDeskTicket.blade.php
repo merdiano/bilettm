@@ -47,7 +47,7 @@
 
                                         <div style="width: calc(100% - 120px); @if($comment->user_id) float: left; @endif">
                                             <p class="@if($comment->user_id) message-one-left @else message-one-right @endif"
-                                               style="@if($comment->user_id) @else margin-bottom: -8px; @endif position: relative; width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$comment->text}}</p>
+                                               style="@if($comment->user_id) background-color: #d43d34; color: #ffffff; @else margin-bottom: -8px; background-color: #e3e3e3; color: #000000; @endif position: relative; width: calc(100% - 50px); padding: 10px 30px; border-radius: 5px;">{{$comment->text}}</p>
                                         </div>
                                         <br>
                                         @if($comment->attachment)
