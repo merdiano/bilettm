@@ -3,11 +3,12 @@
     {{\DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('help')}}
     <section class="movie-items-group firts-child my-5">
         <div class="container">
-            <div class="row justify-content-around">
+            <div class="row justify-content-between w-100 m-auto">
                 <div>
                     <h1>
                         @lang('ClientSide.support') : {{$ticket->code}}
                     </h1>
+                    <div style="height: 4px;width: 100px;background-color: #d43d34;"></div>
                 </div>
                 <div>
                     <form action="{{route('help.show',['code'=>''])}}" method="GET">
@@ -15,8 +16,8 @@
                     </form>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="card">
+            <div class="row w-100 m-auto" style="margin-top: 20px !important;">
+                <div class="card w-100">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-8 col-md-8">
