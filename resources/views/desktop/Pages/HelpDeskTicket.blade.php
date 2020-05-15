@@ -23,7 +23,7 @@
                             <div class="col-lg-8 col-md-8">
                                 <div>
                                     <p style="width: 120px; float: right;"><strong class="d-block">{{$ticket->owner}} </strong><small class="d-block">{{$ticket->created_at->diffForHumans()}}</small></p>
-                                    <div style="width: calc(100% - 120px);"><p class="message-one" style="width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$ticket->text}}</p></div>
+                                    <div style="width: calc(100% - 120px);"><p class="message-one" style="position: relative; width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$ticket->text}}</p></div>
                                     <br>
                                     @if($ticket->attachment)
                                         <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>

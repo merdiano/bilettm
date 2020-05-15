@@ -2420,5 +2420,5 @@ display: block;
   top: 38px;
   bottom: auto;
   border: 12px solid;
-  border-color: #e3e3e3;
+  border-color: #e3e3e3 transparent transparent #e3e3e3;
 }
