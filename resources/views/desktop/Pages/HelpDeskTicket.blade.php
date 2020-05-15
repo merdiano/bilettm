@@ -77,7 +77,7 @@
                                 {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
                                 {!! Form::file('attachment'), array('class'=>'form-control', 'style'=>'width: fit-content') !!}
                                 @if($errors->has('attachment'))
-                                    <p class="help-block">{{ $errors->first('attachment') }}</p>
+                                    <p class="help-block">{{ $errors->first('attachment') }}e</p>
                                 @endif
                             </div>
                             {!! Form::submit(trans("ClientSide.reply"), array('class'=>"btn btn-success", 'style'=>'background-color: #d43d34; border: #d43d34; padding: 8px 35px;')) !!}
