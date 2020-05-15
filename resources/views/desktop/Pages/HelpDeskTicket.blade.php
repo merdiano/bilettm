@@ -22,8 +22,13 @@
                         <div class="row justify-content-end">
                             <div class="col-lg-8 col-md-8">
                                 <div>
-                                    <p style="width: 120px; float: right;"><strong class="d-block">{{$ticket->owner}} </strong><small class="d-block">{{$ticket->created_at->diffForHumans()}}</small></p>
-                                    <div style="width: calc(100% - 120px);"><p class="message-one" style="position: relative; width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$ticket->text}}</p></div>
+                                    <p style="width: 120px; float: right;">
+                                        <strong class="d-block">{{$ticket->owner}} </strong>
+                                        <small class="d-block">{{$ticket->created_at->diffForHumans()}}</small>
+                                    </p>
+                                    <div style="width: calc(100% - 120px);">
+                                        <p class="message-one-right" style="position: relative; width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$ticket->text}}</p>
+                                    </div>
                                     <br>
                                     @if($ticket->attachment)
                                         <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$entry->attachment)}}">{{$entry->attachment}}</a></span>
@@ -35,9 +40,15 @@
                             <div class="row @if($comment->user_id)justify-content-start @else justify-content-end @endif ">
                                 <div class="col-lg-8 col-md-8">
                                     <div>
-                                        <p><strong class="d-block">{{$comment->name}} </strong> <small class="d-block">{{$comment->created_at->diffForHumans()}}</small></p>
+                                        <p style="width: 120px; @if($comment->user_id) @else float: right; @endif">
+                                            <strong class="d-block">{{$comment->name}} </strong>
+                                            <small class="d-block">{{$comment->created_at->diffForHumans()}}</small>
+                                        </p>
 
-                                        <div><p>{{$comment->text}}</p></div>
+                                        <div style="width: calc(100% - 120px);">
+                                            <p class="@if($comment->user_id) message-one-left @else message-one-right @endif"
+                                               style="position: relative; width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$comment->text}}</p>
+                                        </div>
                                         <br>
                                         @if($comment->attachment)
                                             <span><strong>Attachment:</strong> <a href="{{asset('user_content/'.$comment->attachment)}}">{{$comment->attachment}}</a></span>
