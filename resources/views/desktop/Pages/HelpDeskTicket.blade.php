@@ -17,8 +17,8 @@
                 </div>
             </div>
             <div class="row w-100 m-auto" style="margin-top: 20px !important;">
-                <div class="card w-100">
-                    <div class="card-body" style="height: 400px; overflow-y: scroll">
+                <div class="card w-100" style="border: none;">
+                    <div class="card-body" style="height: 400px; overflow-y: scroll; border: 1px solid #eeeeee; border-radius: 5px;">
                         <div class="row justify-content-end">
                             <div class="col-lg-8 col-md-8">
                                 <div>
@@ -59,7 +59,7 @@
                         @endforeach
                     </div>
 
-                    <div class="card-footer">
+                    <div class="card-footer px-0" style="border: none; background-color: transparent">
                         <form action="{{route('help.comment',['code' => $ticket->code])}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group custom-theme {{ ($errors->has('text')) ? 'has-error' : '' }}">
@@ -75,12 +75,12 @@
                             </div>
                             <div class="form-group {{ ($errors->has('attachment')) ? 'has-error' : '' }}">
                                 {!! Form::label('attachment', trans("ClientSide.attachment"), array('class'=>'control-label')) !!}
-                                {!! Form::file('attachment') !!}
+                                {!! Form::file('attachment'), array('class'=>'form-control', 'style'=>'width: fit-content') !!}
                                 @if($errors->has('attachment'))
                                     <p class="help-block">{{ $errors->first('attachment') }}</p>
                                 @endif
                             </div>
-                            {!! Form::submit(trans("ClientSide.reply"), ['class'=>"btn btn-success"]) !!}
+                            {!! Form::submit(trans("ClientSide.reply"), ['class'=>"btn btn-success", 'style'=>'background-color: #d43d34; border: #d43d34; padding: 8px 35px;']) !!}
                         </form>
                     </div>
                 </div>
