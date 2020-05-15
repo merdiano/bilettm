@@ -55,7 +55,7 @@
                                                 <strong style="float: left">Attachment:</strong>
                                                 <a href="{{asset('user_content/'.$comment->attachment)}}" target="_blank">
                                                     {{--{{$comment->attachment}}--}}
-                                                    <img src="{{asset('user_content/'.$comment->attachment)}}" style="width: 300px; float: left; clear: left; border: 1px solid #eeeeee; box-shadow: 0px 0px 19px rgba(0,0,0,.3); margin-top: 15px">
+                                                    <img src="{{asset('user_content/'.$comment->attachment)}}" style="width: 300px; float: left; clear: left; border: 1px solid #eeeeee; box-shadow: 0px 0px 19px rgba(0,0,0,.3); margin-top: 15px; margin-bottom: 20px">
                                                 </a>
                                             </span>
                                         @endif
