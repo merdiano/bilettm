@@ -112,7 +112,7 @@ class HelpTicketCrudController extends CrudController
             'user_id' => auth()->id()
         ]);
 
-        $ticket->update('status','waiting_replay');
+        $ticket->update(['status'=>'waiting_replay']);
 
         Notification::route('mail', $ticket->email)
             ->notify(new TicketCommented($comment));
