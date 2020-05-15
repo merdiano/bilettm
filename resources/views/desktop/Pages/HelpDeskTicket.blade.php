@@ -40,12 +40,12 @@
                             <div class="row @if($comment->user_id)justify-content-start @else justify-content-end @endif ">
                                 <div class="col-lg-8 col-md-8">
                                     <div>
-                                        <p style="width: 120px; @if($comment->user_id) @else float: right; @endif">
+                                        <p style="width: 120px; @if($comment->user_id) float: left; @else float: right; @endif">
                                             <strong class="d-block">{{$comment->name}} </strong>
                                             <small class="d-block">{{$comment->created_at->diffForHumans()}}</small>
                                         </p>
 
-                                        <div style="width: calc(100% - 120px);">
+                                        <div style="width: calc(100% - 120px); @if($comment->user_id) float: left; @endif">
                                             <p class="@if($comment->user_id) message-one-left @else message-one-right @endif"
                                                style="position: relative; width: calc(100% - 50px); background-color: #e3e3e3; color: #000000; padding: 10px 30px; border-radius: 5px;">{{$comment->text}}</p>
                                         </div>
