@@ -38,6 +38,7 @@
             <div class="row" style="width: 30%; margin-left: 0" id="top-header-right">
                 <div class="col-lg-12 col-md-12">
                     <ul id="top-menu-three-btn" style="float: right;">
+                        <li class="nav-item"><a href="{{route('help')}}"><i class="fa fa-support"></i>@lang('ClientSide.support') </a> </li>
                         <li class="dropdown pull-right">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/images/icons/globe.svg')}}">&nbsp;{{LaravelLocalization::getCurrentLocaleName()}} <i class="fa fa-caret-down"></i></a>
                             <ul class="dropdown-menu">

@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="row justify-content-center py-5">
-            <a class="red_button mb-5" href="/">@lang('ClientSide.checkout_fail_button')</a>
+            <a class="red_button mb-5" href="{{route('help')}}">@lang('ClientSide.checkout_fail_button')</a>
         </div>
     </section>
 

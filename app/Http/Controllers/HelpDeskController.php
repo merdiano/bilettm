@@ -69,8 +69,6 @@ class HelpDeskController extends Controller
             return redirect()->back();
         }
 
-
-
     }
 
     /**
