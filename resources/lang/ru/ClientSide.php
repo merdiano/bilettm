@@ -164,16 +164,16 @@ return [
     'search_showing' => 'Видно на странице',
     'organiser' => 'Организатор',
 
-    'support' => 'Tech. support',
-    'submit_ticket' => 'Submit ticket',
+    'support' => 'Tех.поддержкa,',
+    'submit_ticket' => 'Отправить',
     'support_form_text' => '<p>Перед тем как послать заявку в службу технической поддержки, Вы можете поискать решение проблемы в разделе “Вопросы и ответы”.</p>
 <p>Не создавайте несколько одинаковых заявок и не дублируйте вопросы заявки по e-mail. Сохраняйте терпение и будьте вежливы. Помните! Ни одна заявка не останется без ответа.</p>
 <p>Время ответа: от 10 минут до 24 часов. </p>',
-    'support_topic' => 'Topic',
-    'choose_support_topic' => 'Please chose topic',
-    'other' => 'Other',
-    'attachment' => 'attachment',
-    'support_subject' => 'Subject',
-    'reply' => 'Reply',
-    'new_ticket' => 'New ticket',
+    'support_topic' => 'Тема',
+    'choose_support_topic' => 'Выберите тему',
+    'other' => 'Другое',
+    'attachment' => 'приложение',
+    'support_subject' => 'Тема заявки',
+    'reply' => 'Ответить',
+    'new_ticket' => 'Создать заявку',
 ];

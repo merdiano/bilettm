@@ -178,7 +178,7 @@ Soragyň jogabyna 10 minutdan 24 sagada çenli garaşyp bilersiňiz.
 </p>',
     'support_topic' => 'Arza Mowzugy',
     'choose_support_topic' => 'Mowzuk saýlaň',
-    'other' => 'Başga',
+    'other' => 'Bulardan başga',
     'attachment' => 'goşundy',
     'support_subject' => 'Tema',
     'reply' => 'Jogapla',
