@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\HelpTicket;
+use App\Models\HelpTicketComment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -52,26 +53,22 @@ class TicketReceived extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        Log::info($notifiable);
         try{
-            if($notifiable instanceof HelpTicket){
+            if($notifiable instanceof HelpTicketComment){
                 return (new MailMessage)
-                    ->view('Emails.Help.CustomerNotification',['ticket' => $this->ticket]);
+                    ->view('Emails.Help.TicketNotification',['ticket' => $this->ticket]);
             }
             else
                 return (new MailMessage)
-                    ->line('You have new ticket')
+                    ->line('You have new ticket №'.$this->ticket->code)
+                    ->line('Subject :'.$this->ticket->subject)
                     ->line($this->ticket->text)
                     ->line($this->ticket->created_at)
-                    ->action('Reply here', route('ticket.replay',['id'=>$this->ticket->id]))
-                    ->line('Thank you for using our application!');
-
-
+                    ->action('Reply here', route('ticket.replay',['id'=>$this->ticket->id]));
         }
         catch (\Exception $ex){
             Log::error($ex);
         }
-
     }
 
     /**

@@ -48,6 +48,7 @@ class HelpTicketCrudController extends CrudController
             ['name'=>'email','type'=>'email','label'=>'Email'],
             ['name'=>'subject','type'=>'text','label'=>'Subject'],
             ['name'=>'status','type'=>'text','label'=>'Status'],
+            ['name'=>'updated_at','type'=>'datetime','Update']
         ]);
         // add asterisk for fields that are required in HelpTicletRequest
 //        $this->crud->setRequiredFields(StoreRequest::class, 'create');

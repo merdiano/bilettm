@@ -2,11 +2,13 @@
 
 namespace App\Notifications;
 
+use App\Models\BackpackUser;
 use App\Models\HelpTicketComment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Log;
 
 class TicketCommented extends Notification implements ShouldQueue
 {
@@ -46,10 +48,22 @@ class TicketCommented extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        try{
+            if($notifiable instanceof BackpackUser){
+                return (new MailMessage)
+                    ->line('New comment on ticket №'.$this->comment->ticket->code)
+                    ->line($this->comment->text)
+                    ->line($this->comment->created_at)
+                    ->action('Reply here', route('ticket.replay',['id'=>$this->comment->help_ticket_id]));
+
+            }
+            else
+                return (new MailMessage)
+                    ->view('Emails.Help.CommentNotification',['comment' => $this->comment]);
+        }
+        catch (\Exception $ex){
+            Log::error($ex);
+        }
     }
 
     /**
