@@ -58,6 +58,18 @@ class HelpTicketCrudController extends CrudController
         $this->crud->allowAccess('show');
         $this->crud->addButtonFromView('line', 'replay', 'replay', 'beginning');
 
+        $this->crud->addFilter([ // dropdown filter
+            'name' => 'status',
+            'type' => 'dropdown',
+            'label'=> 'Status'
+        ], [
+            1 => 'pending',
+            2 => 'waiting replay',
+            3 => 'solved',
+        ], function($value) { // if the filter is active
+             $this->crud->addClause('where', 'status', $value);
+        });
+        backpack_user()->unreadNotifications->markAsRead();
     }
     public function show($id)
     {
