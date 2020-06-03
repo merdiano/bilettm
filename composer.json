@@ -38,7 +38,7 @@
         "vinelab/http": "~1.5",
         "laravel/tinker": "~1.0",
 
-        "backpack/crud": "3.6.*",
+        "backpack/crud": "3.5.*",
 
         "backpack/backupmanager": "~1.4",
         "backpack/settings": "~2.1",
