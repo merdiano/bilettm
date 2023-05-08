@@ -8,14 +8,13 @@
 
 namespace App\Models;
 
-
-use Illuminate\Support\Carbon;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class Category extends \Illuminate\Database\Eloquent\Model{
-    use \Backpack\CRUD\CrudTrait;
+    use CrudTrait;
     /**
      * Indicates whether the model should be timestamped.
      *

@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use Str;
-use URL;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class Event extends MyBaseModel
 {
     use SoftDeletes;
-    use \Backpack\CRUD\CrudTrait;
+    use CrudTrait;
     protected $dates = ['start_date', 'end_date', 'on_sale_date'];
 
     /**
@@ -413,7 +414,7 @@ class Event extends MyBaseModel
      */
     public function getEventUrlAttribute()
     {
-        return route("showEventPage", ["event_id"=>$this->id, "event_slug"=>Str::slug($this->title)]);
+        return route("showEventPage", ["event_id"=>$this->id, "event_slug"=> Str::slug($this->title)]);
         //return URL::to('/') . '/e/' . $this->id . '/' . Str::slug($this->title);
     }
 
@@ -461,20 +462,20 @@ class Event extends MyBaseModel
         $timestamp = new Carbon();
 
         $icsTemplate = <<<ICSTemplate
-BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:{$siteUrl}
-BEGIN:VEVENT
-UID:{$eventUrl}
-DTSTAMP:{$timestamp->format('Ymd\THis\Z')}
-DTSTART:{$start_date->format('Ymd\THis\Z')}
-DTEND:{$end_date->format('Ymd\THis\Z')}
-SUMMARY:$this->title
-LOCATION:{$this->venue_name}
-DESCRIPTION:{$this->description}
-END:VEVENT
-END:VCALENDAR
-ICSTemplate;
+        BEGIN:VCALENDAR
+        VERSION:2.0
+        PRODID:{$siteUrl}
+        BEGIN:VEVENT
+        UID:{$eventUrl}
+        DTSTAMP:{$timestamp->format('Ymd\THis\Z')}
+        DTSTART:{$start_date->format('Ymd\THis\Z')}
+        DTEND:{$end_date->format('Ymd\THis\Z')}
+        SUMMARY:$this->title
+        LOCATION:{$this->venue_name}
+        DESCRIPTION:{$this->description}
+        END:VEVENT
+        END:VCALENDAR
+        ICSTemplate;
 
         return $icsTemplate;
     }

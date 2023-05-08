@@ -3,26 +3,14 @@
 namespace App\Models;
 
 use App\Models\User;
-use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
-use Tightenco\Parental\HasParentModel;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Spatie\Permission\Traits\HasPermissions;
 
 class BackpackUser extends User
 {
-    use HasParentModel;
+    use CrudTrait, HasPermissions;
 
     protected $table = 'users';
-
-    /**
-     * Send the password reset notification.
-     *
-     * @param string $token
-     *
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new ResetPasswordNotification($token));
-    }
 
     /**
      * Get the e-mail address where password reset links are sent.

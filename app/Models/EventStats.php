@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Cookie;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
 
 class EventStats extends \Illuminate\Database\Eloquent\Model
 {

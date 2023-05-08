@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+
     /*
       Attendize.com   - Event Management & Ticketing
      */
@@ -13,7 +15,7 @@ namespace App\Models;
  */
 class DateTimeFormat extends \Illuminate\Database\Eloquent\Model
 {
-    use \Backpack\CRUD\CrudTrait;
+    use CrudTrait;
     /**
      * Indicates whether the model should be timestamped.
      *

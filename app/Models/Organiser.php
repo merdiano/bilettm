@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Str;
+use Illuminate\Support\Str;
 use Image;
 
 class Organiser extends MyBaseModel implements AuthenticatableContract
 {
-    use \Backpack\CRUD\CrudTrait;
+    use CrudTrait;
     use Authenticatable;
     /**
      * The validation rules for the model.

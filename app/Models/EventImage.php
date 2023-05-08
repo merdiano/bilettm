@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+
     /*
       Attendize.com   - Event Management & Ticketing
      */
@@ -13,6 +15,6 @@ namespace App\Models;
  */
 class EventImage extends MyBaseModel
 {
-    use \Backpack\CRUD\CrudTrait;
+    use CrudTrait;
     //put your code here.
 }

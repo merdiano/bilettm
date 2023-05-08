@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Backpack\CRUD\CrudTrait;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 

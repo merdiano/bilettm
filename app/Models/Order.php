@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use File;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PDF;
@@ -9,7 +10,7 @@ use PDF;
 class Order extends MyBaseModel
 {
     use SoftDeletes;
-    use \Backpack\CRUD\CrudTrait;
+    use CrudTrait;
     /**
      * The validation rules of the model.
      *

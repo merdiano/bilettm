@@ -14,10 +14,10 @@ class AlterAddDescriptionToVenuesTable extends Migration
     public function up()
     {
         Schema::table('venues', function (Blueprint $table) {
-            $table->text('description_ru')->nullable();
-            $table->text('description_tk')->nullable();
-            $table->longText('images')->nullable();
-            $table->string('venue_name')->nullable(true)->change();
+            // $table->text('description_ru')->nullable();
+            // $table->text('description_tk')->nullable();
+            // $table->longText('images')->nullable();
+            // $table->string('venue_name')->nullable(true)->change();
         });
     }
 
@@ -29,10 +29,10 @@ class AlterAddDescriptionToVenuesTable extends Migration
     public function down()
     {
         Schema::table('venues', function (Blueprint $table) {
-            $table->dropColumn('description_ru');
-            $table->dropColumn('description_tk');
-            $table->dropColumn('images');
-            $table->string('venue_name')->nullable(false)->change();
+            // $table->dropColumn('description_ru');
+            // $table->dropColumn('description_tk');
+            // $table->dropColumn('images');
+            // $table->string('venue_name')->nullable(false)->change();
         });
     }
 }

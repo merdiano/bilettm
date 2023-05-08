@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 // --------------------------
 // Custom Backpack Routes
 // --------------------------
@@ -11,19 +13,19 @@ Route::group([
     'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
-    CRUD::resource('category', 'CategoryCrudController');
-    CRUD::resource('country', 'CountryCrudController');
-    CRUD::resource('event', 'EventCrudController');
-    CRUD::resource('slider', 'SliderCrudController');
-    CRUD::resource('tag', 'TagCrudController');
-    CRUD::resource('subscriber', 'SubscriberCrudController');
-    CRUD::resource('event_request', 'EventRequestCrudController');
-    CRUD::resource('venue', 'VenueCrudController');
-    CRUD::resource('section', 'SectionCrudController');
-    CRUD::resource('organiser', 'OrganiserCrudController');
-    CRUD::resource('account', 'AccountCrudController');
-    CRUD::resource('helpTopic','HelpTopicCrudController');
-    CRUD::resource('helpTicket','HelpTicketCrudController');
+    Route::crud('category', 'CategoryCrudController');
+    Route::crud('country', 'CountryCrudController');
+    Route::crud('event', 'EventCrudController');
+    Route::crud('slider', 'SliderCrudController');
+    Route::crud('tag', 'TagCrudController');
+    Route::crud('subscriber', 'SubscriberCrudController');
+    Route::crud('event_request', 'EventRequestCrudController');
+    Route::crud('venue', 'VenueCrudController');
+    Route::crud('section', 'SectionCrudController');
+    Route::crud('organiser', 'OrganiserCrudController');
+    Route::crud('account', 'AccountCrudController');
+    Route::crud('helpTopic','HelpTopicCrudController');
+    Route::crud('helpTicket','HelpTicketCrudController');
     Route::get('helpTicket/{id}/replay', 'HelpTicketCrudController@replay')->name('ticket.replay');
     Route::post('helpTicket/{id}/replay', 'HelpTicketCrudController@replayPost')->name('ticket.replay.post');
 }); // this should be the absolute last line of this file

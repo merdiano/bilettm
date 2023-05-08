@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AdditionalTaxFieldRenameCurrentTaxFields extends Migration
 {
@@ -13,10 +14,10 @@ class AdditionalTaxFieldRenameCurrentTaxFields extends Migration
     public function up()
     {
         Schema::table('organisers', function (Blueprint $table) {
-            $table->boolean('charge_tax')->default(0);
-            $table->renameColumn('taxname', 'tax_name');
-            $table->renameColumn('taxvalue', 'tax_value');
-            $table->renameColumn('taxid', 'tax_id');
+            // $table->boolean('charge_tax')->default(0);
+            // $table->renameColumn('taxname', 'tax_name');
+            // $table->renameColumn('taxvalue', 'tax_value');
+            // $table->renameColumn('taxid', 'tax_id');
         });
     }
 
@@ -28,10 +29,10 @@ class AdditionalTaxFieldRenameCurrentTaxFields extends Migration
     public function down()
     {
         Schema::table('organisers', function (Blueprint $table) {
-            $table->dropColumn('charge_tax');
-            $table->renameColumn('tax_name', 'taxname');
-            $table->renameColumn('tax_value', 'taxvalue');
-            $table->renameColumn('tax_id', 'taxid');
+            // $table->dropColumn('charge_tax');
+            // $table->renameColumn('tax_name', 'taxname');
+            // $table->renameColumn('tax_value', 'taxvalue');
+            // $table->renameColumn('tax_id', 'taxid');
         });
     }
 }

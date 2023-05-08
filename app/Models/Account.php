@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Attendize\Utils;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use DB;
 
 class Account extends MyBaseModel
 {
-    use SoftDeletes,\Backpack\CRUD\CrudTrait;
+    use SoftDeletes, CrudTrait;
 
     /**
      * The validation rules

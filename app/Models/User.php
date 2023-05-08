@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\UserResetPassword;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -11,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-use Backpack\CRUD\CrudTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {

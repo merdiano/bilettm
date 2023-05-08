@@ -16,7 +16,7 @@ class ChangePrivateReferenceNumberColumnType extends Migration
     public function up()
     {
         Schema::table('attendees', function (Blueprint $table) {
-            $table->string('private_reference_number', 15)->change();
+            //$table->string('private_reference_number', 15)->change();
         });
     }
 
@@ -28,7 +28,7 @@ class ChangePrivateReferenceNumberColumnType extends Migration
     public function down()
     {
         Schema::table('attendees', function ($table) {
-            $table->integer('private_reference_number')->change();
+            //$table->integer('private_reference_number')->change();
         });
     }
 }
