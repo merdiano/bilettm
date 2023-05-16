@@ -42,7 +42,8 @@
         "backpack/permissionmanager": "*",
         "backpack/pagemanager": "*",
         "backpack/settings": "*",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "darkaonline/l5-swagger": "8.1.0"
     },
     "require-dev": {
         "symfony/dom-crawler": "^5.3",

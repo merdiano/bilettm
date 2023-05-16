@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Attribute;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -131,8 +132,10 @@ class Event extends MyBaseModel
         return $this->hasMany(\App\Models\EventStats::class);
     }
 
-    public function views(){
-        return $this->stats()->sum('views');
+    public function views():Attribute{
+        return Attribute::make(
+            get: $this->stats()->sum('views'),
+        );
     }
     /**
      * The affiliates associated with the event.
@@ -152,6 +155,16 @@ class Event extends MyBaseModel
     public function orders()
     {
         return $this->hasMany(\App\Models\Order::class);
+    }
+
+    public function ticket_dates(){
+        return $this->tickets()
+            ->select('ticket_date','event_id')
+            ->where('is_hidden', false)
+            ->where('ticket_date','>=',Carbon::now())
+            ->orderBy('ticket_date', 'asc')
+            ->groupBy('ticket_date')
+            ->distinct();
     }
 
     /**

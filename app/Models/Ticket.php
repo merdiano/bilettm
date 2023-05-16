@@ -10,7 +10,11 @@ class Ticket extends MyBaseModel
 {
     use SoftDeletes;
 
-    protected $dates = ['start_sale_date', 'end_sale_date','ticket_date'];
+    protected $casts = [
+        'start_sale_date' => 'datetime', 
+        'end_sale_date' => 'datetime',
+        'ticket_date' => 'datetime'
+    ];
 
     /**
      * The rules to validate the model.

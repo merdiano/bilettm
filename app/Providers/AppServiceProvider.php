@@ -32,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'Illuminate\Contracts\Auth\Registrar', 'App\Services\Registrar'
         );
+        $this->app->register(\L5Swagger\L5SwaggerServiceProvider::class);
     }
 }

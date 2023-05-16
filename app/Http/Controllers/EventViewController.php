@@ -45,7 +45,7 @@ class EventViewController extends Controller
         $ticket_dates = array();
 
         foreach ($tickets as $ticket){
-            $date = $ticket->ticket_date->formatLocalized('%d %B');
+            $date = Carbon::parse($ticket->ticket_date)->format('H:i');
             $ticket_dates[$date][] = $ticket;
         }
 

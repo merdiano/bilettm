@@ -7,6 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Agent;
 
+
 abstract class Controller extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;

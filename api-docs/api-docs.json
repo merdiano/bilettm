@@ -1,0 +1,170 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Bilettm API",
+        "version": "2.0.0"
+    },
+    "paths": {
+        "/api/v2/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get categories",
+                "description": "Get list of categories",
+                "operationId": "27dd33ccbbadbf5596fe7f1dc6bb61b6",
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
+        "/api/v2/event/{id}/details": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Get event details",
+                "description": "Get event details by it's ID",
+                "operationId": "f326762a95cdcdb7a84320b32400c7f8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Pass event's id here",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "421",
+                                "value": "421"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
+        "/api/v2/event/{id}/seats": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Get event seats",
+                "description": "Get event seats by it's ID",
+                "operationId": "6eaf2bca2af7827c5f5a2390a28a8135",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Pass event's id here",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "421",
+                                "value": "421"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
+        "/api/v2/home": {
+            "get": {
+                "tags": [
+                    "Home"
+                ],
+                "summary": "Home API",
+                "description": "Get home elements: sliders, live events",
+                "operationId": "aecd2d12fce8b6f63a9fe44d972afd0b",
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
+        "/api/v2/category/{category_id}/locations": {
+            "get": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "Get locations",
+                "description": "Get list of locations",
+                "operationId": "c944bc4953f49ab39d4aa0f482adad41",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category id to search for locations",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "1",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
+        "/api/v2/search": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search events",
+                "description": "Search events",
+                "operationId": "4f89dc32f5c8bf12e9ec94fa0671cd3d",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "description": "The keyword for search is: key",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "a string value",
+                                "value": "herem"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
