@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Resources\EventResource;
 use App\Models\Category;
 use App\Models\Event;
@@ -15,6 +16,22 @@ class LocationController extends Controller
     *      tags={"Location"},
     *      summary="Get events of location",
     *      description="Get events of location",
+    *      @OA\Parameter(
+    *          description="page",
+    *          in="query",
+    *          name="page",
+    *          required=false,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="1", summary="1"),
+    *      ),
+    *      @OA\Parameter(
+    *          description="per_page",
+    *          in="query",
+    *          name="per_page",
+    *          required=false,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="1", summary="10"),
+    *      ),
     *      @OA\Parameter(
     *          description="Location id",
     *          in="path",
@@ -29,8 +46,8 @@ class LocationController extends Controller
     *      ),
     *  )
     */
-    public function locationEvents($location_id){
-        $events = Event::with(['ticket_dates','venue:id,venue_name_tk,venue_name_ru,address'])->where('sub_category_id', $location_id)->paginate(10);
+    public function locationEvents($location_id, Request $request){
+        $events = Event::with(['ticket_dates','venue:id,venue_name_tk,venue_name_ru,address'])->onLive()->withViews()->where('sub_category_id', $location_id)->paginate($request->per_page ?? 10);
         return EventResource::collection($events)->additional(['success' => true]);
     }
 }

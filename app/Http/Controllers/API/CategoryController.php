@@ -67,8 +67,7 @@ class CategoryController extends Controller
     *     )
     */
     public function categoryEvents($category_id, Request $request){
-        $data = Event::where('category_id', $category_id)->with('ticket_dates')->paginate($request->per_page ?? 10);
-
+        $data = Event::where('category_id', $category_id)->onLive()->with('ticket_dates')->withViews()->paginate($request->per_page ?? 10);
         return EventResource::collection($data)->additional(['success' => true]);
     }
 

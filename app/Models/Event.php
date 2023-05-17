@@ -156,6 +156,7 @@ class Event extends MyBaseModel
     {
         return $this->hasMany(\App\Models\Order::class);
     }
+    
 
     public function ticket_dates(){
         return $this->tickets()
@@ -524,4 +525,20 @@ class Event extends MyBaseModel
                     ->take(1);
             }] );
     }
+
+    public function sections(){
+        return $this->hasManyThrough(Section::class,Ticket::class);
+    }
+
+    public function reservedTickets(){
+        return $this->hasMany(ReservedTickets::class);
+    }
+
+    public function scopeWithViews($query)
+    {
+        return $query->withCount(['stats as views' => function ($query) {
+            $query->select(DB::raw('sum(views)'));
+        }]);
+    }
+
 }
