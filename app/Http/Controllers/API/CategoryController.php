@@ -37,6 +37,22 @@ class CategoryController extends Controller
     *      summary="Category events and locations",
     *      description="Get events and categories of given id",
     *      @OA\Parameter(
+    *          description="page",
+    *          in="query",
+    *          name="page",
+    *          required=false,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="1", summary="1"),
+    *      ),
+    *      @OA\Parameter(
+    *          description="per_page",
+    *          in="query",
+    *          name="per_page",
+    *          required=false,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="1", summary="10"),
+    *      ),
+    *      @OA\Parameter(
     *          description="category_id",
     *          in="path",
     *          name="category_id",
@@ -50,12 +66,10 @@ class CategoryController extends Controller
     *       ),
     *     )
     */
-    public function categoryEvents($category_id){
-        $data['events'] = Event::where('category_id', $category_id)->with('ticket_dates')->paginate(10);
-        $data['locations'] = Category::where('parent_id', $category_id)->get();
-        $data['sucess'] = true;
+    public function categoryEvents($category_id, Request $request){
+        $data = Event::where('category_id', $category_id)->with('ticket_dates')->paginate($request->per_page ?? 10);
 
-        return response()->json($data);
+        return EventResource::collection($data)->additional(['success' => true]);
     }
 
     private function sorts_filters($request){
@@ -98,7 +112,7 @@ class CategoryController extends Controller
     *     )
     */
     public function locations($category_id){
-        $events = Event::with(['ticket_dates','venue:id,venue_name_tk,venue_name_ru,address'])->where('category_id', $category_id)->paginate(10);
-        return EventResource::collection($events)->additional(['success' => true]);
+        $locations = Category::select('title_tk','title_ru','id','parent_id')->where('parent_id', $category_id)->get();
+        return CategoryResource::collection($locations)->additional(['success' => true]);
     }
 }
