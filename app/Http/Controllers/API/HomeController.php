@@ -30,10 +30,13 @@ class HomeController extends Controller
     */
     public function __invoke(Request $request)
     {
+        // dd(Event::with('ticket_dates')
+        // ->onLive()->withViews()
+        // ->paginate(20));
         return HomeResource::make(
             Slider::get(),
             Event::with('ticket_dates')
-                ->onLive($request->get('start_date'),$request->get('end_date'))->withViews()
+                ->onLive()->withViews()
                 ->paginate(20)
             )->additional(['success' => true]);
     }
