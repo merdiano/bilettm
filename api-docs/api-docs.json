@@ -30,6 +30,36 @@
                 "operationId": "72ac89d005e313a1928df056768794ad",
                 "parameters": [
                     {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "1",
+                                "value": "1"
+                            }
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "per_page",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "10",
+                                "value": "1"
+                            }
+                        }
+                    },
+                    {
                         "name": "category_id",
                         "in": "path",
                         "description": "category_id",
