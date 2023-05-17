@@ -50,17 +50,10 @@ class CategoryController extends Controller
     *       ),
     *     )
     */
-    public function categoryEvents($category_id, Request $request){
-        [$order, $data] = $this->sorts_filters($request);
-
-        $data['location_events'] = Category::where('parent_id', $category_id)
-            ->select('id','title_ru','title_tk','parent_id','lft')
-            ->orderBy('lft')
-            ->withLiveEvents($order, $data['start'], $data['end'])
-            ->whereHas('cat_events',
-                function ($query) use($data){
-                    $query->onLive($data['start'], $data['end']);
-                })->get();
+    public function categoryEvents($category_id){
+        $data['events'] = Event::where('category_id', $category_id)->with('ticket_dates')->paginate(10);
+        $data['locations'] = Category::where('parent_id', $category_id)->get();
+        $data['sucess'] = true;
 
         return response()->json($data);
     }
