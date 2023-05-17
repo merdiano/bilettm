@@ -29,7 +29,7 @@ class EventResource extends JsonResource
         return [
             'title_tk'      => $this->title_tk,
             'title_ru'      => $this->title_ru,
-            'img_url'       => $this->bg_image_path,
+            'img_url'       => $this->img_url,
             'description'   => $this->description,
             'ticket_dates'  => $groupedDates,
             'views'         => $this->views
