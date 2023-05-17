@@ -20,6 +20,70 @@
                 }
             }
         },
+        "/api/v2/category/{category_id}/events": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Category events and locations",
+                "description": "Get events and categories of given id",
+                "operationId": "72ac89d005e313a1928df056768794ad",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "category_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "1",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
+        "/api/v2/category/{category_id}/locations": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get locations of category",
+                "description": "Get list of locations of category",
+                "operationId": "996fcc3de211d261d82fcd1f36ebea6b",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category id to search for locations",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "1",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
         "/api/v2/event/{id}/details": {
             "get": {
                 "tags": [
@@ -99,27 +163,27 @@
                 }
             }
         },
-        "/api/v2/category/{category_id}/locations": {
+        "/api/v2/location/{location_id}/events": {
             "get": {
                 "tags": [
-                    "Locations"
+                    "Location"
                 ],
-                "summary": "Get locations",
-                "description": "Get list of locations",
-                "operationId": "c944bc4953f49ab39d4aa0f482adad41",
+                "summary": "Get events of location",
+                "description": "Get events of location",
+                "operationId": "b029bc21c60d250977999c0da9e4e886",
                 "parameters": [
                     {
-                        "name": "category_id",
+                        "name": "location_id",
                         "in": "path",
-                        "description": "Category id to search for locations",
+                        "description": "Location id",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
                         "examples": {
                             "int": {
-                                "summary": "1",
-                                "value": "1"
+                                "summary": "2",
+                                "value": "2"
                             }
                         }
                     }

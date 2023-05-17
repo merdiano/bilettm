@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         return HomeResource::make(
             Slider::get(), 
-            Event::select('id','title_ru','title_tk')
+            Event::with('ticket_dates')->select('id','title_ru','title_tk')
                 ->onLive($request->get('start_date'),$request->get('end_date'))
                 ->paginate(20)
             )->additional(['success' => true]);
