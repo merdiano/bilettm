@@ -132,11 +132,11 @@ class Event extends MyBaseModel
         return $this->hasMany(\App\Models\EventStats::class);
     }
 
-    public function views():Attribute{
-        return Attribute::make(
-            get: $this->stats()->sum('views'),
-        );
-    }
+    // public function views():Attribute{
+    //     return Attribute::make(
+    //         get: $this->stats()->sum('views'),
+    //     );
+    // }
     /**
      * The affiliates associated with the event.
      *
