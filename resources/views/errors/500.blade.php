@@ -1,31 +1,16 @@
+@extends('errors.layout')
+
 @php
-    $error_number = 400;
+	$error_number = 500;
 @endphp
-<html>
-<head>
-    <title>
-        @lang("error.back_soon")
-    </title>
-    <style>
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            text-align: center;
-            text-shadow: 0 1px 0 #fff;
-            font-size: 1.8em;
-        }
-        .missing {
-            width: 250px;
-            margin: 0 auto;
-            margin-top: 50px;
-            padding: 40px;
-        }
-    </style>
-</head>
-<body>
-<div class="missing">
-    <h2>@lang("error.back_soon")</h2>
-    @lang("error.back_soon_description")
-</div>
-</body>
-</html>
+
+@section('title')
+	It's not you, it's me.
+@endsection
+
+@section('description')
+	@php
+	  $default_error_message = "An internal server error has occurred. If the error persists please contact the development team.";
+	@endphp
+	{!! isset($exception)? ($exception->getMessage()?e($exception->getMessage()):$default_error_message): $default_error_message !!}
+@endsection

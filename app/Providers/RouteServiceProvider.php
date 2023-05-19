@@ -2,31 +2,29 @@
 
 namespace App\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Routing\Router;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * This namespace is applied to the controller routes in your routes file.
+     * The path to the "home" route for your application.
      *
-     * In addition, it is set as the URL generator's root namespace.
+     * Typically, users are redirected here after authentication.
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
-    use \Mcamara\LaravelLocalization\Traits\LoadsTranslatedCachedRoutes;
+    public const HOME = '/dashboard';
+
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @param \Illuminate\Routing\Router $router
-     *
-     * @return void
+     * Define your route model bindings, pattern filters, and other route configuration.
      */
-    public function boot()
+    public function boot(): void
     {
-        parent::boot();
+        $this->configureRateLimiting();
 
         $this->routes(function () {
             Route::middleware('api')
@@ -34,21 +32,17 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
-                ->group(base_path('app/Http/routes.php'));
+                ->group(base_path('routes/web.php'));
         });
     }
 
     /**
-     * Define the routes for the application.
-     *
-     * @param \Illuminate\Routing\Router $router
-     *
-     * @return void
+     * Configure the rate limiters for the application.
      */
-    public function map(Router $router)
+    protected function configureRateLimiting(): void
     {
-        $router->group(['namespace' => $this->namespace], function ($router) {
-            require app_path('Http/routes.php');
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
 }

@@ -2,93 +2,93 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\SliderRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-
-// VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\SliderRequest as StoreRequest;
-use App\Http\Requests\SliderRequest as UpdateRequest;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
  * Class SliderCrudController
  * @package App\Http\Controllers\Admin
- * @property-read CrudPanel $crud
+ * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
 class SliderCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+
+    /**
+     * Configure the CrudPanel object. Apply settings to all operations.
+     * 
+     * @return void
+     */
     public function setup()
     {
-        /*
-        |--------------------------------------------------------------------------
-        | CrudPanel Basic Information
-        |--------------------------------------------------------------------------
-        */
-        $this->crud->setModel('App\Models\Slider');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/slider');
-        $this->crud->setEntityNameStrings('slider', 'sliders');
-
-        /*
-        |--------------------------------------------------------------------------
-        | CrudPanel Configuration
-        |--------------------------------------------------------------------------
-        */
-
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->addColumns([
-//            ['name' => 'title','type' => 'text', 'label' => 'Title En'],
-            ['name' => 'title_ru','type' => 'text', 'label' => 'Title Ru'],
-            ['name' => 'title_tk','type' => 'text', 'label' => 'Title Tk'],
-            ['name' => 'order','type' => 'number', 'label' => 'Order'],
-            ['name' => 'text_ru','type' => 'text', 'label' => 'Text Ru'],
-            ['name' => 'text_tk','type' => 'text', 'label' => 'Text Tk'],
-            ['name' => 'link','type' => 'text', 'label' => 'Link'],
-            ['name' => 'ru','type' => 'boolean', 'label' => 'Russian'],
-            ['name' => 'tk','type' => 'boolean', 'label' => 'Turkmen'],
-            ['name' => 'active','type' => 'boolean', 'label' => 'Active'],
-            ['name' => 'image','type' => 'text', 'label' => 'Image'],
-        ]);
-        $this->crud->addFields([
-            ['name' => 'title_ru','type' => 'text', 'label' => 'Title Ru'],
-            ['name' => 'title_tk','type' => 'text', 'label' => 'Title Tk'],
-            ['name' => 'order','type' => 'number', 'label' => 'Order'],
-            ['name' => 'text_ru','type' => 'summernote', 'label' => 'Text Ru'],
-            ['name' => 'text_tk','type' => 'summernote', 'label' => 'Text Tk'],
-            ['name' => 'link','type' => 'text', 'label' => 'Link'],
-            ['name' => 'ru','type' => 'checkbox', 'label' => 'Russian'],
-            ['name' => 'tk','type' => 'checkbox', 'label' => 'Turkmen'],
-            ['name' => 'active','type' => 'checkbox', 'label' => 'Active'],
-            [ // image
-                'label' => "Image",
-                'name' => "image",
-                'type' => 'image',
-                'upload' => true,
-                //'crop' => true, // set to true to allow cropping, false to disable
-                //'aspect_ratio' => 2, // ommit or set to 0 to allow any aspect ratio
-                //'disk' => 'local', // in case you need to show images from a different disk
-//                'prefix' => 'user_content/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
-            ],
-
-        ]);
-
-        // add asterisk for fields that are required in SliderRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+        CRUD::setModel(\App\Models\Slider::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/slider');
+        CRUD::setEntityNameStrings('slider', 'sliders');
     }
 
-    public function store(StoreRequest $request)
+    /**
+     * Define what happens when the List operation is loaded.
+     * 
+     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
+     * @return void
+     */
+    protected function setupListOperation()
     {
-        // your additional operations before save here
-        $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        CRUD::column('text_tk');
+        CRUD::column('text_ru');
+        CRUD::column('image');
+        CRUD::column('active');
+        CRUD::column('link');
+        CRUD::column('title_ru');
+        CRUD::column('title_tk');
+        CRUD::column('order');
+
+        /**
+         * Columns can be defined using the fluent syntax or array syntax:
+         * - CRUD::column('price')->type('number');
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         */
     }
 
-    public function update(UpdateRequest $request)
+    /**
+     * Define what happens when the Create operation is loaded.
+     * 
+     * @see https://backpackforlaravel.com/docs/crud-operation-create
+     * @return void
+     */
+    protected function setupCreateOperation()
     {
-        // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        CRUD::setValidation(SliderRequest::class);
+
+        CRUD::field('text_tk');
+        CRUD::field('text_ru');
+        CRUD::field('image');
+        CRUD::field('active');
+        CRUD::field('link');
+        CRUD::field('title_ru');
+        CRUD::field('title_tk');
+        CRUD::field('order');
+
+        /**
+         * Fields can be defined using the fluent syntax or array syntax:
+         * - CRUD::field('price')->type('number');
+         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         */
+    }
+
+    /**
+     * Define what happens when the Update operation is loaded.
+     * 
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
     }
 }

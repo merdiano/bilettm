@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -772,4 +773,5 @@ Route::group(
         ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
 
 });
+
 
