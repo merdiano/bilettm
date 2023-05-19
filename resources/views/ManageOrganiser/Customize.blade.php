@@ -63,7 +63,7 @@
                         {!! Form::label('enable_organiser_page', trans("Organiser.enable_public_organiser_page"), array('class'=>'control-label required')) !!}
                         {!!  Form::select('enable_organiser_page', [
                         '1' => trans("Organiser.make_organiser_public"),
-                        '0' => trans("Organiser.make_organiser_hidden")],Illuminate\Support\Facades\Input::old('enable_organiser_page'),
+                        '0' => trans("Organiser.make_organiser_hidden")],\Illuminate\Support\Facades\Input::old('enable_organiser_page'),
                                                     array(
                                                     'class'=>'form-control'
                                                     ))  !!}
@@ -73,14 +73,14 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('name', trans("Organiser.organiser_name"), array('class'=>'required control-label ')) !!}
-                        {!!  Form::text('name', Illuminate\Support\Facades\Input::old('name'),
+                        {!!  Form::text('name', \Illuminate\Support\Facades\Input::old('name'),
                                                 array(
                                                 'class'=>'form-control'
                                                 ))  !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('email', trans("Organiser.organiser_email"), array('class'=>'control-label required')) !!}
-                        {!!  Form::text('email', Illuminate\Support\Facades\Input::old('email'),
+                        {!!  Form::text('email', \Illuminate\Support\Facades\Input::old('email'),
                                                 array(
                                                 'class'=>'form-control ',
                                                 'placeholder'=>trans("Organiser.organiser_email_placeholder")
@@ -88,7 +88,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('about', trans("Organiser.organiser_description"), array('class'=>'control-label ')) !!}
-                        {!!  Form::textarea('about', Illuminate\Support\Facades\Input::old('about'),
+                        {!!  Form::textarea('about', \Illuminate\Support\Facades\Input::old('about'),
                                                 array(
                                                 'class'=>'form-control ',
                                                 'placeholder'=>trans("Organiser.organiser_description_placeholder"),
@@ -100,37 +100,37 @@
                             <div class="form-group">
                                 <p class="control-label">{!! trans("Organiser.organiser_tax_prompt") !!}</p>
                                 <label for="Yes" class="control-label" id="charge_yes">{!! trans("Organiser.yes") !!}</label>
-                                <Illuminate\Support\Facades\Input id="charge_yes" name="charge_tax" type="radio" value="1" {{ $organiser->charge_tax == 1 ? 'checked' : '' }}>
+                                <\Illuminate\Support\Facades\Input id="charge_yes" name="charge_tax" type="radio" value="1" {{ $organiser->charge_tax == 1 ? 'checked' : '' }}>
                                 <label for="No" class="control-label" id="charge_no">{!! trans("Organiser.no") !!}</label>
-                                <Illuminate\Support\Facades\Input id="charge_yes" name="charge_tax" type="radio" value="0" {{ $organiser->charge_tax == 0 ? 'checked' : '' }}>
+                                <\Illuminate\Support\Facades\Input id="charge_yes" name="charge_tax" type="radio" value="0" {{ $organiser->charge_tax == 0 ? 'checked' : '' }}>
                             </div>
                         </div>
                         <div id="tax_fields">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('tax_id', trans("Organiser.organiser_tax_id"), array('class'=>'control-label required')) !!}
-                                    {!! Form::text('tax_id', Illuminate\Support\Facades\Input::old('tax_id'), array('class'=>'form-control', 'placeholder'=>'Tax ID')) !!}
+                                    {!! Form::text('tax_id', \Illuminate\Support\Facades\Input::old('tax_id'), array('class'=>'form-control', 'placeholder'=>'Tax ID')) !!}
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     {!! Form::label('tax_name', trans("Organiser.organiser_tax_name"), array('class'=>'control-label required')) !!}
-                                    {!! Form::text('tax_name', Illuminate\Support\Facades\Input::old('tax_name'), array('class'=>'form-control', 'placeholder'=>'Tax name')) !!}
+                                    {!! Form::text('tax_name', \Illuminate\Support\Facades\Input::old('tax_name'), array('class'=>'form-control', 'placeholder'=>'Tax name')) !!}
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     {!! Form::label('tax_value', trans("Organiser.organiser_tax_value"), array('class'=>'control-label required')) !!}
-                                    {!! Form::text('tax_value', Illuminate\Support\Facades\Input::old('tax_value'), array('class'=>'form-control', 'placeholder'=>'Tax Value')) !!}
+                                    {!! Form::text('tax_value', \Illuminate\Support\Facades\Input::old('tax_value'), array('class'=>'form-control', 'placeholder'=>'Tax Value')) !!}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('google_analytics_code', trans("Organiser.google_analytics_code"), array('class'=>'control-label')) !!}
-                        {!!  Form::text('google_analytics_code', Illuminate\Support\Facades\Input::old('google_analytics_code'),
+                        {!!  Form::text('google_analytics_code', \Illuminate\Support\Facades\Input::old('google_analytics_code'),
                                                 array(
                                                 'class'=>'form-control',
                                                 'placeholder' => trans("Organiser.google_analytics_code_placeholder"),
@@ -142,9 +142,9 @@
                             <div class="form-group">
                                 {!! Form::label('facebook', trans("Organiser.organiser_facebook"), array('class'=>'control-label ')) !!}
 
-                                <div class="Illuminate\Support\Facades\Input-group">
-                                    <span style="background-color: #eee;" class="Illuminate\Support\Facades\Input-group-addon">facebook.com/</span>
-                                    {!!  Form::text('facebook', Illuminate\Support\Facades\Input::old('facebook'),
+                                <div class="\Illuminate\Support\Facades\Input-group">
+                                    <span style="background-color: #eee;" class="\Illuminate\Support\Facades\Input-group-addon">facebook.com/</span>
+                                    {!!  Form::text('facebook', \Illuminate\Support\Facades\Input::old('facebook'),
                                                     array(
                                                     'class'=>'form-control ',
                                                     'placeholder'=> trans("Organiser.organiser_username_facebook_placeholder")
@@ -156,9 +156,9 @@
                             <div class="form-group">
                                 {!! Form::label('twitter', trans("Organiser.organiser_twitter"), array('class'=>'control-label ')) !!}
 
-                                <div class="Illuminate\Support\Facades\Input-group">
-                                    <span style="background-color: #eee;" class="Illuminate\Support\Facades\Input-group-addon">twitter.com/</span>
-                                    {!!  Form::text('twitter', Illuminate\Support\Facades\Input::old('twitter'),
+                                <div class="\Illuminate\Support\Facades\Input-group">
+                                    <span style="background-color: #eee;" class="\Illuminate\Support\Facades\Input-group-addon">twitter.com/</span>
+                                    {!!  Form::text('twitter', \Illuminate\Support\Facades\Input::old('twitter'),
                                              array(
                                              'class'=>'form-control ',
                                                     'placeholder'=> trans("Organiser.organiser_username_twitter_placeholder")
@@ -198,7 +198,7 @@
 
                             <div class="form-group">
                                 {!! Form::label('page_header_bg_color', trans("Organiser.header_background_color"), ['class'=>'control-label required ']) !!}
-                                {!!  Form::Illuminate\Support\Facades\Input('text', 'page_header_bg_color', Illuminate\Support\Facades\Input::old('page_header_bg_color'),
+                                {!!  Form::\Illuminate\Support\Facades\Input('text', 'page_header_bg_color', \Illuminate\Support\Facades\Input::old('page_header_bg_color'),
                                                             [
                                                             'class'=>'form-control colorpicker',
                                                             'placeholder'=>'#000000'
@@ -206,7 +206,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('page_text_color', trans("Organiser.text_color"), ['class'=>'control-label required ']) !!}
-                                {!!  Form::Illuminate\Support\Facades\Input('text', 'page_text_color', Illuminate\Support\Facades\Input::old('page_text_color'),
+                                {!!  Form::\Illuminate\Support\Facades\Input('text', 'page_text_color', \Illuminate\Support\Facades\Input::old('page_text_color'),
                                                             [
                                                             'class'=>'form-control colorpicker',
                                                             'placeholder'=>'#FFFFFF'
@@ -214,7 +214,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('page_bg_color', trans("Organiser.background_color"), ['class'=>'control-label required ']) !!}
-                                {!!  Form::Illuminate\Support\Facades\Input('text', 'page_bg_color', Illuminate\Support\Facades\Input::old('page_bg_color'),
+                                {!!  Form::\Illuminate\Support\Facades\Input('text', 'page_bg_color', \Illuminate\Support\Facades\Input::old('page_bg_color'),
                                                             [
                                                             'class'=>'form-control colorpicker',
                                                             'placeholder'=>'#EEEEEE'

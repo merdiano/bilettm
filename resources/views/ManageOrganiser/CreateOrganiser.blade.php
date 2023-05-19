@@ -39,7 +39,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('name', trans("Organiser.organiser_name"), array('class'=>'required control-label ')) !!}
-                                {!!  Form::text('name', Illuminate\Support\Facades\Input::old('name'),
+                                {!!  Form::text('name', \Illuminate\Support\Facades\Input::old('name'),
                                             array(
                                             'class'=>'form-control'
                                             ))  !!}
@@ -48,7 +48,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('email', trans("Organiser.organiser_email"), array('class'=>'control-label required')) !!}
-                                {!!  Form::text('email', Illuminate\Support\Facades\Input::old('email'),
+                                {!!  Form::text('email', \Illuminate\Support\Facades\Input::old('email'),
                                             array(
                                             'class'=>'form-control ',
                                             'placeholder'=>trans("Organiser.organiser_email_placeholder")
@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('about', trans("Organiser.organiser_description"), array('class'=>'control-label ')) !!}
-                        {!!  Form::textarea('about', Illuminate\Support\Facades\Input::old('about'),
+                        {!!  Form::textarea('about', \Illuminate\Support\Facades\Input::old('about'),
                                     array(
                                     'class'=>'form-control ',
                                     'placeholder'=>trans("Organiser.organiser_description_placeholder"),
@@ -77,21 +77,21 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('tax_id', trans("Organiser.organiser_tax_id"), array('class'=>'control-label required')) !!}
-                                {!! Form::text('tax_id', Illuminate\Support\Facades\Input::old('tax_id'), array('class'=>'form-control', 'placeholder'=>'Tax ID'))  !!}
+                                {!! Form::text('tax_id', \Illuminate\Support\Facades\Input::old('tax_id'), array('class'=>'form-control', 'placeholder'=>'Tax ID'))  !!}
                             </div>
                         </div>
                         
                         <div class="col-md-3">
                             <div class="form-group">
                                 {!! Form::label('tax_name', trans("Organiser.organiser_tax_name"), array('class'=>'control-label required')) !!}
-                                {!! Form::text('tax_name', Illuminate\Support\Facades\Input::old('tax_name'), array('class'=>'form-control', 'placeholder'=>'Tax name'))  !!}
+                                {!! Form::text('tax_name', \Illuminate\Support\Facades\Input::old('tax_name'), array('class'=>'form-control', 'placeholder'=>'Tax name'))  !!}
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
                                 {!! Form::label('tax_value', trans("Organiser.organiser_tax_value"), array('class'=>'control-label required')) !!}
-                                {!! Form::text('tax_value', Illuminate\Support\Facades\Input::old('tax_value'), array('class'=>'form-control', 'placeholder'=>'Tax Value'))  !!}
+                                {!! Form::text('tax_value', \Illuminate\Support\Facades\Input::old('tax_value'), array('class'=>'form-control', 'placeholder'=>'Tax Value'))  !!}
                             </div>
                         </div>
                     </div>
@@ -101,9 +101,9 @@
                             <div class="form-group">
                                 {!! Form::label('facebook', trans("Organiser.organiser_facebook"), array('class'=>'control-label ')) !!}
 
-                                <div class="Illuminate\Support\Facades\Input-group">
-                                    <span style="background-color: #eee;" class="Illuminate\Support\Facades\Input-group-addon">facebook.com/</span>
-                                    {!!  Form::text('facebook', Illuminate\Support\Facades\Input::old('facebook'),
+                                <div class="\Illuminate\Support\Facades\Input-group">
+                                    <span style="background-color: #eee;" class="\Illuminate\Support\Facades\Input-group-addon">facebook.com/</span>
+                                    {!!  Form::text('facebook', \Illuminate\Support\Facades\Input::old('facebook'),
                                                     array(
                                                     'class'=>'form-control ',
                                                     'placeholder'=>trans("Organiser.organiser_username_facebook_placeholder")
@@ -115,9 +115,9 @@
                             <div class="form-group">
                                 {!! Form::label('twitter', trans("Organiser.organiser_twitter"), array('class'=>'control-label ')) !!}
 
-                                <div class="Illuminate\Support\Facades\Input-group">
-                                    <span style="background-color: #eee;" class="Illuminate\Support\Facades\Input-group-addon">twitter.com/</span>
-                                    {!!  Form::text('twitter', Illuminate\Support\Facades\Input::old('twitter'),
+                                <div class="\Illuminate\Support\Facades\Input-group">
+                                    <span style="background-color: #eee;" class="\Illuminate\Support\Facades\Input-group-addon">twitter.com/</span>
+                                    {!!  Form::text('twitter', \Illuminate\Support\Facades\Input::old('twitter'),
                                              array(
                                              'class'=>'form-control ',
                                                     'placeholder'=>trans("Organiser.organiser_username_twitter_placeholder")

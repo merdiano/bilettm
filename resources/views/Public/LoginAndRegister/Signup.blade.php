@@ -65,7 +65,7 @@
                 @if(Utils::isAttendize())
                 <div class="form-group {{ ($errors->has('terms_agreed')) ? 'has-error' : '' }}">
                     <div class="checkbox custom-checkbox">
-                        {!! Form::checkbox('terms_agreed', Illuminate\Support\Facades\Input::old('terms_agreed'), false, ['id' => 'terms_agreed']) !!}
+                        {!! Form::checkbox('terms_agreed', \Illuminate\Support\Facades\Input::old('terms_agreed'), false, ['id' => 'terms_agreed']) !!}
                         {!! Form::rawLabel('terms_agreed', trans("User.terms_and_conditions", ["url"=>route('termsAndConditions')])) !!}
                         @if ($errors->has('terms_agreed'))
                             <p class="help-block">{{ $errors->first('terms_agreed') }}</p>

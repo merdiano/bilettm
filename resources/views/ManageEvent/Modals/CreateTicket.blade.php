@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!! Form::label('title', trans("ManageEvent.ticket_title"), array('class'=>'control-label required')) !!}
-                            {!!  Form::text('title', Illuminate\Support\Facades\Input::old('title'),
+                            {!!  Form::text('title', \Illuminate\Support\Facades\Input::old('title'),
                                         array(
                                         'class'=>'form-control',
                                         'placeholder'=>trans("ManageEvent.ticket_title_placeholder")
@@ -25,7 +25,7 @@
                                 <div class="form-group">
                                     {!! Form::label('ticket_date', trans("ManageEvent.ticket_date"), array('class'=>' control-label required')) !!}
 
-                                    {!!  Form::text('ticket_date', Illuminate\Support\Facades\Input::old('ticket_date'),
+                                    {!!  Form::text('ticket_date', \Illuminate\Support\Facades\Input::old('ticket_date'),
                                         [
                                             'class' => 'form-control ticket_date hasDatepicker',
                                             'data-field' => 'datetime',
@@ -38,7 +38,7 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     {!! Form::label('price', trans("ManageEvent.ticket_price"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::text('price', Illuminate\Support\Facades\Input::old('price'),
+                                    {!!  Form::text('price', \Illuminate\Support\Facades\Input::old('price'),
                                                 array(
                                                 'class'=>'form-control',
                                                 'placeholder'=>trans("ManageEvent.price_placeholder")
@@ -51,7 +51,7 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     {!! Form::label('quantity_available', trans("ManageEvent.quantity_available"), array('class'=>' control-label')) !!}
-                                    {!!  Form::text('quantity_available', Illuminate\Support\Facades\Input::old('quantity_available'),
+                                    {!!  Form::text('quantity_available', \Illuminate\Support\Facades\Input::old('quantity_available'),
                                                 array(
                                                 'class'=>'form-control',
                                                 'placeholder'=>trans("ManageEvent.quantity_available_placeholder")
@@ -64,7 +64,7 @@
 
                         <div class="form-group">
                             {!! Form::label('description', trans("ManageEvent.ticket_description"), array('class'=>'control-label')) !!}
-                            {!!  Form::text('description', Illuminate\Support\Facades\Input::old('description'),
+                            {!!  Form::text('description', \Illuminate\Support\Facades\Input::old('description'),
                                         array(
                                         'class'=>'form-control'
                                         ))  !!}
@@ -74,7 +74,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     {!! Form::label('start_sale_date', trans("ManageEvent.start_sale_on"), array('class'=>' control-label')) !!}
-                                    {!!  Form::text('start_sale_date', Illuminate\Support\Facades\Input::old('start_sale_date'),
+                                    {!!  Form::text('start_sale_date', \Illuminate\Support\Facades\Input::old('start_sale_date'),
                                                     [
                                                 'class'=>'form-control start hasDatepicker ',
                                                 'data-field'=>'datetime',
@@ -92,7 +92,7 @@
                                                 [
                                             'class'=>' control-label '
                                         ])  !!}
-                                    {!!  Form::text('end_sale_date', Illuminate\Support\Facades\Input::old('end_sale_date'),
+                                    {!!  Form::text('end_sale_date', \Illuminate\Support\Facades\Input::old('end_sale_date'),
                                             [
                                         'class'=>'form-control end hasDatepicker ',
                                         'data-field'=>'datetime',
