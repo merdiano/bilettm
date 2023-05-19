@@ -7,12 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class EventResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
-    public function toArray(Request $request): array
+    public function toArray($request)
     {
         $groupedDates = $this->ticket_dates->groupBy(function ($item) {
             return $item->event_id . '_' . substr($item->ticket_date, 0, 10);
@@ -27,13 +22,15 @@ class EventResource extends JsonResource
             ];
         })->values();
         return [
-            'id'            => $this->id,
-            'title_tk'      => $this->title_tk,
-            'title_ru'      => $this->title_ru,
-            'img_url'       => $this->image_url,
-            'description'   => $this->description,
-            'ticket_dates'  => $groupedDates,
-            'views'         => $this->views
+            'id'                => $this->id,
+            'title_tk'          => $this->title_tk,
+            'title_ru'          => $this->title_ru,
+            'img_url'           => $this->image_url,
+            'description_ru'    => $this->description_ru,
+            'description_tk'    => $this->description_tk,
+            'ticket_dates'      => $groupedDates,
+            'views'             => $this->views,
+            'venue'             => $this->venue ?? null
         ];
     }
 }
