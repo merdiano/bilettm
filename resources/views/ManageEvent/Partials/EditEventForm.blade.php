@@ -31,7 +31,7 @@
 
             <div class="form-group col-md-6">
                 {!! Form::label('title_ru', trans("Event.event_title_ru"), array('class'=>'control-label required')) !!}
-                {!! Form::text('title_ru', \Illuminate\Support\Facades\Input::old('title_ru'),
+                {!! Form::text('title_ru', Input::old('title_ru'),
                                             array(
                                             'class'=>'form-control',
                                             'placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name])
@@ -39,7 +39,7 @@
             </div>
             <div class="form-group col-md-6">
                 {!! Form::label('title_tk', trans("Event.event_title_tk"), array('class'=>'control-label required')) !!}
-                {!! Form::text('title_tk', \Illuminate\Support\Facades\Input::old('title_tk'),
+                {!! Form::text('title_tk', Input::old('title_tk'),
                                             array(
                                             'class'=>'form-control',
                                             'placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name])
@@ -48,7 +48,7 @@
 
             <div class="form-group col-md-6">
             {!! Form::label('description_ru', trans("Event.event_description_ru"), array('class'=>'control-label')) !!}
-            {!! Form::textarea('description_ru', \Illuminate\Support\Facades\Input::old('description_ru'),
+            {!! Form::textarea('description_ru', Input::old('description_ru'),
                                         array(
                                         'class'=>'form-control editable',
                                         'rows' => 5
@@ -56,7 +56,7 @@
             </div>
             <div class="form-group col-md-6">
                 {!! Form::label('description_tk', trans("Event.event_description_tk"), array('class'=>'control-label')) !!}
-                {!! Form::textarea('description_tk', \Illuminate\Support\Facades\Input::old('description_tk'),
+                {!! Form::textarea('description_tk', Input::old('description_tk'),
                                             array(
                                             'class'=>'form-control editable',
                                             'rows' => 5
@@ -64,9 +64,9 @@
             </div>
             <div class="form-group col-md-6 address-automatic">
             {!! Form::label('venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}
-            {!! Form::select('venue_id',venues_list(), \Illuminate\Support\Facades\Input::old('venue_id'), ['class' => 'form-control','id'=>'venue_name']) !!}
+            {!! Form::select('venue_id',venues_list(), Input::old('venue_id'), ['class' => 'form-control','id'=>'venue_name']) !!}
             {{--{!! Form::label('name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}--}}
-            {{--{!!  Form::text('venue_name_full', \Illuminate\Support\Facades\Input::old('venue_name_full'),--}}
+            {{--{!!  Form::text('venue_name_full', Input::old('venue_name_full'),--}}
                                         {{--array(--}}
                                         {{--'class'=>'form-control geocomplete location_field',--}}
                                         {{--'placeholder'=>trans("Event.venue_name_placeholder")//'E.g: The Crab Shack'--}}

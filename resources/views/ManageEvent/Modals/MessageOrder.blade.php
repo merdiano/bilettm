@@ -18,7 +18,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!! Form::label('subject',  trans("Message.subject"), array('class'=>'control-label required')) !!}
-                            {!!  Form::text('subject', \Illuminate\Support\Facades\Input::old('subject'),
+                            {!!  Form::text('subject', Input::old('subject'),
                                         array(
                                         'class'=>'form-control'
                                         ))  !!}
@@ -26,7 +26,7 @@
 
                         <div class="form-group">
                             {!! Form::label('message', trans("Message.content"), array('class'=>'control-label required')) !!}
-                            {!!  Form::textarea('message', \Illuminate\Support\Facades\Input::old('message'),
+                            {!!  Form::textarea('message', Input::old('message'),
                                         array(
                                         'class'=>'form-control',
                                         'rows' => '5'
@@ -35,7 +35,7 @@
 
                         <div class="form-group">
                             <div class="checkbox custom-checkbox">
-                                <\Illuminate\Support\Facades\Input type="checkbox" name="send_copy" id="send_copy" value="1">
+                                <input type="checkbox" name="send_copy" id="send_copy" value="1">
                                 <label for="send_copy">&nbsp;&nbsp;@lang("Message.send_a_copy_to", ["organiser"=>$order->event->organiser->email])</label>
                             </div>
                         </div>

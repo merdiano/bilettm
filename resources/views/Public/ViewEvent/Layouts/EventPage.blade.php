@@ -38,7 +38,7 @@
 
         <!--Bootstrap placeholder fix-->
         <style>
-            ::-webkit-\Illuminate\Support\Facades\Input-placeholder { /* WebKit browsers */
+            ::-webkit-input-placeholder { /* WebKit browsers */
                 color:    #ccc !important;
             }
             :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
@@ -49,11 +49,11 @@
                 color:    #ccc !important;
                 opacity:  1;
             }
-            :-ms-\Illuminate\Support\Facades\Input-placeholder { /* Internet Explorer 10+ */
+            :-ms-input-placeholder { /* Internet Explorer 10+ */
                 color:    #ccc !important;
             }
 
-            \Illuminate\Support\Facades\Input, select {
+            input, select {
                 color: #999 !important;
             }
 
@@ -62,14 +62,14 @@
             }
 
         </style>
-        @if ($event->bg_type == 'color' || \Illuminate\Support\Facades\Input::get('bg_color_preview'))
-            <style>body {background-color: {{(\Illuminate\Support\Facades\Input::get('bg_color_preview') ? '#'.\Illuminate\Support\Facades\Input::get('bg_color_preview') : $event->bg_color)}} !important; }</style>
+        @if ($event->bg_type == 'color' || Input::get('bg_color_preview'))
+            <style>body {background-color: {{(Input::get('bg_color_preview') ? '#'.Input::get('bg_color_preview') : $event->bg_color)}} !important; }</style>
         @endif
 
-        @if (($event->bg_type == 'image' || $event->bg_type == 'custom_image' || \Illuminate\Support\Facades\Input::get('bg_img_preview')) && !\Illuminate\Support\Facades\Input::get('bg_color_preview'))
+        @if (($event->bg_type == 'image' || $event->bg_type == 'custom_image' || Input::get('bg_img_preview')) && !Input::get('bg_color_preview'))
             <style>
                 body {
-                    background: url({{(\Illuminate\Support\Facades\Input::get('bg_img_preview') ? URL::to(\Illuminate\Support\Facades\Input::get('bg_img_preview')) :  asset(config('attendize.cdn_url_static_assets').'/'.$event->bg_image_path))}}) no-repeat center center fixed;
+                    background: url({{(Input::get('bg_img_preview') ? URL::to(Input::get('bg_img_preview')) :  asset(config('attendize.cdn_url_static_assets').'/'.$event->bg_image_path))}}) no-repeat center center fixed;
                     background-size: cover;
                 }
             </style>
