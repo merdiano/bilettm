@@ -176,7 +176,7 @@
                         "description": "Parameter ticket_date",
                         "required": true,
                         "schema": {
-                            "type": "date"
+                            "type": "string"
                         }
                     }
                 ],

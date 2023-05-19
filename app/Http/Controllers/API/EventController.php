@@ -34,7 +34,6 @@ class EventController extends Controller
     public function eventDetailById($id){
         //todo handle if not found
         $event = Event::with(['ticket_dates','venue:id,venue_name_tk,venue_name_ru,address'])->withViews()->onLive()->find($id);
-
         return EventResource::make($event);
     }
 
@@ -57,7 +56,7 @@ class EventController extends Controller
     *          in="query",
     *          name="ticket_date",
     *          required=true,
-    *          @OA\Schema(type="date"),
+    *          @OA\Schema(type="string"),
     *      ),
     *      @OA\Response(
     *          response=200,
