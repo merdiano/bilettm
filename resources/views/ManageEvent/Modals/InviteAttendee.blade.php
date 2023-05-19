@@ -25,7 +25,7 @@
                                 <div class="form-group">
                                 {!! Form::label('first_name', trans("Attendee.first_name"), array('class'=>'control-label required')) !!}
 
-                                {!!  Form::text('first_name', Input::old('first_name'),
+                                {!!  Form::text('first_name', Illuminate\Support\Facades\Input::old('first_name'),
                                             array(
                                             'class'=>'form-control'
                                             ))  !!}
@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                 {!! Form::label('last_name', trans("Attendee.last_name"), array('class'=>'control-label')) !!}
 
-                                {!!  Form::text('last_name', Input::old('last_name'),
+                                {!!  Form::text('last_name', Illuminate\Support\Facades\Input::old('last_name'),
                                             array(
                                             'class'=>'form-control'
                                             ))  !!}
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             {!! Form::label('email', trans("Attendee.email_address"), array('class'=>'control-label required')) !!}
 
-                            {!!  Form::text('email', Input::old('email'),
+                            {!!  Form::text('email', Illuminate\Support\Facades\Input::old('email'),
                                                 array(
                                                 'class'=>'form-control'
                                                 ))  !!}
@@ -55,7 +55,7 @@
 
                         <div class="form-group">
                             <div class="checkbox custom-checkbox">
-                                <input type="checkbox" name="email_ticket" id="email_ticket" value="1" />
+                                <Illuminate\Support\Facades\Input type="checkbox" name="email_ticket" id="email_ticket" value="1" />
                                 <label for="email_ticket">&nbsp;&nbsp;@lang("Attendee.send_invitation_n_ticket_to_attendee")</label>
                             </div>
                         </div>

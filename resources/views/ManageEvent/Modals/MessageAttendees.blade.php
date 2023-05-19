@@ -20,7 +20,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     {!! Form::label('subject',  trans("Message.subject"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::text('subject', Input::old('subject'),
+                                    {!!  Form::text('subject', Illuminate\Support\Facades\Input::old('subject'),
                                         array(
                                         'class'=>'form-control'
                                         ))  !!}
@@ -28,7 +28,7 @@
 
                                 <div class="form-group">
                                     {!! Form::label('message', trans("Message.content"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::textarea('message', Input::old('message'),
+                                    {!!  Form::textarea('message', Illuminate\Support\Facades\Input::old('message'),
                                         array(
                                         'class'=>'form-control',
                                         'rows' => '5'
@@ -46,7 +46,7 @@
 
                                 <div class="form-group hide">
                                     {!! Form::label('sent_time', trans("Message.schedule_send_time"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::text('sent_time', Input::old('sent_time'),
+                                    {!!  Form::text('sent_time', Illuminate\Support\Facades\Input::old('sent_time'),
                                         array(
                                         'class'=>'form-control'
                                         ))  !!}

@@ -16,12 +16,12 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!! Form::label('title_ru', trans("Event.event_title_ru"), array('class'=>'control-label required')) !!}
-                            {!! Form::text('title_ru', Input::old('title_ru'),array('class'=>'form-control','placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name]) ))  !!}
+                            {!! Form::text('title_ru', Illuminate\Support\Facades\Input::old('title_ru'),array('class'=>'form-control','placeholder'=>trans("Event.event_title_placeholder", ["name"=>Auth::user()->first_name]) ))  !!}
                         </div>
 
                         <div class="form-group custom-theme">
                             {!! Form::label('description_ru', trans("Event.event_description_ru"), array('class'=>'control-label required')) !!}
-                            {!! Form::textarea('description_ru', Input::old('description_ru'),
+                            {!! Form::textarea('description_ru', Illuminate\Support\Facades\Input::old('description_ru'),
                                         array(
                                         'class'=>'form-control  editable',
                                         'rows' => 5
@@ -30,11 +30,11 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 {!! Form::label('category_id', trans("Category.event_category"), array('class'=>'control-label required')) !!}
-                                {!! Form::select('category_id',main_categories(), Input::old('category_id'), ['class' => 'form-control','id'=>'categories']) !!}
+                                {!! Form::select('category_id',main_categories(), Illuminate\Support\Facades\Input::old('category_id'), ['class' => 'form-control','id'=>'categories']) !!}
                             </div>
                             <div class="form-group col-md-6">
                                 {!! Form::label('subCategory',trans('Category.event_sub_category'), array('class'=>'control-label')) !!}
-                                {!! Form::subSelect('sub_category_id',sub_categories(), Input::old('sub_category_id'), ['class' => 'form-control','id'=>'subCategories']) !!}
+                                {!! Form::subSelect('sub_category_id',sub_categories(), Illuminate\Support\Facades\Input::old('sub_category_id'), ['class' => 'form-control','id'=>'subCategories']) !!}
                             </div>
                         </div>
 
@@ -42,7 +42,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     {!! Form::label('start_date', trans("Event.event_start_date"), array('class'=>'required control-label')) !!}
-                                    {!!  Form::text('start_date', Input::old('start_date'),
+                                    {!!  Form::text('start_date', Illuminate\Support\Facades\Input::old('start_date'),
                                                         [
                                                     'class'=>'form-control start hasDatepicker ',
                                                     'data-field'=>'datetime',
@@ -61,7 +61,7 @@
                                             'class'=>'required control-label '
                                         ])  !!}
 
-                                    {!!  Form::text('end_date', Input::old('end_date'),
+                                    {!!  Form::text('end_date', Illuminate\Support\Facades\Input::old('end_date'),
                                                 [
                                             'class'=>'form-control end hasDatepicker ',
                                             'data-field'=>'datetime',
@@ -79,9 +79,9 @@
                         </div>
                         <div class="form-group address-automatic">
                             {!! Form::label('venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}
-                            {!! Form::select('venue_id',venues_list(), Input::old('venue_id'), ['class' => 'form-control','id'=>'venue_name']) !!}
+                            {!! Form::select('venue_id',venues_list(), Illuminate\Support\Facades\Input::old('venue_id'), ['class' => 'form-control','id'=>'venue_name']) !!}
 
-                            {{--{!!  Form::text('venue_name_full', Input::old('venue_name_full'),--}}
+                            {{--{!!  Form::text('venue_name_full', Illuminate\Support\Facades\Input::old('venue_name_full'),--}}
                                         {{--array(--}}
                                         {{--'class'=>'form-control geocomplete location_field',--}}
                                         {{--'placeholder'=>trans("Event.venue_name_placeholder")--}}
@@ -114,21 +114,21 @@
 
                             {{--<div class="form-group">--}}
                                 {{--{!! Form::label('location_venue_name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}--}}
-                                {{--{!!  Form::text('location_venue_name', Input::old('location_venue_name'), [--}}
+                                {{--{!!  Form::text('location_venue_name', Illuminate\Support\Facades\Input::old('location_venue_name'), [--}}
                                         {{--'class'=>'form-control location_field',--}}
                                         {{--'placeholder'=>trans("Event.venue_name_placeholder")--}}
                                         {{--])  !!}--}}
                             {{--</div>--}}
                             {{--<div class="form-group">--}}
                                 {{--{!! Form::label('location_address_line_1', trans("Event.address_line_1"), array('class'=>'control-label')) !!}--}}
-                                {{--{!!  Form::text('location_address_line_1', Input::old('location_address_line_1'), [--}}
+                                {{--{!!  Form::text('location_address_line_1', Illuminate\Support\Facades\Input::old('location_address_line_1'), [--}}
                                         {{--'class'=>'form-control location_field',--}}
                                         {{--'placeholder'=>trans("Event.address_line_1_placeholder")--}}
                                         {{--])  !!}--}}
                             {{--</div>--}}
                             {{--<div class="form-group">--}}
                                 {{--{!! Form::label('location_address_line_2', trans("Event.address_line_2"), array('class'=>'control-label')) !!}--}}
-                                {{--{!!  Form::text('location_address_line_2', Input::old('location_address_line_2'), [--}}
+                                {{--{!!  Form::text('location_address_line_2', Illuminate\Support\Facades\Input::old('location_address_line_2'), [--}}
                                         {{--'class'=>'form-control location_field',--}}
                                         {{--'placeholder'=>trans("Event.address_line_2_placeholder")--}}
                                         {{--])  !!}--}}
@@ -138,7 +138,7 @@
                                 {{--<div class="col-md-6">--}}
                                     {{--<div class="form-group">--}}
                                         {{--{!! Form::label('location_state', trans("Event.city"), array('class'=>'control-label')) !!}--}}
-                                        {{--{!!  Form::text('location_state', Input::old('location_state'), [--}}
+                                        {{--{!!  Form::text('location_state', Illuminate\Support\Facades\Input::old('location_state'), [--}}
                                                 {{--'class'=>'form-control location_field',--}}
                                                 {{--'placeholder'=>trans("Event.city_placeholder")--}}
                                                 {{--])  !!}--}}
@@ -147,7 +147,7 @@
                                 {{--<div class="col-md-6">--}}
                                     {{--<div class="form-group">--}}
                                         {{--{!! Form::label('location_post_code', trans("Event.post_code"), array('class'=>'control-label')) !!}--}}
-                                        {{--{!!  Form::text('location_post_code', Input::old('location_post_code'), [--}}
+                                        {{--{!!  Form::text('location_post_code', Illuminate\Support\Facades\Input::old('location_post_code'), [--}}
                                                 {{--'class'=>'form-control location_field',--}}
                                                 {{--'placeholder'=>trans("Event.post_code_placeholder")--}}
                                                 {{--])  !!}--}}
@@ -175,7 +175,7 @@
 
                                 <div class="form-group">
                                     {!! Form::label('organiser_name', trans("Organiser.organiser_name"), array('class'=>'required control-label ')) !!}
-                                    {!!  Form::text('organiser_name', Input::old('organiser_name'),
+                                    {!!  Form::text('organiser_name', Illuminate\Support\Facades\Input::old('organiser_name'),
                                                 array(
                                                 'class'=>'form-control',
                                                 'placeholder'=>trans("Organiser.organiser_name_placeholder")
@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('organiser_email', trans("Organiser.organiser_email"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::text('organiser_email', Input::old('organiser_email'),
+                                    {!!  Form::text('organiser_email', Illuminate\Support\Facades\Input::old('organiser_email'),
                                                 array(
                                                 'class'=>'form-control ',
                                                 'placeholder'=>trans("Organiser.organiser_email_placeholder")
@@ -191,7 +191,7 @@
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('organiser_about', trans("Organiser.organiser_description"), array('class'=>'control-label ')) !!}
-                                    {!!  Form::textarea('organiser_about', Input::old('organiser_about'),
+                                    {!!  Form::textarea('organiser_about', Illuminate\Support\Facades\Input::old('organiser_about'),
                                                 array(
                                                 'class'=>'form-control editable2',
                                                 'placeholder'=>trans("Organiser.organiser_description_placeholder"),
@@ -206,7 +206,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('organiser_facebook', trans("Organiser.organiser_facebook"), array('class'=>'control-label ')) !!}
-                                            {!!  Form::text('organiser_facebook', Input::old('organiser_facebook'),
+                                            {!!  Form::text('organiser_facebook', Illuminate\Support\Facades\Input::old('organiser_facebook'),
                                                 array(
                                                 'class'=>'form-control ',
                                                 'placeholder'=>trans("Organiser.organiser_facebook_placeholder")
@@ -217,7 +217,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('organiser_twitter', trans("Organiser.organiser_twitter"), array('class'=>'control-label ')) !!}
-                                            {!!  Form::text('organiser_twitter', Input::old('organiser_twitter'),
+                                            {!!  Form::text('organiser_twitter', Illuminate\Support\Facades\Input::old('organiser_twitter'),
                                                 array(
                                                 'class'=>'form-control ',
                                                 'placeholder'=>trans("Organiser.organiser_twitter_placeholder")

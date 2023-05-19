@@ -12,7 +12,7 @@ use Auth;
 use Hash;
 use HttpClient;
 use Illuminate\Http\Request;
-use Input;
+use Illuminate\Support\Facades\Input;
 use Mail;
 use Validator;
 use GuzzleHttp\Client;
