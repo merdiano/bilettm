@@ -52,6 +52,13 @@ class EventController extends Controller
     *          @OA\Schema(type="string"),
     *          @OA\Examples(example="int", value="421", summary="421"),
     *      ),
+    *      @OA\Parameter(
+    *          description="Parameter ticket_date",
+    *          in="query",
+    *          name="ticket_date",
+    *          required=true,
+    *          @OA\Schema(type="date"),
+    *      ),
     *      @OA\Response(
     *          response=200,
     *          description="Response Message",
@@ -76,12 +83,12 @@ class EventController extends Controller
                'message' => 'There is no tickets available'
             ]);
 
-        // return response()->json([
-        //     'status' => 'success',
-        //     'venue' => $event->venue,
-        //     'tickets' => $tickets
-        // ]);
+        return response()->json([
+            'status' => 'success',
+            'venue' => $event->venue,
+            'tickets' => $tickets
+        ]);
 
-        return EventResource::make($event);
+        //return EventResource::make($event);
     }
 }

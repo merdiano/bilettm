@@ -169,6 +169,15 @@
                                 "value": "421"
                             }
                         }
+                    },
+                    {
+                        "name": "ticket_date",
+                        "in": "query",
+                        "description": "Parameter ticket_date",
+                        "required": true,
+                        "schema": {
+                            "type": "date"
+                        }
                     }
                 ],
                 "responses": {
@@ -202,6 +211,36 @@
                 "description": "Get events of location",
                 "operationId": "b029bc21c60d250977999c0da9e4e886",
                 "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "1",
+                                "value": "1"
+                            }
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "per_page",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "10",
+                                "value": "1"
+                            }
+                        }
+                    },
                     {
                         "name": "location_id",
                         "in": "path",
