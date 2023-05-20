@@ -28,6 +28,7 @@ class EventResource extends JsonResource
             'img_url'           => $this->image_url,
             'description_ru'    => $this->description_ru,
             'description_tk'    => $this->description_tk,
+            'original_dates'    => $this->ticket_dates,
             'ticket_dates'      => $groupedDates,
             'views'             => $this->views,
             'venue'             => $this->venue ?? null

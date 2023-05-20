@@ -177,6 +177,27 @@
                         "required": true,
                         "schema": {
                             "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "2023-06-17",
+                                "value": "2023-06-17"
+                            }
+                        }
+                    },
+                    {
+                        "name": "ticket_hours",
+                        "in": "query",
+                        "description": "Parameter ticket_hours",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "15:36:00",
+                                "value": "15:36:00"
+                            }
                         }
                     }
                 ],

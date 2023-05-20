@@ -57,6 +57,15 @@ class EventController extends Controller
     *          name="ticket_date",
     *          required=true,
     *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="string", value="2023-06-17", summary="2023-06-17"),
+    *      ),
+    *      @OA\Parameter(
+    *          description="Parameter ticket_hours",
+    *          in="query",
+    *          name="ticket_hours",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="string", value="15:36:00", summary="15:36:00"),
     *      ),
     *      @OA\Response(
     *          response=200,
@@ -65,10 +74,10 @@ class EventController extends Controller
     *     )
     */
     public function eventSeatsById(Request $request, $id){
-        $this->validate($request, [ 'ticket_date' => 'required|date' ]);
+        $this->validate($request, [ 'ticket_date' => 'required', 'ticket_hours' => 'required' ]);
         $event = Event::with('venue:id,venue_name,seats_image,address,venue_name_ru,venue_name_tk')->withViews()->findOrFail($id,['id','venue_id']);
 
-        $tickets = Ticket::WithSection($id, $request->get('ticket_date'))
+        $tickets = Ticket::WithSection($id, $request->get('ticket_date'), $request->get('ticket_hours'))
             ->where('end_sale_date','>',Carbon::now())
             ->where('start_sale_date','<',Carbon::now())
             ->where('is_hidden', false)
@@ -76,7 +85,8 @@ class EventController extends Controller
             ->orderBy('sort_order','asc')
             ->get();
 
-        if($tickets->count()==0)
+        //dd($tickets);
+        if($tickets->count() == 0)
             return response()->json([
                'status' => 'error',
                'message' => 'There is no tickets available'
