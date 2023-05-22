@@ -15,18 +15,12 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix'     => '/v2',
 ], function(){
-
     Route::get('/home', HomeController::class);
     Route::get('/search', SearchController::class);
-
-
     Route::get('/categories', [CategoryController::class, 'categories']);
     Route::get('/category/{category_id}/events', [CategoryController::class, 'categoryEvents']);
     Route::get('/category/{category_id}/locations', [CategoryController::class, 'locations']);
-
     Route::get('/location/{location_id}/events', [LocationController::class, 'locationEvents']);
-    
-
     Route::get('/event/{id}/details', [EventController::class, 'eventDetailById']);
     Route::get('/event/{id}/seats', [EventController::class, 'eventSeatsById']);
 });
@@ -42,11 +36,11 @@ Route::group([
     Route::get('categories[/{parent_id}]', [App\Http\Controllers\CategoryController::class, 'get_categories']);
     Route::get('category/{category_id}/events', [App\Http\Controllers\CategoryController::class, 'showCategoryEvents']);
     Route::get('sub_category/{category_id}/events', [App\Http\Controllers\CategoryController::class, 'showSubCategoryEvents']);
-    Route::get('event/{id}/details', [App\Http\Controllers\EventController::class, 'index']);
-    Route::get('event/{id}/seats', [App\Http\Controllers\EventController::class, 'index']);
-    Route::get('event/{id}/reserve', [App\Http\Controllers\EventController::class, 'index']);
-    Route::get('event/{id}/register_order', [App\Http\Controllers\EventController::class, 'index']);
-    Route::get('event/{id}/checkout', [App\Http\Controllers\EventController::class, 'index']);
+    Route::get('event/{id}/details', [App\Http\Controllers\EventController::class, 'getEvent']);
+    Route::get('event/{id}/seats', [App\Http\Controllers\EventController::class, 'getEventSeats']);
+    Route::get('event/{id}/reserve', [App\Http\Controllers\CheckoutController::class, 'postReserveTickets']);
+    Route::get('event/{id}/register_order', [App\Http\Controllers\CheckoutController::class, 'postRegisterOrder']);
+    Route::get('event/{id}/checkout', [App\Http\Controllers\CheckoutController::class, 'postCompleteOrder']);
     Route::get('my_tickets', [CheckinController::class, 'getTickets']);
 });
 
@@ -60,17 +54,11 @@ Route::group(
     ],
     function(){
         Route::get('events', [App\Http\Controllers\EventController::class, 'getVendorEvents']);
-
         Route::get('event/{id}/details', [App\Http\Controllers\EventController::class, 'getVendorEvent']);
-
         Route::get('event/{id}/attendees', [CheckinController::class, 'getAttendees']);
-
         Route::get('event/{id}/ticket_attendees', [CheckinController::class, 'getTicketsAttendees']);
-
         Route::post('event/{id}/checkin', [CheckinController::class, 'checkInAttendees']);
-
         Route::post('event/{id}/book', [CheckoutController::class, 'offline_book']);
-
         Route::post('event/{id}/book_cancel', [CheckoutController::class, 'offline_cancel']);
     }
 );

@@ -33,7 +33,7 @@ class EventController extends Controller
     */
     public function eventDetailById($id){
         //todo handle if not found
-        $event = Event::with(['ticket_dates','venue:id,venue_name_tk,venue_name_ru,address'])->withViews()->onLive()->find($id);
+        $event = Event::with(['ticket_dates','venue:id,venue_name_tk,venue_name_ru,address,type,seats_image'])->withViews()->onLive()->find($id);
         return EventResource::make($event);
     }
 

@@ -50,7 +50,7 @@ class CheckoutController extends Controller
             }
 
             if (!$request->has('phone_id')) {
-                return reset()->json([
+                return response()->json([
                     'status' => 'error',
                     'message' => 'Phone id required'
                 ]);
