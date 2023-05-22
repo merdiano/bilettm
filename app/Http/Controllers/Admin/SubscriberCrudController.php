@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\SubscriberRequest as StoreRequest;
-use App\Http\Requests\SubscriberRequest as UpdateRequest;
+use App\Http\Requests\SubscriberRequest;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
  * Class SubscriberCrudController
@@ -15,6 +15,11 @@ use App\Http\Requests\SubscriberRequest as UpdateRequest;
  */
 class SubscriberCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+
     public function setup()
     {
         /*
@@ -31,21 +36,27 @@ class SubscriberCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+    }
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
-//        $this->crud->setFromDb();
+    protected function setupListOperation()
+    {
         $this->crud->setColumns([
-           [
-               'name' => 'email',
-               'type' => 'email',
-               'label' => 'Email'
-           ] ,
             [
-                'name' => 'active',
-                'type' => 'boolean',
-                'label' => 'Active'
-            ]
-        ]);
+                'name' => 'email',
+                'type' => 'email',
+                'label' => 'Email'
+            ] ,
+             [
+                 'name' => 'active',
+                 'type' => 'boolean',
+                 'label' => 'Active'
+             ]
+         ]);
+    }
+
+    protected function setupCreateOperation()
+    {
+        CRUD::setValidation(SubscriberRequest::class);
 
         $this->crud->addFields([
             [
@@ -59,27 +70,10 @@ class SubscriberCrudController extends CrudController
                 'label' => 'Active'
             ]
         ]);
-
-        // add asterisk for fields that are required in SubscriberRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
 
-    public function store(StoreRequest $request)
+    protected function setupUpdateOperation()
     {
-        // your additional operations before save here
-        $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
-    }
-
-    public function update(UpdateRequest $request)
-    {
-        // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        $this->setupCreateOperation();
     }
 }

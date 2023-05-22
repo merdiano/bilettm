@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\CountryRequest as StoreRequest;
-use App\Http\Requests\CountryRequest as UpdateRequest;
+use App\Http\Requests\CountryRequest;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
  * Class CountryCrudController
@@ -15,6 +15,11 @@ use App\Http\Requests\CountryRequest as UpdateRequest;
  */
 class CountryCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+
     public function setup()
     {
         /*
@@ -31,30 +36,22 @@ class CountryCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+    }
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
+    protected function setupListOperation()
+    {
         $this->crud->setFromDb();
-
-        // add asterisk for fields that are required in CountryRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
 
-    public function store(StoreRequest $request)
+    protected function setupCreateOperation()
     {
-        // your additional operations before save here
-        $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        CRUD::setValidation(CountryRequest::class);
+
+        $this->crud->setFromDb();
     }
 
-    public function update(UpdateRequest $request)
+    protected function setupUpdateOperation()
     {
-        // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        $this->setupCreateOperation();
     }
 }

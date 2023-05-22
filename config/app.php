@@ -240,5 +240,6 @@ return [
 //        'Omnipay'      => Omnipay\Omnipay::class,
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Arr'   => Illuminate\Support\Arr::class
     ],
 ];

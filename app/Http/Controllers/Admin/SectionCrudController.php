@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\SectionRequest as StoreRequest;
-use App\Http\Requests\SectionRequest as UpdateRequest;
+use App\Http\Requests\SectionRequest;
 use Backpack\CRUD\CrudPanel;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
  * Class SectionCrudController
@@ -16,6 +16,11 @@ use Backpack\CRUD\CrudPanel;
  */
 class SectionCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+
     public function setup()
     {
         /*
@@ -32,9 +37,10 @@ class SectionCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+    }
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
-//        $this->crud->setFromDb();
+    protected function setupListOperation()
+    {
         $this->crud->addColumns([
 //            ['name'=>'section_no','type'=>'text','label'=>'Section No En'],
             ['name'=>'section_no_ru','type'=>'text','label'=>'Section No Ru'],
@@ -44,6 +50,11 @@ class SectionCrudController extends CrudController
 //            ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
             ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue'],
         ]);
+    }
+
+    protected function setupCreateOperation()
+    {
+        CRUD::setValidation(SectionRequest::class);
 
         $this->crud->addFields([
 //            ['name'=>'section_no','type'=>'text','label'=>'Section No'],
@@ -72,27 +83,10 @@ class SectionCrudController extends CrudController
             ]
 
         ]);
-
-        // add asterisk for fields that are required in SectionRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
 
-    public function store(StoreRequest $request)
+    protected function setupUpdateOperation()
     {
-        // your additional operations before save here
-        $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
-    }
-
-    public function update(UpdateRequest $request)
-    {
-        // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        $this->setupCreateOperation();
     }
 }
