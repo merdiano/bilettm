@@ -75,7 +75,7 @@ class EventController extends Controller
     */
     public function eventSeatsById(Request $request, $id){
         $this->validate($request, [ 'ticket_date' => 'required', 'ticket_hours' => 'required' ]);
-        $event = Event::with('venue:id,venue_name,seats_image,address,venue_name_ru,venue_name_tk, type')->withViews()->findOrFail($id,['id','venue_id']);
+        $event = Event::with('venue:id,venue_name,seats_image,address,venue_name_ru,venue_name_tk,type')->withViews()->findOrFail($id,['id','venue_id']);
 
         if($event->venue->type == 'default'){
             $tickets = Ticket::WithSection($id, $request->get('ticket_date'), $request->get('ticket_hours'))
