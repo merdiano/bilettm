@@ -21,9 +21,18 @@ class Section extends Model
     // protected $primaryKey = 'id';
     public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['section_no','section_no_ru','section_no_tk',
-        'description','description_ru','description_tk',
-        'venue_id','seats','section_image'];
+    protected $fillable = [
+        'section_no',
+        'section_no_ru',
+        'section_no_tk',
+        'description',
+        'description_ru',
+        'description_tk',
+        'venue_id',
+        'seats',
+        'section_image',
+        'sector_id'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = ['seats' => 'array'];
@@ -47,6 +56,10 @@ class Section extends Model
     */
     public function venue(){
         return $this->belongsTo(Venue::class);
+    }
+
+    public function sector(){
+        return $this->belongsTo(Sector::class);
     }
 
     public function tickets(){

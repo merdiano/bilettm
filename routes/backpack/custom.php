@@ -31,4 +31,5 @@ Route::group([
     Route::crud('helpTicket','HelpTicketCrudController');
     Route::get('helpTicket/{id}/replay', 'HelpTicketCrudController@replay')->name('ticket.replay');
     Route::post('helpTicket/{id}/replay', 'HelpTicketCrudController@replayPost')->name('ticket.replay.post');
+    Route::crud('sector', 'SectorCrudController');
 }); // this should be the absolute last line of this file

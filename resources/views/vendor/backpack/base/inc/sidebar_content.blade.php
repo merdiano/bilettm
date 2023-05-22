@@ -33,3 +33,4 @@
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('account') }}"><i class="nav-icon la la-question"></i> Accounts</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('slider') }}"><i class="nav-icon la la-question"></i> Sliders</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('sector') }}"><i class="nav-icon la la-question"></i> Sectors</a></li>
