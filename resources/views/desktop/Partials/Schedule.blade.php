@@ -14,7 +14,7 @@
 
                 @foreach($ticket_dates as $date =>$ticket)
 
-                    <li><a class="tablinks @if ($loop->first)active @endif" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{$date}}</a></li>
+                    <li><a class="tablinks @if ($loop->first)active @endif" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{Carbon\Carbon::parse($date)->format('M-Y')}}</a></li>
                 @endforeach
 
             </ul>
