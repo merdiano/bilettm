@@ -1,0 +1,430 @@
+<?php
+
+
+namespace App\Http\Controllers;
+
+
+use App\Models\Attendee;
+use App\Models\Event;
+use App\Models\EventStats;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\ReservedTickets;
+use App\Models\Ticket;
+use App\Payment\CardPayment;
+use App\Services\Order as OrderService;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
+class CheckoutController extends Controller
+{
+    /**
+     * Payment gateway
+     * @var CardPayment
+     */
+//    protected $gateway;
+//
+//    /**
+//     * EventCheckoutController constructor.
+//     * @param Request $request
+//     */
+//    public function __construct(Request $request, CardPayment $gateway)
+//    {
+//
+//        $this->gateway = $gateway;
+//    }
+
+    public function postReserveTickets( Request $request,$event_id){
+        try {
+
+
+            if (!$request->has('tickets')) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'No seats selected',
+                ]);
+            }
+
+            if (!$request->has('phone_id')) {
+                return reset()->json([
+                    'status' => 'error',
+                    'message' => 'Phone id required'
+                ]);
+            }
+
+            /*
+            * Order expires after X min
+            */
+            $order_expires_time = Carbon::now()->addMinutes(env('CHECKOUT_TIMEOUT'));
+
+            /*
+             * Remove any tickets the user has reserved if it does not belong to order expecting payment
+             */
+            ReservedTickets::where('session_id',$request->get('phone_id'))
+                ->whereNull('expects_payment_at')
+                ->orWhere('expects_payment_at','<',Carbon::now()->addMinutes(-5))
+                ->delete();
+
+            $order_total = 0;
+            $booking_fee = 0;
+            $organiser_booking_fee = 0;
+            $total_ticket_quantity = 0;
+            $reserved = [];
+            $tickets = [];
+            $selectedSeats = json_decode($request->get('tickets'), true);
+
+            foreach ($selectedSeats as $ticket) {
+                $ticket_id = $ticket['ticket_id'];
+                $seats_count = count($ticket['seats']);
+                if ($seats_count < 1)
+                    continue;
+
+                $seat_nos = $ticket['seats'];
+                $reserved_tickets = ReservedTickets::where('ticket_id', $ticket_id)
+                    ->where('expires', '>', Carbon::now())
+                    ->whereIn('seat_no', $seat_nos)
+                    ->pluck('seat_no');
+
+                $booked_tickets = Attendee::where('ticket_id', $ticket_id)
+                    ->where('event_id', $event_id)
+                    ->whereIn('seat_no', $seat_nos)
+                    ->pluck('seat_no');
+
+                if (count($reserved_tickets) > 0 || count($booked_tickets) > 0)
+                    return response()->json([
+                        'status' => 'error',
+                        'messages' => 'Your selected seats are already reserved or booked please choose other seats',//todo show which are reserved
+                    ]);
+
+                $eventTicket = Ticket::with('event:id,organiser_fee_fixed,organiser_fee_percentage')
+                    ->findOrFail($ticket_id);
+
+                $max_per_person = min($eventTicket->quantity_remaining, $eventTicket->max_per_person);
+                /*
+                 * Validation max min ticket count
+                 */
+                if ($seats_count < $eventTicket->min_per_person) {
+                    $message = 'You must select at least ' . $eventTicket->min_per_person . ' tickets.';
+                } elseif ($seats_count > $max_per_person) {
+                    $message = 'The maximum number of tickets you can register is ' . $max_per_person;
+                }
+
+                if (isset($message)) {
+                    return response()->json([
+                        'status' => 'error',
+                        'messages' => $message,
+                    ]);
+                }
+
+                $total_ticket_quantity += $seats_count;
+                $order_total += number_format($seats_count * $eventTicket->price,2);
+                $booking_fee += number_format($seats_count * $eventTicket->booking_fee,2);
+                $organiser_booking_fee += number_format($seats_count * $eventTicket->organiser_booking_fee,2);
+                $tickets[] = [
+                    'ticket' => $eventTicket->title,
+                    'qty' => $seats_count,
+                    'price' => number_format($eventTicket->price,2),
+//                    'ticket_booking_fee' => ($seats_count * $eventTicket->booking_fee),
+//                    'organiser_booking_fee' => ($seats_count * $eventTicket->organiser_booking_fee),
+//                    'full_price' => $eventTicket->price + $eventTicket->total_booking_fee,
+                ];
+
+                foreach ($seat_nos as $seat_no) {
+                    $reservedTickets = new ReservedTickets();
+                    $reservedTickets->ticket_id = $ticket_id;
+                    $reservedTickets->event_id = $event_id;
+                    $reservedTickets->quantity_reserved = 1;
+                    $reservedTickets->expires = $order_expires_time;
+                    $reservedTickets->session_id = $request->get('phone_id');
+                    $reservedTickets->seat_no = $seat_no;
+                    $reserved[] = $reservedTickets->attributesToArray();
+                }
+
+            }
+
+            ReservedTickets::insert($reserved);
+
+            return response()->json([
+                'status' => 'success',
+//            'event_id'                => $event_id,
+                'tickets'                 => $tickets,
+                'order_started' => Carbon::now(),
+                'expires' => env('CHECKOUT_TIMEOUT'),
+                'order_total' => $order_total,
+                'total_booking_fee' => $booking_fee + $organiser_booking_fee,
+//                'organiser_booking_fee' => $organiser_booking_fee,
+            ]);
+        }
+        catch (\Exception $ex){
+            return response()->json([
+                'status' => 'error',
+                'message' => $ex->getMessage()
+            ]);
+        }
+    }
+
+    public function postRegisterOrder(Request $request, $event_id){
+
+        $gateway = new CardPayment();
+
+        $validator = Validator::make($request->all(),
+            [
+                'phone_id'=>'required|string|min:8|max:45',
+                'name'=>'required|string|min:2|max:255',
+                'surname'=>'required|string|min:2|max:255',
+                'email'=>'required|email'
+            ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Please enter correctly',
+            ]);
+        }
+
+        $phone_id = $request->get('phone_id');
+        $holder_name = $request->get('name');
+        $holder_surname = $request->get('surname');
+        $holder_email = $request->get('email');
+
+        //delete old uncompleted orders;
+        Order::where('session_id', $request->get('phone_id'))
+            ->where('order_status_id',5)
+            ->delete();
+
+        $event = Event::withReserved($phone_id)->with('organiser')
+            ->findOrFail($event_id,['id','organiser_fee_fixed','organiser_fee_percentage','organiser_id','account_id']);
+
+        if(empty($event->reservedTickets) || $event->reservedTickets->count() == 0){
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Session expired',
+            ]);
+        }
+
+        $order_total = 0;
+        $total_booking_fee = 0;
+        $booking_fee = 0;
+        $organiser_booking_fee = 0;
+
+//        DB::beginTransaction();
+
+        foreach ($event->reservedTickets as $reserve){
+            $order_total += $reserve->ticket->price;
+            $booking_fee += $reserve->ticket->booking_fee;
+            $obf = (int)ceil($reserve->ticket->price) === 0 ? 0 :
+                round($reserve->ticket->price *($event->organiser_fee_percentage / 100) + $event->organiser_fee_fixed,2);
+            $organiser_booking_fee += $obf;
+            $total_booking_fee += $reserve->ticket->booking_fee + $obf;
+
+//            $reserve->holder_name = $holder_name;
+//            $reserve->holder_surname = $holder_surname;
+//            $reserve->holder_email = $holder_email;
+//            $reserve->save();
+        }
+//        DB::commit();
+
+        $orderService = new OrderService($order_total, $total_booking_fee, $event);
+        $orderService->calculateFinalCosts();
+
+        $secondsToExpire = Carbon::now()->diffInSeconds($event->reservedTickets->first()->expires);
+
+        $transaction_data = [
+            'amount'      => $orderService->getGrandTotal()*100,//multiply by 100 to obtain tenge
+            'currency' => 934,
+            'sessionTimeoutSecs' => $secondsToExpire,
+            'description' => "Bilettm sargyt: {$holder_name} {$holder_surname}",
+            'orderNumber'     => uniqid(),
+//            'pageView' => 'MOBILE',
+            'failUrl'     => url("../e/{$event_id}/checkout/finish_mobile?is_payment_cancelled=1"),
+            'returnUrl' => url("../e/{$event_id}/checkout/finish_mobile?is_payment_successful=1"),
+
+        ];
+        try{
+            $response = $gateway->registerPayment($transaction_data);
+
+            if($response->isSuccessfull()){
+                /*
+                 * As we're going off-site for payment we need to store some data in a session so it's available
+                 * when we return
+                 */
+                $order = new Order();
+                $order->first_name = ($holder_name);//todo sanitize etmelimi?
+                $order->last_name = ($holder_surname);
+                $order->email = ($holder_email);
+                $order->order_status_id = 5;//order awaiting payment
+                $order->amount = $order_total;
+                $order->booking_fee = $booking_fee;
+                $order->organiser_booking_fee = $organiser_booking_fee;
+                $order->discount = 0.00;
+                $order->account_id = $event->account_id;
+                $order->event_id = $event_id;
+                $order->is_payment_received = 0;//false
+                $order->taxamt = $orderService->getTaxAmount();
+                $order->session_id = $phone_id;
+                $order->transaction_id = $response->getPaymentReferenceId();
+                $order->order_date = Carbon::now();
+                $order->save();
+                $return = [
+                    'status' => 'success',
+//                    'order'  => $order,
+                    'payment_url'=>$response->getRedirectUrl()
+                ];
+
+            } else {
+                // display error to customer
+                $return = [
+                    'status'  => 'error',
+                    'message' => $response->errorMessage(),
+                ];
+            }
+
+
+        }
+        catch (\Exeption $e) {
+            $return = [
+                'status'  => 'error',
+                'message' => 'Sorry, there was an error processing your payment. Please try again later.',
+            ];
+
+        }
+        return response()->json($return);
+    }
+
+    public function postCompleteOrder(Request $request, $event_id,CardPayment $gateway){
+        $orderId = $request->get('orderId');
+
+        try{
+            $response = $gateway->getPaymentStatus($orderId);
+
+            if ($response->isSuccessfull()) {
+
+                return $this->completeOrder($event_id,$request);
+            } else {
+
+                return response()->json([
+                    'status'          => 'error',
+                    'message' => $response->errorMessage(),
+                ]);
+            }
+        }catch (\Exception $ex){
+            return response()->json([
+                'status'          => 'error',
+                'message' => $ex->getMessage(),
+            ]);
+        }
+
+    }
+
+    public function offline_book(Request $request, $event_id){
+        $event = Event::findOrfail($event_id,['id','account_id']);
+
+        if(!$request->has('tickets')){
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'No tickets.'
+            ]);
+        }
+
+        $tickets = json_decode($request->get('tickets'),true);
+
+        DB::beginTransaction();
+        try{
+            $order = new Order();
+            $order->first_name = 'kassa';
+            $order->last_name = 'kassa';
+            $order->email = $request->auth->email;
+            $order->order_status_id = 5;//order awaiting payment
+//        $order->amount = $order_total;
+//        $order->booking_fee = $booking_fee;
+//        $order->organiser_booking_fee = $organiser_booking_fee;
+            $order->discount = 0.00;
+            $order->account_id = $event->account_id;
+            $order->event_id = $event_id;
+            $order->is_payment_received = 0;//false
+//        $order->taxamt = $orderService->getTaxAmount();
+//        $order->session_id = $phone_id;
+//        $order->transaction_id = $response->getPaymentReferenceId();
+            $order->order_date = Carbon::now();
+
+            $order->save();
+
+            foreach ($tickets as $ticket){
+                /*
+                 * Create the attendees
+                 */
+                $attendee_count = Attendee::where('ticket_id',$ticket['id'])
+                    ->where('event_id',$event_id)
+                    ->where('is_cancelled',false)
+                    ->whereIn('seat_no', array_values($ticket['seats']))
+                    ->count();
+
+                if($attendee_count > 0){
+                    DB::rollBack();
+                    return response()->json([
+                        'status'  => 'error',
+                        'message' => 'Seats are already booked'
+                    ]);
+                }
+
+                //todo handle reserved also;
+
+                foreach ($ticket['seats'] as $key => $seat){
+                    $attendee = new Attendee();
+                    $attendee->first_name = $order->first_name;
+                    $attendee->last_name = $order->last_name;
+                    $attendee->email = $order->email;
+                    $attendee->event_id = $event_id;
+                    $attendee->order_id = $order->id;
+                    $attendee->ticket_id = $ticket['id'];
+                    $attendee->account_id = $event->account_id;
+                    $attendee->reference_index = $key + 1;
+                    $attendee->seat_no = $seat;
+                    $attendee->save();
+                }
+
+            }
+            DB::commit();
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Reservation Completed',
+            ]);
+        }
+        catch (\Exception $ex){
+            Log::error($ex);
+            DB::rollBack();
+
+            return response()->json([
+                'status'  => 'error',
+                'message' => $ex->getMessage()
+            ]);
+        }
+
+    }
+
+    public function offline_cancel(Request $request,$event_id){
+        if($request->has('ticket_id') && $request->has('seat_no')){
+            $attendee = Attendee::where('event_id',$event_id)
+                ->where('ticket_id',$request->get('ticket_id'))
+                ->where('email',$request->auth->email)
+                ->where('seat_no',$request->get('seat_no'))
+                ->update(['is_cancelled' => true]);
+
+            if($attendee)
+                return response()->json([
+                    'status'  => 'success',
+                    'message' => 'Reservation cancelled',
+                ]);
+        }
+
+        return response()->json([
+            'status'  => 'error',
+            'message' => 'Cancel unsuccessful'
+        ]);
+
+    }
+}

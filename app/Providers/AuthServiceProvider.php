@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -24,8 +25,12 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(GateContract $gate)
     {
-        $this->registerPolicies($gate);
+        //$this->registerPolicies($gate);
 
-        //
+        $this->app['auth']->viaRequest('api', function ($request) {
+            if ($request->input('api_token')) {
+                return User::where('api_token', $request->input('api_token'))->first();
+            }
+        });
     }
 }

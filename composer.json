@@ -43,7 +43,8 @@
         "backpack/pagemanager": "*",
         "backpack/settings": "*",
         "spatie/laravel-ignition": "^2.0",
-        "darkaonline/l5-swagger": "8.1.0"
+        "darkaonline/l5-swagger": "8.1.0",
+        "firebase/php-jwt": "^6.5"
     },
     "require-dev": {
         "symfony/dom-crawler": "^5.3",
