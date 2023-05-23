@@ -316,6 +316,87 @@
                     }
                 }
             }
+        },
+        "/api/v1/event/{event_id}/reserve": {
+            "post": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Reserve tickets",
+                "description": "Reserve tickets",
+                "operationId": "Reserve tickets",
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "Event ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "1",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TicketsRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "TicketType": {
+                "title": "TicketType",
+                "properties": {
+                    "ticket_id": {
+                        "type": "integer"
+                    },
+                    "seat_nos": {
+                        "description": "Seat numbers",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "id"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                },
+                "type": "object"
+            },
+            "TicketsRequest": {
+                "title": "Ticket Request",
+                "properties": {
+                    "phone_id": {
+                        "type": "integer"
+                    },
+                    "tickets": {
+                        "description": "Tickets",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TicketType"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                },
+                "type": "object"
+            }
         }
     },
     "security": [

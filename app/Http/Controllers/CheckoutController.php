@@ -37,7 +37,65 @@ class CheckoutController extends Controller
 //
 //        $this->gateway = $gateway;
 //    }
-
+/**
+*             @OA\Schema(
+*                  schema="TicketType",
+*                  title="TicketType",
+*                 @OA\Property(
+*                     property="ticket_id",
+*                     type="integer"
+*                 ),
+*                 @OA\Property(
+*                    property="seat_nos",
+*                    description="Seat numbers",
+*                    type="array",
+*                    collectionFormat="multi",
+*                    @OA\Items(type="string", format="id" ),
+*                 ),
+*             )
+*             @OA\Schema(
+*                  schema="TicketsRequest",
+*                  title="Ticket Request",
+*                 @OA\Property(
+*                     property="phone_id",
+*                     type="integer"
+*                 ),
+*                 @OA\Property(
+*                    property="tickets",
+*                    description="Tickets",
+*                    type="array",
+*                    collectionFormat="multi",
+*                    @OA\Items(
+*                        ref="#/components/schemas/TicketType"
+*                    ),
+*                ),
+*             )
+*/
+    /**
+    * @OA\Post(
+    *      path="/api/v1/event/{event_id}/reserve",
+    *      operationId="Reserve tickets",
+    *      tags={"Tickets"},
+    *      summary="Reserve tickets",
+    *      description="Reserve tickets",
+    *      @OA\Parameter(
+    *          description="Event ID",
+    *          in="path",
+    *          name="event_id",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="1", summary="1"),
+    *      ),
+    *      @OA\RequestBody(
+    *          required=true,
+    *          @OA\JsonContent(ref="#/components/schemas/TicketsRequest")
+    *      ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function postReserveTickets( Request $request,$event_id){
         try {
 
@@ -75,15 +133,15 @@ class CheckoutController extends Controller
             $total_ticket_quantity = 0;
             $reserved = [];
             $tickets = [];
-            $selectedSeats = json_decode($request->get('tickets'), true);
+            $selectedSeats = $request->get('tickets');
 
             foreach ($selectedSeats as $ticket) {
                 $ticket_id = $ticket['ticket_id'];
-                $seats_count = count($ticket['seats']);
+                $seats_count = count($ticket['seat_nos']);
                 if ($seats_count < 1)
                     continue;
 
-                $seat_nos = $ticket['seats'];
+                $seat_nos = $ticket['seat_nos'];
                 $reserved_tickets = ReservedTickets::where('ticket_id', $ticket_id)
                     ->where('expires', '>', Carbon::now())
                     ->whereIn('seat_no', $seat_nos)
