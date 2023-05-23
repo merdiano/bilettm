@@ -14,9 +14,9 @@
 
                 @foreach($ticket_dates as $ticket)
                     @if ($loop->first)
-                        <li style="display: inline-grid"><a class="tablinks active" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->format('d M')}}</a></li>
+                        <li style="display: inline-grid"><a class="tablinks active" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->locale(app()->getLocale())->translatedFormat('j F')}}</a></li>
                     @else
-                        <li style="display: inline-grid"><a class="tablinks" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->format('d M')}}</a></li>
+                        <li style="display: inline-grid"><a class="tablinks" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->locale(app()->getLocale())->translatedFormat('j F')}}</a></li>
                     @endif
                 @endforeach
 

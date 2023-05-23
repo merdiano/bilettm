@@ -27,6 +27,7 @@ class EventViewController extends Controller
      */
     public function showEventHome(Request $request, $event_id, $slug = '', $preview = false)
     {
+        
         $event = Event::with('venue')->findOrFail($event_id);
 
         if (!Utils::userOwns($event) && !$event->is_live) {
@@ -99,7 +100,6 @@ class EventViewController extends Controller
                 Cookie::queue('affiliate_' . $event_id, $affiliate_ref, 60 * 24 * 60);
             }
         }
-
         return $this->render('Pages.EventPage', $data);
     }
 
