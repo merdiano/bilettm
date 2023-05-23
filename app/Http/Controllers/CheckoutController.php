@@ -23,54 +23,39 @@ use Illuminate\Support\Facades\Validator;
 class CheckoutController extends Controller
 {
     /**
-     * Payment gateway
-     * @var CardPayment
-     */
-//    protected $gateway;
-//
-//    /**
-//     * EventCheckoutController constructor.
-//     * @param Request $request
-//     */
-//    public function __construct(Request $request, CardPayment $gateway)
-//    {
-//
-//        $this->gateway = $gateway;
-//    }
-/**
-*             @OA\Schema(
-*                  schema="TicketType",
-*                  title="TicketType",
-*                 @OA\Property(
-*                     property="ticket_id",
-*                     type="integer"
-*                 ),
-*                 @OA\Property(
-*                    property="seat_nos",
-*                    description="Seat numbers",
-*                    type="array",
-*                    collectionFormat="multi",
-*                    @OA\Items(type="string", format="id" ),
-*                 ),
-*             )
-*             @OA\Schema(
-*                  schema="TicketsRequest",
-*                  title="Ticket Request",
-*                 @OA\Property(
-*                     property="phone_id",
-*                     type="integer"
-*                 ),
-*                 @OA\Property(
-*                    property="tickets",
-*                    description="Tickets",
-*                    type="array",
-*                    collectionFormat="multi",
-*                    @OA\Items(
-*                        ref="#/components/schemas/TicketType"
-*                    ),
-*                ),
-*             )
-*/
+    * @OA\Schema(
+    *    schema="TicketType",
+    *    title="TicketType",
+    *    @OA\Property(
+    *         property="ticket_id",
+    *         type="integer"
+    *    ),
+    *    @OA\Property(
+    *         property="seat_nos",
+    *         description="Seat numbers",
+    *         type="array",
+    *         collectionFormat="multi",
+    *         @OA\Items(type="string", format="id" ),
+    *    ),
+    * )
+    * @OA\Schema(
+    *     schema="TicketsRequest",
+    *     title="Ticket Request",
+    *     @OA\Property(
+    *        property="phone_id",
+    *        type="integer"
+    *     ),
+    *     @OA\Property(
+    *        property="tickets",
+    *        description="Tickets",
+    *        type="array",
+    *        collectionFormat="multi",
+    *        @OA\Items(
+    *             ref="#/components/schemas/TicketType"
+    *        ),
+    *     ),
+    * )
+    */
     /**
     * @OA\Post(
     *      path="/api/v1/event/{event_id}/reserve",
@@ -114,14 +99,8 @@ class CheckoutController extends Controller
                 ]);
             }
 
-            /*
-            * Order expires after X min
-            */
             $order_expires_time = Carbon::now('GMT+5')->addMinutes(5);
 
-            /*
-             * Remove any tickets the user has reserved if it does not belong to order expecting payment
-             */
             ReservedTickets::where('session_id',$request->get('phone_id'))
                 ->whereNull('expects_payment_at')
                 ->orWhere('expects_payment_at','<',Carbon::now()->addMinutes(-5))
@@ -162,9 +141,8 @@ class CheckoutController extends Controller
                     ->findOrFail($ticket_id);
 
                 $max_per_person = min($eventTicket->quantity_remaining, $eventTicket->max_per_person);
-                /*
-                 * Validation max min ticket count
-                 */
+                
+
                 if ($seats_count < $eventTicket->min_per_person) {
                     $message = 'You must select at least ' . $eventTicket->min_per_person . ' tickets.';
                 } elseif ($seats_count > $max_per_person) {
@@ -185,10 +163,10 @@ class CheckoutController extends Controller
                 $tickets[] = [
                     'ticket' => $eventTicket->title,
                     'qty' => $seats_count,
-                    'price' => number_format($eventTicket->price,2),
-//                    'ticket_booking_fee' => ($seats_count * $eventTicket->booking_fee),
-//                    'organiser_booking_fee' => ($seats_count * $eventTicket->organiser_booking_fee),
-//                    'full_price' => $eventTicket->price + $eventTicket->total_booking_fee,
+                    'price' => number_format($eventTicket->price, 2),
+//                  'ticket_booking_fee' => ($seats_count * $eventTicket->booking_fee),
+//                  'organiser_booking_fee' => ($seats_count * $eventTicket->organiser_booking_fee),
+//                  'full_price' => $eventTicket->price + $eventTicket->total_booking_fee,
                 ];
 
                 foreach ($seat_nos as $seat_no) {
@@ -208,13 +186,13 @@ class CheckoutController extends Controller
 
             return response()->json([
                 'status' => 'success',
-//            'event_id'                => $event_id,
+//                  'event_id'                => $event_id,
                 'tickets'                 => $tickets,
                 'order_started' => Carbon::now(),
                 'expires' => env('CHECKOUT_TIMEOUT'),
                 'order_total' => $order_total,
                 'total_booking_fee' => $booking_fee + $organiser_booking_fee,
-//                'organiser_booking_fee' => $organiser_booking_fee,
+//                  'organiser_booking_fee'   => $organiser_booking_fee,
             ]);
         }
         catch (\Exception $ex){

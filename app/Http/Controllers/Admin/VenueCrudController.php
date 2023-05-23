@@ -42,7 +42,7 @@ class VenueCrudController extends CrudController
     protected function setupListOperation()
     {
         $this->crud->addColumns([
-//            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
+            ['name'=>'type','type' => 'text', 'label' => 'Type'],
             ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name Ru'],
             ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name Tk'],
             ['name'=>'active','type'=>'boolean','label'=>'Active']
@@ -54,7 +54,7 @@ class VenueCrudController extends CrudController
         CRUD::setValidation(VenueRequest::class);
 
         $this->crud->addFields([
-//            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
+            ['name' => 'type', 'type' => 'select_from_array', 'label' => 'Type', 'options' => ['default' => 'Default', 'arena' => 'Arena']],
             ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name','tab' => 'Russian'],
             ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name','tab' => 'Turkmen'],
             ['name'=>'description_ru','type'=>'simplemde','label'=>'Description', 'tab' => 'Russian'],

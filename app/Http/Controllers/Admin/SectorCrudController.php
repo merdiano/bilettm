@@ -41,9 +41,7 @@ class SectorCrudController extends CrudController
         CRUD::column('title_ru');
         CRUD::column('title_tk');
         CRUD::column('title');
-        CRUD::column('venue_id');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        CRUD::column(['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue']);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -65,7 +63,7 @@ class SectorCrudController extends CrudController
         CRUD::field('title_ru');
         CRUD::field('title_tk');
         CRUD::field('title');
-        CRUD::field('venue_id');
+        CRUD::field(['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue']);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

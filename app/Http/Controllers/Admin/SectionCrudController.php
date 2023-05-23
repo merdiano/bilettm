@@ -49,6 +49,7 @@ class SectionCrudController extends CrudController
 //            ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
 //            ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
             ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue'],
+            ['name' => 'sector_id', 'type'=>'select','entity'=>'sector','attribute'=>'title_ru','label'=>'Sector'],
         ]);
     }
 
@@ -64,6 +65,7 @@ class SectionCrudController extends CrudController
 //            ['name'=>'description_ru','type'=>'text','label'=>'Description Ru'],
 //            ['name'=>'description_tk','type'=>'text','label'=>'Description Tk'],
             ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue'],
+            ['name' => 'sector_id', 'type'=>'select','entity'=>'sector','attribute'=>'title_ru','label'=>'Sector'],
 //            [ // image
 //                'label' => "Section Image",
 //                'name' => "section_image",

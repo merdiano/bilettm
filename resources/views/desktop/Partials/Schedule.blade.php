@@ -13,8 +13,11 @@
             <ul class="nav nav-pills details-page">
 
                 @foreach($ticket_dates as $date =>$ticket)
-
-                    <li style="display: inline-grid"><a class="tablinks @if ($loop->first)active @endif" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{Carbon\Carbon::parse($date)->format('M-Y')}}</a></li>
+                    @if ($loop->first)
+                        <li style="display: inline-grid"><a class="tablinks active" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{Carbon\Carbon::parse($date)->format('M-Y')}}</a></li>
+                    @else
+                        <li style="display: inline-grid"><a class="tablinks" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{Carbon\Carbon::parse($date)->format('M-Y')}}</a></li>
+                    @endif
                 @endforeach
 
             </ul>
