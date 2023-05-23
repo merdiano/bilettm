@@ -49,12 +49,27 @@ class EventViewController extends Controller
             $ticket_dates[$date][] = $ticket;
         }
 
+        $groupedDates = $event->ticket_dates->groupBy(function ($item) {
+            return $item->event_id . '_' . substr($item->ticket_date, 0, 10);
+        })->map(function ($group) {
+            $firstTicket = $group->first();
+
+            return [
+                'ticket_date' => $firstTicket->ticket_date,
+                'hours' => $group->map(function ($event) {
+                    return substr($event->ticket_date, 11, 5);
+                })->toArray(),
+            ];
+        })->values();
+
         $data = [
             'event' => $event,
-            'ticket_dates' =>$ticket_dates,
+            'ticket_dates' => $groupedDates,
 //            'tickets' => $tickets,//$event->tickets()->orderBy('sort_order', 'asc')->get(),
             'is_embedded' => 0,
         ];
+
+        //dd((array)$groupedDates->all(), (array)$ticket_dates);
 
         /*
          * Don't record stats if we're previewing the event page from the backend or if we own the event.
