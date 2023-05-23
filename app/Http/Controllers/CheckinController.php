@@ -101,7 +101,7 @@ class CheckinController extends Controller
     public function getTickets(Request $request){
 //        dd(url("../e/{$event_id}/checkout/finish_mobile"));
         if(!$request->has('phone_id')){
-            return response()->json(['status'=>'error','message'=>'phone_id is required'],400);
+            return response()->json(['status'=>'error','message'=>'phone_id is required'], 400);
         }
 
         $phone_id = $request->get('phone_id');

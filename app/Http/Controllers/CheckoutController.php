@@ -117,7 +117,7 @@ class CheckoutController extends Controller
             /*
             * Order expires after X min
             */
-            $order_expires_time = Carbon::now()->addMinutes(env('CHECKOUT_TIMEOUT'));
+            $order_expires_time = Carbon::now('GMT+5')->addMinutes(env('CHECKOUT_TIMEOUT'));
 
             /*
              * Remove any tickets the user has reserved if it does not belong to order expecting payment
