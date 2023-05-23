@@ -14,9 +14,9 @@
 
                 @foreach($ticket_dates as $date =>$ticket)
                     @if ($loop->first)
-                        <li style="display: inline-grid"><a class="tablinks active" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{Carbon\Carbon::parse($date)->format('M-Y')}}</a></li>
+                        <li style="display: inline-grid"><a class="tablinks active" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{Carbon\Carbon::parse($date)->format('d M')}}</a></li>
                     @else
-                        <li style="display: inline-grid"><a class="tablinks" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{Carbon\Carbon::parse($date)->format('M-Y')}}</a></li>
+                        <li style="display: inline-grid"><a class="tablinks" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{Carbon\Carbon::parse($date)->format('d M')}}</a></li>
                     @endif
                 @endforeach
 
