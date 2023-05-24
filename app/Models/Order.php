@@ -23,12 +23,31 @@ class Order extends MyBaseModel
         'order_terms'      => ['required'],
     ];
 
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'order_status_id',
+        'amount',
+        'booking_fee',
+        'organiser_booking_fee',
+        'discount',
+        'account_id',
+        'event_id',
+        'is_payment_received',
+        'taxamt',
+        'session_id',
+        'transaction_id',
+        'order_date',
+        'order_reference'
+    ];
+
     /**
      * The validation error messages.
      *
      * @var array $messages
      */
-    public $messages ;
+    public $messages;
 
     public function __construct()
     {
