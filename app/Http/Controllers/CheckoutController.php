@@ -216,16 +216,7 @@ class CheckoutController extends Controller
     *     @OA\Property(
     *          property="email",
     *          type="email",
-    *     ),
-    *     @OA\Property(
-    *        property="tickets",
-    *        description="Tickets",
-    *        type="array",
-    *        collectionFormat="multi",
-    *        @OA\Items(
-    *             ref="#/components/schemas/TicketType"
-    *        ),
-    *     ),
+    *     )
     * )
     */
     /**
