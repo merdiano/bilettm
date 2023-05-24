@@ -44,7 +44,9 @@
         "backpack/settings": "*",
         "spatie/laravel-ignition": "^2.0",
         "darkaonline/l5-swagger": "8.1.0",
-        "firebase/php-jwt": "^6.5"
+        "firebase/php-jwt": "^6.5",
+        "backpack/backupmanager": "^4.0",
+        "backpack/logmanager": "^4.0"
     },
     "require-dev": {
         "symfony/dom-crawler": "^5.3",

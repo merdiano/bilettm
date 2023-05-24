@@ -1,17 +1,26 @@
-<!-- text input -->
+{{-- address google
+
+    This field allows you to present your user with google places auto-complete address.
+
+    Options:
+        - store_as_json - true/false - If true stores the places object, if false stores the selected address string
+
+--}}
 
 <?php
 
-// the field should work whether or not Laravel attribute casting is used
-if (isset($field['value']) && (is_array($field['value']) || is_object($field['value']))) {
-    $field['value'] = json_encode($field['value']);
-}
+    // the field should work whether or not Laravel attribute casting is used
+    if (isset($field['value']) && (is_array($field['value']) || is_object($field['value']))) {
+        $field['value'] = json_encode($field['value']);
+    }
+
+    $field['store_as_json'] = $field['store_as_json'] ?? false;
 
 ?>
 
-<div @include('crud::inc.field_wrapper_attributes') >
+@include('crud::fields.inc.wrapper_start')
     <label>{!! $field['label'] !!}</label>
-    @include('crud::inc.field_translatable_icon')
+    @include('crud::fields.inc.translatable_icon')
     <input type="hidden"
            value="{{ old($field['name']) ? old($field['name']) : (isset($field['value']) ? $field['value'] : (isset($field['default']) ? $field['default'] : '' )) }}"
            name="{{ $field['name'] }}">
@@ -20,21 +29,13 @@ if (isset($field['value']) && (is_array($field['value']) || is_object($field['va
         <div class="input-group"> @endif
             @if(isset($field['prefix']))
                 <div class="input-group-addon">{!! $field['prefix'] !!}</div> @endif
-            @if(isset($field['store_as_json']) && $field['store_as_json'])
                 <input
                         type="text"
                         data-google-address="{&quot;field&quot;: &quot;{{$field['name']}}&quot;, &quot;full&quot;: {{isset($field['store_as_json']) && $field['store_as_json'] ? 'true' : 'false'}} }"
-                        @include('crud::inc.field_attributes')
+                        data-init-function="bpFieldInitAddressGoogleElement"
+                        data-store-as-json="{{ isset($field['store_as_json']) && $field['store_as_json'] ? 'true' : 'false' }}"
+                        @include('crud::fields.inc.attributes')
                 >
-            @else
-                <input
-                        type="text"
-                        data-google-address="{&quot;field&quot;: &quot;{{$field['name']}}&quot;, &quot;full&quot;: {{isset($field['store_as_json']) && $field['store_as_json'] ? 'true' : 'false'}} }"
-                        name="{{ $field['name'] }}"
-                        value="{{ old($field['name']) ? old($field['name']) : (isset($field['value']) ? $field['value'] : (isset($field['default']) ? $field['default'] : '' )) }}"
-                        @include('crud::inc.field_attributes')
-                >
-            @endif
             @if(isset($field['suffix']))
                 <div class="input-group-addon">{!! $field['suffix'] !!}</div> @endif
             @if(isset($field['prefix']) || isset($field['suffix'])) </div> @endif
@@ -43,14 +44,17 @@ if (isset($field['value']) && (is_array($field['value']) || is_object($field['va
     @if (isset($field['hint']))
         <p class="help-block">{!! $field['hint'] !!}</p>
     @endif
-</div>
+@include('crud::fields.inc.wrapper_end')
 
 {{-- Note: you can use  to only load some CSS/JS once, even though there are multiple instances of it --}}
 
 {{-- ########################################## --}}
 {{-- Extra CSS and JS for this particular field --}}
 {{-- If a field type is shown multiple times on a form, the CSS and JS will only be loaded once --}}
-@if ($crud->checkIfFieldIsFirstOfItsType($field, $fields))
+@if ($crud->fieldTypeNotLoaded($field))
+    @php
+        $crud->markFieldTypeAsLoaded($field);
+    @endphp
 
     {{-- FIELD CSS - will be loaded in the after_styles section --}}
     @push('crud_fields_styles')
@@ -62,6 +66,10 @@ if (isset($field['value']) && (is_array($field['value']) || is_object($field['va
             .ap-input-icon.ap-icon-clear {
                 right: 10px !important;
             }
+
+            .pac-container {
+                z-index: 1051;
+            }
         </style>
     @endpush
 
@@ -69,64 +77,79 @@ if (isset($field['value']) && (is_array($field['value']) || is_object($field['va
     @push('crud_fields_scripts')
         <script>
 
-            //Function that will be called by Google Places Library
-            function initAutocomplete() {
+            function bpFieldInitAddressGoogleElement(element) {
 
+                //this script is async loaded so it does not prevent other scripts in page to load while this is fetched from outside url.
+                //at somepoint our initialization script might run before the script is on page throwing undesired errors.
+                //this makes sure that when this script is run, it has google available either on our field initialization or when the callback function is called.
+                if(typeof google === "undefined") { return; }
 
-                $('[data-google-address]').each(function () {
+                var $addressConfig = element.data('google-address');
+                var $field = $('[name="' + $addressConfig.field + '"]');
+                var $storeAsJson = element.data('store-as-json');
 
-                    var $this = $(this),
-                        $addressConfig = $this.data('google-address'),
-                        $field = $('[name="' + $addressConfig.field + '"]');
-
-                    if ($field.val().length) {
+                if ($field.val().length) {
+                    try {
                         var existingData = JSON.parse($field.val());
-                        $this.val(existingData.value);
+                        element.val(existingData.value);
+                    } catch(error) {
+                        element.val($field.val());
+                    }
+                }
+
+                var $autocomplete = new google.maps.places.Autocomplete(
+                    (element[0]),
+                    {types: ['geocode']});
+
+                $autocomplete.addListener('place_changed', function fillInAddress() {
+
+                    var place = $autocomplete.getPlace();
+                    var value = element.val();
+                    var latlng = place.geometry.location;
+                    var data = {"value": value, "latlng": latlng};
+
+                    for (var i = 0; i < place.address_components.length; i++) {
+                        var addressType = place.address_components[i].types[0];
+                        data[addressType] = place.address_components[i]['long_name'];
                     }
 
-                    var $autocomplete = new google.maps.places.Autocomplete(
-                        ($this[0]),
-                        {types: ['geocode', "establishment"]});
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function(position) {
-                            var geolocation = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
-                            };
-                            var circle = new google.maps.Circle(
-                                {center: geolocation, radius: position.coords.accuracy});
-                            $autocomplete.setBounds(circle.getBounds());
-                        });
-                    }
-                    $autocomplete.addListener('place_changed', function fillInAddress() {
-
-                        var place = $autocomplete.getPlace();
-                        var value = $this.val();
-                        var latlng = place.geometry.location;
-                        var data = {"value": value, "latlng": latlng};
-
-                        for (var i = 0; i < place.address_components.length; i++) {
-                            var addressType = place.address_components[i].types[0];
-                            data[addressType] = place.address_components[i]['long_name'];
-                        }
+                    if($storeAsJson) {
                         $field.val(JSON.stringify(data));
-
-                    });
-
-                    $this.change(function(){
-                        if (!$this.val().length) {
-                            $field.val("");
-                        }
-                    });
-
+                    } else {
+                        $field.val(value);
+                    }
 
                 });
 
+                element.change(function(){
+                    if(!$storeAsJson) {
+                        $field.val(element.val());
+                    } else {
+                        if (!element.val().length) {
+                            $field.val("");
+                        }
+                    }
+                });
+
+                // Make sure pac container is closed on modals (inline create)
+                let modal = document.querySelector('.modal-dialog');
+                if(modal) modal.addEventListener('click', e => document.querySelector('.pac-container').style.display = "none");
+            }
+
+            //Function that will be called by Google Places Library
+            function initGoogleAddressAutocomplete() {
+                $('[data-google-address]').each(function () {
+                    var element = $(this);
+                    var functionName = element.data('init-function');
+
+                    if (typeof window[functionName] === "function") {
+                      window[functionName](element);
+                    }
+                });
             }
 
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_places.key')}}&libraries=places&callback=initAutocomplete"
-                async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3&key={{ $field['api_key'] ?? config('services.google_places.key') }}&libraries=places&callback=initGoogleAddressAutocomplete" async defer></script>
 
     @endpush
 

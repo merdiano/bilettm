@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
-// VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\VenueRequest as StoreRequest;
-use App\Http\Requests\VenueRequest as UpdateRequest;
+use App\Http\Requests\VenueRequest;
 use Backpack\CRUD\CrudPanel;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
  * Class VenueCrudController
@@ -16,6 +15,11 @@ use Backpack\CRUD\CrudPanel;
  */
 class VenueCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+
     public function setup()
     {
         /*
@@ -32,14 +36,22 @@ class VenueCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+        
+    }
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
+    protected function setupListOperation()
+    {
         $this->crud->addColumns([
 //            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
             ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name Ru'],
             ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name Tk'],
             ['name'=>'active','type'=>'boolean','label'=>'Active']
         ]);
+    }
+
+    protected function setupCreateOperation()
+    {
+        CRUD::setValidation(VenueRequest::class);
 
         $this->crud->addFields([
 //            ['name'=>'venue_name','type'=>'text','label'=>'Venue Name En'],
@@ -66,31 +78,14 @@ class VenueCrudController extends CrudController
 //                'crop' => true, // set to true to allow cropping, false to disable
 //                'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
                 // 'disk' => 's3_bucket', // in case you need to show images from a different disk
-                 'prefix' => 'user_content/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
+                    'prefix' => 'user_content/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
             ],
             ['name'=>'active','type'=>'checkbox','label'=>'Active','tab' => 'General']
         ]);
-
-        // add asterisk for fields that are required in VenueRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
 
-    public function store(StoreRequest $request)
+    protected function setupUpdateOperation()
     {
-        // your additional operations before save here
-        $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
-    }
-
-    public function update(UpdateRequest $request)
-    {
-        // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        $this->setupCreateOperation();
     }
 }
