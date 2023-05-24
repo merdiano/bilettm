@@ -61,7 +61,6 @@ class CheckinController extends Controller
         if(!empty($event) && $request->has('attendees')){
             try{
             $checks = json_decode($request->get('attendees'),true);
-//            dd($request->get('attendees'),$checks);
             $arrivals = array_column($checks, 'arrival_time', 'id');
             $att_ids = array_column($checks, 'id');
 
@@ -98,8 +97,28 @@ class CheckinController extends Controller
             return response()->json(['message' => 'provide valid event id and attendees array'],400);
     }
 
+    /**
+    * @OA\Get(
+    *      path="/api/v2/my_tickets",
+    *      operationId="Get tickets registered to phone_id",
+    *      tags={"Tickets"},
+    *      summary="Get tickets",
+    *      description="Get tickets",
+    *      @OA\Parameter(
+    *          description="phone_id",
+    *          in="query",
+    *          name="phone_id",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="65000000", summary="65000000"),
+    *      ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function getTickets(Request $request){
-//        dd(url("../e/{$event_id}/checkout/finish_mobile"));
         if(!$request->has('phone_id')){
             return response()->json(['status'=>'error','message'=>'phone_id is required'], 400);
         }
@@ -126,6 +145,5 @@ class CheckinController extends Controller
             ->paginate(20);
 
         return $attendess;
-
     }
 }

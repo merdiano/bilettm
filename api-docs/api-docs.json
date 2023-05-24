@@ -317,6 +317,38 @@
                 }
             }
         },
+        "/api/v2/my_tickets": {
+            "get": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Get tickets",
+                "description": "Get tickets",
+                "operationId": "Get tickets registered to phone_id",
+                "parameters": [
+                    {
+                        "name": "phone_id",
+                        "in": "query",
+                        "description": "phone_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "65000000",
+                                "value": "65000000"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
         "/api/v2/event/{event_id}/reserve": {
             "post": {
                 "tags": [
