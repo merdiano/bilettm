@@ -330,6 +330,7 @@ class CheckoutController extends Controller
                 $order->session_id = $phone_id;
                 $order->transaction_id = $response->getPaymentReferenceId();
                 $order->order_date = Carbon::now();
+                $order->order_reference = strtoupper(str_random(5)) . date('jn');
                 $order->save();
                 $return = [
                     'status' => 'success',
