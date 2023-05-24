@@ -314,23 +314,24 @@ class CheckoutController extends Controller
         try{
             $response = $gateway->registerPayment($transaction_data);
             if($response->isSuccessfull()){
-                $order = new Order();
-                $order->first_name = ($holder_name);
-                $order->last_name = ($holder_surname);
-                $order->email = ($holder_email);
-                $order->order_status_id = 5;
-                $order->amount = $order_total;
-                $order->booking_fee = $booking_fee;
-                $order->organiser_booking_fee = $organiser_booking_fee;
-                $order->discount = 0.00;
-                $order->account_id = $event->account_id;
-                $order->event_id = $event_id;
-                $order->is_payment_received = 0;
-                $order->taxamt = $orderService->getTaxAmount();
-                $order->session_id = $phone_id;
-                $order->transaction_id = $response->getPaymentReferenceId();
-                $order->order_date = Carbon::now();
-                $order->order_reference = strtoupper(str_random(5)) . date('jn');
+                $order = Order::create([
+                    'first_name'            => $holder_name,
+                    'last_name'             => $holder_surname,
+                    'email'                 => $holder_email,
+                    'order_status_id'       => 5,
+                    'amount'                => $order_total,
+                    'booking_fee'           => $booking_fee,
+                    'organiser_booking_fee' => $organiser_booking_fee,
+                    'discount'              => 0.00,
+                    'account_id'            => $event->account_id,
+                    'event_id'              => $event_id,
+                    'is_payment_received'   => 0,
+                    'taxamt'                => $orderService->getTaxAmount(),
+                    'session_id'            => $phone_id,
+                    'transaction_id'        => $response->getPaymentReferenceId(),
+                    'order_date'            => Carbon::now(),
+                    'order_reference'       => strtoupper(str_random(5)) . date('jn')
+                ]);
                 $order->save();
                 $return = [
                     'status' => 'success',
