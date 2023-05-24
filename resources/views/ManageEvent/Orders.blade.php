@@ -111,7 +111,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="loadModal"
                                     data-modal-id="MessageOrder"
-                                    data-href="{{route('showMessageOrder', ['order_id'=>$order->id])}}"
+                                    {{-- data-href="{{route('showMessageOrder', ['order_id'=>$order->id])}}" --}}
                                 > {{$order->email}}</a>
                             </td>
                             <td>
