@@ -317,7 +317,7 @@
                 }
             }
         },
-        "/api/v1/event/{event_id}/reserve": {
+        "/api/v2/event/{event_id}/reserve": {
             "post": {
                 "tags": [
                     "Tickets"

@@ -58,7 +58,7 @@ class CheckoutController extends Controller
     */
     /**
     * @OA\Post(
-    *      path="/api/v1/event/{event_id}/reserve",
+    *      path="/api/v2/event/{event_id}/reserve",
     *      operationId="Reserve tickets",
     *      tags={"Tickets"},
     *      summary="Reserve tickets",
