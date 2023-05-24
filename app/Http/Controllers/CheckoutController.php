@@ -83,8 +83,6 @@ class CheckoutController extends Controller
     */
     public function postReserveTickets(Request $request,$event_id){
         try {
-
-
             if (!$request->has('tickets')) {
                 return response()->json([
                     'status' => 'error',
@@ -164,9 +162,6 @@ class CheckoutController extends Controller
                     'ticket' => $eventTicket->title,
                     'qty' => $seats_count,
                     'price' => number_format($eventTicket->price, 2),
-//                  'ticket_booking_fee' => ($seats_count * $eventTicket->booking_fee),
-//                  'organiser_booking_fee' => ($seats_count * $eventTicket->organiser_booking_fee),
-//                  'full_price' => $eventTicket->price + $eventTicket->total_booking_fee,
                 ];
 
                 foreach ($seat_nos as $seat_no) {
@@ -186,13 +181,11 @@ class CheckoutController extends Controller
 
             return response()->json([
                 'status' => 'success',
-//                  'event_id'                => $event_id,
                 'tickets'                 => $tickets,
                 'order_started' => Carbon::now(),
                 'expires' => env('CHECKOUT_TIMEOUT'),
                 'order_total' => $order_total,
                 'total_booking_fee' => $booking_fee + $organiser_booking_fee,
-//                  'organiser_booking_fee'   => $organiser_booking_fee,
             ]);
         }
         catch (\Exception $ex){
@@ -203,13 +196,69 @@ class CheckoutController extends Controller
         }
     }
 
+
+    /**
+    * @OA\Schema(
+    *     schema="OrderProcessRequest",
+    *     title="Order Processing Request Model",
+    *     @OA\Property(
+    *        property="phone_id",
+    *        type="integer"
+    *     ),
+    *     @OA\Property(
+    *          property="name",
+    *          type="string",
+    *     ),
+    *     @OA\Property(
+    *          property="surname",
+    *          type="string",
+    *     ),
+    *     @OA\Property(
+    *          property="email",
+    *          type="email",
+    *     ),
+    *     @OA\Property(
+    *        property="tickets",
+    *        description="Tickets",
+    *        type="array",
+    *        collectionFormat="multi",
+    *        @OA\Items(
+    *             ref="#/components/schemas/TicketType"
+    *        ),
+    *     ),
+    * )
+    */
+    /**
+    * @OA\Post(
+    *      path="/api/v2/event/{event_id}/register_order",
+    *      operationId="Register order",
+    *      tags={"Tickets"},
+    *      summary="Register order",
+    *      description="Register order",
+    *      @OA\Parameter(
+    *          description="Event ID",
+    *          in="path",
+    *          name="event_id",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="1", summary="1"),
+    *      ),
+    *      @OA\RequestBody(
+    *          required=true,
+    *          @OA\JsonContent(ref="#/components/schemas/OrderProcessRequest")
+    *      ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function postRegisterOrder(Request $request, $event_id){
 
         $gateway = new CardPayment();
 
-        $validator = Validator::make($request->all(),
-            [
-                'phone_id'=>'required|string|min:8|max:45',
+        $validator = Validator::make($request->all(), [
+                'phone_id'=>'required|min:8|max:45',
                 'name'=>'required|string|min:2|max:255',
                 'surname'=>'required|string|min:2|max:255',
                 'email'=>'required|email'
@@ -227,13 +276,12 @@ class CheckoutController extends Controller
         $holder_surname = $request->get('surname');
         $holder_email = $request->get('email');
 
-        //delete old uncompleted orders;
         Order::where('session_id', $request->get('phone_id'))
             ->where('order_status_id',5)
             ->delete();
 
         $event = Event::withReserved($phone_id)->with('organiser')
-            ->findOrFail($event_id,['id','organiser_fee_fixed','organiser_fee_percentage','organiser_id','account_id']);
+                        ->findOrFail($event_id,['id','organiser_fee_fixed','organiser_fee_percentage','organiser_id','account_id']);
 
         if(empty($event->reservedTickets) || $event->reservedTickets->count() == 0){
             return response()->json([
@@ -247,7 +295,6 @@ class CheckoutController extends Controller
         $booking_fee = 0;
         $organiser_booking_fee = 0;
 
-//        DB::beginTransaction();
 
         foreach ($event->reservedTickets as $reserve){
             $order_total += $reserve->ticket->price;
@@ -256,13 +303,7 @@ class CheckoutController extends Controller
                 round($reserve->ticket->price *($event->organiser_fee_percentage / 100) + $event->organiser_fee_fixed,2);
             $organiser_booking_fee += $obf;
             $total_booking_fee += $reserve->ticket->booking_fee + $obf;
-
-//            $reserve->holder_name = $holder_name;
-//            $reserve->holder_surname = $holder_surname;
-//            $reserve->holder_email = $holder_email;
-//            $reserve->save();
         }
-//        DB::commit();
 
         $orderService = new OrderService($order_total, $total_booking_fee, $event);
         $orderService->calculateFinalCosts();
@@ -270,36 +311,30 @@ class CheckoutController extends Controller
         $secondsToExpire = Carbon::now()->diffInSeconds($event->reservedTickets->first()->expires);
 
         $transaction_data = [
-            'amount'      => $orderService->getGrandTotal()*100,//multiply by 100 to obtain tenge
+            'amount'      => $orderService->getGrandTotal()*100,
             'currency' => 934,
             'sessionTimeoutSecs' => $secondsToExpire,
             'description' => "Bilettm sargyt: {$holder_name} {$holder_surname}",
             'orderNumber'     => uniqid(),
-//            'pageView' => 'MOBILE',
-            'failUrl'     => url("../e/{$event_id}/checkout/finish_mobile?is_payment_cancelled=1"),
-            'returnUrl' => url("../e/{$event_id}/checkout/finish_mobile?is_payment_successful=1"),
+            'failUrl'     => "https://bilettm.com/e/{$event_id}/checkout/finish_mobile?is_payment_cancelled=1",
+            'returnUrl' => "https://bilettm.com/e/{$event_id}/checkout/finish_mobile?is_payment_successful=1",
 
         ];
         try{
             $response = $gateway->registerPayment($transaction_data);
-
             if($response->isSuccessfull()){
-                /*
-                 * As we're going off-site for payment we need to store some data in a session so it's available
-                 * when we return
-                 */
                 $order = new Order();
-                $order->first_name = ($holder_name);//todo sanitize etmelimi?
+                $order->first_name = ($holder_name);
                 $order->last_name = ($holder_surname);
                 $order->email = ($holder_email);
-                $order->order_status_id = 5;//order awaiting payment
+                $order->order_status_id = 5;
                 $order->amount = $order_total;
                 $order->booking_fee = $booking_fee;
                 $order->organiser_booking_fee = $organiser_booking_fee;
                 $order->discount = 0.00;
                 $order->account_id = $event->account_id;
                 $order->event_id = $event_id;
-                $order->is_payment_received = 0;//false
+                $order->is_payment_received = 0;
                 $order->taxamt = $orderService->getTaxAmount();
                 $order->session_id = $phone_id;
                 $order->transaction_id = $response->getPaymentReferenceId();
@@ -307,12 +342,10 @@ class CheckoutController extends Controller
                 $order->save();
                 $return = [
                     'status' => 'success',
-//                    'order'  => $order,
-                    'payment_url'=>$response->getRedirectUrl()
+                    'payment_url' => $response->getRedirectUrl()
                 ];
 
             } else {
-                // display error to customer
                 $return = [
                     'status'  => 'error',
                     'message' => $response->errorMessage(),
@@ -374,25 +407,16 @@ class CheckoutController extends Controller
             $order->first_name = 'kassa';
             $order->last_name = 'kassa';
             $order->email = $request->auth->email;
-            $order->order_status_id = 5;//order awaiting payment
-//        $order->amount = $order_total;
-//        $order->booking_fee = $booking_fee;
-//        $order->organiser_booking_fee = $organiser_booking_fee;
+            $order->order_status_id = 5;
             $order->discount = 0.00;
             $order->account_id = $event->account_id;
             $order->event_id = $event_id;
-            $order->is_payment_received = 0;//false
-//        $order->taxamt = $orderService->getTaxAmount();
-//        $order->session_id = $phone_id;
-//        $order->transaction_id = $response->getPaymentReferenceId();
+            $order->is_payment_received = 0;
             $order->order_date = Carbon::now();
 
             $order->save();
 
             foreach ($tickets as $ticket){
-                /*
-                 * Create the attendees
-                 */
                 $attendee_count = Attendee::where('ticket_id',$ticket['id'])
                     ->where('event_id',$event_id)
                     ->where('is_cancelled',false)
@@ -406,8 +430,6 @@ class CheckoutController extends Controller
                         'message' => 'Seats are already booked'
                     ]);
                 }
-
-                //todo handle reserved also;
 
                 foreach ($ticket['seats'] as $key => $seat){
                     $attendee = new Attendee();

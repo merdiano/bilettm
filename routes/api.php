@@ -23,7 +23,10 @@ Route::group([
     Route::get('/location/{location_id}/events', [LocationController::class, 'locationEvents']);
     Route::get('/event/{id}/details', [EventController::class, 'eventDetailById']);
     Route::get('/event/{id}/seats', [EventController::class, 'eventSeatsById']);
-    Route::post('event/{id}/reserve', [App\Http\Controllers\CheckoutController::class, 'postReserveTickets']);
+    Route::post('/event/{id}/reserve', [App\Http\Controllers\CheckoutController::class, 'postReserveTickets']);
+    Route::post('/event/{id}/register_order', [App\Http\Controllers\CheckoutController::class, 'postRegisterOrder']);
+    Route::get('/event/{id}/checkout', [App\Http\Controllers\CheckoutController::class, 'postCompleteOrder']);
+    Route::get('/my_tickets', [CheckinController::class, 'getTickets']);
 });
 
 
@@ -39,9 +42,6 @@ Route::group([
     Route::get('sub_category/{category_id}/events', [App\Http\Controllers\CategoryController::class, 'showSubCategoryEvents']);
     Route::get('event/{id}/details', [App\Http\Controllers\EventController::class, 'getEvent']);
     Route::get('event/{id}/seats', [App\Http\Controllers\EventController::class, 'getEventSeats']);
-    Route::get('event/{id}/register_order', [App\Http\Controllers\CheckoutController::class, 'postRegisterOrder']);
-    Route::get('event/{id}/checkout', [App\Http\Controllers\CheckoutController::class, 'postCompleteOrder']);
-    Route::get('my_tickets', [CheckinController::class, 'getTickets']);
 });
 
 Route::post('auth/login', [AuthController::class, 'authenticate']);

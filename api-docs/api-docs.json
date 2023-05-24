@@ -358,6 +358,48 @@
                     }
                 }
             }
+        },
+        "/api/v2/event/{event_id}/register_order": {
+            "post": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Register order",
+                "description": "Register order",
+                "operationId": "Register order",
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "Event ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "1",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderProcessRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -385,6 +427,32 @@
                 "properties": {
                     "phone_id": {
                         "type": "integer"
+                    },
+                    "tickets": {
+                        "description": "Tickets",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TicketType"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                },
+                "type": "object"
+            },
+            "OrderProcessRequest": {
+                "title": "Order Processing Request Model",
+                "properties": {
+                    "phone_id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "surname": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "email"
                     },
                     "tickets": {
                         "description": "Tickets",
