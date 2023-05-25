@@ -774,4 +774,32 @@ Route::group(
 
 });
 
+Route::get('/pdf-data', function(){
+    $order = App\Models\Order::where('order_reference', '=', 'HMGIK245')->first();
+
+        if (!$order) {
+            abort(404);
+        }
+        $images = [];
+        $imgs = $order->event->images;
+        foreach ($imgs as $img) {
+            $images[] = base64_encode(file_get_contents(public_path($img->image_path)));
+        }
+
+        $data = [
+            'order'     => $order,
+            'event'     => $order->event,
+            'tickets'   => $order->event->tickets,
+            'attendees' => $order->attendees,
+            'css'       => file_get_contents(public_path('assets/stylesheet/ticket.css')),
+            'image'     => base64_encode(file_get_contents(public_path($order->event->organiser->full_logo_path))),
+            'images'    => $images,
+        ];
+        dd($data);
+
+        //if ($request->get('download') == '1') {
+        //    return PDF::html('Public.ViewEvent.Partials.PDFTicket', $data, 'Tickets');
+        //}
+        return view('Public.ViewEvent.Partials.PDFTicket', $data);
+});
 
