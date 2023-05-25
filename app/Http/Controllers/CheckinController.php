@@ -116,9 +116,7 @@ class CheckinController extends Controller
                     'private_reference_number', 'attendees.email', 'attendees.seat_no',
                     'attendees.reference_index','attendees.has_arrived','attendees.arrival_time','orders.order_reference', 'attendees.is_cancelled')
                     ->join('orders','orders.id','=','attendees.order_id')
-                    ->wherHas('attendees',function($attendees){
-                        $attendees->where('attendees.is_cancelled',false);
-                    });
+                    ->where('attendees.is_cancelled',false);
             }])
             ->where('event_id',$event_id)
             ->where('ticket_date',$ticket_date)
