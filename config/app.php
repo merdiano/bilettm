@@ -228,7 +228,7 @@ return [
         'Str'          => Illuminate\Support\Str::class,
         'Utils'        => App\Attendize\Utils::class,
         'Carbon'       => Carbon\Carbon::class,
-        'PDF'          => Nitmedia\Wkhtml2pdf\Facades\Wkhtml2pdf::class,
+        'PDF'          => Barryvdh\DomPDF\Facade\Pdf::class,
         'DNS1D'        => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D'        => Milon\Barcode\Facades\DNS2DFacade::class,
         'Image'        => Intervention\Image\Facades\Image::class,
