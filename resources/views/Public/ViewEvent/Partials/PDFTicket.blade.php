@@ -52,7 +52,7 @@
 
     </head>
     <body style="background-color: #FFFFFF; font-family: 'DejaVu Sans', sans-serif;">
-        <div class="container">
+        <div>
             @foreach($attendees as $attendee)
                 @if(!$attendee->is_cancelled)
                     <div class="row" style="margin: 20px 0">
