@@ -55,19 +55,25 @@ class CheckinController extends Controller
             return response()->json(['message'=>'error','message'=>'ticket_date does not exists'],400);
 
         $ticket_date = $request->get('ticket_date');
-        $attendess = Attendee::select('attendees.id','ticket_id','attendees.first_name','attendees.last_name','private_reference_number',
-            'attendees.email', 'seat_no','reference_index','has_arrived','arrival_time','orders.order_reference')
-            ->join('tickets', 'tickets.id', '=', 'attendees.ticket_id')
-            ->join('orders','orders.id','=','attendees.order_id')
-            ->where(function ($query) use ($event_id,$ticket_date) {
-                $query->where('attendees.event_id', $event_id)
-                    ->whereDate('tickets.ticket_date', Carbon::parse($ticket_date)->format('Y-m-d'))
-                    ->whereTime('tickets.ticket_date', Carbon::parse($ticket_date)->format('H:i:s'))
-                    ->where('attendees.is_cancelled',false);
-            })
-            ->get();
+        // $attendess = Attendee::join('tickets', 'tickets.id', '=', 'attendees.ticket_id')
+        //     ->join('orders','orders.id','=','attendees.order_id')
+        //     ->where(function ($query) use ($event_id, $ticket_date) {
+        //         $query->where('attendees.event_id', $event_id)
+        //             ->whereDate('tickets.ticket_date', Carbon::parse($ticket_date)->format('Y-m-d'))
+        //             ->whereTime('tickets.ticket_date', Carbon::parse($ticket_date)->format('H:i:s'))
+        //             ->where('attendees.is_cancelled',false);
+        //     })
+        //     ->get();
 
-        return response()->json(['message'=>'success','attendees'=>$attendess]);
+        $attendees = Attendee::with('ticket',
+        function($q) use ($event_id, $ticket_date){
+            $q->where('attendees.event_id', $event_id)
+            ->whereDate('ticket_date', Carbon::parse($ticket_date)->format('Y-m-d'))
+            ->whereTime('ticket_date', Carbon::parse($ticket_date)->format('H:i:s'))
+            ->where('attendees.is_cancelled',false);
+        })->get();
+
+        return response()->json(['message' => 'success','attendees' => $attendees]);
     }
 
     /**

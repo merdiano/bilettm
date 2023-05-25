@@ -32,7 +32,8 @@ class Attendee extends MyBaseModel
         'account_id',
         'reference',
         'has_arrived',
-        'arrival_time'
+        'arrival_time',
+        'is_cancelled'
     ];
 
     /**
