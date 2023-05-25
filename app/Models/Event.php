@@ -527,8 +527,8 @@ class Event extends MyBaseModel
     }
 
     public function sections(){
-        return $this->tickets()->with('section');
-        return $this->tickets()->join('sections','tickets.section_id','=','sections.id')->select('sections.*');
+        //return $this->tickets()->with('section');
+        return $this->tickets()->select('sections.*')->join('sections','tickets.section_id','=','sections.id');
     }
 
     public function reservedTickets(){
