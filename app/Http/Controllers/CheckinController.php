@@ -65,7 +65,7 @@ class CheckinController extends Controller
         //     })
         //     ->get();
 
-        $attendees = Attendee::whereHas('ticket',
+        $attendees = Attendee::join('orders','orders.id','=','attendees.order_id')->whereHas('ticket',
         function($q) use ($event_id, $ticket_date){
             $q->where('attendees.event_id', $event_id)
             ->whereDate('ticket_date', Carbon::parse($ticket_date)->format('Y-m-d'))
