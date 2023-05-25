@@ -56,7 +56,7 @@
             @foreach($attendees as $attendee)
                 @if(!$attendee->is_cancelled)
                     <div class="row" style="margin: 20px 0">
-                        <table border="1" style="width: 800px; margin: auto">
+                        <table border="1" style="width: 95%; margin: auto">
                             <tr>
                                 <td rowspan="2" style="width: 20%; padding: 20px; vertical-align: top; position: relative">
                                     <div class="barcode">
