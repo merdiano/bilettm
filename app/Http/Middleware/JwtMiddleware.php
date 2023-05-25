@@ -7,6 +7,7 @@ use Exception;
 use App\User;
 use Firebase\JWT\JWT;
 use Firebase\JWT\ExpiredException;
+use Illuminate\Support\Facades\Log;
 
 class JwtMiddleware
 {
@@ -28,6 +29,7 @@ class JwtMiddleware
                 'message' => 'Provided token is expired.'
             ], 401);
         } catch(Exception $e) {
+            Log::error($e->getMessage());
             return response()->json([
                 'message' => 'An error while decoding token.'
             ], 400);
