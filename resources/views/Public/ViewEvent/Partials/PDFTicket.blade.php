@@ -51,7 +51,7 @@
         </style>
 
     </head>
-    <body style="background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif;">
+    <body style="background-color: #FFFFFF; font-family: sans-serif">
         <div class="container">
             @foreach($attendees as $attendee)
                 @if(!$attendee->is_cancelled)
