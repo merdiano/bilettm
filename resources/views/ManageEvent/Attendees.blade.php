@@ -106,7 +106,7 @@
                             <td>{{{$attendee->full_name}}}</td>
                             <td>
                                 <a data-modal-id="MessageAttendee" href="javascript:void(0);" class="loadModal"
-                                    data-href="{{route('showMessageAttendee', ['attendee_id'=>$attendee->id])}}"
+                                    data-href="{{route('showMessageAttendee',  ['event_id'=>$event->id])}}"
                                     > {{$attendee->email}}</a>
                             </td>
                             <td>
@@ -129,7 +129,7 @@
                                         <li><a
                                             data-modal-id="MessageAttendee"
                                             href="javascript:void(0);"
-                                            data-href="{{route('showMessageAttendee', ['attendee_id'=>$attendee->id])}}"
+                                            data-href="{{route('showMessageAttendee',  ['event_id'=>$event->id])}}"
                                             class="loadModal"
                                             > @lang("basic.message")</a></li>
                                         @endif
