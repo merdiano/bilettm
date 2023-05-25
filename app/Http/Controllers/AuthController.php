@@ -39,7 +39,7 @@ class AuthController extends Controller
             'iss' => "laravel-jwt", // Issuer of the token
             'sub' => $user->id, // Subject of the token
             'iat' => time(), // Time when JWT was issued.
-            'exp' => time() + 600 // Expiration time
+            'exp' => time() + 6000 // Expiration time
         ];
 
         // As you can see we are passing `JWT_SECRET` as the second parameter that will
