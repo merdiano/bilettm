@@ -66,7 +66,7 @@
                                             {!! DNS1D::getBarcodeHTML($attendee->private_reference_number, "C39+", 1, 50) !!}
                                         </div>
                                     @endif
-                                    <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: 60%; margin-top: 5%" />
+                                    <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: 80%; margin-top: 10%" />
                                 </td>
                                 <td style="padding: 20px; vertical-align: top">
                                     <span class="text-muted">@lang('Ticket.ticket_number')</span>
