@@ -774,7 +774,7 @@ Route::group(
 
 });
 
-Route::get('/pdf-data', function(){
+Route::get('/pdfdata', function(){
     $order = App\Models\Order::where('order_reference', '=', 'HMGIK245')->first();
 
         if (!$order) {
