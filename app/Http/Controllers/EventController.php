@@ -71,8 +71,8 @@ class EventController extends MyBaseController
         $tickets = Ticket::WithSection($event_id, $request->get('ticket_date'))
 //            ->where('end_sale_date','>',Carbon::now())
 //            ->where('start_sale_date','<',Carbon::now())
-            ->where('is_hidden', false)
-            ->where('is_paused', false)
+//            ->where('is_hidden', false)
+//            ->where('is_paused', false)
             ->orderBy('sort_order','asc')
             ->get();
 
