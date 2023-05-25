@@ -76,7 +76,7 @@ class EventController extends MyBaseController
             ->orderBy('sort_order','asc')
             ->get();
 
-        return $tickets;
+//        return $tickets;
         if($tickets->count()==0)
             return response()->json([
                'status' => 'error',
