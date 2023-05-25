@@ -129,14 +129,14 @@
                                         <li><a
                                             data-modal-id="MessageAttendee"
                                             href="javascript:void(0);"
-                                            data-href="{{route('showMessageAttendee',  ['event_id'=>$event->id])}}"
+                                            data-href="{{route('showMessageAttendee', ['event_id'=>$event->id])}}"
                                             class="loadModal"
                                             > @lang("basic.message")</a></li>
                                         @endif
                                         <li><a
                                             data-modal-id="ResendTicketToAttendee"
                                             href="javascript:void(0);"
-                                            data-href="{{route('showResendTicketToAttendee', ['attendee_id'=>$attendee->id])}}"
+                                            data-href="{{route('showResendTicketToAttendee', ['event_id'=>$event->id])}}"
                                             class="loadModal"
                                             > @lang("ManageEvent.resend_ticket")</a></li>
                                         <li><a
