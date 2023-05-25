@@ -36,7 +36,7 @@ class CheckinController extends Controller
     *      ),
     *      @OA\Parameter(
     *          description="token",
-    *          in="path",
+    *          in="query",
     *          name="token",
     *          required=true,
     *          @OA\Schema(type="string"),
@@ -92,7 +92,7 @@ class CheckinController extends Controller
     *      ),
     *      @OA\Parameter(
     *          description="token",
-    *          in="path",
+    *          in="query",
     *          name="token",
     *          required=true,
     *          @OA\Schema(type="string"),

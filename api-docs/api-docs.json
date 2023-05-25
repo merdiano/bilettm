@@ -358,7 +358,7 @@
                     },
                     {
                         "name": "token",
-                        "in": "path",
+                        "in": "query",
                         "description": "token",
                         "required": true,
                         "schema": {
@@ -420,7 +420,7 @@
                     },
                     {
                         "name": "token",
-                        "in": "path",
+                        "in": "query",
                         "description": "token",
                         "required": true,
                         "schema": {
