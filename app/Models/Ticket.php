@@ -279,7 +279,7 @@ class Ticket extends MyBaseModel
     }
 
     public function scopeWithSection($query, $event_id, $ticket_date, $ticket_hours = null){
-        if($$ticket_hours){
+        if($ticket_hours){
             return $query->select('id','title','description',"price", "max_per_person", "min_per_person","start_sale_date","end_sale_date","ticket_date","section_id")
                 ->with(['section:id,section_no,description,seats,section_no_ru,description_ru,section_no_tk,description_tk','reserved:seat_no,ticket_id','booked:seat_no,ticket_id'])
                 ->where('event_id', $event_id)
