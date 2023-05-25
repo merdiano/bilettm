@@ -68,8 +68,6 @@ class EventController extends MyBaseController
         $event = Event::with('venue:id,venue_name,seats_image,address,venue_name_ru,venue_name_tk')
             ->findOrFail($event_id,['id','venue_id']);
 
-        return $event;
-
         $tickets = Ticket::WithSection($event_id, $request->get('ticket_date'))
             ->where('end_sale_date','>',Carbon::now())
             ->where('start_sale_date','<',Carbon::now())
@@ -78,6 +76,7 @@ class EventController extends MyBaseController
             ->orderBy('sort_order','asc')
             ->get();
 
+        return $tickets;
         if($tickets->count()==0)
             return response()->json([
                'status' => 'error',
