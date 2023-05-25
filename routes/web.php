@@ -721,6 +721,25 @@ Route::group(
         'uses' => 'PublicController@search'
     ]);
 
+    Route::post('auth/login', [App\Http\Controllers\AuthController::class, 'authenticate']);
+    Route::post('auth/reset', [App\Http\Controllers\AuthController::class, 'reset_password']);
+
+    Route::group(
+        [
+            'middleware'    => 'jwt.auth',
+            'prefix'        => 'vendor'
+        ],
+        function(){
+            Route::get('events', [App\Http\Controllers\EventController::class, 'getVendorEvents']);
+            Route::get('event/{id}/details', [App\Http\Controllers\EventController::class, 'getVendorEvent']);
+            Route::get('event/{id}/attendees', [App\Http\Controllers\CheckinController::class, 'getAttendees']);
+            Route::get('event/{id}/ticket_attendees', [App\Http\Controllers\CheckinController::class, 'getTicketsAttendees']);
+            Route::post('event/{id}/checkin', [App\Http\Controllers\CheckinController::class, 'checkInAttendees']);
+            Route::post('event/{id}/book', [App\Http\Controllers\CheckoutController::class, 'offline_book']);
+            Route::post('event/{id}/book_cancel', [App\Http\Controllers\CheckoutController::class, 'offline_cancel']);
+        }
+    );
+
 //    Route::get('/add_event',[
 //        'as' => 'add_event',
 //        'uses' => 'PublicController@showAddEventForm'
@@ -773,22 +792,3 @@ Route::group(
         ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
 
 });
-
-Route::post('auth/login', [App\Http\Controllers\AuthController::class, 'authenticate']);
-Route::post('auth/reset', [App\Http\Controllers\AuthController::class, 'reset_password']);
-
-Route::group(
-    [
-        'middleware'    => 'jwt.auth',
-        'prefix'        => 'vendor'
-    ],
-    function(){
-        Route::get('events', [App\Http\Controllers\EventController::class, 'getVendorEvents']);
-        Route::get('event/{id}/details', [App\Http\Controllers\EventController::class, 'getVendorEvent']);
-        Route::get('event/{id}/attendees', [App\Http\Controllers\CheckinController::class, 'getAttendees']);
-        Route::get('event/{id}/ticket_attendees', [App\Http\Controllers\CheckinController::class, 'getTicketsAttendees']);
-        Route::post('event/{id}/checkin', [App\Http\Controllers\CheckinController::class, 'checkInAttendees']);
-        Route::post('event/{id}/book', [App\Http\Controllers\CheckoutController::class, 'offline_book']);
-        Route::post('event/{id}/book_cancel', [App\Http\Controllers\CheckoutController::class, 'offline_cancel']);
-    }
-);
