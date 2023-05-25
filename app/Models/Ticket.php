@@ -72,6 +72,10 @@ class Ticket extends MyBaseModel
         return $this->belongsToMany(\App\Models\Order::class);
     }
 
+    public function attendees(){
+        return $this->hasMany(Attendee::class);
+    }
+
     /**
      * The questions associated with the ticket.
      *
