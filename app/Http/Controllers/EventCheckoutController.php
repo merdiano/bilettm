@@ -592,7 +592,7 @@ class EventCheckoutController extends Controller
             'image'     => base64_encode(file_get_contents(public_path($order->event->organiser->full_logo_path))),
             'images'    => $images,
         ];
-        dd($data);
+        //dd($data);
 
         if ($request->get('download') == '1') {
             return PDF::html('Public.ViewEvent.Partials.PDFTicket', $data, 'Tickets');
