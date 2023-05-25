@@ -282,7 +282,7 @@ class Ticket extends MyBaseModel
         $query->select('id','title','description',"price", "max_per_person", "min_per_person","start_sale_date","end_sale_date","ticket_date","section_id")
             ->with(['section:id,section_no,description,seats,section_no_ru,description_ru,section_no_tk,description_tk','reserved:seat_no,ticket_id','booked:seat_no,ticket_id'])
             ->where('event_id',$event_id)
-            ->whereDate('ticket_date','=',$ticket_date)
+//            ->whereDate('ticket_date','=',$ticket_date)
             ->orderBy('sort_order','asc');
 
         if($ticket_hours){
