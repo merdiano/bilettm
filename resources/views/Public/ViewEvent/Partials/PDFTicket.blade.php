@@ -60,11 +60,11 @@
                     <tr>
                         <td rowspan="2" style="width: 20%; padding: 20px; vertical-align: top; position: relative">
                             <div class="barcode">
-                                {!! DNS2D::getBarcodeSVG($attendee->private_reference_number, "QRCODE", 7, 7) !!}
+                                {!! DNS2D::getBarcodeHTML($attendee->private_reference_number, "QRCODE", 7, 7) !!}
                             </div>
                             @if($event->is_1d_barcode_enabled)
                                 <div class="barcode_vertical">
-                                    {!! DNS1D::getBarcodeSVG($attendee->private_reference_number, "C39+", 1, 50) !!}
+                                    {!! DNS1D::getBarcodeHTML($attendee->private_reference_number, "C39+", 1, 50) !!}
                                 </div>
                             @endif
                             <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: 78%; position: absolute; bottom: 20px;" />
