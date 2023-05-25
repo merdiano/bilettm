@@ -12,7 +12,42 @@ use Illuminate\Support\Facades\DB;
 
 class CheckinController extends Controller
 {
-
+    /**
+    * @OA\Get(
+    *      path="/api/vendor/event/{event_id}/attendees",
+    *      tags={"Operator"},
+    *      summary="Operator",
+    *      description="Operator",
+    *      @OA\Parameter(
+    *          description="event_id",
+    *          in="path",
+    *          name="event_id",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="2", summary="2"),
+    *      ),
+    *      @OA\Parameter(
+    *          description="ticket_date",
+    *          in="query",
+    *          name="ticket_date",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="string", value="2023-07-19 11:14:00", summary="2023-07-19 11:14:00"),
+    *      ),
+    *      @OA\Parameter(
+    *          description="token",
+    *          in="path",
+    *          name="token",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="string", value="...", summary="..."),
+    *      ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function getAttendees(Request $request, $event_id){
 
         if(!$request->has('ticket_date'))
@@ -33,6 +68,42 @@ class CheckinController extends Controller
         return response()->json(['message'=>'success','attendees'=>$attendess]);
     }
 
+    /**
+    * @OA\Get(
+    *      path="/api/vendor/event/{event_id}/ticket_attendees",
+    *      tags={"Operator"},
+    *      summary="Operator",
+    *      description="Operator",
+    *      @OA\Parameter(
+    *          description="event_id",
+    *          in="path",
+    *          name="event_id",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="int", value="2", summary="2"),
+    *      ),
+    *      @OA\Parameter(
+    *          description="ticket_date",
+    *          in="query",
+    *          name="ticket_date",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="string", value="2023-07-19 11:14:00", summary="2023-07-19 11:14:00"),
+    *      ),
+    *      @OA\Parameter(
+    *          description="token",
+    *          in="path",
+    *          name="token",
+    *          required=true,
+    *          @OA\Schema(type="string"),
+    *          @OA\Examples(example="string", value="...", summary="..."),
+    *      ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function getTicketsAttendees(Request $request, $event_id){
         if(!$request->has('ticket_date'))
             return response()->json(['message'=>'error','message'=>'ticket_date does not exists'],400);

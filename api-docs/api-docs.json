@@ -317,6 +317,130 @@
                 }
             }
         },
+        "/api/vendor/event/{event_id}/attendees": {
+            "get": {
+                "tags": [
+                    "Operator"
+                ],
+                "summary": "Operator",
+                "description": "Operator",
+                "operationId": "96c3d1db0fab60406657d3d86b4fecee",
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "event_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "2",
+                                "value": "2"
+                            }
+                        }
+                    },
+                    {
+                        "name": "ticket_date",
+                        "in": "query",
+                        "description": "ticket_date",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "2023-07-19 11:14:00",
+                                "value": "2023-07-19 11:14:00"
+                            }
+                        }
+                    },
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "...",
+                                "value": "..."
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
+        "/api/vendor/event/{event_id}/ticket_attendees": {
+            "get": {
+                "tags": [
+                    "Operator"
+                ],
+                "summary": "Operator",
+                "description": "Operator",
+                "operationId": "170e9291fc1abcd9d1a7257e17268693",
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "event_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "2",
+                                "value": "2"
+                            }
+                        }
+                    },
+                    {
+                        "name": "ticket_date",
+                        "in": "query",
+                        "description": "ticket_date",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "2023-07-19 11:14:00",
+                                "value": "2023-07-19 11:14:00"
+                            }
+                        }
+                    },
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "...",
+                                "value": "..."
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
         "/api/v2/my_tickets": {
             "get": {
                 "tags": [
