@@ -527,7 +527,8 @@ class Event extends MyBaseModel
     }
 
     public function sections(){
-        return $this->hasManyThrough(Section::class,Ticket::class);
+        return $this->through('tickets')->has('sections');
+//        return $this->hasManyThrough(Section::class,Ticket::class);
     }
 
     public function reservedTickets(){
