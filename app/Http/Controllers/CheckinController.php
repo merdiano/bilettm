@@ -25,7 +25,7 @@ class CheckinController extends Controller
             ->join('orders','orders.id','=','attendees.order_id')
             ->where(function ($query) use ($event_id,$ticket_date) {
                 $query->where('attendees.event_id', $event_id)
-                    ->where('tickets.ticket_date',$ticket_date)
+                    ->whereDate('tickets.ticket_date',$ticket_date)
                     ->where('attendees.is_cancelled',false);
             })
             ->get();
