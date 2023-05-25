@@ -171,4 +171,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $this->notify(new UserResetPassword($token));
     }
+
+    public function events(){
+        return $this->hasMany( \App\Models\Event::class);
+    }
 }
