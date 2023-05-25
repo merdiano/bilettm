@@ -8,7 +8,7 @@ use App\User;
 use Firebase\JWT\JWT;
 use Firebase\JWT\ExpiredException;
 use Illuminate\Support\Facades\Log;
-
+use Firebase\JWT\Key;
 class JwtMiddleware
 {
     public function handle($request, Closure $next, $guard = null)
@@ -23,15 +23,15 @@ class JwtMiddleware
         }
 
         try {
-            $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
+            $credentials = JWT::decode($token,  new Key(env('JWT_SECRET'), 'HS256'));
         } catch(ExpiredException $e) {
             return response()->json([
                 'message' => 'Provided token is expired.'
             ], 401);
         } catch(Exception $e) {
-            Log::error($e->getMessage());
+
             return response()->json([
-                'message' => 'An error while decoding token.'
+                'message' => $e->getMessage()
             ], 400);
         }
 
