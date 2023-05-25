@@ -58,7 +58,7 @@
                     <div class="row" style="margin: 20px 0">
                         <table border="1" style="width: 95%; margin: auto">
                             <tr>
-                                <td rowspan="2" style="width: 20%; padding: 20px; vertical-align: top; position: relative">
+                                <td style="width: 55%; padding: 20px; vertical-align: top">
                                     <div class="barcode">
                                         {!! DNS2D::getBarcodeHTML($attendee->private_reference_number, "QRCODE", 7, 7) !!}
                                     </div>
@@ -69,10 +69,6 @@
                                     @endif
                                     <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: 78%; position: absolute; bottom: 20px;" />
                                 </td>
-                                <td style="width: 55%; padding: 20px; vertical-align: top">
-                                    <span class="text-muted">@lang('Ticket.ticket_number')</span>
-                                    <h2 style="margin-top: 5px; margin-bottom: 0">{{$attendee->reference}}</h2>
-                                </td>
                                 <td rowspan="2" style="width: 25%; padding: 20px; vertical-align: top">
                                     <p><b>@lang('Ticket.text_title')</b></p>
                                     <p> <span class="text-muted">@lang('Ticket.warn_text')</span></p>
@@ -80,6 +76,8 @@
                             </tr>
                             <tr>
                                 <td style="padding: 20px; vertical-align: top">
+                                    <span class="text-muted">@lang('Ticket.ticket_number')</span>
+                                    <h2 style="margin-top: 5px; margin-bottom: 0">{{$attendee->reference}}</h2>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.event'):</span> <b>{{$event->title}}</b></p>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.venue'):</span> <b>{{$event->venue->venue_name}}</b></p>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.date_time'):</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y H:i')}}</b></p>
