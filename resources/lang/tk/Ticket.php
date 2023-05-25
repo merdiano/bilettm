@@ -54,6 +54,6 @@ return array (
     'full_name' => 'Ady, Familiýasy',
     'seat' => 'Ýeri',
     'total' => 'Bahasy',
-    'warnt_text' => 'Biledi çap ediñ ya-da  mobil telefonyñyza ýükläñ we çärä geleñizde biletdäki QR-kody görkeziñ.',
+    'warn_text' => 'Biledi çap ediñ ya-da  mobil telefonyñyza ýükläñ we çärä geleñizde biletdäki QR-kody görkeziñ.',
     'text_title' => 'Üns beriň!',
 );
