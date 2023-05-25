@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendee;
 use App\Models\Event;
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -60,7 +61,8 @@ class CheckinController extends Controller
             ->join('orders','orders.id','=','attendees.order_id')
             ->where(function ($query) use ($event_id,$ticket_date) {
                 $query->where('attendees.event_id', $event_id)
-                    ->whereDate('tickets.ticket_date',$ticket_date)
+                    ->whereDate('tickets.ticket_date', Carbon::parse($ticket_date)->format('Y-m-d'))
+                    ->whereTime('tickets.ticket_date', Carbon::parse($ticket_date)->format('H:i:s'))
                     ->where('attendees.is_cancelled',false);
             })
             ->get();
