@@ -37,11 +37,12 @@ class QueueHandler
             'attendees' => $order->attendees,
         ];
 
-        $pdf_file = storage_path() . '/' . $order->order_reference;
-        exit($pdf_file);
-
-        PDF::setOutputMode('F'); // force to file
-        PDF::html('Public.ViewEvent.Partials.PDFTicket', $data, $pdf_file);
+        // exit($pdf_file);
+        // PDF::setOutputMode('F'); // force to file
+        // PDF::html('Public.ViewEvent.Partials.PDFTicket', $data, $pdf_file);
+        
+        $pdf_file = '/pdf-tickets/' . $order->order_reference . '.pdf';
+        PDF::loadView('Public.ViewEvent.Partials.PDFTicket', $data)->save($pdf_file, 'local');
 
         //1
         $this->orderMailer->sendOrderNotification($order);

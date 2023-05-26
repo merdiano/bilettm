@@ -179,19 +179,20 @@ class Order extends MyBaseModel
             'image'     => base64_encode(file_get_contents(public_path($this->event->organiser->full_logo_path))),
         ];
 
-        $pdf_file_path = public_path(config('attendize.event_pdf_tickets_path')) . '/' . $this->order_reference;
-        $pdf_file = $pdf_file_path . '.pdf';
+        $pdf_file = '/pdf-tickets/' . $this->order_reference . '.pdf';
 
         if (file_exists($pdf_file)) {
             return true;
         }
 
-        if (!is_dir($pdf_file_path)) {
-            File::makeDirectory(dirname($pdf_file_path), 0777, true, true);
-        }
+        // if (!is_dir($pdf_file_path)) {
+        //     File::makeDirectory(dirname($pdf_file_path), 0777, true, true);
+        // }
 
-        PDF::setOutputMode('F'); // force to file
-        PDF::html('Public.ViewEvent.Partials.PDFTicket', $data, $pdf_file_path);
+        // PDF::setOutputMode('F'); // force to file
+        // PDF::html('Public.ViewEvent.Partials.PDFTicket', $data, $pdf_file_path);
+
+        PDF::loadView('Public.ViewEvent.Partials.PDFTicket', $data)->save($pdf_file, 'local');
 
         $this->ticket_pdf_path = config('attendize.event_pdf_tickets_path') . '/' . $this->order_reference . '.pdf';
         $this->save();
