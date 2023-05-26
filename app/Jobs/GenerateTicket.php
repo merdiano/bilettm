@@ -40,7 +40,7 @@ class GenerateTicket extends Job implements ShouldQueue
     public function handle()
     {
 
-        $pdf_file = '/pdf-tickets/' .  $this->reference . ".pdf";
+        $pdf_file = '/user_content/pdf-tickets/' .  $this->reference . ".pdf";
 
         if (file_exists($pdf_file)) {
             Log::info("Use ticket from cache: " . $pdf_file);
