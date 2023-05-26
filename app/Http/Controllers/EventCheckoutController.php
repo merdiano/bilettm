@@ -596,7 +596,8 @@ class EventCheckoutController extends Controller
 
         if ($request->get('download') == '1') {
             $pdf = PDF::loadView('Public.ViewEvent.Partials.PDFTicket', $data);
-            return $pdf->download('ticket.pdf');
+            $filename = uniqid('ticket') . '.pdf';
+            return $pdf->download($filename);
         }
         return view('Public.ViewEvent.Partials.PDFTicket', $data);
     }

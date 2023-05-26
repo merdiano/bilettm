@@ -46,12 +46,23 @@ class AuthController extends Controller
         // be used to decode the token in the future
         return JWT::encode($payload, env('JWT_SECRET'),'HS256');
     }
+    
     /**
-     * Authenticate a user and return the token if the provided credentials are correct.
-     *
-     * @param  \App\User   $user
-     * @return mixed
-     */
+    * @OA\Post(
+    *      path="/api/auth/login",
+    *      tags={"Auth"},
+    *      summary="Login API",
+    *      description="Login API",
+    *      @OA\RequestBody(
+    *          required=true,
+    *          @OA\JsonContent(ref="#/components/schemas/Request")
+    *      ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function authenticate(User $user) {
         $this->validate($this->request, [
             'email'     => 'required|email',

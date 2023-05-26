@@ -11,7 +11,7 @@ class OrderMailer
 {
     public function sendOrderNotification(Order $order)
     {
-        $orderService = new OrderService($order->amount,  $order->booking_fee + $order->organiser_booking_fee, $order->event);
+        $orderService = new OrderService($order->amount, $order->booking_fee + $order->organiser_booking_fee, $order->event);
         $orderService->calculateFinalCosts();
 
         $data = [
