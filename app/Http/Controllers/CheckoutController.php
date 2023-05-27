@@ -393,6 +393,7 @@ class CheckoutController extends Controller
         }
 
         $tickets = $request->get('tickets');
+        return response()->json($tickets);
 
         DB::beginTransaction();
         try{
