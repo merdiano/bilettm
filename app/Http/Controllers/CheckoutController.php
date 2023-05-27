@@ -382,6 +382,37 @@ class CheckoutController extends Controller
 
     }
 
+    
+
+    /**
+    * @OA\Schema(
+    *       schema="BookRequest",
+    *       title="Title",
+    *       @OA\Property(
+    *            property="id",
+    *            type="int"
+    *       ),
+    *       @OA\Property(
+    *            property="token",
+    *            type="string"
+    *       ),
+    *      example={"id": "string", "token": "string"}
+    * )
+    * @OA\Post(
+    *      path="/vendor/event/{event_id}/book",
+    *      tags={"Operator"},
+    *      summary="book event ticket i n opertaor app",
+    *      description="book event ticket i n opertaor app",
+    *      @OA\RequestBody(
+    *          required=true,
+    *          @OA\JsonContent(ref="#/components/schemas/BookRequest")
+    *      ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function offline_book(Request $request, $event_id){
         $event = Event::findOrfail($event_id,['id','account_id']);
 

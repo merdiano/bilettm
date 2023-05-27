@@ -556,6 +556,31 @@
                     }
                 }
             }
+        },
+        "/vendor/event/{event_id}/book": {
+            "post": {
+                "tags": [
+                    "Operator"
+                ],
+                "summary": "book event ticket i n opertaor app",
+                "description": "book event ticket i n opertaor app",
+                "operationId": "2d1ea1d85ddadacdba063257eb72e436",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -612,6 +637,22 @@
                     }
                 },
                 "type": "object"
+            },
+            "BookRequest": {
+                "title": "Title",
+                "properties": {
+                    "id": {
+                        "type": "int"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "example": {
+                    "id": "string",
+                    "token": "string"
+                }
             }
         }
     },
