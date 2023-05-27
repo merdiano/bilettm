@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CheckoutController extends Controller
 {
+
     /**
     * @OA\Schema(
     *    schema="TicketType",
@@ -386,10 +387,17 @@ class CheckoutController extends Controller
     *     schema="TicketIds",
     *     title="TicketIds",
     *     @OA\Property(
-    *        property="ticket_id",
-    *        type="int"
+    *        property="id",
+    *        type="number"
     *     ),
-    *     example={"ticket_id": "string"}
+    *     @OA\Property(
+    *        property="seats",
+    *        description="Seats",
+    *        type="array",
+    *        collectionFormat="multi",
+    *        @OA\Items(type="string", format="id"),
+    *        @OA\Examples(example="string", value="F-2", summary="F-2"),
+    *     ),
     * )
     * @OA\Schema(
     *      schema="BookRequest",
@@ -406,14 +414,21 @@ class CheckoutController extends Controller
     *      @OA\Property(
     *            property="token",
     *            type="string"
-    *      ),
-    *      example={"id": "string", "token": "string"}
+    *      )
     * )
     * @OA\Post(
     *      path="/vendor/event/{event_id}/book",
     *      tags={"Operator"},
     *      summary="book event ticket i n opertaor app",
-    *      description="book event ticket i n opertaor app",
+    *      description="book event ticket in opertaor app",
+    *      @OA\Parameter(
+    *          description="event_id",
+    *          in="path",
+    *          name="event_id",
+    *          required=true,
+    *          @OA\Schema(type="number"),
+    *          @OA\Examples(example="number", value=2, summary="2"),
+    *      ),
     *      @OA\RequestBody(
     *          required=true,
     *          @OA\JsonContent(ref="#/components/schemas/BookRequest")
@@ -435,7 +450,6 @@ class CheckoutController extends Controller
         }
 
         $tickets = $request->get('tickets');
-        return response()->json($tickets);
 
         DB::beginTransaction();
         try{
@@ -448,7 +462,8 @@ class CheckoutController extends Controller
                 'account_id'            => $event->account_id,
                 'event_id'              => $event_id,
                 'is_payment_received'   => 0,
-                'order_date'            => Carbon::now()
+                'order_date'            => Carbon::now(),
+                'order_reference'       => strtoupper(str_random(5)) . date('jn')
             ]);
 
             foreach ($tickets as $ticket){

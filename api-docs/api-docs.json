@@ -605,8 +605,25 @@
                     "Operator"
                 ],
                 "summary": "book event ticket i n opertaor app",
-                "description": "book event ticket i n opertaor app",
+                "description": "book event ticket in opertaor app",
                 "operationId": "2d1ea1d85ddadacdba063257eb72e436",
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "event_id",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "examples": {
+                            "number": {
+                                "summary": "2",
+                                "value": 2
+                            }
+                        }
+                    }
+                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -701,14 +718,20 @@
             "TicketIds": {
                 "title": "TicketIds",
                 "properties": {
-                    "ticket_id": {
-                        "type": "int"
+                    "id": {
+                        "type": "number"
+                    },
+                    "seats": {
+                        "description": "Seats",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "id"
+                        },
+                        "collectionFormat": "multi"
                     }
                 },
-                "type": "object",
-                "example": {
-                    "ticket_id": "string"
-                }
+                "type": "object"
             },
             "BookRequest": {
                 "title": "Title",
@@ -725,11 +748,7 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
-                "example": {
-                    "id": "string",
-                    "token": "string"
-                }
+                "type": "object"
             }
         }
     },
