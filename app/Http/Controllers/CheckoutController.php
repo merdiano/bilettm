@@ -381,21 +381,34 @@ class CheckoutController extends Controller
         }
 
     }
-
     
 
     /**
     * @OA\Schema(
-    *       schema="BookRequest",
-    *       title="Title",
-    *       @OA\Property(
-    *            property="id",
-    *            type="int"
-    *       ),
-    *       @OA\Property(
+    *     schema="TicketIds",
+    *     title="TicketIds",
+    *     @OA\Property(
+    *        property="ticket_id",
+    *        type="int"
+    *     ),
+    *     example={"ticket_id": "string"}
+    * )
+    * @OA\Schema(
+    *      schema="BookRequest",
+    *      title="Title",
+    *      @OA\Property(
+    *           property="tickets",
+    *           description="Tickets",
+    *           type="array",
+    *           collectionFormat="multi",
+    *           @OA\Items(
+    *               ref="#/components/schemas/TicketIds"
+    *           ),
+    *      ),
+    *      @OA\Property(
     *            property="token",
     *            type="string"
-    *       ),
+    *      ),
     *      example={"id": "string", "token": "string"}
     * )
     * @OA\Post(

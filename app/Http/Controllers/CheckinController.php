@@ -133,6 +133,23 @@ class CheckinController extends Controller
         return response()->json(['message'=>'success','tickets' => $tickets]);
     }
 
+
+    /**
+    * @OA\Post(
+    *      path="/vendor/events/{event_id}/checkin",
+    *      tags={"Operator"},
+    *      summary="Checkin API",
+    *      description="Checkin API",
+    *      @OA\RequestBody(
+    *          required=true,
+    *          @OA\JsonContent(ref="#/components/schemas/Request")
+    *      ),
+    *      @OA\Response(
+    *          response=Response Code,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function checkInAttendees(Request $request, $event_id){
 
         $event = Event::where('id',$event_id)->where('user_id',$request->auth->id)->first();

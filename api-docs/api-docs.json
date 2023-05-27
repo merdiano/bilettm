@@ -638,11 +638,28 @@
                 },
                 "type": "object"
             },
+            "TicketIds": {
+                "title": "TicketIds",
+                "properties": {
+                    "ticket_id": {
+                        "type": "int"
+                    }
+                },
+                "type": "object",
+                "example": {
+                    "ticket_id": "string"
+                }
+            },
             "BookRequest": {
                 "title": "Title",
                 "properties": {
-                    "id": {
-                        "type": "int"
+                    "tickets": {
+                        "description": "Tickets",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TicketIds"
+                        },
+                        "collectionFormat": "multi"
                     },
                     "token": {
                         "type": "string"
