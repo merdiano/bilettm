@@ -441,6 +441,48 @@
                 }
             }
         },
+        "/vendor/events/{event_id}/checkin": {
+            "post": {
+                "tags": [
+                    "Operator"
+                ],
+                "summary": "Checkin API",
+                "description": "Checkin API",
+                "operationId": "468213327c8ba6cbb8615f14539c6c4d",
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "event_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "1",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CheckinRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response Message"
+                    }
+                }
+            }
+        },
         "/api/v2/my_tickets": {
             "get": {
                 "tags": [
@@ -585,6 +627,24 @@
     },
     "components": {
         "schemas": {
+            "CheckinRequest": {
+                "title": "CheckinRequest",
+                "properties": {
+                    "phone_id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "surname": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "email"
+                    }
+                },
+                "type": "object"
+            },
             "TicketType": {
                 "title": "TicketType",
                 "properties": {

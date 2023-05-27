@@ -218,8 +218,6 @@ class CheckoutController extends Controller
     *          type="email",
     *     )
     * )
-    */
-    /**
     * @OA\Post(
     *      path="/api/v2/event/{event_id}/register_order",
     *      operationId="Register order",
