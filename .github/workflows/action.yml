@@ -15,4 +15,4 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd /var/www/bilet
-          ${{ secrets.SCRIPT}}
+          git pull origin main
