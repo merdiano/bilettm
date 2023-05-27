@@ -63,7 +63,7 @@ class SectorCrudController extends CrudController
         CRUD::field('title_ru');
         CRUD::field('title_tk');
         CRUD::field('title');
-        CRUD::field(['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue']);
+        CRUD::addField(['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue']);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
