@@ -392,7 +392,7 @@ class CheckoutController extends Controller
             ]);
         }
 
-        $tickets = json_decode($request->get('tickets'),true);
+        $tickets = $request->get('tickets');
 
         DB::beginTransaction();
         try{
