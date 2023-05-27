@@ -396,18 +396,17 @@ class CheckoutController extends Controller
 
         DB::beginTransaction();
         try{
-            $order = new Order();
-            $order->first_name = 'kassa';
-            $order->last_name = 'kassa';
-            $order->email = $request->auth->email;
-            $order->order_status_id = 5;
-            $order->discount = 0.00;
-            $order->account_id = $event->account_id;
-            $order->event_id = $event_id;
-            $order->is_payment_received = 0;
-            $order->order_date = Carbon::now();
-
-            $order->save();
+            $order = Order::create([
+                'first_name'            => 'kassa',
+                'last_name'             => 'kassa',
+                'email'                 => $request->auth->email,
+                'order_status_id'       => 5,
+                'discount'              => 0.00,
+                'account_id'            => $event->account_id,
+                'event_id'              => $event_id,
+                'is_payment_received'   => 0,
+                'order_date'            => Carbon::now()
+            ]);
 
             foreach ($tickets as $ticket){
                 $attendee_count = Attendee::where('ticket_id',$ticket['id'])
