@@ -82,6 +82,10 @@ class Venue extends Model
     public function sections(){
         return $this->hasMany(Section::class);
     }
+
+    public function sectors(){
+        return $this->hasMany(Sector::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

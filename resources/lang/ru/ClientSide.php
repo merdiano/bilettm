@@ -95,7 +95,11 @@ return [
     'results' => 'Результаты поиска',
 
     //SeatsPage.blade.php
-    'seats' => 'Выбрать места',
+    'seats' => 'Выбрать места на ',
+    'step' => 'Step ',
+    'checkout_schema' => 'Checkout hall schema',
+    'choose_sector' => 'Choose Sector',
+    'choose_seat' => 'Choose Seat',
     'available' => 'Доступно',
     'booked' => 'Продано',
     'reserved' => 'Зарезервировано',
@@ -113,7 +117,7 @@ return [
     'timePlay' => 'Время проведения',
 
     //Chcekout page
-    'checkout' => 'Выбор места',
+    'checkout' => 'Покупка',
     'no_seats' => 'Вы не выбрали место',
     'min_ticket_message' => 'Вам следует выбрать, как минимум, :min билет.',
     'max_ticket_message' => 'Вы можете выбрать максимальное количество мест :max',

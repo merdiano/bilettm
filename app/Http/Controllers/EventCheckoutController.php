@@ -50,13 +50,17 @@ class EventCheckoutController extends Controller
         $this->gateway = $gateway;
     }
 
-    public function postValidateDate(Request $request, $event_id){
-
+    public function postValidateDate(Request $request, $event_id)
+    {
         $this->validate($request,['ticket_date'=>'required|date']);
+
         $event = Event::with('venue')->findOrFail($event_id);
+
+        $ticket_date = $request->get('ticket_date');
+
         $tickets = Ticket::with(['section','reserved:seat_no,ticket_id','booked:seat_no,ticket_id'])
             ->where('event_id',$event_id)
-            ->where('ticket_date',$request->get('ticket_date'))
+            ->where('ticket_date',$ticket_date)
             ->where('is_hidden', false)
             ->orderBy('sort_order','asc')
             ->get();
@@ -67,7 +71,9 @@ class EventCheckoutController extends Controller
             return redirect()->back();
         }
 
-        return $this->render('Pages.SeatsPage',compact('event','tickets'));
+        $venue = $event->venue;
+        $ticket_date = Carbon::parse($ticket_date)->format('d.m.Y');
+        return $this->render('Pages.SeatsPage',compact('event','tickets', 'ticket_date','venue'));
     }
     /**
      * Validate a ticket request. If successful reserve the tickets and redirect to checkout

@@ -1567,7 +1567,7 @@ input.reserved-seats ~ label svg {
   width: fit-content;
 
 }
-  .your-selected-seats span {
+  #your-selected-seats span {
     color: #ffffff;
     background-color: #d43d34;
     padding: 17px 7px;
