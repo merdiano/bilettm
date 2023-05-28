@@ -41,14 +41,14 @@ class Section extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public static function boot()
-    {
-        parent::boot();
-        static::deleting(function($obj) {
-            $disk = config('filesystems.default');
-            \Storage::disk($disk)->delete($obj->section_image);
-        });
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     static::deleting(function($obj) {
+    //         $disk = config('filesystems.default');
+    //         \Storage::disk($disk)->delete($obj->section_image);
+    //     });
+    // }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

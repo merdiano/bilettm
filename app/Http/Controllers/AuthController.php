@@ -46,12 +46,8 @@ class AuthController extends Controller
         // be used to decode the token in the future
         return JWT::encode($payload, env('JWT_SECRET'),'HS256');
     }
-    /**
-     * Authenticate a user and return the token if the provided credentials are correct.
-     *
-     * @param  \App\User   $user
-     * @return mixed
-     */
+
+    
     public function authenticate(User $user) {
         $this->validate($this->request, [
             'email'     => 'required|email',

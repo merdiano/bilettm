@@ -40,12 +40,10 @@ class GenerateTicket extends Job implements ShouldQueue
     public function handle()
     {
 
-        $file_name = $this->reference;
-        $file_path = public_path(config('attendize.event_pdf_tickets_path')) . '/' . $file_name;
-        $file_with_ext = $file_path . ".pdf";
+        $pdf_file = '/user_content/pdf-tickets/' .  $this->reference . ".pdf";
 
-        if (file_exists($file_with_ext)) {
-            Log::info("Use ticket from cache: " . $file_with_ext);
+        if (file_exists($pdf_file)) {
+            Log::info("Use ticket from cache: " . $pdf_file);
             return;
         }
 
@@ -75,8 +73,10 @@ class GenerateTicket extends Job implements ShouldQueue
             'images'    => $images,
         ];
         try {
-            PDF::setOutputMode('F'); // force to file
-            PDF::html('Public.ViewEvent.Partials.PDFTicket', $data, $file_path);
+            // PDF::setOutputMode('F'); // force to file
+            // PDF::html('Public.ViewEvent.Partials.PDFTicket', $data, $file_path);
+
+            PDF::loadView('Public.ViewEvent.Partials.PDFTicket', $data)->save($pdf_file, 'local');
             Log::info("Ticket generated!");
         } catch(\Exception $e) {
             Log::error("Error generating ticket. This can be due to permissions on vendor/nitmedia/wkhtml2pdf/src/Nitmedia/Wkhtml2pdf/lib. This folder requires write and execute permissions for the web user");

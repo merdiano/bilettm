@@ -43,6 +43,7 @@ class Venue extends Model
         'active',
         'address',
         'images',
+        'type'
     ];
     // protected $hidden = [];
     // protected $dates = [];

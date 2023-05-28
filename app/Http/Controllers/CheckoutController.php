@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CheckoutController extends Controller
 {
+
     /**
     * @OA\Schema(
     *    schema="TicketType",
@@ -218,8 +219,6 @@ class CheckoutController extends Controller
     *          type="email",
     *     )
     * )
-    */
-    /**
     * @OA\Post(
     *      path="/api/v2/event/{event_id}/register_order",
     *      operationId="Register order",
@@ -381,7 +380,65 @@ class CheckoutController extends Controller
         }
 
     }
+    
 
+    /**
+    * @OA\Schema(
+    *     schema="TicketIds",
+    *     title="TicketIds",
+    *     @OA\Property(
+    *        property="id",
+    *        type="number"
+    *     ),
+    *     @OA\Property(
+    *        property="seats",
+    *        description="Seats",
+    *        type="array",
+    *        collectionFormat="multi",
+    *        @OA\Items(type="string", format="id"),
+    *        @OA\Examples(example="string", value="F-2", summary="F-2"),
+    *     ),
+    * )
+    * @OA\Schema(
+    *      schema="BookRequest",
+    *      title="Title",
+    *      @OA\Property(
+    *           property="tickets",
+    *           description="Tickets",
+    *           type="array",
+    *           collectionFormat="multi",
+    *           @OA\Items(
+    *               ref="#/components/schemas/TicketIds"
+    *           ),
+    *      ),
+    *      @OA\Property(
+    *            property="token",
+    *            type="string"
+    *      )
+    * )
+    * @OA\Post(
+    *      path="/vendor/event/{event_id}/book",
+    *      tags={"Operator"},
+    *      summary="book event ticket i n opertaor app",
+    *      description="book event ticket in opertaor app",
+    *      @OA\Parameter(
+    *          description="event_id",
+    *          in="path",
+    *          name="event_id",
+    *          required=true,
+    *          @OA\Schema(type="number"),
+    *          @OA\Examples(example="number", value=2, summary="2"),
+    *      ),
+    *      @OA\RequestBody(
+    *          required=true,
+    *          @OA\JsonContent(ref="#/components/schemas/BookRequest")
+    *      ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Response Message",
+    *       ),
+    *     )
+    */
     public function offline_book(Request $request, $event_id){
         $event = Event::findOrfail($event_id,['id','account_id']);
 
@@ -392,22 +449,22 @@ class CheckoutController extends Controller
             ]);
         }
 
-        $tickets = json_decode($request->get('tickets'),true);
+        $tickets = $request->get('tickets');
 
         DB::beginTransaction();
         try{
-            $order = new Order();
-            $order->first_name = 'kassa';
-            $order->last_name = 'kassa';
-            $order->email = $request->auth->email;
-            $order->order_status_id = 5;
-            $order->discount = 0.00;
-            $order->account_id = $event->account_id;
-            $order->event_id = $event_id;
-            $order->is_payment_received = 0;
-            $order->order_date = Carbon::now();
-
-            $order->save();
+            $order = Order::create([
+                'first_name'            => 'kassa',
+                'last_name'             => 'kassa',
+                'email'                 => $request->auth->email,
+                'order_status_id'       => 5,
+                'discount'              => 0.00,
+                'account_id'            => $event->account_id,
+                'event_id'              => $event_id,
+                'is_payment_received'   => 0,
+                'order_date'            => Carbon::now(),
+                'order_reference'       => strtoupper(str_random(5)) . date('jn')
+            ]);
 
             foreach ($tickets as $ticket){
                 $attendee_count = Attendee::where('ticket_id',$ticket['id'])

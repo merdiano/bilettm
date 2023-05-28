@@ -25,6 +25,7 @@
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('slider') }}'><i class='nav-icon la la-image'></i> <span>Sliders</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('category') }}'><i class='nav-icon la la-tag'></i> <span>Categories</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('venue') }}'><i class='nav-icon la la-tag'></i> <span>Venues</span></a></li>
+<li class="nav-item"><a class="nav-link" href='{{ backpack_url('sector') }}'><i class='nav-icon la la-align-center'></i> <span>Sectors</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('section') }}'><i class='nav-icon la la-align-center'></i> <span>Sections</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('page') }}'><i class='nav-icon la la-file-o'></i> <span>Pages</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('subscriber') }}'><i class='nav-icon la la-tag'></i> <span>Subscribers</span></a></li>

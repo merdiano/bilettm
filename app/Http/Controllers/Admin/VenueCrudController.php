@@ -54,7 +54,7 @@ class VenueCrudController extends CrudController
         CRUD::setValidation(VenueRequest::class);
 
         $this->crud->addFields([
-            ['name' => 'type', 'type' => 'select_from_array', 'label' => 'Type', 'options' => ['default' => 'Default', 'arena' => 'Arena']],
+            ['name' => 'type', 'type' => 'select_from_array', 'label' => 'Type', 'options' => ['default' => 'Default', 'arena' => 'Arena'], 'tab' => 'General'],
             ['name'=>'venue_name_ru','type'=>'text','label'=>'Venue Name','tab' => 'Russian'],
             ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name','tab' => 'Turkmen'],
             ['name'=>'description_ru','type'=>'simplemde','label'=>'Description', 'tab' => 'Russian'],

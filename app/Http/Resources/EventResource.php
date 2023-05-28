@@ -21,6 +21,7 @@ class EventResource extends JsonResource
                 })->toArray(),
             ];
         })->values();
+        
         return [
             'id'                => $this->id,
             'title_tk'          => $this->title_tk,
