@@ -644,20 +644,31 @@
     },
     "components": {
         "schemas": {
-            "CheckinRequest": {
-                "title": "CheckinRequest",
+            "Attendee": {
+                "title": "TicketType",
                 "properties": {
-                    "phone_id": {
-                        "type": "integer"
+                    "id": {
+                        "type": "number"
                     },
-                    "name": {
+                    "arrival_time": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CheckinRequest": {
+                "title": "Checkin Request",
+                "properties": {
+                    "token": {
                         "type": "string"
                     },
-                    "surname": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "email"
+                    "attendees": {
+                        "description": "Attendees of the event",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Attendee"
+                        },
+                        "collectionFormat": "multi"
                     }
                 },
                 "type": "object"

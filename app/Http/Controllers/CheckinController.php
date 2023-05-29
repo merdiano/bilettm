@@ -136,56 +136,33 @@ class CheckinController extends Controller
 
     /**
     * @OA\Schema(
-    *    schema="TicketType",
+    *    schema="Attendee",
     *    title="TicketType",
     *    @OA\Property(
-    *         property="ticket_id",
-    *         type="integer"
+    *         property="id",
+    *         type="number"
     *    ),
     *    @OA\Property(
-    *         property="seat_nos",
-    *         description="Seat numbers",
-    *         type="array",
-    *         collectionFormat="multi",
-    *         @OA\Items(type="string", format="id" ),
+    *         property="arrival_time",
+    *         type="string"
     *    ),
-    * )
-    * @OA\Schema(
-    *     schema="TicketsRequest",
-    *     title="Ticket Request",
-    *     @OA\Property(
-    *        property="phone_id",
-    *        type="integer"
-    *     ),
-    *     @OA\Property(
-    *        property="tickets",
-    *        description="Tickets",
-    *        type="array",
-    *        collectionFormat="multi",
-    *        @OA\Items(
-    *             ref="#/components/schemas/TicketType"
-    *        ),
-    *     ),
     * )
     * @OA\Schema(
     *     schema="CheckinRequest",
-    *     title="CheckinRequest",
+    *     title="Checkin Request",
+    *    @OA\Property(
+    *         property="token",
+    *         type="string"
+    *    ),
     *     @OA\Property(
     *        property="attendees",
-    *        type="integer"
+    *        description="Attendees of the event",
+    *        type="array",
+    *        collectionFormat="multi",
+    *        @OA\Items(
+    *             ref="#/components/schemas/Attendee"
+    *        ),
     *     ),
-    *     @OA\Property(
-    *          property="name",
-    *          type="string",
-    *     ),
-    *     @OA\Property(
-    *          property="surname",
-    *          type="string",
-    *     ),
-    *     @OA\Property(
-    *          property="email",
-    *          type="email",
-    *     )
     * )
     * @OA\Post(
     *     path="/vendor/events/{event_id}/checkin",
