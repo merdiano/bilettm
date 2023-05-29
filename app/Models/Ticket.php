@@ -67,7 +67,10 @@ class Ticket extends MyBaseModel
     }
 
     public function getSectorIdAttribute(){
-        return $this->section->sector->id; 
+        if ($this->section) {
+            return $this->section->sector_id;
+        }
+        return null;
     }
 
     /**
