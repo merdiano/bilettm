@@ -78,7 +78,7 @@ class EventController extends Controller
         $event = Event::with(['venue:id,venue_name,seats_image,address,venue_name_ru,venue_name_tk,type','venue.sectors'])->withViews()->findOrFail($id,['id','venue_id']);
 
         if($event->venue->type == 'default'){
-            $tickets = Ticket::with('sector')->WithSection($id, $request->get('ticket_date'), $request->get('ticket_hours'))
+            $tickets = Ticket::WithSection($id, $request->get('ticket_date'), $request->get('ticket_hours'))
                 ->where('end_sale_date','>',Carbon::now())
                 ->where('start_sale_date','<',Carbon::now())
                 ->where('is_hidden', false)
@@ -87,7 +87,7 @@ class EventController extends Controller
                 ->get();
         }
         else{
-            $tickets = Ticket::with('sector')->WithSection($id, $request->get('ticket_date'), $request->get('ticket_hours'))
+            $tickets = Ticket::WithSection($id, $request->get('ticket_date'), $request->get('ticket_hours'))
                 ->where('end_sale_date','>',Carbon::now())
                 ->where('start_sale_date','<',Carbon::now())
                 ->where('is_hidden', false)
