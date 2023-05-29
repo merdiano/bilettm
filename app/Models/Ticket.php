@@ -11,6 +11,8 @@ class Ticket extends MyBaseModel
 {
     use SoftDeletes;
 
+    protected $appends = ['sector_id'];
+
     protected $casts = [
         'start_sale_date' => 'datetime', 
         'end_sale_date' => 'datetime',
