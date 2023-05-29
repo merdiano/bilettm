@@ -65,7 +65,7 @@ class Ticket extends MyBaseModel
 
     public function sector()
     {
-        return $this->hasOneThrough(Section::class, Sector::class, 'section_id', 'sector_id', 'id', 'id');
+        return $this->hasOneThrough(Sector::class, Section::class);
     }
 
     /**
