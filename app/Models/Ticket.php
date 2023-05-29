@@ -63,8 +63,8 @@ class Ticket extends MyBaseModel
         return $this->belongsTo(Section::class);
     }
 
-    public function sector(){
-        return $this->section()->sector();
+    public function setSectorIdAttribute(){
+        $this->attributes['sector_id'] = $this->section()->sector()->id;
     }
 
     /**
