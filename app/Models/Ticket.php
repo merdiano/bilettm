@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -64,7 +65,10 @@ class Ticket extends MyBaseModel
     }
 
     public function getSectorIdAttribute(){
-        $this->attributes['sector_id'] = $this->section()->sector()->id;
+        return Attribute::make(
+            get: $this->section->sector_id,
+        );
+        //$this->attributes['sector_id'] = $this->section->sector_id;
     }
 
     /**
