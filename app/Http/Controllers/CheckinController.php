@@ -198,7 +198,7 @@ class CheckinController extends Controller
             $att_ids = array_column($checks, 'id');
 
                 DB::beginTransaction();
-                $attendees = Attendee::whereIn('id',$att_ids)->get();
+                $attendees = Attendee::whereIn('private_reference_number',$att_ids)->get();
 
                 foreach ($attendees as $attendee){
                     $attendee->has_arrived = true;
