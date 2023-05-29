@@ -289,8 +289,8 @@ class Ticket extends MyBaseModel
 
     public function scopeWithSection($query, $event_id, $ticket_date, $ticket_hours = null){
         if($ticket_hours != null){
-            $query->select('id','title','description',"price", "max_per_person", "min_per_person","start_sale_date","end_sale_date","ticket_date","section_id")
-            ->with(['section:id,section_no,description,seats,section_no_ru,description_ru,section_no_tk,description_tk,sector_id','reserved:seat_no,ticket_id','booked:seat_no,ticket_id'])
+            $query->select('id','title','description',"price", "max_per_person", "min_per_person","start_sale_date","end_sale_date","ticket_date","section_id", "sector_id")
+            ->with(['section:id,section_no,description,seats,section_no_ru,description_ru,section_no_tk,description_tk','reserved:seat_no,ticket_id','booked:seat_no,ticket_id'])
             ->where('event_id',$event_id)
             ->whereDate('ticket_date','=',$ticket_date)
             ->whereTime('ticket_date', '=', $ticket_hours)
@@ -298,8 +298,8 @@ class Ticket extends MyBaseModel
 
             return $query;
         }
-        $query->select('id','title','description',"price", "max_per_person", "min_per_person","start_sale_date","end_sale_date","ticket_date","section_id")
-            ->with(['section:id,section_no,description,seats,section_no_ru,description_ru,section_no_tk,description_tk,sector_id','reserved:seat_no,ticket_id','booked:seat_no,ticket_id'])
+        $query->select('id','title','description',"price", "max_per_person", "min_per_person","start_sale_date","end_sale_date","ticket_date","section_id",  "sector_id")
+            ->with(['section:id,section_no,description,seats,section_no_ru,description_ru,section_no_tk,description_tk','reserved:seat_no,ticket_id','booked:seat_no,ticket_id'])
             ->where('event_id',$event_id)
             ->whereDate('ticket_date','=',Carbon::parse($ticket_date)->format('Y-m-d'))
             ->whereTime('ticket_date', '=', Carbon::parse($ticket_date)->format('H:i:s'))
