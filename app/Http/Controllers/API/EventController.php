@@ -33,7 +33,7 @@ class EventController extends Controller
     */
     public function eventDetailById($id){
         //todo handle if not found
-        $event = Event::with(['ticket_dates','venue:id,venue_name_tk,venue_name_ru,address,type,seats_image', 'venue.sectors'])->withViews()->onLive()->find($id);
+        $event = Event::with(['ticket_dates','venue:id,venue_name_tk,venue_name_ru,address,type,seats_image'])->withViews()->onLive()->find($id);
         return EventResource::make($event);
     }
 
@@ -75,7 +75,7 @@ class EventController extends Controller
     */
     public function eventSeatsById(Request $request, $id){
         $this->validate($request, [ 'ticket_date' => 'required', 'ticket_hours' => 'required' ]);
-        $event = Event::with('venue:id,venue_name,seats_image,address,venue_name_ru,venue_name_tk,type')->withViews()->findOrFail($id,['id','venue_id']);
+        $event = Event::with(['venue:id,venue_name,seats_image,address,venue_name_ru,venue_name_tk,type','venue.sectors'])->withViews()->findOrFail($id,['id','venue_id']);
 
         if($event->venue->type == 'default'){
             $tickets = Ticket::WithSection($id, $request->get('ticket_date'), $request->get('ticket_hours'))
