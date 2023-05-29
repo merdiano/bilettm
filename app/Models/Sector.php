@@ -48,8 +48,10 @@ class Sector extends Model
     }
 
     public function getHasTicketsAttribute(){
-        if (count($this->sections->tickets) > 0){
-            return true;
+        foreach($this->sections as $section){
+            if($section->has_tickets){
+                return true;
+            }
         }
         return false;
     }

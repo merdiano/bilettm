@@ -37,6 +37,7 @@ class Section extends Model
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = ['seats' => 'array'];
+    protected $appends = ['has_tickets'];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -90,6 +91,13 @@ class Section extends Model
 
     public function getDescriptionAttribute(){
         return $this->{'description_'.Config::get('app.locale')};
+    }
+
+    public function getHasTicketsAttribute(){
+        if (count($this->tickets) > 0){
+            return true;
+        }
+        return false;
     }
 
     public function setSectionImageAttribute($value){
