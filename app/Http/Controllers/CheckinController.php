@@ -137,7 +137,7 @@ class CheckinController extends Controller
     /**
     * @OA\Schema(
     *    schema="Attendee",
-    *    title="TicketType",
+    *    title="Attendee",
     *    @OA\Property(
     *         property="id",
     *         type="number"
