@@ -37,7 +37,6 @@ class Section extends Model
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = ['seats' => 'array'];
-    protected $appends = ['has_tickets'];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
