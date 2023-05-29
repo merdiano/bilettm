@@ -136,10 +136,42 @@ class CheckinController extends Controller
 
     /**
     * @OA\Schema(
+    *    schema="TicketType",
+    *    title="TicketType",
+    *    @OA\Property(
+    *         property="ticket_id",
+    *         type="integer"
+    *    ),
+    *    @OA\Property(
+    *         property="seat_nos",
+    *         description="Seat numbers",
+    *         type="array",
+    *         collectionFormat="multi",
+    *         @OA\Items(type="string", format="id" ),
+    *    ),
+    * )
+    * @OA\Schema(
+    *     schema="TicketsRequest",
+    *     title="Ticket Request",
+    *     @OA\Property(
+    *        property="phone_id",
+    *        type="integer"
+    *     ),
+    *     @OA\Property(
+    *        property="tickets",
+    *        description="Tickets",
+    *        type="array",
+    *        collectionFormat="multi",
+    *        @OA\Items(
+    *             ref="#/components/schemas/TicketType"
+    *        ),
+    *     ),
+    * )
+    * @OA\Schema(
     *     schema="CheckinRequest",
     *     title="CheckinRequest",
     *     @OA\Property(
-    *        property="phone_id",
+    *        property="attendees",
     *        type="integer"
     *     ),
     *     @OA\Property(
