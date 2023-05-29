@@ -16,7 +16,7 @@ class Venue extends Model
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
-    protected $casts = [ 'address' => 'array','images' => 'array'];
+    protected $casts = [ 'images' => 'array'];
     protected $table = 'venues';
     // protected $primaryKey = 'id';
     public $timestamps = false;
