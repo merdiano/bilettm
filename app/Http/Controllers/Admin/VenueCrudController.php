@@ -59,15 +59,14 @@ class VenueCrudController extends CrudController
             ['name'=>'venue_name_tk','type'=>'text','label'=>'Venue Name','tab' => 'Turkmen'],
             ['name'=>'description_ru','type'=>'simplemde','label'=>'Description', 'tab' => 'Russian'],
             ['name'=>'description_tk','type'=>'simplemde','label'=>'Description', 'tab' => 'Turkmen'],
-            ['name'=>'address','type'=>'text','label'=>'Address','tab' => 'General'],
-            // [   // Address
-            //     'name' => 'address',
-            //     'label' => 'Address',
-            //     'type' => 'address_google',
-            //     // optional
-            //     'store_as_json' => true,
-            //     'tab' => 'General'
-            // ],
+            [   // Address
+                'name' => 'address',
+                'label' => 'Address',
+                'type' => 'address_google',
+                // optional
+                'store_as_json' => true,
+                'tab' => 'General'
+            ],
             ['name'=>'images','type'=>'upload_multiple','label'=>'Suratlar',
                 'upload' => true, 'disk' => config('filesystems.default'), 'tab' => 'Suratlar'],
             [ // image
