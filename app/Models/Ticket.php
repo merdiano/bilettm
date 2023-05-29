@@ -62,12 +62,6 @@ class Ticket extends MyBaseModel
     public function section(){
         return $this->belongsTo(Section::class);
     }
-
-    public function sector()
-    {
-        return $this->hasOneThrough(Section::class, Sector::class);
-    }
-
     /**
      * The order associated with the ticket.
      *
