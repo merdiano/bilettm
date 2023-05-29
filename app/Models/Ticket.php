@@ -65,10 +65,10 @@ class Ticket extends MyBaseModel
     }
 
     public function getSectorIdAttribute(){
-        return Attribute::make(
-            get: $this->section->sector_id,
-        );
-        //$this->attributes['sector_id'] = $this->section->sector_id;
+        // return Attribute::make(
+        //     get: $this->section->sector_id,
+        // );
+        $this->attributes['sector_id'] = $this->section->sector_id;
     }
 
     /**
