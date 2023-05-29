@@ -94,6 +94,12 @@ return [
     'results' => 'Gözlegiň netijeleri',
 
     //SeatsPage.blade.php
+    'by_ticket_for' => '":event" üçin bilet satyn almak',
+    'step' => 'Ädim ',
+    'checkout_schema' => 'Zal shemasy bilen tanyş boluň!',
+    'choose_sector' => 'Sektor saýlaň',
+    'choose_seat' => 'Orun saýlaň',
+    'row' => 'setir',
     'seats' => 'Orun saýlaň',
     'available' => 'Elýeter',
     'booked' => 'Satyn alynan',
@@ -127,7 +133,9 @@ return [
     'order_error' => 'Bagyşlaň! Siziň sargydyňyz işlenilen wagty ýalňyşlyk ýüze çykdy. Täzeden synanyşmagyňyzy haýyş edýäris.',
     'message_reserved' => 'Bu orun eýýäm eýelendi. Başga orun saýlamagyňyzy haýyş edýäris.',
     'message_wait' => 'Garaşyň',
-
+    'buyer_info_text' => 'Bilet eýesiniň maglumatlaryny giriziň',
+    'main_buyer_info' => 'Данные покупателя (владельца)',
+    'choose_payment_method' => 'Töleg usulyny saýlaň',
     //About page
     'about_us' => 'Biz barada',
     'contacts'=> 'Habarlaşmak üçin',

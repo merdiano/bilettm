@@ -21,6 +21,7 @@ class Order extends MyBaseModel
         'order_last_name'  => ['required'],
         'order_email'      => ['required', 'email'],
         'order_terms'      => ['required'],
+        'payment'          => ['required']
     ];
 
     protected $fillable = [

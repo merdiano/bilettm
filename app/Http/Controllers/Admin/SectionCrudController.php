@@ -51,6 +51,7 @@ class SectionCrudController extends CrudController
             ['name' => 'venue_id', 'type'=>'select','entity'=>'venue','attribute'=>'venue_name_ru','label'=>'Venue'],
             ['name' => 'sector_id', 'type'=>'select','entity'=>'sector','attribute'=>'title_ru','label'=>'Sector'],
         ]);
+        CRUD::column('order');
     }
 
     protected function setupCreateOperation()
@@ -85,6 +86,7 @@ class SectionCrudController extends CrudController
             ]
 
         ]);
+        CRUD::field('order');
     }
 
     protected function setupUpdateOperation()

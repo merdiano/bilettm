@@ -95,15 +95,18 @@ return [
     'results' => 'Результаты поиска',
 
     //SeatsPage.blade.php
+    'by_ticket_for' => 'Купить билет на ":event"',
     'seats' => 'Выбрать места на ',
-    'step' => 'Step ',
-    'checkout_schema' => 'Checkout hall schema',
-    'choose_sector' => 'Choose Sector',
-    'choose_seat' => 'Choose Seat',
+    'step' => 'Шаг ',
+    'checkout_schema' => 'Ознакомиться со схемой зала',
+    'choose_sector' => 'Выберите раздел',
+    'choose_seat' => 'Выберите место',
+    'row' => 'ряд',
     'available' => 'Доступно',
     'booked' => 'Продано',
     'reserved' => 'Зарезервировано',
     'selection' => 'Ваш выбор',
+
 
     'yourSeats' => 'Ваши места',
     'exceeds' => "Максимальное разрешенное количество билетов ",
@@ -133,6 +136,9 @@ return [
     'order_error' => 'Извините! Произошла ошибка при обработке вашего заказа. Поажлуйста, попробуйте еще раз.',
     'message_reserved' => 'Кто-то уже выбрал это место. Пожалуйста, выберите другое место',
     'message_wait' => 'Подождите',
+    'buyer_info_text' => 'Укажите данные владельца билета',
+    'main_buyer_info' => 'Данные покупателя (владельца)',
+    'choose_payment_method' => 'Выберете метод/систему оплаты',
     //About page
     'about_us' => 'О нас',
     'contacts'=> 'Контакты',

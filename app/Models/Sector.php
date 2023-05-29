@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use function Clue\StreamFilter\fun;
 
 class Sector extends Model
 {
@@ -22,7 +23,7 @@ class Sector extends Model
     // public $timestamps = false;
     protected $guarded = ['id'];
     protected $fillable = [
-        'title', 'title_ru', 'title_tk', 'venue_id'
+        'title', 'title_ru', 'title_tk', 'venue_id','order'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -32,12 +33,17 @@ class Sector extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function venue(){
-        return $this->belongsTo(Venue::class);
+    public function hasTickets($tickets):bool{
+
+        return $tickets->contains(function($value,$key){
+            return $value->section->sector_id == $this->id;
+        });
     }
 
-    public function sections(){
-        return $this->hasMany(Section::class);
+    public function filterTickets($tickets){
+        return $tickets->filter(function($value,$key){
+            return $value->section->sector_id == $this->id;
+        })->sortBy('section.order');
     }
 
     /*
@@ -51,7 +57,13 @@ class Sector extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    public function venue(){
+        return $this->belongsTo(Venue::class);
+    }
 
+    public function sections(){
+        return $this->hasMany(Section::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | ACCESSORS

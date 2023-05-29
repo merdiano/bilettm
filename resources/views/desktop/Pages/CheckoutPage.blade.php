@@ -1,6 +1,5 @@
 @extends('Shared.Layouts.BilettmLayout',['folder' => 'desktop'])
 @section('content')
-    @include('desktop.Partials.HeaderSection')
 
     @include('desktop.Partials.CreateOrderSection')
 

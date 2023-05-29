@@ -187,14 +187,14 @@ class EventCheckoutController extends Controller
                 /*
                  * Create our validation rules here
                  */
-                $validation_rules['ticket_holder_first_name.' . $seat_no . '.' . $ticket_id] = ['required'];
-                $validation_rules['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id] = ['required'];
-                $validation_rules['ticket_holder_email.' . $seat_no . '.' . $ticket_id] = ['required', 'email'];
-
-                $validation_messages['ticket_holder_first_name.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_first_name_required',['seat' => $seat_no]);
-                $validation_messages['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_last_name_required',['seat' => $seat_no]);
-                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_email_required',['seat' => $seat_no]);;
-                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.email'] = trans('ClientSide.holder_email_invalid',['seat' => $seat_no]);;
+//                $validation_rules['ticket_holder_first_name.' . $seat_no . '.' . $ticket_id] = ['required'];
+//                $validation_rules['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id] = ['required'];
+//                $validation_rules['ticket_holder_email.' . $seat_no . '.' . $ticket_id] = ['required', 'email'];
+//
+//                $validation_messages['ticket_holder_first_name.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_first_name_required',['seat' => $seat_no]);
+//                $validation_messages['ticket_holder_last_name.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_last_name_required',['seat' => $seat_no]);
+//                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.required'] = trans('ClientSide.holder_email_required',['seat' => $seat_no]);;
+//                $validation_messages['ticket_holder_email.' . $seat_no . '.' . $ticket_id . '.email'] = trans('ClientSide.holder_email_invalid',['seat' => $seat_no]);;
                 /*
                  * Validation rules for custom questions
                  */
@@ -311,7 +311,7 @@ class EventCheckoutController extends Controller
             ]);
         }
 
-        $event = Event::findOrFail($event_id);
+
         $ticket_order = session()->get('ticket_order_' . $event_id);
 
         $validation_rules = $ticket_order['validation_rules'];
@@ -331,12 +331,15 @@ class EventCheckoutController extends Controller
 
         //Add the request data to a session in case payment is required off-site
         session()->push('ticket_order_' . $event_id . '.request_data', $request->except(['card-number', 'card-cvc']));
-
+        $event = Event::findOrFail($event_id);
         try {
             $orderService = new OrderService($ticket_order['order_total'], $ticket_order['total_booking_fee'], $event);
             $orderService->calculateFinalCosts();
             $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
 
+            //todo add payment methods strategy, save selected method to order
+
+            $paymentMethod = $request->get('payment');
             $transaction_data =[
                 'amount'      => $orderService->getGrandTotal()*100,//multiply by 100 to obtain tenge
                 'currency' => 934,

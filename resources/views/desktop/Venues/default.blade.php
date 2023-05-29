@@ -21,26 +21,7 @@
                 <span class="pr-5"><i class="fa fa-circle" style="color: #4e5ced; font-size: 13px"></i> {{__('ClientSide.reserved')}}</span>
                 <span class="pr-5"><i class="fa fa-circle" style="color: #ff4159; font-size: 13px"></i> {{__('ClientSide.selection')}}</span>
             </div>
-            <!-- Button trigger modal -->
 
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document" style="max-width: 800px">
-                    <div class="modal-content" style="background-color: unset; border: none; ">
-                        <div class="modal-header" style="border-bottom: none">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                    style="border: 2px solid #ffffff; border-radius: 100px; padding: 0; opacity: 1">
-                                            <span aria-hidden="true"
-                                                  style="color: #ffffff; opacity: 1; text-shadow: none; font-weight: lighter; font-size: 35px; padding: 0px !important; width: 30px; height: 30px; display: block; line-height: 31px;">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <img class="img-responsive" src="{{asset('user_content/'.$event->venue->seats_image)}}" style="width: 100%">
-                        </div>
-                    </div>
-                </div>
-            </div>
             <form id="seats-form" class="ajax" action="{{route('postValidateTickets',['event_id'=>$event->id])}}" method="post">
                 @csrf
                 <div class="tab-content" id="choose_seats_content">
@@ -62,7 +43,7 @@
                                         @lang("Public_ViewEvent.sold_out")
                                     </h5>
                                 @elseif($ticket->sale_status === config('attendize.ticket_status_after_sale_date'))
-                                    <h4 class="text-danger ">@lang("Public_ViewEvent.sales_have_ended")</h4>5
+                                    <h4 class="text-danger ">@lang("Public_ViewEvent.sales_have_ended")</h4>
                                 @else
                                     <meta property="availability" content="http://schema.org/InStock">
                                     <div class="standard-box">

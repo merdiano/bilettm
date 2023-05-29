@@ -31,7 +31,8 @@ class Section extends Model
         'venue_id',
         'seats',
         'section_image',
-        'sector_id'
+        'sector_id',
+        'order'
     ];
     // protected $hidden = [];
     // protected $dates = [];

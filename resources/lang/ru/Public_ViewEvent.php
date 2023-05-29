@@ -16,7 +16,7 @@ return [
     'booking_fee' => 'Плата за услуги',
     'booking_fees' => 'Сбор за сервис',
     'card_number' => 'Номер карты',
-    'checkout_submit' => 'Оплатить',
+    'checkout_submit' => 'Перейти к оплате',
     'checkout_order' => 'Продолжить к оплате',
     'confirmation_email' => 'отправлен(ы) вам по электронной почте .',
     'mobile_tickets_sent_email' => 'Ваш(и) Билет (ы) отправлен(ы) вам на электронную почту и сохраняются в разделе "Заказы".',
