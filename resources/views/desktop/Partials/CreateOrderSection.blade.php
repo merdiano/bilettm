@@ -38,7 +38,6 @@
         </div>
     @endif
 
-    {!! Form::hidden('is_embedded', $is_embedded) !!}
     <div class="form-row">
         <div class="col-6">
             <div class="form-group">
@@ -49,32 +48,17 @@
 
     </div>
     <h3 class="my-5">{{__('ClientSide.step')}} 5. {{__('ClientSide.choose_payment_method')}}</h3>
+    @foreach(config('payment') as $paymentMethod)
     <div class="form-row mt-3">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="payment" id="exampleRadios1" value="halk" required>
-            <label class="form-check-label" for="exampleRadios1">
-                Altyn Asyr (Halkbank)
+            <input class="form-check-input" type="radio" name="payment" id="method{{$loop->index}}" value="{{$paymentMethod['code']}}" required>
+            <label class="form-check-label" for="method{{$loop->index}}">
+                {{$paymentMethod['title']}}
             </label>
         </div>
+    </div>
+    @endforeach
 
-
-    </div>
-    <div class="form-row mt-3">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="payment" id="exampleRadios2" value="rysgal">
-            <label class="form-check-label" for="exampleRadios2">
-                Maestro (Rysgalbank)
-            </label>
-        </div>
-    </div>
-    <div class="form-row my-3">
-        <div class="form-check disabled">
-            <input class="form-check-input" type="radio" name="payment" id="exampleRadios3" value="vneshka">
-            <label class="form-check-label" for="exampleRadios3">
-                Milli Kart (Türkmenistanyň döwlet daşary ykdysady iş banky)
-            </label>
-        </div>
-    </div>
     <div class="row my-5">
         <div class="col-12 col-lg-6">
             <div class="card">

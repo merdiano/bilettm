@@ -25,30 +25,6 @@ use Validator;
 
 class EventCheckoutController extends Controller
 {
-    /**
-     * Is the checkout in an embedded Iframe?
-     *
-     * @var bool
-     */
-    protected $is_embedded;
-    /**
-     * Payment gateway
-     * @var CardPayment
-     */
-    protected $gateway;
-
-    /**
-     * EventCheckoutController constructor.
-     * @param Request $request
-     */
-    public function __construct(Request $request, CardPayment $gateway)
-    {
-        /*
-         * See if the checkout is being called from an embedded iframe.
-         */
-        $this->is_embedded = $request->get('is_embedded') == '1';
-        $this->gateway = $gateway;
-    }
 
     public function postValidateDate(Request $request, $event_id)
     {
@@ -242,7 +218,7 @@ class EventCheckoutController extends Controller
                 'status'      => 'success',
                 'redirectUrl' => route('showEventCheckout', [
                         'event_id'    => $event_id,
-                        'is_embedded' => $this->is_embedded,
+                        'is_embedded' => false,
                     ]) . '#order_form',
             ]);
         }
@@ -265,8 +241,8 @@ class EventCheckoutController extends Controller
         $order_session = session()->get('ticket_order_' . $event_id);
 
         if (!$order_session || $order_session['expires'] < Carbon::now()) {
-            $route_name = $this->is_embedded ? 'showEmbeddedEventPage' : 'showEventPage';
-            return redirect()->route($route_name, ['event_id' => $event_id]);
+
+            return redirect()->route('showEventPage', ['event_id' => $event_id]);
         }
 
         $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
@@ -279,13 +255,8 @@ class EventCheckoutController extends Controller
         $data = $order_session + [
                 'event'           => $event,
                 'secondsToExpire' => $secondsToExpire,
-                'is_embedded'     => $this->is_embedded,
                 'orderService'    => $orderService
                 ];
-
-        if ($this->is_embedded) {
-            return view('Public.ViewEvent.Embedded.EventPageCheckout', $data); // <--- todo check this out
-        }
 
         return $this->render('Pages.CheckoutPage', $data);
     }
@@ -311,11 +282,14 @@ class EventCheckoutController extends Controller
             ]);
         }
 
+        $validation_rules = $order_session['validation_rules'];
+        $validation_messages = $order_session['validation_messages'];
 
-        $ticket_order = session()->get('ticket_order_' . $event_id);
+        $paymentMethods = implode(',',array_keys(config('payment')));
 
-        $validation_rules = $ticket_order['validation_rules'];
-        $validation_messages = $ticket_order['validation_messages'];
+        $validation_rules['payment'] = ['required','in:'.$paymentMethods];
+        $validation_messages['payment.required'] = trans('ClientSide.payment.required');
+        $validation_messages['payment.in'] = "Payment methods must be within: ".$paymentMethods;
 
         $order = new Order();
         $order->rules = $order->rules + $validation_rules;
@@ -332,55 +306,23 @@ class EventCheckoutController extends Controller
         //Add the request data to a session in case payment is required off-site
         session()->push('ticket_order_' . $event_id . '.request_data', $request->except(['card-number', 'card-cvc']));
         $event = Event::findOrFail($event_id);
-        try {
-            $orderService = new OrderService($ticket_order['order_total'], $ticket_order['total_booking_fee'], $event);
-            $orderService->calculateFinalCosts();
-            $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
 
-            //todo add payment methods strategy, save selected method to order
+        try {
+            $orderService = new OrderService($order_session['order_total'], $order_session['total_booking_fee'], $event);
+            $orderService->calculateFinalCosts();
 
             $paymentMethod = $request->get('payment');
-            $transaction_data =[
-                'amount'      => $orderService->getGrandTotal()*100,//multiply by 100 to obtain tenge
-                'currency' => 934,
-                'sessionTimeoutSecs' => $secondsToExpire,
-                'description' => 'bilettm sargyt: ' . $request->get('order_email'),
-                'orderNumber'     => $order->order_reference,
 
-                'failUrl'     => route('showEventCheckoutPaymentReturn', [
-                    'event_id'             => $event_id,
-                    'is_payment_cancelled' => 1
-                ]),
-                'returnUrl' => route('showEventCheckoutPaymentReturn', [
-                    'event_id'              => $event_id,
-                    'is_payment_successful' => 1
-                ]),
+            $gatewayClass = config('payment.'.$paymentMethod.'.class');
+            $gateway = new $gatewayClass();
 
-            ];
-
-            $response = $this->gateway->registerPayment($transaction_data);
+            $response = $gateway->registerPaymentOrder($order->order_reference, $orderService->getGrandTotal(),$event_id);
 
             if($response->isSuccessfull()){
-
-                $order->first_name = $request->get('order_first_name');
-                $order->last_name = $request->get('order_last_name');
-                $order->email = $request->get('order_email');
-                $order->order_status_id = 5;//order awaiting payment
-                $order->amount = $ticket_order['order_total'];
-                $order->booking_fee = $ticket_order['booking_fee'];
-                $order->organiser_booking_fee = $ticket_order['organiser_booking_fee'];
-                $order->discount = 0.00;
-                $order->account_id = $event->account_id;
-                $order->event_id = $event_id;
-                $order->is_payment_received = 0;//false
-                $order->taxamt = $orderService->getTaxAmount();
-                $order->session_id = session()->getId();
                 $order->transaction_id = $response->getPaymentReferenceId();
-                $order->order_date = Carbon::now();
-                $order->save();
-
-                session()->push('ticket_order_' . $event_id . '.order_id', $order->id);
-                Log::info("Redirect url: " . $response->getRedirectUrl());
+                $order_id = $orderService->saveOrder($order);
+                session()->push('ticket_order_' . $event_id . '.order_id', $order_id);
+                session()->push('ticket_order_' . $event_id . '.payment_method', $paymentMethod);
 
                 $return = [
                     'status'       => 'success',
@@ -429,51 +371,50 @@ class EventCheckoutController extends Controller
             ]);
         }
 
-        //todo check the refresh page condition
         $order_id = session()->get('ticket_order_' . $event_id . '.order_id');
-        $ticket_order = session()->get('ticket_order_' . $event_id);
         $order = Order::findOrFail(sanitise($order_id[0]));
-        foreach ($ticket_order['tickets'] as $attendee_details) {
-            /*
-             * Insert order items (for use in generating invoices)
-             */
-            $unit_booking_fee = $attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'];
 
-            OrderItem::create([
-                'title' => $attendee_details['ticket']['title'],
-                'order_id' => $order->id,
-                'quantity' => $attendee_details['qty'],
-                'unit_price' => $attendee_details['ticket']['price'],
-                'unit_booking_fee' => $unit_booking_fee
-            ]);
-        }
-
-
-        $response = $this->gateway->getPaymentStatus($order->transaction_id);
-
-        $resp_data = $response->getResponseData();
-
-        $order->payment_card_pan = $resp_data['Pan'];
-        $order->payment_card_expiration = $resp_data['expiration'];
-        $order->payment_card_holder_name = $resp_data['cardholderName'];
-        $order->payment_order_status = $resp_data['OrderStatus'];
-        $order->payment_error_code = $resp_data['ErrorCode'];
-        $order->payment_error_message = $resp_data['ErrorMessage'];
-
-
-        //todo try catch for connection errors
-        if ($response->isSuccessfull()) {
-
-            OrderService::completeOrder($ticket_order, $order);
+        //if page is refreshed and order is already registered successfully
+        if($order->order_status_id == 1){
             return response()->redirectToRoute('showOrderDetails', [
-                'is_embedded'     => $this->is_embedded,
+                'is_embedded'     => false,
                 'order_reference' => $order->order_reference,
             ]);
-        } else {
-            //some times bank responds as payment not processed and we check 5 minutes later paymant status
-            ProcessPayment::dispatch($order,$ticket_order)->delay(now()->addMinutes(5));
-            return $this->render('Pages.OrderExpectingPayment');
         }
+        $ticket_order = session()->get('ticket_order_' . $event_id);
+
+        $gatewayClass = config('payment.'.$ticket_order['paymentMethod'].'.class');
+        $gateway = new $gatewayClass();
+
+        try {
+            $response = $gateway->getPaymentStatus($order->transaction_id);
+            if ($response->isSuccessfull()) {
+
+                $order->fill($response->getPaymentInfo());
+
+                OrderService::completeOrder($ticket_order, $order);
+                return response()->redirectToRoute('showOrderDetails', [
+                    'is_embedded'     => false,
+                    'order_reference' => $order->order_reference,
+                ]);
+            } else {
+                //some times bank responds as payment not processed and we check 5 minutes later paymant status
+//            ProcessPayment::dispatch($order,$ticket_order)->delay(now()->addMinutes(5));
+                return $this->render('Pages.OrderExpectingPayment');
+            }
+        }catch (\Exeption $e) {
+            Log::error($e);
+            $error = trans('ClientSide.payment_error');
+        }
+
+        if ($error) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => $error,
+            ]);
+        }
+
+
     }
 
     public function mobileCheckoutPaymentReturn(Request $request, $event_id){
@@ -561,12 +502,8 @@ class EventCheckoutController extends Controller
             'orderService' => $orderService,
             'event'        => $order->event,
             'tickets'      => $order->event->tickets,
-            'is_embedded'  => $this->is_embedded,
-        ];
 
-        if ($this->is_embedded) {
-            return view('Public.ViewEvent.Embedded.EventPageViewOrder', $data);
-        }
+        ];
 
         return $this->render('Pages.ViewOrderPage', $data);
 //        return view('Public.ViewEvent.EventPageViewOrder', $data);

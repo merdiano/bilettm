@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+use App\Models\OrderItem;
+use Carbon\Carbon;
 use PhpSpec\Exception\Exception;
 use App\Events\OrderCompletedEvent;
 use App\Models\Event;
@@ -13,22 +15,6 @@ use DB;
 use Log;
 class EventOrderService
 {
-
-    /**
-     * @var float
-     */
-    private $orderTotal;
-
-    /**
-     * @var float
-     */
-    public $totalBookingFee;
-
-    /**
-     * @var Event
-     */
-    private $event;
-
     /**
      * @var float
      */
@@ -50,14 +36,7 @@ class EventOrderService
      * @param $totalBookingFee
      * @param $event
      */
-    public function __construct($orderTotal, $totalBookingFee, $event) {
-
-        $this->orderTotal = $orderTotal;
-        $this->totalBookingFee = $totalBookingFee;
-        $this->event = $event;
-    }
-
-
+    public function __construct(protected $orderTotal, public $totalBookingFee, public $event) {}
 
     /**
      * Calculates the final costs for an event and sets the various totals
@@ -128,10 +107,43 @@ class EventOrderService
         return "(+" . $this->getTaxAmount(true) . " " . $this->event->organiser->tax_name . ")";
     }
 
+    public function saveOrder($order){
+        $order->first_name = request()->get('order_first_name');
+        $order->last_name = request()->get('order_last_name');
+        $order->email = request()->get('order_email');
+        $order->order_status_id = 5;//order awaiting payment
+        $order->amount = $this->orderTotal;
+        $order->booking_fee = $this->totalBookingFee;
+        $order->organiser_booking_fee = $this->session['organiser_booking_fee'];
+        $order->discount = 0.00;
+        $order->account_id = $this->event->account_id;
+        $order->event_id = $this->event->id;
+        $order->is_payment_received = 0;//false
+        $order->taxamt = $this->getTaxAmount();
+        $order->session_id = session()->getId();
+        $order->order_date = Carbon::now();
+        $order->save();
+        return $order->id;
+    }
+
     public static function completeOrder($session_data,$order){
         DB::beginTransaction();
 
         try {
+            foreach ($session_data['tickets'] as $attendee_details) {
+                /*
+                 * Insert order items (for use in generating invoices)
+                 */
+                $unit_booking_fee = $attendee_details['ticket']['booking_fee'] + $attendee_details['ticket']['organiser_booking_fee'];
+
+                OrderItem::create([
+                    'title' => $attendee_details['ticket']['title'],
+                    'order_id' => $order->id,
+                    'quantity' => $attendee_details['qty'],
+                    'unit_price' => $attendee_details['ticket']['price'],
+                    'unit_booking_fee' => $unit_booking_fee
+                ]);
+            }
             $request_data = $session_data['request_data'][0];
             $event = Event::findOrFail($order->event_id);
             $attendee_increment = 1;

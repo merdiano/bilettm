@@ -20,6 +20,27 @@ class CardPayment{
         $this->client = new Client(config('payment.card.config'));
     }
 
+    public function prepareData(){
+/**
+ *
+ * session()->put('ticket_order_' . $event->id, [
+    'validation_rules'        => $validation_rules,
+    'validation_messages'     => $validation_messages,
+    'event_id'                => $event->id,
+    'tickets'                 => $tickets,
+    'total_ticket_quantity'   => $total_ticket_quantity,
+    'order_started'           => time(),
+    'expires'                 => $order_expires_time,
+    'order_total'             => $order_total,
+    'booking_fee'             => $booking_fee,
+    'organiser_booking_fee'   => $organiser_booking_fee,
+    'total_booking_fee'       => $booking_fee + $organiser_booking_fee,
+    'order_requires_payment'  => (ceil($order_total) == 0) ? false : true,
+    'account_id'              => $event->account->id,
+    ]);
+ */
+    }
+
     public function registerPayment($transaction_data){
 
         $params['form_params'] = array_merge($transaction_data,config('payment.card.params'));
