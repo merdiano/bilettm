@@ -114,7 +114,7 @@ class EventOrderService
         $order->order_status_id = 5;//order awaiting payment
         $order->amount = $this->orderTotal;
         $order->booking_fee = $this->totalBookingFee;
-        $order->organiser_booking_fee = $this->session['organiser_booking_fee'];
+        $order->organiser_booking_fee = session()->get('ticket_order_' . $this->event->id.'.organiser_booking_fee');
         $order->discount = 0.00;
         $order->account_id = $this->event->account_id;
         $order->event_id = $this->event->id;
