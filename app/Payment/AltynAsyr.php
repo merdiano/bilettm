@@ -32,9 +32,9 @@ class AltynAsyr extends Payment
             config("payment.".$this->code.".form_params")
         ];
 
-            $request = $this->client->post('register.do',$transaction_data);
+        $response = $this->client->post('register.do',$transaction_data);
 
-            return new AltynAsyrRegistrationResponse(json_decode($request->getBody(), true));
+        return new AltynAsyrRegistrationResponse(json_decode($response->getBody(), true));
 
     }
 
@@ -42,9 +42,9 @@ class AltynAsyr extends Payment
     {
         $params['form_params'] = config('payment.'.$this->code.'.form_params');
         $params['form_params']['orderId'] = $orderId;
-        $request = $this->client->post('getOrderStatus.do',$params);
+        $response = $this->client->post('getOrderStatus.do',$params);
 
-        return new AltynAsyrStatusResponse(json_decode($request->getBody(), true));
+        return new AltynAsyrStatusResponse(json_decode($response->getBody(), true));
     }
 
 }
