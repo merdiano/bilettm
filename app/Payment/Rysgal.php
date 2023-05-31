@@ -4,12 +4,7 @@ namespace App\Payment;
 
 use App\Models\Order;
 
-class Rysgal extends Payment
+class Rysgal extends AltynAsyr
 {
     protected $code  = 'rysgal';
-
-    public function registerPaymentOrder(Order $order)
-    {
-        // TODO: Implement registerPaymentOrder() method.
-    }
 }

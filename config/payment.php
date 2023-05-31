@@ -7,7 +7,7 @@
  */
 return [
     'altynasyr' => [
-        'base_uri' => env('PAYMENT_API_URI'),
+        'base_uri' => env('ALTYNASYR_PAYMENT_API_URI'),
         'form_params' => [
             'userName' => env('ALTYNASYR_PAYMENT_API_USER'),
             'password' => env('ALTYNASYR_PAYMENT_API_PASSWORD'),
@@ -26,11 +26,11 @@ return [
             'language' => 'ru',
             'currency'    => 934,
         ],
-        'class' => \App\Payment\AltynAsyr::class,
+        'class' => \App\Payment\Vneshka::class,
         'title' => "Milli Kart (Türkmenistanyň döwlet daşary ykdysady iş banky)",
         'code' => 'tfeb'
     ],
-    '' => [
+    'senagat' => [
         'base_uri' => env('SENAGAT_PAYMENT_API_URI'),
         'form_params' => [
             'userName' => env('SENAGAT_PAYMENT_API_USER'),
@@ -38,7 +38,7 @@ return [
             'language' => 'ru',
             'currency'    => 934,
         ],
-        'class' => \App\Payment\AltynAsyr::class,
+        'class' => \App\Payment\Senagat::class,
         'title' => "Senagat bank",
         'code' => 'senagat'
     ],
@@ -50,7 +50,7 @@ return [
             'language' => 'ru',
             'currency'    => 934,
         ],
-        'class' => \App\Payment\AltynAsyr::class,
+        'class' => \App\Payment\Rysgal::class,
         'title' => "Maestro (Rysgalbank)",
         'code' => 'rysgal'
     ],
