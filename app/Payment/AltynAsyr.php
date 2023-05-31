@@ -32,6 +32,8 @@ class AltynAsyr extends Payment
             config("payment.".$this->code.".form_params")
         ];
 
+        Log::info($transaction_data);
+
         $response = $this->client->post('register.do',$transaction_data);
 
         return new AltynAsyrRegistrationResponse(json_decode($response->getBody(), true));
