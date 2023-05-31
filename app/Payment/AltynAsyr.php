@@ -29,12 +29,12 @@ class AltynAsyr extends Payment
                 'event_id'              => $event_id,
                 'is_payment_successful' => 1
             ]),
-            config("payment.".$this->code.".form_params")
+
         ];
 
-        Log::info($transaction_data);
+//        Log::info($transaction_data);
 
-        $response = $this->client->post('register.do',$transaction_data);
+        $response = $this->client->post('register.do',array_merge($transaction_data, config("payment.".$this->code.".form_params")));
 
         return new AltynAsyrRegistrationResponse(json_decode($response->getBody(), true));
 
