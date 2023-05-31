@@ -34,8 +34,12 @@ class AltynAsyr extends Payment
 
         $response = $this->client->post('register.do',$transaction_data);
 
-        return new AltynAsyrRegistrationResponse(json_decode($response->getBody(), true));
+        return $this->parseResponse($response->getBody());
 
+    }
+
+    private function parseResponse($response){
+        return new AltynAsyrRegistrationResponse(json_decode($response, true));
     }
 
     public function getPaymentStatus($orderId):StatusResponse
