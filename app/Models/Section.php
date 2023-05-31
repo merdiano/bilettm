@@ -92,6 +92,13 @@ class Section extends Model
         return $this->{'description_'.Config::get('app.locale')};
     }
 
+    public function getHasTicketsAttribute(){
+        if (count($this->tickets) > 0){
+            return true;
+        }
+        return false;
+    }
+
     public function setSectionImageAttribute($value){
         $attribute_name = "section_image";
         $disk = config('filesystems.default'); // or use your own disk, defined in config/filesystems.php

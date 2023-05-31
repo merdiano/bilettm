@@ -27,7 +27,6 @@ class Sector extends Model
     ];
     // protected $hidden = [];
     // protected $dates = [];
-    protected $appends = ['has_tickets'];
 
     /*
     |--------------------------------------------------------------------------
@@ -45,13 +44,6 @@ class Sector extends Model
         return $tickets->filter(function($value,$key){
             return $value->section->sector_id == $this->id;
         })->sortBy('section.order');
-    }
-
-    public function getHasTicketsAttribute(){
-        if (count($this->sections->tickets) > 0){
-            return true;
-        }
-        return false;
     }
 
     /*
