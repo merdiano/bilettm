@@ -15,6 +15,7 @@ use App\Payment\CardPayment;
 use App\Services\Order as OrderService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -180,6 +181,8 @@ class CheckoutController extends Controller
 
             ReservedTickets::insert($reserved);
 
+            $paymentMethods = Arr::only(config('payment'));
+
             return response()->json([
                 'status' => 'success',
                 'tickets'                 => $tickets,
@@ -187,6 +190,7 @@ class CheckoutController extends Controller
                 'expires' => env('CHECKOUT_TIMEOUT'),
                 'order_total' => $order_total,
                 'total_booking_fee' => $booking_fee + $organiser_booking_fee,
+                'payment_methods' => $paymentMethods->pluck(['title', 'code'])->all()
             ]);
         }
         catch (\Exception $ex){
