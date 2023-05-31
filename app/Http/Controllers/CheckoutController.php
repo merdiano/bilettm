@@ -256,8 +256,6 @@ class CheckoutController extends Controller
     */
     public function postRegisterOrder(Request $request, $event_id){
 
-        $gateway = new CardPayment();
-
         $validator = Validator::make($request->all(), [
                 'phone_id'=>'required|min:8|max:45',
                 'name'=>'required|string|min:2|max:255',
