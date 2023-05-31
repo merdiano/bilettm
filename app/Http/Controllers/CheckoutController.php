@@ -181,7 +181,7 @@ class CheckoutController extends Controller
 
             ReservedTickets::insert($reserved);
 
-            $paymentMethods = Arr::only(config('payment'));
+            $paymentMethods = collection(config('payment'));
 
             return response()->json([
                 'status' => 'success',
