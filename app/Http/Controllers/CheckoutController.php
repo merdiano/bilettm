@@ -184,13 +184,13 @@ class CheckoutController extends Controller
             $paymentMethods = collect(config('payment'));
 
             return response()->json([
-                'status' => 'success',
-                'tickets'                 => $tickets,
-                'order_started' => Carbon::now(),
-                'expires' => env('CHECKOUT_TIMEOUT'),
-                'order_total' => $order_total,
+                'status'            => 'success',
+                'tickets'           => $tickets,
+                'order_started'     => Carbon::now(),
+                'expires'           => env('CHECKOUT_TIMEOUT'),
+                'order_total'       => $order_total,
                 'total_booking_fee' => $booking_fee + $organiser_booking_fee,
-                'payment_methods' => $paymentMethods->pluck(['title', 'code'])->all()
+                'payment_methods'   => Arr::only(config('payment'),['name','price'])
             ]);
         }
         catch (\Exception $ex){
