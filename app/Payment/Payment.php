@@ -24,6 +24,6 @@ abstract class Payment
         $this->client = new Client($config);
     }
 
-    public abstract function  registerPaymentOrder($order_reference, $total_amount,$event_id):RegistrationResponse;
+    public abstract function  registerPaymentOrder($order_reference, $total_amount,$event_id,$secondsToExpire):RegistrationResponse;
 
 }

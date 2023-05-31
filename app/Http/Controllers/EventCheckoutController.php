@@ -316,7 +316,13 @@ class EventCheckoutController extends Controller
             $gatewayClass = config('payment.'.$paymentMethod.'.class');
             $gateway = new $gatewayClass();
 
-            $response = $gateway->registerPaymentOrder($order->order_reference, $orderService->getGrandTotal(),$event_id);
+            $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
+
+            $response = $gateway->registerPaymentOrder($order->order_reference,
+                $orderService->getGrandTotal(),
+                $event_id,
+                $secondsToExpire
+            );
 
             if($response->isSuccessfull()){
                 $order->transaction_id = $response->getReferenceId();

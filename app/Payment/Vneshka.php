@@ -19,7 +19,7 @@ class Vneshka extends Payment
         parent::__construct($headers);
     }
 
-    public function registerPaymentOrder($order_reference, $total_amount, $event_id): RegistrationResponse
+    public function registerPaymentOrder($order_reference, $total_amount, $event_id,$secondsToExpire): RegistrationResponse
     {
         $data = [
             "RequestId" => $order_reference,

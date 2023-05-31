@@ -181,7 +181,7 @@ class CheckoutController extends Controller
 
             ReservedTickets::insert($reserved);
 
-            $paymentMethods = Arr::map(config('payment'),function($item){
+            $paymentMethods = Arr::map(array_values(config('payment')),function($item){
                 return ['title' => $item['title'], 'code' => $item['code']];
             });
 
@@ -310,39 +310,40 @@ class CheckoutController extends Controller
         $orderService = new OrderService($order_total, $total_booking_fee, $event);
         $orderService->calculateFinalCosts();
 
+        $paymentMethod = $request->get('payment_method');
+
+        $gatewayClass = config('payment.'.$paymentMethod.'.class');
+        $gateway = new $gatewayClass();
+
         $secondsToExpire = Carbon::now()->diffInSeconds($event->reservedTickets->first()->expires);
 
-        $transaction_data = [
-            'amount'      => $orderService->getGrandTotal()*100,
-            'currency' => 934,
-            'sessionTimeoutSecs' => $secondsToExpire,
-            'description' => "Bilettm sargyt: {$holder_name} {$holder_surname}",
-            'orderNumber'     => uniqid(),
-            'failUrl'     => "https://bilettm.com/e/{$event_id}/checkout/finish_mobile?is_payment_cancelled=1",
-            'returnUrl' => "https://bilettm.com/e/{$event_id}/checkout/finish_mobile?is_payment_successful=1",
-
-        ];
         try{
-            $response = $gateway->registerPayment($transaction_data);
+            $order = new Order([
+                'first_name'            => $holder_name,
+                'last_name'             => $holder_surname,
+                'email'                 => $holder_email,
+                'order_status_id'       => 5,
+                'amount'                => $order_total,
+                'booking_fee'           => $booking_fee,
+                'organiser_booking_fee' => $organiser_booking_fee,
+                'discount'              => 0.00,
+                'account_id'            => $event->account_id,
+                'event_id'              => $event_id,
+                'is_payment_received'   => 0,
+                'taxamt'                => $orderService->getTaxAmount(),
+                'session_id'            => $phone_id,
+//                'transaction_id'        => $response->getPaymentReferenceId(),
+                'order_date'            => Carbon::now(),
+                'order_reference'       => strtoupper(str_random(5)) . date('jn')
+            ]);
+            $response = $gateway->registerPaymentOrder($order->order_reference,
+                $orderService->getGrandTotal(),
+                $event_id,
+                $secondsToExpire
+            );
+
             if($response->isSuccessfull()){
-                $order = Order::create([
-                    'first_name'            => $holder_name,
-                    'last_name'             => $holder_surname,
-                    'email'                 => $holder_email,
-                    'order_status_id'       => 5,
-                    'amount'                => $order_total,
-                    'booking_fee'           => $booking_fee,
-                    'organiser_booking_fee' => $organiser_booking_fee,
-                    'discount'              => 0.00,
-                    'account_id'            => $event->account_id,
-                    'event_id'              => $event_id,
-                    'is_payment_received'   => 0,
-                    'taxamt'                => $orderService->getTaxAmount(),
-                    'session_id'            => $phone_id,
-                    'transaction_id'        => $response->getPaymentReferenceId(),
-                    'order_date'            => Carbon::now(),
-                    'order_reference'       => strtoupper(str_random(5)) . date('jn')
-                ]);
+                $order->transaction_id = $response->getReferenceId();
                 $order->save();
                 $return = [
                     'status' => 'success',

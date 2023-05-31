@@ -11,10 +11,8 @@ class AltynAsyr extends Payment
 {
     protected $code  = 'altynasyr';
 
-    public function registerPaymentOrder($order_reference, $total_amount,$event_id,):RegistrationResponse
+    public function registerPaymentOrder($order_reference, $total_amount,$event_id,$secondsToExpire):RegistrationResponse
     {
-        $exp = session()->get('ticket_order_' . $event_id.'.expires');
-        $secondsToExpire = Carbon::now()->diffInSeconds($exp);
 
         $transaction_data['form_params'] = [
             'amount'      => $total_amount * 100 ,
