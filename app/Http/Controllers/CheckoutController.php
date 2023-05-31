@@ -190,7 +190,7 @@ class CheckoutController extends Controller
                 'expires'           => env('CHECKOUT_TIMEOUT'),
                 'order_total'       => $order_total,
                 'total_booking_fee' => $booking_fee + $organiser_booking_fee,
-                'payment_methods'   => Arr::only(config('payment'),['name','price'])
+                'payment_methods'   => config('payment')
             ]);
         }
         catch (\Exception $ex){
