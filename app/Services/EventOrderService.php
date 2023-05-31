@@ -273,6 +273,22 @@ class EventOrderService
         DB::beginTransaction();
 
         try {
+            $reserved_tickets = ReservedTickets::select('ticket_id',DB::raw('count(*) as quantity'))
+                ->groupBy('ticket_id')
+                ->with(['ticket:id,price,title'])
+                ->where('session_id', $order->session_id)
+                ->where('event_id', $order->event_id)
+                ->get();
+
+            foreach ($reserved_tickets as $resTicket){
+                $orderItem = new OrderItem();
+                $orderItem->title = $resTicket->ticket->title;
+                $orderItem->quantity = $resTicket->quantity;
+                $orderItem->order_id = $order->id;
+                $orderItem->unit_price = $resTicket->ticket->price;
+                $orderItem->unit_booking_fee = $resTicket->ticket->booking_fee + $order->organiser_booking_fee;
+                $orderItem->save();
+            }
 
             $order->order_status_id = config('attendize.order_complete');
             $order->is_payment_received = true;

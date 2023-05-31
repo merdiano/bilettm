@@ -22,6 +22,8 @@ use Log;
 use PDF;
 use PhpSpec\Exception\Exception;
 use Validator;
+use Agent;
+
 
 class EventCheckoutController extends Controller
 {
@@ -369,7 +371,11 @@ class EventCheckoutController extends Controller
      */
     public function showEventCheckoutPaymentReturn(Request $request, $event_id)
     {
-        if ($request->get('is_payment_cancelled') == '1') {
+        if(Agent::isDesktop()){
+            return $this->mobileCheckoutPaymentReturn($request, $event_id);
+        }
+
+        if ($request->has('fail')) {
             session()->flash('message', trans('Event.payment_cancelled'));
             return response()->redirectToRoute('showEventCheckout', [
                 'event_id'             => $event_id,
@@ -424,10 +430,10 @@ class EventCheckoutController extends Controller
     }
 
     public function mobileCheckoutPaymentReturn(Request $request, $event_id){
-        if ($request->get('is_payment_cancelled') == '1') {
+        if ($request->has('fail')) {
             return view('mobile.Pages.CheckoutFailed',['message'=>trans('ClientSide.payment_cancelled')]);
         }
-        else if(!$request->has('orderId')){
+        else if(!$request->has('orderId') || !$request->has('method')){
             return view('mobile.Pages.CheckoutFailed',['message'=> trans('ClientSide.no_order_id')]);
         }
 
@@ -442,46 +448,36 @@ class EventCheckoutController extends Controller
             return view('mobile.Pages.CheckoutFailed',['message'=> trans('ClientSide.order_error')]);
         }
 
-        $reserved_tickets = ReservedTickets::select('ticket_id',DB::raw('count(*) as quantity'))
-            ->groupBy('ticket_id')
-            ->with(['ticket:id,price,title'])
-            ->where('session_id', $order->session_id)
-            ->where('event_id', $event_id)
-            ->get();
+
         /*
          * Insert order items (for use in generating invoices)
          */
-        foreach ($reserved_tickets as $resTicket){
-            $orderItem = new OrderItem();
-            $orderItem->title = $resTicket->ticket->title;
-            $orderItem->quantity = $resTicket->quantity;
-            $orderItem->order_id = $order->id;
-            $orderItem->unit_price = $resTicket->ticket->price;
-            $orderItem->unit_booking_fee = $resTicket->ticket->booking_fee + $order->organiser_booking_fee;
-            $orderItem->save();
-        }
+        try {
+            $paymentMethod = $request->get('method');
 
-        $response = $this->gateway->getPaymentStatus($request->get('orderId'));
+            $gatewayClass = config('payment.'.$paymentMethod.'.class');
+            $gateway = new $gatewayClass();
 
-        $resp_data = $response->getResponseData();
+            $response = $gateway->getPaymentStatus($order->transaction_id);
 
-        $order->payment_card_pan = $resp_data['Pan'];
-        $order->payment_card_expiration = $resp_data['expiration'];
-        $order->payment_card_holder_name = $resp_data['cardholderName'];
-        $order->payment_order_status = $resp_data['OrderStatus'];
-        $order->payment_error_code = $resp_data['ErrorCode'];
-        $order->payment_error_message = $resp_data['ErrorMessage'];
+            if ($response->isSuccessfull()) {
 
+                $order->fill($response->getPaymentInfo());
 
-        if ($response->isSuccessfull()) {
-            $data = OrderService::mobileCompleteOrder($order);
-            return view('mobile.Pages.ViewOrderPageApp', $data);
-        } else {
-            ReservedTickets::where('session_id', $order->session_id)
-                ->where('event_id', $event_id)
-                ->update(['expects_payment_at' => Carbon::now()]);
-            ProcessPayment::dispatch($order)->delay(now()->addMinutes(5));
-            return $this->render('Pages.OrderExpectingPayment',$order);
+                $data = OrderService::mobileCompleteOrder($order);
+                return view('mobile.Pages.ViewOrderPageApp', $data);
+            } else {
+                ReservedTickets::where('session_id', $order->session_id)
+                    ->where('event_id', $event_id)
+                    ->update(['expects_payment_at' => Carbon::now()]);
+                ProcessPayment::dispatch($order)->delay(now()->addMinutes(5));
+                return $this->render('Pages.OrderExpectingPayment',$order);
+            }
+
+        }catch (\Exception $e){
+            Log::error($e);
+            $error = trans('ClientSide.payment_error');
+            return view('mobile.Pages.CheckoutFailed',['message'=> $error]);
         }
     }
 

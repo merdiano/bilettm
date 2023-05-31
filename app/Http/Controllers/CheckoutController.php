@@ -367,8 +367,12 @@ class CheckoutController extends Controller
         return response()->json($return);
     }
 
-    public function postCompleteOrder(Request $request, $event_id,CardPayment $gateway){
+    public function postCompleteOrder(Request $request, $event_id){
+
         $orderId = $request->get('orderId');
+        $paymentMethod = $request->get('payment');
+        $gatewayClass = config('payment.'.$paymentMethod.'.class');
+        $gateway = new $gatewayClass();
 
         try{
             $response = $gateway->getPaymentStatus($orderId);

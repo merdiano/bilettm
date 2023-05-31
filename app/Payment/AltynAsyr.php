@@ -21,11 +21,12 @@ class AltynAsyr extends Payment
             'orderNumber' => $order_reference,
             'failUrl'     => route('showEventCheckoutPaymentReturn', [
                 'event_id'              => $event_id,
-                'is_payment_cancelled'  => 1
+                'fail'  => 1,
+                'method' => $this->code,
             ]),
             'returnUrl'   => route('showEventCheckoutPaymentReturn', [
                 'event_id'              => $event_id,
-                'is_payment_successful' => 1
+                'method' => $this->code,
             ]),
 
         ];
