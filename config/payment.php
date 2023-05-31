@@ -18,18 +18,16 @@ return [
         'title' => "Altyn Asyr (Halkbank)",
         'code' => 'altynasyr'
     ],
-    'tfeb' =>[
-        'base_uri' => env('TFEB_PAYMENT_API_URI'),
-        'form_params' => [
-            'userName' => env('TFEB_PAYMENT_API_USER'),
-            'password' => env('TFEB_PAYMENT_API_PASSWORD'),
-            'language' => 'ru',
-            'currency'    => 934,
-        ],
-        'class' => \App\Payment\Vneshka::class,
-        'title' => "Milli Kart (Türkmenistanyň döwlet daşary ykdysady iş banky)",
-        'code' => 'tfeb'
-    ],
+//    'tfeb' =>[
+//        'base_uri' => env('TFEB_PAYMENT_API_URI'),
+//        'client_id' => env('TFEB_PAYMENT_API_USER'),
+//        'client_secret' => env('TFEB_PAYMENT_API_PASSWORD'),
+//        'merchant' => env('TFEB_PAYMENT_API_PASSWORD'),
+//        'terminal' => env('TFEB_PAYMENT_API_PASSWORD'),
+//        'class' => \App\Payment\Vneshka::class,
+//        'title' => "Milli Kart (Türkmenistanyň döwlet daşary ykdysady iş banky)",
+//        'code' => 'tfeb'
+//    ],
     'senagat' => [
         'base_uri' => env('SENAGAT_PAYMENT_API_URI'),
         'form_params' => [

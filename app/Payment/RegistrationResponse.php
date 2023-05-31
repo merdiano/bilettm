@@ -4,8 +4,8 @@ namespace App\Payment;
 
 interface RegistrationResponse
 {
-    public function isSuccessfull();
-    public function getReferenceId();
-    public function getRedirectUrl();
-    public function errorMessage();
+    public function isSuccessfull():bool;
+    public function getReferenceId():string;
+    public function getRedirectUrl():string;
+    public function errorMessage():string;
 }

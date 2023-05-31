@@ -44,7 +44,7 @@ class AltynAsyr extends Payment
         $params['form_params']['orderId'] = $orderId;
         $request = $this->client->post('getOrderStatus.do',$params);
 
-        return new AltynAsyrStatusResponse($request->getBody());
+        return new AltynAsyrStatusResponse(json_decode($request->getBody(), true));
     }
 
 }
