@@ -319,7 +319,7 @@ class EventCheckoutController extends Controller
             $response = $gateway->registerPaymentOrder($order->order_reference, $orderService->getGrandTotal(),$event_id);
 
             if($response->isSuccessfull()){
-                $order->transaction_id = $response->getPaymentReferenceId();
+                $order->transaction_id = $response->getReferenceId();
                 $order_id = $orderService->saveOrder($order);
                 session()->push('ticket_order_' . $event_id . '.order_id', $order_id);
                 session()->push('ticket_order_' . $event_id . '.payment_method', $paymentMethod);
