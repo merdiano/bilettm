@@ -316,7 +316,7 @@ class CheckoutController extends Controller
         $secondsToExpire = Carbon::now()->diffInSeconds($event->reservedTickets->first()->expires);
 
         try{
-            $order = new Order([
+            $order = (new Order())->fill([
                 'first_name'            => $holder_name,
                 'last_name'             => $holder_surname,
                 'email'                 => $holder_email,
