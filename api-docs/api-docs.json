@@ -645,7 +645,7 @@
     "components": {
         "schemas": {
             "Attendee": {
-                "title": "TicketType",
+                "title": "Attendee",
                 "properties": {
                     "id": {
                         "type": "number"
@@ -722,6 +722,9 @@
                     },
                     "email": {
                         "type": "email"
+                    },
+                    "payment_method": {
+                        "type": "string"
                     }
                 },
                 "type": "object"

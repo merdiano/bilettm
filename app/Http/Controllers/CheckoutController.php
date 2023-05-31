@@ -221,7 +221,11 @@ class CheckoutController extends Controller
     *     @OA\Property(
     *          property="email",
     *          type="email",
-    *     )
+    *     ),
+     *     @OA\Property(
+     *          property="payment_method",
+     *          type="string",
+     *     )
     * )
     * @OA\Post(
     *      path="/api/v2/event/{event_id}/register_order",
@@ -255,7 +259,8 @@ class CheckoutController extends Controller
                 'phone_id'=>'required|min:8|max:45',
                 'name'=>'required|string|min:2|max:255',
                 'surname'=>'required|string|min:2|max:255',
-                'email'=>'required|email'
+                'email'=>'required|email',
+                'payment_method'=>'required|in:'.implode(',',array_keys(config('payment')))
             ]);
 
         if($validator->fails()){
