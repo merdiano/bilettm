@@ -52,4 +52,10 @@ return [
         'title' => "Maestro (Rysgalbank)",
         'code' => 'rysgal'
     ],
+    'testbank' => [
+        'code' => 'testbank',
+        'title' => 'TestBAnk',
+        'class' => \App\Payment\TestBank::class,
+        'base_uri' => ''
+    ]
 ];

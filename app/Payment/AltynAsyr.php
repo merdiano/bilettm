@@ -2,10 +2,6 @@
 
 namespace App\Payment;
 
-use App\Models\Order;
-use App\Services\EventOrderService as OrderService;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Log;
 
 class AltynAsyr extends Payment
 {
