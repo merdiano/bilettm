@@ -329,8 +329,8 @@ class EventCheckoutController extends Controller
             if($response->isSuccessfull()){
                 $order->transaction_id = $response->getReferenceId();
                 $order_id = $orderService->saveOrder($order);
-                session()->push('ticket_order_' . $event_id . '.order_id', $order_id);
-                session()->push('ticket_order_' . $event_id . '.payment_method', $paymentMethod);
+                session()->put('ticket_order_' . $event_id . '.order_id', $order_id);
+                session()->put('ticket_order_' . $event_id . '.payment_method', $paymentMethod);
 
                 $return = [
                     'status'       => 'success',
@@ -371,7 +371,7 @@ class EventCheckoutController extends Controller
      */
     public function showEventCheckoutPaymentReturn(Request $request, $event_id)
     {
-        if(Agent::isDesktop()){
+        if(!Agent::isDesktop()){
             return $this->mobileCheckoutPaymentReturn($request, $event_id);
         }
 
@@ -384,7 +384,7 @@ class EventCheckoutController extends Controller
         }
 
         $order_id = session()->get('ticket_order_' . $event_id . '.order_id');
-        $order = Order::findOrFail(sanitise($order_id[0]));
+        $order = Order::findOrFail(sanitise($order_id));
 
         //if page is refreshed and order is already registered successfully
         if($order->order_status_id == 1){
@@ -395,7 +395,8 @@ class EventCheckoutController extends Controller
         }
         $ticket_order = session()->get('ticket_order_' . $event_id);
 
-        $gatewayClass = config('payment.'.$ticket_order['paymentMethod'].'.class');
+        $method = sanitise($ticket_order['payment_method']);
+        $gatewayClass = config('payment.'.$method.'.class');
         $gateway = new $gatewayClass();
 
         try {
@@ -457,6 +458,7 @@ class EventCheckoutController extends Controller
 
             $gatewayClass = config('payment.'.$paymentMethod.'.class');
             $gateway = new $gatewayClass();
+
 
             $response = $gateway->getPaymentStatus($order->transaction_id);
 

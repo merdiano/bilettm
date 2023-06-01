@@ -15,7 +15,7 @@ class TestRegResponse implements RegistrationResponse
 
     public function getReferenceId(): string
     {
-        return uniqid();
+        return $this->response_data[0];
     }
 
     public function getRedirectUrl(): string
@@ -23,6 +23,7 @@ class TestRegResponse implements RegistrationResponse
        return route('showEventCheckoutPaymentReturn', [
            'event_id' => $this->response_data[1],
            'order_number' => $this->response_data[0],
+           'orderId' => $this->response_data[0],
            'method'   => 'testbank',
        ]);
     }

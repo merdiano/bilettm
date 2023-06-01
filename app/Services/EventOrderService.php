@@ -144,7 +144,9 @@ class EventOrderService
                     'unit_booking_fee' => $unit_booking_fee
                 ]);
             }
+
             $request_data = $session_data['request_data'][0];
+//            dd($request_data);
             $event = Event::findOrFail($order->event_id);
             $attendee_increment = 1;
             $ticket_questions = isset($request_data['ticket_holder_questions']) ? $request_data['ticket_holder_questions'] : [];
@@ -190,12 +192,13 @@ class EventOrderService
                 /*
                  * Create the attendees
                  */
+
                 foreach ($attendee_details['seats'] as $i) {
 
                     $attendee = new Attendee();
-                    $attendee->first_name = strip_tags($request_data["ticket_holder_first_name"][$i][$attendee_details['ticket']['id']]);
-                    $attendee->last_name = strip_tags($request_data["ticket_holder_last_name"][$i][$attendee_details['ticket']['id']]);
-                    $attendee->email = $request_data["ticket_holder_email"][$i][$attendee_details['ticket']['id']];
+                    $attendee->first_name = strip_tags($request_data["order_first_name"]);
+                    $attendee->last_name = strip_tags($request_data["order_last_name"]);
+                    $attendee->email = $request_data["order_email"];
                     $attendee->event_id = $event->id;
                     $attendee->order_id = $order->id;
                     $attendee->ticket_id = $attendee_details['ticket']['id'];

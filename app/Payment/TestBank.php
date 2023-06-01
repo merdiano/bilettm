@@ -5,6 +5,7 @@ namespace App\Payment;
 class TestBank extends Payment
 {
 
+    protected $code = 'testbank';
     public function registerPaymentOrder($order_reference, $total_amount, $event_id, $secondsToExpire): RegistrationResponse
     {
         return $this->parseResponse([$order_reference,$event_id]);
