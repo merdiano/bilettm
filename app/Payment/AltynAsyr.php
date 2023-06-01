@@ -39,7 +39,7 @@ class AltynAsyr extends Payment
 
     }
 
-    private function parseResponse($response){
+    protected function parseResponse($response): RegistrationResponse{
         return new AltynAsyrRegistrationResponse(json_decode($response, true));
     }
 

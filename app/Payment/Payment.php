@@ -25,6 +25,6 @@ abstract class Payment
     }
 
     public abstract function  registerPaymentOrder($order_reference, $total_amount,$event_id,$secondsToExpire):RegistrationResponse;
-    private abstract function parseResponse($response):RegistrationResponse
+    protected abstract function parseResponse($response):RegistrationResponse;
 
 }

@@ -8,7 +8,7 @@ class Senagat extends AltynAsyr
 {
     protected $code  = 'senagat';
 
-    private function parseResponse($response):RegistrationResponse{
+    protected function parseResponse($response):RegistrationResponse{
         return new SenagatRegistrationResponse(json_decode($response, true));
     }
 }
