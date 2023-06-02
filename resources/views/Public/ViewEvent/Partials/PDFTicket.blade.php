@@ -75,7 +75,9 @@
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.venue'):</span> <b>{{$event->venue->venue_name}}</b></p>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.date_time'):</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y H:i')}}</b></p>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.full_name'):</span> <b>{{$attendee->first_name.' '.$attendee->last_name}}</b></p>
+                                    @if($attendee->ticket->sector)
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.sector'):</span> <b>{{$attendee->ticket->sector->title}}</b></p>
+                                    @endif
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.seat'):</span> <b>{{$attendee->seat_no}}</b></p>
                                     @php
                                         // Calculating grand total including tax

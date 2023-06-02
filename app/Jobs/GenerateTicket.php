@@ -43,12 +43,12 @@ class GenerateTicket extends Job implements ShouldQueue
         $pdf_file = '/user_content/pdf-tickets/' .  $this->reference . ".pdf";
 
         if (file_exists($pdf_file)) {
-            Log::info("Use ticket from cache: " . $pdf_file);
+//            Log::info("Use ticket from cache: " . $pdf_file);
             return;
         }
 
         $order = Order::where('order_reference', $this->order_reference)->first();
-        Log::info($order);
+//        Log::info($order);
         $event = $order->event;
 
         $query = $order->attendees();
