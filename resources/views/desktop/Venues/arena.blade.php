@@ -5,7 +5,7 @@
             <ul role="tablist" class="nav nav-pills m-auto w-auto justify-content-center" id="choose_seats">
                 @foreach($venue->sectors->sortBy('order') as $sector)
                     <li role="presentation" class="d-inline-block mb-4">
-                        <a aria-expanded="true" data-toggle="tab" class="btn btn-lg show @if(!$sector->hasTickets($tickets)) disabled @endif"
+                        <a aria-expanded="true" data-toggle="tab" class="btn btn-lg px-5 show @if(!$sector->hasTickets($tickets)) disabled @endif"
                            role="tab" id="home_tab_{{$sector->id}}" href="#home_{{$sector->id}}" aria-selected="true">
                             {{$sector->title}}
 
