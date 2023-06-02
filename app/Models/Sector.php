@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 use function Clue\StreamFilter\fun;
 
 class Sector extends Model
@@ -45,7 +46,10 @@ class Sector extends Model
             return $value->section->sector_id == $this->id;
         })->sortBy('section.order');
     }
+    public function getTitleAttribute(){
 
+        return $this->{'title_'.Config::get('app.locale')}??'#title_transation';
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

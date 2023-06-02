@@ -3,7 +3,7 @@
         <h3 class="my-4" >{{__('ClientSide.step')}} 2. {{__('ClientSide.choose_sector')}}</h3>
         <div class="pills-struct mt-5">
             <ul role="tablist" class="nav nav-pills m-auto w-auto justify-content-center" id="choose_seats">
-                @foreach($venue->sectors as $sector)
+                @foreach($venue->sectors->sortBy('order') as $sector)
                     <li role="presentation" style="display: inline-block;">
                         <a aria-expanded="true" data-toggle="tab" class="btn btn-lg show @if(!$sector->hasTickets($tickets)) disabled @endif"
                            role="tab" id="home_tab_{{$sector->id}}" href="#home_{{$sector->id}}" aria-selected="true">
@@ -23,7 +23,7 @@
             </div>
             <form class="tab-content ajax" id="seats-form" action="{{route('postValidateTickets',['event_id'=>$event->id])}}" method="post">
                 @csrf
-                @foreach($venue->sectors  as $sector)
+                @foreach($venue->sectors->sortBy('order')  as $sector)
                     @if($sector->hasTickets($tickets))
                         <div id="home_{{$sector->id}}" class="tab-pane fade in" role="tabpanel">
                             @foreach($sector->filterTickets($tickets) as $ticket)
