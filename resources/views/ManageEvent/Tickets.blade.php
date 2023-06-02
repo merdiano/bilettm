@@ -108,7 +108,7 @@
                                 @else
                                     <i class="ico-ticket ticket_icon mr5 ellipsis"></i>
                                 @endif
-                                {{$ticket->title}}
+                                {{$ticket->title}} - {{$ticket->ticket_date}}
                                 <span class="pull-right">
                         {{ ($ticket->is_free) ? trans("Order.free") : money($ticket->price, $event->currency) }}
                     </span>
