@@ -79,7 +79,7 @@ class GenerateTicket extends Job implements ShouldQueue
             PDF::loadView('Public.ViewEvent.Partials.PDFTicket', $data)->save($pdf_file, 'local');
             Log::info("Ticket generated!");
         } catch(\Exception $e) {
-            Log::error("Error generating ticket. This can be due to permissions on vendor/nitmedia/wkhtml2pdf/src/Nitmedia/Wkhtml2pdf/lib. This folder requires write and execute permissions for the web user");
+//            Log::error("Error generating ticket. This can be due to permissions on vendor/nitmedia/wkhtml2pdf/src/Nitmedia/Wkhtml2pdf/lib. This folder requires write and execute permissions for the web user");
             Log::error("Error message. " . $e->getMessage()); //Path must be absolute ("/tmp/")
             Log::error("Error stack trace" . $e->getTraceAsString());
             $this->fail($e);
