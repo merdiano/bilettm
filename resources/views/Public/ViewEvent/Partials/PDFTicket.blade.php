@@ -69,13 +69,13 @@
                                     <img alt="{{$event->organiser->full_logo_path}}" src="data:image/png;base64, {{$image}}" style="width: 100%; margin-top: 25px" />
                                 </td>
                                 <td style="padding: 20px; vertical-align: top">
-                                    <span class="text-muted">@lang('Ticket.ticket_number')</span>
-                                    <h2 style="margin-top: 5px; margin-bottom: 0">{{$attendee->reference}}</h2>
+                                    <span class="text-muted">@lang('Ticket.ticket_number')<h3 style="margin-top: 5px; margin-bottom: 0">{{$attendee->reference}}</h3></span>
+
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.event'):</span> <b>{{$event->title}}</b></p>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.venue'):</span> <b>{{$event->venue->venue_name}}</b></p>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.date_time'):</span> <b>{{$attendee->ticket->ticket_date->format('d.m.Y H:i')}}</b></p>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.full_name'):</span> <b>{{$attendee->first_name.' '.$attendee->last_name}}</b></p>
-                                    <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.ticket_type'):</span> <b>{{$attendee->ticket->title}}</b></p>
+                                    <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.sector'):</span> <b>{{$attendee->ticket->sector->title}}</b></p>
                                     <p style="margin-bottom: 5px !important;"><span class="text-muted">@lang('Ticket.seat'):</span> <b>{{$attendee->seat_no}}</b></p>
                                     @php
                                         // Calculating grand total including tax

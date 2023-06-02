@@ -66,6 +66,10 @@ class Ticket extends MyBaseModel
         return $this->belongsTo(Section::class);
     }
 
+    public function sector(){
+        return $this->belongsThrough(Section::class,Sector::class);
+    }
+
     public function getSectorIdAttribute(){
         if ($this->section) {
             $section = Section::find($this->section_id);
