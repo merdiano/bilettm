@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-12">
         <h3 class="my-4" >{{__('ClientSide.step')}} 2. {{__('ClientSide.choose_sector')}}</h3>
-        <div class="pills-struct mt-5">
+        <div class="pills-struct mt-1">
             <ul role="tablist" class="nav nav-pills m-auto w-auto justify-content-center" id="choose_seats">
                 @foreach($venue->sectors->sortBy('order') as $sector)
-                    <li role="presentation" style="display: inline-block;">
+                    <li role="presentation" class="d-inline-block mb-4">
                         <a aria-expanded="true" data-toggle="tab" class="btn btn-lg show @if(!$sector->hasTickets($tickets)) disabled @endif"
                            role="tab" id="home_tab_{{$sector->id}}" href="#home_{{$sector->id}}" aria-selected="true">
                             {{$sector->title}}
