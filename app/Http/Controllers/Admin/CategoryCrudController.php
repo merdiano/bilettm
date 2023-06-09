@@ -50,7 +50,6 @@ class CategoryCrudController extends CrudController
     {
         $this->crud->addColumns([
             ['name'=>'id','type'=>'text','label'=>'Id'],
-            ['name'=>'title','type'=>'text','label'=>'Title en'],
             ['name'=>'title_tk','type'=>'text','label'=>'Title tm'],
             ['name'=>'title_ru','type'=>'text','label'=>'Title ru'],
             ['name'=>'view_type','type'=>'text','label'=>'View Type'],
@@ -64,7 +63,6 @@ class CategoryCrudController extends CrudController
         CRUD::setValidation(CategoryRequest::class);
 
         $this->crud->addFields([
-            ['name'=>'title','type'=>'text','label'=>'Title em'],
             ['name'=>'title_tk','type'=>'text','label'=>'Title tm'],
             ['name'=>'title_ru','type'=>'text','label'=>'Title ru'],
             ['name'=>'view_type','type' =>'enum', 'label'=>'View Type'],

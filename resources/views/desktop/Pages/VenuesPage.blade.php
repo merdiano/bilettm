@@ -42,12 +42,6 @@
 
                         </div>
                     </div>
-                    <div class="row mt-5">
-                        <div class="col-12">
-                            <div class="google-maps content" id="map" style="height: 250px">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -71,15 +65,6 @@
                 }
             }
         });
-
-        function initMap() {
-            var uluru = {lat: {{$current->address['latlng']['lat']}}, lng: {{$current->address['latlng']['lng']}}};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: uluru,
-                zoom: 15
-            });
-            var marker = new google.maps.Marker({position: uluru, map: map});
-        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_places.key')}}&callback=initMap"
             async defer></script>
