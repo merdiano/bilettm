@@ -27,6 +27,8 @@
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('venue') }}'><i class='nav-icon la la-tag'></i> <span>Venues</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('sector') }}'><i class='nav-icon la la-align-center'></i> <span>Sectors</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('section') }}'><i class='nav-icon la la-align-center'></i> <span>Sections</span></a></li>
+<li class="nav-item"><a class="nav-link" href='{{ backpack_url('event') }}'><i class='nav-icon la la-calendar'></i> <span>Events</span></a></li>
+<li class="nav-item"><a class="nav-link" href='{{ backpack_url('ticket') }}'><i class='nav-icon la la-ticket'></i> <span>Tickets</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('page') }}'><i class='nav-icon la la-file-o'></i> <span>Pages</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('subscriber') }}'><i class='nav-icon la la-tag'></i> <span>Subscribers</span></a></li>
 <li class="nav-item"><a class="nav-link" href='{{ backpack_url('helpTopic') }}'><i class='nav-icon la la-tag'></i> <span>Help Topics</span></a></li>

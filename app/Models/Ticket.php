@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ticket extends MyBaseModel
 {
     use SoftDeletes;
+    use CrudTrait;
 
     protected $appends = ['sector_id'];
 
@@ -17,6 +19,10 @@ class Ticket extends MyBaseModel
         'start_sale_date' => 'datetime', 
         'end_sale_date' => 'datetime',
         'ticket_date' => 'datetime'
+    ];
+    
+    protected $fillable = [
+        'title', 'section_id', 'price', 'description', 'ticket_date', 'start_sale_date', 'end_sale_date', 'quantity_available'
     ];
 
     /**

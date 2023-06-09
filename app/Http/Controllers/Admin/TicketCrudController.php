@@ -5,15 +5,16 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\EventRequest;
+use App\Http\Requests\SectionRequest;
+use Backpack\CRUD\CrudPanel;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class EventCrudController
+ * Class SectionCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class EventCrudController extends CrudController
+class TicketCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -28,30 +29,35 @@ class EventCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Event');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/event');
-        $this->crud->setEntityNameStrings('event', 'events');
+        $this->crud->setModel('App\Models\Ticket');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/ticket');
+        $this->crud->setEntityNameStrings('ticket', 'tickets');
 
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
     }
 
     protected function setupListOperation()
     {
-        $this->crud->setFromDB();
+        $this->crud->addColumns([
+            ['name'=>'title','type'=>'text','label'=>'Title'],
+            ['name'=>'price','type'=>'text','label'=>'Price'],
+            ['name' => 'section_id', 'type'=>'select','entity'=>'section','attribute'=>'section_no_ru','label'=>'Section'],
+        ]);
     }
 
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(EventRequest::class);
+        CRUD::setValidation(SectionRequest::class);
 
-        $this->crud->setFromDB();
+        $this->crud->addFields([
+            ['name'=>'title','type'=>'text','label'=>'Title'],
+            ['name'=>'price','type'=>'number','label'=>'Price', 'attributes' => ['step' => '0.01']],
+            ['name' => 'section_id', 'type'=>'select','entity'=>'section','attribute'=>'section_no_ru','label'=>'Section'],
+        ]);
     }
 
     protected function setupUpdateOperation()
