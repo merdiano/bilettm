@@ -44,7 +44,9 @@ class EventCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->setFromDB();
+        $this->crud->addColumns([
+            ['name'=> 'title_ru', 'type' => 'text', 'title' => 'Title']
+        ]);
     }
 
     protected function setupCreateOperation()
