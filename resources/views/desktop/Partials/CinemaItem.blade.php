@@ -18,9 +18,6 @@
                 <a href="{{$event->event_url}}" class="like">
                     <i class="fa fa-eye"></i>
                     {{$event->views??0}} {{__("ClientSide.views")}}</a>
-                {{-- <div class="buy-btn-wrap">
-                    <a href="{{$event->event_url}}" class="buy-btn">{{__("ClientSide.buy_ticket")}}</a>
-                </div> --}}
 
             </div>
         </div>

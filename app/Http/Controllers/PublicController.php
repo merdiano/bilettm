@@ -31,7 +31,10 @@ class PublicController extends Controller
             ->take(1);
 
         $musical = Category::categoryLiveEvents(8,'concert')
-            ->take(1)
+            ->take(1);
+
+        // $musical = Category::categoryLiveEvents(8,'concert')
+        //     ->take(1)
 ;
         $categories = $cinema->unionAll($musical)->unionAll($cartoon)->get();
 

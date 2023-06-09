@@ -706,7 +706,7 @@ Route::group(
         });
     });
 
-    Route::get('/',[
+    Route::get('/', [
         'as' => 'home',
         'uses' => 'PublicController@showHomePage'
     ]);
