@@ -60,8 +60,6 @@ class CategoryCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(CategoryRequest::class);
-
         $this->crud->addFields([
             ['name'=>'title','type'=>'text','label'=>'URL title'],
             ['name'=>'title_tk','type'=>'text','label'=>'Title tm'],

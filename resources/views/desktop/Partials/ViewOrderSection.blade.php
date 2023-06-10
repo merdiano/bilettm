@@ -1,3 +1,11 @@
+<style>
+    h2 a{
+        color: blue;
+    }
+    h2 a:visited{
+        color: indigo
+    }
+</style>
 <section id="order_form" class="container">
     <div class="row">
         <div class="col-md-12 order_header">
@@ -207,7 +215,7 @@
                                 <td>
                                     {{$attendee->first_name}}
                                     {{$attendee->last_name}}
-                                    (<a href="mailto:{{$attendee->email}}">{{$attendee->email}}</a>)
+                                    ({{$attendee->email}})
                                 </td>
                                 <td>
                                     {{{$attendee->ticket->title}}}

@@ -33,7 +33,7 @@ class Category extends \Illuminate\Database\Eloquent\Model{
      * @var bool $softDelete
      */
     protected $softDelete = false;
-    protected $fillable = ['title_tk','title_ru','view_type','lft','rgt','parent_id','depth','events_limit'];
+    protected $fillable = ['title','title_tk','title_ru','view_type','lft','rgt','parent_id','depth','events_limit'];
 
     /**
      * Get the url of the event.
@@ -42,12 +42,6 @@ class Category extends \Illuminate\Database\Eloquent\Model{
      */
     public function getUrlAttribute()
     {
-//        switch ($this->view_type){
-//            case 'concert' : $rout_name = "showSubCategoryEventsPage";
-//                break;
-//            default : $rout_name = "showCategoryEventsPage";
-//                break;
-//        }
         if($this->parent_id > 0)
             $rout_name = 'showSubCategoryEventsPage';
         else
