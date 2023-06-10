@@ -22,7 +22,7 @@ class Ticket extends MyBaseModel
     ];
     
     protected $fillable = [
-        'title', 'section_id', 'price', 'description', 'ticket_date', 'start_sale_date', 'end_sale_date', 'quantity_available'
+        'title', 'section_id', 'price', 'description', 'ticket_date', 'start_sale_date', 'end_sale_date', 'quantity_available', 'event_id'
     ];
 
     /**

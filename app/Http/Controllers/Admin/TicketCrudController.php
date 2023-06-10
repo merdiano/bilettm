@@ -43,9 +43,11 @@ class TicketCrudController extends CrudController
     protected function setupListOperation()
     {
         $this->crud->addColumns([
+            ['name' => 'event_id', 'type'=>'select','entity'=>'event','attribute'=>'title_ru','label'=>'Event'],
             ['name'=>'title','type'=>'text','label'=>'Title'],
             ['name'=>'price','type'=>'text','label'=>'Price'],
             ['name' => 'section_id', 'type'=>'select','entity'=>'section','attribute'=>'section_no_ru','label'=>'Section'],
+            ['name'=>'ticket_date','type'=>'datetime','label'=>'Data bileta'],
         ]);
     }
 
@@ -54,9 +56,15 @@ class TicketCrudController extends CrudController
         CRUD::setValidation(SectionRequest::class);
 
         $this->crud->addFields([
+            ['name' => 'event_id', 'type'=>'select','entity'=>'event','attribute'=>'title_ru','label'=>'Event'],
             ['name'=>'title','type'=>'text','label'=>'Title'],
             ['name'=>'price','type'=>'number','label'=>'Price', 'attributes' => ['step' => '0.01']],
             ['name' => 'section_id', 'type'=>'select','entity'=>'section','attribute'=>'section_no_ru','label'=>'Section'],
+            ['name'=>'description','type'=>'text','label'=>'Description'],
+            ['name'=>'ticket_date','type'=>'datetime','label'=>'Data bileta'],
+            ['name'=>'start_sale_date','type'=>'datetime','label'=>'Nachalo prodazh'],
+            ['name'=>'end_sale_date','type'=>'datetime','label'=>'Deadline prodazh'],
+            ['name'=>'quantity_available','type'=>'number','label'=>'Kolichestvo'],
         ]);
     }
 
