@@ -123,51 +123,6 @@ class Ticket extends MyBaseModel
     }
 
     /**
-     * Parse start_sale_date to a Carbon instance
-     *
-     * @param string $date DateTime
-     */
-    public function setStartSaleDateAttribute($date)
-    {
-        if (!$date) {
-            $this->attributes['start_sale_date'] = Carbon::now();
-        } else {
-            $this->attributes['start_sale_date'] = Carbon::createFromFormat(
-                config('attendize.default_datetime_format'),
-                $date
-            );
-        }
-    }
-
-    /**
-     * Parse end_sale_date to a Carbon instance
-     *
-     * @param string|null $date DateTime
-     */
-    public function setEndSaleDateAttribute($date)
-    {
-        if (!$date) {
-            $this->attributes['end_sale_date'] = null;
-        } else {
-            $this->attributes['end_sale_date'] = Carbon::createFromFormat(
-                config('attendize.default_datetime_format'),
-                $date
-            );
-        }
-    }
-
-    public function setTicketDateAttribute($date){
-        if (!$date) {
-            $this->attributes['ticket_date'] = null;
-        } else {
-            $this->attributes['ticket_date'] = Carbon::createFromFormat(
-                config('attendize.default_datetime_format'),
-                $date
-            );
-        }
-    }
-
-    /**
      * Scope a query to only include tickets that are sold out.
      *
      * @param $query

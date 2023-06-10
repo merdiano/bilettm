@@ -13,6 +13,9 @@ use App\Models\ReservedTickets;
 use App\Models\QuestionAnswer;
 use DB;
 use Log;
+use App\Jobs\SendOrderTickets;
+
+
 class EventOrderService
 {
     /**
@@ -266,7 +269,9 @@ class EventOrderService
 
         // Queue up some tasks - Emails to be sent, PDFs etc.
         Log::info('Firing the event');
-        event(new OrderCompletedEvent($order));
+        //event(new OrderCompletedEvent($order));
+
+        SendOrderTickets::dispatch($order);
 
         return $order->order_reference;
 
@@ -371,7 +376,11 @@ class EventOrderService
         ReservedTickets::where('session_id', $order->session_id)->delete();
 
         Log::info('Firing the event');
+
         event(new OrderCompletedEvent($order));
+        
+        SendOrderTickets::dispatch($order);
+
         return [
             'order'        => $order,
             'event'        => $order->event,
