@@ -147,7 +147,7 @@ class EventOrdersController extends MyBaseController
     {
         $order = Order::scope()->find($order_id);
 
-        $this->dispatch(new SendOrderTickets($order));
+        SendOrderTickets::dispatch($order);
 
         return response()->json([
             'status'      => 'success',

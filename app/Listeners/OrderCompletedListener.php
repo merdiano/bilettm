@@ -44,6 +44,6 @@ class OrderCompletedListener implements ShouldQueue
             new SendOrderTickets($event->order)
         ])->dispatch();
 
-        $this->dispatch(new SendOrderNotification($event->order));
+        SendOrderTickets::dispatch($event->order);
     }
 }
