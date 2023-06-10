@@ -24,17 +24,17 @@ use Validator;
 class PublicController extends Controller
 {
     public function showHomePage(){
-        $cinema = Category::categoryLiveEvents(16,'cinema')
+        $cinema = Category::categoryLiveEvents(8,'cinema')
             ->take(1);
 
-        $cartoon = Category::categoryLiveEvents(16,'exhibition')
+        $cartoon = Category::categoryLiveEvents(8,'exhibition')
             ->take(1);
 
         $musical = Category::categoryLiveEvents(8,'concert')
             ->take(1);
 
-        // $musical = Category::categoryLiveEvents(8,'concert')
-        //     ->take(1)
+        $circus = Category::categoryLiveEvents(8,'circus')
+            ->take(1);
 ;
         $categories = $cinema->unionAll($musical)->unionAll($cartoon)->get();
 
@@ -167,9 +167,7 @@ class PublicController extends Controller
                     ->orWhere('venues.venue_name_'.config('app.locale'),'like',"%{$query}%")
                     ->orWhere('categories.title_'.config('app.locale'),'like',"%{$query}%")
                     ->orWhere('organisers.name','like',"%{$query}%");
-            })
-
-            ->paginate(12);
+            })->paginate(12);
 
         return $this->render('Pages.SearchResults',[
             'events' => $events,

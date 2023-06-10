@@ -1,4 +1,4 @@
-<div class="col-4">
+<div class="col-3">
     <article class="u-block-hover">
         <div class="g-bg-cover">
             <img class="d-flex align-items-end" style="display: block; background-image: url({{asset($event->image_url ?? '#')}}); background-position: center center; background-size: cover; padding-top: 125.628140%; border-radius: 5px"/>
