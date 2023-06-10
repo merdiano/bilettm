@@ -7,7 +7,7 @@
     <section id="intro" class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h1 property="name" style="font-weight: bold">{{$event->title}}</h1>
+                <h1 property="name" style="font-weight: bold; padding: 25px 10px;">{{$event->title}}</h1>
             </div>
         </div>
     </section>
