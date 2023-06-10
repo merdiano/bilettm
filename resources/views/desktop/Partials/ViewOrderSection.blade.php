@@ -2,6 +2,9 @@
     h2 a{
         color: blue;
     }
+    h2 a:hover:{
+        color: blue;
+    }
     h2 a:visited{
         color: indigo
     }
