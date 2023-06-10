@@ -8,6 +8,9 @@
     h2 a:visited{
         color: indigo
     }
+    .ticket_download_link:hover{
+        color: blue!important;
+    }
 </style>
 <section id="order_form" class="container">
     <div class="row">
