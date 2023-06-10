@@ -5,13 +5,13 @@ namespace App\Jobs;
 use App\Mailers\OrderMailer;
 use App\Models\Order;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
 class SendOrderTickets extends Job implements ShouldQueue
 {
-    use InteractsWithQueue, SerializesModels, DispatchesJobs;
+    use InteractsWithQueue, SerializesModels, Dispatchable;
 
     public $order;
     public $maxExceptions = 3;
