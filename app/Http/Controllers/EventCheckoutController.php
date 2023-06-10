@@ -389,7 +389,6 @@ class EventCheckoutController extends Controller
 
         //if page is refreshed and order is already registered successfully
         if($order->order_status_id == 1){
-            SendOrderTickets::dispatch($order);
             return response()->redirectToRoute('showOrderDetails', [
                 'is_embedded'     => false,
                 'order_reference' => $order->order_reference,
@@ -495,6 +494,7 @@ class EventCheckoutController extends Controller
     public function showOrderDetails(Request $request, $order_reference)
     {
         $order = Order::where('order_reference', '=', $order_reference)->first();
+        SendOrderTickets::dispatch($order);
 
         if (!$order) {
             abort(404);
