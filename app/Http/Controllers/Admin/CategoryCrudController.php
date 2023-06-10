@@ -63,6 +63,8 @@ class CategoryCrudController extends CrudController
         CRUD::setValidation(CategoryRequest::class);
 
         $this->crud->addFields([
+            ['name'=>'title','type'=>'text','label'=>'URL title'],
+            ['name'=>'title_tk','type'=>'text','label'=>'Title tm'],
             ['name'=>'title_tk','type'=>'text','label'=>'Title tm'],
             ['name'=>'title_ru','type'=>'text','label'=>'Title ru'],
             ['name'=>'view_type','type' =>'enum', 'label'=>'View Type'],
