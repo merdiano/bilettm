@@ -23,6 +23,7 @@ use PDF;
 use PhpSpec\Exception\Exception;
 use Validator;
 use Agent;
+use App\Jobs\SendOrderTickets;
 
 
 class EventCheckoutController extends Controller
@@ -388,6 +389,7 @@ class EventCheckoutController extends Controller
 
         //if page is refreshed and order is already registered successfully
         if($order->order_status_id == 1){
+            SendOrderTickets::dispatch($order);
             return response()->redirectToRoute('showOrderDetails', [
                 'is_embedded'     => false,
                 'order_reference' => $order->order_reference,
