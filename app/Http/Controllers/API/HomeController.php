@@ -41,9 +41,9 @@ class HomeController extends Controller
        return HomeResource::make(
             $slider,
             Event::with('ticket_dates')
-                ->onLive()->withViews()
+                ->onLive()->withViews()->orderBy('start_date')
                 ->paginate(20)
-                ->orderBy('start_date')
+
             )->additional(['success' => true]);
     }
 }
