@@ -32,7 +32,8 @@ class EventResource extends JsonResource
             'original_dates'    => $this->ticket_dates,
             'ticket_dates'      => $groupedDates,
             'views'             => $this->views,
-            'venue'             => $this->venue ?? null
+            'venue'             => $this->venue ?? null,
+            'start_date'        => $this->start_date,
         ];
     }
 }
