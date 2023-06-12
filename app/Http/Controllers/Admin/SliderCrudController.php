@@ -70,8 +70,7 @@ class SliderCrudController extends CrudController
         CRUD::addField([
             'name'      => 'image',
             'label'     => 'Image',
-            'type'      => 'image',
-            'crop'    => true,
+            'type'      => 'upload',
         ]);
         CRUD::field('active');
         CRUD::field('link');
