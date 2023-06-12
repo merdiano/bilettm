@@ -1,5 +1,5 @@
 @php
-    $category = Category::categoryLiveEvents(8,'cinema')->first();
+    $category = App\Models\Category::categoryLiveEvents(8,'cinema')->first();
 @endphp
 @if(!empty($category->events) && $category->events->count()>0)
 <section id="kinoteator" class="kinoteator-section waaa container mb-5">

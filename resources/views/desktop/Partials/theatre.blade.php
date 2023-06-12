@@ -1,5 +1,5 @@
 @php
-    $category = Category::categoryLiveEvents(8,'theatre')->first();
+    $category = App\Models\Category::categoryLiveEvents(8,'theatre')->first();
 @endphp
 @if(!empty($category->events) && $category->events->count()>0)
 <section id="teator" class="container teator">

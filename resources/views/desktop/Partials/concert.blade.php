@@ -1,5 +1,5 @@
 @php
-    $category = Category::categoryLiveEvents(8,'concert')->first();
+    $category = App\Models\Category::categoryLiveEvents(8,'concert')->first();
 @endphp
 @if(!empty($category->events) && $category->events->count()>0)
 <section id="konserty" class="container" style="background-image: url({{asset('assets/images/bg/konserty.jpg')}});
