@@ -34,7 +34,7 @@ class HomeController extends Controller
         // ->onLive()->withViews()
         // ->paginate(20));
        $slider = Slider::where('active',true)
-           ->select('title_ru','title_tk','image')
+           ->select('id','title_ru','title_tk','image')
            ->orderBy('order')
            ->get();
 
