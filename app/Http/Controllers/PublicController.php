@@ -36,7 +36,14 @@ class PublicController extends Controller
         $circus = Category::categoryLiveEvents(8,'circus')
             ->take(1);
 
-        $categories = $cinema->unionAll($musical)->unionAll($cartoon)->unionAll($circus)->get();
+        $theatre = Category::categoryLiveEvents(8,'theatre')
+            ->take(1);
+
+        $categories = $cinema->unionAll($musical)
+            ->unionAll($cartoon)
+            ->unionAll($circus)
+            ->unionAll($theatre)
+            ->get();
 
 //        dd($categories);
         $sliders = Slider::where('active',1)
