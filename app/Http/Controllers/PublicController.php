@@ -45,7 +45,6 @@ class PublicController extends Controller
             ->unionAll($theatre)
             ->get();
 
-        dd($categories);
         $sliders = Slider::where('active',1)
             ->where(Config::get('app.locale'),1)
             ->orderBy('order','asc')
