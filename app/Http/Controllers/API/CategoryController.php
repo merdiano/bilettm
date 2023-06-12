@@ -72,7 +72,7 @@ class CategoryController extends Controller
             ->with('ticket_dates')
             ->withViews()
             ->orderBy('start_date')
-            ->paginate($request->per_page ?? 10);
+            ->paginate($request->per_page ?? 20);
         return EventResource::collection($data)->additional(['success' => true]);
     }
 
