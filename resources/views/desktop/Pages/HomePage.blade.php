@@ -66,6 +66,9 @@
         $("#cartoon-tab1").owlCarousel({
             items: 1,
         });
+        $("#circus-tab1").owlCarousel({
+            items: 1,
+        });
 
         $(document).ready(function(){
             $("#slide-teator-prev").click(function(){
