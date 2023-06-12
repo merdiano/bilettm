@@ -24,33 +24,12 @@ use Validator;
 class PublicController extends Controller
 {
     public function showHomePage(){
-        $cinema = Category::categoryLiveEvents(8,'cinema')
-            ->take(1);
-
-        $cartoon = Category::categoryLiveEvents(8,'exhibition')
-            ->take(1);
-
-        $musical = Category::categoryLiveEvents(8,'concert')
-            ->take(1);
-
-        $circus = Category::categoryLiveEvents(8,'circus')
-            ->take(1);
-
-        $theatre = Category::categoryLiveEvents(8,'theatre')
-            ->take(1);
-
-        $categories = $cinema->unionAll($musical)
-            ->unionAll($cartoon)
-            ->unionAll($circus)
-            ->unionAll($theatre)
-            ->get();
 
         $sliders = Slider::where('active',1)
             ->where(Config::get('app.locale'),1)
             ->orderBy('order','asc')
             ->get();
         return $this->render("Pages.HomePage",[
-            'categories' => $categories,
             'sliders' => $sliders
         ]);
 

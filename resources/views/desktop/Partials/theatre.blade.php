@@ -1,3 +1,7 @@
+@php
+    $category = Category::categoryLiveEvents(8,'theatre')->first();
+@endphp
+@if(!empty($category->events) && $category->events->count()>0)
 <section id="teator" class="container teator">
     <div class="tab-header d-flex justify-content-between col-12">
         <h2> <a class="text-dark text-uppercase" href="{{$category->url}}">{{$category->title}}</a></h2>
@@ -42,3 +46,4 @@
         </div>
     </div>
 </section>
+@endif

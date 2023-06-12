@@ -9,11 +9,10 @@
 
     @include('desktop.Partials.HomeSlider')
 
-    @foreach($categories as $category)
-        @if(!empty($category->events) && $category->events->count()>0)
-            @include("desktop.Partials.{$category->view_type}",['category'=>$category])
-        @endif
-    @endforeach
+    @include("desktop.Partials.cinema")
+    @include("desktop.Partials.concert")
+    @include("desktop.Partials.exhibition")
+    @include("desktop.Partials.theatre")
 @stop
 @section('after_scripts')
     <script src="{{asset('vendor/jquery-migrate/jquery-migrate.min.js')}}"></script>
