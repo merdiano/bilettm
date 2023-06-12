@@ -10,7 +10,7 @@
         </div>
         <div class="tab-ozi col-12 pb-5">
             <!-- End Nav tabs -->
-            <div class="owl-carousel container row" id="konserty-tab1" style="padding: 0 !important; margin: 0">
+            <div class="owl-carousel container row" id="theatre-tab1" style="padding: 0 !important; margin: 0">
 
                 <div class="slider-slider row">
                     @foreach($category->events->slice(0,4) as $event)

@@ -62,7 +62,7 @@
         $("#konserty-tab1").owlCarousel({
             items: 1,
         })
-        $("#cartoon-tab1").owlCarousel({
+        $("#theatre-tab1").owlCarousel({
             items: 1,
         });
         $("#circus-tab1").owlCarousel({
