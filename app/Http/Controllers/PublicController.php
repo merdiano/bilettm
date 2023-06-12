@@ -38,6 +38,7 @@ class PublicController extends Controller
 
         $categories = $cinema->unionAll($musical)->unionAll($cartoon)->unionAll($circus)->get();
 
+        dd($categories);
         $sliders = Slider::where('active',1)
             ->where(Config::get('app.locale'),1)
             ->orderBy('order','asc')
