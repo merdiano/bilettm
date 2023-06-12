@@ -1,4 +1,4 @@
-<section id="kinoteator" class="kinoteator-section waaa container mb-5">
+<section id="circus" class="kinoteator-section container mb-5">
     <div class="tab-header d-flex justify-content-between col-12 px-0">
         <h2> <a class="text-dark text-uppercase" href="{{$category->url}}">{{$category->title}}</a></h2>
 
