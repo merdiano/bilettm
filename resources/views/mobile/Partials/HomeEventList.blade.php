@@ -1,3 +1,6 @@
+@php
+    $category = App\Models\Category::categoryLiveEvents(8,$type)->first();
+@endphp
 @if(!empty($category->events) && $category->events->count()>0)
 <div class="section-section py-5 {{$category->view_type}}">
 <div class="container" style="padding: 0 12px !important; margin-bottom: 15px;">

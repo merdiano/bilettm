@@ -34,12 +34,11 @@
 
     @include('mobile.Partials.HomeSlider')
 
+    @include('mobile.Partials.HomeEventList',['type'=> 'cinema'])
+    @include('mobile.Partials.HomeEventList',['type'=> 'concert'])
+    @include('mobile.Partials.HomeEventList',['type'=> 'exhibition'])
+    @include('mobile.Partials.HomeEventList',['type'=> 'theatre'])
 
-    @foreach($categories as $category)
-
-            @include('mobile.Partials.HomeEventList',['category'=>$category])
-
-    @endforeach
 
 @endsection
 @section('after_scripts')

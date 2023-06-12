@@ -33,8 +33,13 @@ class HomeController extends Controller
         // dd(Event::with('ticket_dates')
         // ->onLive()->withViews()
         // ->paginate(20));
-        return HomeResource::make(
-            Slider::get(),
+       $slider = Slider::where('active',true)
+           ->select('title_ru','title_tk','image')
+           ->orderBy('order')
+           ->get();
+
+       return HomeResource::make(
+            $slider,
             Event::with('ticket_dates')
                 ->onLive()->withViews()
                 ->paginate(20)
