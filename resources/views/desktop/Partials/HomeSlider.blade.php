@@ -17,7 +17,7 @@
                 <!-- Parallax Image -->
                 <div class="divimage dzsparallaxer--target w-100"
                     style="position:absolute; top: 0; background-position: center center;
-                            background-size: cover; bottom: -100px; background-image:
+                            background-size: 100%; bottom: -100px; background-image:
                             url(/user_content/{{$slider->image}}); transform: unset !important;"></div>
                 <!-- End Parallax Image -->
 
