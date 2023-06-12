@@ -43,6 +43,7 @@ class HomeController extends Controller
             Event::with('ticket_dates')
                 ->onLive()->withViews()
                 ->paginate(20)
+                ->orderBy('start_date')
             )->additional(['success' => true]);
     }
 }
