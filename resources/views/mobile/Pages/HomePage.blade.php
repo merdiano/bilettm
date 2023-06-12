@@ -16,7 +16,7 @@
             padding-left: 70px !important;
             padding-right: 70px !important;
         }
-        .konserty h5{
+        .concert h5{
             color: #ffffff !important;
         }
         .section-section .owl-nav{
@@ -26,6 +26,7 @@
         .concert{
             background-image: url({{asset('assets/images/bg/konserty.jpg')}});
             background-repeat: no-repeat; background-size: cover; padding: 100px 0;
+
         }
 
     </style>
