@@ -24,6 +24,7 @@
 
             <div class="tab-content" id="myTabContent">
                 {!! Form::open(['url' => route('postValidateDate', ['event_id' => $event->id]),'method'=>'GET']) !!}
+                {{dd($ticket_dates)}}
                 @foreach($ticket_dates as $date =>$tickets)
                     <div class="tab-pane fade show tabcontent @if ($loop->first)active @endif" id="{{$date}}" role="tabpanel" aria-labelledby="{{$date}}-tab">
                         <div class="time-box-wrap">
