@@ -30,7 +30,7 @@
 
                                 @foreach($tickets as $ticket)
                                 <div class="form-group">
-                                    <input type="radio" id="time{{$loop->index}}" @if ($loop->first)checked @endif name="ticket_date" value="{{$ticket->format('H:i')}}">
+                                    <input type="radio" id="time{{$loop->index}}" @if ($loop->first)checked @endif name="ticket_date" value="{{$ticket[0]}}">
                                     <label for="time{{$loop->index}}"><span>{{$ticket->format('H:i')}}</span></label>
                                 </div>
                                 @endforeach
