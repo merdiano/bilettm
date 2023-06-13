@@ -100,6 +100,7 @@ class EventViewController extends Controller
                 Cookie::queue('affiliate_' . $event_id, $affiliate_ref, 60 * 24 * 60);
             }
         }
+        dd($groupedDates);
         return $this->render('Pages.EventPage', $data);
     }
 
