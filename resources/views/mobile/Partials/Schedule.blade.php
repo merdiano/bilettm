@@ -12,10 +12,13 @@
         <div class="date-box-wrap">
             <ul class="nav nav-pills details-page">
 
-                @foreach($ticket_dates as $date =>$ticket)
-
-                    <li><a class="tablinks @if ($loop->first)active @endif" style="cursor: pointer" onclick="openContent(event, '{{$date}}')">{{$date}}</a></li>
-                @endforeach
+                @foreach($ticket_dates as $ticket)
+                    @if ($loop->first)
+                        <li style="display: inline-grid"><a class="tablinks active" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->locale(app()->getLocale())->translatedFormat('j F')}}</a></li>
+                    @else
+                        <li style="display: inline-grid"><a class="tablinks" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->locale(app()->getLocale())->translatedFormat('j F')}}</a></li>
+                    @endif
+                    @endforeachach
 
             </ul>
         </div>
@@ -23,17 +26,21 @@
         <div class="time-box-wraper col-md-6" style="padding-left: 5px">
 
             <div class="tab-content" id="myTabContent">
-                <ul class="nav nav-pills details-page">
-
-                    @foreach($ticket_dates as $ticket)
-                        @if ($loop->first)
-                            <li style="display: inline-grid"><a class="tablinks active" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->locale(app()->getLocale())->translatedFormat('j F')}}</a></li>
-                        @else
-                            <li style="display: inline-grid"><a class="tablinks" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->locale(app()->getLocale())->translatedFormat('j F')}}</a></li>
-                        @endif
-                    @endforeach
-
-                </ul>
+                {!! Form::open(['url' => route('postValidateDate', ['event_id' => $event->id]),'method'=>'GET']) !!}
+                @foreach($ticket_dates as $date => $ticket)
+                    <div class="tab-pane fade show tabcontent @if ($loop->first)active @endif" id="{{$ticket['ticket_date']}}" role="tabpanel" aria-labelledby="{{$ticket['ticket_date']}}-tab">
+                        <div class="time-box-wrap">
+                            @foreach($ticket['hours'] as $hour)
+                                <div class="form-group">
+                                    <input type="radio" id="time{{Carbon\Carbon::parse($ticket['ticket_date'])->format('Y-m-d H:i:s').$hour}}" @if ($loop->first)checked @endif name="ticket_date" value="{{Carbon\Carbon::parse($ticket['ticket_date'])->format('Y-m-d H:i:s')}}">
+                                    <label for="time{{Carbon\Carbon::parse($ticket['ticket_date'])->format('Y-m-d H:i:s').$hour}}"><span>{{$hour}}</span></label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
+                {!!Form::submit(trans('ClientSide.buy_ticket'), ['class' => 'btn btn-lg btn-danger'])!!}
+                {!! Form::close() !!}
             </div>
         </div>
     @endif
