@@ -18,7 +18,7 @@
                     @else
                         <li style="display: inline-grid"><a class="tablinks" style="cursor: pointer" onclick="openContent(event, '{{$ticket['ticket_date']}}')">{{Carbon\Carbon::parse($ticket['ticket_date'])->locale(app()->getLocale())->translatedFormat('j F')}}</a></li>
                     @endif
-                    @endforeachach
+                @endforeach
 
             </ul>
         </div>
