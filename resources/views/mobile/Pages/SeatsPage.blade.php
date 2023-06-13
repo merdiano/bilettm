@@ -4,7 +4,7 @@
         <div class="row">
             <h2 class="pt-4" >{{__('ClientSide.by_ticket_for', ['event'=>$event->title_])}}</h2>
             <h6 class="g-brd-bottom text-left">{{$venue->venue_name}}</h6>
-            <h3 class="my-4" >{{__('ClientSide.step')}} 1. {{__('ClientSide.checkout_schema')}} </h3>
+            <h3 class="my-4 w-100" >{{__('ClientSide.step')}} 1. {{__('ClientSide.checkout_schema')}} </h3>
             <button type="button" class="btn btn-outline-dark px-5 py-3 seats-map" data-toggle="modal" data-target="#exampleModal">
                 @lang("Public_ViewEvent.seats_map")
             </button>
