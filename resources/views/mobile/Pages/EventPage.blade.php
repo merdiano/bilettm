@@ -35,27 +35,27 @@
             </div>
         </div>
     </section>
-    <section id="location" class="container p0" style="margin-bottom: 50px">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="google-maps content" id="map" style="height: 250px">
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section id="location" class="container p0" style="margin-bottom: 50px">--}}
+{{--        <div class="row">--}}
+{{--            <div class="col-md-12">--}}
+{{--                <div class="google-maps content" id="map" style="height: 250px">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 @endsection
 
-@section('after_scripts')
-<script>
-    function initMap() {
-        var uluru = {lat: {{$event->venue->address['latlng']['lat']}}, lng: {{$event->venue->address['latlng']['lng']}}};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: uluru,
-            zoom: 15
-        });
-        var marker = new google.maps.Marker({position: uluru, map: map});
-    }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_places.key')}}&callback=initMap"
-        async defer></script>
-@endsection
+{{--@section('after_scripts')--}}
+{{--<script>--}}
+{{--    function initMap() {--}}
+{{--        var uluru = {lat: {{$event->venue->address['latlng']['lat']}}, lng: {{$event->venue->address['latlng']['lng']}}};--}}
+{{--        var map = new google.maps.Map(document.getElementById('map'), {--}}
+{{--            center: uluru,--}}
+{{--            zoom: 15--}}
+{{--        });--}}
+{{--        var marker = new google.maps.Marker({position: uluru, map: map});--}}
+{{--    }--}}
+{{--</script>--}}
+{{--<script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_places.key')}}&callback=initMap"--}}
+{{--        async defer></script>--}}
+{{--@endsection--}}
