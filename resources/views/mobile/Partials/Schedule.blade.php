@@ -29,7 +29,7 @@
                         <div class="time-box-wrap">
 
                                 @foreach($tickets as $ticket)
-                                    {{dump($ticket)}}
+                                    {!!  dump($ticket) !!}
                                 @endforeach
                         </div>
                     </div>
