@@ -173,7 +173,7 @@
                     </div>
                 @endif
 
-                {!! Form::hidden('is_embedded', $is_embedded) !!}
+                {{-- {!! Form::hidden('is_embedded', $is_embedded) !!} --}}
                 {!! Form::submit(trans("Public_ViewEvent.checkout_submit"), ['class' => 'check-order-btn btn btn-lg btn-danger card-submit']) !!}
                 {!! Form::close() !!}
             </div>
