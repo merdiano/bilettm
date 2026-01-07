@@ -9,7 +9,7 @@
 <!-- Footer -->
 <footer class="g-bg-main-light-v1 mt-5">
     <!-- Content -->
-    <div class="g-brd-bottom g-brd-secondary-light-v1 pb-5" style="border-bottom: none !important">
+    {{-- <div class="g-brd-bottom g-brd-secondary-light-v1 pb-5" style="border-bottom: none !important">
         <div class="container g-pt-100">
             <div class="row justify-content-start g-mb-30 g-mb-0--md">
                 <div class="col-12 footer-header mb-5" style="padding: 0 20%;">
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Content -->
 
     <!-- Copyright -->

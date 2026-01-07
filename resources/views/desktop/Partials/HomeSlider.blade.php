@@ -19,13 +19,16 @@
                     style="position:absolute; top: 0; background-position: center center;
                             background-size: 100%; bottom: -100px; background-image:
                             url(/user_content/{{$slider->image}}); transform: unset !important;"></div>
-                <!-- End Parallax Image -->
 
+                <!-- End Parallax Image -->
                 <a href="{{$slider->link ?? '#'}}" class="d-block container g-py-200 h-100" style="top: 0; bottom: 0; left: 0; right: 0; position:absolute;"></a>
-            </li>
-            <div class="slider-content" style="position: absolute; top: 0">
-                {{$slider->text}}
+            </li>              @if($slider->link)
+            <div class="slider-content" style="position: absolute; bottom: 200px; right: 200px; padding: 20px;">
+                <a href="{{$slider->link}}" class="btn btn-danger btn-lg">
+                    {{$slider->title}}
+                </a>
             </div>
+            @endif
         </div>
     @endforeach
 </section>

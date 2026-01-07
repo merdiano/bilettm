@@ -8,6 +8,13 @@
             <div class="slider-content" style="position: absolute; top: 0;">
                 {{$slider->text}}
             </div>
+            @if($slider->link)
+            <div class="slider-content" style="position: absolute; bottom: 20px; right: 20px; padding: 20px;">
+                <a href="{{$slider->link}}" class="btn btn-danger btn-lg">
+                    {{$slider->title}}
+                </a>
+            </div>
+            @endif
         </div>
         @endforeach
     </div>
